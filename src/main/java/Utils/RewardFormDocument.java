@@ -14,10 +14,15 @@ public class RewardFormDocument {
         this.document = new XWPFDocument(new FileInputStream(filePath));
     }
 
-    public void writeContentInTable(int tableIndex, int row, int column,String content){
-        XWPFTable x = document.getTables().get(tableIndex);
 
+
+    public void setContentInTableCell(int tableIndex, int row, int column,String content){
+        XWPFTable x = document.getTables().get(tableIndex);
         x.getRow(row).getCell(column).removeParagraph(0);
+        addParagraph(row, column, content, x);
+    }
+
+    private void addParagraph(int row, int column, String content, XWPFTable x) {
         XWPFParagraph a = x.getRow(row).getCell(column).addParagraph();
         a.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun c = a.createRun();
@@ -25,6 +30,12 @@ public class RewardFormDocument {
         c.setText(content);
         c.setFontSize(14);
         a.addRun(c);
+    }
+
+
+    public void appendContentInTableCell(int tableIndex, int row, int column,String content){
+        XWPFTable x = document.getTables().get(tableIndex);
+        addParagraph(row, column, content, x);
     }
 
 
