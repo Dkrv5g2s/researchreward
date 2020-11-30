@@ -75,36 +75,52 @@
                     </tr>
                     <tr>
                         <td class="metadata">任職本校年資</td>
-                        <td></td>
+                        <td>
+                            <input type="number" required>年
+                            <input type="number" required>個月
+                        </td>
                     </tr>
                     <tr>
                         <td class="metadata">中文姓名</td>
-                        <td></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">英文姓名</td>
-                        <td></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">職稱</td>
-                        <td></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">國籍</td>
-                        <td></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">性別</td>
-                        <td></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">最高學歷</td>
-                        <td></td>
+                        <td>
+                            學校名稱:<input type="text" required>
+                            主修學門系所:<input type="text" required>
+                            學位:<input type="text" required><br>
+                            畢業年月:<input type="number" required>年
+                            <input type="number" required>月
+                        </td>
                     </tr>
                     <tr>
                         <td class="metadata">重要經歷</td>
-                        <td></td>
+                        <td>
+                            服務機構:<input type="text" required>
+                            服務部門:<input type="text" required>
+                            職稱:<input type="text" required><br>
+                            起迄年月:<input type="number" required>年
+                            <input type="number" required>月
+                        </td>
                     </tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: #FFFFCC"><input type="submit" value="存檔"></td></tr>
                 </tbody>
             </table>
         </form>
