@@ -120,7 +120,32 @@
                             <input type="number" required>月
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: #FFFFCC"><input type="submit" value="存檔"></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">申請獎勵等級及符合資格</td></tr>
+                    <tr>
+                        <td class="metadata">一年內曾執行科技部計畫</td>
+                        <td>計畫名稱:<input type="text" required>
+                        計畫編號:<input type="text" required>
+                        執行期間:<input type="date" required>至<input type="date" required></td>
+                    </tr>
+                    <tr>
+                        <td class="metadata">獎助資格(請檢附證明文件)</td>
+                        <td>
+                            <input type="checkbox">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
+                            <input type="checkbox">於正式納編前五年間均任職於國外學術研究機構。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="metadata">申請獎勵等級及額度</td>
+                        <td>
+                            <select>
+                                <option>教授級</option>
+                                <option>副教授級</option>
+                                <option>助理教授級</option>
+                            </select>
+                            每月獎勵額度<input type="number" required>萬元
+                        </td>
+                    </tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="存檔"></td></tr>
                 </tbody>
             </table>
         </form>
