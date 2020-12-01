@@ -12,4 +12,13 @@
         <servlet-name>Test</servlet-name>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
+        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorForm</url-pattern>
+    </servlet-mapping>
 </web-app>
