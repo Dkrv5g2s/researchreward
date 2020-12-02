@@ -39,6 +39,23 @@ dependencies {
 
     compile fileTree(include: ["*.jar"], dir: "src/main/resources")
 
+    // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
+
+    // https://mvnrepository.com/artifact/com.itextpdf.tool/xmlworker
+    compile group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.5.13.2'
+
+    // https://mvnrepository.com/artifact/fr.opensagres.xdocreport/xdocreport
+    compile group: 'fr.opensagres.xdocreport', name: 'xdocreport', version: '2.0.2'
+
+    // https://mvnrepository.com/artifact/org.apache.poi/ooxml-schemas
+    compile group: 'org.apache.poi', name: 'ooxml-schemas', version: '1.4'
+
+    // https://mvnrepository.com/artifact/com.itextpdf/itext-asian
+    compile group: 'com.itextpdf', name: 'itext-asian', version: '5.2.0'
+
+
+
 }
 
 
