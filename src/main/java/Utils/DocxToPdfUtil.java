@@ -12,17 +12,23 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 import fr.opensagres.poi.xwpf.converter.xhtml.XHTMLConverter;
 import fr.opensagres.poi.xwpf.converter.xhtml.XHTMLOptions;
+import fr.opensagres.xdocreport.utils.StringUtils;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.jsoup.Jsoup;
+
 
 public class DocxToPdfUtil {
 
     private static final int wdFormatPDF = 17;
 
-
+//    public static void main(String[] args) {
+//        wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
+//
+//    }
 
     public static void wordToPDF(String inputFileName, String outputFileName) {
         try {
-            parseHtmlToPdf(docx2Html(inputFileName),outputFileName);
+            parseHtmlToPdf(removeWidth(docx2Html(inputFileName)),outputFileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,18 +36,19 @@ public class DocxToPdfUtil {
 
     public static void parseHtmlToPdf(String content, String pdfPath) throws Exception {
 
-        // 創建一個document對象實例
-        Document document = new Document();
-        // 爲該Document創建一個Writer實例
+
+        Document document = new Document(PageSize.A4);
+
         PdfWriter pdfwriter = PdfWriter.getInstance(document,
                 new FileOutputStream(pdfPath));
         pdfwriter.setViewerPreferences(PdfWriter.HideToolbar);
-        // 打開當前的document
+
         document.open();
 
         FontProvider fontProvider = new FontProvider() {
             @Override
             public boolean isRegistered(String fontname) {
+                System.out.println(fontname);
                 return true;
             }
 
@@ -49,8 +56,20 @@ public class DocxToPdfUtil {
             public Font getFont(String fontname, String encoding, boolean embedded, float size, int style, BaseColor color) {
                 Font font = null;
                 try {
-                    font = new Font(BaseFont.createFont("/font/kaiu.ttf",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED),size,style,color);
-                    font.setColor(color);
+                    System.out.println(fontname);
+                    if(fontname == null)
+                        return new Font(BaseFont.createFont("/font/mingliu.ttc,1",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED),size,style,color);
+                    switch (fontname){
+                        case "新細明體":
+                            font = new Font(BaseFont.createFont("/font/kaiu.ttf",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED),size,style,color);
+                            break;
+                        case "標楷體":
+                            font = new Font(BaseFont.createFont("/font/mingliu.ttc,1",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED),size,style,color);
+                            break;
+                        default:
+                            font = new Font(BaseFont.createFont("/font/mingliu.ttc,1",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED),size,style,color);
+                            break;
+                    }
 
                 } catch (DocumentException e) {
                     e.printStackTrace();
@@ -60,10 +79,16 @@ public class DocxToPdfUtil {
                 return font;
             }
         };
-        System.out.println(content.getBytes());
-        XMLWorkerHelper.getInstance().parseXHtml(pdfwriter, document, new ByteArrayInputStream(content.getBytes()), Charset.forName("UTF-8"),fontProvider);
-        XMLWorkerFontProvider
+        FontFactory.register("/font/mingliu.ttc,1");
+        FontFactory.register("/font/kaiu.ttf");
+
+        System.out.println(content);
+
+        System.out.println(content.getBytes().length);
+
+        XMLWorkerHelper.getInstance().parseXHtml(pdfwriter, document, new ByteArrayInputStream(content.getBytes("UTF-8")), Charset.forName("UTF-8"), fontProvider);
         document.close();
+        pdfwriter.close();
     }
     private static String docx2Html(String docxPath) throws IOException {
 
@@ -77,9 +102,28 @@ public class DocxToPdfUtil {
         XHTMLConverter.getInstance().convert(document, baos, options);
         baos.close();
         content = baos.toString();
+        document.close();
 
-        System.out.println( content);
         return content;
+    }
+
+    private static String removeWidth(String content){
+        org.jsoup.nodes.Document doc = Jsoup.parse(content);
+        org.jsoup.nodes.Element body = doc.body();
+        String style = body.attr("style");
+        if (StringUtils.isNotEmpty(style) && style.indexOf("width") != -1){
+            body.attr("style","");
+        }
+        org.jsoup.select.Elements divs = doc.select("div");
+        for (org.jsoup.nodes.Element div : divs){
+            style = div.attr("style");
+            System.out.println(style);
+            if (StringUtils.isNotEmpty(style) && style.indexOf("width") != -1){
+                div.attr("style","width:500pt;margin-bottom:42.55pt;margin-top:49.6pt;margin-left:56.7pt;margin-right:56.7pt;");
+            }
+        }
+        return doc.html();
+
     }
 
 }
