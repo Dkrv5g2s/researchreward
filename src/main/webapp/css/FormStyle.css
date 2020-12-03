@@ -31,7 +31,7 @@ table td{
 table td.metadata{
     width: 150px;
     background-color: rgb(255, 255, 240);
-    text-align: right;
+    text-align: left;
 }
 div.content{
     margin: 0 auto;

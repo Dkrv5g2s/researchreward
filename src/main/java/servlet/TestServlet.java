@@ -13,7 +13,7 @@ public class TestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp").forward(req, resp);
+        //wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
     }
 }
