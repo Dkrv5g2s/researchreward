@@ -21,4 +21,31 @@
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorForm</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
+        <servlet-class>servlet.DistinguishedProfessor.ApplicationDocInstructionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
+        <url-pattern>/ApplicationDocInstructions</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
+        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorTableA</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
+        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorTableBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorTableB</url-pattern>
+    </servlet-mapping>
 </web-app>
