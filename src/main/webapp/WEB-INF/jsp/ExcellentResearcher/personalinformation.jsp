@@ -9,50 +9,7 @@
 <html>
 <head>
     <title>個人基本資料</title>
-    <style>
-        body {
-            margin: 20px 0px 0px 0px;
-            padding: 0;
-            background: #FFFFCC;
-            font-size: 20px;
-            color: #3C3D3F;
-            background-color: #E9F2FF;
-            font: normal 16px Verdana;
-            width: 100%;
-        }
-        table {
-            color: black;
-            width: 100%;
-            border-width: thin;
-            border-spacing: 0px;
-            border-style: groove;
-            border-color: gray;
-            border-collapse: collapse;
-            background-color: white;
-            font: normal 13px Verdana;
-        }
-        table td{
-            border-width: 1px;
-            padding: 8px;
-            border-style: groove;
-            border-color: gray;
-            -moz-border-radius: 0px 0px 0px 0px;
-            height: 20px;
-            vertical-align: text-middle;
-        }
-        table td.metadata{
-            width: 150px;
-            background-color: rgb(255, 255, 240);
-            text-align: right;
-        }
-        div.content{
-            margin: 0 auto;
-            padding: 50px;
-            width: 1200px;
-            background-color: white;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
 </head>
 <body>
     <div class="content">
