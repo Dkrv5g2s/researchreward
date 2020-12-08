@@ -57,6 +57,7 @@
     <form>
         <table>
             <tbody>
+                <tr><td class="metadata" colspan="9">(一)專利 請填入目前仍有效之專利。「類別」請填入代碼：(A)發明專利(B)新型專利(C)新式樣專利。</td></tr>
                 <tr>
                     <td class="metadata">類別</td>
                     <td class="metadata">專利名稱</td>
@@ -68,7 +69,33 @@
                     <td class="metadata">科技部計畫編號</td>
                     <td class="metadata">功能</td>
                 </tr>
-                <tr name="new"><td colspan="19" style="text-align: center"><button type="button" onclick="createResearchProduction()">新增</button></td></tr>
+                <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createResearchProduction()">新增</button></td></tr>
+                <tr><td class="metadata" colspan="9">(一)專利 請填入目前仍有效之專利。「類別」請填入代碼：(A)發明專利(B)新型專利(C)新式樣專利。</td></tr>
+                <tr>
+                    <td class="metadata">類別</td>
+                    <td class="metadata">專利名稱</td>
+                    <td class="metadata">國別</td>
+                    <td class="metadata">專利號碼</td>
+                    <td class="metadata">發明人</td>
+                    <td class="metadata">專利權人</td>
+                    <td class="metadata">專利核准日期</td>
+                    <td class="metadata">科技部計畫編號</td>
+                    <td class="metadata">功能</td>
+                </tr>
+                <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createResearchProduction()">新增</button></td></tr>
+                <tr><td class="metadata" colspan="9">(一)專利 請填入目前仍有效之專利。「類別」請填入代碼：(A)發明專利(B)新型專利(C)新式樣專利。</td></tr>
+                <tr>
+                    <td class="metadata">類別</td>
+                    <td class="metadata">專利名稱</td>
+                    <td class="metadata">國別</td>
+                    <td class="metadata">專利號碼</td>
+                    <td class="metadata">發明人</td>
+                    <td class="metadata">專利權人</td>
+                    <td class="metadata">專利核准日期</td>
+                    <td class="metadata">科技部計畫編號</td>
+                    <td class="metadata">功能</td>
+                </tr>
+                <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createResearchProduction()">新增</button></td></tr>
             </tbody>
         </table>
     </form>
