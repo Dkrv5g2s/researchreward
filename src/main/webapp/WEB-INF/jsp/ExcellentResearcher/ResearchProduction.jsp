@@ -76,14 +76,19 @@
         function commit(){
 
 
-            var obj = $('form').serializeJSON();
-            console.log(obj);
+            var table1 = tableToJson($('form').find("table")[0]);
+            var table2 = tableToJson($('form').find("table")[1]);
+            var table3 = tableToJson($('form').find("table")[2]);
+
+            var data = [table1,table2,table3];
+            
+
             $.ajax({
                 type: 'POST',
                 url: '/test',
                 dataType: 'json',
-                data: JSON.stringify(),
-                contentType: 'application/jsom',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
                 success: function(data){
                     alert('success');
                 }
