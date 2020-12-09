@@ -5,12 +5,36 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>servlet.TestServlet</servlet-class>
+        <servlet-name>ResearchProductionServlet</servlet-name>
+        <servlet-class>servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>ResearchProductionServlet</servlet-name>
+        <url-pattern>/ResearchProduction</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RecruitDescriptionServlet</servlet-name>
+        <servlet-class>servlet.ExcellentResearcher.RecruitDescriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecruitDescriptionServlet</servlet-name>
+        <url-pattern>/RecruitDescription</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CatalogOfWorksServlet</servlet-name>
+        <servlet-class>servlet.ExcellentResearcher.CatalogOfWorksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogOfWorksServlet</servlet-name>
+        <url-pattern>/CatalogOfWorks</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PersonalInformationServlet</servlet-name>
+        <servlet-class>servlet.ExcellentResearcher.PersonalInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalInformationServlet</servlet-name>
+        <url-pattern>/PersonalInformation</url-pattern>
     </servlet-mapping>
     
     <servlet>
