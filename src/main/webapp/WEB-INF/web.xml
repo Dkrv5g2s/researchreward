@@ -5,6 +5,15 @@
          version="4.0">
 
     <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>servlet.login.loginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ResearchProductionServlet</servlet-name>
         <servlet-class>servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
     </servlet>
