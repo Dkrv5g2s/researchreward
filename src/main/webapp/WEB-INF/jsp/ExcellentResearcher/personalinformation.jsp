@@ -10,6 +10,39 @@
 <head>
     <title>個人基本資料</title>
     <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
+    <script>
+        function commit(){
+            $.ajax({
+                type: 'POST',
+                url: '/PersonalInformation',
+                dataType: 'json',
+                data: JSON.stringify(InputToJson()),
+                contentType: 'application/json',
+                success: function(data){
+                    alert('success');
+                }
+            });
+
+        };
+
+        function InputToJson(){
+            var data = {};
+
+
+            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
+                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
+                    continue;
+                }else {
+                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+                }
+
+            }
+
+
+
+            return data;
+        }
+    </script>
 </head>
 <body>
     <div class="content">
@@ -70,11 +103,11 @@
                     <tr>
                         <td class="metadata">重要經歷</td>
                         <td>
-                            服務機構:<input type="text" required>
-                            服務部門:<input type="text" required>
-                            職稱:<input type="text" required><br>
-                            起迄年月:<input type="number" required>年
-                            <input type="number" required>月
+                            服務機構:<input type="text" name="ServiceOrganization" required>
+                            服務部門:<input type="text" name="ServiceDepartment" required>
+                            職稱:<input type="text" name="pastTitle" required><br>
+                            起迄年月:<input type="number" name="pastYear" required>年
+                            <input type="number" name="pastMonth" required>月
                         </td>
                     </tr>
                     <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">申請獎勵等級及符合資格</td></tr>
@@ -87,8 +120,8 @@
                     <tr>
                         <td class="metadata">獎助資格(請檢附證明文件)</td>
                         <td>
-                            <input type="checkbox" name="qualification1">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
-                            <input type="checkbox" name="qualification2">於正式納編前五年間均任職於國外學術研究機構。
+                            <input type="checkbox" name="qualification1" value="true">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
+                            <input type="checkbox" name="qualification2" value="true">於正式納編前五年間均任職於國外學術研究機構。
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +135,7 @@
                             每月獎勵額度<input type="number" name="price" required>萬元
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="存檔"></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">存檔</button></td></tr>
                 </tbody>
             </table>
         </form>

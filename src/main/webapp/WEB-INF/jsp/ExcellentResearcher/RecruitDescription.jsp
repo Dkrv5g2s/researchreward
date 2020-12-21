@@ -10,6 +10,39 @@
 <head>
     <title>申請表額外文件</title>
     <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
+    <script>
+        function commit(){
+            $.ajax({
+                type: 'POST',
+                url: '/PersonalInformation',
+                dataType: 'json',
+                data: JSON.stringify(InputToJson()),
+                contentType: 'application/json',
+                success: function(data){
+                    alert('success');
+                }
+            });
+
+        };
+
+        function InputToJson(){
+            var data = {};
+
+
+            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
+                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
+                    continue;
+                }else {
+                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+                }
+
+            }
+
+
+
+            return data;
+        }
+    </script>
 </head>
 <body>
     <div class="content">
@@ -66,7 +99,7 @@
                         <textarea type="text" required maxlength="200" ></textarea>
                     </td>
                 </tr>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="存檔"></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">存檔</button></td></tr>
                 </tbody>
             </table>
         </form>
