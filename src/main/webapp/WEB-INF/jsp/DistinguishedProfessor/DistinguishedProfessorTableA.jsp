@@ -170,7 +170,7 @@
 		                <td colspan="1" width="12%"><label id="year_5">108</label></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td rowspan="5" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
+		                <td rowspan="4" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
 		                <td colspan="1" width="10%">件數</td>
 		                <td colspan="1" width="12%"><input name="tech_project_count_one" size="5" maxlength="40"></td>
 		                <td colspan="1" width="12%"><input name="tech_project_count_two" size="5" maxlength="40"></td>
@@ -197,10 +197,7 @@
 		                <td colspan="1" width="12%"><input name="tech_project_point_five" size="5" maxlength="40"></td>
 		                <td colspan="1" width="10%"><input name="tech_project_point_total" size="5" maxlength="40"></td>
 		            </tr>
-		            <tr>
-		                <td colspan="1" width="10%" style="text-align: center;">研發處<br>(簽章)</td>
-		                <td colspan="6" width="70%">承辦人<input name="case_officer" size="10" maxlength="40">&nbsp;&nbsp;單位主管<input name="department_head" size="10" maxlength="40"></td>
-		            </tr>
+		            
 		            <tr>
 		                <td colspan="7" width="80%">
 		                    <p>說明：</p>
@@ -220,7 +217,7 @@
 		                <td colspan="1" width="12%"><label id="year_5">108</label></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td rowspan="4" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>
+		                <td rowspan="3" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>
 		                <td colspan="1" width="10%">件數</td>
 		                <td colspan="1" width="12%"><input name="tech_project_count_one" size="5" maxlength="40"></td>
 		                <td colspan="1" width="12%"><input name="tech_project_count_two" size="5" maxlength="40"></td>
@@ -247,10 +244,7 @@
 		                <td colspan="1" width="12%"><input name="tech_project_point_five" size="5" maxlength="40"></td>
 		                <td colspan="1" width="10%"><input name="tech_project_point_total" size="5" maxlength="40"></td>
 		            </tr>
-		            <tr>
-		                <td colspan="1" width="10%" style="text-align: center;">社會責任辦公室<br>(簽章)</td>
-		                <td colspan="6" width="70%">承辦人<input name="case_officer" size="10" maxlength="40">&nbsp;&nbsp;單位主管<input name="department_head" size="10" maxlength="40"></td>
-		            </tr>
+		            
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">產 學 合 作 計 畫</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
@@ -264,7 +258,7 @@
 		                <td colspan="1" width="12%"><label id="year_5">108</label></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td rowspan="6" colspan="1" width="20%">近五年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+		                <td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
 		                <td colspan="1" width="10%">件數</td>
 		                <td colspan="1" width="12%"><input name="coop_project_count_one" size="5" maxlength="40"></td>
 		                <td colspan="1" width="12%"><input name="coop_project_count_two" size="5" maxlength="40"></td>
@@ -300,10 +294,7 @@
 		                <td colspan="1" width="12%"><input name="coop_project_point_five" size="5" maxlength="40"></td>
 		                <td colspan="1" width="10%"><input name="coop_project_point_total" size="5" maxlength="40"></td>
 		            </tr>
-		            <tr>
-		                <td colspan="1" width="10%" style="text-align: center;">產學處<br>(簽章)</td>
-		                <td colspan="6" width="70%">承辦人<input name="case_officer" size="10" maxlength="40">&nbsp;&nbsp;單位主管<input name="department_head" size="10" maxlength="40"></td>
-		            </tr>
+		            
 		            <tr>
 		                <td colspan="7" width="80%">
 		                    <p>說明：</p>
@@ -324,7 +315,7 @@
 		                <td colspan="1" width="12%"><label id="year_5">108</label></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td rowspan="6" colspan="1" width="20%">近五年以本校名義所獲之實收技術移轉金統計表</td>
+		                <td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲之實收技術移轉金統計表</td>
 		                <td colspan="1" width="10%">件數</td>
 		                <td colspan="1" width="12%"><input name="tech_transfer_count_one" size="5" maxlength="40"></td>
 		                <td colspan="1" width="12%"><input name="tech_transfer_count_two" size="5" maxlength="40"></td>
@@ -360,10 +351,7 @@
 		                <td colspan="1" width="12%"><input name="tech_transfer_point_five" size="5" maxlength="40"></td>
 		                <td colspan="1" width="10%"><input name="tech_transfer_point_total" size="5" maxlength="40"></td>
 		            </tr>
-		            <tr>
-		                <td colspan="1" width="10%" style="text-align: center;">產學處<br>(簽章)</td>
-		                <td colspan="6" width="70%">承辦人<input name="case_officer" size="10" maxlength="40">&nbsp;&nbsp;單位主管<input name="department_head" size="10" maxlength="40"></td>
-		            </tr>
+		           
 		            <tr>
 		                <td colspan="7" width="80%">
 		                    <p>說明：</p>
@@ -381,7 +369,7 @@
 		            </tr>
 		            <tr>
 		                <td colspan="9" width="100%"><input type="checkbox" name="declaration">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
-		                    <p style="text-align: right;">申請人簽章:<input name="applicant_sign" size="10" maxlength="40">&nbsp;日期:<input type="date"></p>
+		                    <a style="margin-left: 800px">日期:<input type="date" ></a>
 		                </td>
 		            </tr>
 		        </tbody>

@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ApplicationDocInstructionsServlet extends HttpServlet {
+public class DistinguishedProfessorAppDocInstructionsServlet extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/ApplicationDocInstructions.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorAppDocInstructions.jsp").forward(req, resp);
     }
 }

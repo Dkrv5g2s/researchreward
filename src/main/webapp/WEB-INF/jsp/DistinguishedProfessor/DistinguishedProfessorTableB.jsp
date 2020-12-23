@@ -133,8 +133,7 @@
 		            </tr>
 		            <tr>
 		                <td colspan="8" style="text-align: left;font-weight: bold;"><input type="checkbox" name="declaration"><font color="red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</font><br><br>
-		                    <a style="margin-left: 100px">申請人簽章:<input name="applicant_sign" size="10" maxlength="40"></a>
-		                    <a style="margin-left: 400px">日期:<input type="date" ></a></td>
+		                    <a style="margin-left: 800px">日期:<input type="date" ></a></td>
 		            </tr>
 		           
 		        </tbody>

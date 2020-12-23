@@ -56,12 +56,12 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
-        <servlet-class>servlet.DistinguishedProfessor.ApplicationDocInstructionsServlet</servlet-class>
+        <servlet-name>DistinguishedProfessorAppDocInstructionsServlet</servlet-name>
+        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorAppDocInstructionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
-        <url-pattern>/ApplicationDocInstructions</url-pattern>
+        <servlet-name>DistinguishedProfessorAppDocInstructionsServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorAppDocInstructions</url-pattern>
     </servlet-mapping>
     
     <servlet>
