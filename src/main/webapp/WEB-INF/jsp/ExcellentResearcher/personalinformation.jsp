@@ -127,7 +127,7 @@
                     <tr>
                         <td class="metadata">申請獎勵等級及額度</td>
                         <td>
-                            <select>
+                            <select name="level">
                                 <option value="prof">教授級</option>
                                 <option value="ap">副教授級</option>
                                 <option value="asst">助理教授級</option>

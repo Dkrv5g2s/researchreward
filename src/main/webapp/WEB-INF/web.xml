@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>servlet.login.loginServlet</servlet-class>
+        <servlet-class>Servlet.login.loginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>ResearchProductionServlet</servlet-name>
-        <servlet-class>servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResearchProductionServlet</servlet-name>
@@ -23,7 +23,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
-        <servlet-class>servlet.ExcellentResearcher.RecruitDescriptionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.RecruitDescriptionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
@@ -31,7 +31,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
-        <servlet-class>servlet.ExcellentResearcher.CatalogOfWorksServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.CatalogOfWorksServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
@@ -39,7 +39,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>PersonalInformationServlet</servlet-name>
-        <servlet-class>servlet.ExcellentResearcher.PersonalInformationServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.PersonalInformationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonalInformationServlet</servlet-name>
@@ -48,7 +48,7 @@
     
     <servlet>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
-        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
@@ -57,7 +57,7 @@
     
     <servlet>
         <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
-        <servlet-class>servlet.DistinguishedProfessor.ApplicationDocInstructionsServlet</servlet-class>
+        <servlet-class>Servlet.DistinguishedProfessor.ApplicationDocInstructionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ApplicationDocInstructionsServlet</servlet-name>
@@ -66,7 +66,7 @@
     
     <servlet>
         <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
-        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorTableAServlet</servlet-class>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorTableAServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
@@ -75,7 +75,7 @@
     
     <servlet>
         <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
-        <servlet-class>servlet.DistinguishedProfessor.DistinguishedProfessorTableBServlet</servlet-class>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorTableBServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
