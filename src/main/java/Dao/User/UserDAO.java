@@ -1,4 +1,4 @@
-package Dao.ExcellentResearcher;
+package Dao.User;
 
 import Bean.User.User;
 

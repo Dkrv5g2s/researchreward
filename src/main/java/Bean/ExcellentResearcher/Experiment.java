@@ -4,8 +4,26 @@ public class Experiment {
     private String serviceOrganization;
     private String serviceDepartment;
     private String title;
-    private Integer year;
-    private Integer month;
+    private String year;
+    private String month;
+    private String userNumber;
+
+    public Experiment(String serviceOrganization, String serviceDepartment, String title, String year, String month, String userNumber) {
+        this.serviceOrganization = serviceOrganization;
+        this.serviceDepartment = serviceDepartment;
+        this.title = title;
+        this.year = year;
+        this.month = month;
+        this.userNumber = userNumber;
+    }
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
+    }
 
     public String getServiceOrganization() {
         return serviceOrganization;
@@ -31,19 +49,19 @@ public class Experiment {
         this.title = title;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public Integer getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(Integer month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 }

@@ -5,6 +5,15 @@ public class User {
     private String account = "";
     private String password = "";
     private String role = "";
+    private String number = "";
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public String getAccount() {
         return account;

@@ -1,5 +1,8 @@
 package Servlet.login;
 
+import Service.Login.RoleAuthorizationService;
+import Service.Login.RoleAuthorizationServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,11 +11,15 @@ import java.io.IOException;
 
 public class loginServlet extends HttpServlet {
 
+    private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
+    private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
+    private static final String TEACHER_URL = "WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp";
+    private static final String ADMIN_URL = "WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
+        req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
     }
 
     @Override
@@ -21,6 +28,17 @@ public class loginServlet extends HttpServlet {
         String account = req.getParameter("account");
         String password = req.getParameter("password");
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp").forward(req, resp);
+        switch (roleAuthorizationService.validateRole(account, password)){
+            case "teacher":
+                req.getRequestDispatcher(TEACHER_URL).forward(req, resp);
+                break;
+            case "admin":
+                req.getRequestDispatcher(ADMIN_URL).forward(req, resp);
+                break;
+            default:
+                req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
+                break;
+        }
+
     }
 }

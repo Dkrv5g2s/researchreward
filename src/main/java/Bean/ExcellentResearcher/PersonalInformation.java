@@ -19,6 +19,27 @@ public class PersonalInformation {
     private Boolean qualification1;
     private Boolean qualification2;
     private String level;
+    private String userNumber;
+
+    public PersonalInformation(String college, String department, Integer hiredYear, Integer hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, Integer price) {
+        this.college = college;
+        this.department = department;
+        this.hiredYear = hiredYear;
+        this.hiredMonth = hiredMonth;
+        this.seniority = seniority;
+        this.cName = cName;
+        this.eName = eName;
+        this.title = title;
+        this.country = country;
+        this.gender = gender;
+        this.education = education;
+        this.experiment = experiment;
+        this.mostPlan = mostPlan;
+        this.qualification1 = qualification1;
+        this.qualification2 = qualification2;
+        this.level = level;
+        this.price = price;
+    }
 
     public String getCollege() {
         return college;

@@ -4,8 +4,27 @@ public class Education {
     private String schoolName;
     private String major;
     private String degree;
-    private Integer graduateYear;
-    private Integer graduateMonth;
+    private String graduateYear;
+    private String graduateMonth;
+    private String userNumber;
+
+    public Education(String schoolName, String major, String degree, String graduateYear, String graduateMonth, String userNumber) {
+        this.schoolName = schoolName;
+        this.major = major;
+        this.degree = degree;
+        this.degree = degree;
+        this.graduateYear = graduateYear;
+        this.graduateMonth = graduateMonth;
+        this.userNumber = userNumber;
+    }
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
+    }
 
     public String getMajor() {
         return major;
@@ -23,19 +42,19 @@ public class Education {
         this.degree = degree;
     }
 
-    public Integer getGraduateYear() {
+    public String getGraduateYear() {
         return graduateYear;
     }
 
-    public void setGraduateYear(Integer graduateYear) {
+    public void setGraduateYear(String graduateYear) {
         this.graduateYear = graduateYear;
     }
 
-    public Integer getGraduateMonth() {
+    public String getGraduateMonth() {
         return graduateMonth;
     }
 
-    public void setGraduateMonth(Integer graduateMonth) {
+    public void setGraduateMonth(String graduateMonth) {
         this.graduateMonth = graduateMonth;
     }
 

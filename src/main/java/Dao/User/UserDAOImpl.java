@@ -1,15 +1,14 @@
-package Dao.ExcellentResearcher.Impl;
+package Dao.User;
 
 import Bean.User.User;
 import DBConnection.DBConnection;
-import Dao.ExcellentResearcher.UserDAO;
+import Dao.User.UserDAO;
 import DBConnection.DBConnectionImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 
 public class UserDAOImpl implements UserDAO {
@@ -23,13 +22,17 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = dbConnection.getConnection();
         User user = null;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE account = ? AND password = ?");
-             ResultSet resultSet = preparedStatement.executeQuery())
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE account = ? AND password = ?"))
         {
-            resultSet.next();
+            preparedStatement.setString(1,account);
+            preparedStatement.setString(2,password);
 
-            user = new User();
-            user.setRole(resultSet.getString("role"));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                resultSet.next();
+
+                user = new User();
+                user.setRole(resultSet.getString("role"));
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
