@@ -21,8 +21,8 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
         {
             preparedStatement.setString(1,object.getPlanName());
             preparedStatement.setString(2,object.getUserNumber());
-            preparedStatement.setDate(3, (Date) object.getStartTime());
-            preparedStatement.setDate(4, (Date) object.getLastTime());
+            preparedStatement.setDate(3, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
+            preparedStatement.setDate(4, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
             preparedStatement.setString(5,object.getUserNumber());
 
 

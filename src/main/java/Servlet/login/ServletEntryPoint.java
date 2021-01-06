@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class ServletEntryPoint extends HttpServlet {
 
@@ -21,10 +22,12 @@ public class ServletEntryPoint extends HttpServlet {
             super.service(req, resp);
         }else{
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
+            //super.service(req, resp);
         }
     }
 
-    public String readJSONString(HttpServletRequest request){
+    public String readJSONString(HttpServletRequest request) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
         StringBuffer json = new StringBuffer();
         String line = null;
         try {

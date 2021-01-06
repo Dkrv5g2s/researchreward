@@ -22,7 +22,7 @@ public class PersonalInformationService {
                 jsonObject.getString("graduateMonth"),
                 jsonObject.getString("graduateMonth"),
                 userNumber);
-        Experiment experiment = new Experiment(jsonObject.getString("serviceOrganization"),
+        Experiment experiment = new Experiment(jsonObject.getString("ServiceOrganization"),
                 jsonObject.getString("ServiceDepartment"),
                 jsonObject.getString("pastTitle"),
                 jsonObject.getString("pastYear"),
@@ -49,7 +49,7 @@ public class PersonalInformationService {
                 jsonObject.getBoolean("qualification1"),
                 jsonObject.getBoolean("qualification1"),
                 jsonObject.getString("level"),
-                jsonObject.getString("userName"),
+                userNumber,
                 jsonObject.getString("price"));
 
 

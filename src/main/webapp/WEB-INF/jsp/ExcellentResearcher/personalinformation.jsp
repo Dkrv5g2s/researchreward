@@ -39,6 +39,10 @@
 
             }
 
+            for (var j=0; j<document.getElementsByTagName("select").length; j++){
+                data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
+            }
+
 
 
             return data;
