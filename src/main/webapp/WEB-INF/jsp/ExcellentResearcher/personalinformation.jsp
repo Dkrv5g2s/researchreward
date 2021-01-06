@@ -10,6 +10,7 @@
 <head>
     <title>個人基本資料</title>
     <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({
@@ -72,11 +73,11 @@
                     </tr>
                     <tr>
                         <td class="metadata">中文姓名</td>
-                        <td><input type="text" name="cname" required></td>
+                        <td><input type="text" name="cName" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">英文姓名</td>
-                        <td><input type="text" name="ename" required></td>
+                        <td><input type="text" name="eName" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">職稱</td>

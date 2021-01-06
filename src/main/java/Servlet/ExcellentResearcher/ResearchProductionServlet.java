@@ -1,5 +1,7 @@
 package Servlet.ExcellentResearcher;
 
+import Servlet.login.ServletEntryPoint;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class ResearchProductionServlet extends HttpServlet {
+public class ResearchProductionServlet extends ServletEntryPoint {
 
 
     @Override

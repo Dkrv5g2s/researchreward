@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class loginServlet extends HttpServlet {
@@ -25,10 +26,12 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+
         String account = req.getParameter("account");
         String password = req.getParameter("password");
 
-        switch (roleAuthorizationService.validateRole(account, password)){
+        switch (roleAuthorizationService.validateRole(session, account, password)){
             case "teacher":
                 req.getRequestDispatcher(TEACHER_URL).forward(req, resp);
                 break;

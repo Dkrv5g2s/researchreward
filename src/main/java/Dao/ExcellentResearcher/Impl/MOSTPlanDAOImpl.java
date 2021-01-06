@@ -5,18 +5,32 @@ import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.MOSTPlanDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MOSTPlanDAOImpl implements MOSTPlanDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, userNumber) values (?,?,?,?,?)";
 
     @Override
     public void save(MOSTPlan object) {
 
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL))
+        {
+            preparedStatement.setString(1,object.getPlanName());
+            preparedStatement.setString(2,object.getUserNumber());
+            preparedStatement.setDate(3, (Date) object.getStartTime());
+            preparedStatement.setDate(4, (Date) object.getLastTime());
+            preparedStatement.setString(5,object.getUserNumber());
+
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
