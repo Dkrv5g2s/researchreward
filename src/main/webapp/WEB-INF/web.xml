@@ -81,4 +81,14 @@
         <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorTableB</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherApplicationServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherApplicationServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherApplicationForm</url-pattern>
+    </servlet-mapping>
 </web-app>
