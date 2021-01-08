@@ -5,8 +5,8 @@ package Bean.ExcellentResearcher;
 public class PersonalInformation {
     private String college;
     private String department;
-    private Integer hiredYear;
-    private Integer hiredMonth;
+    private String hiredYear;
+    private String hiredMonth;
     private Seniority seniority;
     private String cName;
     private String eName;
@@ -19,9 +19,11 @@ public class PersonalInformation {
     private Boolean qualification1;
     private Boolean qualification2;
     private String level;
+    private String price;
     private String userNumber;
 
-    public PersonalInformation(String college, String department, Integer hiredYear, Integer hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, Integer price) {
+
+    public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, String userNumber, String price) {
         this.college = college;
         this.department = department;
         this.hiredYear = hiredYear;
@@ -38,7 +40,16 @@ public class PersonalInformation {
         this.qualification1 = qualification1;
         this.qualification2 = qualification2;
         this.level = level;
+        this.userNumber = userNumber;
         this.price = price;
+    }
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
     }
 
     public String getCollege() {
@@ -57,19 +68,19 @@ public class PersonalInformation {
         this.department = department;
     }
 
-    public Integer getHiredYear() {
+    public String getHiredYear() {
         return hiredYear;
     }
 
-    public void setHiredYear(Integer hiredYear) {
+    public void setHiredYear(String hiredYear) {
         this.hiredYear = hiredYear;
     }
 
-    public Integer getHiredMonth() {
+    public String getHiredMonth() {
         return hiredMonth;
     }
 
-    public void setHiredMonth(Integer hiredMonth) {
+    public void setHiredMonth(String hiredMonth) {
         this.hiredMonth = hiredMonth;
     }
 
@@ -169,13 +180,35 @@ public class PersonalInformation {
         this.level = level;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    private Integer price;
+    @Override
+    public String toString() {
+        return "PersonalInformation{" +
+                "college='" + college + '\'' +
+                ", department='" + department + '\'' +
+                ", hiredYear='" + hiredYear + '\'' +
+                ", hiredMonth='" + hiredMonth + '\'' +
+                ", seniority=" + seniority +
+                ", cName='" + cName + '\'' +
+                ", eName='" + eName + '\'' +
+                ", title='" + title + '\'' +
+                ", country='" + country + '\'' +
+                ", gender='" + gender + '\'' +
+                ", education=" + education +
+                ", experiment=" + experiment +
+                ", mostPlan=" + mostPlan +
+                ", qualification1=" + qualification1 +
+                ", qualification2=" + qualification2 +
+                ", level='" + level + '\'' +
+                ", price='" + price + '\'' +
+                ", userNumber='" + userNumber + '\'' +
+                '}';
+    }
 }
