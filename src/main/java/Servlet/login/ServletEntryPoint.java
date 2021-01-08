@@ -22,7 +22,6 @@ public class ServletEntryPoint extends HttpServlet {
             super.service(req, resp);
         }else{
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
-            //super.service(req, resp);
         }
     }
 
