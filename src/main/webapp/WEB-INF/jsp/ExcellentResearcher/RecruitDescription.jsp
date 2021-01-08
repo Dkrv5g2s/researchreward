@@ -30,12 +30,10 @@
             var data = {};
 
 
-            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
-                }else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
-                }
+            for (var j=0; j<document.getElementsByTagName("textarea").length; j++) {
+
+                data[ document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
+
 
             }
 
