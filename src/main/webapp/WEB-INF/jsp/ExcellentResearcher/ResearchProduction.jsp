@@ -10,6 +10,7 @@
 <head>
     <title>研發成果智慧財產權及其應用績效</title>
     <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         td.metadata{
             text-align: center;
