@@ -13,7 +13,6 @@ public class PersonalInformationService {
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
 
-
     public void save(JSONObject jsonObject, String userNumber){
         Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),userNumber);
         Education education = new Education(jsonObject.getString("schoolName"),
