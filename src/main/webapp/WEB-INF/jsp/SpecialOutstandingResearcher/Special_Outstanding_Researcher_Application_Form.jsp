@@ -1,8 +1,25 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="Bean.*" %>
+
+<%@ page contentType="text/html; charset=UTF-8" import="com.google.gson.*" %>
+<%@ page import="Bean.Project.RewardProject" %>
+<%  /*避免瀏覽器因cache而無法看到最新資料*/
+    response.setHeader("Pragma","no-cache");
+    response.setHeader("Cache-Control","no-cache");
+    response.setDateHeader("Expires", 0);
+%>
+<% // RewardProject project = (RewardProject)request.getAttribute("project");
+    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
+    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
+    Gson gson = new Gson();
+    
+%>
+
+
 <html>
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才申請表</p>
 </div>
+
 <div class="container" style="margin: 0px auto; width: 1200px">
     <form id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
