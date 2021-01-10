@@ -46,13 +46,8 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
 
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         //service.save(jsonObject, (String)session.getAttribute("userNumber")); /正式
-        System.out.println(jsonObject.getString("applicant_name") );
         service.save(jsonObject, "108598065");
 
-//        jsonDataList = "[" + jsonDataList + "]";
-//        List<SimultaneousClass> dataList = new Gson().fromJson(jsonDataList, new TypeToken<List<SimultaneousClass>>() {
-//        }.getType());
 
-//        super.doPost(req, resp);
     }
 }

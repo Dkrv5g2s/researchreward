@@ -1,6 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="Bean.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.google.gson.*" %>
 
-<%@ page contentType="text/html; charset=UTF-8" import="com.google.gson.*" %>
+
 <%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
     response.setHeader("Pragma","no-cache");
@@ -11,11 +11,11 @@
     RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
     //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
     Gson gson = new Gson();
-    
+
 %>
 
-
-<html>
+<!DOCTYPE HTML>
+<html lang="zh">
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才申請表</p>
 </div>
@@ -59,11 +59,11 @@
                     <font color="red">＊</font>
                 </td>
                 <td colspan="5">
-                    <input name="executed_tech_proj_yes" type="checkbox" value="true">是。計畫編號:
+                    <input name="executed_tech_proj_yes" type="checkbox" >是。計畫編號:
                     <input name="tech_proj_id" size="10" maxlength="40">&nbsp;執行期間:
-                    <input name="tech_proj_start_time" value="" size="10" maxlength="20" type="text" id="d01" readonly><input value="..." type="button" onclick="WdatePicker({el:'d01'})">
+                    <input type="date" name="tech_proj_start_time" size="10" maxlength="20" type="text" id="d01" >
                     至
-                    <input name="tech_proj_end_time" value="" size="10" maxlength="20" type="text" id="d02" readonly><input value="..." type="button" onclick="WdatePicker({el:'d02'})">
+                    <input type="date" name="tech_proj_end_time" size="10" maxlength="20" type="text" id="d02" >
                     <br>
                     <input name="executed_tech_proj_no" type="checkbox">否
                 </td>
@@ -240,13 +240,11 @@
                     standard_content = document.getElementsByTagName("input")[j].parentElement.parentElement.getAttribute("value") ;
                 }
 
-                // alert( level_name ) ;
-                // alert( standard_content ) ;
-                // alert( sub_standard_content ) ;
+
 
                 var a_tuple_of_standard = { "level_num" : level_name, "standard" : standard_content, "sub_standard" : sub_standard_content } ;
                 list_of_standard.push(a_tuple_of_standard) ;
-               // alert(list_of_standard[0]);
+
 
             }else if ( document.getElementsByTagName("input")[j].type !='checkbox' ) {
                 data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
@@ -258,10 +256,12 @@
             data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
         }
 
-        data["stantard_list"] = list_of_standard ;
+        data["executed_tech_proj"] = $("input[name='executed_tech_proj_yes']").prop('checked') ;
+        data["standard_list"] = list_of_standard ;
+        data["project_id"] = <%= project.getProject_id() %> ;
+
         return JSON.stringify(data)
 
-        //return data;
     }
 
     $(document).on( "click", "input[name='save_the_page']", function() {
