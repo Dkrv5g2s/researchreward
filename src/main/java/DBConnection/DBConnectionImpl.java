@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 public class DBConnectionImpl implements DBConnection{
 
-    private static final String URL = "jdbc:mysql://140.124.181.23:8787/rss?user=test&password=islab1221&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+
+    private static final String URL = "jdbc:mysql://140.124.181.23:8787/rss?user=test&password=islab1221&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+
 
 
     @Override

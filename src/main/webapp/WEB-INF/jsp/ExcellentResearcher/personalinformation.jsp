@@ -29,7 +29,6 @@
         function InputToJson(){
             var data = {};
 
-
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
                     continue;
