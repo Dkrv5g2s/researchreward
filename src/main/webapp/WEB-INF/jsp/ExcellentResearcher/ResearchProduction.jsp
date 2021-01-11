@@ -34,7 +34,7 @@
                 "                    <td><input type=\"text\" name=\"patentNumber\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"inventor\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"patentee\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"approvalDate\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"approvalDate\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"mstPlanNumber\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
@@ -47,8 +47,9 @@
                 "                    <td><input type=\"text\" name=\"technologyName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"authorizedUnit\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentNumber\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"toAuthorizedUnit\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"mstPlanNumber\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
             $("div[name='technologyTransfer'] tr[name=new]").before(data);
@@ -85,7 +86,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/test',
+                url: '/ResearchProduction',
                 dataType: 'json',
                 data: JSON.stringify(data),
                 contentType: 'application/json',
@@ -162,8 +163,9 @@
                         <td class="metadata" name="technologyName">技術名稱</td>
                         <td class="metadata" name="patentName">專利名稱</td>
                         <td class="metadata" name="authorizedUnit">授權單位</td>
-                        <td class="metadata" name="patentNumber">專利號碼</td>
                         <td class="metadata" name="toAuthorizedUnit">被授權單位</td>
+                        <td class="metadata" name="contractDate">簽約日期</td>
+                        <td class="metadata" name="mstPlanNumber">科技部計畫編號</td>
                         <td class="metadata">功能</td>
                     </tr>
                     <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createTechnologyTransfer()">新增</button></td></tr>
@@ -175,7 +177,7 @@
                 <tbody>
                     <tr><td class="metadata" colspan="9">（三）著作授權 「類別」分(1)語文著作(2)電腦程式著作(3)視聽著作(4)錄音著作(5)其他，請擇一代碼填入。</td></tr>
                     <tr>
-                        <td class="metadata" name="patentClass">著作名稱</td>
+                        <td class="metadata" name="workName">著作名稱</td>
                         <td class="metadata" name="authorizationClass">類別</td>
                         <td class="metadata" name="author">著作人</td>
                         <td class="metadata" name="copyrightOwner">著作財產權人</td>

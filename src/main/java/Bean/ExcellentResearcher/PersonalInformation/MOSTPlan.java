@@ -1,4 +1,4 @@
-package Bean.ExcellentResearcher;
+package Bean.ExcellentResearcher.PersonalInformation;
 
 import java.util.Date;
 

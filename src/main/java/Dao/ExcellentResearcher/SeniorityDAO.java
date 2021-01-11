@@ -1,7 +1,7 @@
 package Dao.ExcellentResearcher;
 
 
-import Bean.ExcellentResearcher.Seniority;
+import Bean.ExcellentResearcher.PersonalInformation.Seniority;
 
 public interface SeniorityDAO {
     void save(Seniority object);

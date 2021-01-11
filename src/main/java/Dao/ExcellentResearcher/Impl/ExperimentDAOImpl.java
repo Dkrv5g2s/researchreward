@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.Experiment;
+import Bean.ExcellentResearcher.PersonalInformation.Experiment;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.ExperimentDAO;

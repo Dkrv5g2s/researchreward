@@ -1,6 +1,6 @@
 package Service.ExcellentResearcher;
 
-import Bean.ExcellentResearcher.*;
+import Bean.ExcellentResearcher.PersonalInformation.*;
 import Dao.ExcellentResearcher.*;
 import Dao.ExcellentResearcher.Impl.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;

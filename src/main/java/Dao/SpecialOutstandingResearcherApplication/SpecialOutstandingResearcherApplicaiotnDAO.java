@@ -1,6 +1,5 @@
 package Dao.SpecialOutstandingResearcherApplication;
 
-import Bean.ExcellentResearcher.Education;
 import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherForm;
 
 public interface SpecialOutstandingResearcherApplicaiotnDAO {
