@@ -6,7 +6,7 @@ public class WorkAuthorization {
     private String authorizationClass;
     private String copyrightOwner;
     private String mstPlanNumber;
-    private String patentClass;
+    private String workName;
     private String userNumber;
 
     public WorkAuthorization(String agent, String author, String authorizationClass, String copyrightOwner, String mstPlanNumber, String patentClass, String userNumber) {
@@ -15,7 +15,7 @@ public class WorkAuthorization {
         this.authorizationClass = authorizationClass;
         this.copyrightOwner = copyrightOwner;
         this.mstPlanNumber = mstPlanNumber;
-        this.patentClass = patentClass;
+        this.workName = patentClass;
         this.userNumber = userNumber;
     }
 
@@ -59,12 +59,12 @@ public class WorkAuthorization {
         this.mstPlanNumber = mstPlanNumber;
     }
 
-    public String getPatentClass() {
-        return patentClass;
+    public String getWorkName() {
+        return workName;
     }
 
-    public void setPatentClass(String patentClass) {
-        this.patentClass = patentClass;
+    public void setWorkName(String workName) {
+        this.workName = workName;
     }
 
     public String getUserNumber() {
