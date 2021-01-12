@@ -18,6 +18,10 @@ public class CatalogOfWorksServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",catalogsService.get((String)session.getAttribute("userNumber")));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp").forward(req, resp);
     }

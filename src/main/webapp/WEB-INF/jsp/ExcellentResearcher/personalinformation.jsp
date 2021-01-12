@@ -50,12 +50,13 @@
             return data;
         }
 
-        function selectElement(id, valueToSelect) {
-            let element = document.getElementById(id);
-            element.value = valueToSelect;
-        }
 
-        $('#level').val(<%=json.get("level")%>);
+        $( document ).ready(function() {
+            // 在這撰寫javascript程式碼
+            $('#level').val("<%=json.get("level")%>");
+            $('#qualification1').prop("checked","<%=json.get("qualification1")%>");
+            $('#qualification2').prop("checked","<%=json.get("qualification2")%>");
+        });
     </script>
 </head>
 <body>
@@ -134,8 +135,8 @@
                     <tr>
                         <td class="metadata">獎助資格(請檢附證明文件)</td>
                         <td>
-                            <input type="checkbox" name="qualification1" value="true">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
-                            <input type="checkbox" name="qualification2" value="true">於正式納編前五年間均任職於國外學術研究機構。
+                            <input type="checkbox" name="qualification1" id="qualification1" value="true">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
+                            <input type="checkbox" name="qualification2" id="qualification2" value="true">於正式納編前五年間均任職於國外學術研究機構。
                         </td>
                     </tr>
                     <tr>

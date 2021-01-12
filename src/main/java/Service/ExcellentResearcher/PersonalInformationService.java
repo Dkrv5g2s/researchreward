@@ -80,7 +80,7 @@ public class PersonalInformationService {
             addBeanPropertyToJson(object,mostPlan);
             addBeanPropertyToJson(object,education);
         }catch(IllegalAccessException e){
-
+            e.printStackTrace();
         }
 
         return object;
