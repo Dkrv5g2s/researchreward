@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.google.gson.*" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
 
 <%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
@@ -14,7 +13,6 @@
 
 %>
 
-<!DOCTYPE HTML>
 <html lang="zh">
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才申請表</p>
@@ -240,11 +238,9 @@
                     standard_content = document.getElementsByTagName("input")[j].parentElement.parentElement.getAttribute("value") ;
                 }
 
-
-
                 var a_tuple_of_standard = { "level_num" : level_name, "standard" : standard_content, "sub_standard" : sub_standard_content } ;
                 list_of_standard.push(a_tuple_of_standard) ;
-
+            //
 
             }else if ( document.getElementsByTagName("input")[j].type !='checkbox' ) {
                 data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
@@ -261,13 +257,34 @@
         data["project_id"] = <%= project.getProject_id() %> ;
 
         return JSON.stringify(data)
-
     }
 
     $(document).on( "click", "input[name='save_the_page']", function() {
         commit();
     } ) ;
 
+    function clear_executed_tech_proj_yes(){
+        if ( $("input[name='executed_tech_proj_no']").prop('checked') ) {
+            $("input[name='executed_tech_proj_yes']").prop( "checked", false ) ;
+            $("input[name='tech_proj_id']").val("") ;
+            $("input[name='tech_proj_start_time']").val("") ;
+            $("input[name='tech_proj_end_time']").val("") ;
+        }
+        
+    }
+
+    function clear_executed_tech_proj_no(){
+        if ( $("input[name='executed_tech_proj_yes']").prop('checked')  )
+            $("input[name='executed_tech_proj_no']").prop( 'checked', false ) ;
+    }
+
+    $(document).on( "click", "input[name='executed_tech_proj_no']", function(){
+        clear_executed_tech_proj_yes() ;
+    } ) ;
+
+    $(document).on( "click", "input[name='executed_tech_proj_yes']", function(){
+        clear_executed_tech_proj_no() ;
+    } ) ;
 
 
 </script>

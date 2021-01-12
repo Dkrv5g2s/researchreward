@@ -1,8 +1,11 @@
 package Servlet.SpecialOutstandingResearcher;
 
 
+import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherForm;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
+import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
+import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -34,7 +37,13 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProjectDAO dao = new ProjectDAOImpl() ;
-        dao.insertNewProject("108598065", "草稿", "優秀人才申請");
+        dao.insertNewProject("108598065", "草稿", "優秀人才申請"); //暫時的precondition
+        SpecialOutstandingResearcherApplicaiotnDAO specialOutstandingResearcherApplicaiotnDAO = new SpecialOutstandingResearcherApplicaiotnDAOImpl() ; //暫時的precondition
+
+        SpecialOutstandingResearcherApplicationService service = new SpecialOutstandingResearcherApplicationService() ;
+        String json_form = service.query( 1 ) ;
+        req.setAttribute("latest_data", json_form );
+
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Special_Outstanding_Researcher_Application_Form.jsp").forward(req, resp);
     }
 
