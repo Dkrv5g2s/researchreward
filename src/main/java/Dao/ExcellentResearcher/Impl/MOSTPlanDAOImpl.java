@@ -49,8 +49,8 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
                 mostPlan.setPlanName(resultSet.getString("planName"));
                 mostPlan.setPlanNumber(resultSet.getString("planNumber"));
                 mostPlan.setStartTime(resultSet.getDate("startTime"));
-                mostPlan.setLastTime(resultSet.getDate("lastName"));
-                mostPlan.setUserNumber(resultSet.getString("number"));
+                mostPlan.setLastTime(resultSet.getDate("lastTime"));
+                mostPlan.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {
