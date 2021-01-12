@@ -1,5 +1,7 @@
 package Service.DistinguishedProfessor;
 
+import static Utils.ReflectUtils.addBeanPropertyToJson;
+
 import Bean.DistinguishedProfessor.*;
 import Dao.DistinguishedProfessor.*;
 import Dao.DistinguishedProfessor.Impl.*;
@@ -35,10 +37,19 @@ public class DistinguishedProfessorFormService {
     	distinguishedProfessorFormDAO.save(distinguishedProfessorForm);
     }
     
-    public DistinguishedProfessorForm show(String userNumber) {
+    public JSONObject show(String userNumber) {
     	DistinguishedProfessorForm distinguishedProfessorForm = distinguishedProfessorFormDAO.show(userNumber);
-    	
-    	return distinguishedProfessorForm;
+    	if(distinguishedProfessorForm == null) {
+    		distinguishedProfessorForm = new DistinguishedProfessorForm(userNumber, "", "", "", "", "", "", "", "", "", false, false, false, false, false, false, false, false, false);
+    	}
+    	JSONObject object = new JSONObject();
+
+        try {
+            addBeanPropertyToJson(object,distinguishedProfessorForm);
+        }catch(IllegalAccessException e){
+
+        }
+    	return object;
     }
 
 }

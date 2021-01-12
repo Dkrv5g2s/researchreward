@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import Bean.DistinguishedProfessor.DistinguishedProfessorForm;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
 
@@ -46,51 +47,12 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
         
     }
     
-    private void getForm(HttpServletRequest req) {
+    private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
     	HttpSession session = req.getSession();
-
-    	DistinguishedProfessorForm distinguishedProfessorForm = distinguishedProfessorFormService.show((String)session.getAttribute("userNumber"));
-		
-    	req.setAttribute("usernum", (String)session.getAttribute("userNumber"));
     	
-    	if(distinguishedProfessorForm!=null) {			
-			req.setAttribute("name", distinguishedProfessorForm.getName());
-			req.setAttribute("department",distinguishedProfessorForm.getDepartment());
-			req.setAttribute("hireddate",distinguishedProfessorForm.getHireddate());
-			req.setAttribute("certificatenum",distinguishedProfessorForm.getCertificatenum());
-			req.setAttribute("upgradedate", distinguishedProfessorForm.getUpgradedate());
-			req.setAttribute("seniority", distinguishedProfessorForm.getSeniority());
-			req.setAttribute("email", distinguishedProfessorForm.getEmail());
-			req.setAttribute("researchroomext", distinguishedProfessorForm.getResearchroomext());
-			req.setAttribute("cellphone", distinguishedProfessorForm.getCellphone());
-			if(distinguishedProfessorForm.getApplicationrequirements1()){
-				req.setAttribute("applicationrequirements1","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements2()){
-				req.setAttribute("applicationrequirements2","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements3()){
-				req.setAttribute("applicationrequirements3","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements4()){
-				req.setAttribute("applicationrequirements4","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements5()){
-				req.setAttribute("applicationrequirements5","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements6()){
-				req.setAttribute("applicationrequirements6","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements7()){
-				req.setAttribute("applicationrequirements7","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements8()){
-				req.setAttribute("applicationrequirements8","checked");
-			}
-			if(distinguishedProfessorForm.getApplicationrequirements9()){
-				req.setAttribute("applicationrequirements9","checked");
-			}
-		}
+    	req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",distinguishedProfessorFormService.show((String)session.getAttribute("userNumber")));		
+		
     }
     
 }

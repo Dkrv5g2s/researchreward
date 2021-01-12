@@ -13,7 +13,6 @@ import java.sql.SQLException;
 public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessorFormDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT_FOR_IF_EXIST = "SELECT usernum FROM distinguishedprofessorform"; 
     private static final String SELECT = "SELECT * FROM distinguishedprofessorform WHERE usernum = ?"; 
     private static final String INSERT = 
     		"INSERT INTO distinguishedprofessorform (usernum,name,department,hireddate,certificatenum,upgradedate,seniority,email,researchroomext,cellphone," +
@@ -28,8 +27,9 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
     public void save(DistinguishedProfessorForm object) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FOR_IF_EXIST))
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
+        	preparedStatement.setString(1,object.getUsernum());
         	resultSet = preparedStatement.executeQuery();
         	
         	int size = 0;
@@ -86,14 +86,12 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
          	
             	return dpf;
         	}
-        	
-        	return null;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            
         }
-
+        return null;
     }
     
     public void insert(Connection connection,DistinguishedProfessorForm object) {
@@ -158,8 +156,4 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         }
     }
 
-    @Override
-    public DistinguishedProfessorForm get(String userNumber) {
-        return null;
-    }
 }
