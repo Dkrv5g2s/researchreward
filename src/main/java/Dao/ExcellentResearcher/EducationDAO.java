@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher;
 
-import Bean.ExcellentResearcher.Education;
+import Bean.ExcellentResearcher.PersonalInformation.Education;
 
 public interface EducationDAO {
     void save(Education object);

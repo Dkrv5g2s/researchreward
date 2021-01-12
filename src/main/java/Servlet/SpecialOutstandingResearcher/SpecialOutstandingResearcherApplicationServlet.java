@@ -1,6 +1,8 @@
 package Servlet.SpecialOutstandingResearcher;
 
 
+import Dao.Project.ProjectDAO;
+import Dao.Project.ProjectDAOImpl;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -31,6 +33,8 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProjectDAO dao = new ProjectDAOImpl() ;
+        dao.insertNewProject("108598065", "草稿", "優秀人才申請");
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Special_Outstanding_Researcher_Application_Form.jsp").forward(req, resp);
     }
 
@@ -44,10 +48,6 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         //service.save(jsonObject, (String)session.getAttribute("userNumber")); /正式
         service.save(jsonObject, "108598065");
 
-//        jsonDataList = "[" + jsonDataList + "]";
-//        List<SimultaneousClass> dataList = new Gson().fromJson(jsonDataList, new TypeToken<List<SimultaneousClass>>() {
-//        }.getType());
 
-//        super.doPost(req, resp);
     }
 }

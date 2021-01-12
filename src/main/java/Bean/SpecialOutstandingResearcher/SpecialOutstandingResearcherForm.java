@@ -10,7 +10,7 @@ public class SpecialOutstandingResearcherForm {
     private String job ;
     private String college ;
     private String department ;
-    private int seniority ;
+    private String seniority ;
     private boolean executed_tech_proj ;
     private String tech_proj_id ;
     private Date tech_proj_start_time ;
@@ -18,8 +18,10 @@ public class SpecialOutstandingResearcherForm {
 
     private List<SpecialOutstandingResearcherStandard> standard_list ;
 
+    public SpecialOutstandingResearcherForm() {
+    }
 
-    public SpecialOutstandingResearcherForm(int project_id, String applicant_name, String job, String college, String department, int seniority, boolean executed_tech_proj, String tech_proj_id, Date tech_proj_start_time, Date tech_proj_end_time, List<SpecialOutstandingResearcherStandard> standard_list) {
+    public SpecialOutstandingResearcherForm(int project_id, String applicant_name, String job, String college, String department, String seniority, boolean executed_tech_proj, String tech_proj_id, Date tech_proj_start_time, Date tech_proj_end_time, List<SpecialOutstandingResearcherStandard> standard_list) {
         this.project_id = project_id;
         this.applicant_name = applicant_name;
         this.job = job;
@@ -33,8 +35,6 @@ public class SpecialOutstandingResearcherForm {
         this.standard_list = standard_list;
     }
 
-    public SpecialOutstandingResearcherForm() {
-    }
 
     public int getProject_id() {
         return project_id;
@@ -76,11 +76,11 @@ public class SpecialOutstandingResearcherForm {
         this.department = department;
     }
 
-    public int getSeniority() {
+    public String getSeniority() {
         return seniority;
     }
 
-    public void setSeniority(int seniority) {
+    public void setSeniority(String seniority) {
         this.seniority = seniority;
     }
 

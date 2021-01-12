@@ -1,14 +1,12 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.PersonalInformation;
-import Bean.ExcellentResearcher.Seniority;
+import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.PersonalInformationDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonalInformationDAOImpl implements PersonalInformationDAO {

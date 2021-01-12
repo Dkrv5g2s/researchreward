@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.MOSTPlan;
+import Bean.ExcellentResearcher.PersonalInformation.MOSTPlan;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.MOSTPlanDAO;
