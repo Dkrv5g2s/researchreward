@@ -11,6 +11,10 @@ public class Seniority {
         this.userNumber = userNumber;
     }
 
+    public Seniority() {
+
+    }
+
     public String getYear() {
         return year;
     }

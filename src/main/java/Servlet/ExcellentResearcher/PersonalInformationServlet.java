@@ -1,6 +1,7 @@
 package Servlet.ExcellentResearcher;
 
 
+import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 import Service.ExcellentResearcher.PersonalInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -19,6 +20,11 @@ public class PersonalInformationServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",personalInformationService.get((String)session.getAttribute("userNumber")));
+
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/personalinformation.jsp").forward(req, resp);
     }
 
@@ -32,4 +38,6 @@ public class PersonalInformationServlet extends ServletEntryPoint {
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/RecruitDescription.jsp").forward(req, resp);
     }
+
+
 }

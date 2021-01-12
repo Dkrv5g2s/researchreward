@@ -37,7 +37,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
     public MOSTPlan get(String userNumber) {
 
         Connection connection = dbConnection.getConnection();
-        MOSTPlan mostPlan = null;
+        MOSTPlan mostPlan = new MOSTPlan();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mostplan WHERE userNumber = ?"))
         {
@@ -46,11 +46,11 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
-                mostPlan = new MOSTPlan(resultSet.getString("planName"),
-                        resultSet.getString("planNumber"),
-                        resultSet.getDate("startTime"),
-                        resultSet.getDate("lastName"),
-                        resultSet.getString("number"));
+                mostPlan.setPlanName(resultSet.getString("planName"));
+                mostPlan.setPlanNumber(resultSet.getString("planNumber"));
+                mostPlan.setStartTime(resultSet.getDate("startTime"));
+                mostPlan.setLastTime(resultSet.getDate("lastTime"));
+                mostPlan.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {

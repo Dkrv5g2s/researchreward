@@ -18,6 +18,10 @@ public class Education {
         this.userNumber = userNumber;
     }
 
+    public Education() {
+
+    }
+
     public String getUserNumber() {
         return userNumber;
     }
