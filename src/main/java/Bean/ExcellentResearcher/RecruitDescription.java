@@ -24,6 +24,10 @@ public class RecruitDescription {
         this.userNumber = userNumber;
     }
 
+    public RecruitDescription() {
+
+    }
+
     public String getRecruitReason() {
         return recruitReason;
     }

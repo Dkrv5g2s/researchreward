@@ -11,7 +11,9 @@ public final class ReflectUtils {
     public static <T> void addBeanPropertyToJson(JSONObject json, T bean) throws IllegalAccessException {
         for (Field field: bean.getClass().getDeclaredFields()) {
             field.setAccessible(true);
-            json.put(field.getName(),field.get(bean));
+            if(field.get(bean) == null) {
+                json.put(field.getName(), "");
+            }
         }
     }
 }
