@@ -10,6 +10,10 @@ public class CatalogOfWork {
         this.userNumber = userNumber;
     }
 
+    public CatalogOfWork() {
+
+    }
+
     public String getUserNumber() {
         return userNumber;
     }
