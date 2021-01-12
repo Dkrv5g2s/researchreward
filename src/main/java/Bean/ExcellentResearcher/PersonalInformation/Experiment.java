@@ -17,6 +17,10 @@ public class Experiment {
         this.userNumber = userNumber;
     }
 
+    public Experiment() {
+
+    }
+
     public String getUserNumber() {
         return userNumber;
     }

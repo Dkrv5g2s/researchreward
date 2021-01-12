@@ -7,6 +7,7 @@ import Dao.ExcellentResearcher.PersonalInformationDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonalInformationDAOImpl implements PersonalInformationDAO {
@@ -14,6 +15,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
             "qualification2,level,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE userNumber=?";
+
     @Override
     public void save(PersonalInformation object) {
         Connection connection = dbConnection.getConnection();
@@ -46,6 +49,35 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     @Override
     public PersonalInformation get(String userNumber) {
-        return null;
+
+        Connection connection = dbConnection.getConnection();
+        PersonalInformation result = new PersonalInformation();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
+        {
+            preparedStatement.setString(1,userNumber);
+
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                rs.next();
+                result.setCollege(rs.getString("college"));
+                result.setDepartment(rs.getString("department"));
+                result.setHiredYear(rs.getString("hiredYear"));
+                result.setHiredMonth(rs.getString("hiredMonth"));
+                result.setcName(rs.getString("cName"));
+                result.seteName(rs.getString("eName"));
+                result.setTitle(rs.getString("title"));
+                result.setCountry(rs.getString("country"));
+                result.setGender(rs.getString("gender"));
+                result.setQualification1(rs.getBoolean("qualification1"));
+                result.setQualification2(rs.getBoolean("qualification2"));
+                result.setLevel(rs.getString("level"));
+                result.setUserNumber(rs.getString("userNumber"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }

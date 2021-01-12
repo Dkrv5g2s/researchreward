@@ -9,6 +9,10 @@ public class MOSTPlan {
     private Date lastTime;
     private String userNumber;
 
+    public MOSTPlan() {
+
+    }
+
     public String getUserNumber() {
         return userNumber;
     }

@@ -59,5 +59,13 @@ public class PersonalInformationService {
         personalInformationDAO.save(personalInformation);
     }
 
+    public JSONObject get(String userNumber){
+        PersonalInformation personalInformation = personalInformationDAO.get(userNumber);
+        seniorityDAO.get(userNumber);
+        experimentDAO.get(userNumber);
+        mostPlanDAO.get(userNumber);
+        educationDAO.get(userNumber);
+    }
+
 
 }

@@ -44,6 +44,10 @@ public class PersonalInformation {
         this.price = price;
     }
 
+    public PersonalInformation() {
+
+    }
+
     public String getUserNumber() {
         return userNumber;
     }

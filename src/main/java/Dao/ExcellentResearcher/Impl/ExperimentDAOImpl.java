@@ -40,7 +40,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
     @Override
     public Experiment get(String userNumber) {
         Connection connection = dbConnection.getConnection();
-        Experiment experiment = null;
+        Experiment experiment = new Experiment();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM experiment WHERE userNumber = ?"))
         {
@@ -49,12 +49,12 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
-                experiment = new Experiment(resultSet.getString("serviceOrganization"),
-                        resultSet.getString("serviceDepartment"),
-                        resultSet.getString("title"),
-                        resultSet.getString("year"),
-                        resultSet.getString("month"),
-                        resultSet.getString("userNumber"));
+                experiment.setServiceOrganization(resultSet.getString("serviceOrganization"));
+                experiment.setServiceDepartment(resultSet.getString("serviceDepartment"));
+                experiment.setTitle(resultSet.getString("title"));
+                experiment.setYear(resultSet.getString("year"));
+                experiment.setMonth(resultSet.getString("month"));
+                experiment.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {
