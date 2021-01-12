@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.Experiment;
+import Bean.ExcellentResearcher.PersonalInformation.Experiment;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.ExperimentDAO;
@@ -23,9 +23,9 @@ public class ExperimentDAOImpl implements ExperimentDAO {
         {
             preparedStatement.setString(1,object.getServiceOrganization());
             preparedStatement.setString(2,object.getServiceDepartment());
-            preparedStatement.setString(3,object.getTitle());
-            preparedStatement.setString(4,object.getYear());
-            preparedStatement.setString(5,object.getMonth());
+            preparedStatement.setString(3,object.getPastTitle());
+            preparedStatement.setString(4,object.getPastYear());
+            preparedStatement.setString(5,object.getPastMonth());
             preparedStatement.setString(6,object.getUserNumber());
 
 
@@ -40,7 +40,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
     @Override
     public Experiment get(String userNumber) {
         Connection connection = dbConnection.getConnection();
-        Experiment experiment = null;
+        Experiment experiment = new Experiment();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM experiment WHERE userNumber = ?"))
         {
@@ -49,12 +49,12 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
-                experiment = new Experiment(resultSet.getString("serviceOrganization"),
-                        resultSet.getString("serviceDepartment"),
-                        resultSet.getString("title"),
-                        resultSet.getString("year"),
-                        resultSet.getString("month"),
-                        resultSet.getString("userNumber"));
+                experiment.setServiceOrganization(resultSet.getString("serviceOrganization"));
+                experiment.setServiceDepartment(resultSet.getString("serviceDepartment"));
+                experiment.setPastTitle(resultSet.getString("title"));
+                experiment.setPastYear(resultSet.getString("year"));
+                experiment.setPastMonth(resultSet.getString("month"));
+                experiment.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {

@@ -1,4 +1,4 @@
-package Bean.ExcellentResearcher;
+package Bean.ExcellentResearcher.PersonalInformation;
 
 import java.util.Date;
 
@@ -8,6 +8,10 @@ public class MOSTPlan {
     private Date startTime;
     private Date lastTime;
     private String userNumber;
+
+    public MOSTPlan() {
+
+    }
 
     public String getUserNumber() {
         return userNumber;

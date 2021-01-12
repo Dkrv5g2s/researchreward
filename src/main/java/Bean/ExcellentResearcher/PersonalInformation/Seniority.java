@@ -1,4 +1,4 @@
-package Bean.ExcellentResearcher;
+package Bean.ExcellentResearcher.PersonalInformation;
 
 public class Seniority {
     private String year;
@@ -9,6 +9,10 @@ public class Seniority {
         this.year = year;
         this.month = month;
         this.userNumber = userNumber;
+    }
+
+    public Seniority() {
+
     }
 
     public String getYear() {

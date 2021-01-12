@@ -1,4 +1,4 @@
-package Bean.ExcellentResearcher;
+package Bean.ExcellentResearcher.PersonalInformation;
 
 public class Education {
     private String schoolName;
@@ -16,6 +16,10 @@ public class Education {
         this.graduateYear = graduateYear;
         this.graduateMonth = graduateMonth;
         this.userNumber = userNumber;
+    }
+
+    public Education() {
+
     }
 
     public String getUserNumber() {

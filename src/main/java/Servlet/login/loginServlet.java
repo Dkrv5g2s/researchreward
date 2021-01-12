@@ -14,8 +14,8 @@ public class loginServlet extends HttpServlet {
 
     private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
     private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
-    private static final String TEACHER_URL = "WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp";
-    private static final String ADMIN_URL = "WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp";
+    private static final String TEACHER_URL = "CatalogOfWorks";
+    private static final String ADMIN_URL = "CatalogOfWorks";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,10 +33,10 @@ public class loginServlet extends HttpServlet {
 
         switch (roleAuthorizationService.validateRole(session, account, password)){
             case "teacher":
-                req.getRequestDispatcher(TEACHER_URL).forward(req, resp);
+                resp.sendRedirect(TEACHER_URL);
                 break;
             case "admin":
-                req.getRequestDispatcher(ADMIN_URL).forward(req, resp);
+                resp.sendRedirect(ADMIN_URL);
                 break;
             default:
                 req.getRequestDispatcher(LOGIN_URL).forward(req, resp);

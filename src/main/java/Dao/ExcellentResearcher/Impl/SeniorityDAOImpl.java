@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.Seniority;
+import Bean.ExcellentResearcher.PersonalInformation.Seniority;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.SeniorityDAO;
@@ -36,7 +36,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
     @Override
     public Seniority get(String userNumber) {
         Connection connection = dbConnection.getConnection();
-        Seniority seniority = null;
+        Seniority seniority = new Seniority();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM seniority WHERE userNumber = ?"))
         {
@@ -45,9 +45,9 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
-                seniority = new Seniority(resultSet.getString("year"),
-                        resultSet.getString("month"),
-                        resultSet.getString("userNumber"));
+                seniority.setYear(resultSet.getString("year"));
+                seniority.setMonth(resultSet.getString("month"));
+                seniority.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {

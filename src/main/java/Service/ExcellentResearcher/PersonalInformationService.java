@@ -1,9 +1,11 @@
 package Service.ExcellentResearcher;
 
-import Bean.ExcellentResearcher.*;
+import Bean.ExcellentResearcher.PersonalInformation.*;
 import Dao.ExcellentResearcher.*;
 import Dao.ExcellentResearcher.Impl.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
+
+import static Utils.ReflectUtils.addBeanPropertyToJson;
 
 public class PersonalInformationService {
 
@@ -57,6 +59,32 @@ public class PersonalInformationService {
         mostPlanDAO.save(mostPlan);
         educationDAO.save(education);
         personalInformationDAO.save(personalInformation);
+    }
+
+
+
+    public JSONObject get(String userNumber) {
+
+        PersonalInformation personalInformation = personalInformationDAO.get(userNumber);
+        Seniority seniority = seniorityDAO.get(userNumber);
+        Experiment experiment = experimentDAO.get(userNumber);
+        MOSTPlan mostPlan = mostPlanDAO.get(userNumber);
+        Education education = educationDAO.get(userNumber);
+
+        JSONObject object = new JSONObject();
+
+        try {
+            addBeanPropertyToJson(object,personalInformation);
+            addBeanPropertyToJson(object,seniority);
+            addBeanPropertyToJson(object,experiment);
+            addBeanPropertyToJson(object,mostPlan);
+            addBeanPropertyToJson(object,education);
+        }catch(IllegalAccessException e){
+            e.printStackTrace();
+        }
+
+        return object;
+
     }
 
 

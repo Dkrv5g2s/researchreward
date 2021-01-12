@@ -1,4 +1,4 @@
-package Bean.ExcellentResearcher;
+package Bean.ExcellentResearcher.PersonalInformation;
 
 
 
@@ -42,6 +42,10 @@ public class PersonalInformation {
         this.level = level;
         this.userNumber = userNumber;
         this.price = price;
+    }
+
+    public PersonalInformation() {
+
     }
 
     public String getUserNumber() {

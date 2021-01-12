@@ -1,6 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.Education;
+import Bean.ExcellentResearcher.PersonalInformation.Education;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.EducationDAO;
@@ -39,7 +39,7 @@ public class EducationDAOImpl implements EducationDAO {
     @Override
     public Education get(String userNumber) {
         Connection connection = dbConnection.getConnection();
-        Education education = null;
+        Education education = new Education();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM education WHERE userNumber = ?"))
         {
@@ -48,12 +48,12 @@ public class EducationDAOImpl implements EducationDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
-                education = new Education(resultSet.getString("schoolName"),
-                        resultSet.getString("major"),
-                        resultSet.getString("degree"),
-                        resultSet.getString("graduateYear"),
-                        resultSet.getString("graduateMonth"),
-                        resultSet.getString("userNumber"));
+                education.setSchoolName(resultSet.getString("schoolName"));
+                education.setMajor(resultSet.getString("major"));
+                education.setDegree(resultSet.getString("degree"));
+                education.setGraduateYear(resultSet.getString("graduateYear"));
+                education.setGraduateMonth(resultSet.getString("graduateMonth"));
+                education.setUserNumber(resultSet.getString("userNumber"));
             }
 
         } catch (SQLException e) {

@@ -1,7 +1,6 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.PersonalInformation;
-import Bean.ExcellentResearcher.Seniority;
+import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.ExcellentResearcher.PersonalInformationDAO;
@@ -15,7 +14,9 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
-            "qualification2,level,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "qualification2,level,price,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE userNumber=?";
+
     @Override
     public void save(PersonalInformation object) {
         Connection connection = dbConnection.getConnection();
@@ -34,7 +35,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setBoolean(10,object.getQualification1());
             preparedStatement.setBoolean(11,object.getQualification2());
             preparedStatement.setString(12,object.getLevel());
-            preparedStatement.setString(13,object.getUserNumber());
+            preparedStatement.setString(13,object.getPrice());
+            preparedStatement.setString(14,object.getUserNumber());
 
 
             preparedStatement.executeUpdate();
@@ -48,6 +50,36 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     @Override
     public PersonalInformation get(String userNumber) {
-        return null;
+
+        Connection connection = dbConnection.getConnection();
+        PersonalInformation result = new PersonalInformation();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
+        {
+            preparedStatement.setString(1,userNumber);
+
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                rs.next();
+                result.setCollege(rs.getString("college"));
+                result.setDepartment(rs.getString("department"));
+                result.setHiredYear(rs.getString("hiredYear"));
+                result.setHiredMonth(rs.getString("hiredMonth"));
+                result.setcName(rs.getString("cName"));
+                result.seteName(rs.getString("eName"));
+                result.setTitle(rs.getString("title"));
+                result.setCountry(rs.getString("country"));
+                result.setGender(rs.getString("gender"));
+                result.setQualification1(rs.getBoolean("qualification1"));
+                result.setQualification2(rs.getBoolean("qualification2"));
+                result.setLevel(rs.getString("level"));
+                result.setPrice(rs.getString("price"));
+                result.setUserNumber(rs.getString("userNumber"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }

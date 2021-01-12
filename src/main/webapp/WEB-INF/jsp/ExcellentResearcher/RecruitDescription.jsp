@@ -9,7 +9,8 @@
 <html>
 <head>
     <title>申請表額外文件</title>
-    <link rel="stylesheet" type="text/css" href="/RRS/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({
@@ -29,12 +30,10 @@
             var data = {};
 
 
-            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
-                }else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
-                }
+            for (var j=0; j<document.getElementsByTagName("textarea").length; j++) {
+
+                data[ document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
+
 
             }
 
