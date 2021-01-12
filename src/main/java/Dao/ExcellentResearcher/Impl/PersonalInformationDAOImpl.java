@@ -35,8 +35,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setBoolean(10,object.getQualification1());
             preparedStatement.setBoolean(11,object.getQualification2());
             preparedStatement.setString(12,object.getLevel());
-            preparedStatement.setString(12,object.getPrice());
-            preparedStatement.setString(13,object.getUserNumber());
+            preparedStatement.setString(13,object.getPrice());
+            preparedStatement.setString(14,object.getUserNumber());
 
 
             preparedStatement.executeUpdate();
@@ -71,6 +71,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
                 result.setQualification1(rs.getBoolean("qualification1"));
                 result.setQualification2(rs.getBoolean("qualification2"));
                 result.setLevel(rs.getString("level"));
+                result.setPrice(rs.getString("price"));
                 result.setUserNumber(rs.getString("userNumber"));
             }
 
