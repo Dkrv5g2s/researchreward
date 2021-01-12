@@ -14,7 +14,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
-            "qualification2,level,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "qualification2,level,price,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE userNumber=?";
 
     @Override
@@ -35,6 +35,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setBoolean(10,object.getQualification1());
             preparedStatement.setBoolean(11,object.getQualification2());
             preparedStatement.setString(12,object.getLevel());
+            preparedStatement.setString(12,object.getPrice());
             preparedStatement.setString(13,object.getUserNumber());
 
 
