@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONObject json = (JSONObject) request.getAttribute("json");
+%>
 <html>
 <head>
     <title>個人基本資料</title>
@@ -46,9 +49,15 @@
 
             return data;
         }
+
+        function selectElement(id, valueToSelect) {
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+        }
+
+        $('#level').val(<%=json.get("level")%>);
     </script>
 </head>
-<% JSONObject json = (JSONObject) request.getAttribute("json"); %>
 <body>
     <div class="content">
         <form>
@@ -132,7 +141,7 @@
                     <tr>
                         <td class="metadata">申請獎勵等級及額度</td>
                         <td>
-                            <select name="level">
+                            <select name="level" id="level">
                                 <option value="prof">教授級</option>
                                 <option value="ap">副教授級</option>
                                 <option value="asst">助理教授級</option>
