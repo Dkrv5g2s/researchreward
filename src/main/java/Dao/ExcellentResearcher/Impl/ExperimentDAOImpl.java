@@ -23,9 +23,9 @@ public class ExperimentDAOImpl implements ExperimentDAO {
         {
             preparedStatement.setString(1,object.getServiceOrganization());
             preparedStatement.setString(2,object.getServiceDepartment());
-            preparedStatement.setString(3,object.getTitle());
-            preparedStatement.setString(4,object.getYear());
-            preparedStatement.setString(5,object.getMonth());
+            preparedStatement.setString(3,object.getPastTitle());
+            preparedStatement.setString(4,object.getPastYear());
+            preparedStatement.setString(5,object.getPastMonth());
             preparedStatement.setString(6,object.getUserNumber());
 
 
@@ -51,9 +51,9 @@ public class ExperimentDAOImpl implements ExperimentDAO {
 
                 experiment.setServiceOrganization(resultSet.getString("serviceOrganization"));
                 experiment.setServiceDepartment(resultSet.getString("serviceDepartment"));
-                experiment.setTitle(resultSet.getString("title"));
-                experiment.setYear(resultSet.getString("year"));
-                experiment.setMonth(resultSet.getString("month"));
+                experiment.setPastTitle(resultSet.getString("title"));
+                experiment.setPastYear(resultSet.getString("year"));
+                experiment.setPastMonth(resultSet.getString("month"));
                 experiment.setUserNumber(resultSet.getString("userNumber"));
             }
 

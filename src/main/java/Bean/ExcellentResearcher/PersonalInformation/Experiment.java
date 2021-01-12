@@ -3,17 +3,17 @@ package Bean.ExcellentResearcher.PersonalInformation;
 public class Experiment {
     private String serviceOrganization;
     private String serviceDepartment;
-    private String title;
-    private String year;
-    private String month;
+    private String pastTitle;
+    private String pastYear;
+    private String pastMonth;
     private String userNumber;
 
-    public Experiment(String serviceOrganization, String serviceDepartment, String title, String year, String month, String userNumber) {
+    public Experiment(String serviceOrganization, String serviceDepartment, String pastTitle, String pastYear, String pastMonth, String userNumber) {
         this.serviceOrganization = serviceOrganization;
         this.serviceDepartment = serviceDepartment;
-        this.title = title;
-        this.year = year;
-        this.month = month;
+        this.pastTitle = pastTitle;
+        this.pastYear = pastYear;
+        this.pastMonth = pastMonth;
         this.userNumber = userNumber;
     }
 
@@ -45,27 +45,27 @@ public class Experiment {
         this.serviceDepartment = serviceDepartment;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPastTitle() {
+        return pastTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPastTitle(String pastTitle) {
+        this.pastTitle = pastTitle;
     }
 
-    public String getYear() {
-        return year;
+    public String getPastYear() {
+        return pastYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setPastYear(String pastYear) {
+        this.pastYear = pastYear;
     }
 
-    public String getMonth() {
-        return month;
+    public String getPastMonth() {
+        return pastMonth;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setPastMonth(String pastMonth) {
+        this.pastMonth = pastMonth;
     }
 }

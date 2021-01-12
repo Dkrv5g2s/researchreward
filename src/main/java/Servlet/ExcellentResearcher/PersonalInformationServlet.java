@@ -22,7 +22,9 @@ public class PersonalInformationServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        personalInformationService.get((String)session.getAttribute("userNumber"));
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",personalInformationService.get((String)session.getAttribute("userNumber")));
+
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/personalinformation.jsp").forward(req, resp);
     }
 
