@@ -14,7 +14,7 @@ public class RoleAuthorizationServiceImpl implements RoleAuthorizationService{
     public String validateRole(HttpSession session, String account, String password) {
         User user = userDAO.get(account,password);
         if(user != null) {
-            session.setAttribute("userNumber",user.getNumber());
+            session.setAttribute("userNumber",user.getStaff_code());
             return user.getRole();
         }
         else

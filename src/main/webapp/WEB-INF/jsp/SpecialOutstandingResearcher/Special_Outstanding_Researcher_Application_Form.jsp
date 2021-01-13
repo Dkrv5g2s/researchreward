@@ -185,7 +185,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
+    function load() {
+        var last_version_of_form = ${ latest_data } ;
+        restore_latest_data( last_version_of_form ) ;
+    }
 
+    $(document).ready( load()  ) ;
+
+    function restore_latest_data ( last_version_of_form ) {
+        $("input[name='applicant_name']").val( last_version_of_form["applicant_name"] ) ;
+        $("input[name='job']").val( last_version_of_form["job"] ) ;
+        $("input[name='college']").val( last_version_of_form["college"] ) ;
+        $("input[name='department']").val( last_version_of_form["department"] ) ;
+        $("input[name='seniority']").val( last_version_of_form["seniority"] ) ;
+        if ( last_version_of_form["executed_tech_proj"] ) {
+            $("input[name='executed_tech_proj_yes']").prop( "checked",last_version_of_form["executed_tech_proj"]  ) ;
+            $("input[name='tech_proj_id']").val( last_version_of_form["tech_proj_id"] ) ;
+            $("input[name='tech_proj_start_time']").val( last_version_of_form["tech_proj_start_time"]  ) ;
+            $("input[name='tech_proj_end_time']").val( last_version_of_form["tech_proj_end_time"]  ) ;
+        }
+        else {
+            $("input[name='executed_tech_proj_yes']").prop( "checked",false  ) ;
+        }
+
+
+
+
+        standard_list = last_version_of_form["standard_list"] ;
+        for ( var i = 0; i < standard_list.length ; i++ ) {
+
+            enable_standard( standard_list[i]["standard"] ) ;
+            enable_standard( standard_list[i]["sub_standard"] ) ;
+        }
+    }
+
+    function enable_standard( standard ) {
+        $( "input[value='" + standard + "']" ).prop("checked", true) ;
+
+    }
 
     function commit(){
 
@@ -205,23 +242,7 @@
 
     };
 
-    // function InputStandardToJson(){
-    //     var standard = {} ;
-    //     for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-    //         if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-    //             standard[ "level_num" :  ]
-    //             continue;
-    //         }
-    //     }
-    //
-    //     for (var j=0; j<document.getElementsByTagName("select").length; j++){
-    //         data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
-    //     }
-    //
-    //     return JSON.stringify(data)
-    //
-    //     return data;
-    // }
+
 
     function InputFormToJson(){
 

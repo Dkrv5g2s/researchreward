@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
 
 public class SpecialOutstandingResearcherApplicationUtil {
@@ -82,6 +82,20 @@ public class SpecialOutstandingResearcherApplicationUtil {
 
     public String special_researcher_application_form_to_json(SpecialOutstandingResearcherForm specialOutstandingResearcherForm ) {
 
-        return new Gson().toJson( specialOutstandingResearcherForm ) ;
+        Gson gson = new Gson() ;
+        JSONObject jsonObject = new JSONObject( gson.toJson(specialOutstandingResearcherForm) ) ;
+        try {
+            jsonObject.put("tech_proj_start_time", new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_start_time().getTime()).toString()) ;
+        }
+        catch (Exception e ) {
+            jsonObject.put("tech_proj_start_time", "") ;
+        }
+        try {
+            jsonObject.put("tech_proj_end_time", new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_end_time().getTime()).toString()) ;
+        }
+        catch (Exception e ) {
+            jsonObject.put("tech_proj_end_time", "") ;
+        }
+        return jsonObject.toString() ;
     }
 }

@@ -2,7 +2,6 @@ package Dao.User;
 
 import Bean.User.User;
 import DBConnection.DBConnection;
-import Dao.User.UserDAO;
 import DBConnection.DBConnectionImpl;
 
 import java.sql.Connection;
@@ -32,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
 
                 user = new User();
                 user.setRole(resultSet.getString("role"));
-                user.setNumber(resultSet.getString("number"));
+                user.setStaff_code(resultSet.getString("number"));
             }
 
         } catch (SQLException e) {

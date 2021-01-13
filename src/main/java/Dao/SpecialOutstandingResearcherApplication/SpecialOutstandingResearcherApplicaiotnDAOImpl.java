@@ -57,7 +57,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
                 preparedStatement.executeUpdate();
 
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }

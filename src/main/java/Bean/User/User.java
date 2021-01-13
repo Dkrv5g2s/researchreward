@@ -5,14 +5,24 @@ public class User {
     private String account = "";
     private String password = "";
     private String role = "";
-    private String number = "";
+    private String staff_code = "";
 
-    public String getNumber() {
-        return number;
+    public User(String account, String password, String role, String staff_code) {
+        this.account = account;
+        this.password = password;
+        this.role = role;
+        this.staff_code = staff_code;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public User() {
+    }
+
+    public String getStaff_code() {
+        return staff_code;
+    }
+
+    public void setStaff_code(String staff_code) {
+        this.staff_code = staff_code;
     }
 
     public String getAccount() {
