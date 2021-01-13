@@ -13,6 +13,8 @@ public final class ReflectUtils {
             field.setAccessible(true);
             if(field.get(bean) == null) {
                 json.put(field.getName(), "");
+            }else {
+                json.put(field.getName(), field.get(bean));
             }
         }
     }

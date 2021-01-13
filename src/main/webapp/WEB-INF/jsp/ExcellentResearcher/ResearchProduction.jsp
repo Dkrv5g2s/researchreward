@@ -1,4 +1,5 @@
-<%--
+<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
+<%@ page import="fr.opensagres.xdocreport.document.json.JSONArray" %><%--
   Created by IntelliJ IDEA.
   User: z
   Date: 2020/12/3
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONArray json = (JSONArray) request.getAttribute("json");
+%>
 <html>
 <head>
     <title>研發成果智慧財產權及其應用績效</title>
@@ -43,7 +47,7 @@
 
         function createTechnologyTransfer() {
             var rowsNumber = $("div[name='technologyTransfer'] tr").length-1;
-            var data = "<tr name=\"technologyTransfer"+rowsNumber+"\">\n" +
+            var data = "<tr name=\"technologyTransfer\">\n" +
                 "                    <td><input type=\"text\" name=\"technologyName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"authorizedUnit\"></td>\n" +
@@ -57,7 +61,7 @@
 
         function createAuthorization() {
             var rowsNumber = $("div[name='authorization'] tr").length-1;
-            var data = "<tr name=\"patent\">\n" +
+            var data = "<tr name=\"workAuthorization\">\n" +
                 "                    <td><input type=\"text\" name=\"patentClass\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"authorizationClass\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"author\"></td>\n" +
@@ -126,8 +130,77 @@
             return data;
         }
 
-
     </script>
+    <%
+        JSONArray jsonArray = (JSONArray)json;
+        JSONArray jArray1 = (JSONArray)jsonArray.get(0);
+        JSONArray jArray2 = (JSONArray)jsonArray.get(1);
+        JSONArray jArray3 = (JSONArray)jsonArray.get(2);
+
+        for(Object object: jArray1){
+            JSONObject jsonObject = (JSONObject)object;
+
+    %>
+
+    <script>
+        $(document).ready(function () {
+
+            var data = "<tr name=\"patent\">\n" +
+                "                    <td><input type=\"text\" name=\"patentClass\" value=\"<%=jsonObject.get("patentClass")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"patentName\" value=<%=jsonObject.get("patentName")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"country\" value=<%=jsonObject.get("country")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"patentNumber\" value=<%=jsonObject.get("patentNumber")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"inventor\" value=<%=jsonObject.get("inventor")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"patentee\" value=<%=jsonObject.get("patentee")%>></td>\n" +
+                "                    <td><input type=\"date\" name=\"approvalDate\" value=<%=jsonObject.get("approvalDate")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=<%=jsonObject.get("mstPlanNumber")%>></td>\n" +
+                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                </tr>";
+            $("div[name='patent'] tr[name=new]").before(data);
+        })
+    </script>
+    <%
+        }
+        for(Object object: jArray2){
+            JSONObject jsonObject = (JSONObject)object;
+    %>
+    <script>
+        $(document).ready(function () {
+
+            var data = "<tr name=\"technologyTransfer\">\n" +
+                "                    <td><input type=\"text\" name=\"technologyName\" value=\"<%=jsonObject.get("technologyName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"patentName\" value=\"<%=jsonObject.get("patentName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"authorizedUnit\" value=\"<%=jsonObject.get("authorizedUnit")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"toAuthorizedUnit\" value=\"<%=jsonObject.get("toAuthorizedUnit")%>\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=\"<%=jsonObject.get("mstPlanNumber")%>\"></td>\n" +
+                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                </tr>";
+            $("div[name='technologyTransfer'] tr[name=new]").before(data);
+        })
+    </script>
+    <%
+        }
+        for(Object object: jArray3){
+            JSONObject jsonObject = (JSONObject)object;
+    %>
+    <script>
+        $(document).ready(function () {
+            var data = "<tr name=\"workAuthorization\">\n" +
+                "                    <td><input type=\"text\" name=\"workName\" value=\"<%=jsonObject.get("workName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"authorizationClass\" value=\"<%=jsonObject.get("authorizationClass")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"author\" value=\"<%=jsonObject.get("author")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"copyrightOwner\" value=\"<%=jsonObject.get("copyrightOwner")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"agent\" value=\"<%=jsonObject.get("agent")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=\"<%=jsonObject.get("mstPlanNumber")%>\"></td>\n" +
+                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                </tr>";
+            $("div[name='authorization'] tr[name=new]").before(data);
+        })
+    </script>
+    <%
+        }
+    %>
 </head>
 <body>
 <div class="content">

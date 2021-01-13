@@ -19,6 +19,10 @@ public class WorkAuthorization {
         this.userNumber = userNumber;
     }
 
+    public WorkAuthorization() {
+
+    }
+
     public String getAgent() {
         return agent;
     }

@@ -25,6 +25,10 @@ public class Patent {
         this.userNumber = userNumber;
     }
 
+    public Patent() {
+
+    }
+
     public String getPatentClass() {
         return patentClass;
     }

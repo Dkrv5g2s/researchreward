@@ -21,6 +21,10 @@ public class Technology {
         this.userNumber = userNumber;
     }
 
+    public Technology() {
+
+    }
+
     public String getAuthorizedUnit() {
         return authorizedUnit;
     }
