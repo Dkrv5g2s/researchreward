@@ -17,6 +17,10 @@ public class ResearchProductionServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",researchProductionService.get((String)session.getAttribute("userNumber")));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
     }

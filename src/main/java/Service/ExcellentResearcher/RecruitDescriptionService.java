@@ -5,6 +5,8 @@ import Dao.ExcellentResearcher.Impl.RecruitDescriptionDAOImpl;
 import Dao.ExcellentResearcher.RecruitDescriptionDAO;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
+import static Utils.ReflectUtils.addBeanPropertyToJson;
+
 public class RecruitDescriptionService {
 
     private RecruitDescriptionDAO recruitDescriptionDAO = new RecruitDescriptionDAOImpl();
@@ -19,5 +21,21 @@ public class RecruitDescriptionService {
                 jsonObject.getString("other"),
                 jsonObject.getString("contribution"),
                 userNumber));
+    }
+
+    public JSONObject get(String userNumber){
+
+        RecruitDescription recruitDescription = recruitDescriptionDAO.get(userNumber);
+        JSONObject object = new JSONObject();
+
+        try {
+            addBeanPropertyToJson(object,recruitDescription);
+        }catch(IllegalAccessException e){
+            e.printStackTrace();
+        }
+
+        return object;
+
+
     }
 }

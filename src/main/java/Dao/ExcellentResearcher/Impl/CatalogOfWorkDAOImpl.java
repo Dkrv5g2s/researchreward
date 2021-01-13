@@ -43,9 +43,12 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
             preparedStatement.setString(1,userNumber);
 
             try (ResultSet rs = preparedStatement.executeQuery()){
-                rs.next();
-                catalogOfWork.setWork(rs.getString("work"));
-                catalogOfWork.setUserNumber(rs.getString("userNumber"));
+                if(rs.next()) {
+                    catalogOfWork.setWork(rs.getString("work"));
+                    catalogOfWork.setUserNumber(rs.getString("userNumber"));
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
 

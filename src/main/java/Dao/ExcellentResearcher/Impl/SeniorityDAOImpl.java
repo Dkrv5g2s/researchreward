@@ -48,6 +48,8 @@ public class SeniorityDAOImpl implements SeniorityDAO {
                 seniority.setYear(resultSet.getString("year"));
                 seniority.setMonth(resultSet.getString("month"));
                 seniority.setUserNumber(resultSet.getString("userNumber"));
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
         } catch (SQLException e) {

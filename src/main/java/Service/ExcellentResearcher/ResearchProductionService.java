@@ -1,6 +1,7 @@
 package Service.ExcellentResearcher;
 
 
+import Bean.ExcellentResearcher.RecruitDescription;
 import Bean.ExcellentResearcher.ResearchProduction.Patent;
 import Bean.ExcellentResearcher.ResearchProduction.ResearchProduction;
 import Bean.ExcellentResearcher.ResearchProduction.Technology;
@@ -13,6 +14,8 @@ import fr.opensagres.xdocreport.document.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Utils.ReflectUtils.addBeanPropertyToJson;
+
 public class ResearchProductionService {
 
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
@@ -23,6 +26,55 @@ public class ResearchProductionService {
         researchProduction.setTechnologyList( jsonArrayToTechnologys((JSONArray)jsonArray.get(1),userNumber));
         researchProduction.setWorkAuthorizationList( jsonArrayToWorkAuthorizations((JSONArray)jsonArray.get(2),userNumber));
         researchProductionDAO.save(researchProduction);
+    }
+
+    public JSONArray get(String userNumber){
+
+        ResearchProduction researchProduction = researchProductionDAO.get(userNumber);
+
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            jsonArray.add(PatentsToJsonArray(researchProduction.getPatentList()));
+            jsonArray.add(TechnologysToJsonArray(researchProduction.getTechnologyList()));
+            jsonArray.add(WorkAuthorizationsToJsonArray(researchProduction.getWorkAuthorizationList()));
+        }catch(IllegalAccessException e){
+            e.printStackTrace();
+        }
+
+        return jsonArray;
+
+
+    }
+
+    private JSONArray PatentsToJsonArray(List<Patent> list) throws IllegalAccessException {
+        JSONArray array = new JSONArray();
+
+        for(Patent patent : list){
+            JSONObject object = new JSONObject();
+            addBeanPropertyToJson(object,patent);
+            array.add(object);
+        }
+
+        return array;
+    }
+    private JSONArray TechnologysToJsonArray(List<Technology> list) throws IllegalAccessException {
+        JSONArray array = new JSONArray();
+        for(Technology technology : list){
+            JSONObject object = new JSONObject();
+            addBeanPropertyToJson(object,technology);
+            array.add(object);
+        }
+        return array;
+    }
+    private JSONArray WorkAuthorizationsToJsonArray(List<WorkAuthorization> list) throws IllegalAccessException {
+        JSONArray array = new JSONArray();
+        for(WorkAuthorization workAuthorization : list){
+            JSONObject object = new JSONObject();
+            addBeanPropertyToJson(object,workAuthorization);
+            array.add(object);
+        }
+        return array;
     }
 
     private List<Patent> jsonArrayToPatents(JSONArray jsonArray, String userNumber){
