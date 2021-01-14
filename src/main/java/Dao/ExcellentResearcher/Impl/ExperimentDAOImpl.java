@@ -47,14 +47,16 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             preparedStatement.setString(1,userNumber);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                resultSet.next();
-
-                experiment.setServiceOrganization(resultSet.getString("serviceOrganization"));
-                experiment.setServiceDepartment(resultSet.getString("serviceDepartment"));
-                experiment.setPastTitle(resultSet.getString("title"));
-                experiment.setPastYear(resultSet.getString("year"));
-                experiment.setPastMonth(resultSet.getString("month"));
-                experiment.setUserNumber(resultSet.getString("userNumber"));
+                if(resultSet.next()) {
+                    experiment.setServiceOrganization(resultSet.getString("serviceOrganization"));
+                    experiment.setServiceDepartment(resultSet.getString("serviceDepartment"));
+                    experiment.setPastTitle(resultSet.getString("title"));
+                    experiment.setPastYear(resultSet.getString("year"));
+                    experiment.setPastMonth(resultSet.getString("month"));
+                    experiment.setUserNumber(resultSet.getString("userNumber"));
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
         } catch (SQLException e) {

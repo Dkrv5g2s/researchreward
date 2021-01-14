@@ -1,7 +1,7 @@
 package Bean.SpecialOutstandingResearcher;
 
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class SpecialOutstandingResearcherForm {
@@ -18,7 +18,21 @@ public class SpecialOutstandingResearcherForm {
 
     private List<SpecialOutstandingResearcherStandard> standard_list ;
 
-    public SpecialOutstandingResearcherForm() {
+    public SpecialOutstandingResearcherForm(){}
+
+    public SpecialOutstandingResearcherForm( int project_id ) {
+        this.project_id = project_id ;
+        this.applicant_name = "" ;
+        this.job = "" ;
+        this.college = "" ;
+        this.department = "" ;
+        this.seniority = "" ;
+        this.executed_tech_proj = false ;
+        this.tech_proj_id = "" ;
+        this.tech_proj_start_time = null ;
+        this.tech_proj_end_time = null ;
+        this.standard_list = null ;
+
     }
 
     public SpecialOutstandingResearcherForm(int project_id, String applicant_name, String job, String college, String department, String seniority, boolean executed_tech_proj, String tech_proj_id, Date tech_proj_start_time, Date tech_proj_end_time, List<SpecialOutstandingResearcherStandard> standard_list) {

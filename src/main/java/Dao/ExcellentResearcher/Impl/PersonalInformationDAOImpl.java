@@ -58,21 +58,24 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setString(1,userNumber);
 
             try (ResultSet rs = preparedStatement.executeQuery()){
-                rs.next();
-                result.setCollege(rs.getString("college"));
-                result.setDepartment(rs.getString("department"));
-                result.setHiredYear(rs.getString("hiredYear"));
-                result.setHiredMonth(rs.getString("hiredMonth"));
-                result.setcName(rs.getString("cName"));
-                result.seteName(rs.getString("eName"));
-                result.setTitle(rs.getString("title"));
-                result.setCountry(rs.getString("country"));
-                result.setGender(rs.getString("gender"));
-                result.setQualification1(rs.getBoolean("qualification1"));
-                result.setQualification2(rs.getBoolean("qualification2"));
-                result.setLevel(rs.getString("level"));
-                result.setPrice(rs.getString("price"));
-                result.setUserNumber(rs.getString("userNumber"));
+                if(rs.next()) {
+                    result.setCollege(rs.getString("college"));
+                    result.setDepartment(rs.getString("department"));
+                    result.setHiredYear(rs.getString("hiredYear"));
+                    result.setHiredMonth(rs.getString("hiredMonth"));
+                    result.setcName(rs.getString("cName"));
+                    result.seteName(rs.getString("eName"));
+                    result.setTitle(rs.getString("title"));
+                    result.setCountry(rs.getString("country"));
+                    result.setGender(rs.getString("gender"));
+                    result.setQualification1(rs.getBoolean("qualification1"));
+                    result.setQualification2(rs.getBoolean("qualification2"));
+                    result.setLevel(rs.getString("level"));
+                    result.setPrice(rs.getString("price"));
+                    result.setUserNumber(rs.getString("userNumber"));
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
 

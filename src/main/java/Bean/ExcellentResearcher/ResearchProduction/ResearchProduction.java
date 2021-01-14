@@ -15,6 +15,10 @@ public class ResearchProduction {
         this.userNumber = userNumber;
     }
 
+    public ResearchProduction() {
+
+    }
+
     public List<Patent> getPatentList() {
         return patentList;
     }

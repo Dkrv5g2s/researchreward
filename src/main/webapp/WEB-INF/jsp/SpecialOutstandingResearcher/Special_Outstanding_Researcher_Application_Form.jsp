@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.google.gson.*" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
 
 <%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
@@ -14,7 +13,6 @@
 
 %>
 
-<!DOCTYPE HTML>
 <html lang="zh">
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才申請表</p>
@@ -187,7 +185,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
+    function load() {
+        var last_version_of_form = ${ latest_data } ;
+        restore_latest_data( last_version_of_form ) ;
+    }
 
+    $(document).ready( load()  ) ;
+
+    function restore_latest_data ( last_version_of_form ) {
+        $("input[name='applicant_name']").val( last_version_of_form["applicant_name"] ) ;
+        $("input[name='job']").val( last_version_of_form["job"] ) ;
+        $("input[name='college']").val( last_version_of_form["college"] ) ;
+        $("input[name='department']").val( last_version_of_form["department"] ) ;
+        $("input[name='seniority']").val( last_version_of_form["seniority"] ) ;
+        if ( last_version_of_form["executed_tech_proj"] ) {
+            $("input[name='executed_tech_proj_yes']").prop( "checked",last_version_of_form["executed_tech_proj"]  ) ;
+            $("input[name='tech_proj_id']").val( last_version_of_form["tech_proj_id"] ) ;
+            $("input[name='tech_proj_start_time']").val( last_version_of_form["tech_proj_start_time"]  ) ;
+            $("input[name='tech_proj_end_time']").val( last_version_of_form["tech_proj_end_time"]  ) ;
+        }
+        else {
+            $("input[name='executed_tech_proj_yes']").prop( "checked",false  ) ;
+        }
+
+
+
+
+        standard_list = last_version_of_form["standard_list"] ;
+        for ( var i = 0; i < standard_list.length ; i++ ) {
+
+            enable_standard( standard_list[i]["standard"] ) ;
+            enable_standard( standard_list[i]["sub_standard"] ) ;
+        }
+    }
+
+    function enable_standard( standard ) {
+        $( "input[value='" + standard + "']" ).prop("checked", true) ;
+
+    }
 
     function commit(){
 
@@ -207,23 +242,7 @@
 
     };
 
-    // function InputStandardToJson(){
-    //     var standard = {} ;
-    //     for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-    //         if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-    //             standard[ "level_num" :  ]
-    //             continue;
-    //         }
-    //     }
-    //
-    //     for (var j=0; j<document.getElementsByTagName("select").length; j++){
-    //         data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
-    //     }
-    //
-    //     return JSON.stringify(data)
-    //
-    //     return data;
-    // }
+
 
     function InputFormToJson(){
 
@@ -240,11 +259,9 @@
                     standard_content = document.getElementsByTagName("input")[j].parentElement.parentElement.getAttribute("value") ;
                 }
 
-
-
                 var a_tuple_of_standard = { "level_num" : level_name, "standard" : standard_content, "sub_standard" : sub_standard_content } ;
                 list_of_standard.push(a_tuple_of_standard) ;
-
+            //
 
             }else if ( document.getElementsByTagName("input")[j].type !='checkbox' ) {
                 data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
@@ -261,13 +278,34 @@
         data["project_id"] = <%= project.getProject_id() %> ;
 
         return JSON.stringify(data)
-
     }
 
     $(document).on( "click", "input[name='save_the_page']", function() {
         commit();
     } ) ;
 
+    function clear_executed_tech_proj_yes(){
+        if ( $("input[name='executed_tech_proj_no']").prop('checked') ) {
+            $("input[name='executed_tech_proj_yes']").prop( "checked", false ) ;
+            $("input[name='tech_proj_id']").val("") ;
+            $("input[name='tech_proj_start_time']").val("") ;
+            $("input[name='tech_proj_end_time']").val("") ;
+        }
+        
+    }
+
+    function clear_executed_tech_proj_no(){
+        if ( $("input[name='executed_tech_proj_yes']").prop('checked')  )
+            $("input[name='executed_tech_proj_no']").prop( 'checked', false ) ;
+    }
+
+    $(document).on( "click", "input[name='executed_tech_proj_no']", function(){
+        clear_executed_tech_proj_yes() ;
+    } ) ;
+
+    $(document).on( "click", "input[name='executed_tech_proj_yes']", function(){
+        clear_executed_tech_proj_no() ;
+    } ) ;
 
 
 </script>

@@ -44,13 +44,15 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             preparedStatement.setString(1,userNumber);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                resultSet.next();
-
-                mostPlan.setPlanName(resultSet.getString("planName"));
-                mostPlan.setPlanNumber(resultSet.getString("planNumber"));
-                mostPlan.setStartTime(resultSet.getDate("startTime"));
-                mostPlan.setLastTime(resultSet.getDate("lastTime"));
-                mostPlan.setUserNumber(resultSet.getString("userNumber"));
+                if(resultSet.next()) {
+                    mostPlan.setPlanName(resultSet.getString("planName"));
+                    mostPlan.setPlanNumber(resultSet.getString("planNumber"));
+                    mostPlan.setStartTime(resultSet.getDate("startTime"));
+                    mostPlan.setLastTime(resultSet.getDate("lastTime"));
+                    mostPlan.setUserNumber(resultSet.getString("userNumber"));
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
         } catch (SQLException e) {

@@ -11,6 +11,9 @@ public class SpecialOutstandingResearcherStandard {
         this.sub_standard = sub_standard;
     }
 
+    public SpecialOutstandingResearcherStandard(){
+    }
+
     public String getLevel_num() {
         return level_num;
     }

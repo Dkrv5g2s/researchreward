@@ -46,14 +46,16 @@ public class EducationDAOImpl implements EducationDAO {
             preparedStatement.setString(1,userNumber);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                resultSet.next();
-
-                education.setSchoolName(resultSet.getString("schoolName"));
-                education.setMajor(resultSet.getString("major"));
-                education.setDegree(resultSet.getString("degree"));
-                education.setGraduateYear(resultSet.getString("graduateYear"));
-                education.setGraduateMonth(resultSet.getString("graduateMonth"));
-                education.setUserNumber(resultSet.getString("userNumber"));
+                if(resultSet.next()) {
+                    education.setSchoolName(resultSet.getString("schoolName"));
+                    education.setMajor(resultSet.getString("major"));
+                    education.setDegree(resultSet.getString("degree"));
+                    education.setGraduateYear(resultSet.getString("graduateYear"));
+                    education.setGraduateMonth(resultSet.getString("graduateMonth"));
+                    education.setUserNumber(resultSet.getString("userNumber"));
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
             }
 
         } catch (SQLException e) {
