@@ -18,14 +18,19 @@ import java.util.List;
 
 public class SpecialOutstandingResearcherApplicationService {
     public void save(JSONObject json, String staff_code) {
+
         SpecialOutstandingResearcherForm specialOutstandingResearcherForm = new SpecialOutstandingResearcherApplicationUtil().json_to_special_researcher_application_form(json) ;
 
         SpecialOutstandingResearcherApplicaiotnDAO dao = new SpecialOutstandingResearcherApplicaiotnDAOImpl() ;
+
         dao.update( specialOutstandingResearcherForm ) ;
+
     }
 
     public String query(int project_id) {
+
         SpecialOutstandingResearcherApplicaiotnDAO dao = new SpecialOutstandingResearcherApplicaiotnDAOImpl() ;
+
         SpecialOutstandingResearcherForm specialOutstandingResearcherForm = dao.query(project_id);
 
         String json_form = new SpecialOutstandingResearcherApplicationUtil().special_researcher_application_form_to_json( specialOutstandingResearcherForm ) ;
