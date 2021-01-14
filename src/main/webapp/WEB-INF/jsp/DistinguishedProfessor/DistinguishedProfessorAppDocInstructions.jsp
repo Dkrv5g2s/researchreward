@@ -89,6 +89,7 @@
 		                <th colspan="1" width="18%">簽約日期</th>
 		                <th colspan="1" width="18%">實收技術移轉金金額</th>
 		                <th colspan="1" width="18%">技轉金實際納入校務基金日期</th>
+		                <th colspan="1" width="10%"></th>
 		            </tr>
 		            <tr>
 		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
@@ -96,20 +97,10 @@
 		                <td colspan="1" width="18%"><input type="date" size="10" maxlength="40"></td>
 		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
 		                <td colspan="1" width="18%"><input size="10" maxlength="40" type="date"></td>
+		                <td colspan="1" width="10%"><input type="button" name="delete_contract" value="刪除"></td>
 		            </tr>
 		            <tr>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input type="date" size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40" type="date"></td>
-		            </tr>
-		            <tr>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input type="date" size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40"></td>
-		                <td colspan="1" width="18%"><input size="10" maxlength="40" type="date"></td>
+		                <td colspan="6" width="100%"><input type="button" name="add_new_contract" value="  新增  "></td>
 		            </tr>
 		        </tbody>
 		    </table>
