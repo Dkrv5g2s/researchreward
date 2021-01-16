@@ -30,7 +30,6 @@
     </style>
     <script>
         function createPatent() {
-            var rowsNumber = $("div[name='patent'] tr").length-2;
             var data = "<tr name=\"patent\">\n" +
                 "                    <td><input type=\"text\" name=\"patentClass\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
@@ -46,7 +45,6 @@
         }
 
         function createTechnologyTransfer() {
-            var rowsNumber = $("div[name='technologyTransfer'] tr").length-1;
             var data = "<tr name=\"technologyTransfer\">\n" +
                 "                    <td><input type=\"text\" name=\"technologyName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
@@ -60,7 +58,6 @@
         }
 
         function createAuthorization() {
-            var rowsNumber = $("div[name='authorization'] tr").length-1;
             var data = "<tr name=\"workAuthorization\">\n" +
                 "                    <td><input type=\"text\" name=\"patentClass\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"authorizationClass\"></td>\n" +
