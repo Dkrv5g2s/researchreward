@@ -92,6 +92,16 @@
         <url-pattern>/SpecialOutstandingResearcherApplicationForm</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AwardTimeLimitServlet</servlet-name>
+        <servlet-class>Servlet.admin.AwardTimeLimitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AwardTimeLimitServlet</servlet-name>
+        <url-pattern>/AwardTimeLimit</url-pattern>
+    </servlet-mapping>
+
+
 
 
 
