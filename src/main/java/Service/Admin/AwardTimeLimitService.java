@@ -7,6 +7,8 @@ import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
 
+import static Utils.ReflectUtils.addBeanPropertyToJson;
+
 public class AwardTimeLimitService {
 
     private AwardTimeLimitDAO awardTimeLimitDAO = new AwardTimeLimitDAOImpl();
@@ -30,5 +32,19 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("l8").getTime()),
                 jsonObject.getDouble("fwci"),
                 userNumber));
+    }
+
+    public JSONObject get(String userNumber){
+        AwardTimeLimit result = awardTimeLimitDAO.get(userNumber);
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            addBeanPropertyToJson(jsonObject, result);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return jsonObject;
     }
 }
