@@ -13,7 +13,8 @@ import java.sql.SQLException;
 public class EducationDAOImpl implements EducationDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO education (schoolName,major,degree,graduateYear,graduateMonth,userNumber) values (?,?,?,?,?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO education (schoolName,major,degree,graduateYear,graduateMonth,userNumber) values (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "schoolName=?,major=?,degree=?,graduateYear=?,graduateMonth=?";
 
     @Override
     public void save(Education object) {
@@ -27,7 +28,11 @@ public class EducationDAOImpl implements EducationDAO {
             preparedStatement.setString(4,object.getGraduateYear());
             preparedStatement.setString(5,object.getGraduateMonth());
             preparedStatement.setString(6,object.getUserNumber());
-
+            preparedStatement.setString(7,object.getSchoolName());
+            preparedStatement.setString(8,object.getMajor());
+            preparedStatement.setString(9,object.getDegree());
+            preparedStatement.setString(10,object.getGraduateYear());
+            preparedStatement.setString(11,object.getGraduateMonth());
 
             preparedStatement.executeUpdate();
 

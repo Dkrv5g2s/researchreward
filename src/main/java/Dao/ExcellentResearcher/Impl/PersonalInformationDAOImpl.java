@@ -14,7 +14,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
-            "qualification2,level,price,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "qualification2,level,price,userNumber) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "college=?,department=?,hiredYear=?,hiredMonth=?,cName=?,eName=?,title=?,country=?,gender=?,qualification1=?,qualification2=?,level=?,price=?";
     private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE userNumber=?";
 
     @Override
@@ -37,7 +38,19 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setString(12,object.getLevel());
             preparedStatement.setString(13,object.getPrice());
             preparedStatement.setString(14,object.getUserNumber());
-
+            preparedStatement.setString(15,object.getCollege());
+            preparedStatement.setString(16,object.getDepartment());
+            preparedStatement.setString(17,object.getHiredYear());
+            preparedStatement.setString(18,object.getHiredMonth());
+            preparedStatement.setString(19,object.getcName());
+            preparedStatement.setString(20,object.geteName());
+            preparedStatement.setString(21,object.getTitle());
+            preparedStatement.setString(22,object.getCountry());
+            preparedStatement.setString(23,object.getGender());
+            preparedStatement.setBoolean(24,object.getQualification1());
+            preparedStatement.setBoolean(25,object.getQualification2());
+            preparedStatement.setString(26,object.getLevel());
+            preparedStatement.setString(27,object.getPrice());
 
             preparedStatement.executeUpdate();
 

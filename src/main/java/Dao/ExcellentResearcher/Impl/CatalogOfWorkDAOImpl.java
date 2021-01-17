@@ -13,7 +13,8 @@ import java.sql.SQLException;
 public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO catalogofwork (userNumber, work) values (?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO catalogofwork (userNumber, work) values (?,?) ON DUPLICATE KEY UPDATE " +
+            "work = ?";
     private static final String GET_OBJECT = "SELECT * FROM catalogofwork WHERE userNumber=?";
 
     @Override
@@ -24,7 +25,7 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
         {
             preparedStatement.setString(1,object.getUserNumber());
             preparedStatement.setString(2,object.getWork());
-
+            preparedStatement.setString(3,object.getWork());
 
             preparedStatement.executeUpdate();
 

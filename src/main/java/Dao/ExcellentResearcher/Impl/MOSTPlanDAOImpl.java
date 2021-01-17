@@ -10,7 +10,8 @@ import java.sql.*;
 public class MOSTPlanDAOImpl implements MOSTPlanDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, userNumber) values (?,?,?,?,?)";
+    private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, userNumber) values (?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "planName=?, planNumber=?, startTime=?, lastTime=?";
 
     @Override
     public void save(MOSTPlan object) {
@@ -24,7 +25,10 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             preparedStatement.setDate(3, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(4, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
             preparedStatement.setString(5,object.getUserNumber());
-
+            preparedStatement.setString(6,object.getPlanName());
+            preparedStatement.setString(7,object.getUserNumber());
+            preparedStatement.setDate(8, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
+            preparedStatement.setDate(9, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
 
             preparedStatement.executeUpdate();
 

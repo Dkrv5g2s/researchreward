@@ -32,6 +32,6 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         JSONArray json = new JSONArray(readJSONString(req));
         researchProductionService.save(json,(String)session.getAttribute("userNumber"));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
+        doGet(req,resp);
     }
 }

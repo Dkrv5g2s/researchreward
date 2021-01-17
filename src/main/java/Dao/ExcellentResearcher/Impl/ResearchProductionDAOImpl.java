@@ -16,18 +16,25 @@ import java.util.List;
 public class ResearchProductionDAOImpl implements ResearchProductionDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_PATENT = "INSERT INTO patent (patentClass,patentName,country,patentNumber,patentee,mstPlanNumber,approvalDate,userNumber,inventor) values (?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_PATENT = "INSERT INTO patent (patentClass,patentName,country,patentNumber,patentee,mstPlanNumber,approvalDate,inventor,userNumber) values (?,?,?,?,?,?,?,?,?)";
     private static final String INSERT_TECHNOLOGY = "INSERT INTO technology (authorizedUnit,patentName,contractDate,mstPlanNumber,technologyName,toAuthorizedUnit,userNumber) values (?,?,?,?,?,?,?)";
-    private static final String INSERT_WORK_AUTHORIZATION = "INSERT INTO workauthorization (agent,author,authorizationClass,copyrightOwner,mstPlanNumber,patentClass,userNumber) values (?,?,?,?,?,?,?)";
+    private static final String INSERT_WORK_AUTHORIZATION = "INSERT INTO workauthorization (agent,author,authorizationClass,copyrightOwner,mstPlanNumber,workName,userNumber) values (?,?,?,?,?,?,?)";
 
     private static final String GET_PATENT = "SELECT * FROM patent WHERE userNumber = ?";
     private static final String GET_TECHNOLOGY = "SELECT * FROM technology WHERE userNumber = ?";
     private static final String GET_WORK_AUTHORIZATION = "SELECT * FROM workauthorization WHERE userNumber = ?";
 
+    private static final String DELETE_PATENT = "DELETE FROM patent WHERE userNumber = ?";
+    private static final String DELETE_TECHNOLOGY = "DELETE FROM technology WHERE userNumber = ?";
+    private static final String DELETE_WORK_AUTHORIZATION = "DELETE FROM workauthorization WHERE userNumber = ?";
+
     @Override
     public void save(ResearchProduction object) {
 
         Connection connection = dbConnection.getConnection();
+        this.deletePatents(object.getUserNumber());
+        this.deleteTechnology(object.getUserNumber());
+        this.deleteWorkAuthorization(object.getUserNumber());
         this.savePatents(connection, object.getPatentList());
         this.saveTechnology(connection, object.getTechnologyList());
         this.saveWorkAuthorization(connection, object.getWorkAuthorizationList());
@@ -147,8 +154,8 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.setString(5,patent.getPatentee());
                 preparedStatement.setString(6,patent.getMstPlanNumber());
                 preparedStatement.setDate(7,patent.getApprovalDate() == null ? null:new Date(patent.getApprovalDate().getTime()));
-                preparedStatement.setString(8,patent.getUserNumber());
-                preparedStatement.setString(9,patent.getInventor());
+                preparedStatement.setString(8,patent.getInventor());
+                preparedStatement.setString(9,patent.getUserNumber());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
@@ -196,4 +203,40 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         }
     }
 
+    private void deletePatents(String userNumber){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PATENT))
+        {
+            preparedStatement.setString(1,userNumber);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    private void deleteTechnology(String userNumber){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TECHNOLOGY))
+        {
+            preparedStatement.setString(1,userNumber);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    private void deleteWorkAuthorization(String userNumber){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_WORK_AUTHORIZATION))
+        {
+            preparedStatement.setString(1,userNumber);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

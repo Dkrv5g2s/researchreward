@@ -101,6 +101,14 @@
         <url-pattern>/AwardTimeLimit</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BFormFormula</servlet-name>
+        <servlet-class>Servlet.admin.BFormFormulaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BFormFormula</servlet-name>
+        <url-pattern>/BFormFormula</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>

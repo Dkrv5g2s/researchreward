@@ -13,8 +13,9 @@ import java.sql.SQLException;
 public class ExperimentDAOImpl implements ExperimentDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO experiment (serviceOrganization,serviceDepartment,title,year,month,userNumber) values (?,?,?,?,?,?)";
-//            "INSERT INTO education (schoolName,major,degree,graduateYear,graduateMonth,userNumber) values (?,?,?,?,?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO experiment (serviceOrganization,serviceDepartment,title,year,month,userNumber) values (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "serviceOrganization=?,serviceDepartment=?,title=?,year=?,month=?";
+
     @Override
     public void save(Experiment object) {
         Connection connection = dbConnection.getConnection();
@@ -27,7 +28,11 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             preparedStatement.setString(4,object.getPastYear());
             preparedStatement.setString(5,object.getPastMonth());
             preparedStatement.setString(6,object.getUserNumber());
-
+            preparedStatement.setString(7,object.getServiceOrganization());
+            preparedStatement.setString(8,object.getServiceDepartment());
+            preparedStatement.setString(9,object.getPastTitle());
+            preparedStatement.setString(10,object.getPastYear());
+            preparedStatement.setString(11,object.getPastMonth());
 
 
             preparedStatement.executeUpdate();
