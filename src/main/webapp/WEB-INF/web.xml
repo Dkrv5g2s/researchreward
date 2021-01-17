@@ -120,4 +120,14 @@
         <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/PaperPerformanceDescriptionForm</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ReviewSupportingInformationServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.ReviewSupportingInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReviewSupportingInformationServlet</servlet-name>
+        <url-pattern>/ReviewSupportingInformationForm</url-pattern>
+    </servlet-mapping>
 </web-app>
