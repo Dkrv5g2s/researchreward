@@ -43,6 +43,10 @@ public class AwardTimeLimit {
         this.userNumber = userNumber;
     }
 
+    public AwardTimeLimit() {
+
+    }
+
     public double getFwci() {
         return fwci;
     }
