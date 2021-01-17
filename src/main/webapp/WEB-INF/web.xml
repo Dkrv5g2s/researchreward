@@ -103,6 +103,21 @@
 
 
 
+    <servlet>
+        <servlet-name>OutstandingPerformanceDescriptionServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.OutstandingPerformanceDescriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingPerformanceDescriptionServlet</servlet-name>
+        <url-pattern>/OutstandingPerformanceDescriptionForm</url-pattern>
+    </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.PaperPerformanceDescriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
+        <url-pattern>/PaperPerformanceDescriptionForm</url-pattern>
+    </servlet-mapping>
 </web-app>

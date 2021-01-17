@@ -1,5 +1,6 @@
 package Utils;
 
+import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
 import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherForm;
 import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherStandard;
 import com.google.gson.*;
@@ -13,7 +14,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
-public class SpecialOutstandingResearcherApplicationUtil {
+public class json_transformer_util {
 
 //    public SpecialOutstandingResearcherForm json_to_special_researcher_application_form(JSONObject json ) {
 //        SpecialOutstandingResearcherForm specialOutstandingResearcherForm = new SpecialOutstandingResearcherForm() ;
@@ -53,6 +54,10 @@ public class SpecialOutstandingResearcherApplicationUtil {
 //
 //        return specialOutstandingResearcherForm ;
 //    }
+
+    public String paper_performance_description_form_to_json( PaperPerformanceDescriptionForm paperPerformanceDescriptionForm ) {
+        return new Gson().toJson( paperPerformanceDescriptionForm ) ;
+    }
 
     public SpecialOutstandingResearcherForm json_to_special_researcher_application_form(JSONObject json ) {
 
@@ -97,5 +102,9 @@ public class SpecialOutstandingResearcherApplicationUtil {
             jsonObject.put("tech_proj_end_time", "") ;
         }
         return jsonObject.toString() ;
+    }
+
+    public PaperPerformanceDescriptionForm json_to_paper_performance_description_form( JSONObject json ) {
+        return  new Gson().fromJson( json.toString() , PaperPerformanceDescriptionForm.class ) ;
     }
 }

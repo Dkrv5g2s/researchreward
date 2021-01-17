@@ -39,7 +39,7 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
         	JSONObject json = new JSONObject(jsonString);
             distinguishedProfessorFormService.save(json,(String)session.getAttribute("userNumber"));
 
-            req.getRequestDispatcher("/DistinguishedProfessorAppDocInstructions.jsp").forward(req, resp);
+            req.getRequestDispatcher("/DistinguishedProfessorAppDocInstructions").forward(req, resp);
         }
         else {
         	req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorForm.jsp").forward(req, resp);
