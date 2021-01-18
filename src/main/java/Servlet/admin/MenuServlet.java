@@ -13,6 +13,7 @@ public class MenuServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getSession().getServletContext().getRealPath("/WEB-INF/upload"));
         req.getRequestDispatcher(URL).forward(req, resp);
     }
 }

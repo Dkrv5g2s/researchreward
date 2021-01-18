@@ -22,12 +22,6 @@ public class DocxToPdfUtil {
 
     private static final int wdFormatPDF = 17;
 
-    public static void main(String[] args) throws IOException {
-        PDFGenerator pdfGenerator = new PDFGenerator();
-        pdfGenerator.generateExcellentResearcherPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\excellentResearcher.docx","11101");
-        wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\excellentResearcher.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
-
-    }
 
     public static void wordToPDF(String inputFileName, String outputFileName) {
         try {

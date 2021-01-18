@@ -25,7 +25,7 @@ public class PDFGenerator {
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
 
 
-    public void generateExcellentResearcherPDF(String docxPath, String userNumber) throws IOException {
+    public void generateExcellentResearcherPDF(String docxPath, String fileName, String userNumber) throws IOException {
         CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(userNumber);
         PersonalInformation personalInformation = personalInformationDAO.get(userNumber);
         Seniority seniority = seniorityDAO.get(userNumber);
@@ -35,7 +35,7 @@ public class PDFGenerator {
         RecruitDescription recruitDescription = recruitDescriptionDAO.get(userNumber);
         ResearchProduction researchProduction = researchProductionDAO.get(userNumber);
 
-        RewardFormDocument document = new RewardFormDocument(docxPath);
+        RewardFormDocument document = new RewardFormDocument(docxPath + fileName);
 
         document.setContentInTableCell(0,1,1,personalInformation.getCollege()+"學院"+personalInformation.getDepartment()+"系(所)");
         document.setContentInTableCell(0,1,3,personalInformation.getHiredYear()+"年"+personalInformation.getHiredMonth()+"月");
@@ -135,7 +135,7 @@ public class PDFGenerator {
 
         }
 
-        document.saveFile(docxPath);
+        document.saveFile(docxPath+userNumber+"_"+fileName);
         document.close();
     }
 }
