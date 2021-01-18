@@ -128,4 +128,14 @@
         <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/PaperPerformanceDescriptionForm</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Menu</servlet-name>
+        <servlet-class>Servlet.admin.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Menu</servlet-name>
+        <url-pattern>/Menu</url-pattern>
+    </servlet-mapping>
+
 </web-app>

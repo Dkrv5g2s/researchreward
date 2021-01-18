@@ -3,6 +3,7 @@ package Utils;
 import java.io.*;
 import java.nio.charset.Charset;
 
+import Service.ExcellentResearcher.PDFGenerator;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -21,14 +22,17 @@ public class DocxToPdfUtil {
 
     private static final int wdFormatPDF = 17;
 
-//    public static void main(String[] args) {
-//        wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
-//
-//    }
+    public static void main(String[] args) throws IOException {
+        PDFGenerator pdfGenerator = new PDFGenerator();
+        pdfGenerator.generateExcellentResearcherPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\excellentResearcher.docx","11101");
+        wordToPDF("C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\excellentResearcher.docx","C:\\Users\\z\\Desktop\\ResearchRewardSystem\\src\\doc\\1.pdf");
+
+    }
 
     public static void wordToPDF(String inputFileName, String outputFileName) {
         try {
-            parseHtmlToPdf(removeWidth(docx2Html(inputFileName)),outputFileName);
+            parseHtmlToPdf(refineWidth(docx2Html(inputFileName)),outputFileName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,23 +111,30 @@ public class DocxToPdfUtil {
         return content;
     }
 
-    private static String removeWidth(String content){
+    private static String refineWidth(String content){
         org.jsoup.nodes.Document doc = Jsoup.parse(content);
         org.jsoup.nodes.Element body = doc.body();
         String style = body.attr("style");
-        if (StringUtils.isNotEmpty(style) && style.indexOf("width") != -1){
-            body.attr("style","");
-        }
+//        if (StringUtils.isNotEmpty(style) && style.indexOf("width") != -1){
+//            body.attr("style","");
+//        }
+
         org.jsoup.select.Elements divs = doc.select("div");
         for (org.jsoup.nodes.Element div : divs){
             style = div.attr("style");
             System.out.println(style);
             if (StringUtils.isNotEmpty(style) && style.indexOf("width") != -1){
-                div.attr("style","width:500pt;margin-bottom:42.55pt;margin-top:49.6pt;margin-left:56.7pt;margin-right:56.7pt;");
+                div.attr("style","");
             }
         }
-        return doc.html();
 
+        //補表格border
+        org.jsoup.select.Elements tds = doc.select("td");
+        for (org.jsoup.nodes.Element td : tds) {
+            System.out.println(td.attr("style"));
+            td.attr("style", "border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" + td.attr("style"));
+        }
+        return doc.html();
     }
 
 }
