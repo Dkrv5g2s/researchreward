@@ -78,7 +78,6 @@
     var latest_data = ${latest_data} ;
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
-
     function load(){
         showDatas() ;
         calculateTotal() ;

@@ -1,23 +1,19 @@
 package Servlet.SpecialOutstandingResearcher;
 
 import Bean.User.User;
-import Dao.Project.ProjectDAO;
-import Dao.Project.ProjectDAOImpl;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
-import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
-import Servlet.login.ServletEntryPoint;
+import Service.SpecialOutstandingResearcher.ReviewSupportingInformationService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
+public class ReviewSupportingInformationServlet extends HttpServlet {
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
 
     @Override
@@ -42,12 +38,12 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         // project_id = ((RewardProject)request.getAttribute( "reward_project" )).getProject_id() ;
         project_id = 1 ; //temp precondition
 
-        PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
         String json_form = service.query( project_id ) ;
 
         req.setAttribute("latest_data", json_form );
 
-        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Review_Supporting_Information_Form.jsp").forward(req, resp);
     }
 
     @Override
@@ -57,11 +53,10 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
         User user = new User( "root", "password1234", "上帝", "108598065" ) ;
 
-        this.logger.info( user.getStaff_code() + " has modified PaperPerformanceDescriptionForm with json message " + jsonObject.toString() );
+        this.logger.info( user.getStaff_code() + " has modifiedReviewSupportingInformationForm with json message " + jsonObject.toString() );
 
-        PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
 
-        //service.save(jsonObject, (String)session.getAttribute("userNumber")); //正式
         service.save(jsonObject);
 
 
