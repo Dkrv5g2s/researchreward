@@ -37,7 +37,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setBoolean(11,object.getQualification2());
             preparedStatement.setString(12,object.getLevel());
             preparedStatement.setString(13,object.getPrice());
-            preparedStatement.setString(14,object.getprojectId());
+            preparedStatement.setInt(14,object.getProjectId());
             preparedStatement.setString(15,object.getCollege());
             preparedStatement.setString(16,object.getDepartment());
             preparedStatement.setString(17,object.getHiredYear());
@@ -62,13 +62,13 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
 
     @Override
-    public PersonalInformation get(String projectId) {
+    public PersonalInformation get(int projectId) {
 
         Connection connection = dbConnection.getConnection();
         PersonalInformation result = new PersonalInformation();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
@@ -85,7 +85,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
                     result.setQualification2(rs.getBoolean("qualification2"));
                     result.setLevel(rs.getString("level"));
                     result.setPrice(rs.getString("price"));
-                    result.setprojectId(rs.getString("projectId"));
+                    result.setProjectId(rs.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

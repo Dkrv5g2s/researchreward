@@ -27,7 +27,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             preparedStatement.setString(3,object.getPastTitle());
             preparedStatement.setString(4,object.getPastYear());
             preparedStatement.setString(5,object.getPastMonth());
-            preparedStatement.setString(6,object.getprojectId());
+            preparedStatement.setInt(6,object.getProjectId());
             preparedStatement.setString(7,object.getServiceOrganization());
             preparedStatement.setString(8,object.getServiceDepartment());
             preparedStatement.setString(9,object.getPastTitle());
@@ -43,13 +43,13 @@ public class ExperimentDAOImpl implements ExperimentDAO {
     }
 
     @Override
-    public Experiment get(String projectId) {
+    public Experiment get(int projectId) {
         Connection connection = dbConnection.getConnection();
         Experiment experiment = new Experiment();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM experiment WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -58,7 +58,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
                     experiment.setPastTitle(resultSet.getString("title"));
                     experiment.setPastYear(resultSet.getString("year"));
                     experiment.setPastMonth(resultSet.getString("month"));
-                    experiment.setprojectId(resultSet.getString("projectId"));
+                    experiment.setProjectId(resultSet.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

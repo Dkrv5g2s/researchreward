@@ -5,5 +5,5 @@ import Bean.ExcellentResearcher.ResearchProduction.ResearchProduction;
 
 public interface ResearchProductionDAO {
     void save(ResearchProduction object);
-    ResearchProduction get(String projectId);
+    ResearchProduction get(int projectId);
 }

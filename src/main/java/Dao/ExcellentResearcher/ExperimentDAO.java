@@ -4,5 +4,5 @@ import Bean.ExcellentResearcher.PersonalInformation.Experiment;
 
 public interface ExperimentDAO {
     void save(Experiment object);
-    Experiment get(String projectId);
+    Experiment get(int projectId);
 }

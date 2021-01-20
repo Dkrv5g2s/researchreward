@@ -4,5 +4,5 @@ import Bean.ExcellentResearcher.PersonalInformation.Education;
 
 public interface EducationDAO {
     void save(Education object);
-    Education get(String projectId);
+    Education get(int projectId);
 }

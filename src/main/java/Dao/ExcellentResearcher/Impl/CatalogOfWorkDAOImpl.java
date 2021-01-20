@@ -23,7 +23,7 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
         {
-            preparedStatement.setString(1,object.getprojectId());
+            preparedStatement.setInt(1,object.getProjectId());
             preparedStatement.setString(2,object.getWork());
             preparedStatement.setString(3,object.getWork());
 
@@ -35,18 +35,18 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
     }
 
     @Override
-    public CatalogOfWork get(String projectId) {
+    public CatalogOfWork get(int projectId) {
         Connection connection = dbConnection.getConnection();
         CatalogOfWork catalogOfWork = new CatalogOfWork();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
                     catalogOfWork.setWork(rs.getString("work"));
-                    catalogOfWork.setprojectId(rs.getString("projectId"));
+                    catalogOfWork.setProjectId(rs.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

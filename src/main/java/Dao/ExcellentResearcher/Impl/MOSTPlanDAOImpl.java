@@ -21,12 +21,12 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL))
         {
             preparedStatement.setString(1,object.getPlanName());
-            preparedStatement.setString(2,object.getprojectId());
+            preparedStatement.setInt(2,object.getProjectId());
             preparedStatement.setDate(3, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(4, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
-            preparedStatement.setString(5,object.getprojectId());
+            preparedStatement.setInt(5,object.getProjectId());
             preparedStatement.setString(6,object.getPlanName());
-            preparedStatement.setString(7,object.getprojectId());
+            preparedStatement.setInt(7,object.getProjectId());
             preparedStatement.setDate(8, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(9, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
 
@@ -38,14 +38,14 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
     }
 
     @Override
-    public MOSTPlan get(String projectId) {
+    public MOSTPlan get(int projectId) {
 
         Connection connection = dbConnection.getConnection();
         MOSTPlan mostPlan = new MOSTPlan();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mostplan WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -53,7 +53,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
                     mostPlan.setPlanNumber(resultSet.getString("planNumber"));
                     mostPlan.setStartTime(resultSet.getDate("startTime"));
                     mostPlan.setLastTime(resultSet.getDate("lastTime"));
-                    mostPlan.setprojectId(resultSet.getString("projectId"));
+                    mostPlan.setProjectId(resultSet.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

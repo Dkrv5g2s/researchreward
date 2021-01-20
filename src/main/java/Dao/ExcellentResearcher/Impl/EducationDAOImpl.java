@@ -27,7 +27,7 @@ public class EducationDAOImpl implements EducationDAO {
             preparedStatement.setString(3,object.getDegree());
             preparedStatement.setString(4,object.getGraduateYear());
             preparedStatement.setString(5,object.getGraduateMonth());
-            preparedStatement.setString(6,object.getprojectId());
+            preparedStatement.setInt(6,object.getProjectId());
             preparedStatement.setString(7,object.getSchoolName());
             preparedStatement.setString(8,object.getMajor());
             preparedStatement.setString(9,object.getDegree());
@@ -42,13 +42,13 @@ public class EducationDAOImpl implements EducationDAO {
     }
 
     @Override
-    public Education get(String projectId) {
+    public Education get(int projectId) {
         Connection connection = dbConnection.getConnection();
         Education education = new Education();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM education WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -57,7 +57,7 @@ public class EducationDAOImpl implements EducationDAO {
                     education.setDegree(resultSet.getString("degree"));
                     education.setGraduateYear(resultSet.getString("graduateYear"));
                     education.setGraduateMonth(resultSet.getString("graduateMonth"));
-                    education.setprojectId(resultSet.getString("projectId"));
+                    education.setProjectId(resultSet.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

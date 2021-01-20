@@ -24,7 +24,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
         {
             preparedStatement.setString(1,object.getYear());
             preparedStatement.setString(2,object.getMonth());
-            preparedStatement.setString(3,object.getprojectId());
+            preparedStatement.setInt(3,object.getProjectId());
             preparedStatement.setString(4,object.getYear());
             preparedStatement.setString(5,object.getMonth());
 
@@ -36,20 +36,20 @@ public class SeniorityDAOImpl implements SeniorityDAO {
     }
 
     @Override
-    public Seniority get(String projectId) {
+    public Seniority get(int projectId) {
         Connection connection = dbConnection.getConnection();
         Seniority seniority = new Seniority();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM seniority WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,projectId);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
                 seniority.setYear(resultSet.getString("year"));
                 seniority.setMonth(resultSet.getString("month"));
-                seniority.setprojectId(resultSet.getString("projectId"));
+                seniority.setProjectId(resultSet.getInt("projectId"));
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
