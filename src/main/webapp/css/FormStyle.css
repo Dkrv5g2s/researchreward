@@ -1,13 +1,4 @@
-body {
-    margin: 20px 0px 0px 0px;
-    padding: 0;
-    background: #FFFFCC;
-    font-size: 20px;
-    color: #3C3D3F;
-    background-color: #E9F2FF;
-    font: normal 16px Verdana;
-    width: 100%;
-}
+
 table {
     color: black;
     width: 100%;
@@ -36,7 +27,7 @@ table td.metadata{
 div.content{
     margin: 0 auto;
     padding: 50px;
-    width: 1200px;
+    width: 60%;
     background-color: white;
 }
 textarea {

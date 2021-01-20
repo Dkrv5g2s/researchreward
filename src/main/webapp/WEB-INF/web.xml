@@ -135,7 +135,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Menu</servlet-name>
-        <url-pattern>/Menu</url-pattern>
+        <url-pattern>/AdminMenu</url-pattern>
     </servlet-mapping>
 
 
@@ -148,4 +148,30 @@
         <url-pattern>/ReviewSupportingInformationForm</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/TeacherMenu</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.SelectRewardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <url-pattern>/SelectReward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RewardListServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.RewardListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewardListServlet</servlet-name>
+        <url-pattern>/RewardList</url-pattern>
+    </servlet-mapping>
 </web-app>

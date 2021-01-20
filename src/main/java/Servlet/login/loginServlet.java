@@ -14,8 +14,8 @@ public class loginServlet extends HttpServlet {
 
     private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
     private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
-    private static final String TEACHER_URL = "CatalogOfWorks";
-    private static final String ADMIN_URL = "Menu";
+    private static final String TEACHER_URL = "TeacherMenu";
+    private static final String ADMIN_URL = "AdminMenu";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
