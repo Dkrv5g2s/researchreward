@@ -18,7 +18,7 @@ public class RewardListServlet extends ServletEntryPoint {
 
         HttpSession session = req.getSession();
         String userNumber = (String) session.getAttribute("userNumber");
-        req.setAttribute("json",service.getRewardList(userNumber));
+        req.setAttribute("json",service.getDraftList(userNumber));
 
         req.getRequestDispatcher("WEB-INF/jsp/Teacher/rewardList.jsp").forward(req,resp);
     }
