@@ -63,7 +63,7 @@ public class PersonalInformationService {
 
 
 
-    public JSONObject get(String projectId) {
+    public JSONObject get(int projectId) {
 
         PersonalInformation personalInformation = personalInformationDAO.get(projectId);
         Seniority seniority = seniorityDAO.get(projectId);
