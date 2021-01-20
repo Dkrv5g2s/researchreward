@@ -84,12 +84,12 @@ public class OtherDataDAOImpl implements OtherDataDAO {
     public void insert(Connection connection,OtherData object) {
     	try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
-            preparedStatement.setString(1,object.getYear1());
-            preparedStatement.setString(2,object.getYear2());
-            preparedStatement.setString(3,object.getYear3());
-            preparedStatement.setString(4,object.getYear4());
-            preparedStatement.setString(5,object.getYear5());
-            preparedStatement.setString(6,object.getProjectID());
+            preparedStatement.setString(1,object.getProjectID());
+            preparedStatement.setString(2,object.getYear1());
+            preparedStatement.setString(3,object.getYear2());
+            preparedStatement.setString(4,object.getYear3());
+            preparedStatement.setString(5,object.getYear4());
+            preparedStatement.setString(6,object.getYear5());
             preparedStatement.setString(7,object.getOther_data());
             preparedStatement.setString(8,object.getCommit_date());
 
