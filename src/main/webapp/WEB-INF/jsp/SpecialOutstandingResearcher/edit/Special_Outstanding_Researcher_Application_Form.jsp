@@ -171,7 +171,7 @@
 
             <tr>
                 <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="returnIndex" >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
                     <input type="button" width="10%" value="存檔" name="save_the_page"  >
                 </td>
             </tr>
@@ -230,10 +230,11 @@
             type: 'POST',
             url: 'SpecialOutstandingResearcherApplicationForm',
             dataType: 'text',
-            data: { "data": InputFormToJson() },   //JSON.stringify(InputToJson())
+            data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
             //contentType: 'application/text',
             success: function(data){
                 alert('success');
+
             },
             error:function(data){
                 alert("error")

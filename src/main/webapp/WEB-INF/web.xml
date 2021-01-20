@@ -130,4 +130,14 @@
         <servlet-name>ReviewSupportingInformationServlet</servlet-name>
         <url-pattern>/ReviewSupportingInformationForm</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.SpecialOutstandingResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherCatalog</url-pattern>
+    </servlet-mapping>
 </web-app>
