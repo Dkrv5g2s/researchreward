@@ -28,7 +28,7 @@ public class ResearchProductionService {
         researchProductionDAO.save(researchProduction);
     }
 
-    public JSONArray get(String projectId){
+    public JSONArray get(int projectId){
 
         ResearchProduction researchProduction = researchProductionDAO.get(projectId);
 

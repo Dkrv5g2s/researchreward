@@ -60,13 +60,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="8" style="text-align: left;font-weight: bold;"><input type="checkbox" name="declaration_clause"><font color="red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</font><br>
+                <td colspan="8" style="text-align: left;font-weight: bold;"><input type="checkbox" name="representationClause"><font color="red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</font><br>
                 </td>
             </tr>
             <tr>
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="returnIndex()" >
-                    <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick=onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
+                    <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
                 </td>
             </tr>
         </tbody>
@@ -189,10 +189,10 @@
             item.total_roll = $("input[name='total_roll"+i+"']").val();
             item.total_page = $("input[name='total_page"+i+"']").val();
             item.publish_time = $("input[name='publish_time"+i+"']").val();
-            item.rank_of_scholarly_journals = $("input[name='rank_of_scholarly_journals"+i+"']").val();
-            item.author_order =  $("input[name='author_order"+i+"']").val();
-            item.communication_author_count = $("input[name='communication_author_count"+i+"']").val();
-            item.additional_weight =  $("input[name='additional_weight"+i+"']").val();
+            item.rank_of_scholarly_journals = $("input:checked[name='rank_of_scholarly_journals"+i+"']").val();
+            item.author_order =  $("input:checked[name='author_order"+i+"']").val();
+            item.communication_author_count = $("input:checked[name='communication_author_count"+i+"']").val();
+            item.additional_weight =  $("input:checked[name='additional_weight"+i+"']").val();
             item.cal_point =  $("label[name='cal_point"+i+"']").text();
 
             latest_data["paper_performance_list"].push(item);
@@ -232,7 +232,6 @@
             $("input[name='communication_author_count" + i + "'][value='"+paper_performence[i]["communication_author_count"]+ "']").prop("checked",true);
 
             $("input[name='additional_weight" + i + "'][value='"+paper_performence[i]["additional_weight"] + "']").prop("checked",true);
-
             $("label[name='cal_point"+i+"']").text(paper_performence[i].cal_point);
         }
 
@@ -247,6 +246,9 @@
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' )) ;
+
+            if ( isNaN(cal_total) )
+                cal_total = "請確認W1至w4欄位皆勾選";
 
             $("label[name='cal_point"+i+"']").text(cal_total);
 
@@ -281,7 +283,7 @@
                 type: 'POST',
                 url: 'PaperPerformanceDescriptionForm',
                 dataType: 'text',
-                data: { "data": InputFormToJson() },   //JSON.stringify(InputToJson())
+                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
                 //contentType: 'application/text',
                 success: function(data){
                     alert('success');
@@ -296,6 +298,17 @@
             alert("有資料格式錯誤或未填寫");
         }
     }
+
+    function checkRepresentationClause() {
+        if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
+            $("input[name='save_the_page']").prop( "disabled", false );
+        }
+        else {
+            $("input[name='save_the_page']").prop( "disabled", true  );
+        }
+    }
+
+    $("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
 
 </script>
 </html>

@@ -25,7 +25,7 @@ public class PDFGenerator {
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
 
 
-    public void generateExcellentResearcherPDF(String docxPath, String fileName, String projectId) throws IOException {
+    public void generateExcellentResearcherPDF(String docxPath, String fileName, int projectId) throws IOException {
         CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(projectId);
         PersonalInformation personalInformation = personalInformationDAO.get(projectId);
         Seniority seniority = seniorityDAO.get(projectId);

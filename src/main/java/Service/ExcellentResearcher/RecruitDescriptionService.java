@@ -23,7 +23,7 @@ public class RecruitDescriptionService {
                 projectId));
     }
 
-    public JSONObject get(String projectId){
+    public JSONObject get(int projectId){
 
         RecruitDescription recruitDescription = recruitDescriptionDAO.get(projectId);
         JSONObject object = new JSONObject();

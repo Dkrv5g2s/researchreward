@@ -38,16 +38,21 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int project_id ;
-        // project_id = ((RewardProject)request.getAttribute( "reward_project" )).getProject_id() ;
-        project_id = 1 ; //temp precondition
+        HttpSession session = req.getSession() ;
+
+        int project_id = (int)session.getAttribute( "project_id" );
+        boolean readonly = (Boolean)session.getAttribute("readonly");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         String json_form = service.query( project_id ) ;
 
         req.setAttribute("latest_data", json_form );
 
-        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        if ( readonly )
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        else
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+
     }
 
     @Override

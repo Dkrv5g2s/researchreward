@@ -20,7 +20,7 @@ public class CatalogOfWorksService {
 
     }
 
-    public JSONObject get(String projectId){
+    public JSONObject get(int projectId){
 
         CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(projectId);
         JSONObject object = new JSONObject();
