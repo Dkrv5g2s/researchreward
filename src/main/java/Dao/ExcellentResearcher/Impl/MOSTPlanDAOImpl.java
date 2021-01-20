@@ -10,7 +10,7 @@ import java.sql.*;
 public class MOSTPlanDAOImpl implements MOSTPlanDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, userNumber) values (?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+    private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, projectId) values (?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
             "planName=?, planNumber=?, startTime=?, lastTime=?";
 
     @Override
@@ -21,12 +21,12 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL))
         {
             preparedStatement.setString(1,object.getPlanName());
-            preparedStatement.setString(2,object.getUserNumber());
+            preparedStatement.setString(2,object.getprojectId());
             preparedStatement.setDate(3, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(4, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
-            preparedStatement.setString(5,object.getUserNumber());
+            preparedStatement.setString(5,object.getprojectId());
             preparedStatement.setString(6,object.getPlanName());
-            preparedStatement.setString(7,object.getUserNumber());
+            preparedStatement.setString(7,object.getprojectId());
             preparedStatement.setDate(8, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(9, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
 
@@ -38,14 +38,14 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
     }
 
     @Override
-    public MOSTPlan get(String userNumber) {
+    public MOSTPlan get(String projectId) {
 
         Connection connection = dbConnection.getConnection();
         MOSTPlan mostPlan = new MOSTPlan();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mostplan WHERE userNumber = ?"))
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mostplan WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -53,7 +53,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
                     mostPlan.setPlanNumber(resultSet.getString("planNumber"));
                     mostPlan.setStartTime(resultSet.getDate("startTime"));
                     mostPlan.setLastTime(resultSet.getDate("lastTime"));
-                    mostPlan.setUserNumber(resultSet.getString("userNumber"));
+                    mostPlan.setprojectId(resultSet.getString("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

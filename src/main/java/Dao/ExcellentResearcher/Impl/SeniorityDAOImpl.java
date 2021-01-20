@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class SeniorityDAOImpl implements SeniorityDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO seniority (year,month,userNumber) values (?,?,?) ON DUPLICATE KEY UPDATE " +
+    private static final String INSERT_OBJECT = "INSERT INTO seniority (year,month,projectId) values (?,?,?) ON DUPLICATE KEY UPDATE " +
             "year=?,month=?";
 
     @Override
@@ -24,7 +24,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
         {
             preparedStatement.setString(1,object.getYear());
             preparedStatement.setString(2,object.getMonth());
-            preparedStatement.setString(3,object.getUserNumber());
+            preparedStatement.setString(3,object.getprojectId());
             preparedStatement.setString(4,object.getYear());
             preparedStatement.setString(5,object.getMonth());
 
@@ -36,20 +36,20 @@ public class SeniorityDAOImpl implements SeniorityDAO {
     }
 
     @Override
-    public Seniority get(String userNumber) {
+    public Seniority get(String projectId) {
         Connection connection = dbConnection.getConnection();
         Seniority seniority = new Seniority();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM seniority WHERE userNumber = ?"))
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM seniority WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
 
                 seniority.setYear(resultSet.getString("year"));
                 seniority.setMonth(resultSet.getString("month"));
-                seniority.setUserNumber(resultSet.getString("userNumber"));
+                seniority.setprojectId(resultSet.getString("projectId"));
             }catch (SQLException ex){
                 ex.printStackTrace();
             }

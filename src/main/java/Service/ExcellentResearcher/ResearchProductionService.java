@@ -20,17 +20,17 @@ public class ResearchProductionService {
 
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
 
-    public void save(JSONArray jsonArray, String userNumber){
-        ResearchProduction researchProduction = new ResearchProduction(userNumber);
-        researchProduction.setPatentList(jsonArrayToPatents((JSONArray)jsonArray.get(0),userNumber));
-        researchProduction.setTechnologyList( jsonArrayToTechnologys((JSONArray)jsonArray.get(1),userNumber));
-        researchProduction.setWorkAuthorizationList( jsonArrayToWorkAuthorizations((JSONArray)jsonArray.get(2),userNumber));
+    public void save(JSONArray jsonArray, String projectId){
+        ResearchProduction researchProduction = new ResearchProduction(projectId);
+        researchProduction.setPatentList(jsonArrayToPatents((JSONArray)jsonArray.get(0),projectId));
+        researchProduction.setTechnologyList( jsonArrayToTechnologys((JSONArray)jsonArray.get(1),projectId));
+        researchProduction.setWorkAuthorizationList( jsonArrayToWorkAuthorizations((JSONArray)jsonArray.get(2),projectId));
         researchProductionDAO.save(researchProduction);
     }
 
-    public JSONArray get(String userNumber){
+    public JSONArray get(String projectId){
 
-        ResearchProduction researchProduction = researchProductionDAO.get(userNumber);
+        ResearchProduction researchProduction = researchProductionDAO.get(projectId);
 
         JSONArray jsonArray = new JSONArray();
 
@@ -77,7 +77,7 @@ public class ResearchProductionService {
         return array;
     }
 
-    private List<Patent> jsonArrayToPatents(JSONArray jsonArray, String userNumber){
+    private List<Patent> jsonArrayToPatents(JSONArray jsonArray, String projectId){
         List<Patent> patentList = new ArrayList<>();
 
         for (Object element: jsonArray) {
@@ -90,12 +90,12 @@ public class ResearchProductionService {
                     jsonObject.getString("patentee"),
                     jsonObject.getDate("approvalDate"),
                     jsonObject.getString("mstPlanNumber"),
-                    userNumber));
+                    projectId));
         }
 
         return patentList;
     }
-    private List<Technology> jsonArrayToTechnologys(JSONArray jsonArray, String userNumber){
+    private List<Technology> jsonArrayToTechnologys(JSONArray jsonArray, String projectId){
         List<Technology> technologyList = new ArrayList<>();
 
         for (Object element: jsonArray) {
@@ -106,12 +106,12 @@ public class ResearchProductionService {
                     jsonObject.getString("technologyName"),
                     jsonObject.getString("toAuthorizedUnit"),
                     jsonObject.getString("mstPlanNumber"),
-                    userNumber));
+                    projectId));
         }
 
         return technologyList;
     }
-    private List<WorkAuthorization> jsonArrayToWorkAuthorizations(JSONArray jsonArray, String userNumber){
+    private List<WorkAuthorization> jsonArrayToWorkAuthorizations(JSONArray jsonArray, String projectId){
         List<WorkAuthorization> workAuthorizationList = new ArrayList<>();
 
         for (Object element: jsonArray) {
@@ -122,7 +122,7 @@ public class ResearchProductionService {
                     jsonObject.getString("copyrightOwner"),
                     jsonObject.getString("mstPlanNumber"),
                     jsonObject.getString("workName"),
-                    userNumber));
+                    projectId));
         }
 
 

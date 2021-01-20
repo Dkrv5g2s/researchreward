@@ -25,15 +25,15 @@ public class PDFGenerator {
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
 
 
-    public void generateExcellentResearcherPDF(String docxPath, String fileName, String userNumber) throws IOException {
-        CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(userNumber);
-        PersonalInformation personalInformation = personalInformationDAO.get(userNumber);
-        Seniority seniority = seniorityDAO.get(userNumber);
-        MOSTPlan mostPlan = mostPlanDAO.get(userNumber);
-        Education education = educationDAO.get(userNumber);
-        Experiment experiment = experimentDAO.get(userNumber);
-        RecruitDescription recruitDescription = recruitDescriptionDAO.get(userNumber);
-        ResearchProduction researchProduction = researchProductionDAO.get(userNumber);
+    public void generateExcellentResearcherPDF(String docxPath, String fileName, String projectId) throws IOException {
+        CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(projectId);
+        PersonalInformation personalInformation = personalInformationDAO.get(projectId);
+        Seniority seniority = seniorityDAO.get(projectId);
+        MOSTPlan mostPlan = mostPlanDAO.get(projectId);
+        Education education = educationDAO.get(projectId);
+        Experiment experiment = experimentDAO.get(projectId);
+        RecruitDescription recruitDescription = recruitDescriptionDAO.get(projectId);
+        ResearchProduction researchProduction = researchProductionDAO.get(projectId);
 
         RewardFormDocument document = new RewardFormDocument(docxPath + fileName);
 
@@ -135,7 +135,7 @@ public class PDFGenerator {
 
         }
 
-        document.saveFile(docxPath+userNumber+"_"+fileName);
+        document.saveFile(docxPath+projectId+"_"+fileName);
         document.close();
     }
 }

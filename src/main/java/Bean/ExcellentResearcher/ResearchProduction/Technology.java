@@ -9,16 +9,16 @@ public class Technology {
     private String technologyName;
     private String toAuthorizedUnit;
     private String mstPlanNumber;
-    private String userNumber;
+    private String projectId;
 
-    public Technology(String authorizedUnit, String patentName, Date contractDate, String technologyName, String toAuthorizedUnit, String mstPlanNumber, String userNumber) {
+    public Technology(String authorizedUnit, String patentName, Date contractDate, String technologyName, String toAuthorizedUnit, String mstPlanNumber, String projectId) {
         this.authorizedUnit = authorizedUnit;
         this.patentName = patentName;
         this.contractDate = contractDate;
         this.technologyName = technologyName;
         this.toAuthorizedUnit = toAuthorizedUnit;
         this.mstPlanNumber = mstPlanNumber;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public Technology() {
@@ -73,11 +73,11 @@ public class Technology {
         this.mstPlanNumber = mstPlanNumber;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getprojectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setprojectId(String projectId) {
+        this.projectId = projectId;
     }
 }

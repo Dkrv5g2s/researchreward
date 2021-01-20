@@ -16,48 +16,48 @@ import java.util.List;
 public class ResearchProductionDAOImpl implements ResearchProductionDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_PATENT = "INSERT INTO patent (patentClass,patentName,country,patentNumber,patentee,mstPlanNumber,approvalDate,inventor,userNumber) values (?,?,?,?,?,?,?,?,?)";
-    private static final String INSERT_TECHNOLOGY = "INSERT INTO technology (authorizedUnit,patentName,contractDate,mstPlanNumber,technologyName,toAuthorizedUnit,userNumber) values (?,?,?,?,?,?,?)";
-    private static final String INSERT_WORK_AUTHORIZATION = "INSERT INTO workauthorization (agent,author,authorizationClass,copyrightOwner,mstPlanNumber,workName,userNumber) values (?,?,?,?,?,?,?)";
+    private static final String INSERT_PATENT = "INSERT INTO patent (patentClass,patentName,country,patentNumber,patentee,mstPlanNumber,approvalDate,inventor,projectId) values (?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_TECHNOLOGY = "INSERT INTO technology (authorizedUnit,patentName,contractDate,mstPlanNumber,technologyName,toAuthorizedUnit,projectId) values (?,?,?,?,?,?,?)";
+    private static final String INSERT_WORK_AUTHORIZATION = "INSERT INTO workauthorization (agent,author,authorizationClass,copyrightOwner,mstPlanNumber,workName,projectId) values (?,?,?,?,?,?,?)";
 
-    private static final String GET_PATENT = "SELECT * FROM patent WHERE userNumber = ?";
-    private static final String GET_TECHNOLOGY = "SELECT * FROM technology WHERE userNumber = ?";
-    private static final String GET_WORK_AUTHORIZATION = "SELECT * FROM workauthorization WHERE userNumber = ?";
+    private static final String GET_PATENT = "SELECT * FROM patent WHERE projectId = ?";
+    private static final String GET_TECHNOLOGY = "SELECT * FROM technology WHERE projectId = ?";
+    private static final String GET_WORK_AUTHORIZATION = "SELECT * FROM workauthorization WHERE projectId = ?";
 
-    private static final String DELETE_PATENT = "DELETE FROM patent WHERE userNumber = ?";
-    private static final String DELETE_TECHNOLOGY = "DELETE FROM technology WHERE userNumber = ?";
-    private static final String DELETE_WORK_AUTHORIZATION = "DELETE FROM workauthorization WHERE userNumber = ?";
+    private static final String DELETE_PATENT = "DELETE FROM patent WHERE projectId = ?";
+    private static final String DELETE_TECHNOLOGY = "DELETE FROM technology WHERE projectId = ?";
+    private static final String DELETE_WORK_AUTHORIZATION = "DELETE FROM workauthorization WHERE projectId = ?";
 
     @Override
     public void save(ResearchProduction object) {
 
         Connection connection = dbConnection.getConnection();
-        this.deletePatents(object.getUserNumber());
-        this.deleteTechnology(object.getUserNumber());
-        this.deleteWorkAuthorization(object.getUserNumber());
+        this.deletePatents(object.getprojectId());
+        this.deleteTechnology(object.getprojectId());
+        this.deleteWorkAuthorization(object.getprojectId());
         this.savePatents(connection, object.getPatentList());
         this.saveTechnology(connection, object.getTechnologyList());
         this.saveWorkAuthorization(connection, object.getWorkAuthorizationList());
     }
 
     @Override
-    public ResearchProduction get(String userNumber) {
+    public ResearchProduction get(String projectId) {
         Connection connection = dbConnection.getConnection();
         ResearchProduction result = new ResearchProduction();
 
-        result.setPatentList(getPatents(connection,userNumber));
-        result.setTechnologyList(getTechnology(connection,userNumber));
-        result.setWorkAuthorizationList(getWorkAuthorization(connection,userNumber));
+        result.setPatentList(getPatents(connection,projectId));
+        result.setTechnologyList(getTechnology(connection,projectId));
+        result.setWorkAuthorizationList(getWorkAuthorization(connection,projectId));
 
         return result;
     }
 
-    private List<Patent> getPatents(Connection connection,String userNumber){
+    private List<Patent> getPatents(Connection connection,String projectId){
         List<Patent> patentList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_PATENT))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while(resultSet.next()) {
@@ -69,7 +69,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                     patent.setPatentee(resultSet.getString("patentee"));
                     patent.setMstPlanNumber(resultSet.getString("mstPlanNumber"));
                     patent.setApprovalDate(resultSet.getDate("approvalDate"));
-                    patent.setUserNumber(resultSet.getString("userNumber"));
+                    patent.setprojectId(resultSet.getString("projectId"));
                     patent.setInventor(resultSet.getString("inventor"));
                     patentList.add(patent);
                 }
@@ -83,12 +83,12 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
 
         return patentList;
     }
-    private List<Technology> getTechnology(Connection connection,String userNumber){
+    private List<Technology> getTechnology(Connection connection,String projectId){
         List<Technology> technologyList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_TECHNOLOGY))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while(resultSet.next()) {
@@ -99,7 +99,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                     technology.setMstPlanNumber(resultSet.getString("mstPlanNumber"));
                     technology.setTechnologyName(resultSet.getString("technologyName"));
                     technology.setToAuthorizedUnit(resultSet.getString("toAuthorizedUnit"));
-                    technology.setUserNumber(resultSet.getString("userNumber"));
+                    technology.setprojectId(resultSet.getString("projectId"));
                     technologyList.add(technology);
                 }
             }catch (SQLException ex){
@@ -112,12 +112,12 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
 
         return technologyList;
     }
-    private List<WorkAuthorization> getWorkAuthorization(Connection connection,String userNumber){
+    private List<WorkAuthorization> getWorkAuthorization(Connection connection,String projectId){
         List<WorkAuthorization> workAuthorizationList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_WORK_AUTHORIZATION))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while(resultSet.next()) {
@@ -128,7 +128,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                     workAuthorization.setCopyrightOwner(resultSet.getString("copyrightOwner"));
                     workAuthorization.setMstPlanNumber(resultSet.getString("mstPlanNumber"));
                     workAuthorization.setWorkName(resultSet.getString("workName"));
-                    workAuthorization.setUserNumber(resultSet.getString("userNumber"));
+                    workAuthorization.setprojectId(resultSet.getString("projectId"));
                     workAuthorizationList.add(workAuthorization);
                 }
             }catch (SQLException ex){
@@ -155,7 +155,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.setString(6,patent.getMstPlanNumber());
                 preparedStatement.setDate(7,patent.getApprovalDate() == null ? null:new Date(patent.getApprovalDate().getTime()));
                 preparedStatement.setString(8,patent.getInventor());
-                preparedStatement.setString(9,patent.getUserNumber());
+                preparedStatement.setString(9,patent.getprojectId());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
@@ -174,7 +174,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.setString(4,technology.getMstPlanNumber());
                 preparedStatement.setString(5,technology.getTechnologyName());
                 preparedStatement.setString(6,technology.getToAuthorizedUnit());
-                preparedStatement.setString(7,technology.getUserNumber());
+                preparedStatement.setString(7,technology.getprojectId());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
@@ -193,7 +193,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.setString(4,workAuthorization.getCopyrightOwner());
                 preparedStatement.setString(5,workAuthorization.getMstPlanNumber());
                 preparedStatement.setString(6,workAuthorization.getWorkName());
-                preparedStatement.setString(7,workAuthorization.getUserNumber());
+                preparedStatement.setString(7,workAuthorization.getprojectId());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
@@ -203,36 +203,36 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         }
     }
 
-    private void deletePatents(String userNumber){
+    private void deletePatents(String projectId){
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PATENT))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e){
             e.printStackTrace();
         }
     }
-    private void deleteTechnology(String userNumber){
+    private void deleteTechnology(String projectId){
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TECHNOLOGY))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e){
             e.printStackTrace();
         }
     }
-    private void deleteWorkAuthorization(String userNumber){
+    private void deleteWorkAuthorization(String projectId){
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_WORK_AUTHORIZATION))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e){

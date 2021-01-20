@@ -10,9 +10,9 @@ public class RecruitDescription {
     private String award;
     private String other;
     private String contribution;
-    private String userNumber;
+    private String projectId;
 
-    public RecruitDescription(String recruitReason, String recruitContent, String expect, String analysis, String researchProduction, String award, String other, String contribution, String userNumber) {
+    public RecruitDescription(String recruitReason, String recruitContent, String expect, String analysis, String researchProduction, String award, String other, String contribution, String projectId) {
         this.recruitReason = recruitReason;
         this.recruitContent = recruitContent;
         this.expect = expect;
@@ -21,7 +21,7 @@ public class RecruitDescription {
         this.award = award;
         this.other = other;
         this.contribution = contribution;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public RecruitDescription() {
@@ -92,11 +92,11 @@ public class RecruitDescription {
         this.contribution = contribution;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getprojectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setprojectId(String projectId) {
+        this.projectId = projectId;
     }
 }

@@ -6,28 +6,28 @@ public class Education {
     private String degree;
     private String graduateYear;
     private String graduateMonth;
-    private String userNumber;
+    private String projectId;
 
-    public Education(String schoolName, String major, String degree, String graduateYear, String graduateMonth, String userNumber) {
+    public Education(String schoolName, String major, String degree, String graduateYear, String graduateMonth, String projectId) {
         this.schoolName = schoolName;
         this.major = major;
         this.degree = degree;
         this.degree = degree;
         this.graduateYear = graduateYear;
         this.graduateMonth = graduateMonth;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public Education() {
 
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getprojectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setprojectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getMajor() {

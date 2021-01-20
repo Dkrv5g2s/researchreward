@@ -4,5 +4,5 @@ import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 
 public interface PersonalInformationDAO {
     void save(PersonalInformation object);
-    PersonalInformation get(String userNumber);
+    PersonalInformation get(String projectId);
 }

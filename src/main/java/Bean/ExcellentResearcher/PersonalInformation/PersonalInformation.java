@@ -20,10 +20,10 @@ public class PersonalInformation {
     private Boolean qualification2;
     private String level;
     private String price;
-    private String userNumber;
+    private String projectId;
 
 
-    public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, String userNumber, String price) {
+    public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, String projectId, String price) {
         this.college = college;
         this.department = department;
         this.hiredYear = hiredYear;
@@ -40,7 +40,7 @@ public class PersonalInformation {
         this.qualification1 = qualification1;
         this.qualification2 = qualification2;
         this.level = level;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
         this.price = price;
     }
 
@@ -48,12 +48,12 @@ public class PersonalInformation {
 
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getprojectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setprojectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getCollege() {
@@ -212,7 +212,7 @@ public class PersonalInformation {
                 ", qualification2=" + qualification2 +
                 ", level='" + level + '\'' +
                 ", price='" + price + '\'' +
-                ", userNumber='" + userNumber + '\'' +
+                ", projectId='" + projectId + '\'' +
                 '}';
     }
 }

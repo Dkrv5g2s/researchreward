@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class EducationDAOImpl implements EducationDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO education (schoolName,major,degree,graduateYear,graduateMonth,userNumber) values (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+    private static final String INSERT_OBJECT = "INSERT INTO education (schoolName,major,degree,graduateYear,graduateMonth,projectId) values (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
             "schoolName=?,major=?,degree=?,graduateYear=?,graduateMonth=?";
 
     @Override
@@ -27,7 +27,7 @@ public class EducationDAOImpl implements EducationDAO {
             preparedStatement.setString(3,object.getDegree());
             preparedStatement.setString(4,object.getGraduateYear());
             preparedStatement.setString(5,object.getGraduateMonth());
-            preparedStatement.setString(6,object.getUserNumber());
+            preparedStatement.setString(6,object.getprojectId());
             preparedStatement.setString(7,object.getSchoolName());
             preparedStatement.setString(8,object.getMajor());
             preparedStatement.setString(9,object.getDegree());
@@ -42,13 +42,13 @@ public class EducationDAOImpl implements EducationDAO {
     }
 
     @Override
-    public Education get(String userNumber) {
+    public Education get(String projectId) {
         Connection connection = dbConnection.getConnection();
         Education education = new Education();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM education WHERE userNumber = ?"))
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM education WHERE projectId = ?"))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setString(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -57,7 +57,7 @@ public class EducationDAOImpl implements EducationDAO {
                     education.setDegree(resultSet.getString("degree"));
                     education.setGraduateYear(resultSet.getString("graduateYear"));
                     education.setGraduateMonth(resultSet.getString("graduateMonth"));
-                    education.setUserNumber(resultSet.getString("userNumber"));
+                    education.setprojectId(resultSet.getString("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

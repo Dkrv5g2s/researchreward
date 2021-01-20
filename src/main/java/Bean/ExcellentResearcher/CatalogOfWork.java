@@ -3,23 +3,23 @@ package Bean.ExcellentResearcher;
 public class CatalogOfWork {
 
     private String work;
-    private String userNumber;
+    private String projectId;
 
-    public CatalogOfWork(String work, String userNumber) {
+    public CatalogOfWork(String work, String projectId) {
         this.work = work;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public CatalogOfWork() {
 
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getprojectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setprojectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getWork() {
