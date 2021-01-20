@@ -6,27 +6,27 @@ public class Experiment {
     private String pastTitle;
     private String pastYear;
     private String pastMonth;
-    private String userNumber;
+    private int projectId;
 
-    public Experiment(String serviceOrganization, String serviceDepartment, String pastTitle, String pastYear, String pastMonth, String userNumber) {
+    public Experiment(String serviceOrganization, String serviceDepartment, String pastTitle, String pastYear, String pastMonth, int projectId) {
         this.serviceOrganization = serviceOrganization;
         this.serviceDepartment = serviceDepartment;
         this.pastTitle = pastTitle;
         this.pastYear = pastYear;
         this.pastMonth = pastMonth;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public Experiment() {
 
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public String getServiceOrganization() {

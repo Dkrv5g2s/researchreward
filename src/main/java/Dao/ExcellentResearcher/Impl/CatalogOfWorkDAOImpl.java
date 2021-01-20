@@ -13,8 +13,9 @@ import java.sql.SQLException;
 public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO catalogofwork (userNumber, work) values (?,?)";
-    private static final String GET_OBJECT = "SELECT * FROM catalogofwork WHERE userNumber=?";
+    private static final String INSERT_OBJECT = "INSERT INTO catalogofwork (projectId, work) values (?,?) ON DUPLICATE KEY UPDATE " +
+            "work = ?";
+    private static final String GET_OBJECT = "SELECT * FROM catalogofwork WHERE projectId=?";
 
     @Override
     public void save(CatalogOfWork object) {
@@ -22,9 +23,9 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
         {
-            preparedStatement.setString(1,object.getUserNumber());
+            preparedStatement.setInt(1,object.getProjectId());
             preparedStatement.setString(2,object.getWork());
-
+            preparedStatement.setString(3,object.getWork());
 
             preparedStatement.executeUpdate();
 
@@ -34,18 +35,18 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
     }
 
     @Override
-    public CatalogOfWork get(String userNumber) {
+    public CatalogOfWork get(int projectId) {
         Connection connection = dbConnection.getConnection();
         CatalogOfWork catalogOfWork = new CatalogOfWork();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
                     catalogOfWork.setWork(rs.getString("work"));
-                    catalogOfWork.setUserNumber(rs.getString("userNumber"));
+                    catalogOfWork.setProjectId(rs.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

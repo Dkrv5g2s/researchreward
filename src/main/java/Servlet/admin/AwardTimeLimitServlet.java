@@ -17,6 +17,11 @@ public class AwardTimeLimitServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",awardTimeLimitService.get((String)session.getAttribute("userNumber")));
+
         req.getRequestDispatcher(URL).forward(req, resp);
     }
 
@@ -26,6 +31,6 @@ public class AwardTimeLimitServlet extends ServletEntryPoint {
 
         JSONObject json = new JSONObject(readJSONString(req));
         awardTimeLimitService.save(json,(String)session.getAttribute("userNumber"));
-        req.getRequestDispatcher(URL).forward(req, resp);
+        doGet(req,resp);
     }
 }

@@ -14,15 +14,15 @@ public class CatalogOfWorksService {
     private CatalogOfWorkDAO catalogOfWorkDAO = new CatalogOfWorkDAOImpl();
 
 
-    public void save(JSONObject jsonObject, String userNumber){
+    public void save(JSONObject jsonObject, int projectId){
 
-        catalogOfWorkDAO.save(new CatalogOfWork(jsonObject.getString("work"),userNumber));
+        catalogOfWorkDAO.save(new CatalogOfWork(jsonObject.getString("work"),projectId));
 
     }
 
-    public JSONObject get(String userNumber){
+    public JSONObject get(String projectId){
 
-        CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(userNumber);
+        CatalogOfWork catalogOfWork = catalogOfWorkDAO.get(projectId);
         JSONObject object = new JSONObject();
 
         try {

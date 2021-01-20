@@ -11,9 +11,9 @@ public class Patent {
     private String patentee;
     private Date approvalDate;
     private String mstPlanNumber;
-    private String userNumber;
+    private int projectId;
 
-    public Patent(String patentClass, String patentName, String country, String patentNumber, String inventor, String patentee, Date approvalDate, String mstPlanNumber, String userNumber) {
+    public Patent(String patentClass, String patentName, String country, String patentNumber, String inventor, String patentee, Date approvalDate, String mstPlanNumber, int projectId) {
         this.patentClass = patentClass;
         this.patentName = patentName;
         this.country = country;
@@ -22,7 +22,7 @@ public class Patent {
         this.patentee = patentee;
         this.approvalDate = approvalDate;
         this.mstPlanNumber = mstPlanNumber;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public Patent() {
@@ -93,11 +93,11 @@ public class Patent {
         this.mstPlanNumber = mstPlanNumber;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 }

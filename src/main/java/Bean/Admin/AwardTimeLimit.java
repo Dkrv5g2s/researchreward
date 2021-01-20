@@ -3,22 +3,22 @@ package Bean.Admin;
 import java.sql.Date;
 
 public class AwardTimeLimit {
-    private Date s1;
-    private Date s2;
-    private Date s3;
-    private Date s4;
-    private Date s5;
-    private Date s6;
-    private Date s7;
-    private Date s8;
-    private Date l1;
-    private Date l2;
-    private Date l3;
-    private Date l4;
-    private Date l5;
-    private Date l6;
-    private Date l7;
-    private Date l8;
+    private Date s1 = new Date(System.currentTimeMillis());
+    private Date s2 = new Date(System.currentTimeMillis());
+    private Date s3 = new Date(System.currentTimeMillis());
+    private Date s4 = new Date(System.currentTimeMillis());
+    private Date s5 = new Date(System.currentTimeMillis());
+    private Date s6 = new Date(System.currentTimeMillis());
+    private Date s7 = new Date(System.currentTimeMillis());
+    private Date s8 = new Date(System.currentTimeMillis());
+    private Date l1 = new Date(System.currentTimeMillis());
+    private Date l2 = new Date(System.currentTimeMillis());
+    private Date l3 = new Date(System.currentTimeMillis());
+    private Date l4 = new Date(System.currentTimeMillis());
+    private Date l5 = new Date(System.currentTimeMillis());
+    private Date l6 = new Date(System.currentTimeMillis());
+    private Date l7 = new Date(System.currentTimeMillis());
+    private Date l8 = new Date(System.currentTimeMillis());
     private double fwci;
     private String userNumber;
 
@@ -41,6 +41,10 @@ public class AwardTimeLimit {
         this.l8 = l8;
         this.fwci = fwci;
         this.userNumber = userNumber;
+    }
+
+    public AwardTimeLimit() {
+
     }
 
     public double getFwci() {

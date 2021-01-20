@@ -13,8 +13,9 @@ import java.sql.SQLException;
 public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO recruitdescription (recruitReason,recruitContent,expect,analysis,researchProduction,award,other,contribution,userNumber) values(?,?,?,?,?,?,?,?,?)";
-    private static final String GET_OBJECT = "SELECT * FROM recruitdescription WHERE userNumber = ?";
+    private static final String INSERT_OBJECT = "INSERT INTO recruitdescription (recruitReason,recruitContent,expect,analysis,researchProduction,award,other,contribution,projectId) values(?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "recruitReason=?,recruitContent=?,expect=?,analysis=?,researchProduction=?,award=?,other=?,contribution=?";
+    private static final String GET_OBJECT = "SELECT * FROM recruitdescription WHERE projectId = ?";
 
     @Override
     public void save(RecruitDescription object) {
@@ -30,8 +31,15 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
             preparedStatement.setString(6,object.getAward());
             preparedStatement.setString(7,object.getOther());
             preparedStatement.setString(8,object.getContribution());
-            preparedStatement.setString(9,object.getUserNumber());
-
+            preparedStatement.setInt(9,object.getProjectId());
+            preparedStatement.setString(10,object.getRecruitReason());
+            preparedStatement.setString(11,object.getRecruitContent());
+            preparedStatement.setString(12,object.getExpect());
+            preparedStatement.setString(13,object.getAnalysis());
+            preparedStatement.setString(14,object.getResearchProduction());
+            preparedStatement.setString(15,object.getAward());
+            preparedStatement.setString(16,object.getOther());
+            preparedStatement.setString(17,object.getContribution());
 
 
             preparedStatement.executeUpdate();
@@ -42,13 +50,13 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
     }
 
     @Override
-    public RecruitDescription get(String userNumber) {
+    public RecruitDescription get(int projectId) {
         Connection connection = dbConnection.getConnection();
         RecruitDescription recruitDescription = new RecruitDescription();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
-            preparedStatement.setString(1,userNumber);
+            preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()) {
@@ -60,7 +68,7 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
                     recruitDescription.setAward(resultSet.getString("award"));
                     recruitDescription.setOther(resultSet.getString("other"));
                     recruitDescription.setContribution(resultSet.getString("contribution"));
-                    recruitDescription.setUserNumber(resultSet.getString("userNumber"));
+                    recruitDescription.setProjectId(resultSet.getInt("projectId"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

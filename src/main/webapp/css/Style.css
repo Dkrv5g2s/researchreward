@@ -1,0 +1,141 @@
+/* ================================================================
+This copyright notice must be kept untouched in the stylesheet at
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.stunicholls.com/menu/pro_drop_1.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+
+.preload1 {background: url(../images/blank_over.gif);}
+.preload2 {background: url(../images/blank_overa.gif);}
+
+#nav {
+    padding:0;
+    margin:0;
+    list-style:none;
+    background:#fff;
+    position:relative;
+
+}
+#nav li.top {
+    display:block;
+    float:left;
+}
+#nav li a.top_link {
+    display:block;
+    float:left;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-family:Arial ;
+    padding:0px 40px 0px 40px;
+    cursor:pointer;
+    background: url(../images/blank.gif);
+    line-height:35px;
+}
+#nav li a.top_link span {
+    float:left;
+    display:block;
+    background:url(../images/blank.gif) right top;
+}
+#nav li a.top_link span.down {
+    float:left;
+    display:block;
+    padding:0 24px 0 12px;
+    height:50px;
+    background:url(../images/blanka.gif) no-repeat right top;
+}
+#nav li a.top_link:hover {
+    background: url(../images/blank_over.gif) no-repeat;
+    color:#FFFF00;
+    height:50px;
+}
+#nav li a.top_link:hover span {
+    background:url(../images/blank_over.gif) no-repeat right top;
+}
+#nav li a.top_link:hover span.down {
+    background:url(../images/blank_overa.gif) no-repeat right top;
+}
+
+#nav li:hover > a.top_link {color:#FFFF00; background: url(../images/blank_over.gif) no-repeat;}
+#nav li:hover > a.top_link span {background:url(../images/blank_over.gif) no-repeat right top;}
+#nav li:hover > a.top_link span.down {background:url(../images/blank_overa.gif) no-repeat right top;}
+
+/* Default list styling */
+
+#nav li:hover {position:relative;}
+
+/* keep the 'next' level invisible by placing it off screen. */
+#nav ul,
+#nav li:hover ul ul,
+#nav li:hover ul li:hover ul ul,
+#nav li:hover ul li:hover ul li:hover ul ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul ul{
+    position:absolute;
+    left:-9999px;
+    top:-9999px;
+    width:0;
+    height:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#nav li:hover ul.sub{
+    left:0;
+    top:40px;
+    background: #fff;
+    padding:3px;
+    border:1px solid #3a93d2;
+    white-space:nowrap;
+    width:220px;
+    height:auto;
+    text-align:left;
+}
+#nav li:hover ul.sub li{
+    display:block;
+    height:25px;
+    position:relative;
+    float:left;
+    width:220px;
+    font-weight:normal;
+
+}
+#nav li:hover ul.sub li a{
+    display:block;
+    font-size:16px;
+    font-family:Arial ;
+    height:25px;
+    width:220px;
+    line-height:20px;
+    text-indent:5px;
+    color:#505050;
+    text-decoration:none;
+
+    /*margin-bottom:20px;*/
+}
+#nav li ul.sub li a.fly
+{background:#fff;}
+#nav li:hover ul.sub li a:hover
+{background:#3a93d2;color:#fff;}
+#nav li:hover ul.sub li a.fly:hover
+{background:#3a93d2 ; color:#fff;}
+
+#nav li:hover ul li:hover > a.fly {background:#3a93d2 ; color:#fff;}
+
+/*蝚砌�惜*/
+#nav li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul li:hover ul{
+    left:220px;
+    top:-4px;
+    background: #fff;
+    padding:3px;
+    border:1px solid #3a93d2;
+    white-space:nowrap;
+    width:220px;
+    height:auto;
+}

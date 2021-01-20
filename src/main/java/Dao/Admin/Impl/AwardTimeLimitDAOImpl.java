@@ -7,16 +7,71 @@ import Dao.Admin.AwardTimeLimitDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,l1,l2,l3,l4,l5,l6,l7,l8,userNumber,fwci) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,l1,l2,l3,l4,l5,l6,l7,l8,fwci) " +
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+    private static final String GET_OBJECT = "SELECT * FROM awardtimelimit";
+    private static final String DELETE_OBJECT = "DELETE FROM awardtimelimit";
 
     @Override
     public void save(AwardTimeLimit object) {
+        delete();
+        insert(object);
 
+    }
+
+    public AwardTimeLimit get(String userNumber){
+        Connection connection = dbConnection.getConnection();
+        AwardTimeLimit result = new AwardTimeLimit();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if(resultSet.next()) {
+                    result.setL1(resultSet.getDate("l1"));
+                    result.setL2(resultSet.getDate("l2"));
+                    result.setL3(resultSet.getDate("l3"));
+                    result.setL4(resultSet.getDate("l4"));
+                    result.setL5(resultSet.getDate("l5"));
+                    result.setL6(resultSet.getDate("l6"));
+                    result.setL7(resultSet.getDate("l7"));
+                    result.setL8(resultSet.getDate("l8"));
+                    result.setS1(resultSet.getDate("s1"));
+                    result.setS2(resultSet.getDate("s2"));
+                    result.setS3(resultSet.getDate("s3"));
+                    result.setS4(resultSet.getDate("s4"));
+                    result.setS5(resultSet.getDate("s5"));
+                    result.setS6(resultSet.getDate("s6"));
+                    result.setS7(resultSet.getDate("s7"));
+                    result.setS8(resultSet.getDate("s8"));
+                    result.setFwci(resultSet.getDouble("fwci"));
+                }else{
+                    return result;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private void delete(){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void insert(AwardTimeLimit object){
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
@@ -37,8 +92,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
             preparedStatement.setDate(14,object.getL6());
             preparedStatement.setDate(15,object.getL7());
             preparedStatement.setDate(16,object.getL8());
-            preparedStatement.setString(17,object.getUserNumber());
-            preparedStatement.setDouble(18,object.getFwci());
+            preparedStatement.setDouble(17,object.getFwci());
 
 
             preparedStatement.executeUpdate();

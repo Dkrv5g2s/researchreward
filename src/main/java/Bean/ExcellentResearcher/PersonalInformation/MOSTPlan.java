@@ -7,26 +7,26 @@ public class MOSTPlan {
     private String planNumber;
     private Date startTime;
     private Date lastTime;
-    private String userNumber;
+    private int projectId;
 
     public MOSTPlan() {
 
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
-    public MOSTPlan(String planName, String planNumber, Date startTime, Date lastTime, String userNumber) {
+    public MOSTPlan(String planName, String planNumber, Date startTime, Date lastTime, int projectId) {
         this.planName = planName;
         this.planNumber = planNumber;
         this.startTime = startTime;
         this.lastTime = lastTime;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
 
