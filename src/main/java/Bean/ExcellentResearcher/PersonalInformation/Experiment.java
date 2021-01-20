@@ -6,9 +6,9 @@ public class Experiment {
     private String pastTitle;
     private String pastYear;
     private String pastMonth;
-    private String projectId;
+    private int projectId;
 
-    public Experiment(String serviceOrganization, String serviceDepartment, String pastTitle, String pastYear, String pastMonth, String projectId) {
+    public Experiment(String serviceOrganization, String serviceDepartment, String pastTitle, String pastYear, String pastMonth, int projectId) {
         this.serviceOrganization = serviceOrganization;
         this.serviceDepartment = serviceDepartment;
         this.pastTitle = pastTitle;
@@ -21,11 +21,11 @@ public class Experiment {
 
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

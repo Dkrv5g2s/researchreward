@@ -11,7 +11,7 @@ public class RecruitDescriptionService {
 
     private RecruitDescriptionDAO recruitDescriptionDAO = new RecruitDescriptionDAOImpl();
 
-    public void save(JSONObject jsonObject, String projectId){
+    public void save(JSONObject jsonObject, int projectId){
         recruitDescriptionDAO.save(new RecruitDescription(jsonObject.getString("recruitReason"),
                 jsonObject.getString("recruitContent"),
                 jsonObject.getString("expect"),

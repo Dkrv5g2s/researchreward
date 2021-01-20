@@ -7,21 +7,21 @@ public class MOSTPlan {
     private String planNumber;
     private Date startTime;
     private Date lastTime;
-    private String projectId;
+    private int projectId;
 
     public MOSTPlan() {
 
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 
-    public MOSTPlan(String planName, String planNumber, Date startTime, Date lastTime, String projectId) {
+    public MOSTPlan(String planName, String planNumber, Date startTime, Date lastTime, int projectId) {
         this.planName = planName;
         this.planNumber = planNumber;
         this.startTime = startTime;

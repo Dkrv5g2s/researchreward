@@ -20,7 +20,7 @@ public class ResearchProductionService {
 
     private ResearchProductionDAO researchProductionDAO = new ResearchProductionDAOImpl();
 
-    public void save(JSONArray jsonArray, String projectId){
+    public void save(JSONArray jsonArray, int projectId){
         ResearchProduction researchProduction = new ResearchProduction(projectId);
         researchProduction.setPatentList(jsonArrayToPatents((JSONArray)jsonArray.get(0),projectId));
         researchProduction.setTechnologyList( jsonArrayToTechnologys((JSONArray)jsonArray.get(1),projectId));
@@ -77,7 +77,7 @@ public class ResearchProductionService {
         return array;
     }
 
-    private List<Patent> jsonArrayToPatents(JSONArray jsonArray, String projectId){
+    private List<Patent> jsonArrayToPatents(JSONArray jsonArray, int projectId){
         List<Patent> patentList = new ArrayList<>();
 
         for (Object element: jsonArray) {
@@ -95,7 +95,7 @@ public class ResearchProductionService {
 
         return patentList;
     }
-    private List<Technology> jsonArrayToTechnologys(JSONArray jsonArray, String projectId){
+    private List<Technology> jsonArrayToTechnologys(JSONArray jsonArray, int projectId){
         List<Technology> technologyList = new ArrayList<>();
 
         for (Object element: jsonArray) {
@@ -111,7 +111,7 @@ public class ResearchProductionService {
 
         return technologyList;
     }
-    private List<WorkAuthorization> jsonArrayToWorkAuthorizations(JSONArray jsonArray, String projectId){
+    private List<WorkAuthorization> jsonArrayToWorkAuthorizations(JSONArray jsonArray, int projectId){
         List<WorkAuthorization> workAuthorizationList = new ArrayList<>();
 
         for (Object element: jsonArray) {

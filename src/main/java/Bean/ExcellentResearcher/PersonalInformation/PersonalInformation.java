@@ -20,10 +20,10 @@ public class PersonalInformation {
     private Boolean qualification2;
     private String level;
     private String price;
-    private String projectId;
+    private int projectId;
 
 
-    public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, String projectId, String price) {
+    public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, int projectId, String price) {
         this.college = college;
         this.department = department;
         this.hiredYear = hiredYear;
@@ -48,11 +48,11 @@ public class PersonalInformation {
 
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

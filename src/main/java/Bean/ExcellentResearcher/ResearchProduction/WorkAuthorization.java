@@ -7,9 +7,9 @@ public class WorkAuthorization {
     private String copyrightOwner;
     private String mstPlanNumber;
     private String workName;
-    private String projectId;
+    private int projectId;
 
-    public WorkAuthorization(String agent, String author, String authorizationClass, String copyrightOwner, String mstPlanNumber, String patentClass, String projectId) {
+    public WorkAuthorization(String agent, String author, String authorizationClass, String copyrightOwner, String mstPlanNumber, String patentClass, int projectId) {
         this.agent = agent;
         this.author = author;
         this.authorizationClass = authorizationClass;
@@ -71,11 +71,11 @@ public class WorkAuthorization {
         this.workName = workName;
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 }

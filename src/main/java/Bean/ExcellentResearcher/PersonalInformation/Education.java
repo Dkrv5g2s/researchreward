@@ -6,9 +6,9 @@ public class Education {
     private String degree;
     private String graduateYear;
     private String graduateMonth;
-    private String projectId;
+    private int projectId;
 
-    public Education(String schoolName, String major, String degree, String graduateYear, String graduateMonth, String projectId) {
+    public Education(String schoolName, String major, String degree, String graduateYear, String graduateMonth, int projectId) {
         this.schoolName = schoolName;
         this.major = major;
         this.degree = degree;
@@ -22,11 +22,11 @@ public class Education {
 
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

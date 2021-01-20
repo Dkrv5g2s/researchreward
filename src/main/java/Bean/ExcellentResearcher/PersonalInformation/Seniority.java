@@ -3,9 +3,9 @@ package Bean.ExcellentResearcher.PersonalInformation;
 public class Seniority {
     private String year;
     private String month;
-    private String projectId;
+    private int projectId;
 
-    public Seniority(String year, String month, String projectId) {
+    public Seniority(String year, String month, int projectId) {
         this.year = year;
         this.month = month;
         this.projectId = projectId;
@@ -31,11 +31,11 @@ public class Seniority {
         this.month = month;
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 }

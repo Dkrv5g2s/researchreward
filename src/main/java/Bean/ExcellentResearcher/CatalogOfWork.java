@@ -3,9 +3,9 @@ package Bean.ExcellentResearcher;
 public class CatalogOfWork {
 
     private String work;
-    private String projectId;
+    private int projectId;
 
-    public CatalogOfWork(String work, String projectId) {
+    public CatalogOfWork(String work, int projectId) {
         this.work = work;
         this.projectId = projectId;
     }
@@ -14,11 +14,11 @@ public class CatalogOfWork {
 
     }
 
-    public String getprojectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setprojectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

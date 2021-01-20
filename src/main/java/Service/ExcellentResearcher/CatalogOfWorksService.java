@@ -14,7 +14,7 @@ public class CatalogOfWorksService {
     private CatalogOfWorkDAO catalogOfWorkDAO = new CatalogOfWorkDAOImpl();
 
 
-    public void save(JSONObject jsonObject, String projectId){
+    public void save(JSONObject jsonObject, int projectId){
 
         catalogOfWorkDAO.save(new CatalogOfWork(jsonObject.getString("work"),projectId));
 
