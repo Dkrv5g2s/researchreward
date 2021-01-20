@@ -101,6 +101,14 @@
         <url-pattern>/AwardTimeLimit</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BFormFormula</servlet-name>
+        <servlet-class>Servlet.admin.BFormFormulaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BFormFormula</servlet-name>
+        <url-pattern>/BFormFormula</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>
@@ -121,6 +129,15 @@
         <url-pattern>/PaperPerformanceDescriptionForm</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Menu</servlet-name>
+        <servlet-class>Servlet.admin.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Menu</servlet-name>
+        <url-pattern>/AdminMenu</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>ReviewSupportingInformationServlet</servlet-name>
@@ -139,5 +156,41 @@
     <servlet-mapping>
         <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
         <url-pattern>/SpecialOutstandingResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/TeacherMenu</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.SelectRewardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <url-pattern>/SelectReward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RewardListServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.RewardListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewardListServlet</servlet-name>
+        <url-pattern>/RewardList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.TraceProgressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <url-pattern>/TraceProgress</url-pattern>
     </servlet-mapping>
 </web-app>

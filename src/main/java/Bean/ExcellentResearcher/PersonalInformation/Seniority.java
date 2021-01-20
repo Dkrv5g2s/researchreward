@@ -3,12 +3,12 @@ package Bean.ExcellentResearcher.PersonalInformation;
 public class Seniority {
     private String year;
     private String month;
-    private String userNumber;
+    private int projectId;
 
-    public Seniority(String year, String month, String userNumber) {
+    public Seniority(String year, String month, int projectId) {
         this.year = year;
         this.month = month;
-        this.userNumber = userNumber;
+        this.projectId = projectId;
     }
 
     public Seniority() {
@@ -31,11 +31,11 @@ public class Seniority {
         this.month = month;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 }

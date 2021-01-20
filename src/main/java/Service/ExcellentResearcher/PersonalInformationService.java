@@ -15,25 +15,25 @@ public class PersonalInformationService {
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
 
-    public void save(JSONObject jsonObject, String userNumber){
-        Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),userNumber);
+    public void save(JSONObject jsonObject, int projectId){
+        Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
         Education education = new Education(jsonObject.getString("schoolName"),
                 jsonObject.getString("major"),
                 jsonObject.getString("degree"),
                 jsonObject.getString("graduateMonth"),
                 jsonObject.getString("graduateMonth"),
-                userNumber);
+                projectId);
         Experiment experiment = new Experiment(jsonObject.getString("ServiceOrganization"),
                 jsonObject.getString("ServiceDepartment"),
                 jsonObject.getString("pastTitle"),
                 jsonObject.getString("pastYear"),
                 jsonObject.getString("pastMonth"),
-                userNumber);
+                projectId);
         MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
                 jsonObject.getString("planNumber"),
                 jsonObject.getDate("startTime"),
                 jsonObject.getDate("lastTime"),
-                userNumber);
+                projectId);
         PersonalInformation personalInformation = new PersonalInformation(jsonObject.getString("college"),
                 jsonObject.getString("department"),
                 jsonObject.getString("hiredYear"),
@@ -50,7 +50,7 @@ public class PersonalInformationService {
                 jsonObject.getBoolean("qualification1"),
                 jsonObject.getBoolean("qualification1"),
                 jsonObject.getString("level"),
-                userNumber,
+                projectId,
                 jsonObject.getString("price"));
 
 
@@ -63,13 +63,13 @@ public class PersonalInformationService {
 
 
 
-    public JSONObject get(String userNumber) {
+    public JSONObject get(int projectId) {
 
-        PersonalInformation personalInformation = personalInformationDAO.get(userNumber);
-        Seniority seniority = seniorityDAO.get(userNumber);
-        Experiment experiment = experimentDAO.get(userNumber);
-        MOSTPlan mostPlan = mostPlanDAO.get(userNumber);
-        Education education = educationDAO.get(userNumber);
+        PersonalInformation personalInformation = personalInformationDAO.get(projectId);
+        Seniority seniority = seniorityDAO.get(projectId);
+        Experiment experiment = experimentDAO.get(projectId);
+        MOSTPlan mostPlan = mostPlanDAO.get(projectId);
+        Education education = educationDAO.get(projectId);
 
         JSONObject object = new JSONObject();
 

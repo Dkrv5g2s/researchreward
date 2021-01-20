@@ -54,7 +54,7 @@
             </tbody>
             <tbody style="text-align: center;">
                 <tr>
-                    <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%"><input type="button" width="10%" value="回上頁" name="return_last_page"  ></td>
+                    <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%"><input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  ></td>
                 </tr>
             </tbody>
 
