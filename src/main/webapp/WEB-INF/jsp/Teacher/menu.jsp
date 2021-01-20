@@ -28,7 +28,7 @@
                 <ul id="nav">
                     <li class='top'><a class='top_link' href="/SelectReward" target="iframe"><span class='down'>選擇申請獎項</span></a></li>
                     <li class='top'><a class='top_link' href="/RewardList" target="iframe"><span class='down'>修改申請獎項</span></a></li>
-                    <li class='top'><a class='top_link'><span class='down'>申請進度追蹤</span></a></li>
+                    <li class='top'><a class='top_link'  href="/TraceProgress" target="iframe"><span class='down'>申請進度追蹤</span></a></li>
                 </ul>
             </div>
 

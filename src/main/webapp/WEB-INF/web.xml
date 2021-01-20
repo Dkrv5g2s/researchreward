@@ -174,4 +174,13 @@
         <servlet-name>RewardListServlet</servlet-name>
         <url-pattern>/RewardList</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.TraceProgressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <url-pattern>/TraceProgress</url-pattern>
+    </servlet-mapping>
 </web-app>
