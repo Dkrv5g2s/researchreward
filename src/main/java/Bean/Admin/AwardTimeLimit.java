@@ -20,9 +20,9 @@ public class AwardTimeLimit {
     private Date l7 = new Date(System.currentTimeMillis());
     private Date l8 = new Date(System.currentTimeMillis());
     private double fwci;
-    private String userNumber;
 
-    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwci , String userNumber) {
+
+    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwci) {
         this.s1 = s1;
         this.s2 = s2;
         this.s3 = s3;
@@ -40,12 +40,12 @@ public class AwardTimeLimit {
         this.l7 = l7;
         this.l8 = l8;
         this.fwci = fwci;
-        this.userNumber = userNumber;
     }
 
     public AwardTimeLimit() {
 
     }
+
 
     public double getFwci() {
         return fwci;
@@ -183,11 +183,5 @@ public class AwardTimeLimit {
         this.l8 = l8;
     }
 
-    public String getUserNumber() {
-        return userNumber;
-    }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
-    }
 }

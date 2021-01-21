@@ -23,6 +23,14 @@
                     <td>
                         <select>
                             <option>測試</option>
+                            <option>績優教師聘任研究人員</option>
+                            <option>講座教授/榮譽講座教授</option>
+                            <option>特聘教授</option>
+                            <option>傑出研究獎</option>
+                            <option>年輕學者獎</option>
+                            <option>獎勵特殊優秀研究人才</option>
+                            <option>獎勵新聘特殊優秀研究人才</option>
+                            <option>陽光獎助金論文獎勵</option>
                         </select>
                     </td>
                 </tr>

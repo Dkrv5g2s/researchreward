@@ -25,7 +25,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
 
     }
 
-    public AwardTimeLimit get(String userNumber){
+    public AwardTimeLimit get(){
         Connection connection = dbConnection.getConnection();
         AwardTimeLimit result = new AwardTimeLimit();
 
