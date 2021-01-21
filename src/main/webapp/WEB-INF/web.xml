@@ -193,4 +193,14 @@
         <servlet-name>TraceProgressServlet</servlet-name>
         <url-pattern>/TraceProgress</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>APItestServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.APItestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>APItestServlet</servlet-name>
+        <url-pattern>/APItest</url-pattern>
+    </servlet-mapping>
 </web-app>
