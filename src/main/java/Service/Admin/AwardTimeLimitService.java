@@ -6,6 +6,7 @@ import Dao.Admin.Impl.AwardTimeLimitDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
+import java.util.List;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -45,5 +46,9 @@ public class AwardTimeLimitService {
         }
 
         return jsonObject;
+    }
+
+    public void getOpeningReward(){
+        AwardTimeLimit result = awardTimeLimitDAO.get();
     }
 }
