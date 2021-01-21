@@ -223,7 +223,7 @@ public class DistinguishedProfessorTableAService {
     	TechTransfer tt = techTransferDAO.show(projectID);
     	
     	LocalDateTime dt = LocalDateTime.now();
-    	int year = dt.getYear()-1911;
+    	int year = dt.getYear()-1912;
     	
     	if(od == null) {
     		aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
