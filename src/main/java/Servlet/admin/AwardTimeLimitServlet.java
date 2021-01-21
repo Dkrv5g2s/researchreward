@@ -20,7 +20,7 @@ public class AwardTimeLimitServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",awardTimeLimitService.get((String)session.getAttribute("userNumber")));
+        req.setAttribute("json",awardTimeLimitService.get());
 
         req.getRequestDispatcher(URL).forward(req, resp);
     }
@@ -30,7 +30,7 @@ public class AwardTimeLimitServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        awardTimeLimitService.save(json,(String)session.getAttribute("userNumber"));
+        awardTimeLimitService.save(json);
         doGet(req,resp);
     }
 }

@@ -34,9 +34,7 @@
 
             <br style="clear: left" />
 
-            <div id="info">
-                <span style="font-size:18px;color:blue;vertical-align: text-top;">校際學術合作計畫－馬偕、長庚、榮總：李婕妤小姐(1424) 大陸暨國際地區：潘鈺涵小姐(1423) 北聯大：謝臻如小姐(1422)</span>
-            </div>
+
 
             <div id="page" >
                 <div id="content">

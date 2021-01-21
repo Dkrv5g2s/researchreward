@@ -5,6 +5,7 @@ import Bean.User.User;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
+import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
 
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class SpecialOutstandingResearcherCatalogServlet extends HttpServlet {
+public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoint {
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
 
     @Override
