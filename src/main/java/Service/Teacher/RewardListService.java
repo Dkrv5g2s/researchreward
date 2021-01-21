@@ -25,6 +25,10 @@ public class RewardListService {
         return array;
     }
 
+    public void createReward(String staffCode, String rewardName){
+        projectDAO.insertNewProject(staffCode,ProgressConstant.DRAFT,rewardName);
+    }
+
     public JSONArray traceProgress(String staffCode){
         List<String> constantsList = new ArrayList<>();
 

@@ -15,13 +15,13 @@
 </head>
 <body>
     <div class="content" style="width: 60%">
-        <form>
+        <form action="/SelectReward" method="post">
             <p style="text-align:left;font-weight:bold;font-size:20px;">新增計畫： </p>
             <table>
                 <tr>
                     <td class="metadata">選擇申請獎項</td>
                     <td>
-                        <select>
+                        <select name="reward">
                             <%
                                 for (String reward: (List<String>)request.getAttribute("rewardList")){
                             %>
@@ -30,7 +30,7 @@
                         </select>
                     </td>
                 </tr>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">新增獎項</button></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="新增獎項"></td></tr>
             </table>
         </form>
     </div>
