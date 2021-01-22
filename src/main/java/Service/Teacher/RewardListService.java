@@ -65,7 +65,7 @@ public class RewardListService {
 
         switch (rewardName){
             case "獎勵新聘特殊優秀研究人才":
-                return "";
+                return "/ExcellentResearcherCatalog";
             case "優秀人才申請":
                 return "/SpecialOutstandingResearcherCatalog";
             default:
