@@ -12,6 +12,33 @@
 <head>
     <title>草稿獎項</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function commit(project_id,rewardName){
+            $.ajax({
+                type: 'POST',
+                url: '/RewardList',
+                dataType: 'json',
+                data: JSON.stringify({
+                    projectId:project_id,
+                    rewardName:rewardName
+                }),
+                contentType: 'application/json',
+                complete:function(XMLHttpRequest,textStatus){
+                    var newDoc = document.open("text/html", "replace");
+                    newDoc.write(XMLHttpRequest.responseText);
+                    newDoc.close();
+                }
+            });
+
+        };
+
+        $(document).on("click", "button[name='modify']",function(){
+            var projectId = $(this).parents("tr").find("td").eq(0).text();
+            var rewardName = $(this).parents("tr").find("td").eq(1).text();
+            commit(projectId,rewardName);
+        });
+    </script>
 </head>
 <body>
     <div class="content">
@@ -28,7 +55,10 @@
             <tr>
                 <td><%=json.getInt("project_id")%></td>
                 <td><%=json.getString("reward_type")%></td>
-                <td>暫無</td>
+                <td>
+                    <span><button type="button" name="modify">修改</button></span>
+                    <span><button type="button" name="delete">刪除</button></span>
+                </td>
             </tr>
             <%
                 }

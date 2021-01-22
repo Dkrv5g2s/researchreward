@@ -60,4 +60,16 @@ public class RewardListService {
             }
         }
     }
+
+    public String getCatalogURL(String rewardName) {
+
+        switch (rewardName){
+            case "獎勵新聘特殊優秀研究人才":
+                return "";
+            case "優秀人才申請":
+                return "/SpecialOutstandingResearcherCatalog";
+            default:
+                return "/Menu";
+        }
+    }
 }
