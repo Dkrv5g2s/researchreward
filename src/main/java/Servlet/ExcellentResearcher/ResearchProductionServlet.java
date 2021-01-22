@@ -20,7 +20,7 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",researchProductionService.get((int)session.getAttribute("projectId")));
+        req.setAttribute("json",researchProductionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
     }
@@ -30,7 +30,7 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONArray json = new JSONArray(readJSONString(req));
-        researchProductionService.save(json,(int)session.getAttribute("projectId"));
+        researchProductionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
         doGet(req,resp);
     }

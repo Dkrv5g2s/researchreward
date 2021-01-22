@@ -202,4 +202,13 @@
         <servlet-name>TraceProgressServlet</servlet-name>
         <url-pattern>/TraceProgress</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.ExcellentResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <url-pattern>/ExcellentResearcherCatalog</url-pattern>
+    </servlet-mapping>
 </web-app>
