@@ -2,6 +2,7 @@ package Servlet.Teacher;
 
 import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
+import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,5 +22,16 @@ public class RewardListServlet extends ServletEntryPoint {
         req.setAttribute("json",service.getDraftList(userNumber));
 
         req.getRequestDispatcher("WEB-INF/jsp/Teacher/rewardList.jsp").forward(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        JSONObject json = new JSONObject(readJSONString(req));
+
+        HttpSession session = req.getSession();
+        session.setAttribute("projectId",json.getString("projectId"));
+
+        resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
     }
 }
