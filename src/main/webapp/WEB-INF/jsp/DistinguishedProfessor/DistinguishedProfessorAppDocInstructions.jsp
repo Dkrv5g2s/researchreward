@@ -202,7 +202,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p><input type="button" name="confirm" value="確定" onclick="commit()"></p>
+            <p><input type="button" name="confirm" value="存檔" onclick="commit()"></p>
         </form>
     </div>
 
