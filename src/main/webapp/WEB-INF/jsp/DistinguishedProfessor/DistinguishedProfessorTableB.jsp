@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>國立臺北科技大學特聘教授申請表B表</title>
+    <title>國立臺北科技大學特聘教授論文績效說明表(表B)</title>
     <style>
         body {
             margin: 20px 0px 0px 0px;
@@ -58,7 +58,7 @@
 <body>
     <div class="content">
         <form>
-            <p>國立臺北科技大學特聘教授申請表B表</p>
+            <p>國立臺北科技大學特聘教授論文績效說明表(表B)</p>
             <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 		        <tbody style="text-align: center;">
 		            <tr>

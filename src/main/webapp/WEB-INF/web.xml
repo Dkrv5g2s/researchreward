@@ -47,6 +47,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorCatalog</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
     </servlet>
