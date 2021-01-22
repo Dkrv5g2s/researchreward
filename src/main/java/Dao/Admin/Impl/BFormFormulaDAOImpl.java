@@ -26,7 +26,7 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
 
 
     @Override
-    public BFormFormula get(String userNumber) {
+    public BFormFormula get() {
         Connection connection = dbConnection.getConnection();
         BFormFormula result = new BFormFormula();
 

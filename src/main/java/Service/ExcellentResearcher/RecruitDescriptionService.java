@@ -11,7 +11,7 @@ public class RecruitDescriptionService {
 
     private RecruitDescriptionDAO recruitDescriptionDAO = new RecruitDescriptionDAOImpl();
 
-    public void save(JSONObject jsonObject, String userNumber){
+    public void save(JSONObject jsonObject, int projectId){
         recruitDescriptionDAO.save(new RecruitDescription(jsonObject.getString("recruitReason"),
                 jsonObject.getString("recruitContent"),
                 jsonObject.getString("expect"),
@@ -20,12 +20,12 @@ public class RecruitDescriptionService {
                 jsonObject.getString("award"),
                 jsonObject.getString("other"),
                 jsonObject.getString("contribution"),
-                userNumber));
+                projectId));
     }
 
-    public JSONObject get(String userNumber){
+    public JSONObject get(int projectId){
 
-        RecruitDescription recruitDescription = recruitDescriptionDAO.get(userNumber);
+        RecruitDescription recruitDescription = recruitDescriptionDAO.get(projectId);
         JSONObject object = new JSONObject();
 
         try {

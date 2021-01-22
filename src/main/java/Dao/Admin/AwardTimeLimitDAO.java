@@ -5,5 +5,5 @@ import Bean.Admin.AwardTimeLimit;
 public interface AwardTimeLimitDAO {
 
     void save(AwardTimeLimit object);
-    AwardTimeLimit get(String userNumber);
+    AwardTimeLimit get();
 }

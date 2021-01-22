@@ -20,7 +20,7 @@ public class BFormFormulaServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",service.get((String)session.getAttribute("userNumber")));
+        req.setAttribute("json",service.get());
 
         req.getRequestDispatcher(URL).forward(req, resp);
     }
@@ -30,7 +30,7 @@ public class BFormFormulaServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        service.save(json,(String)session.getAttribute("userNumber"));
+        service.save(json);
         doGet(req,resp);
     }
 }

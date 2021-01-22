@@ -11,7 +11,7 @@ public class BFormFormulaService {
 
     private BFormFormulaDAO bFormFormulaDAO = new BFormFormulaDAOImpl();
 
-    public void save(JSONObject jsonObject, String userNumber){
+    public void save(JSONObject jsonObject){
         BFormFormula object = new BFormFormula();
         object.setW1_1(jsonObject.getDouble("w1_1"));
         object.setW1_2(jsonObject.getDouble("w1_2"));
@@ -35,13 +35,12 @@ public class BFormFormulaService {
         object.setW4_5(jsonObject.getDouble("w4_5"));
         object.setW4_6(jsonObject.getDouble("w4_6"));
         object.setW4_7(jsonObject.getDouble("w4_7"));
-        object.setUserNumber(userNumber);
         bFormFormulaDAO.save(object);
     }
 
-    public JSONObject get(String userNumber){
+    public JSONObject get(){
 
-        BFormFormula result = bFormFormulaDAO.get(userNumber);
+        BFormFormula result = bFormFormulaDAO.get();
 
         JSONObject jsonObject = new JSONObject();
 

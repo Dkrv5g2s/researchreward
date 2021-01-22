@@ -34,16 +34,20 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int project_id ;
-        // project_id = ((RewardProject)request.getAttribute( "reward_project" )).getProject_id() ;
-        project_id = 1 ; //temp precondition
+        HttpSession session = req.getSession() ;
+
+        int project_id = (int)session.getAttribute( "project_id" );
+        boolean readonly = (Boolean)session.getAttribute("readonly");
 
         ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
         String json_form = service.query( project_id ) ;
 
         req.setAttribute("latest_data", json_form );
 
-        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Review_Supporting_Information_Form.jsp").forward(req, resp);
+        if ( readonly )
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Review_Supporting_Information_Form.jsp").forward(req, resp);
+        else
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Review_Supporting_Information_Form.jsp").forward(req, resp);
     }
 
     @Override

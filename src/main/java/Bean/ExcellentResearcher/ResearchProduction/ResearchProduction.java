@@ -8,11 +8,11 @@ public class ResearchProduction {
     private List<Patent> patentList = new ArrayList<>();
     private List<Technology> technologyList = new ArrayList<>();;
     private List<WorkAuthorization> workAuthorizationList= new ArrayList<>();
-    private String userNumber;
+    private int projectId;
 
 
-    public ResearchProduction(String userNumber) {
-        this.userNumber = userNumber;
+    public ResearchProduction(int projectId) {
+        this.projectId = projectId;
     }
 
     public ResearchProduction() {
@@ -43,12 +43,12 @@ public class ResearchProduction {
         this.workAuthorizationList = workAuthorizationList;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public void addWorkAuthorization(WorkAuthorization workAuthorization){

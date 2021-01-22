@@ -58,7 +58,7 @@
                     <td colspan="6" width="100%"><input type="button" name="add_new_contract" value="  新增  " onclick="add_new_item()"></td>
                 </tr>
                 <tr>
-                    <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%"><input type="button" width="10%" value="回上頁" name="return_last_page" onclick="returnIndex()" ><input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  ></td>
+                    <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%"><input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  ><input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  ></td>
                 </tr>
             </tbody>
 
@@ -165,6 +165,7 @@
 
     function InputFormToJson() {
         latest_data["project_id"] = <%=project.getProject_id()%>   ;
+
         return JSON.stringify(latest_data) ;
     }
 
@@ -176,7 +177,7 @@
                 type: 'POST',
                 url: 'ReviewSupportingInformationForm',
                 dataType: 'text',
-                data: { "data": InputFormToJson() },   //JSON.stringify(InputToJson())
+                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
                 //contentType: 'application/text',
                 success: function(data){
                     alert('success');

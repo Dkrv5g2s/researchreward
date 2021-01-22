@@ -47,6 +47,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorCatalog</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
     </servlet>
@@ -135,7 +144,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Menu</servlet-name>
-        <url-pattern>/Menu</url-pattern>
+        <url-pattern>/AdminMenu</url-pattern>
     </servlet-mapping>
 
 
@@ -157,4 +166,58 @@
         <url-pattern>/SelectInformation</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.SpecialOutstandingResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/TeacherMenu</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.SelectRewardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectRewardServlet</servlet-name>
+        <url-pattern>/SelectReward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RewardListServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.RewardListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewardListServlet</servlet-name>
+        <url-pattern>/RewardList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.TraceProgressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TraceProgressServlet</servlet-name>
+        <url-pattern>/TraceProgress</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.ExcellentResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <url-pattern>/ExcellentResearcherCatalog</url-pattern>
+    </servlet-mapping>
 </web-app>

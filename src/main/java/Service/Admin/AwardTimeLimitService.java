@@ -6,6 +6,8 @@ import Dao.Admin.Impl.AwardTimeLimitDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -13,7 +15,7 @@ public class AwardTimeLimitService {
 
     private AwardTimeLimitDAO awardTimeLimitDAO = new AwardTimeLimitDAOImpl();
 
-    public void save(JSONObject jsonObject, String userNumber){
+    public void save(JSONObject jsonObject){
         awardTimeLimitDAO.save(new AwardTimeLimit(new Date(jsonObject.getDate("s1").getTime()),
                 new Date(jsonObject.getDate("s2").getTime()),
                 new Date(jsonObject.getDate("s3").getTime()),
@@ -30,12 +32,11 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("l6").getTime()),
                 new Date(jsonObject.getDate("l7").getTime()),
                 new Date(jsonObject.getDate("l8").getTime()),
-                jsonObject.getDouble("fwci"),
-                userNumber));
+                jsonObject.getDouble("fwci")));
     }
 
-    public JSONObject get(String userNumber){
-        AwardTimeLimit result = awardTimeLimitDAO.get(userNumber);
+    public JSONObject get(){
+        AwardTimeLimit result = awardTimeLimitDAO.get();
 
         JSONObject jsonObject = new JSONObject();
 
@@ -46,5 +47,41 @@ public class AwardTimeLimitService {
         }
 
         return jsonObject;
+    }
+
+    public List<String> getOpeningReward(){
+
+        List<String> rewards = new ArrayList<>();
+
+            
+        AwardTimeLimit result = awardTimeLimitDAO.get();
+        long systemTime = System.currentTimeMillis();
+        if(result.getS1().getTime() < systemTime && systemTime < result.getL1().getTime()){
+            rewards.add("績優教師聘任研究人員");
+        }
+        if(result.getS2().getTime() < systemTime && systemTime < result.getL2().getTime()){
+            rewards.add("講座教授/榮譽講座教授");
+        }
+        if(result.getS3().getTime() < systemTime && systemTime < result.getL3().getTime()){
+            rewards.add("特聘教授");
+        }
+        if(result.getS4().getTime() < systemTime && systemTime < result.getL4().getTime()){
+            rewards.add("傑出研究獎");
+        }
+        if(result.getS5().getTime() < systemTime && systemTime < result.getL5().getTime()){
+            rewards.add("年輕學者獎");
+        }
+        if(result.getS6().getTime() < systemTime && systemTime < result.getL6().getTime()){
+            rewards.add("獎勵特殊優秀研究人才");
+        }
+        if(result.getS7().getTime() < systemTime && systemTime < result.getL7().getTime()){
+            rewards.add("獎勵新聘特殊優秀研究人才");
+        }
+        if(result.getS8().getTime() < systemTime && systemTime < result.getL8().getTime()){
+            rewards.add("陽光獎助金論文獎勵");
+        }
+
+        return rewards;
+
     }
 }

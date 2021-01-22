@@ -23,7 +23,7 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",personalInformationService.get((String)session.getAttribute("userNumber")));
+        req.setAttribute("json",personalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/personalinformation.jsp").forward(req, resp);
     }
@@ -34,7 +34,7 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        personalInformationService.save(json,(String)session.getAttribute("userNumber"));
+        personalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/RecruitDescription.jsp").forward(req, resp);
     }

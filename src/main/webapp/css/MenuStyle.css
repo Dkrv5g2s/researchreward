@@ -1,0 +1,172 @@
+.realBox {
+    border-radius:3ex ;
+    border: 2px solid #53868B;
+    background-color: #ff0000;
+    -webkit-border-radius:3ex;
+    - moz-border-radius:3ex;
+}
+
+body {
+    margin: 20px 0px 0px 0px;/*銝����椰*/
+    padding: 0;
+    background: #FFFFCC;
+    font-size:20px;
+    color: #3C3D3F;
+    /*
+    background-image:url(../images/back001.gif);
+    background-repeat: repeat;
+    */
+    background-color:#E9F2FF;
+
+    font: normal 16px Verdana;
+    width:100%;
+
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: #FF3000;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 2.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+p, ul, ol {
+    margin-top: 0;
+    line-height: 180%;
+}
+
+a {
+    text-decoration: underline;
+    color: #EB1D1D;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#wrapper {
+    margin: 0 auto;
+    padding: 50px;;
+    width:70%;
+    background-color:white;
+}
+
+#header-wrapper {
+    background-color:white;
+}
+
+
+/* Header */
+#header {
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    margin: 0px auto 0px auto;
+}
+/* Logo */
+#logo {
+    float: left;
+    width: 100%;
+    margin-top: 0px;
+    padding: 0;
+    color: #000000;
+}
+#logo h1 {
+    font-family:"敺株�迤暺��", "Microsoft JhengHei", serif;
+    text-shadow: #888 0 0 1px, #000 0 0 0px, #000 0 0 0px;
+    font-size: 30pt;
+    color: #0C0C0C;
+}
+#logo h1 span {
+    color: #EB1D1D;
+}
+#logo a {
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: #45302C;
+}
+
+
+#menuline{
+    height: 100%;
+    width: 100%;
+    /*margin: 10px auto 10px auto;*/
+    margin-bottom:45px;
+    margin-top:20px;
+    text-align:center;
+}
+
+/* Menu */
+#info {
+
+    float: left;
+    width:100%;
+}
+#info p{
+    float: left;
+    font-family:"敺株�迤暺��", "Microsoft JhengHei", serif;
+    text-shadow: #888 0 0 1px, #000 0 0 0px, #000 0 0 0px;
+    font-size:20px;
+    color: #000000;
+}
+
+/* Page */
+#page {
+    width:100%;
+    margin: 0px auto;
+}
+#content {
+    width:100%;
+    margin: 0px auto;
+    padding: 0px 0px 0px 0px;
+}
+
+/* Footer */
+#footer {
+    width: 100%;
+    height: 50px;
+    margin: 5 auto;
+    padding: 5px 0 5px 0;
+    /* border-top: 2px solid #BBBBBB;*/
+    margin-top:10px;
+    text-align:center;
+}
+
+#footer p {
+    margin: 0;
+    padding: 20px 0px 0px 30px;
+    line-height: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #45302C;
+    color:blue;
+}
+
+#footer a {
+    color: #6B4A45;
+}
+
+.page_list button {
+    border-radius: 15px;
+}
+
+.page_list .now_page {
+    background-color:#80ffff;
+}
+
+
+
