@@ -35,7 +35,7 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
-        	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("userNumber"));
+        	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("projectId"));
 
             req.getRequestDispatcher("/distinguishedProfessorTableB").forward(req, resp);
         }
@@ -49,7 +49,7 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
     	HttpSession session = req.getSession();
     	
     	req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",distinguishedProfessorTableAService.show((String)session.getAttribute("userNumber")));		
+        req.setAttribute("json",distinguishedProfessorTableAService.show((String)session.getAttribute("projectId")));		
 		
     }
 

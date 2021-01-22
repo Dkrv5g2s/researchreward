@@ -36,7 +36,7 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
         
         if(!jsonString.equals("")) {
         	JSONArray json = new JSONArray(jsonString);
-        	distinguishedProfessorAppDocInstructionsService.save(json,(String)session.getAttribute("userNumber"));
+        	distinguishedProfessorAppDocInstructionsService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
 
             req.getRequestDispatcher("/DistinguishedProfessorTableA").forward(req, resp);
         }
@@ -50,7 +50,7 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
     	HttpSession session = req.getSession();
     	
     	req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",distinguishedProfessorAppDocInstructionsService.show((String)session.getAttribute("userNumber")));		
+        req.setAttribute("json",distinguishedProfessorAppDocInstructionsService.show((String)session.getAttribute("projectId")));		
 		
     }
 }

@@ -615,7 +615,10 @@
 		            </tr>
 		        </tbody>
 		    </table>
-            <p><input type="button" name="confirm" value="存檔" onclick="commit()"></p>
+            <p>
+	            <input type="button" name="save" value="存檔" onclick="commit()">
+	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
+       		</p>
         </form>
     </div>
 

@@ -37,7 +37,7 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
-            distinguishedProfessorFormService.save(json,(String)session.getAttribute("userNumber"));
+            distinguishedProfessorFormService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
 
             req.getRequestDispatcher("/DistinguishedProfessorAppDocInstructions").forward(req, resp);
         }
@@ -51,7 +51,7 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
     	HttpSession session = req.getSession();
     	
     	req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",distinguishedProfessorFormService.show((String)session.getAttribute("userNumber")));		
+        req.setAttribute("json",distinguishedProfessorFormService.show((String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId")));		
 		
     }
     
