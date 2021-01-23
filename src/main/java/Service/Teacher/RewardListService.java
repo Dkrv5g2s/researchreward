@@ -70,6 +70,8 @@ public class RewardListService {
                 return "/ExcellentResearcherCatalog";
             case "優秀人才申請":
                 return "/SpecialOutstandingResearcherCatalog";
+            case "績優教師聘任研究人員":
+                return "/TeacherHireResearcherCatalog";
             default:
                 return "/Menu";
         }

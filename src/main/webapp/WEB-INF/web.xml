@@ -211,4 +211,22 @@
         <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
         <url-pattern>/ExcellentResearcherCatalog</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherHireResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherCatalogServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherHireResearcherFormServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherFormServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherForm</url-pattern>
+    </servlet-mapping>
 </web-app>
