@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Bean.DistinguishedProfessor.DistinguishedProfessorForm;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
@@ -29,20 +27,14 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if((String)session.getAttribute("userNumber") != "") {
-        	getForm(req);
-        }
+        
+        getForm(req);
         
         String jsonString = readJSONString(req);
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
             distinguishedProfessorFormService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
-
-            req.getRequestDispatcher("/DistinguishedProfessorAppDocInstructions").forward(req, resp);
-        }
-        else {
-        	req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorForm.jsp").forward(req, resp);
         }
         
     }

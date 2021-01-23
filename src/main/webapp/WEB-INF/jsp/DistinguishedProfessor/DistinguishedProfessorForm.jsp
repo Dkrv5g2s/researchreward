@@ -64,11 +64,11 @@
         	$.ajax({
                 type: 'POST',
                 url: 'DistinguishedProfessorForm',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert('存檔成功');
                 }
             });
 
@@ -213,7 +213,7 @@
 		       </tr>
               </tbody>
             </table>
-            <p>
+            <p style="text-align: center;">
 	            <input type="button" name="save" value="存檔" onclick="commit()">
 	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>

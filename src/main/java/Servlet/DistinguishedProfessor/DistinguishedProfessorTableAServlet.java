@@ -27,20 +27,14 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if((String)session.getAttribute("userNumber") != "") {
-        	getForm(req);
-        }
+       
+        getForm(req);
         
         String jsonString = readJSONString(req);
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
         	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("projectId"));
-
-            req.getRequestDispatcher("/distinguishedProfessorTableB").forward(req, resp);
-        }
-        else {
-        	req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorTableA.jsp").forward(req, resp);
         }
         
     }
