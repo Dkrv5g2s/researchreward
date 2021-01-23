@@ -161,6 +161,7 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             preparedStatement.setString(21,object.getExpectedPerformancePerYears());
             preparedStatement.setString(22,object.getExpectedPerformanceOthers());
             preparedStatement.setString(23,object.getApplyForSubsidies());
+            preparedStatement.setInt(24,object.getRewardProjectId());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

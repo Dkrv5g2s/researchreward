@@ -28,11 +28,9 @@ public class TeacherHireResearcherFormServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         JSONObject json = new JSONObject(readJSONString(req));
-        System.out.println(json);
-        System.out.println(Integer.valueOf((String)session.getAttribute("projectId")));
 
         teacherHireResearcherFormService.save(json,Integer.parseInt((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("/TeacherHireResearcherCatalog").forward(req, resp);
+        resp.sendRedirect("/TeacherHireResearcherCatalog");
     }
 }

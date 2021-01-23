@@ -18,9 +18,9 @@ public class TeacherHireResearcherForm {
     private String researcherPhone;
     private String researcherJobTitle;
     private String researcherSalaryScale;
-    private String ProjectCategory;
-    private String ProjectName;
-    private String ProjectAmount;
+    private String projectCategory;
+    private String projectName;
+    private String projectAmount;
     private String expectedPerformanceNearFiveYears;
     private String expectedPerformancePerYears;
     private String expectedPerformanceOthers;
@@ -30,7 +30,7 @@ public class TeacherHireResearcherForm {
                                      String applicantJobTitle, String applicantDepartment, String applicantEmail, String applicantSeniority,
                                      String applicantResearchRoomExt, String applicantPhone, String researcherName, String researcherBirthDate,
                                      String researcherIdNum, String researcherPhone, String researcherJobTitle, String researcherSalaryScale,
-                                     String ProjectCategory, String ProjectName, String ProjectAmount, String expectedPerformanceNearFiveYears,
+                                     String projectCategory, String projectName, String projectAmount, String expectedPerformanceNearFiveYears,
                                      String expectedPerformancePerYears, String expectedPerformanceOthers, String applyForSubsidies){
         this.rewardProjectId = rewardProjectId;
         this.applyType = applyType;
@@ -49,9 +49,9 @@ public class TeacherHireResearcherForm {
         this.researcherPhone = researcherPhone;
         this.researcherJobTitle = researcherJobTitle;
         this.researcherSalaryScale = researcherSalaryScale;
-        this.ProjectCategory = ProjectCategory;
-        this.ProjectName = ProjectName;
-        this.ProjectAmount = ProjectAmount;
+        this.projectCategory = projectCategory;
+        this.projectName = projectName;
+        this.projectAmount = projectAmount;
         this.expectedPerformanceNearFiveYears = expectedPerformanceNearFiveYears;
         this.expectedPerformancePerYears = expectedPerformancePerYears;
         this.expectedPerformanceOthers = expectedPerformanceOthers;
@@ -199,27 +199,27 @@ public class TeacherHireResearcherForm {
     }
 
     public String getProjectCategory() {
-        return ProjectCategory;
+        return projectCategory;
     }
 
     public void setProjectCategory(String projectCategory) {
-        ProjectCategory = projectCategory;
+        this.projectCategory = projectCategory;
     }
 
     public String getProjectName() {
-        return ProjectName;
+        return projectName;
     }
 
     public void setProjectName(String projectName) {
-        ProjectName = projectName;
+        this.projectName = projectName;
     }
 
     public String getProjectAmount() {
-        return ProjectAmount;
+        return projectAmount;
     }
 
     public void setProjectAmount(String projectAmount) {
-        ProjectAmount = projectAmount;
+        this.projectAmount = projectAmount;
     }
 
     public String getExpectedPerformanceNearFiveYears() {
