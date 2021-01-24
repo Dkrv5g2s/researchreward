@@ -203,4 +203,31 @@
         <servlet-name>APItestServlet</servlet-name>
         <url-pattern>/APItest</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaperPerformanceDescriptionUploadServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.PaperPerformanceDescriptionUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaperPerformanceDescriptionUploadServlet</servlet-name>
+        <url-pattern>/PaperPerformanceDescriptionUpload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.test</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FileServlet</servlet-name>
+        <servlet-class>Servlet.File.FileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileServlet</servlet-name>
+        <url-pattern>/File</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -65,7 +65,7 @@
             </tr>
             <tr>
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick=onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
                     <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
                 </td>
             </tr>
@@ -110,6 +110,7 @@
         item.communication_author_count = "" ;
         item.additional_weight = "" ;
         item.cal_point = "" ;
+        item.paper_id = 0 ;
         latest_data["paper_performance_list"].push(item);
         showDatas();
         calculateTotal();
@@ -125,6 +126,7 @@
         html_of_item += "捲數:<input name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
         html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5'><br>" ;
         html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='40'>" ;
+        html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
         html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell(150點)'>Nature、Science及Cell(150點)<br>" ;
@@ -194,6 +196,7 @@
             item.communication_author_count = $("input:checked[name='communication_author_count"+i+"']").val();
             item.additional_weight =  $("input:checked[name='additional_weight"+i+"']").val();
             item.cal_point =  $("label[name='cal_point"+i+"']").text();
+            item.paper_id = $("input[name='paper_id"+ i +"']").val() ;
 
             latest_data["paper_performance_list"].push(item);
             i++;
@@ -222,6 +225,7 @@
             $("input[name='author_name"+i+"']").val(paper_performence[i].author_name);
             $("input[name='book_name"+i+"']").val(paper_performence[i].book_name);
             $("input[name='scholarly_journals_name"+i+"']").val(paper_performence[i].scholarly_journals_name);
+            $("input[name='paper_id"+i+"']").val(paper_performence[i].paper_id);
 
             $("input[name='total_roll"+i+"']").val(paper_performence[i].total_roll);
             $("input[name='total_page"+i+"']").val(paper_performence[i].total_page);
@@ -274,7 +278,7 @@
         latest_data["project_id"] = <%=project.getProject_id()%>   ;
         return JSON.stringify(latest_data) ;
     }
-    
+
     function saveDatas(){
         if(checkDatas()){
             datasFromTable();

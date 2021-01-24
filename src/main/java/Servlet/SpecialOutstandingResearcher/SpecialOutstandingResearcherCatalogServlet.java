@@ -1,11 +1,6 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.Project.RewardProject;
-import Bean.User.User;
-import Dao.Project.ProjectDAO;
-import Dao.Project.ProjectDAOImpl;
-import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
-import fr.opensagres.xdocreport.document.json.JSONObject;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -37,7 +32,7 @@ public class SpecialOutstandingResearcherCatalogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int project_id = 1 ;
-        Boolean readonly = true ;
+        Boolean readonly = false ;
         // project_id = ((RewardProject)request.getAttribute( "reward_project" )).getProject_id() ;
         project_id = 1 ; //temp precondition
         //RewardProject project = new RewardProject(project_id,"108598065","草稿(暫存中)", "優秀人才申請") ;

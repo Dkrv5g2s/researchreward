@@ -64,6 +64,12 @@ dependencies {
 
     compile group: 'log4j', name: 'log4j', version: '1.2.16'
 
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.2.2'
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.1'
+
 }
 
 //tasks.withType(JavaCompile) {

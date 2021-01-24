@@ -48,6 +48,17 @@
 <%--            <td><span style="color:green;">已填寫</span></td>--%>
 <%--            <% } %>--%>
         </tr>
+        <tr class="">
+            <td>C004</td>
+            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload" >論文績效說明表(表B)-上傳檔案</a></td>
+            <%--            <% if(c003_Form.getC003_Form_Datas().size()==0){ %>--%>
+            <%--            <td><span style="color:red;">※請至少填寫一個</span></td>--%>
+            <%--            <% }else { %>--%>
+            <%--            <td><span style="color:green;">已填寫</span></td>--%>
+            <%--            <% } %>--%>
+        </tr>
+
+
 <%--        <tr class="">--%>
 <%--            <td>C004</td>--%>
 <%--            <td align="left"><a style="color:blue" href="Main?func=formC004&id=<%=id%>">研究人事費</a></td>--%>
