@@ -3,7 +3,6 @@ package Servlet.SpecialOutstandingResearcher;
 import Bean.User.User;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.ReviewSupportingInformationService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
 

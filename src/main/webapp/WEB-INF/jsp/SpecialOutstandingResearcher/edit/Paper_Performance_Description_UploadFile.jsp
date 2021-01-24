@@ -140,7 +140,7 @@
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
-        if ( paper_performence[i]["joint_authorization_agreement_file_path"] != "" ) {
+        if ( paper_performence[i]["joint_authorization_agreement_file_path"] != "" && paper_performence[i]["joint_authorization_agreement_file_path"] != null ) {
             html_of_item += "<td colspan='1' style='text-align: center;'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1("+i+")' ><input value='檢視' type='button' width='10%' name='enable_upload' onclick='downloadFile1("+i+")' >" ;
             html_of_item += "</td>" ;
         }
@@ -149,7 +149,7 @@
             html_of_item += "</td>" ;
         }
 
-        if ( paper_performence[i]["paper_home_file_path"] != "" ) {
+        if ( paper_performence[i]["paper_home_file_path"] != "" && paper_performence[i]["paper_home_file_path"] != null ) {
             html_of_item += "<td colspan='1' style='text-align: center;'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator2("+i+")' ><input value='檢視' type='button' width='10%' name='enable_upload' onclick='downloadFile2("+i+")' >" ;
             html_of_item += "</td>" ;
         }

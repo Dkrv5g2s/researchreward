@@ -23,7 +23,6 @@ public class BFormFormula {
     private double w4_5;
     private double w4_6;
     private double w4_7;
-    private String userNumber;
 
     public double getW1_1() {
         return w1_1;
@@ -201,11 +200,5 @@ public class BFormFormula {
         this.w4_7 = w4_7;
     }
 
-    public String getUserNumber() {
-        return userNumber;
-    }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
-    }
 }

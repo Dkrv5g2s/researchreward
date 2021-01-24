@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-    <title>國立臺北科技大學特聘教授申請表A表</title>
+    <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</title>
     <style>
         body {
             margin: 20px 0px 0px 0px;
@@ -75,11 +75,11 @@
 	    	$.ajax({
 	            type: 'POST',
 	            url: 'DistinguishedProfessorTableA',
-	            dataType: 'json',
+	            dataType: 'text',
 	            data: JSON.stringify(InputToJson()),
 	            contentType: 'application/json',
 	            success: function(data){
-	                alert('success');
+	                alert('存檔成功');
 	            }
 	        });
 	
@@ -299,7 +299,7 @@
 <body>
     <div class="content">
         <form>
-            <p>國立臺北科技大學特聘教授申請表A表</p>
+            <p>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</p>
             <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 		        <tbody>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
@@ -615,7 +615,10 @@
 		            </tr>
 		        </tbody>
 		    </table>
-            <p><input type="button" name="confirm" value="確定" onclick="commit()"></p>
+            <p style="text-align: center;">
+	            <input type="button" name="save" value="存檔" onclick="commit()">
+	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
+       		</p>
         </form>
     </div>
 

@@ -47,6 +47,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
+        <url-pattern>/DistinguishedProfessorCatalog</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
     </servlet>
@@ -194,7 +203,6 @@
         <url-pattern>/TraceProgress</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>APItestServlet</servlet-name>
         <servlet-class>Servlet.SpecialOutstandingResearcher.APItestServlet</servlet-class>
@@ -229,5 +237,31 @@
     <servlet-mapping>
         <servlet-name>FileServlet</servlet-name>
         <url-pattern>/File</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.ExcellentResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
+        <url-pattern>/ExcellentResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherHireResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherCatalogServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherHireResearcherFormServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherFormServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherForm</url-pattern>
     </servlet-mapping>
 </web-app>

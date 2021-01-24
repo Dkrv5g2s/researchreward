@@ -11,9 +11,9 @@ public class DistinguishedProfessorFormService {
 
     private DistinguishedProfessorFormDAO distinguishedProfessorFormDAO = new DistinguishedProfessorFormDAOImpl();
 
-    public void save(JSONObject jsonObject, String userNumber){
+    public void save(JSONObject jsonObject, String userNumber, String projectID){
     	DistinguishedProfessorForm distinguishedProfessorForm = new DistinguishedProfessorForm(
-    			jsonObject.getString("usernum"),
+    			userNumber,
                 jsonObject.getString("name"),
                 jsonObject.getString("department"),
                 jsonObject.getString("hireddate"),
@@ -34,11 +34,11 @@ public class DistinguishedProfessorFormService {
                 jsonObject.getBoolean("applicationrequirements9"));
 
 
-    	distinguishedProfessorFormDAO.save(distinguishedProfessorForm);
+    	distinguishedProfessorFormDAO.save(distinguishedProfessorForm,projectID);
     }
     
-    public JSONObject show(String userNumber) {
-    	DistinguishedProfessorForm distinguishedProfessorForm = distinguishedProfessorFormDAO.show(userNumber);
+    public JSONObject show(String userNumber,String projectID) {
+    	DistinguishedProfessorForm distinguishedProfessorForm = distinguishedProfessorFormDAO.show(projectID);
     	if(distinguishedProfessorForm == null) {
     		distinguishedProfessorForm = new DistinguishedProfessorForm(userNumber, "", "", "", "", "", "", "", "", "", false, false, false, false, false, false, false, false, false);
     	}

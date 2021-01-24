@@ -21,7 +21,7 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",recruitDescriptionService.get((int)session.getAttribute("projectId")));
+        req.setAttribute("json",recruitDescriptionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/RecruitDescription.jsp").forward(req, resp);
     }
@@ -31,7 +31,7 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        recruitDescriptionService.save(json,(int)session.getAttribute("projectId"));
+        recruitDescriptionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp").forward(req, resp);
     }

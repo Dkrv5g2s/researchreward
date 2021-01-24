@@ -1,14 +1,11 @@
 package Servlet.SpecialOutstandingResearcher;
 
-
-
 import Bean.User.User;
 
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
-import javafx.util.Pair;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
