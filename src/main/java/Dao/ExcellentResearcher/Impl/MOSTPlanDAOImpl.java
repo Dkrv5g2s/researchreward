@@ -21,7 +21,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL))
         {
             preparedStatement.setString(1,object.getPlanName());
-            preparedStatement.setInt(2,object.getProjectId());
+            preparedStatement.setString(2,object.getPlanNumber());
             preparedStatement.setDate(3, object.getStartTime() == null ? null : new Date(object.getStartTime().getTime()));
             preparedStatement.setDate(4, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
             preparedStatement.setInt(5,object.getProjectId());
