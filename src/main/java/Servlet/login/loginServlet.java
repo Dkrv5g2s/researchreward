@@ -33,6 +33,7 @@ public class loginServlet extends HttpServlet {
 
         switch (roleAuthorizationService.validateRole(session, account, password)){
             case "teacher":
+            case "student":
                 resp.sendRedirect(TEACHER_URL);
                 break;
             case "admin":

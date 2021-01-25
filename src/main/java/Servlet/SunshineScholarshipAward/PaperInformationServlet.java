@@ -1,7 +1,6 @@
 package Servlet.SunshineScholarshipAward;
 
 
-import Service.SunshineScholarshipAward.GeneralInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -13,11 +12,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-public class SelectInformationServlet extends ServletEntryPoint {
-    private static final String STAFF_URL = "WEB-INF/jsp/SunshineScholarshipAward/GeneralInformationOfStaff.jsp";
-    private static final String STUDENT_URL = "WEB-INF/jsp/SunshineScholarshipAward/GeneralInformationOfStudent.jsp";
+public class PaperInformationServlet extends ServletEntryPoint {
+    private static final String STAFF_URL = "WEB-INF/jsp/SunshineScholarshipAward/PaperInformationOfStaff.jsp";
+    private static final String STUDENT_URL = "WEB-INF/jsp/SunshineScholarshipAward/PaperInformationOfStudent.jsp";
     private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
-    private GeneralInformationService generalInformationService= new GeneralInformationService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,13 +39,9 @@ public class SelectInformationServlet extends ServletEntryPoint {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
 
-        JSONObject json = new JSONObject(readJSONString(req));
-//        System.out.println("doPost json:"+json);
-        generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
-        //forward to next page
-        req.getRequestDispatcher("WEB-INF/jsp/SunshineScholarshipAward/PaperInformationOfStaff.jsp").forward(req, resp);
+
+
     }
 
 

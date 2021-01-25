@@ -157,6 +157,7 @@
         <url-pattern>/ReviewSupportingInformationForm</url-pattern>
         大直 10491台北市中山區  </servlet-mapping>
 
+<!--    SunshineScholarshipAward-->
     <servlet>
         <servlet-name>SelectInformationServlet</servlet-name>
         <servlet-class>Servlet.SunshineScholarshipAward.SelectInformationServlet</servlet-class>
@@ -166,6 +167,25 @@
         <url-pattern>/SelectInformation</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SunshineScholarshipCatalogServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SunshineScholarshipCatalogServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaperInformationServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.PaperInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaperInformationServlet</servlet-name>
+        <url-pattern>/PaperInformation</url-pattern>
+    </servlet-mapping>
+
+<!--    SunshineScholarshipAward-->
 
     <servlet>
         <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>

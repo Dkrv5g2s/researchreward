@@ -15,9 +15,11 @@ public class RoleAuthorizationServiceImpl implements RoleAuthorizationService{
         User user = userDAO.get(account,password);
         if(user != null) {
             session.setAttribute("userNumber",user.getStaff_code());
+            session.setAttribute("userRole",user.getRole());
             return user.getRole();
         }
         else
             return "";
     }
+
 }

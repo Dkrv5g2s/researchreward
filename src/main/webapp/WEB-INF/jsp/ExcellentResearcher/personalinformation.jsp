@@ -13,7 +13,7 @@
 <head>
     <title>個人基本資料</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
@@ -45,9 +45,6 @@
             for (var j=0; j<document.getElementsByTagName("select").length; j++){
                 data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
             }
-
-
-
             return data;
         }
 

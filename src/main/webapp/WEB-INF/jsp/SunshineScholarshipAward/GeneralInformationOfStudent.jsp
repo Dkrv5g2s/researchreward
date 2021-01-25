@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>陽光獎助金論文 學生申請表</title>
+    <title>陽光獎助金論文 學生基本資料表</title>
     <style type="text/css">
         /* input {
             height: 100%;
@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-<p style="text-align:center;font-weight:bold;font-size:20px;clear:none;">陽光獎助金論文 學生申請表</p>
+<p style="text-align:center;font-weight:bold;font-size:20px;clear:none;">陽光獎助金論文 學生基本資料表</p>
 <form method="post" action="Plan?func=international_formC001" enctype="multipart/form-data" id="c001_form">
     <table border="1" cellpadding="5" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
         <tbody>
@@ -68,6 +68,10 @@
         <tr style="text-align: center;">
             <td rowspan="1" colspan="0" width="20%" style="text-align: left;">E-mail:&nbsp;<input name="EmailAddress" maxlength="40"></td>
         </tr>
+        <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
+            <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SunshineScholarshipCatalog'"  >
+            <input type="button" width="10%" value="存檔" name="save_the_page"  >
+        </td>
         </tbody>
     </table>
 </body>
