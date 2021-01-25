@@ -148,9 +148,7 @@
 <%--        </tr>--%>
         </tbody>
         <thead>
-        <tr>
-            <th colspan="3" style="width:1000px;">  </th>
-        </tr>
+        <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
         </thead>
     </table>
 </div>
