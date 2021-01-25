@@ -14,7 +14,7 @@ import fr.opensagres.xdocreport.document.json.JSONObject;
 public class DistinguishedProfessorAppDocInstructionsService {
 	private DistinguishedProfessorAppDocInstructionsDAO distinguishedProfessorAppDocInstructionsDAO = new DistinguishedProfessorAppDocInstructionsDAOImpl();
 
-    public void save(JSONArray jsonArray, String userNumber){
+    public void save(JSONArray jsonArray, String userNumber, String projectID){
     	List<DistinguishedProfessorAppDocInstructions> list = new ArrayList<>();
     	
     	for (Object element: jsonArray) {
@@ -29,11 +29,11 @@ public class DistinguishedProfessorAppDocInstructionsService {
     	}
 
 
-    	distinguishedProfessorAppDocInstructionsDAO.save(list, userNumber);
+    	distinguishedProfessorAppDocInstructionsDAO.save(list, userNumber, projectID);
     }
     
-    public JSONArray show(String userNumber) {
-    	List<DistinguishedProfessorAppDocInstructions> distinguishedProfessorAppDocInstructions = distinguishedProfessorAppDocInstructionsDAO.show(userNumber);
+    public JSONArray show(String projectID) {
+    	List<DistinguishedProfessorAppDocInstructions> distinguishedProfessorAppDocInstructions = distinguishedProfessorAppDocInstructionsDAO.show(projectID);
     	if(distinguishedProfessorAppDocInstructions == null) {
     		distinguishedProfessorAppDocInstructions = new ArrayList<>();
     	}

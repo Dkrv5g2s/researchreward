@@ -12,6 +12,10 @@ public class PaperPerformance {
     private String communication_author_count ;
     private String additional_weight ;
     private String cal_point ;
+    private String joint_authorization_agreement_file_path = "" ;
+    private String paper_home_file_path = "" ;
+
+    private int paper_id ; //只適用於本系統
 
     public PaperPerformance(String author_name, String book_name, String scholarly_journals_name, String total_roll, String total_page, String publish_time, String rank_of_scholarly_journals, String author_order, String communication_author_count, String additional_weight, String cal_point) {
         this.author_name = author_name;
@@ -116,5 +120,29 @@ public class PaperPerformance {
 
     public void setCal_point(String cal_point) {
         this.cal_point = cal_point;
+    }
+
+    public String getJoint_authorization_agreement_file_path() {
+        return joint_authorization_agreement_file_path;
+    }
+
+    public void setJoint_authorization_agreement_file_path(String joint_authorization_agreement_file_path) {
+        this.joint_authorization_agreement_file_path = joint_authorization_agreement_file_path;
+    }
+
+    public String getPaper_home_file_path() {
+        return paper_home_file_path;
+    }
+
+    public void setPaper_home_file_path(String paper_home_file_path) {
+        this.paper_home_file_path = paper_home_file_path;
+    }
+
+    public int getPaper_id() {
+        return paper_id;
+    }
+
+    public void setPaper_id(int paper_id) {
+        this.paper_id = paper_id;
     }
 }
