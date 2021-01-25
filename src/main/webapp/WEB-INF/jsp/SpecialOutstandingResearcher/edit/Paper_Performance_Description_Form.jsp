@@ -19,7 +19,7 @@
 <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 1600px">
-<form method="post" action="Plan?func=international_formC001" enctype="multipart/form-data" id="c001_form">
+<form method="post" id="c001_form">
     <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
         <thead style="text-align: center;">
 <%--            <tr>--%>
@@ -40,7 +40,6 @@
             </tr>
         </thead>
         <tbody id="data_table" style="text-align: center;">
-
         </tbody>
         <tbody >
             <tr>
@@ -76,11 +75,41 @@
 </div>
 <script>
     var latest_data = ${latest_data} ;
+    var wight = ${weight} ;
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
     function load(){
         showDatas() ;
+        setWeight();
         calculateTotal() ;
+    }
+
+    function setWeight() {
+        $("input[value='Nature、Science及Cell(150點)']" ).attr( 'data-weight', wight["w1_1"] );
+        $("input[value='R≦1%及附表三期刊(40點)']" ).attr( 'data-weight', wight["w1_2"] );
+        $("input[value='1%<R≦5%(20點)']" ).attr( 'data-weight', wight["w1_3"] );
+        $("input[value='5%<R≦10%(10點)']" ).attr( 'data-weight', wight["w1_4"] );
+        $("input[value='10%<R≦25%(5點)']" ).attr( 'data-weight', wight["w1_5"] );
+        $("input[value='25%<R≦40%(2點)']" ).attr( 'data-weight', wight["w1_6"] );
+        $("input[value='R>40%(1點)']" ).attr( 'data-weight', wight["w1_7"] );
+
+        $("input[value='第一作者或通訊作者(×1)']" ).attr( 'data-weight', wight["w2_1"] );
+        $("input[value='第二作者(×0.8)']" ).attr( 'data-weight', wight["w2_2"] );
+        $("input[value='第三作者(×0.6)']" ).attr( 'data-weight', wight["w2_3"] );
+        $("input[value='第四作者(×0.4)']" ).attr( 'data-weight', wight["w2_4"] );
+        $("input[value='第五作者以上(×0.2)']" ).attr( 'data-weight', wight["w2_5"] );
+        $("input[value='有多位Equal Contribution(×0.9)']" ).attr( 'data-weight', wight["w2_6"] );
+
+        $("input[value='1位通訊作者(×1)']" ).attr( 'data-weight', wight["w3_1"] );
+        $("input[value='2位(含)以上(×0.8)']" ).attr( 'data-weight', wight["w3_2"] );
+
+        $("input[value='企業(×1.1)']" ).attr( 'data-weight', wight["w4_1"] );
+        $("input[value='國際學者(×1.1)']" ).attr( 'data-weight', wight["w4_2"] );
+        $("input[value='企業及國際學者(×1.2)']" ).attr( 'data-weight', wight["w4_3"] );
+        $("input[value='SSCI(×1.5)']" ).attr( 'data-weight', wight["w4_4"] );
+        $("input[value='SSCI、企業(×1.65)']" ).attr( 'data-weight', wight["w4_5"] );
+        $("input[value='SSCI、國際學者(×1.65)']" ).attr( 'data-weight', wight["w4_6"] );
+        $("input[value='SSCI、企業及國際學者(×1.8)']" ).attr( 'data-weight', wight["w4_7"] );
     }
 
     $(document).ready( load() );
