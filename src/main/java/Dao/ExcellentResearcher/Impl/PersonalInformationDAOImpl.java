@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
+    private static final String DELETE_OBJECT = "DELETE FROM personalinformation WHERE projectId=?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
             "qualification2,level,price,projectId) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
@@ -20,6 +21,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
 
     @Override
     public void save(PersonalInformation object) {
+        delete(object.getProjectId());
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
@@ -97,5 +99,21 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
         }
 
         return result;
+    }
+
+    private void delete(int projectId){
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.setInt(1,projectId);
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

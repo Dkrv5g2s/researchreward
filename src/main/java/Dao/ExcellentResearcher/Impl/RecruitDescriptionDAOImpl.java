@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
 
+    private static final String DELETE_OBJECT = "DELETE FROM recruitdescription WHERE projectId = ?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO recruitdescription (recruitReason,recruitContent,expect,analysis,researchProduction,award,other,contribution,projectId) values(?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
             "recruitReason=?,recruitContent=?,expect=?,analysis=?,researchProduction=?,award=?,other=?,contribution=?";
@@ -19,6 +20,7 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
 
     @Override
     public void save(RecruitDescription object) {
+        delete(object.getProjectId());
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
@@ -79,5 +81,21 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
         }
 
         return recruitDescription;
+    }
+
+    private void delete(int projectId){
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.setInt(1,projectId);
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
