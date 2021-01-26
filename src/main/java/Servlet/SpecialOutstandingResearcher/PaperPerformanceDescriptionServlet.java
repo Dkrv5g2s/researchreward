@@ -1,10 +1,14 @@
 package Servlet.SpecialOutstandingResearcher;
 
+import Bean.Admin.BFormFormula;
 import Bean.User.User;
+import Dao.Admin.BFormFormulaDAO;
+import Dao.Admin.Impl.BFormFormulaDAOImpl;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
+import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
@@ -44,8 +48,14 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
+        String wight = bFormFormulaService.get().toString() ;
+
+
         String json_form = service.query( project_id ) ;
 
+
+        req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
 
         if ( readonly )

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 
 public class SelectInformationServlet extends ServletEntryPoint {
@@ -22,8 +23,12 @@ public class SelectInformationServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        System.out.println((String)session.getAttribute("userRole"));
+//        System.out.println((String)session.getAttribute("userRole"));
+//        System.out.println((String)session.getAttribute("projectId"));
         //userRole has been stored in session when login
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+
 
         switch ((String)session.getAttribute("userRole")){
             case "teacher":
@@ -37,18 +42,26 @@ public class SelectInformationServlet extends ServletEntryPoint {
                 req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
                 break;
         }
+
+//        System.out.println(req);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+        getForm(req);
+
         JSONObject json = new JSONObject(readJSONString(req));
-//        System.out.println("doPost json:"+json);
         generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
-        //forward to next page
         req.getRequestDispatcher("WEB-INF/jsp/SunshineScholarshipAward/PaperInformationOfStaff.jsp").forward(req, resp);
     }
 
+    private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
+        HttpSession session = req.getSession();
+
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+    }
 
 }

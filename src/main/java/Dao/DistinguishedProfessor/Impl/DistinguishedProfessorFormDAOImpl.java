@@ -13,23 +13,23 @@ import java.sql.SQLException;
 public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessorFormDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM distinguishedprofessorform WHERE usernum = ?"; 
+    private static final String SELECT = "SELECT * FROM distinguishedprofessorform WHERE projectID = ?"; 
     private static final String INSERT = 
-    		"INSERT INTO distinguishedprofessorform (usernum,name,department,hireddate,certificatenum,upgradedate,seniority,email,researchroomext,cellphone," +
+    		"INSERT INTO distinguishedprofessorform (projectID,userNumber,name,department,hireddate,certificatenum,upgradedate,seniority,email,researchroomext,cellphone," +
             "applicationrequirements1,applicationrequirements2,applicationrequirements3,applicationrequirements4,applicationrequirements5,applicationrequirements6,applicationrequirements7,applicationrequirements8,applicationrequirements9)"+
-    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = 
     		"UPDATE distinguishedprofessorform "
-    		+ "SET name = ?,department = ?,hireddate = ?,certificatenum = ?,upgradedate = ?,seniority = ?,email = ?,researchroomext = ?,cellphone = ?," +
+    		+ "SET userNumber = ?,name = ?,department = ?,hireddate = ?,certificatenum = ?,upgradedate = ?,seniority = ?,email = ?,researchroomext = ?,cellphone = ?," +
             "applicationrequirements1 = ?,applicationrequirements2 = ?,applicationrequirements3 = ?,applicationrequirements4 = ?,applicationrequirements5 = ?,applicationrequirements6 = ?,applicationrequirements7 = ?,applicationrequirements8 = ?,applicationrequirements9 = ?"+
-    		" WHERE usernum = ?";
+    		" WHERE projectID = ?";
     @Override
-    public void save(DistinguishedProfessorForm object) {
+    public void save(DistinguishedProfessorForm object,String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
-        	preparedStatement.setString(1,object.getUsernum());
+        	preparedStatement.setString(1,projectID);
         	resultSet = preparedStatement.executeQuery();
         	
         	int size = 0;
@@ -39,10 +39,10 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         	}
      	
         	if(size == 0) {
-        		insert(connection,object);
+        		insert(connection,object,projectID);
         	}
         	else {
-        		update(connection,object);
+        		update(connection,object,projectID);
         	}
 
 
@@ -53,18 +53,18 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
     }
 
     @Override
-    public DistinguishedProfessorForm show(String userNumber) {
+    public DistinguishedProfessorForm show(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
-        	preparedStatement.setString(1,userNumber);
+        	preparedStatement.setString(1,projectID);
         	
         	resultSet = preparedStatement.executeQuery();
         	while(resultSet.next()) {
         		DistinguishedProfessorForm dpf = null;
         		dpf = new DistinguishedProfessorForm(
-        				resultSet.getString("usernum"),
+        				resultSet.getString("userNumber"),
         				resultSet.getString("name"),
         				resultSet.getString("department"),
         				resultSet.getString("hireddate"),
@@ -94,10 +94,42 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         return null;
     }
     
-    public void insert(Connection connection,DistinguishedProfessorForm object) {
+    public void insert(Connection connection,DistinguishedProfessorForm object,String projectID) {
     	try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
-            preparedStatement.setString(1,object.getUsernum());
+    		preparedStatement.setString(1,projectID);
+            preparedStatement.setString(2,object.getUsernum());
+            preparedStatement.setString(3,object.getName());
+            preparedStatement.setString(4,object.getDepartment());
+            preparedStatement.setString(5,object.getHireddate());
+            preparedStatement.setString(6,object.getCertificatenum());
+            preparedStatement.setString(7,object.getUpgradedate());
+            preparedStatement.setString(8,object.getSeniority());
+            preparedStatement.setString(9,object.getEmail());
+            preparedStatement.setString(10,object.getResearchroomext());
+            preparedStatement.setString(11,object.getCellphone());
+            preparedStatement.setBoolean(12,object.getApplicationrequirements1());
+            preparedStatement.setBoolean(13,object.getApplicationrequirements2());
+            preparedStatement.setBoolean(14,object.getApplicationrequirements3());
+            preparedStatement.setBoolean(15,object.getApplicationrequirements4());
+            preparedStatement.setBoolean(16,object.getApplicationrequirements5());
+            preparedStatement.setBoolean(17,object.getApplicationrequirements6());
+            preparedStatement.setBoolean(18,object.getApplicationrequirements7());
+            preparedStatement.setBoolean(19,object.getApplicationrequirements8());
+            preparedStatement.setBoolean(20,object.getApplicationrequirements9());
+
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void update(Connection connection,DistinguishedProfessorForm object,String projectID) {
+    	try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE))
+        {
+    		preparedStatement.setString(1,object.getUsernum());
             preparedStatement.setString(2,object.getName());
             preparedStatement.setString(3,object.getDepartment());
             preparedStatement.setString(4,object.getHireddate());
@@ -116,37 +148,7 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
             preparedStatement.setBoolean(17,object.getApplicationrequirements7());
             preparedStatement.setBoolean(18,object.getApplicationrequirements8());
             preparedStatement.setBoolean(19,object.getApplicationrequirements9());
-
-
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void update(Connection connection,DistinguishedProfessorForm object) {
-    	try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE))
-        {
-            preparedStatement.setString(1,object.getName());
-            preparedStatement.setString(2,object.getDepartment());
-            preparedStatement.setString(3,object.getHireddate());
-            preparedStatement.setString(4,object.getCertificatenum());
-            preparedStatement.setString(5,object.getUpgradedate());
-            preparedStatement.setString(6,object.getSeniority());
-            preparedStatement.setString(7,object.getEmail());
-            preparedStatement.setString(8,object.getResearchroomext());
-            preparedStatement.setString(9,object.getCellphone());
-            preparedStatement.setBoolean(10,object.getApplicationrequirements1());
-            preparedStatement.setBoolean(11,object.getApplicationrequirements2());
-            preparedStatement.setBoolean(12,object.getApplicationrequirements3());
-            preparedStatement.setBoolean(13,object.getApplicationrequirements4());
-            preparedStatement.setBoolean(14,object.getApplicationrequirements5());
-            preparedStatement.setBoolean(15,object.getApplicationrequirements6());
-            preparedStatement.setBoolean(16,object.getApplicationrequirements7());
-            preparedStatement.setBoolean(17,object.getApplicationrequirements8());
-            preparedStatement.setBoolean(18,object.getApplicationrequirements9());
-            preparedStatement.setString(19,object.getUsernum());
+            preparedStatement.setString(20,projectID);
 
 
             preparedStatement.executeUpdate();

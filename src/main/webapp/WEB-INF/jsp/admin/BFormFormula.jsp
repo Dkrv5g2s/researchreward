@@ -68,19 +68,19 @@
                 <td><input type="number" name="w1_2" value="<%= jsonObject.getDouble("w1_2")%>" required>點數</td>
             </tr>
             <tr>
-                <td class="metadata">1%<R≦5%:</td>
+                <td class="metadata">1%&lt;R≦5%:</td>
                 <td><input type="number" name="w1_3" value="<%= jsonObject.getDouble("w1_3")%>" required>點數</td>
             </tr>
             <tr>
-                <td class="metadata">5%<R≦10%:</td>
+                <td class="metadata">5%&lt;R≦10%:</td>
                 <td><input type="number" name="w1_4" value="<%= jsonObject.getDouble("w1_4")%>" required>點數</td>
             </tr>
             <tr>
-                <td class="metadata">10%<R≦25%:</td>
+                <td class="metadata">10%&lt;R≦25%:</td>
                 <td><input type="number" name="w1_5" value="<%= jsonObject.getDouble("w1_5")%>" required>點數</td>
             </tr>
             <tr>
-                <td class="metadata">25<R≦40%:</td>
+                <td class="metadata">25%&lt;R≦40%:</td>
                 <td><input type="number" name="w1_6" value="<%= jsonObject.getDouble("w1_6")%>" required>點數</td>
             </tr>
             <tr>

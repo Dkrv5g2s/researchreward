@@ -148,7 +148,7 @@
                             每月獎勵額度<input type="number" name="price" value="<%= json.get("price") %>" required>萬元
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">存檔</button></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='RewardList'"></span></td></tr>
                 </tbody>
             </table>
         </form>

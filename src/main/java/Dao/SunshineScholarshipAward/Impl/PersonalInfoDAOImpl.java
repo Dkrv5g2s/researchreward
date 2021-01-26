@@ -48,7 +48,7 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
             preparedStatement.setString(19,object.getExtension_number());
             preparedStatement.setString(20,object.getCellphone_number());
             preparedStatement.setString(21,object.getEmail_address());
-            System.out.println(preparedStatement.toString());
+//            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -59,13 +59,13 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
 
     @Override
     public PersonalInformation get(int projectId) {
-
+//        System.out.println("daoimpl:"+projectId);
         Connection connection = dbConnection.getConnection();
         PersonalInformation result = new PersonalInformation();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
             preparedStatement.setInt(1,projectId);
-
+//            System.out.println(preparedStatement.toString());
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
                     result.setChinese_name(rs.getString("chinese_name"));
@@ -78,7 +78,7 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
                     result.setExtension_number(rs.getString("extension_number"));
                     result.setCellphone_number(rs.getString("cellphone_number"));
                     result.setEmail_address(rs.getString("email_address"));
-                    result.setProjectId(rs.getInt("projectId"));
+                    result.setProjectId(rs.getInt("project_id"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();
@@ -88,7 +88,7 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+//        System.out.println("result:"+result);
         return result;
     }
 

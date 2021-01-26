@@ -27,20 +27,14 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if((String)session.getAttribute("userNumber") != "") {
-        	getForm(req);
-        }
+       
+        getForm(req);
         
         String jsonString = readJSONString(req);
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
-        	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("userNumber"));
-
-            req.getRequestDispatcher("/distinguishedProfessorTableB").forward(req, resp);
-        }
-        else {
-        	req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorTableA.jsp").forward(req, resp);
+        	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("projectId"));
         }
         
     }
@@ -49,7 +43,7 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
     	HttpSession session = req.getSession();
     	
     	req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",distinguishedProfessorTableAService.show((String)session.getAttribute("userNumber")));		
+        req.setAttribute("json",distinguishedProfessorTableAService.show((String)session.getAttribute("projectId")));		
 		
     }
 

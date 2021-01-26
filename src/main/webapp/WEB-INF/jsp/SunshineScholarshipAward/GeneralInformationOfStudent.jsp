@@ -129,5 +129,6 @@
     .innerinput{
         border-style:none;
         text-align: left;
+        font-size:22px;
     }
 </style>

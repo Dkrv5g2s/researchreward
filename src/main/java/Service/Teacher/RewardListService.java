@@ -64,12 +64,16 @@ public class RewardListService {
     public String getCatalogURL(String rewardName) {
         System.out.println("rewardName:"+rewardName);
         switch (rewardName){
+        	case "特聘教授":
+        		return "/DistinguishedProfessorCatalog";
             case "獎勵新聘特殊優秀研究人才":
                 return "/ExcellentResearcherCatalog";
             case "優秀人才申請":
                 return "/SpecialOutstandingResearcherCatalog";
             case "陽光獎助金論文獎勵":
                 return "/SunshineScholarshipCatalog";
+            case "績優教師聘任研究人員":
+                return "/TeacherHireResearcherCatalog";
             default:
                 return "/Menu";
         }

@@ -1,6 +1,7 @@
 package Service.SunshineScholarshipAward;
 
 
+
 import Bean.SunshineScholarshipAward.PersonalInformation;
 import Dao.SunshineScholarshipAward.Impl.PersonalInfoDAOImpl;
 import Dao.SunshineScholarshipAward.PersonalInfoDAO;
@@ -34,9 +35,11 @@ public class GeneralInformationService {
 
 
     public JSONObject get(int projectId) {
-
+//        System.out.println("get:"+projectId);
         PersonalInformation personalInformation = personalInformationDAO.get(projectId);
-
+        if(personalInformation == null) {
+            personalInformation = new PersonalInformation("", "", "", "", "", "", "", "", "","", projectId);
+        }
         JSONObject object = new JSONObject();
 
         try {

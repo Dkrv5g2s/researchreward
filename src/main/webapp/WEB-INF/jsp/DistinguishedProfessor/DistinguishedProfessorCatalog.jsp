@@ -15,14 +15,14 @@
     <table >
         <thead>
             <tr  >
-                <td class="metadata" style="width:20%;">表格代號</td>
+                <td class="metadata" style="width:20%;">表格編號</td>
                 <td class="metadata" style="width:40%;">表格名稱</td>
     <%--            <th style="width:20%;">完成度</th>--%>
             </tr>
         </thead>
         <tbody>
         <tr class="">
-            <td>C001</td>
+            <td>1</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorForm">特聘教授申請表</a></td>
 <%--            <% if(c001_Form.getComplete_rate()<100){ %>--%>
 <%--            <td><span style="color:red;"><%=c001_Form.getComplete_rate()%>%</span></td>--%>
@@ -31,7 +31,7 @@
 <%--            <% } %>--%>
         </tr>
         <tr class="">
-            <td>C002</td>
+            <td>2</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
 <%--            <% if(c002_Form.getComplete_rate()<100){ %>--%>
 <%--            <td><span style="color:red;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
@@ -40,7 +40,7 @@
 <%--            <% } %>--%>
         </tr>
         <tr class="">
-            <td>C003</td>
+            <td>3</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
 <%--            <% if(c003_Form.getC003_Form_Datas().size()==0){ %>--%>
 <%--            <td><span style="color:red;">※請至少填寫一個</span></td>--%>
@@ -148,9 +148,7 @@
 <%--        </tr>--%>
         </tbody>
         <thead>
-        <tr>
-            <th colspan="3" style="width:1000px;">  </th>
-        </tr>
+        <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
         </thead>
     </table>
 </div>

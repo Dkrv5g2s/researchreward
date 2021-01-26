@@ -28,20 +28,15 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if((String)session.getAttribute("userNumber") != "") {
-        	getForm(req);
-        }
+        
+        getForm(req);
         
         String jsonString = readJSONString(req);
         
         if(!jsonString.equals("")) {
         	JSONArray json = new JSONArray(jsonString);
-        	distinguishedProfessorAppDocInstructionsService.save(json,(String)session.getAttribute("userNumber"));
+        	distinguishedProfessorAppDocInstructionsService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
 
-            req.getRequestDispatcher("/DistinguishedProfessorTableA").forward(req, resp);
-        }
-        else {
-        	req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorAppDocInstructions.jsp").forward(req, resp);
         }
         
     }
@@ -50,7 +45,7 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
     	HttpSession session = req.getSession();
     	
     	req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",distinguishedProfessorAppDocInstructionsService.show((String)session.getAttribute("userNumber")));		
+        req.setAttribute("json",distinguishedProfessorAppDocInstructionsService.show((String)session.getAttribute("projectId")));		
 		
     }
 }
