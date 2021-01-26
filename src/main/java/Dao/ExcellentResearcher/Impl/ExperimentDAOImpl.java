@@ -36,7 +36,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
 
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class ExperimentDAOImpl implements ExperimentDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

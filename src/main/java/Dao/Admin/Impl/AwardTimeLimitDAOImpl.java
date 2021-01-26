@@ -52,10 +52,12 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
                 }else{
                     return result;
                 }
+                connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return result;
     }
 
@@ -65,6 +67,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
         {
             preparedStatement.executeUpdate();
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,7 +99,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
 
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

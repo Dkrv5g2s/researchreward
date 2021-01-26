@@ -53,7 +53,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setString(27,object.getPrice());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
                 ex.printStackTrace();
             }
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

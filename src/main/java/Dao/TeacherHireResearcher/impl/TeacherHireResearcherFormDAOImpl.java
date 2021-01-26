@@ -52,7 +52,7 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             else {
                 update(connection,object);
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -95,6 +95,7 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
                 teacherHireResearcherForm.setExpectedPerformanceOthers(resultSet.getString("expected_performance_others"));
                 teacherHireResearcherForm.setApplyForSubsidies(resultSet.getString("apply_for_subsidies"));
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -130,6 +131,7 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             preparedStatement.setString(24,object.getApplyForSubsidies());
 
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -164,6 +166,7 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             preparedStatement.setInt(24,object.getRewardProjectId());
 
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

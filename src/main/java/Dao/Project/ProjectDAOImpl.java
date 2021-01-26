@@ -27,7 +27,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class ProjectDAOImpl implements ProjectDAO {
                 }
             }
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

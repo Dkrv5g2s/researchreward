@@ -44,7 +44,7 @@ public class ArticleAADAOImpl implements ArticleAADAO {
         	else {
         		update(connection,object,projectID);
         	}
-
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class ArticleAADAOImpl implements ArticleAADAO {
          	
             	return aaa;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

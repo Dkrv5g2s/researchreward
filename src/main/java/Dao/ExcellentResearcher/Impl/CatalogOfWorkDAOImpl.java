@@ -28,7 +28,7 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
             preparedStatement.setString(3,object.getWork());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

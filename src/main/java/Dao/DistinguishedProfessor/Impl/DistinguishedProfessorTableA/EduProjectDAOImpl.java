@@ -47,7 +47,7 @@ public class EduProjectDAOImpl implements EduProjectDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class EduProjectDAOImpl implements EduProjectDAO {
          	
             	return ep;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

@@ -62,7 +62,7 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
 
 
             preparedStatement.executeQuery();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +76,7 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
         {
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,7 +114,7 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
 
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

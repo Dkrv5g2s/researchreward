@@ -25,7 +25,7 @@
             font-weight:bold;
             font-size:20px;
         }
-        
+
     </style>
     <script>
         function createPatent() {

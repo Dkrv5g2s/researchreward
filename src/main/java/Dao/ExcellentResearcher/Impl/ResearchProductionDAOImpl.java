@@ -134,7 +134,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -159,7 +159,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -178,7 +178,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -197,7 +197,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -210,7 +210,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -222,7 +222,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -234,7 +234,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e){
             e.printStackTrace();
         }

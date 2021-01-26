@@ -43,7 +43,7 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
 
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class RecruitDescriptionDAOImpl implements RecruitDescriptionDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
