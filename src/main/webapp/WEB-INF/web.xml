@@ -321,4 +321,22 @@
         <servlet-name>JuniorResearchInvestigatorReviewInformationServlet</servlet-name>
         <url-pattern>/JuniorResearchInvestigatorReviewInformation</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorTableAServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorTableAServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorTableA</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorTableBServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorTableBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorTableBServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorTableB</url-pattern>
+    </servlet-mapping>
 </web-app>
