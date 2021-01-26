@@ -264,4 +264,32 @@
         <servlet-name>TeacherHireResearcherFormServlet</servlet-name>
         <url-pattern>/TeacherHireResearcherForm</url-pattern>
     </servlet-mapping>
+
+<!--    JuniorResearchInvestigator-->
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigator</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorReviewInformationServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorReviewInformationServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorReviewInformation</url-pattern>
+    </servlet-mapping>
 </web-app>
