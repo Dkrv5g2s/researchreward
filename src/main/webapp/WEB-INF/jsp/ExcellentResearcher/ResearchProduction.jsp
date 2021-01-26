@@ -93,11 +93,11 @@
             $.ajax({
                 type: 'POST',
                 url: '/ResearchProduction',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert('存檔成功');
                 }
             });
 

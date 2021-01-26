@@ -31,6 +31,6 @@ public class BFormFormulaServlet extends ServletEntryPoint {
 
         JSONObject json = new JSONObject(readJSONString(req));
         service.save(json);
-        doGet(req,resp);
+
     }
 }
