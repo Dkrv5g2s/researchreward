@@ -45,7 +45,7 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,7 +86,7 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
          	
             	return dpf;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

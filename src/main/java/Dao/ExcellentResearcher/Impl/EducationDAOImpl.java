@@ -35,7 +35,7 @@ public class EducationDAOImpl implements EducationDAO {
             preparedStatement.setString(11,object.getGraduateMonth());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class EducationDAOImpl implements EducationDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

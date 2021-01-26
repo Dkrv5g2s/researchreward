@@ -43,7 +43,7 @@ public class OtherDataDAOImpl implements OtherDataDAO {
         		update(connection,object);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class OtherDataDAOImpl implements OtherDataDAO {
          	
             	return od;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

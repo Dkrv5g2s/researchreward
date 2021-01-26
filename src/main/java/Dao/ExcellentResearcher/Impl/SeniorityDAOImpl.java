@@ -29,7 +29,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             preparedStatement.setString(5,object.getMonth());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

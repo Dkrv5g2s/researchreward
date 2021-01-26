@@ -47,7 +47,7 @@ public class TechProjectDAOImpl implements TechProjectDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class TechProjectDAOImpl implements TechProjectDAO {
          	
             	return tp;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

@@ -51,7 +51,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
                 paperPerformanceDescriptionForm.setTotal_point( resultSet.getString( "total_point" ) );
             }
 
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
                 paperPerformanceList.add( paperPerformance );
             }
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,7 +118,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setString(5,paperPerformanceDescriptionForm.getTotal_point());
 
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         {
             preparedStatement.setInt(1,paper_id);
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -172,7 +172,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
 
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -199,7 +199,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setString(12,paperPerformance.getCal_point());
 
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -243,7 +243,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
                 paper_id_list.add( resultSet.getInt( "paper_id" ) );
             }
 
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -306,7 +306,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
                 paperPerformance.setJoint_authorization_agreement_file_path( resultSet.getString( "joint_authoriztion_agreement_file_path" ) );
                 paperPerformance.setPaper_home_file_path( resultSet.getString("paper_home_file_path") );
             }
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -324,7 +324,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setInt(3, paperPerformance.getPaper_id());
 
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

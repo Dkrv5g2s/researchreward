@@ -31,7 +31,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             preparedStatement.setDate(9, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -47,7 +47,7 @@ public class TechTransferDAOImpl implements TechTransferDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -94,7 +94,7 @@ public class TechTransferDAOImpl implements TechTransferDAO {
          	
             	return tt;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

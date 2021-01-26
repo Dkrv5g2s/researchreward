@@ -44,6 +44,7 @@ public class ReviewSupportingInformationDAOImpl implements  ReviewSupportingInfo
             }
 
             reviewSupportingInformationForm.setReview_supporting_information_list( reviewSupportingInformationList );
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +58,7 @@ public class ReviewSupportingInformationDAOImpl implements  ReviewSupportingInfo
         {
             preparedStatement.setInt(1,project_id);
             preparedStatement.executeUpdate() ;
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,6 +87,7 @@ public class ReviewSupportingInformationDAOImpl implements  ReviewSupportingInfo
 
 
                 preparedStatement.executeUpdate() ;
+                connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
