@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
-
+    private static final String DELETE_OBJECT = "DELETE FROM catalogofwork WHERE projectId=?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO catalogofwork (projectId, work) values (?,?) ON DUPLICATE KEY UPDATE " +
             "work = ?";
@@ -19,6 +19,7 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
 
     @Override
     public void save(CatalogOfWork object) {
+        delete(object.getProjectId());
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
@@ -58,5 +59,21 @@ public class CatalogOfWorkDAOImpl implements CatalogOfWorkDAO {
         }
 
         return catalogOfWork;
+    }
+
+    private void delete(int projectId){
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.setInt(1,projectId);
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

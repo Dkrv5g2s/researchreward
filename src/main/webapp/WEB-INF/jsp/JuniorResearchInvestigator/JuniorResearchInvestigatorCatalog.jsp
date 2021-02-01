@@ -37,6 +37,7 @@
     </table>
     <div style="text-align-last: center; margin: 1rem;">
         <button type="button" name="return_last_page" onclick="javascript:location.href='RewardList'">回上頁</button>
+        <button type="button" name="return_last_page" onclick="">提出申請</button>
     </div>
 </div>
 </body>

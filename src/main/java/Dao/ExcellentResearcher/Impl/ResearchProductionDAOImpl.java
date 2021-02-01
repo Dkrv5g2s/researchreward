@@ -159,7 +159,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -178,7 +178,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -197,7 +197,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
