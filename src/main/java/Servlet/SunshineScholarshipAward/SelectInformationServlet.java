@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SelectInformationServlet extends ServletEntryPoint {
@@ -23,8 +25,6 @@ public class SelectInformationServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-//        System.out.println((String)session.getAttribute("userRole"));
-//        System.out.println((String)session.getAttribute("projectId"));
         //userRole has been stored in session when login
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
@@ -50,16 +50,17 @@ public class SelectInformationServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        getForm(req);
+//        getForm(req);
 
         JSONObject json = new JSONObject(readJSONString(req));
         generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
-        req.getRequestDispatcher("WEB-INF/jsp/SunshineScholarshipAward/PaperInformationOfStaff.jsp").forward(req, resp);
+
+
+        System.out.println("resp:"+resp);
     }
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
         HttpSession session = req.getSession();
-
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
     }
