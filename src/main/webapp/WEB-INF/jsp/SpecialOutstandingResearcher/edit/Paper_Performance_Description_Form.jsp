@@ -85,57 +85,67 @@
     }
 
     function setWeight() {
-        $("input[value='Nature、Science及Cell(150點)']" ).attr( 'data-weight', wight["w1_1"] );
-        $("input[value='R≦1%及附表三期刊(40點)']" ).attr( 'data-weight', wight["w1_2"] );
-        $("input[value='1%<R≦5%(20點)']" ).attr( 'data-weight', wight["w1_3"] );
-        $("input[value='5%<R≦10%(10點)']" ).attr( 'data-weight', wight["w1_4"] );
-        $("input[value='10%<R≦25%(5點)']" ).attr( 'data-weight', wight["w1_5"] );
-        $("input[value='25%<R≦40%(2點)']" ).attr( 'data-weight', wight["w1_6"] );
-        $("input[value='R>40%(1點)']" ).attr( 'data-weight', wight["w1_7"] );
+        $("input[value='Nature、Science及Cell']" ).attr( 'data-weight', wight["w1_1"] );
+        $("input[value='R≦1%及附表三期刊']" ).attr( 'data-weight', wight["w1_2"] );
+        $("input[value='1%<R≦5%']" ).attr( 'data-weight', wight["w1_3"] );
+        $("input[value='5%<R≦10%']" ).attr( 'data-weight', wight["w1_4"] );
+        $("input[value='10%<R≦25%']" ).attr( 'data-weight', wight["w1_5"] );
+        $("input[value='25%<R≦40%']" ).attr( 'data-weight', wight["w1_6"] );
+        $("input[value='R>40%']" ).attr( 'data-weight', wight["w1_7"] );
 
-        $("input[value='第一作者或通訊作者(×1)']" ).attr( 'data-weight', wight["w2_1"] );
-        $("input[value='第二作者(×0.8)']" ).attr( 'data-weight', wight["w2_2"] );
-        $("input[value='第三作者(×0.6)']" ).attr( 'data-weight', wight["w2_3"] );
-        $("input[value='第四作者(×0.4)']" ).attr( 'data-weight', wight["w2_4"] );
-        $("input[value='第五作者以上(×0.2)']" ).attr( 'data-weight', wight["w2_5"] );
-        $("input[value='有多位Equal Contribution(×0.9)']" ).attr( 'data-weight', wight["w2_6"] );
+        $("input[value='第一作者或通訊作者']" ).attr( 'data-weight', wight["w2_1"] );
+        $("input[value='第二作者']" ).attr( 'data-weight', wight["w2_2"] );
+        $("input[value='第三作者']" ).attr( 'data-weight', wight["w2_3"] );
+        $("input[value='第四作者']" ).attr( 'data-weight', wight["w2_4"] );
+        $("input[value='第五作者以上']" ).attr( 'data-weight', wight["w2_5"] );
+        $("input[value='有多位Equal Contribution']" ).attr( 'data-weight', wight["w2_6"] );
 
-        $("input[value='1位通訊作者(×1)']" ).attr( 'data-weight', wight["w3_1"] );
-        $("input[value='2位(含)以上(×0.8)']" ).attr( 'data-weight', wight["w3_2"] );
+        $("input[value='1位通訊作者']" ).attr( 'data-weight', wight["w3_1"] );
+        $("input[value='2位(含)以上']" ).attr( 'data-weight', wight["w3_2"] );
 
-        $("input[value='企業(×1.1)']" ).attr( 'data-weight', wight["w4_1"] );
-        $("input[value='國際學者(×1.1)']" ).attr( 'data-weight', wight["w4_2"] );
-        $("input[value='企業及國際學者(×1.2)']" ).attr( 'data-weight', wight["w4_3"] );
-        $("input[value='SSCI(×1.5)']" ).attr( 'data-weight', wight["w4_4"] );
-        $("input[value='SSCI、企業(×1.65)']" ).attr( 'data-weight', wight["w4_5"] );
-        $("input[value='SSCI、國際學者(×1.65)']" ).attr( 'data-weight', wight["w4_6"] );
-        $("input[value='SSCI、企業及國際學者(×1.8)']" ).attr( 'data-weight', wight["w4_7"] );
+        $("input[value='企業']" ).attr( 'data-weight', wight["w4_1"] );
+        $("input[value='國際學者']" ).attr( 'data-weight', wight["w4_2"] );
+        $("input[value='SDG']" ).attr( 'data-weight', wight["w4_3"] );
+        $("input[value='SSCI']" ).attr( 'data-weight', wight["w4_4"] );
+        $("input[value='企業及國際學者']" ).attr( 'data-weight', wight["w4_5"] );
+        $("input[value='企業、SDG']" ).attr( 'data-weight', wight["w4_6"] );
+        $("input[value='企業、SSCI']" ).attr( 'data-weight', wight["w4_7"] );
+        $("input[value='國際學者、SSCI']" ).attr( 'data-weight', wight["w4_8"] );
+        $("input[value='SDG、SSCI']" ).attr( 'data-weight', wight["w4_9"] );
+        $("input[value='企業、SDG、SSCI']" ).attr( 'data-weight', wight["w4_10"] );
+        $("input[value='國際學者、SDG、SSCI']" ).attr( 'data-weight', wight["w4_11"] );
+        $("input[value='企業、國際學者、SDG、SSCI']" ).attr( 'data-weight', wight["w4_12"] );
 
-        $("#1_1").val( "Nature、Science及Cell(" + wight["w1_1"] + "點)" ) ;
-        $("#1_2").val( "R≦1%及附表三期刊(" + wight["w1_2"] + "點)" ) ;
-        $("#1_3").val( "1%<R≦5%(" + wight["w1_3"] + "點)" ) ;
-        $("#1_4").val( "5%<R≦10%(" + wight["w1_4"] + "點)" ) ;
-        $("#1_5").val( "10%<R≦25%(" + wight["w1_5"] + "點)" ) ;
-        $("#1_6").val( "25%<R≦40%(" + wight["w1_6"] + "點)" ) ;
-        $("#1_7").val( "R>40%(" + wight["w1_7"] + "點)" ) ;
+        $("label[name='1_1']").text( "Nature、Science及Cell(" + wight["w1_1"] + "點)" ) ;
+        $("label[name='1_2']").text( "R≦1%及附表三期刊(" + wight["w1_2"] + "點)" ) ;
+        $("label[name='1_3']").text( "1%<R≦5%(" + wight["w1_3"] + "點)" ) ;
+        $("label[name='1_4']").text( "5%<R≦10%(" + wight["w1_4"] + "點)" ) ;
+        $("label[name='1_5']").text( "10%<R≦25%(" + wight["w1_5"] + "點)" ) ;
+        $("label[name='1_6']").text( "25%<R≦40%(" + wight["w1_6"] + "點)" ) ;
+        $("label[name='1_7']").text( "R>40%(" + wight["w1_7"] + "點)" ) ;
 
-        $("#2_1").val( "第一作者或通訊作者(×" + wight["w2_1"] + ")" ) ;
-        $("#2_2").val( "第二作者(×" + wight["w2_2"] + ")" ) ;
-        $("#2_3").val( "第三作者(×" + wight["w2_3"] + ")" ) ;
-        $("#2_4").val( "第四作者(×" + wight["w2_4"] + ")" ) ;
-        $("#2_5").val( "第五作者以上(×" + wight["w2_5"] + ")" ) ;
-        $("#2_6").val( "有多位Equal Contribution(×" + wight["w2_6"] + ")" ) ;
+        $("label[name='2_1']").text( "第一作者或通訊作者(×" + wight["w2_1"] + ")" ) ;
+        $("label[name='2_2']").text( "第二作者(×" + wight["w2_2"] + ")" ) ;
+        $("label[name='2_3']").text( "第三作者(×" + wight["w2_3"] + ")" ) ;
+        $("label[name='2_4']").text( "第四作者(×" + wight["w2_4"] + ")" ) ;
+        $("label[name='2_5']").text( "第五作者以上(×" + wight["w2_5"] + ")" ) ;
+        $("label[name='2_6']").text( "有多位Equal Contribution(×" + wight["w2_6"] + ")" ) ;
 
-        $("#3_1").val( "1位通訊作者(×" + wight["w3_1"] + ")" ) ;
-        $("#3_2").val( "2位(含)以上(×" + wight["w3_2"] + ")" ) ;
+        $("label[name='3_1']").text( "1位通訊作者(×" + wight["w3_1"] + ")" ) ;
+        $("label[name='3_2']").text( "2位(含)以上(×" + wight["w3_2"] + ")" ) ;
 
-        $("#4_1").val( "企業(×" + wight["w4_1"] + "點)" ) ;
-        $("#4_2").val( "國際學者(×" + wight["w4_2"] + "點)" ) ;
-        $("#4_3").val( "企業及國際學者(×" + wight["w4_3"] + "點)" ) ;
-        $("#4_4").val( "SSCI(×" + wight["w4_4"] + "點)" ) ;
-        $("#4_5").val( "SSCI、企業(×" + wight["w4_5"] + "點)" ) ;
-        $("#4_6").val( "SSCI、國際學者(×" + wight["w4_6"] + "點)" ) ;
-        $("#4_7").val( "SSCI、企業及國際學者(×" + wight["w4_7"] + "點)" ) ;
+        $("label[name='4_1']").text( "企業(×" + wight["w4_1"] + "點)" ) ;
+        $("label[name='4_2']").text( "國際學者(×" + wight["w4_2"] + "點)" ) ;
+        $("label[name='4_3']").text( "SDG(×" + wight["w4_3"] + "點)" ) ;
+        $("label[name='4_4']").text( "SSCI(×" + wight["w4_4"] + "點)" ) ;
+        $("label[name='4_5']").text( "企業及國際學者(×" + wight["w4_5"] + "點)" ) ;
+        $("label[name='4_6']").text( "企業、SDG(×" + wight["w4_6"] + "點)" ) ;
+        $("label[name='4_7']").text( "企業、SSCI(×" + wight["w4_7"] + "點)" ) ;
+        $("label[name='4_8']").text( "國際學者、SSCI(×" + wight["w4_8"] + "點)" ) ;
+        $("label[name='4_9']").text( "SDG、SSCI(×" + wight["w4_9"] + "點)" ) ;
+        $("label[name='4_10']").text( "企業、SDG、SSCI(×" + wight["w4_10"] + "點)" ) ;
+        $("label[name='4_11']").text( "國際學者、SDG、SSCI(×" + wight["w4_11"] + "點)" ) ;
+        $("label[name='4_12']").text( "企業、國際學者、SDG、SSCI(×" + wight["w4_12"] + "點)" ) ;
 
     }
 
@@ -185,34 +195,40 @@
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input id='1_1' type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell(150點)'>Nature、Science及Cell(150點)<br>" ;
-        html_of_item += "<input id='1_2' type='checkbox' data-selection-block='onlyone' data-weight='40' name='rank_of_scholarly_journals" + i +"' value='R≦1%及附表三期刊(40點)'>R≦1%及附表三期刊(40點)<br>" ;
-        html_of_item += "<input id='1_3' type='checkbox' data-selection-block='onlyone' data-weight='20' name='rank_of_scholarly_journals" + i + "' value='1%<R≦5%(20點)'>1%&lt;R≦5%(20點)<br>" ;
-        html_of_item += "<input id='1_4' type='checkbox' data-selection-block='onlyone' data-weight='10' name='rank_of_scholarly_journals"+ i +"' value='5%<R≦10%(10點)' >5%&lt;R≦10%(10點)<br>" ;
-        html_of_item += "<input id='1_5' type='checkbox' data-selection-block='onlyone' data-weight='5' name='rank_of_scholarly_journals" + i + "' value='10%<R≦25%(5點)' >10%&lt;R≦25%(5點)<br>" ;
-        html_of_item += "<input id='1_6' type='checkbox' data-selection-block='onlyone' data-weight='2' name='rank_of_scholarly_journals" + i + "' value='25%<R≦40%(2點)'>25%&lt;R≦40%(2點)<br>" ;
-        html_of_item += "<input id='1_7' type='checkbox' data-selection-block='onlyone' data-weight='1' name='rank_of_scholarly_journals" + i + "' value='R>40%(1點)'>R&gt;40%(1點)" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell'><label name='1_1'>Nature、Science及Cell</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='40' name='rank_of_scholarly_journals" + i +"' value='R≦1%及附表三期刊'><label name='1_2'>R≦1%及附表三期刊</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='20' name='rank_of_scholarly_journals" + i + "' value='1%<R≦5%'><label name='1_3'>1%&lt;R≦5%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='10' name='rank_of_scholarly_journals"+ i +"' value='5%<R≦10%' ><label name='1_4'>5%&lt;R≦10%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='5' name='rank_of_scholarly_journals" + i + "' value='10%<R≦25%' ><label name='1_5'>10%&lt;R≦25%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='2' name='rank_of_scholarly_journals" + i + "' value='25%<R≦40%'><label name='1_6'>25%&lt;R≦40%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1' name='rank_of_scholarly_journals" + i + "' value='R>40%'><label name='1_7'>R&gt;40%</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input id='2_1' type='checkbox' data-selection-block='onlyone' data-weight='1' name='author_order"+i+"' value='第一作者或通訊作者(×1)'>第一作者或通訊作者(×1)<br>" ;
-        html_of_item += "<input id='2_2' type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='author_order"+i+"' value='第二作者(×0.8)'>第二作者(×0.8)<br>" ;
-        html_of_item += "<input id='2_3' type='checkbox' data-selection-block='onlyone' data-weight='0.6' name='author_order"+i+"' value='第三作者(×0.6)'>第三作者(×0.6)<br>" ;
-        html_of_item += "<input id='2_4' type='checkbox' data-selection-block='onlyone' data-weight='0.4' name='author_order"+i+"' value='第四作者(×0.4)'>第四作者(×0.4)<br>" ;
-        html_of_item += "<input id='2_5' type='checkbox' data-selection-block='onlyone' data-weight='0.2' name='author_order"+i+"' value='第五作者以上(×0.2)'>第五作者以上(×0.2)<br>" ;
-        html_of_item += "<input id='2_6' type='checkbox' data-selection-block='onlyone' data-weight='0.9' name='author_order"+i+"' value='有多位Equal Contribution(×0.9)'>有多位Equal Contribution(×0.9)" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input id='2_1' type='checkbox' data-selection-block='onlyone' data-weight='1' name='author_order"+i+"' value='第一作者或通訊作者'><label name='2_1'>第一作者或通訊作者</label><br>" ;
+        html_of_item += "<input id='2_2' type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='author_order"+i+"' value='第二作者'><label name='2_2'>第二作者</label><br>" ;
+        html_of_item += "<input id='2_3' type='checkbox' data-selection-block='onlyone' data-weight='0.6' name='author_order"+i+"' value='第三作者'><label name='2_3'>第三作者</label><br>" ;
+        html_of_item += "<input id='2_4' type='checkbox' data-selection-block='onlyone' data-weight='0.4' name='author_order"+i+"' value='第四作者'><label name='2_4'>第四作者</label><br>" ;
+        html_of_item += "<input id='2_5' type='checkbox' data-selection-block='onlyone' data-weight='0.2' name='author_order"+i+"' value='第五作者以上'><label name='2_5'>第五作者以上</label><br>" ;
+        html_of_item += "<input id='2_6' type='checkbox' data-selection-block='onlyone' data-weight='0.9' name='author_order"+i+"' value='有多位Equal Contribution'><label name='2_6'>多位Equal Contribution</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input id='3_1' type='checkbox' data-selection-block='onlyone' data-weight='1' name='communication_author_count"+i+"' value='1位通訊作者(×1)'>1位通訊作者(×1)<br>" ;
-        html_of_item += "<input id='3_2' type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='communication_author_count"+i+"' value='2位(含)以上(×0.8)'>2位(含)以上(×0.8)" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1' name='communication_author_count"+i+"' value='1位通訊作者'><label name='3_1'>1位通訊作者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='communication_author_count"+i+"' value='2位(含)以上'><label name='3_2'>2位(含)以上</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input id='4_1' type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業(×1.1)'>企業(×1.1)<br>" ;
-        html_of_item += "<input id='4_2'  type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者(×1.1)'>國際學者(×1.1)<br>" ;
-        html_of_item += "<input id='4_3'  type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者(×1.2)'>企業及國際學者(×1.2)<br>" ;
-        html_of_item += "<input id='4_4'  type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='SSCI(×1.5)'>SSCI(×1.5)<br>" ;
-        html_of_item += "<input id='4_5'  type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='SSCI、企業(×1.65)'>SSCI、企業(×1.65)<br>" ;
-        html_of_item += "<input id='4_6'  type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='SSCI、國際學者(×1.65)'>SSCI、國際學者(×1.65)<br>" ;
-        html_of_item += "<input id='4_7'  type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='SSCI、企業及國際學者(×1.8)'>SSCI、企業及國際學者(×1.8)" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業'><label name='4_1'>企業</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者'><label name='4_2'>國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SDG'><label name='4_3'>SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SSCI'><label name='4_4'>SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者'><label name='4_5'>企業及國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='企業、SDG'><label name='4_6'>企業、SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='企業、SSCI'><label name='4_7'>企業、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='國際學者、SSCI'><label name='4_8'>國際學者、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='SDG、SSCI'><label name='4_9'>SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、SDG、SSCI'><label name='4_10'>企業、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='國際學者、SDG、SSCI'><label name='4_11'>國際學者、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、國際學者、SDG、SSCI'><label name='4_12'>企業、國際學者、SDG、SSCI</label>" ;
+
         html_of_item += "</td>" ;
 
         html_of_item += "<td colspan='1' style='text-align: center;'><label name='cal_point"+i+"'></label>" ;
