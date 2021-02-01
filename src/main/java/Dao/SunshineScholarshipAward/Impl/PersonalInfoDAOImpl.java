@@ -27,27 +27,28 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
         Connection connection = dbConnection.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
         {
-            preparedStatement.setString(1,object.getChinese_name());
-            preparedStatement.setString(2,object.getEnglish_name());
-            preparedStatement.setString(3,object.getNational_ID_number());
+            preparedStatement.setString(1,object.getChineseName());
+            preparedStatement.setString(2,object.getEnglishName());
+            preparedStatement.setString(3,object.getNationalIDNumber());
             preparedStatement.setString(4,object.getDepartment());
             preparedStatement.setString(5,object.getTitles());
             preparedStatement.setString(6,object.getLevels());
-            preparedStatement.setString(7,object.getResigned_time());
-            preparedStatement.setString(8,object.getExtension_number());
-            preparedStatement.setString(9,object.getCellphone_number());
-            preparedStatement.setString(10,object.getEmail_address());
+            preparedStatement.setString(7,object.getResignedTime());
+            preparedStatement.setString(8,object.getExtensionNumber());
+            preparedStatement.setString(9,object.getCellphoneNumber());
+            preparedStatement.setString(10,object.getEmailAddress());
             preparedStatement.setInt(11,object.getProjectId());
-            preparedStatement.setString(12,object.getChinese_name());
-            preparedStatement.setString(13,object.getEnglish_name());
-            preparedStatement.setString(14,object.getNational_ID_number());
+
+            preparedStatement.setString(12,object.getChineseName());
+            preparedStatement.setString(13,object.getEnglishName());
+            preparedStatement.setString(14,object.getNationalIDNumber());
             preparedStatement.setString(15,object.getDepartment());
             preparedStatement.setString(16,object.getTitles());
             preparedStatement.setString(17,object.getLevels());
-            preparedStatement.setString(18,object.getResigned_time());
-            preparedStatement.setString(19,object.getExtension_number());
-            preparedStatement.setString(20,object.getCellphone_number());
-            preparedStatement.setString(21,object.getEmail_address());
+            preparedStatement.setString(18,object.getResignedTime());
+            preparedStatement.setString(19,object.getExtensionNumber());
+            preparedStatement.setString(20,object.getCellphoneNumber());
+            preparedStatement.setString(21,object.getEmailAddress());
 //            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
 
@@ -68,16 +69,16 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
 //            System.out.println(preparedStatement.toString());
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
-                    result.setChinese_name(rs.getString("chinese_name"));
-                    result.setEnglish_name(rs.getString("english_name"));
-                    result.setNational_ID_number(rs.getString("national_ID_number"));
+                    result.setChineseName(rs.getString("chinese_name"));
+                    result.setEnglishName(rs.getString("english_name"));
+                    result.setNationalIDNumber(rs.getString("national_ID_number"));
                     result.setDepartment(rs.getString("department"));
                     result.setTitles(rs.getString("titles"));
                     result.setLevels(rs.getString("levels"));
-                    result.setResigned_time(rs.getString("resigned_time"));
-                    result.setExtension_number(rs.getString("extension_number"));
-                    result.setCellphone_number(rs.getString("cellphone_number"));
-                    result.setEmail_address(rs.getString("email_address"));
+                    result.setResignedTime(rs.getString("resigned_time"));
+                    result.setExtensionNumber(rs.getString("extension_number"));
+                    result.setCellphoneNumber(rs.getString("cellphone_number"));
+                    result.setEmailAddress(rs.getString("email_address"));
                     result.setProjectId(rs.getInt("project_id"));
                 }
             }catch (SQLException ex){
@@ -88,7 +89,6 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        System.out.println("result:"+result);
         return result;
     }
 

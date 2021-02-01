@@ -19,18 +19,26 @@
         <tbody>
         <tr>
             <td class="metadata">表格名稱</td>
+            <td class="metadata">操作</td>
+            <td class="metadata">表格狀態</td>
         </tr>
         <tr>
-            <td><a href="/SelectInformation">申請人基本資料</a></td>
+            <td>陽光獎助學金論文(教職研人員)獎勵申請表</td>
+            <td><button onclick="javascript:location.href='SelectInformation'">編輯</button></td>
+<%--            <td>幾時幾分填寫</td>--%>
         </tr>
+
         <tr>
-            <td><a href="/PaperInformation">學術論著及FWCI計算</a></td>
+            <td>表A.論文績效說明表</td>
+            <td><button onclick="javascript:location.href='PaperInformation'">編輯</button></td>
+<%--            <td>幾時幾分填寫</td>--%>
         </tr>
+
 <%--        <tr>--%>
 <%--            <td><a href="/CatalogOfWorks">著作目錄</a></td>--%>
 <%--        </tr>--%>
 
-        <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
+        <tr><td colspan="3" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
         </tbody>
     </table>
 </div>

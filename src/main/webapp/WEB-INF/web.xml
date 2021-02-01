@@ -155,7 +155,8 @@
     <servlet-mapping>
         <servlet-name>ReviewSupportingInformationServlet</servlet-name>
         <url-pattern>/ReviewSupportingInformationForm</url-pattern>
-        大直 10491台北市中山區  </servlet-mapping>
+<!--        大直 10491台北市中山區  -->
+    </servlet-mapping>
 
 <!--    SunshineScholarshipAward-->
     <servlet>
