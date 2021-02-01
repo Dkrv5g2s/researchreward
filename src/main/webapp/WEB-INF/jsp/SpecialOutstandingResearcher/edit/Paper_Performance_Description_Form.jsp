@@ -18,7 +18,7 @@
 <div class="container" style="margin: 0px auto; width: 1200px">
 <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
 </div>
-<div class="container" style="margin: 0px auto; width: 1600px">
+<div class="container" style="margin: 0px auto; width: 70%">
 <form method="post" id="c001_form">
     <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
         <thead style="text-align: center;">
