@@ -59,6 +59,7 @@
     <form>
         <table>
             <tbody>
+            <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">W1期刊排名</td></tr>
             <tr>
                 <td class="metadata">Nature、Science及Cell:</td>
                 <td><input type="number" name="w1_1" value="<%= jsonObject.getDouble("w1_1")%>" required>點數</td>
@@ -87,6 +88,7 @@
                 <td class="metadata">R>40%:</td>
                 <td><input type="number" name="w1_7" value="<%= jsonObject.getDouble("w1_7")%>" required>點數</td>
             </tr>
+            <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">W2作者排序</td></tr>
             <tr>
                 <td class="metadata">第一作者或通訊作者:</td>
                 <td><input type="number" name="w2_1" value="<%= jsonObject.getDouble("w2_1")%>" required>倍率</td>
@@ -111,6 +113,7 @@
                 <td class="metadata">Equal Contribution:</td>
                 <td><input type="number" name="w2_6" value="<%= jsonObject.getDouble("w2_6")%>" required>倍率</td>
             </tr>
+            <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">W3通訊作者數</td></tr>
             <tr>
                 <td class="metadata">1位通訊作者:</td>
                 <td><input type="number" name="w3_1" value="<%= jsonObject.getDouble("w3_1")%>" required>倍率</td>
@@ -119,6 +122,7 @@
                 <td class="metadata">2位以上:</td>
                 <td><input type="number" name="w3_2" value="<%= jsonObject.getDouble("w3_2")%>" required>倍率</td>
             </tr>
+            <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">W4額外加權</td></tr>
             <tr>
                 <td class="metadata">企業:</td>
                 <td><input type="number" name="w4_1" value="<%= jsonObject.getDouble("w4_1")%>" required>倍率</td>
@@ -128,7 +132,7 @@
                 <td><input type="number" name="w4_2" value="<%= jsonObject.getDouble("w4_2")%>" required>倍率</td>
             </tr>
             <tr>
-                <td class="metadata">企業及國際學者:</td>
+                <td class="metadata">SDG:</td>
                 <td><input type="number" name="w4_3" value="<%= jsonObject.getDouble("w4_3")%>" required>倍率</td>
             </tr>
             <tr>
@@ -136,16 +140,36 @@
                 <td><input type="number" name="w4_4" value="<%= jsonObject.getDouble("w4_4")%>" required>倍率</td>
             </tr>
             <tr>
-                <td class="metadata">SSCI、企業:</td>
+                <td class="metadata">企業、國際學者:</td>
                 <td><input type="number" name="w4_5" value="<%= jsonObject.getDouble("w4_5")%>" required>倍率</td>
             </tr>
             <tr>
-                <td class="metadata">SSCI、國際學者:</td>
+                <td class="metadata">企業、SDG:</td>
                 <td><input type="number" name="w4_6" value="<%= jsonObject.getDouble("w4_6")%>" required>倍率</td>
             </tr>
             <tr>
-                <td class="metadata">SSCI、企業及國際學者:</td>
+                <td class="metadata">企業、SSCI:</td>
                 <td><input type="number" name="w4_7" value="<%= jsonObject.getDouble("w4_7")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">國際學者、SSCI:</td>
+                <td><input type="number" name="w4_8" value="<%= jsonObject.getDouble("w4_8")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">SDG、SSCI:</td>
+                <td><input type="number" name="w4_9" value="<%= jsonObject.getDouble("w4_9")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">企業、SDG、SSCI:</td>
+                <td><input type="number" name="w4_10" value="<%= jsonObject.getDouble("w4_10")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">國際學者、SDG、SSCI:</td>
+                <td><input type="number" name="w4_11" value="<%= jsonObject.getDouble("w4_11")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">企業、國際學者、SDG、SSCI:</td>
+                <td><input type="number" name="w4_12" value="<%= jsonObject.getDouble("w4_12")%>" required>倍率</td>
             </tr>
             <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">存檔</button></td></tr>
             </tbody>
