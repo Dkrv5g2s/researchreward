@@ -176,16 +176,55 @@
         <url-pattern>/SunshineScholarshipCatalog</url-pattern>
     </servlet-mapping>
 
+<!--    SunshineScholarshipAward-->
+<!--    OutstandingResearcherAward-->
     <servlet>
-        <servlet-name>PaperInformationServlet</servlet-name>
-        <servlet-class>Servlet.SunshineScholarshipAward.PaperInformationServlet</servlet-class>
+        <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardCatalogServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>PaperInformationServlet</servlet-name>
-        <url-pattern>/PaperInformation</url-pattern>
+        <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardCatalog</url-pattern>
     </servlet-mapping>
 
-<!--    SunshineScholarshipAward-->
+    <servlet>
+        <servlet-name>OutstandingResearchAwardServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardReviewInformationServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardReviewInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardReviewInformationServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardReviewInformation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardTableAServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardTableAServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardTableA</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardTableBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardTableB</url-pattern>
+    </servlet-mapping>
+<!--    OutstandingResearcherAward-->
+
+
 
     <servlet>
         <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>

@@ -156,6 +156,7 @@
 
     })
 
+
     function loadPersonalData(){
         $("#chineseName").val("<%=json.optString("chineseName","")%>");
         $("#englishName").val("<%=json.optString("englishName","")%>");

@@ -63,6 +63,7 @@ public class RewardListService {
 
     public String getCatalogURL(String rewardName) {
         System.out.println("rewardName:"+rewardName);
+        // 這邊的命名之後要調整 重複性有點太高了
         switch (rewardName){
         	case "特聘教授":
         		return "/DistinguishedProfessorCatalog";
@@ -76,6 +77,8 @@ public class RewardListService {
                 return "/TeacherHireResearcherCatalog";
             case "年輕學者獎":
                 return "/JuniorResearchInvestigatorCatalog";
+            case "傑出研究獎":
+                return "/OutstandingResearchAwardCatalog";
             default:
                 return "/Menu";
         }

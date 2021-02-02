@@ -25,13 +25,13 @@
         <tr>
             <td>陽光獎助學金論文(教職研人員)獎勵申請表</td>
             <td><button onclick="javascript:location.href='SelectInformation'">編輯</button></td>
-<%--            <td>幾時幾分填寫</td>--%>
+            <td>幾時幾分填寫</td>
         </tr>
 
         <tr>
             <td>表A.論文績效說明表</td>
-            <td><button onclick="javascript:location.href='PaperInformation'">編輯</button></td>
-<%--            <td>幾時幾分填寫</td>--%>
+            <td><button onclick="javascript:location.href='SunshineScholarshipAwardTableA'">編輯</button></td>
+            <td>幾時幾分填寫</td>
         </tr>
 
 <%--        <tr>--%>
