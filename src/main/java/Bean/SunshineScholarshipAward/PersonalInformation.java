@@ -1,68 +1,61 @@
 package Bean.SunshineScholarshipAward;
 
 public class PersonalInformation {
-    private String chinese_name;
-    private String english_name;
-    private String national_ID_number;
+
+    private String chineseName;
+    private String englishName;
+    private String nationalIDNumber;
     private String department;
     private String titles;
     private String levels;
-    private String resigned_time;
-    private String extension_number;
-    private String cellphone_number;
-    private String email_address;
+    private String resignedTime;
+    private String extensionNumber;
+    private String cellphoneNumber;
+    private String emailAddress;
     private int projectId;
 
-    public PersonalInformation(String chinese_name,
-                               String english_name,
-                               String national_ID_number,
-                               String department,
-                               String titles,
-                               String levels,
-                               String resigned_time,
-                               String extension_number,
-                               String cellphone_number,
-                               String email_address,
-                               int projectId) {
-        this.chinese_name = chinese_name;
-        this.english_name = english_name;
-        this.national_ID_number = national_ID_number;
+
+    public PersonalInformation(String chineseName, String englishName, String nationalIDNumber, String department, String titles, String levels, String resignedTime, String extensionNumber, String cellphoneNumber, String emailAddress, int projectId) {
+        this.chineseName = chineseName;
+        this.englishName = englishName;
+        this.nationalIDNumber = nationalIDNumber;
         this.department = department;
         this.titles = titles;
         this.levels = levels;
-        this.resigned_time = resigned_time;
-        this.extension_number = extension_number;
-        this.cellphone_number = cellphone_number;
-        this.email_address = email_address;
+        this.resignedTime = resignedTime;
+        this.extensionNumber = extensionNumber;
+        this.cellphoneNumber = cellphoneNumber;
+        this.emailAddress = emailAddress;
         this.projectId = projectId;
     }
+
     public PersonalInformation() {
 
     }
 
 
-    public String getChinese_name() {
-        return chinese_name;
+    public String getChineseName() {
+        return chineseName;
     }
 
-    public void setChinese_name(String chinese_name) {
-        this.chinese_name = chinese_name;
+    public void setChineseName(String chineseName) {
+        this.chineseName = chineseName;
     }
 
-    public String getEnglish_name() {
-        return english_name;
+    public String getEnglishName() {
+        return englishName;
     }
 
-    public void setEnglish_name(String english_name) {
-        this.english_name = english_name;
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName;
     }
 
-    public String getNational_ID_number() {
-        return national_ID_number;
+    public String getNationalIDNumber() {
+        return nationalIDNumber;
     }
 
-    public void setNational_ID_number(String national_ID_number) {
-        this.national_ID_number = national_ID_number;
+    public void setNationalIDNumber(String nationalIDNumber) {
+        this.nationalIDNumber = nationalIDNumber;
     }
 
     public String getDepartment() {
@@ -81,7 +74,6 @@ public class PersonalInformation {
         this.titles = titles;
     }
 
-
     public String getLevels() {
         return levels;
     }
@@ -90,36 +82,36 @@ public class PersonalInformation {
         this.levels = levels;
     }
 
-    public String getResigned_time() {
-        return resigned_time;
+    public String getResignedTime() {
+        return this.resignedTime;
     }
 
-    public void setResigned_time(String resigned_time) {
-        this.resigned_time = resigned_time;
+    public void setResignedTime(String resignedTime) {
+        this.resignedTime = resignedTime;
     }
 
-    public String getExtension_number() {
-        return extension_number;
+    public String getExtensionNumber() {
+        return extensionNumber;
     }
 
-    public void setExtension_number(String extension_number) {
-        this.extension_number = extension_number;
+    public void setExtensionNumber(String extensionNumber) {
+        this.extensionNumber = extensionNumber;
     }
 
-    public String getCellphone_number() {
-        return cellphone_number;
+    public String getCellphoneNumber() {
+        return cellphoneNumber;
     }
 
-    public void setCellphone_number(String cellphone_number) {
-        this.cellphone_number = cellphone_number;
+    public void setCellphoneNumber(String cellphoneNumber) {
+        this.cellphoneNumber = cellphoneNumber;
     }
 
-    public String getEmail_address() {
-        return email_address;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail_address(String email_address) {
-        this.email_address = email_address;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public int getProjectId() {
@@ -133,20 +125,18 @@ public class PersonalInformation {
     @Override
     public String toString() {
         return "PersonalInformation{" +
-                "chinese_name='" + chinese_name + '\'' +
-                ", english_name='" + english_name + '\'' +
-                ", national_ID_number='" + national_ID_number + '\'' +
+                "chineseName='" + chineseName + '\'' +
+                ", englishName='" + englishName + '\'' +
+                ", nationalIDNumber='" + nationalIDNumber + '\'' +
                 ", department='" + department + '\'' +
                 ", titles='" + titles + '\'' +
                 ", levels='" + levels + '\'' +
-                ", resigned_time='" + resigned_time + '\'' +
-                ", extension_number='" + extension_number + '\'' +
-                ", cellphone_number='" + cellphone_number + '\'' +
-                ", email_address='" + email_address + '\'' +
+                ", resignedTime='" + resignedTime + '\'' +
+                ", extensionNumber='" + extensionNumber + '\'' +
+                ", cellphoneNumber='" + cellphoneNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
                 ", projectId='" + projectId + '\'' +
                 '}';
     }
-
-
 
 }

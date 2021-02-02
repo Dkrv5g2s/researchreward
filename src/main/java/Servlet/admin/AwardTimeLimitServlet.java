@@ -31,6 +31,6 @@ public class AwardTimeLimitServlet extends ServletEntryPoint {
 
         JSONObject json = new JSONObject(readJSONString(req));
         awardTimeLimitService.save(json);
-        doGet(req,resp);
+
     }
 }
