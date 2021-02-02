@@ -12,14 +12,14 @@ import java.sql.SQLException;
 
 public class ArticleTTDAOImpl implements ArticleTTDAO {
 
-    private DBConnection dbConnection = new DBConnectionImpl();//TODO change database table
-    private static final String SELECT = "SELECT * FROM articlett WHERE projectID = ?";
+    private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String SELECT = "SELECT * FROM jri_articlett WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO articlett (projectID,t_article_count1,t_article_count2,t_article_count3,t_article_count_total," +
+            "INSERT INTO jri_articlett (projectID,t_article_count1,t_article_count2,t_article_count3,t_article_count_total," +
                     "t_point1,t_point2,t_point3,t_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE articlett "+
+            "UPDATE jri_articlett "+
                     "SET t_article_count1 = ?,t_article_count2 = ?,t_article_count3 = ?,t_article_count_total = ?," +
                     "t_point1 = ?,t_point2 = ?,t_point3 = ?,t_point_total = ? " +
                     " WHERE projectID = ?";
@@ -32,10 +32,10 @@ public class ArticleTTDAOImpl implements ArticleTTDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
         } catch (SQLException e) {

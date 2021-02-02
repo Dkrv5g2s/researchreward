@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JuniorResearchInvestigatorReviewInformationDAOImpl implements JuniorResearchInvestigatorReviewInformationDAO{
-	private DBConnection dbConnection = new DBConnectionImpl();  //TODO
+	private DBConnection dbConnection = new DBConnectionImpl();
     private static final String SELECT = "SELECT * FROM junior_research_investigator_review_information WHERE projectId = ?";
     private static final String INSERT = 
     		"INSERT INTO junior_research_investigator_review_information (projectId, userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+

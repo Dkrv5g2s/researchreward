@@ -18,18 +18,17 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getForm(req);
-
         req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigatorTableA.jsp").forward(req, resp);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         getForm(req);
         String jsonString = readJSONString(req);
         if (!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
+
+            HttpSession session = req.getSession();
             juniorResearchInvestigatorTableAService.save(json, session.getAttribute("projectId").toString());
         }
 
@@ -37,8 +36,8 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
         HttpSession session = req.getSession();
-
         req.setCharacterEncoding("UTF-8");
+        System.out.print("projectId:"+session.getAttribute("projectId").toString());
         req.setAttribute("json", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
     }
 }

@@ -11,14 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ArticleSWDAOImpl implements ArticleSWDAO {
-    private DBConnection dbConnection = new DBConnectionImpl();//TODO change database table
-    private static final String SELECT = "SELECT * FROM articlesw WHERE projectID = ?";
+    private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String SELECT = "SELECT * FROM jri_articlesw WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO articlesw (projectID,sw_article_count1,sw_article_count2,sw_article_count3,sw_article_count_total," +
+            "INSERT INTO jri_articlesw (projectID,sw_article_count1,sw_article_count2,sw_article_count3,sw_article_count_total," +
                     "sw_point1,sw_point2,sw_point3,sw_point_total,fwci_value_past_three_year,a_plus_b_total_point)"+
                     " values(?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE articlesw "
+            "UPDATE jri_articlesw "
                     + "SET sw_article_count1 = ?,sw_article_count2 = ?,sw_article_count3 = ?,sw_article_count_total = ?," +
                     "sw_point1 = ?,sw_point2 = ?,sw_point3 = ?,sw_point_total = ?,fwci_value_past_three_year = ?,a_plus_b_total_point = ? "+
                     " WHERE projectID = ?";
@@ -31,10 +31,10 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
         } catch (SQLException e) {

@@ -13,14 +13,14 @@ import java.sql.SQLException;
 public class EduProjectDAOImpl implements EduProjectDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM eduproject WHERE projectID = ?";
+    private static final String SELECT = "SELECT * FROM jri_eduproject WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO eduproject (projectID,edu_project_count1,edu_project_count2,edu_project_count3,edu_project_count_total," +
+            "INSERT INTO jri_eduproject (projectID,edu_project_count1,edu_project_count2,edu_project_count3,edu_project_count_total," +
                     "edu_project_money1,edu_project_money2,edu_project_money3,edu_project_money_total," +
                     "edu_project_point1,edu_project_point2,edu_project_point3,edu_project_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE eduproject "+
+            "UPDATE jri_eduproject "+
                     "SET edu_project_count1 = ?,edu_project_count2 = ?,edu_project_count3 = ?,edu_project_count_total = ?," +
                     "edu_project_money1 = ?,edu_project_money2 = ?,edu_project_money3 = ?,edu_project_money_total = ?," +
                     "edu_project_point1 = ?,edu_project_point2 = ?,edu_project_point3 = ?,edu_project_point_total = ?  "+
@@ -34,10 +34,10 @@ public class EduProjectDAOImpl implements EduProjectDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
         } catch (SQLException e) {
