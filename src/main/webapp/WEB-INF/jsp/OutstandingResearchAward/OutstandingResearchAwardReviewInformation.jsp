@@ -14,7 +14,7 @@
 %>
 <html lang="zh">
 <head>
-    <title>年輕學者研究獎 審查資料</title>
+    <title>傑出研究獎 審查資料</title>
 
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -73,7 +73,7 @@
 </head>
 <body>
 <div name="technologyTransfer" class="content">
-    <h2>年輕學者研究獎 審查資料</h2>
+    <h2>傑出研究獎 ※審查資料【填寫說明】</h2>
     <p>一、 每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書(共同著作授權同意書)。<p>
     <p>二、 學術論著採計Scopus/WOS論文者，請檢附表B「傑出論文績效說明表」。並請檢附證明文件<strong>「期刊發表之論文首頁或以Scopus/WOS資料庫或scival分析系統之佐證」及「各篇期刊排名(以發表當年度為主) CiteScore/Journal Ranking、國際學者、企業、FWCI)」</strong>。</p>
     <p>三、科技部計畫(不包含科技部產學合作計畫)請以教評系統為準提供相關佐證資料。計畫年度(1/1~12/31)之認定以「計畫開始日期」為準；計畫主持人及共同主持人依所執行計畫分配金額計算執行經費；多年期計畫分年計算單一年度執行金額。</p>
@@ -124,13 +124,13 @@
         var table = tableToJson(document.getElementById("technologyTransfer"));
         $.ajax({
             type: 'POST',
-            url: 'JuniorResearchInvestigatorReviewInformation',
+            url: 'OutstandingResearchAwardReviewInformation',
             dataType: 'json',
             data: JSON.stringify(table),
             contentType: 'application/json',
             success: function(data){
                 alert('存檔成功');
-                window.location.href="JuniorResearchInvestigatorReviewInformation";
+                window.location.href="OutstandingResearchAwardReviewInformation";
             },
             error:function(data) {
                 alert("存檔失敗");

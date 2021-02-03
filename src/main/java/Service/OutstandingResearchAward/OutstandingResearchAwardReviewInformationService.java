@@ -1,8 +1,8 @@
 package Service.OutstandingResearchAward;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformation;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformationDAO;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformationDAOImpl;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardReviewInformation;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardReviewInformationDAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardReviewInformationDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -14,13 +14,13 @@ import static Utils.ReflectUtils.addBeanPropertyToJson;
 
 public class OutstandingResearchAwardReviewInformationService {
 
-    private JuniorResearchInvestigatorReviewInformationDAO juniorResearchInvestigatorReviewInformationDAO = new JuniorResearchInvestigatorReviewInformationDAOImpl();
+    private OutstandingResearchAwardReviewInformationDAO OutstandingResearchAwardReviewInformationDAO = new OutstandingResearchAwardReviewInformationDAOImpl();
 
     public void save(JSONArray jsonArray, int projectId){
-        List<JuniorResearchInvestigatorReviewInformation> list = new ArrayList<>();
+        List<OutstandingResearchAwardReviewInformation> list = new ArrayList<>();
         for (Object element: jsonArray) {
             JSONObject jsonObject = (JSONObject)element;
-            list.add(new JuniorResearchInvestigatorReviewInformation(
+            list.add(new OutstandingResearchAwardReviewInformation(
                     projectId,
                     jsonObject.getInt("userNumber"),
                     jsonObject.getString("technologyTransferContractName"),
@@ -30,28 +30,28 @@ public class OutstandingResearchAwardReviewInformationService {
                     jsonToDate(jsonObject, "technologyTransferFundBringInDate")
             ));
         }
-        juniorResearchInvestigatorReviewInformationDAO.save(list, projectId);
+        OutstandingResearchAwardReviewInformationDAO.save(list, projectId);
     }
 
-    public JSONArray show(int projectId) {
-        List<JuniorResearchInvestigatorReviewInformation> juniorResearchInvestigatorReviewInformationList = juniorResearchInvestigatorReviewInformationDAO.show(projectId);
-        if(juniorResearchInvestigatorReviewInformationList.size()==0) {
-            juniorResearchInvestigatorReviewInformationList = new ArrayList<>();
+    public JSONArray get(int projectId) {
+        List<OutstandingResearchAwardReviewInformation> ORAReviewInformationList = OutstandingResearchAwardReviewInformationDAO.get(projectId);
+        if(ORAReviewInformationList.size()==0) {
+            ORAReviewInformationList = new ArrayList<>();
         }
         JSONArray object = new JSONArray();
         try {
-            object.add(toJsonArray(juniorResearchInvestigatorReviewInformationList));
+            object.add(toJsonArray(ORAReviewInformationList));
         }catch(IllegalAccessException e){
             e.printStackTrace();
         }
         return object;
     }
 
-    private JSONArray toJsonArray(List<JuniorResearchInvestigatorReviewInformation> list) throws IllegalAccessException {
+    private JSONArray toJsonArray(List<OutstandingResearchAwardReviewInformation> list) throws IllegalAccessException {
         JSONArray array = new JSONArray();
-        for(JuniorResearchInvestigatorReviewInformation juniorResearchInvestigatorReviewInformation : list){
+        for(OutstandingResearchAwardReviewInformation ORAReviewInformationList : list){
             JSONObject object = new JSONObject();
-            addBeanPropertyToJson(object,juniorResearchInvestigatorReviewInformation);
+            addBeanPropertyToJson(object,ORAReviewInformationList);
             array.add(object);
         }
         return array;

@@ -1,6 +1,6 @@
 package Dao.OutstandingResearchAward;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformation;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardReviewInformation;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 
@@ -11,18 +11,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JuniorResearchInvestigatorReviewInformationDAOImpl implements JuniorResearchInvestigatorReviewInformationDAO {
+public class OutstandingResearchAwardReviewInformationDAOImpl implements OutstandingResearchAwardReviewInformationDAO {
 	private DBConnection dbConnection = new DBConnectionImpl();  //TODO
-    private static final String SELECT = "SELECT * FROM junior_research_investigator_review_information WHERE projectId = ?";
+    private static final String SELECT = "SELECT * FROM outstanding_research_award_review_info WHERE projectId = ?";
     private static final String INSERT = 
-    		"INSERT INTO junior_research_investigator_review_information (projectId, userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+
+    		"INSERT INTO outstanding_research_award_review_info (projectId, userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+
     		" values(?,?,?,?,?,?,?)";
     private static final String DELETE = 
-    		"DELETE FROM junior_research_investigator_review_information "+
+    		"DELETE FROM outstanding_research_award_review_info "+
     		" WHERE projectId = ?";
 
     @Override
-    public void save(List<JuniorResearchInvestigatorReviewInformation> object, int projectId) {
+    public void save(List<OutstandingResearchAwardReviewInformation> object, int projectId) {
         Connection connection = dbConnection.getConnection();
         delete(connection,projectId);
         if(!object.isEmpty()) {
@@ -31,16 +31,16 @@ public class JuniorResearchInvestigatorReviewInformationDAOImpl implements Junio
     }
 
     @Override
-    public List<JuniorResearchInvestigatorReviewInformation> show(int projectId) {
+    public List<OutstandingResearchAwardReviewInformation> get(int projectId) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
-        List<JuniorResearchInvestigatorReviewInformation> list = new ArrayList<>();
+        List<OutstandingResearchAwardReviewInformation> list = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
         	preparedStatement.setInt(1,projectId);
         	resultSet = preparedStatement.executeQuery();
         	while(resultSet.next()) {
-                JuniorResearchInvestigatorReviewInformation juniorResearchInvestigatorReviewInformation = new JuniorResearchInvestigatorReviewInformation(
+                OutstandingResearchAwardReviewInformation juniorResearchInvestigatorReviewInformation = new OutstandingResearchAwardReviewInformation(
                     resultSet.getInt("projectId"),
                     resultSet.getInt("userNumber"),
                     resultSet.getString("technologyTransferContractName"),
@@ -57,7 +57,7 @@ public class JuniorResearchInvestigatorReviewInformationDAOImpl implements Junio
         return list;
     }
     
-    public void insert(Connection connection,List<JuniorResearchInvestigatorReviewInformation> object) {
+    public void insert(Connection connection,List<OutstandingResearchAwardReviewInformation> object) {
         System.out.println("insert");
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
