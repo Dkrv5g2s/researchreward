@@ -16,27 +16,25 @@
 <div class="content">
     <table>
         <thead>
-            <th>
-                年輕學者研究獎
-            </th>
+            <tr><th>年輕學者研究獎</th></tr>
         </thead>
         <tbody>
         <tr>
-            <td><a href="/JuniorResearchInvestigator">推薦申請表</a></td>
+            <td><a href="JuniorResearchInvestigator">推薦申請表</a></td>
         </tr>
         <tr>
-            <td><a href="/JuniorResearchInvestigatorReviewInformation">審查資料</a></td>
+            <td><a href="JuniorResearchInvestigatorReviewInformation">審查資料</a></td>
         </tr>
         <tr>
-            <td><a href="/JuniorResearchInvestigatorTableA">附件A 近三年內發表之期刊論文統計表</a></td>
+            <td><a href="JuniorResearchInvestigatorTableA">表A 近三年內發表之期刊論文統計表</a></td>
         </tr>
         <tr>
-            <td><a href="/JuniorResearchInvestigatorTableB">附件B 國立臺北科技大學傑出論文績效說明表</a></td>
+            <td><a href="JuniorResearchInvestigatorTableB">表B 傑出論文績效說明表</a></td>
         </tr>
         </tbody>
     </table>
     <div style="text-align-last: center; margin: 1rem;">
-        <button type="button" name="return_last_page" onclick="javascript:location.href='RewardList'">回上頁</button>
+        <button type="button" name="return_last_page" onclick="location.href='RewardList'">回上頁</button>
         <button type="button" name="return_last_page" onclick="">提出申請</button>
     </div>
 </div>

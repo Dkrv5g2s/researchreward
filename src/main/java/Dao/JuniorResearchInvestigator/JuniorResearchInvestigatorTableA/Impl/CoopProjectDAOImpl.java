@@ -12,16 +12,16 @@ import java.sql.SQLException;
 
 public class CoopProjectDAOImpl implements CoopProjectDAO {
 
-    private DBConnection dbConnection = new DBConnectionImpl();//TODO change database table
-    private static final String SELECT = "SELECT * FROM coopproject WHERE projectID = ?";
+    private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String SELECT = "SELECT * FROM jri_coopproject WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO coopproject (projectID,coop_project_count1,coop_project_count2,coop_project_count3,coop_project_count_total," +
+            "INSERT INTO jri_coopproject (projectID,coop_project_count1,coop_project_count2,coop_project_count3,coop_project_count_total," +
                     "coop_project_management1,coop_project_management2,coop_project_management3,coop_project_management_total," +
                     "coop_project_money1,coop_project_money2,coop_project_money3,coop_project_money_total," +
                     "coop_project_point1,coop_project_point2,coop_project_point3,coop_project_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE coopproject "+
+            "UPDATE jri_coopproject "+
                     "SET coop_project_count1 = ?,coop_project_count2 = ?,coop_project_count3 = ?,coop_project_count_total = ?," +
                     "coop_project_management1 = ?,coop_project_management2 = ?,coop_project_management3 = ?,coop_project_management_total = ?," +
                     "coop_project_money1 = ?,coop_project_money2 = ?,coop_project_money3 = ?,coop_project_money_total = ?," +
@@ -36,10 +36,10 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
 
@@ -81,7 +81,6 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return null;
     }
@@ -106,9 +105,7 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
             preparedStatement.setString(15,object.getCoop_project_point2());
             preparedStatement.setString(16,object.getCoop_project_point3());
             preparedStatement.setString(17,object.getCoop_project_point_total());
-
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -134,7 +131,6 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
             preparedStatement.setString(15,object.getCoop_project_point3());
             preparedStatement.setString(16,object.getCoop_project_point_total());
             preparedStatement.setString(17,projectID);
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

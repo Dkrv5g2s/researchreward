@@ -11,14 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ArticleABDAOImpl implements ArticleABDAO {
-    private DBConnection dbConnection = new DBConnectionImpl();//TODO change database table
-    private static final String SELECT = "SELECT * FROM articleab WHERE projectID = ?";
+    private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String SELECT = "SELECT * FROM jri_articleab WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO articleab (projectID,a_book_count1,a_book_count2,a_book_count3,a_book_count_total," +
+            "INSERT INTO jri_articleab (projectID,a_book_count1,a_book_count2,a_book_count3,a_book_count_total," +
                     "a_book_point1,a_book_point2,a_book_point3,a_book_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE articleab "+
+            "UPDATE jri_articleab "+
                     "SET a_book_count1 = ?,a_book_count2 = ?,a_book_count3 = ?,a_book_count_total = ?," +
                     "a_book_point1 = ?,a_book_point2 = ?,a_book_point3 = ?,a_book_point_total = ? "+
                     " WHERE projectID = ?";
@@ -32,10 +32,10 @@ public class ArticleABDAOImpl implements ArticleABDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
         } catch (SQLException e) {

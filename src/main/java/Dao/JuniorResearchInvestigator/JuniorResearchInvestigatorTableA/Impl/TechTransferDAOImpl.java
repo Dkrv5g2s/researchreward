@@ -13,15 +13,15 @@ import java.sql.SQLException;
 public class TechTransferDAOImpl implements TechTransferDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM techtransfer WHERE projectID = ?";
+    private static final String SELECT = "SELECT * FROM jri_techtransfer WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO techtransfer (projectID,tech_transfer_count1,tech_transfer_count2,tech_transfer_count3,tech_transfer_count_total," +
+            "INSERT INTO jri_techtransfer (projectID,tech_transfer_count1,tech_transfer_count2,tech_transfer_count3,tech_transfer_count_total," +
                     "tech_transfer_management1,tech_transfer_management2,tech_transfer_management3,tech_transfer_management_total," +
                     "tech_transfer_money1,tech_transfer_money2,tech_transfer_money3,tech_transfer_money_total," +
                     "tech_transfer_point1,tech_transfer_point2,tech_transfer_point3,tech_transfer_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE techtransfer "+
+            "UPDATE jri_techtransfer "+
                     "SET tech_transfer_count1 = ?,tech_transfer_count2 = ?,tech_transfer_count3 = ?,tech_transfer_count_total = ?," +
                     "tech_transfer_management1 = ?,tech_transfer_management2 = ?,tech_transfer_management3 = ?,tech_transfer_management_total = ?," +
                     "tech_transfer_money1 = ?,tech_transfer_money2 = ?,tech_transfer_money3 = ?,tech_transfer_money_total = ?," +
@@ -36,10 +36,10 @@ public class TechTransferDAOImpl implements TechTransferDAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
             connection.close();
         } catch (SQLException e) {

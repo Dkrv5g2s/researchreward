@@ -134,10 +134,6 @@
         const total = document.getElementById('recommended_reason').value.length;
         document.getElementById('nowWords').innerHTML = total;
     }
-    function clean_text() {
-        document.getElementById('recommended_reason').value = '';
-        wordsTotal();
-    }
 
     function commit(){
         $.ajax({
@@ -150,14 +146,14 @@
                 alert(data.status);
                 window.location.href="JuniorResearchInvestigator";
             },
-            error:function(data,status,er) {
+            error:function(data) {
                 alert("存檔失敗");
             }
         });
     };
     function InputToJson(){
-        var data = {};
-        for (var j=0; j<document.getElementsByTagName("input").length; j++) {
+        let data = {};
+        for (let j=0; j<document.getElementsByTagName("input").length; j++) {
             data[ document.getElementsByTagName("input")[j].id] = document.getElementsByTagName("input")[j].value;
         }
         data[ document.getElementById("recommended_reason").id] = document.getElementById("recommended_reason").value;

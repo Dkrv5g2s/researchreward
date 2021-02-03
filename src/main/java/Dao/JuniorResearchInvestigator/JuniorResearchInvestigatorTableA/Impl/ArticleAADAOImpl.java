@@ -13,13 +13,13 @@ import java.sql.SQLException;
 
 public class ArticleAADAOImpl implements ArticleAADAO {
 
-    private DBConnection dbConnection = new DBConnectionImpl();//TODO change database table
-    private static final String SELECT = "SELECT * FROM articleaa WHERE projectID = ?";
+    private DBConnection dbConnection = new DBConnectionImpl();
+    private static final String SELECT = "SELECT * FROM jri_articleaa WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO articleaa (projectID,a_article_count1,a_article_count2,a_article_count3,a_article_count_total,a_article_point1,a_article_point2,a_article_point3,a_article_point_total)"+
+            "INSERT INTO jri_articleaa (projectID,a_article_count1,a_article_count2,a_article_count3,a_article_count_total,a_article_point1,a_article_point2,a_article_point3,a_article_point_total)"+
                     " values(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE articleaa "
+            "UPDATE jri_articleaa "
                     + "SET a_article_count1 = ?,a_article_count2 = ?,a_article_count3 = ?,a_article_count_total = ?,a_article_point1 = ?,a_article_point2 = ?," +
                     "a_article_point3 = ?,a_article_point_total = ? "+
                     " WHERE projectID = ?";
@@ -33,10 +33,10 @@ public class ArticleAADAOImpl implements ArticleAADAO {
             preparedStatement.setString(1,projectID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                insert(connection,object,projectID);
+                update(connection,object,projectID);
             }
             else {
-                update(connection,object,projectID);
+                insert(connection,object,projectID);
             }
         } catch (SQLException e) {
             e.printStackTrace();
