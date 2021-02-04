@@ -48,7 +48,6 @@
     %>
     <script>
         $(document).ready(function () {
-            console.log("jsonObject", <%=jsonObject%>);
             var data = "<tr name=\"technologyTransfer\">\n" +
                 "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +

@@ -1,12 +1,11 @@
 package Service.JuniorResearchInvestigator;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.*;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.*;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.Impl.*;
+import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.*;
+import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.*;
+import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.time.LocalDateTime;
-import java.util.Iterator;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -25,30 +24,42 @@ public class JuniorResearchInvestigatorTableAService {
                 jsonObject.getString("a_article_count1"),
                 jsonObject.getString("a_article_count2"),
                 jsonObject.getString("a_article_count3"),
+                null,
+                null,
                 jsonObject.getString("a_article_count_total"),
                 jsonObject.getString("a_article_point1"),
                 jsonObject.getString("a_article_point2"),
                 jsonObject.getString("a_article_point3"),
+                null,
+                null,
                 jsonObject.getString("a_article_point_total")
         );
         ArticleAB aab = new ArticleAB(
                 jsonObject.getString("a_book_count1"),
                 jsonObject.getString("a_book_count2"),
                 jsonObject.getString("a_book_count3"),
+                null,
+                null,
                 jsonObject.getString("a_book_count_total"),
                 jsonObject.getString("a_book_point1"),
                 jsonObject.getString("a_book_point2"),
                 jsonObject.getString("a_book_point3"),
+                null,
+                null,
                 jsonObject.getString("a_book_point_total")
         );
         ArticleSW asw = new ArticleSW(
                 jsonObject.getString("sw_article_count1"),
                 jsonObject.getString("sw_article_count2"),
                 jsonObject.getString("sw_article_count3"),
+                null,
+                null,
                 jsonObject.getString("sw_article_count_total"),
                 jsonObject.getString("sw_point1"),
                 jsonObject.getString("sw_point2"),
                 jsonObject.getString("sw_point3"),
+                null,
+                null,
                 jsonObject.getString("sw_point_total"),
                 jsonObject.getString("fwci_value_past_three_year"),
                 jsonObject.getString("a_plus_b_total_point")
@@ -57,69 +68,97 @@ public class JuniorResearchInvestigatorTableAService {
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
                 jsonObject.getString("t_article_count3"),
+                null,
+                null,
                 jsonObject.getString("t_article_count_total"),
                 jsonObject.getString("t_point1"),
                 jsonObject.getString("t_point2"),
                 jsonObject.getString("t_point3"),
+                null,
+                null,
                 jsonObject.getString("t_point_total")
         );
         CoopProject cp = new CoopProject(
                 jsonObject.getString("coop_project_count1"),
                 jsonObject.getString("coop_project_count2"),
                 jsonObject.getString("coop_project_count3"),
+                null,
+                null,
                 jsonObject.getString("coop_project_count_total"),
                 jsonObject.getString("coop_project_management1"),
                 jsonObject.getString("coop_project_management2"),
                 jsonObject.getString("coop_project_management3"),
+                null,
+                null,
                 jsonObject.getString("coop_project_management_total"),
                 jsonObject.getString("coop_project_money1"),
                 jsonObject.getString("coop_project_money2"),
                 jsonObject.getString("coop_project_money3"),
+                null,
+                null,
                 jsonObject.getString("coop_project_money_total"),
                 jsonObject.getString("coop_project_point1"),
                 jsonObject.getString("coop_project_point2"),
                 jsonObject.getString("coop_project_point3"),
+                null,
+                null,
                 jsonObject.getString("coop_project_point_total")
         );
         OtherData od = new OtherData(
                 jsonObject.getString("year1"),
                 jsonObject.getString("year2"),
                 jsonObject.getString("year3"),
+                null,
+                null,
                 projectID,
                 jsonObject.getString("other_data"),
-                jsonObject.getBoolean("declaration"),
+//                jsonObject.getBoolean("declaration"),
                 jsonObject.getString("commit_date")
         );
         TechProject tp = new TechProject(
                 jsonObject.getString("tech_project_count1"),
                 jsonObject.getString("tech_project_count2"),
                 jsonObject.getString("tech_project_count3"),
+                null,
+                null,
                 jsonObject.getString("tech_project_count_total"),
                 jsonObject.getString("tech_project_money1"),
                 jsonObject.getString("tech_project_money2"),
                 jsonObject.getString("tech_project_money3"),
+                null,
+                null,
                 jsonObject.getString("tech_project_money_total"),
                 jsonObject.getString("tech_project_point1"),
                 jsonObject.getString("tech_project_point2"),
                 jsonObject.getString("tech_project_point3"),
+                null,
+                null,
                 jsonObject.getString("tech_project_point_total")
         );
         TechTransfer tt = new TechTransfer(
                 jsonObject.getString("tech_transfer_count1"),
                 jsonObject.getString("tech_transfer_count2"),
                 jsonObject.getString("tech_transfer_count3"),
+                null,
+                null,
                 jsonObject.getString("tech_transfer_count_total"),
                 jsonObject.getString("tech_transfer_management1"),
                 jsonObject.getString("tech_transfer_management2"),
                 jsonObject.getString("tech_transfer_management3"),
+                null,
+                null,
                 jsonObject.getString("tech_transfer_management_total"),
                 jsonObject.getString("tech_transfer_money1"),
                 jsonObject.getString("tech_transfer_money2"),
                 jsonObject.getString("tech_transfer_money3"),
+                null,
+                null,
                 jsonObject.getString("tech_transfer_money_total"),
                 jsonObject.getString("tech_transfer_point1"),
                 jsonObject.getString("tech_transfer_point2"),
                 jsonObject.getString("tech_transfer_point3"),
+                null,
+                null,
                 jsonObject.getString("tech_transfer_point_total")
         );
 
@@ -147,15 +186,14 @@ public class JuniorResearchInvestigatorTableAService {
         int year = dt.getYear()-1912;
 
         if(od == null) {
-            System.out.println("od == null");
-            aaa = new ArticleAA("0","0","0","0","0","0","0","0");
-            aab = new ArticleAB("0","0","0","0","0","0","0","0");
-            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0");
-            att = new ArticleTT("0","0","0","0","0","0","0","0");
-            cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"",false, "");
-            tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0");
-            tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
+            aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
+            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
+            cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+            tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }
         JSONObject object = new JSONObject();
         try {
