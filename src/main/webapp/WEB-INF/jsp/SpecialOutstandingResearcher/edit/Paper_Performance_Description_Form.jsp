@@ -7,9 +7,10 @@
     response.setDateHeader("Expires", 0);
 %>
 <% // RewardProject project = (RewardProject)request.getAttribute("project");
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
+//    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
     //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
-    Gson gson = new Gson();
+//    Gson gson = new Gson();
+
 
 %>
 <!DOCTYPE HTML>
@@ -46,16 +47,24 @@
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
-                <td colspan="4" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>
+                <td colspan="4" class="three_years" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>
+                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>
                 <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)+(B)</td>
                 <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
             </tr>
             <tr>
-                <td colspan="8" style="text-align: left;">申請說明事項：<br>
+                <td colspan="8" style="text-align: left;" class="four_sections">申請說明事項：<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;1.請檢附期刊發表之論文首頁及各篇期刊排名。學術論著正式出版年度以紙本刊登年度為準，若無紙本出版則以電子期刊出版年為基準。<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;2.請檢附Scopus資料庫或SciVal分析系統之佐證(含期刊排名CiteScore、國際學者、企業、FWCI)。<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;3.若某篇論文為SSCI且有企業及國際合著者，權重至多1.8倍計。<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;4.每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。
+                </td>
+                <td colspan="8" style="text-align: left;" class="three_years five_years">
+                    <p>說明事項：</p>
+                    <p class="three_years" style="padding-left: 2rem;">1. 近三年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
+                    <p class="five_years" style="padding-left: 2rem;">1. 近五年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
+                    <p style="padding-left: 2rem;">2. 論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</p>
+                    <p style="padding-left: 2rem;">3. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
                 </td>
             </tr>
             <tr>
@@ -64,7 +73,7 @@
             </tr>
             <tr>
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()"  >
                     <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
                 </td>
             </tr>
@@ -79,11 +88,54 @@
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
     function load(){
+        showSection();
         showDatas() ;
         setWeight();
         calculateTotal() ;
     }
 
+    function showSection(){
+        $(".three_years").hide();
+        $(".five_years").hide();
+        $(".four_sections").hide();
+        let displayExplanation = "${displayExplanation}";
+
+        if(displayExplanation==="four_sections"){
+            $(".four_sections").show();
+        }
+        else if(displayExplanation==="three_years"){
+            $(".three_years").show();
+        }
+        else{
+            $(".five_years").show();
+        }
+    }
+    function goBack() {
+        switch ("${reward_type}") {
+            case "特聘教授":
+                location.href="DistinguishedProfessorCatalog";
+                break;
+            case "傑出研究獎":
+                window.history.back();
+                break;
+            case "講座教授/榮譽講座教授":
+                window.history.back();
+                break;
+            case "年輕學者獎":
+                location.href="JuniorResearchInvestigatorCatalog";
+                break;
+            case "陽光獎助金論文獎勵":
+                location.href="SunshineScholarshipCatalog";
+                break;
+            case "優秀人才申請":
+            case "獎勵特殊優秀研究人才":
+                location.href="SpecialOutstandingResearcherCatalog";
+                break;
+            case "績優教師聘任研究人員":
+                location.href="TeacherHireResearcherCatalog";
+                break;
+        }
+    }
     function setWeight() {
         $("input[value='Nature、Science及Cell']" ).attr( 'data-weight', wight["w1_1"] );
         $("input[value='R≦1%及附表三期刊']" ).attr( 'data-weight', wight["w1_2"] );
@@ -347,7 +399,8 @@
     }
 
     function InputFormToJson() {
-        latest_data["project_id"] = <%=project.getProject_id()%>   ;
+        <%--latest_data["project_id"] = <%=project.getProject_id()%>   ;--%>
+        latest_data["project_id"] = ${project_id};
         return JSON.stringify(latest_data) ;
     }
 

@@ -15,6 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_PROJECT = "INSERT INTO reward_project (staff_code,status,reward_type) values(?,?,?)";
     private static final String GET_PROJECT = "SELECT * FROM reward_project WHERE staff_code=? AND status=?";
+    private static final String GET_REWARD_TYPE = "SELECT reward_type FROM reward_project WHERE project_id=?";
     @Override
     public void insertNewProject( String staff_code, String status, String reward_type ) {
         Connection connection = dbConnection.getConnection();
@@ -70,5 +71,25 @@ public class ProjectDAOImpl implements ProjectDAO {
         return result;
     }
 
+
+
+    public String getRewardType(int project_id) {
+        Connection connection = dbConnection.getConnection();
+        String result = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_REWARD_TYPE))
+        {
+            preparedStatement.setInt(1,project_id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()){
+                if (resultSet.next()){
+                    result = resultSet.getString("reward_type");
+                    System.out.println("result:"+result);
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }
