@@ -31,6 +31,9 @@
         <tr>
             <td><a href="JuniorResearchInvestigatorTableB">表B 傑出論文績效說明表</a></td>
         </tr>
+        <tr>
+            <td><a href="PaperPerformanceDescriptionUpload">表B 傑出論文績效說明表-上傳檔案</a></td>
+        </tr>
         </tbody>
     </table>
     <div style="text-align-last: center; margin: 1rem;">
