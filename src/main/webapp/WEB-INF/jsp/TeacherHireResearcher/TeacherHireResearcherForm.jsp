@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
+<%@ page import="Utils.DateUtil" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
+    DateUtil dateUtil = new DateUtil();
     String TeacherDescription = "";
     String DepartmentDescription = "";
 
@@ -23,13 +23,6 @@
         researcherTypeChecked[1] = "checked";
     }else {
         researcherTypeChecked[0] = "checked";
-    }
-%>
-<%!
-    private String getNowDate(){
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        return ft.format(date);
     }
 %>
 <html>
@@ -231,7 +224,7 @@
                                 出生日期<font color="red">*</font>
                             </td>
                             <td colspan="3">
-                                <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=getNowDate()%>">
+                                <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=dateUtil.getNowDate()%>">
                             </td>
                         </tr>
                         <tr>

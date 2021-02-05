@@ -1,5 +1,6 @@
-<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
+<%@ page import="Utils.DateUtil" %>
 <%
     int cellsNum = 5;                       // 年度橫向欄位數
     final int TSSCIPointPerArticle = 2;     // TSSCI/THCI 點數(2點/篇)
@@ -10,6 +11,7 @@
     final int ministryOfTechnologyProjectPoint = 5;
     final int ministryOfTechnologyProjectMoney = 10;
     JSONObject json = (JSONObject) request.getAttribute("json");
+    DateUtil dateUtil = new DateUtil();
 %>
 
 <html>
@@ -111,6 +113,10 @@
 				fillSpaceWithZero(this);
                 calculatePoint($(this).parent().parent());
 			});
+
+			if($("input[name='commit_date']").val()===""){
+				$("input[name='commit_date']").val("<%=dateUtil.getNowDate()%>");
+			}
 		});
 
 		function updateSubTotal(trObj){
