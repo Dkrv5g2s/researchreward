@@ -15,6 +15,8 @@ public class ProjectDAOImpl implements ProjectDAO {
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_PROJECT = "INSERT INTO reward_project (staff_code,status,reward_type) values(?,?,?)";
     private static final String GET_PROJECT = "SELECT * FROM reward_project WHERE staff_code=? AND status=?";
+    private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status=? WHERE project_id =? AND staff_code=? ";
+    private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
     @Override
     public void insertNewProject( String staff_code, String status, String reward_type ) {
         Connection connection = dbConnection.getConnection();
@@ -24,8 +26,6 @@ public class ProjectDAOImpl implements ProjectDAO {
             preparedStatement.setString(1,staff_code);
             preparedStatement.setString(2,status);
             preparedStatement.setString(3,reward_type);
-
-
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -34,13 +34,34 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    public void deleteProject(int project_id) {
+    public void deleteProject(int project_id,String staff_code) {
+        Connection connection = dbConnection.getConnection();
 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PROJECT))
+        {
+            preparedStatement.setInt(1,project_id);
+            preparedStatement.setString(2,staff_code);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void updateProject(RewardProject rewardProject) {
+    public void UpdateProjectStatus(RewardProject rewardProject) {
+        Connection connection = dbConnection.getConnection();
 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PROJECT_STATUS))
+        {
+            preparedStatement.setString(1,rewardProject.getStatus());
+            preparedStatement.setInt(2,rewardProject.getProject_id());
+            preparedStatement.setString(3,rewardProject.getStaff_code());
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

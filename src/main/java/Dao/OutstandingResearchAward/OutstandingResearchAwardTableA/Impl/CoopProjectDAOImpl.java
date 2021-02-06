@@ -1,9 +1,9 @@
-package Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.Impl;
+package Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.CoopProject;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.CoopProject;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
-import Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.CoopProjectDAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.CoopProjectDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,7 +49,7 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
     }
 
     @Override
-    public CoopProject show(String projectID) {
+    public CoopProject get(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))

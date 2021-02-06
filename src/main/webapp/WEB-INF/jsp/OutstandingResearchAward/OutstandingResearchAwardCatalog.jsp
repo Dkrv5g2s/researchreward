@@ -28,7 +28,10 @@
             <td><a href="/OutstandingResearchAwardReviewInformation">審查資料</a></td>
         </tr>
         <tr>
-            <td><a href="/OutstandingResearchAwardTableA">附件A 近三年內發表之期刊論文統計表</a></td>
+            <td>
+<%--                <button onclick="javascript:location.href='OutstandingResearchAwardTableA'">附件A 近三年內發表之期刊論文統計表</button>--%>
+                <a href="/OutstandingResearchAwardTableA">附件A 近三年內發表之期刊論文統計表</a>
+            </td>
         </tr>
         <tr>
             <td><a href="/OutstandingResearchAwardTableB">附件B 國立臺北科技大學傑出論文績效說明表</a></td>

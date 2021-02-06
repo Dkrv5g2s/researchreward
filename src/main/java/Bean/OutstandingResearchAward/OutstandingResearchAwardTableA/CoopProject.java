@@ -1,4 +1,4 @@
-package Bean.OutstandingResearchAward.JuniorResearchInvestigatorTableA;
+package Bean.OutstandingResearchAward.OutstandingResearchAwardTableA;
 
 public class CoopProject {
     private String coop_project_count1;

@@ -1,9 +1,9 @@
-package Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.Impl;
+package Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.ArticleSW;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.ArticleSW;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
-import Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.ArticleSWDAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.ArticleSWDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,7 +43,7 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
     }
 
     @Override
-    public ArticleSW show(String projectID) {
+    public ArticleSW get(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))

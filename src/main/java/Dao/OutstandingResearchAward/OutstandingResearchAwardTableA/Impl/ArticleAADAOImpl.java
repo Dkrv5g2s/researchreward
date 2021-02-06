@@ -1,9 +1,9 @@
-package Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.Impl;
+package Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.ArticleAA;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.ArticleAA;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
-import Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.ArticleAADAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.ArticleAADAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class ArticleAADAOImpl implements ArticleAADAO {
     }
 
     @Override
-    public ArticleAA show(String projectID) {
+    public ArticleAA get(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))

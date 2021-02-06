@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Sandy
@@ -9,6 +10,7 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
+    System.out.println("get json:"+ json);
 %>
 <html>
 <head>

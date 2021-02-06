@@ -1,4 +1,4 @@
-package Bean.OutstandingResearchAward.JuniorResearchInvestigatorTableA;
+package Bean.OutstandingResearchAward.OutstandingResearchAwardTableA;
 
 public class TechTransfer {
     private String tech_transfer_count1;

@@ -1,4 +1,4 @@
-package Bean.OutstandingResearchAward.JuniorResearchInvestigatorTableA;
+package Bean.OutstandingResearchAward.OutstandingResearchAwardTableA;
 
 public class ArticleAA {
     private String a_article_count1;

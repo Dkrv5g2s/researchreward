@@ -1,4 +1,4 @@
-package Bean.OutstandingResearchAward.JuniorResearchInvestigatorTableA;
+package Bean.OutstandingResearchAward.OutstandingResearchAwardTableA;
 
 public class EduProject {
     private String edu_project_count1;

@@ -1,9 +1,9 @@
-package Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.Impl;
+package Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.EduProject;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.EduProject;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
-import Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.EduProjectDAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.EduProjectDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,7 +47,7 @@ public class EduProjectDAOImpl implements EduProjectDAO {
     }
 
     @Override
-    public EduProject show(String projectID) {
+    public EduProject get(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))

@@ -1,8 +1,8 @@
 package Service.OutstandingResearchAward;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.*;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.*;
-import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.Impl.*;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.*;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.*;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,6 @@ public class OutstandingResearchAwardTableAService {
     private ArticleSWDAO articleSWDAO = new ArticleSWDAOImpl();
     private ArticleTTDAO articleTTDAO = new ArticleTTDAOImpl();
     private CoopProjectDAO coopProjectDAO = new CoopProjectDAOImpl();
-    private EduProjectDAO eduProjectDAO = new EduProjectDAOImpl();
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
@@ -81,26 +80,13 @@ public class OutstandingResearchAwardTableAService {
                 jsonObject.getString("coop_project_point3"),
                 jsonObject.getString("coop_project_point_total")
         );
-        EduProject ep = new EduProject(
-                jsonObject.getString("edu_project_count1"),
-                jsonObject.getString("edu_project_count2"),
-                jsonObject.getString("edu_project_count3"),
-                jsonObject.getString("edu_project_count_total"),
-                jsonObject.getString("edu_project_money1"),
-                jsonObject.getString("edu_project_money2"),
-                jsonObject.getString("edu_project_money3"),
-                jsonObject.getString("edu_project_money_total"),
-                jsonObject.getString("edu_project_point1"),
-                jsonObject.getString("edu_project_point2"),
-                jsonObject.getString("edu_project_point3"),
-                jsonObject.getString("edu_project_point_total")
-        );
         OtherData od = new OtherData(
                 jsonObject.getString("year1"),
                 jsonObject.getString("year2"),
                 jsonObject.getString("year3"),
                 projectID,
                 jsonObject.getString("other_data"),
+                jsonObject.getBoolean("declaration"),
                 jsonObject.getString("commit_date")
         );
         TechProject tp = new TechProject(
@@ -141,22 +127,20 @@ public class OutstandingResearchAwardTableAService {
         articleSWDAO.save(asw, projectID);
         articleTTDAO.save(att, projectID);
         coopProjectDAO.save(cp, projectID);
-        eduProjectDAO.save(ep, projectID);
         otherDataDAO.save(od, projectID);
         techProjectDAO.save(tp, projectID);
         techTransferDAO.save(tt, projectID);
     }
 
-    public JSONObject show(String projectID) {
-        ArticleAA aaa = articleAADAO.show(projectID);
-        ArticleAB aab = articleABDAO.show(projectID);
-        ArticleSW asw = articleSWDAO.show(projectID);
-        ArticleTT att = articleTTDAO.show(projectID);
-        CoopProject cp = coopProjectDAO.show(projectID);
-        EduProject ep = eduProjectDAO.show(projectID);
-        OtherData od = otherDataDAO.show(projectID);
-        TechProject tp = techProjectDAO.show(projectID);
-        TechTransfer tt = techTransferDAO.show(projectID);
+    public JSONObject get(String projectID) {
+        ArticleAA aaa = articleAADAO.get(projectID);
+        ArticleAB aab = articleABDAO.get(projectID);
+        ArticleSW asw = articleSWDAO.get(projectID);
+        ArticleTT att = articleTTDAO.get(projectID);
+        CoopProject cp = coopProjectDAO.get(projectID);
+        OtherData od = otherDataDAO.get(projectID);
+        TechProject tp = techProjectDAO.get(projectID);
+        TechTransfer tt = techTransferDAO.get(projectID);
 
         LocalDateTime dt = LocalDateTime.now();
         int year = dt.getYear()-1912;
@@ -167,25 +151,24 @@ public class OutstandingResearchAwardTableAService {
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+            od = new OtherData(Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"",false, "");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }
         JSONObject object = new JSONObject();
-
         try {
             addBeanPropertyToJson(object,aaa);
             addBeanPropertyToJson(object,aab);
             addBeanPropertyToJson(object,asw);
             addBeanPropertyToJson(object,att);
             addBeanPropertyToJson(object,cp);
-            addBeanPropertyToJson(object,ep);
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);
         }catch(IllegalAccessException e){
+            e.printStackTrace();
         }
+        System.out.println("OutstandingResearchAwardTableAService:"+object);
         return object;
     }
 }

@@ -1,9 +1,9 @@
-package Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.Impl;
+package Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.Impl;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigatorTableA.TechTransfer;
+import Bean.OutstandingResearchAward.OutstandingResearchAwardTableA.TechTransfer;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
-import Dao.OutstandingResearchAward.JuniorResearchInvestigatorTableA.TechTransferDAO;
+import Dao.OutstandingResearchAward.OutstandingResearchAwardTableA.TechTransferDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +48,7 @@ public class TechTransferDAOImpl implements TechTransferDAO {
     }
 
     @Override
-    public TechTransfer show(String projectID) {
+    public TechTransfer get(String projectID) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))

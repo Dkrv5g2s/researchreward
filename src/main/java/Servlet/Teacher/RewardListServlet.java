@@ -34,4 +34,15 @@ public class RewardListServlet extends ServletEntryPoint {
 
         resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
     }
+
+//    @Override
+//    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        req.setCharacterEncoding("utf-8");
+//        JSONObject json = new JSONObject(readJSONString(req));
+//
+//        HttpSession session = req.getSession();
+//        session.setAttribute("projectId",json.getString("projectId"));
+//
+//        resp.sendRedirect(service.del(json.getString("rewardName")));
+//    }
 }

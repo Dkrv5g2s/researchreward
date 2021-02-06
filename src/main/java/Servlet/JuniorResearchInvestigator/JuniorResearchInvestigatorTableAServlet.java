@@ -37,7 +37,8 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
         HttpSession session = req.getSession();
         req.setCharacterEncoding("UTF-8");
-        System.out.print("projectId:"+session.getAttribute("projectId").toString());
+//        System.out.print("projectId:"+session.getAttribute("projectId").toString());
         req.setAttribute("json", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
+        System.out.print("Junior req:"+req);
     }
 }
