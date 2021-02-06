@@ -111,9 +111,9 @@
             <tr class="count1">
                 <td rowspan="2" >TSSCI/THCI (限設計及人社學院)</td>
                 <td colspan="2">篇數</td>
-                <td><input name="t_article_count1" type="number" class="ic1" maxlength="3" value="<%=json.optString("t_article_count1")%>" ></td>
-                <td><input name="t_article_count2" type="number" class="ic2" maxlength="3" value="<%=json.optString("t_article_count2")%>" ></td>
-                <td><input name="t_article_count3" type="number" class="ic3" maxlength="3" value="<%=json.optString("t_article_count3")%>" ></td>
+                <td><input name="t_article_count1" type="number" class="ic1" maxlength="3" value="<%=json.optString("t_article_count1", "0")%>" ></td>
+                <td><input name="t_article_count2" type="number" class="ic2" maxlength="3" value="<%=json.optString("t_article_count2", "0")%>" ></td>
+                <td><input name="t_article_count3" type="number" class="ic3" maxlength="3" value="<%=json.optString("t_article_count3", "0")%>" ></td>
                 <td id="t_article_count_total" class="total_count"><%=json.optString("t_article_count_total","0")%></td>
             </tr>
             <tr class="point">
@@ -154,7 +154,7 @@
                 <td id="a_article_point_total" class="total_point"><%=json.optString("a_article_point_total","0")%></td>
             </tr>
             <tr class="count4">
-                <td colspan="3">近三年FWCI值：<b><input id="fwci_value_past_three_year" name="fwci_value_past_three_year" type="number" class="input_fwci" value="<%=json.optString("fwci_value_past_three_year","0")%>"></b>
+                <td colspan="3">近三年FWCI值：<b><input id="fwci_value_past_three_year" name="fwci_value_past_three_year" type="number" class="input_fwci" value="<%=json.optString("fwci_value_past_five_year","0")%>"></b>
                     ，若為本校近三年FWCI值之1.5倍則加計點數10點<b>(B)</b>
                 </td>
                 <td colspan="2"><b>總計點數 (A)+(B)</b></td>
@@ -373,7 +373,7 @@
         let a_book_point_total = parseInt($("#a_book_point_total").text());
         let a_article_point_total = parseInt($("#a_article_point_total").text());
         let fwci_value_past_three_year = parseInt($("#fwci_value_past_three_year")[0].value);
-        let school_fwci_value_past_three_year = 0;//TODO go to database get data
+        let school_fwci_value_past_three_year = <%=json.optDouble("fwci", 0.0)%>;
         let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
         if(fwci_value_past_three_year >= school_fwci_value_past_three_year*1.5) {
             update_A_plus_B += 10;
@@ -539,7 +539,7 @@
         $("#other_data").val("<%=json.optString("other_data", "")%>");
         wordsTotal();
 
-        if(<%=json.getBoolean("declaration")%>){
+        if(<%=json.optBoolean("declaration", false)%>){
             $('input[name="declaration"]').attr("checked","checked");
         }
         else{

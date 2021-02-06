@@ -333,7 +333,25 @@
         <url-pattern>/TeacherHireResearcherForm</url-pattern>
     </servlet-mapping>
 
-<!--    JuniorResearchInvestigator-->
+    <servlet>
+        <servlet-name>TeacherHireResearcherAppDocInstructionsServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherAppDocInstructionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherAppDocInstructionsServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherAppDocInstructions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherHireResearcherTableAServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherTableAServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherTableA</url-pattern>
+    </servlet-mapping>
+
+    <!--    JuniorResearchInvestigator-->
     <servlet>
         <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
         <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogServlet</servlet-class>
@@ -370,12 +388,8 @@
         <url-pattern>/JuniorResearchInvestigatorTableA</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>JuniorResearchInvestigatorTableBServlet</servlet-name>
-        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorTableBServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>JuniorResearchInvestigatorTableBServlet</servlet-name>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/JuniorResearchInvestigatorTableB</url-pattern>
     </servlet-mapping>
 </web-app>

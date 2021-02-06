@@ -1,6 +1,9 @@
 package Service.SpecialOutstandingResearcher;
 
 import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
+import Bean.Project.RewardProject;
+import Dao.Project.ProjectDAO;
+import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Utils.json_transformer_util;
@@ -27,6 +30,12 @@ public class PaperPerformanceDescriptionService {
         String json_form = new json_transformer_util().paper_performance_description_form_to_json( paperPerformanceDescriptionForm ) ;
 
         return json_form ;
+    }
+
+    public String queryRewardType(int project_id) {
+        ProjectDAO dao = new ProjectDAOImpl() ;
+        String reward_type = dao.getRewardType(project_id);
+        return reward_type;
     }
 }
 

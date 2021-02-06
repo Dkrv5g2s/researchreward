@@ -9,4 +9,5 @@ public interface ProjectDAO {
     public void deleteProject( int project_id ,String staff_code) ;
     public void UpdateProjectStatus(RewardProject rewardProject) ;
     public List<RewardProject> getProjects(String staffCode,String status);
+    public String getRewardType(int project_id);
 }

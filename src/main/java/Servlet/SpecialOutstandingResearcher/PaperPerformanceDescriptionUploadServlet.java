@@ -53,8 +53,10 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         String json_form = service.query( project_id ) ;
+        String reward_type = service.queryRewardType(project_id);
 
         req.setAttribute("latest_data", json_form );
+        req.setAttribute("reward_type", reward_type );
 
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
 
