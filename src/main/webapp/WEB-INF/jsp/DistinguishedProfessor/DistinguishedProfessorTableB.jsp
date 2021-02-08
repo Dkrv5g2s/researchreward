@@ -31,7 +31,7 @@
             border-color: gray;
             -moz-border-radius: 0px 0px 0px 0px;
             height: 20px;
-            vertical-align: text-middle;
+            vertical-align: middle;
         }
         table td.metadata{
             width: 150px;
