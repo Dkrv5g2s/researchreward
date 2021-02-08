@@ -93,7 +93,7 @@
 	        let data = {};
 			for (let i=0; i<document.getElementsByTagName("input").length; i++) {
 				let inputElem = document.getElementsByTagName("input")[i];
-				if (inputElem.type!=="button" && inputElem.type!=="hidden" && inputElem.type!=="checkbox") {
+				if (inputElem.type==="number" || inputElem.type==="date") {
 					data[inputElem.name] = inputElem.value;
 				}
 			}
@@ -190,7 +190,7 @@
 						<td colspan="1" width="10%" ><input name="sw_article_count_total" type="number" class="total_count" value="<%=json.get("sw_article_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
-		                <td colspan="1" width="10%">點數<br>(請參照附表一)</td>
+		                <td colspan="1" width="10%">點數<br>(請參照<a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/182608393.pdf#page=6" target="_blank">附表一</a>)</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
 							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="sw_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("sw_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
