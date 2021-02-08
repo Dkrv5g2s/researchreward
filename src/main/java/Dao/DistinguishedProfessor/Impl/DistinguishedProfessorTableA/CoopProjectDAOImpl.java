@@ -46,7 +46,7 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
         	else {
         		update(connection,object,projectID);
         	}
-
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,7 +94,7 @@ public class CoopProjectDAOImpl implements CoopProjectDAO {
          	
             	return cp;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

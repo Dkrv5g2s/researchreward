@@ -13,18 +13,18 @@
 <head>
     <title>個人基本資料</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({
                 type: 'POST',
                 url: '/PersonalInformation',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert('存檔成功');
                 }
             });
 
@@ -45,9 +45,6 @@
             for (var j=0; j<document.getElementsByTagName("select").length; j++){
                 data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
             }
-
-
-
             return data;
         }
 
@@ -151,7 +148,7 @@
                             每月獎勵額度<input type="number" name="price" value="<%= json.get("price") %>" required>萬元
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='RewardList'"></span></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </form>

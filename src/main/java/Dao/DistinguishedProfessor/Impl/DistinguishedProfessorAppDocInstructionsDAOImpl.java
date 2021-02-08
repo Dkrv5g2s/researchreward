@@ -29,7 +29,11 @@ public class DistinguishedProfessorAppDocInstructionsDAOImpl implements Distingu
         if(!object.isEmpty()) {
             insert(connection,object,projectID);
         }
-        	
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
@@ -53,7 +57,7 @@ public class DistinguishedProfessorAppDocInstructionsDAOImpl implements Distingu
         				resultSet.getString("technologyTransferFundBringInDate"));
         		list.add(dpadi);
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

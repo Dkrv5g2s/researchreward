@@ -16,7 +16,7 @@
 <body>
     <div class="content" style="width: 60%">
         <form action="/SelectReward" method="post">
-            <p style="text-align:left;font-weight:bold;font-size:20px;">新增計畫： </p>
+            <p style="text-align:left;font-weight:bold;font-size:20px;">新增獎項： </p>
             <table>
                 <tr>
                     <td class="metadata">選擇申請獎項</td>

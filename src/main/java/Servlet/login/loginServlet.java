@@ -27,12 +27,13 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-
+        System.out.println("loginflow");
         String account = req.getParameter("account");
         String password = req.getParameter("password");
 
         switch (roleAuthorizationService.validateRole(session, account, password)){
             case "teacher":
+            case "student":
                 resp.sendRedirect(TEACHER_URL);
                 break;
             case "admin":

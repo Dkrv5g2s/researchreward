@@ -9,13 +9,14 @@ import java.sql.*;
 
 public class MOSTPlanDAOImpl implements MOSTPlanDAO {
 
+    private static final String DELETE_OBJECT = "DELETE FROM mostplan WHERE projectId=?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_SQL = "INSERT INTO mostplan (planName, planNumber, startTime, lastTime, projectId) values (?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
             "planName=?, planNumber=?, startTime=?, lastTime=?";
 
     @Override
     public void save(MOSTPlan object) {
-
+        delete(object.getProjectId());
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL))
@@ -31,7 +32,7 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             preparedStatement.setDate(9, object.getLastTime() == null ? null : new Date(object.getLastTime().getTime()));
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -58,11 +59,26 @@ public class MOSTPlanDAOImpl implements MOSTPlanDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return mostPlan;
+    }
+    private void delete(int projectId){
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.setInt(1,projectId);
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -1,10 +1,14 @@
 package Servlet.SpecialOutstandingResearcher;
 
+import Bean.Admin.BFormFormula;
 import Bean.User.User;
+import Dao.Admin.BFormFormulaDAO;
+import Dao.Admin.Impl.BFormFormulaDAOImpl;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
+import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
@@ -37,15 +41,21 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession() ;
-
         int project_id = (int)session.getAttribute( "project_id" );
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
+        String wight = bFormFormulaService.get().toString() ;
+
+
         String json_form = service.query( project_id ) ;
 
+        String reward_type = service.queryRewardType(project_id);
+        setDisplaySection(reward_type, req);
+
+        req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
 
         if ( readonly )
@@ -70,5 +80,17 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         service.save(jsonObject);
 
 
+    }
+
+    private void setDisplaySection(String reward_type, HttpServletRequest req) {
+        String displayExplanation = "five_years";
+        if(reward_type.compareTo("優秀人才申請")==0) {
+            displayExplanation = "four_sections";
+        }
+        else if(reward_type.compareTo("年輕學者獎")==0 || reward_type.compareTo("傑出研究獎")==0) {
+            displayExplanation = "three_years";
+        }
+        req.setAttribute("displayExplanation", displayExplanation );
+        req.setAttribute("reward_type", reward_type );
     }
 }

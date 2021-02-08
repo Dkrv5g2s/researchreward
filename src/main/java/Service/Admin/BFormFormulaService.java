@@ -35,6 +35,11 @@ public class BFormFormulaService {
         object.setW4_5(jsonObject.getDouble("w4_5"));
         object.setW4_6(jsonObject.getDouble("w4_6"));
         object.setW4_7(jsonObject.getDouble("w4_7"));
+        object.setW4_8(jsonObject.getDouble("w4_8"));
+        object.setW4_9(jsonObject.getDouble("w4_9"));
+        object.setW4_10(jsonObject.getDouble("w4_10"));
+        object.setW4_11(jsonObject.getDouble("w4_11"));
+        object.setW4_12(jsonObject.getDouble("w4_12"));
         bFormFormulaDAO.save(object);
     }
 

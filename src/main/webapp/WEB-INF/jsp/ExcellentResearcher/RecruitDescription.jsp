@@ -20,11 +20,11 @@
             $.ajax({
                 type: 'POST',
                 url: '/RecruitDescription',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert('存檔成功');
                 }
             });
 
@@ -102,7 +102,7 @@
                         <textarea name="contribution" type="text" maxlength="200" required><%= json.get("contribution")%></textarea>
                     </td>
                 </tr>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" style="width:10%" value="上一頁" name="close" onclick="javascript:location.href='RewardList'"></span></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" style="width:10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </form>

@@ -12,12 +12,14 @@ import java.sql.SQLException;
 
 public class SeniorityDAOImpl implements SeniorityDAO {
 
+    private static final String DELETE_OBJECT = "DELETE FROM seniority WHERE projectId = ?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO seniority (year,month,projectId) values (?,?,?) ON DUPLICATE KEY UPDATE " +
             "year=?,month=?";
 
     @Override
     public void save(Seniority object) {
+        delete(object.getProjectId());
         Connection connection = dbConnection.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_OBJECT))
@@ -29,7 +31,7 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             preparedStatement.setString(5,object.getMonth());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,11 +55,27 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             }catch (SQLException ex){
                 ex.printStackTrace();
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return seniority;
+    }
+
+    private void delete(int projectId){
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_OBJECT))
+        {
+            preparedStatement.setInt(1,projectId);
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

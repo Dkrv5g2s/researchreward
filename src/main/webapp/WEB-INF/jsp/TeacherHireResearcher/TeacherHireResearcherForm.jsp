@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
+<%@ page import="Utils.DateUtil" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
+    DateUtil dateUtil = new DateUtil();
     String TeacherDescription = "";
     String DepartmentDescription = "";
 
@@ -25,16 +25,9 @@
         researcherTypeChecked[0] = "checked";
     }
 %>
-<%!
-    private String getNowDate(){
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        return ft.format(date);
-}
-%>
 <html>
     <head>
-        <title>國立臺北科技大學特聘教授申請表</title>
+        <title>國立臺北科技大學績優教師聘任研究人員申請表</title>
         <style>
             body {
                 margin: 20px 0px 0px 0px;
@@ -89,6 +82,7 @@
                     contentType: 'application/json',
                     success: function(data){
                         alert('存檔成功');
+                        window.location.href="/TeacherHireResearcherCatalog";
                     }
                 });
 
@@ -103,9 +97,9 @@
                     if (inputElem.type!=="button" &&
                         (inputElem.type!=="radio" || (inputElem.type==="radio" && inputElem.checked))) {
 
-                        if (inputElem.name==="applyType" && inputElem.value==="teacher")
+                        if (inputElem.id==="applyTypeTeacher")
                             data["applyTypeDescription"] = document.getElementById("applyTypeTeacherDescription").value;
-                        else if (inputElem.name==="applyType" && inputElem.value==="department")
+                        else if (inputElem.id==="applyTypeDepartment")
                             data["applyTypeDescription"] = document.getElementById("applyTypeDepartmentDescription").value;
                         data[inputElem.name] = inputElem.value;
 
@@ -230,7 +224,7 @@
                                 出生日期<font color="red">*</font>
                             </td>
                             <td colspan="3">
-                                <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=getNowDate()%>">
+                                <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=dateUtil.getNowDate()%>">
                             </td>
                         </tr>
                         <tr>

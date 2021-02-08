@@ -18,11 +18,11 @@
             $.ajax({
                 type: 'POST',
                 url: '/AwardTimeLimit',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert('存檔成功');
                 }
             });
 

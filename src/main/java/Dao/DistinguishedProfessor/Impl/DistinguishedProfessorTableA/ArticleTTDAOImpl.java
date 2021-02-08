@@ -45,7 +45,7 @@ public class ArticleTTDAOImpl implements ArticleTTDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class ArticleTTDAOImpl implements ArticleTTDAO {
          	
             	return att;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

@@ -45,7 +45,7 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
          	
             	return asw;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             

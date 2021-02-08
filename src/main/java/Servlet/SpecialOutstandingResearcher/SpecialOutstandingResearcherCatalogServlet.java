@@ -39,13 +39,16 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int project_id = 1 ;
-        Boolean readonly = false ;
+//        int project_id = 1 ;
+        Boolean readonly = true ;
         // project_id = ((RewardProject)request.getAttribute( "reward_project" )).getProject_id() ;
-        project_id = 1 ; //temp precondition
+//        project_id = 1 ; //temp precondition
         //RewardProject project = new RewardProject(project_id,"108598065","草稿(暫存中)", "優秀人才申請") ;
 
         HttpSession session = req.getSession() ;
+//        boolean readonly = (Boolean)session.getAttribute("readonly");
+        int project_id = Integer.parseInt(session.getAttribute( "projectId" ).toString());
+
         session.setAttribute( "project_id", project_id );
         session.setAttribute( "readonly", readonly );
 

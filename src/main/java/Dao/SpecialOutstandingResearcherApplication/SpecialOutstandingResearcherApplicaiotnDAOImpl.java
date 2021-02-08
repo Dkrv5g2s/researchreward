@@ -34,7 +34,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
         {
             preparedStatement.setInt(1, project_id);
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
                 preparedStatement.setString(3,specialOutstandingResearcherStandard.getStandard());
                 preparedStatement.setString(4,specialOutstandingResearcherStandard.getSub_standard());
                 preparedStatement.executeUpdate();
-
+                connection.close();
             } catch (Exception e) {
 //                e.printStackTrace();
             }
@@ -113,7 +113,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
             }
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,7 +140,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
                 specialOutstandingResearcherForm.setTech_proj_start_time(resultSet.getDate("tech_proj_start_time"));
                 specialOutstandingResearcherForm.setTech_proj_end_time(resultSet.getDate("tech_proj_end_time"));
             }
-
+            connection.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,7 +165,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
 
                 specialOutstandingResearcherStandardList.add( specialOutstandingResearcherStandard );
             }
-
+            connection.close();
 
         } catch (Exception e) {
             e.printStackTrace();

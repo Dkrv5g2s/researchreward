@@ -33,11 +33,12 @@ public class UserDAOImpl implements UserDAO {
                 user.setRole(resultSet.getString("role"));
                 user.setStaff_code(resultSet.getString("number"));
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return user;
     }
+
 }

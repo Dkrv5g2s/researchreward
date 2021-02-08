@@ -157,6 +157,74 @@
         <url-pattern>/ReviewSupportingInformationForm</url-pattern>
     </servlet-mapping>
 
+<!--    SunshineScholarshipAward-->
+    <servlet>
+        <servlet-name>SelectInformationServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SelectInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectInformationServlet</servlet-name>
+        <url-pattern>/SelectInformation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SunshineScholarshipCatalogServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SunshineScholarshipCatalogServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipCatalog</url-pattern>
+    </servlet-mapping>
+
+<!--    SunshineScholarshipAward-->
+<!--    OutstandingResearcherAward-->
+    <servlet>
+        <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardReviewInformationServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardReviewInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardReviewInformationServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardReviewInformation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardTableAServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardTableAServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardTableA</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>
+        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardTableBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>
+        <url-pattern>/OutstandingResearchAwardTableB</url-pattern>
+    </servlet-mapping>
+<!--    OutstandingResearcherAward-->
+
+
 
     <servlet>
         <servlet-name>SpecialOutstandingResearcherCatalogServlet</servlet-name>
@@ -265,103 +333,63 @@
         <url-pattern>/TeacherHireResearcherForm</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
-        <servlet-name>LectureProfessorApplicationFormServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationFormServlet</servlet-class>
+        <servlet-name>TeacherHireResearcherAppDocInstructionsServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherAppDocInstructionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorApplicationFormServlet</servlet-name>
-        <url-pattern>/LectureProfessorApplicationForm</url-pattern>
+        <servlet-name>TeacherHireResearcherAppDocInstructionsServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherAppDocInstructions</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LectureProfessorExcellenceFormOneServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormAServlet</servlet-class>
+        <servlet-name>TeacherHireResearcherTableAServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherTableAServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormOneServlet</servlet-name>
-        <url-pattern>/LectureProfessorExcellenceFormOne</url-pattern>
+        <servlet-name>TeacherHireResearcherTableAServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherTableA</url-pattern>
+    </servlet-mapping>
+
+    <!--    JuniorResearchInvestigator-->
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorCatalog</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LectureProfessorCatalogServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorCatalogServlet</servlet-class>
+        <servlet-name>JuniorResearchInvestigatorServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorCatalogServlet</servlet-name>
-        <url-pattern>/LectureProfessorCatalog</url-pattern>
+        <servlet-name>JuniorResearchInvestigatorServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigator</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LectureProfessorAppDocInstructionsServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorAppDocInstructionsServlet</servlet-class>
+        <servlet-name>JuniorResearchInvestigatorReviewInformationServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorAppDocInstructionsServlet</servlet-name>
-        <url-pattern>/LectureProfessorAppDocInstructions</url-pattern>
+        <servlet-name>JuniorResearchInvestigatorReviewInformationServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorReviewInformation</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LectureProfessorRefTableServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorRefTableServlet</servlet-class>
+        <servlet-name>JuniorResearchInvestigatorTableAServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorTableAServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorRefTableServlet</servlet-name>
-        <url-pattern>/LectureProfessorRefTable</url-pattern>
+        <servlet-name>JuniorResearchInvestigatorTableAServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorTableA</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>LectureProfessorRefPointServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorRefPointServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>LectureProfessorRefPointServlet</servlet-name>
-        <url-pattern>/LectureProfessorRefPoint</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LectureProfessorHonoraryApplicationFormServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorHonoraryApplicationFormServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LectureProfessorHonoraryApplicationFormServlet</servlet-name>
-        <url-pattern>/LectureProfessorHonoraryApplicationForm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LectureProfessorExcellenceFormAServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormAServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormAServlet</servlet-name>
-        <url-pattern>/LectureProfessorExcellenceFormA</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LectureProfessorExcellenceFormBServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormBServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormBServlet</servlet-name>
-        <url-pattern>/LectureProfessorExcellenceFormB</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LectureProfessorExcellenceFormCServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormCServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormCServlet</servlet-name>
-        <url-pattern>/LectureProfessorExcellenceFormC</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LectureProfessorExcellenceFormDServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormDServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormDServlet</servlet-name>
-        <url-pattern>/LectureProfessorExcellenceFormD</url-pattern>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorTableB</url-pattern>
     </servlet-mapping>
 </web-app>

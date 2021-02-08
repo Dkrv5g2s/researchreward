@@ -45,7 +45,7 @@
     <div class="content">
         <table>
             <tr>
-                <td class="metadata">序號</td>
+                <td class="metadata">申請編號</td>
                 <td class="metadata">申請獎項</td>
                 <td class="metadata">操作</td>
             </tr>

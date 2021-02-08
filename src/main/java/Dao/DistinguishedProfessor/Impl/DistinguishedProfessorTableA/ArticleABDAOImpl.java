@@ -45,7 +45,7 @@ public class ArticleABDAOImpl implements ArticleABDAO {
         		update(connection,object,projectID);
         	}
 
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class ArticleABDAOImpl implements ArticleABDAO {
          	
             	return aab;
         	}
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             
