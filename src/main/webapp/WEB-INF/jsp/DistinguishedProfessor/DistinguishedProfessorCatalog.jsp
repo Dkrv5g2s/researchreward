@@ -48,24 +48,24 @@
 <%--            <td><span style="color:green;">已填寫</span></td>--%>
 <%--            <% } %>--%>
         </tr>
-<%--        <tr class="">--%>
-<%--            <td>C004</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC004&id=<%=id%>">研究人事費</a></td>--%>
+       <tr class="">
+            <td>4</td>
+            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
 <%--            <%if(c004_Form.getC004_Form_Data01s().size()>0||c004_Form.getC004_Form_Data02s().size()>0){ %>--%>
 <%--            <td><span style="color:green;">已填寫</span></td>--%>
 <%--            <% }else { %>--%>
 <%--            <td><span style="color:red;">未填寫(非必填)</span></td>--%>
 <%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>C005</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC005&id=<%=id%>">業務費</a></td>--%>
+        </tr>
+        <tr class="">
+            <td>5</td>
+            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
 <%--            <%if(c005_Form.getC005_Form_Datas().size()>0){ %>--%>
 <%--            <td><span style="color:green;">已填寫</span></td>--%>
 <%--            <% }else { %>--%>
 <%--            <td><span style="color:red;">未填寫(非必填)</span></td>--%>
 <%--            <% } %>--%>
-<%--        </tr>--%>
+        </tr>
 <%--        <tr class="">--%>
 <%--            <td>C006</td>--%>
 <%--            <td align="left"><a style="color:blue" href="Main?func=formC006&id=<%=id%>">儀器設備費</a></td>--%>
