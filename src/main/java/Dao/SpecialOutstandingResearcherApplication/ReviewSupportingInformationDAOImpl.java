@@ -9,6 +9,7 @@ import DBConnection.DBConnectionImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,12 +88,17 @@ public class ReviewSupportingInformationDAOImpl implements  ReviewSupportingInfo
 
 
                 preparedStatement.executeUpdate() ;
-                connection.close();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
