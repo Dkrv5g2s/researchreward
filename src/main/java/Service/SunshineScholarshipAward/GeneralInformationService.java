@@ -45,7 +45,6 @@ public class GeneralInformationService {
                 jsonObject.getString("CommitDate"),
                 projectId
         );
-//        System.out.println(personalInformation);
         personalInformationDAO.save(personalInformation);
         fwciUserInputDAO.save(fwciUserInputInfomation);
     }
@@ -53,7 +52,6 @@ public class GeneralInformationService {
 
 
     public JSONObject get(int projectId) {
-//        System.out.println("get:"+projectId);
         PersonalInformation personalInformation = personalInformationDAO.get(projectId);
         FWCIUserInputInfomation fwciUserInputInfomation = fwciUserInputDAO.get(projectId);
         FWCIPrizeInfomation fwciPrizeInfomation = fwciPrizeDAO.get();

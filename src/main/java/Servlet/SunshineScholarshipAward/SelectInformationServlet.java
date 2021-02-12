@@ -26,6 +26,7 @@ public class SelectInformationServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         //userRole has been stored in session when login
+        System.out.println("SelectInformationServlet:"+req.toString());
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
@@ -43,26 +44,27 @@ public class SelectInformationServlet extends ServletEntryPoint {
                 break;
         }
 
-//        System.out.println(req);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
-//        getForm(req);
+        ShowSessionValue(session);
 
         JSONObject json = new JSONObject(readJSONString(req));
         generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-
-        System.out.println("resp:"+resp);
     }
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
         HttpSession session = req.getSession();
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+    }
+
+    private void ShowSessionValue(HttpSession session){
+        for(int i =0;i<session.getValueNames().length;i++)
+            System.out.println("Key:"+session.getValueNames()[i]+"value:"+session.getAttribute(session.getValueNames()[i]));
     }
 
 }

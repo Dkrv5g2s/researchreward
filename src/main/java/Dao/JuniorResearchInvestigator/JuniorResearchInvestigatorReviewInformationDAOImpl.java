@@ -58,7 +58,6 @@ public class JuniorResearchInvestigatorReviewInformationDAOImpl implements Junio
     }
     
     public void insert(Connection connection,List<JuniorResearchInvestigatorReviewInformation> object) {
-        System.out.println("insert");
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
             for(int i = 0;i<object.size();i++) {
@@ -79,7 +78,6 @@ public class JuniorResearchInvestigatorReviewInformationDAOImpl implements Junio
     }
     
     public void delete(Connection connection,int projectId) {
-        System.out.println("delete");
     	try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE))
         {
     		preparedStatement.setInt(1,projectId);

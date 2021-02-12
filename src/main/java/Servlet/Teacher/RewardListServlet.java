@@ -31,10 +31,16 @@ public class RewardListServlet extends ServletEntryPoint {
 
         HttpSession session = req.getSession();
         session.setAttribute("projectId",json.getString("projectId"));
+        System.out.println("RewardListServlet");
+        ShowSessionValue(session);
+
 
         resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
     }
-
+    private void ShowSessionValue(HttpSession session){
+        for(int i =0;i<session.getValueNames().length;i++)
+            System.out.println("Key:"+session.getValueNames()[i]+"value:"+session.getAttribute(session.getValueNames()[i]));
+    }
 //    @Override
 //    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        req.setCharacterEncoding("utf-8");

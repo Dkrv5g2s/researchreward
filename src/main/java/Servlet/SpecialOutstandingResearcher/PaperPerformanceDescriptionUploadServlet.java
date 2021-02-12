@@ -47,7 +47,9 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession() ;
-
+        System.out.println("PaperPerformanceDescriptionUploadServlet");
+        ShowSessionValue(session);
+        System.out.println("pro");
         int project_id = (int)session.getAttribute( "project_id" );
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
@@ -180,4 +182,8 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
     }
 
+    private void ShowSessionValue(HttpSession session){
+        for(int i =0;i<session.getValueNames().length;i++)
+            System.out.println("Key:"+session.getValueNames()[i]+";value:"+session.getAttribute(session.getValueNames()[i]));
+    }
 }

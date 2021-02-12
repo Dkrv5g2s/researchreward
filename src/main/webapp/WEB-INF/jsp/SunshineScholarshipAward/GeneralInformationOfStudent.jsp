@@ -9,7 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
-//    System.out.println("json:"+json);
 %>
 <html>
 <head>
