@@ -21,6 +21,12 @@
             <tr>
                 <td><a href="/TeacherHireResearcherTableA">近五年內發表之期刊論文統計表(表A)</a></td>
             </tr>
+            <tr>
+                <td><a href="/PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
+            </tr>
+            <tr>
+                <td><a href="/PaperPerformanceDescriptionUpload">傑出論文績效說明表(表B)-上傳檔案</a></td>
+            </tr>
 
             <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
             </tbody>

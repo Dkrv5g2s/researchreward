@@ -264,7 +264,7 @@
                 list_of_standard.push(a_tuple_of_standard) ;
             //
 
-            }else if ( document.getElementsByTagName("input")[j].type !='checkbox' ) {
+            }else if ( document.getElementsByTagName("input")[j].type !='checkbox' && document.getElementsByTagName("input")[j].name !='executed_tech_proj_yes' ) {
                 data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
             }
 
