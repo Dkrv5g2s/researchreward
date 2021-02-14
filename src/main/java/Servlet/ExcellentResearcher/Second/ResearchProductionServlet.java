@@ -22,7 +22,7 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",researchProductionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/ResearchProduction.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/Second/ResearchProduction.jsp").forward(req, resp);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         JSONArray json = new JSONArray(readJSONString(req));
         researchProductionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        doGet(req,resp);
+
     }
 }

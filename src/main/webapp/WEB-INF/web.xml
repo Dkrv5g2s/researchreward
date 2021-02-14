@@ -402,4 +402,13 @@
         <url-pattern>/Second/PersonalInformation</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ExecutedPerformanceServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ExecutedPerformanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExecutedPerformanceServlet</servlet-name>
+        <url-pattern>/Second/ExecutedPerformance</url-pattern>
+    </servlet-mapping>
+
 </web-app>
