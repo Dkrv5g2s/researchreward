@@ -19,7 +19,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/Second/PersonalInformation',
+                url: '/SecondPersonalInformation',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
@@ -35,7 +35,7 @@
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
+                    data[ document.getElementsByTagName("input")[j].name] = "false";
                 }else {
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
                 }
@@ -52,8 +52,8 @@
         $( document ).ready(function() {
             // 在這撰寫javascript程式碼
             $('#level').val("<%=json.get("level")%>");
-            $('#qualification1').prop("checked","<%=json.get("qualification1")%>");
-            $('#qualification2').prop("checked","<%=json.get("qualification2")%>");
+            $('#qualification1').prop("checked","<%=json.get("qualification1")%>"=="true"?true:false);
+            $('#qualification2').prop("checked","<%=json.get("qualification2")%>"=="true"?true:false);
         });
     </script>
 </head>
@@ -146,7 +146,7 @@
                             <input type="text" name="workContent" id="workContent">
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </form>

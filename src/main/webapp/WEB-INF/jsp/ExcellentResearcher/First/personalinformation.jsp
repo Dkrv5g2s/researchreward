@@ -35,7 +35,7 @@
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
+                    data[ document.getElementsByTagName("input")[j].name] = "false";
                 }else {
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
                 }
@@ -52,8 +52,8 @@
         $( document ).ready(function() {
             // 在這撰寫javascript程式碼
             $('#level').val("<%=json.get("level")%>");
-            $('#qualification1').prop("checked","<%=json.get("qualification1")%>");
-            $('#qualification2').prop("checked","<%=json.get("qualification2")%>");
+            $('#qualification1').prop("checked","<%=json.getBoolean("qualification1")%>"=="true"?true:false);
+            $('#qualification2').prop("checked","<%=json.getBoolean("qualification2")%>"=="true"?true:false);
         });
     </script>
 </head>

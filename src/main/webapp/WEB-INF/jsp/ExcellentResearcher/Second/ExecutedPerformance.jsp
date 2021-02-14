@@ -19,7 +19,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/ExecutedPerformance',
+                url: '/SecondExecutedPerformance',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
@@ -63,7 +63,7 @@
                     </td>
                 </tr>
 
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" style="width:10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" style="width:10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </form>

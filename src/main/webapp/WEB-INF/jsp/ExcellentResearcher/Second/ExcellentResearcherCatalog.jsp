@@ -20,16 +20,13 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="/PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a href="/SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
+                    <td><a href="/SecondExecutedPerformance">前一年度具體執行績效</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/CatalogOfWorks">著作目錄</a></td>
-                </tr>
-                <tr>
-                    <td><a href="/ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
+                    <td><a href="/SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
                 </tr>
                 <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
             </tbody>

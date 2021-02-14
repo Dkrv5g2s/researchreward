@@ -34,7 +34,6 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         JSONObject json = new JSONObject(readJSONString(req));
         personalInformationService.saveAtSecondTimeApplying(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/Second/RecruitDescription.jsp").forward(req, resp);
     }
 
 

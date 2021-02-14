@@ -32,6 +32,5 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         JSONArray json = new JSONArray(readJSONString(req));
         researchProductionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        doGet(req,resp);
     }
 }

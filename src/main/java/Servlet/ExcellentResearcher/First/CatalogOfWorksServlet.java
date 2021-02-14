@@ -33,6 +33,5 @@ public class CatalogOfWorksServlet extends ServletEntryPoint {
         JSONObject json = new JSONObject(readJSONString(req));
         catalogsService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/ResearchProduction.jsp").forward(req, resp);
     }
 }

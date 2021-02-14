@@ -20,7 +20,7 @@ public class PersonalInformationService {
         Education education = new Education(jsonObject.getString("schoolName"),
                 jsonObject.getString("major"),
                 jsonObject.getString("degree"),
-                jsonObject.getString("graduateMonth"),
+                jsonObject.getString("graduateYear"),
                 jsonObject.getString("graduateMonth"),
                 projectId);
         Experiment experiment = new Experiment(jsonObject.getString("ServiceOrganization"),
@@ -48,11 +48,10 @@ public class PersonalInformationService {
                 null,
                 null,
                 jsonObject.getBoolean("qualification1"),
-                jsonObject.getBoolean("qualification1"),
+                jsonObject.getBoolean("qualification2"),
                 jsonObject.getString("level"),
                 projectId,
                 jsonObject.getString("price"));
-
 
         seniorityDAO.save(seniority);
         experimentDAO.save(experiment);
@@ -81,7 +80,7 @@ public class PersonalInformationService {
                 null,
                 null,
                 jsonObject.getBoolean("qualification1"),
-                jsonObject.getBoolean("qualification1"),
+                jsonObject.getBoolean("qualification2"),
                 jsonObject.getString("level"),
                 projectId,
                 jsonObject.getString("price"));

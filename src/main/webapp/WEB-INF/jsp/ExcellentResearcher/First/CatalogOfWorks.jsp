@@ -40,7 +40,7 @@
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
+                    data[ document.getElementsByTagName("input")[j].name] = "false";
                 }else {
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
                 }

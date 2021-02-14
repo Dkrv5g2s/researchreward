@@ -316,6 +316,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SecondExcellentResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ExcellentResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondExcellentResearcherCatalogServlet</servlet-name>
+        <url-pattern>/SecondExcellentResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>TeacherHireResearcherCatalogServlet</servlet-name>
         <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherCatalogServlet</servlet-class>
     </servlet>
@@ -399,7 +408,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SecondPersonalInformationServlet</servlet-name>
-        <url-pattern>/Second/PersonalInformation</url-pattern>
+        <url-pattern>/SecondPersonalInformation</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -408,7 +417,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ExecutedPerformanceServlet</servlet-name>
-        <url-pattern>/Second/ExecutedPerformance</url-pattern>
+        <url-pattern>/SecondExecutedPerformance</url-pattern>
     </servlet-mapping>
 
 </web-app>

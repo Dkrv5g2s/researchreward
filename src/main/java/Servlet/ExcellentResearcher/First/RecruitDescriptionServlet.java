@@ -33,6 +33,5 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
         JSONObject json = new JSONObject(readJSONString(req));
         recruitDescriptionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/CatalogOfWorks.jsp").forward(req, resp);
     }
 }
