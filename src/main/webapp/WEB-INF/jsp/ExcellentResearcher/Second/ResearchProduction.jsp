@@ -34,45 +34,52 @@
 
     </style>
     <script>
-        function createPatent() {
-            var data = "<tr name=\"patent\">\n" +
-                "                    <td><input type=\"text\" name=\"patentClass\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"country\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentNumber\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"inventor\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentee\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"approvalDate\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\"></td>\n" +
+        function createPlan() {
+            var data = "<tr name=\"plan\">\n" +
+                "                    <td><input type=\"text\" name=\"number\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"planName\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"planNumber\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"executeTime\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='patent'] tr[name=new]").before(data);
+            $("div[name='plan'] tr[name=new]").before(data);
         }
 
-        function createTechnologyTransfer() {
-            var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyName\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentName\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"authorizedUnit\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"toAuthorizedUnit\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\"></td>\n" +
+        function createPaper() {
+            var data = "<tr name=\"paper\">\n" +
+                "                    <td><input type=\"text\" name=\"number\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"paperName\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"journal\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"author\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='technologyTransfer'] tr[name=new]").before(data);
+            $("div[name='paper'] tr[name=new]").before(data);
         }
 
-        function createAuthorization() {
-            var data = "<tr name=\"workAuthorization\">\n" +
-                "                    <td><input type=\"text\" name=\"patentClass\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"authorizationClass\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"author\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"copyrightOwner\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"agent\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\"></td>\n" +
+        function createBook() {
+            var data = "<tr name=\"book\">\n" +
+                "                    <td><input type=\"text\" name=\"number\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"bookName\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"publisher\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"publishYear\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"ISBN\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='authorization'] tr[name=new]").before(data);
+            $("div[name='book'] tr[name=new]").before(data);
+        }
+
+        function createReward() {
+            var data = "<tr name=\"reward\">\n" +
+                "                    <td><input type=\"text\" name=\"rewardName\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"organization\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"rewardDate\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"reason\"></td>\n" +
+                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                </tr>";
+            $("div[name='reward'] tr[name=new]").before(data);
         }
 
         $(document).on("click", "button[name='delete']",function(){
@@ -86,13 +93,14 @@
             var table1 = tableToJson($('form').find("table")[0]);
             var table2 = tableToJson($('form').find("table")[1]);
             var table3 = tableToJson($('form').find("table")[2]);
+            var table4 = tableToJson($('form').find("table")[3]);
 
-            var data = [table1,table2,table3];
+            var data = [table1,table2,table3,table4];
 
 
             $.ajax({
                 type: 'POST',
-                url: '/ResearchProduction',
+                url: '/Second/ResearchProduction',
                 dataType: 'text',
                 data: JSON.stringify(data),
                 contentType: 'application/json',
@@ -206,64 +214,73 @@
 </head>
 <body>
 <div class="content">
-    <p>研發成果智慧財產權及其應用績效：<br>
-        　1. 請將個人研發成果所產生之智慧財產權及其應用績效分為(1)專利(2)技術移轉(3)著作授權(4)其他等類別，分別填入下列表中。如欄位不足，請自行加印填寫。<br>
-        　2. 填寫順序請依專利期間起始日排列，或技術移轉及著作授權之簽約日期排列。<br>
+    <p>獲獎勵期間學術研究成果及貢獻：<br>
+        　受獎勵人應為補助起始日前一年內執行科技部研究計畫之計畫主持人；並以本校名義發表收錄於Scopus或WOS資料庫國際學術期刊論文，且需為該論文第一作者或兩名內通訊作者方可採計，第一年至少一篇(含國際研討會論文口頭報告)，第二年及第三年至少需各發表一篇和二篇 (不含國際研討會論文)。<br>
     </p>
     <form id="form">
-        <div name="patent">
+        <div name="plan">
             <table>
                 <tbody>
-                        <tr><td class="metadata" colspan="9">(一)專利 請填入目前仍有效之專利。「類別」請填入代碼：(A)發明專利(B)新型專利(C)新式樣專利。</td></tr>
+                        <tr><td class="metadata" colspan="6">執行科技部專題研究計畫</td></tr>
                         <tr>
-                            <td class="metadata" name="patentClass">類別</td>
-                            <td class="metadata" name="patentName">專利名稱</td>
-                            <td class="metadata" name="country">國別</td>
-                            <td class="metadata" name="patentNumber">專利號碼</td>
-                            <td class="metadata" name="inventor">發明人</td>
-                            <td class="metadata" name="patentee">專利權人</td>
-                            <td class="metadata" name="approvalDate">專利核准日期</td>
-                            <td class="metadata" name="mstPlanNumber">科技部計畫編號</td>
+                            <td class="metadata" name="number">序號</td>
+                            <td class="metadata" name="year">年度</td>
+                            <td class="metadata" name="planName">計畫名稱</td>
+                            <td class="metadata" name="planNumber">計畫編號</td>
+                            <td class="metadata" name="executeTime">執行期間</td>
                             <td class="metadata">功能</td>
                         </tr>
-                        <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createPatent()">新增</button></td></tr>
+                        <tr name="new"><td colspan="6" style="text-align: center"><button type="button" onclick="createPatent()">新增</button></td></tr>
                 </tbody>
             </table>
         </div>
-        <div name="technologyTransfer">
+        <div name="paper">
             <table>
                 <tbody>
-                    <tr><td class="metadata" colspan="9">(二)技術移轉</td></tr>
+                    <tr><td class="metadata" colspan="6">著作發表情形-論文</td></tr>
                     <tr>
-                        <td class="metadata" name="technologyName">技術名稱</td>
-                        <td class="metadata" name="patentName">專利名稱</td>
-                        <td class="metadata" name="authorizedUnit">授權單位</td>
-                        <td class="metadata" name="toAuthorizedUnit">被授權單位</td>
-                        <td class="metadata" name="contractDate">簽約日期</td>
-                        <td class="metadata" name="mstPlanNumber">科技部計畫編號</td>
+                        <td class="metadata" name="number">序號</td>
+                        <td class="metadata" name="year">年度</td>
+                        <td class="metadata" name="paperName">論文名稱</td>
+                        <td class="metadata" name="journal">期刊名稱、卷期</td>
+                        <td class="metadata" name="author">第一作者或兩名內通訊作者</td>
                         <td class="metadata">功能</td>
                     </tr>
-                    <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createTechnologyTransfer()">新增</button></td></tr>
+                    <tr name="new"><td colspan="6" style="text-align: center"><button type="button" onclick="createTechnologyTransfer()">新增</button></td></tr>
                 </tbody>
             </table>
         </div>
-        <div name="authorization">
+        <div name="book">
             <table>
                 <tbody>
-                    <tr><td class="metadata" colspan="9">（三）著作授權 「類別」分(1)語文著作(2)電腦程式著作(3)視聽著作(4)錄音著作(5)其他，請擇一代碼填入。</td></tr>
+                    <tr><td class="metadata" colspan="7">著作發表情形-專書</td></tr>
                     <tr>
-                        <td class="metadata" name="workName">著作名稱</td>
-                        <td class="metadata" name="authorizationClass">類別</td>
-                        <td class="metadata" name="author">著作人</td>
-                        <td class="metadata" name="copyrightOwner">著作財產權人</td>
-                        <td class="metadata" name="agent">被授權人</td>
-                        <td class="metadata" name="mstPlanNumber">科技部計畫編號</td>
+                        <td class="metadata" name="number">序號</td>
+                        <td class="metadata" name="year">年度</td>
+                        <td class="metadata" name="bookName">專書名稱</td>
+                        <td class="metadata" name="publisher">出版社</td>
+                        <td class="metadata" name="publishYear">出版年</td>
+                        <td class="metadata" name="ISBN">ISBN</td>
                         <td class="metadata">功能</td>
                     </tr>
                     <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createAuthorization()">新增</button></td></tr>
                 </tbody>
             </table>
-        </div>
+        </div><div name="reward">
+        <table>
+            <tbody>
+            <tr><td class="metadata" colspan="7">獲獎情形</td></tr>
+            <tr>
+                <td class="metadata" name="rewardName">獎項名稱</td>
+                <td class="metadata" name="organization">頒獎機構</td>
+                <td class="metadata" name="rewardDate">頒獎日期</td>
+                <td class="metadata" name="reason">頒獎緣由</td>
+                <td class="metadata">功能</td>
+            </tr>
+            <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createAuthorization()">新增</button></td></tr>
+            </tbody>
+        </table>
+    </div>
         <div>
             <table>
                 <tbody>
