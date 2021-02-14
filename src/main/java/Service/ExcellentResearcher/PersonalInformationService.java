@@ -61,10 +61,18 @@ public class PersonalInformationService {
     }
 
     public void saveAtSecondTimeApplying(JSONObject jsonObject, int projectId){
+        Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
+
         MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
                 jsonObject.getString("planNumber"),
                 jsonObject.getDate("startTime"),
                 jsonObject.getDate("lastTime"),
+                projectId);
+        Experiment experiment = new Experiment(null,
+                null,
+                jsonObject.getString("pastTitle"),
+                null,
+                null,
                 projectId);
         PersonalInformation personalInformation = new PersonalInformation(jsonObject.getString("college"),
                 jsonObject.getString("department"),
@@ -87,6 +95,8 @@ public class PersonalInformationService {
         personalInformation.setWorkContent(jsonObject.getString("workContent"));
         personalInformation.setPastPrice(jsonObject.getString("pastPrice"));
 
+        seniorityDAO.save(seniority);
+        experimentDAO.save(experiment);
         mostPlanDAO.save(mostPlan);
         personalInformationDAO.save(personalInformation);
     }

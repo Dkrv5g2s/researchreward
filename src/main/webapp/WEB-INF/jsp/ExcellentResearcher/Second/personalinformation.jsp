@@ -143,7 +143,7 @@
                     <tr>
                         <td class="metadata">獲奬勵期間工作內容</td>
                         <td>
-                            <input type="text" name="workContent" id="workContent">
+                            <input type="text" name="workContent" id="workContent" value=<%= json.get("workContent") %>>
                         </td>
                     </tr>
                     <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
