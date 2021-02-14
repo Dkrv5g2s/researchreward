@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>ResearchProductionServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.ResearchProductionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResearchProductionServlet</servlet-name>
@@ -23,7 +23,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.RecruitDescriptionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.RecruitDescriptionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
@@ -31,7 +31,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.CatalogOfWorksServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.CatalogOfWorksServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
@@ -39,7 +39,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>PersonalInformationServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.PersonalInformationServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.PersonalInformationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonalInformationServlet</servlet-name>
@@ -308,7 +308,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.ExcellentResearcherCatalogServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.ExcellentResearcherCatalogServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>

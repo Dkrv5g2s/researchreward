@@ -1,6 +1,6 @@
-package Servlet.ExcellentResearcher;
+package Servlet.ExcellentResearcher.First;
 
-import Service.ExcellentResearcher.CatalogOfWorksService;
+import Service.ExcellentResearcher.RecruitDescriptionService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class CatalogOfWorksServlet extends ServletEntryPoint {
+public class RecruitDescriptionServlet extends ServletEntryPoint {
 
-
-    private CatalogOfWorksService catalogsService = new CatalogOfWorksService();
+    private RecruitDescriptionService recruitDescriptionService = new RecruitDescriptionService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",catalogsService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+        req.setAttribute("json",recruitDescriptionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/CatalogOfWorks.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/RecruitDescription.jsp").forward(req, resp);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class CatalogOfWorksServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        catalogsService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        recruitDescriptionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/ResearchProduction.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/CatalogOfWorks.jsp").forward(req, resp);
     }
 }
