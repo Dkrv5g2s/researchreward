@@ -22,7 +22,7 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",researchProductionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/ResearchProduction.jsp").forward(req, resp);
     }
 
     @Override

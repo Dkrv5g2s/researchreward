@@ -23,7 +23,7 @@ public class CatalogOfWorksServlet extends ServletEntryPoint {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",catalogsService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/CatalogOfWorks.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/CatalogOfWorks.jsp").forward(req, resp);
     }
 
     @Override
@@ -33,6 +33,6 @@ public class CatalogOfWorksServlet extends ServletEntryPoint {
         JSONObject json = new JSONObject(readJSONString(req));
         catalogsService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/ResearchProduction.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/ResearchProduction.jsp").forward(req, resp);
     }
 }
