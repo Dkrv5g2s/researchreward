@@ -1,7 +1,6 @@
 package Servlet.ExcellentResearcher.First;
 
 
-import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 import Service.ExcellentResearcher.PersonalInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -34,7 +33,7 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        personalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        personalInformationService.saveAtFirstTimeApplying(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/RecruitDescription.jsp").forward(req, resp);
     }

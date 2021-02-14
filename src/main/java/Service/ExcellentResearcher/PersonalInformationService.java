@@ -15,7 +15,7 @@ public class PersonalInformationService {
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
 
-    public void save(JSONObject jsonObject, int projectId){
+    public void saveAtFirstTimeApplying(JSONObject jsonObject, int projectId){
         Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
         Education education = new Education(jsonObject.getString("schoolName"),
                 jsonObject.getString("major"),
@@ -61,6 +61,36 @@ public class PersonalInformationService {
         personalInformationDAO.save(personalInformation);
     }
 
+    public void saveAtSecondTimeApplying(JSONObject jsonObject, int projectId){
+        MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
+                jsonObject.getString("planNumber"),
+                jsonObject.getDate("startTime"),
+                jsonObject.getDate("lastTime"),
+                projectId);
+        PersonalInformation personalInformation = new PersonalInformation(jsonObject.getString("college"),
+                jsonObject.getString("department"),
+                jsonObject.getString("hiredYear"),
+                jsonObject.getString("hiredMonth"),
+                null,
+                jsonObject.getString("cName"),
+                jsonObject.getString("eName"),
+                jsonObject.getString("title"),
+                jsonObject.getString("country"),
+                jsonObject.getString("gender"),
+                null,
+                null,
+                null,
+                jsonObject.getBoolean("qualification1"),
+                jsonObject.getBoolean("qualification1"),
+                jsonObject.getString("level"),
+                projectId,
+                jsonObject.getString("price"));
+        personalInformation.setWorkContent(jsonObject.getString("workContent"));
+        personalInformation.setPastPrice(jsonObject.getString("pastPrice"));
+
+        mostPlanDAO.save(mostPlan);
+        personalInformationDAO.save(personalInformation);
+    }
 
 
     public JSONObject get(int projectId) {

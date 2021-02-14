@@ -1,4 +1,4 @@
-package Servlet.ExcellentResearcher.First;
+package Servlet.ExcellentResearcher.Second;
 
 import Service.ExcellentResearcher.ResearchProductionService;
 import Servlet.login.ServletEntryPoint;

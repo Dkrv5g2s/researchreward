@@ -15,8 +15,7 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
     private static final String DELETE_OBJECT = "DELETE FROM personalinformation WHERE projectId=?";
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
-            "qualification2,level,price,projectId) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
-            "college=?,department=?,hiredYear=?,hiredMonth=?,cName=?,eName=?,title=?,country=?,gender=?,qualification1=?,qualification2=?,level=?,price=?";
+            "qualification2,level,price,projectId,workContent,pastPrice) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE projectId=?";
 
     @Override
@@ -40,19 +39,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
             preparedStatement.setString(12,object.getLevel());
             preparedStatement.setString(13,object.getPrice());
             preparedStatement.setInt(14,object.getProjectId());
-            preparedStatement.setString(15,object.getCollege());
-            preparedStatement.setString(16,object.getDepartment());
-            preparedStatement.setString(17,object.getHiredYear());
-            preparedStatement.setString(18,object.getHiredMonth());
-            preparedStatement.setString(19,object.getcName());
-            preparedStatement.setString(20,object.geteName());
-            preparedStatement.setString(21,object.getTitle());
-            preparedStatement.setString(22,object.getCountry());
-            preparedStatement.setString(23,object.getGender());
-            preparedStatement.setBoolean(24,object.getQualification1());
-            preparedStatement.setBoolean(25,object.getQualification2());
-            preparedStatement.setString(26,object.getLevel());
-            preparedStatement.setString(27,object.getPrice());
+            preparedStatement.setString(15,object.getWorkContent());
+            preparedStatement.setString(16,object.getPastPrice());
 
             preparedStatement.executeUpdate();
             connection.close();
@@ -88,6 +76,8 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
                     result.setLevel(rs.getString("level"));
                     result.setPrice(rs.getString("price"));
                     result.setProjectId(rs.getInt("projectId"));
+                    result.setWorkContent(rs.getString("workContent"));
+                    result.setPastPrice(rs.getString("pastPrice"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();
