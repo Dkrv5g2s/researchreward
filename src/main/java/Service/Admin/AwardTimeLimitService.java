@@ -76,6 +76,7 @@ public class AwardTimeLimitService {
         }
         if(result.getS7().getTime() < systemTime && systemTime < result.getL7().getTime()){
             rewards.add("獎勵新聘特殊優秀研究人才");
+            rewards.add("(續撥)獎勵新聘特殊優秀研究人才");
         }
         if(result.getS8().getTime() < systemTime && systemTime < result.getL8().getTime()){
             rewards.add("陽光獎助金論文獎勵");
