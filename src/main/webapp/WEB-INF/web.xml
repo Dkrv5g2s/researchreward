@@ -410,7 +410,7 @@
         <servlet-name>SecondPersonalInformationServlet</servlet-name>
         <url-pattern>/SecondPersonalInformation</url-pattern>
     </servlet-mapping>
-
+    ResearchProductionServlet
     <servlet>
         <servlet-name>ExecutedPerformanceServlet</servlet-name>
         <servlet-class>Servlet.ExcellentResearcher.Second.ExecutedPerformanceServlet</servlet-class>
@@ -418,6 +418,15 @@
     <servlet-mapping>
         <servlet-name>ExecutedPerformanceServlet</servlet-name>
         <url-pattern>/SecondExecutedPerformance</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SecondResearchProductionServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ResearchProductionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondResearchProductionServlet</servlet-name>
+        <url-pattern>/SecondResearchProduction</url-pattern>
     </servlet-mapping>
 
 </web-app>

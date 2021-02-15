@@ -59,7 +59,7 @@
                         (二)	研究表現說明(含研究能量、研究廣度、跨領域合作研究、創新研究領域、產業技術升級、研究團隊之養成及獲獎或榮譽等)。
                     </td>
                     <td>
-                        <textarea name="reason" type="text" maxlength="2000" name="work" required><%= json.get("work")%></textarea>
+                        <textarea name="work" type="text" maxlength="2000" required><%= json.get("work")%></textarea>
                     </td>
                 </tr>
 

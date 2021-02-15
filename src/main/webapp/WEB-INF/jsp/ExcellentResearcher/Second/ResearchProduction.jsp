@@ -40,7 +40,8 @@
                 "                    <td><input type=\"text\" name=\"year\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"planName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"planNumber\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"executeTime\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"startTime\"></td>" +
+                "                    <td><input type=\"date\" name=\"lastTime\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
             $("div[name='plan'] tr[name=new]").before(data);
@@ -52,7 +53,7 @@
                 "                    <td><input type=\"text\" name=\"year\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"paperName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"journal\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"author\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"author\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
             $("div[name='paper'] tr[name=new]").before(data);
@@ -75,7 +76,7 @@
             var data = "<tr name=\"reward\">\n" +
                 "                    <td><input type=\"text\" name=\"rewardName\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"organization\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"rewardDate\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"rewardDate\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"reason\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
@@ -146,7 +147,7 @@
         JSONArray jArray1 = (JSONArray)jsonArray.get(0);
         JSONArray jArray2 = (JSONArray)jsonArray.get(1);
         JSONArray jArray3 = (JSONArray)jsonArray.get(2);
-
+        JSONArray jArray4 = (JSONArray)jsonArray.get(3);
         for(Object object: jArray1){
             JSONObject jsonObject = (JSONObject)object;
 
@@ -155,18 +156,16 @@
     <script>
         $(document).ready(function () {
 
-            var data = "<tr name=\"patent\">\n" +
-                "                    <td><input type=\"text\" name=\"patentClass\" value=\"<%=jsonObject.get("patentClass")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentName\" value=<%=jsonObject.get("patentName")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"country\" value=<%=jsonObject.get("country")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentNumber\" value=<%=jsonObject.get("patentNumber")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"inventor\" value=<%=jsonObject.get("inventor")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentee\" value=<%=jsonObject.get("patentee")%>></td>\n" +
-                "                    <td><input type=\"date\" name=\"approvalDate\" value=<%=jsonObject.get("approvalDate")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=<%=jsonObject.get("mstPlanNumber")%>></td>\n" +
+            var data = "<tr name=\"plan\">\n" +
+                "                    <td><input type=\"text\" name=\"number\" value=\"<%=jsonObject.get("number")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\" value=<%=jsonObject.get("year")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"planName\" value=<%=jsonObject.get("planName")%>></td>\n" +
+                "                    <td><input type=\"text\" name=\"planNumber\" value=<%=jsonObject.get("planNumber")%>></td>\n" +
+                "                    <td><input type=\"date\" name=\"startTime\" value=<%=jsonObject.get("startTime")%>></td>\n" +
+                "                    <td><input type=\"date\" name=\"lastTime\" value=<%=jsonObject.get("lastTime")%>></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='patent'] tr[name=new]").before(data);
+            $("div[name='plan'] tr[name=new]").before(data);
         })
     </script>
     <%
@@ -177,16 +176,15 @@
     <script>
         $(document).ready(function () {
 
-            var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyName\" value=\"<%=jsonObject.get("technologyName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"patentName\" value=\"<%=jsonObject.get("patentName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"authorizedUnit\" value=\"<%=jsonObject.get("authorizedUnit")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"toAuthorizedUnit\" value=\"<%=jsonObject.get("toAuthorizedUnit")%>\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=\"<%=jsonObject.get("mstPlanNumber")%>\"></td>\n" +
+            var data = "<tr name=\"paper\">\n" +
+                "                    <td><input type=\"text\" name=\"number\" value=\"<%=jsonObject.get("number")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\" value=\"<%=jsonObject.get("year")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"paperName\" value=\"<%=jsonObject.get("paperName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"journal\" value=\"<%=jsonObject.get("journal")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"author\" value=\"<%=jsonObject.get("author")%>\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='technologyTransfer'] tr[name=new]").before(data);
+            $("div[name='paper'] tr[name=new]").before(data);
         })
     </script>
     <%
@@ -196,16 +194,33 @@
     %>
     <script>
         $(document).ready(function () {
-            var data = "<tr name=\"workAuthorization\">\n" +
-                "                    <td><input type=\"text\" name=\"workName\" value=\"<%=jsonObject.get("workName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"authorizationClass\" value=\"<%=jsonObject.get("authorizationClass")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"author\" value=\"<%=jsonObject.get("author")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"copyrightOwner\" value=\"<%=jsonObject.get("copyrightOwner")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"agent\" value=\"<%=jsonObject.get("agent")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"mstPlanNumber\" value=\"<%=jsonObject.get("mstPlanNumber")%>\"></td>\n" +
+            var data = "<tr name=\"book\">\n" +
+                "                    <td><input type=\"text\" name=\"number\" value=\"<%=jsonObject.get("number")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"year\" value=\"<%=jsonObject.get("year")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"bookName\" value=\"<%=jsonObject.get("bookName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"publisher\" value=\"<%=jsonObject.get("publisher")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"publishYear\" value=\"<%=jsonObject.get("publishYear")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"ISBN\" value=\"<%=jsonObject.get("ISBN")%>\"></td>\n" +
                 "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
-            $("div[name='authorization'] tr[name=new]").before(data);
+            $("div[name='book'] tr[name=new]").before(data);
+        })
+    </script>
+    <%
+        }
+        for(Object object: jArray4){
+        JSONObject jsonObject = (JSONObject)object;
+    %>
+    <script>
+        $(document).ready(function () {
+            var data = "<tr name=\"reward\">\n" +
+                "                    <td><input type=\"text\" name=\"rewardName\" value=\"<%=jsonObject.get("rewardName")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"organization\" value=\"<%=jsonObject.get("organization")%>\"></td>\n" +
+                "                    <td><input type=\"date\" name=\"rewardDate\" value=\"<%=jsonObject.get("rewardDate")%>\"></td>\n" +
+                "                    <td><input type=\"text\" name=\"reason\" value=\"<%=jsonObject.get("reason")%>\"></td>\n" +
+                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                </tr>";
+            $("div[name='reward'] tr[name=new]").before(data);
         })
     </script>
     <%
@@ -221,16 +236,17 @@
         <div name="plan">
             <table>
                 <tbody>
-                        <tr><td class="metadata" colspan="6">執行科技部專題研究計畫</td></tr>
+                        <tr><td class="metadata" colspan="7">執行科技部專題研究計畫</td></tr>
                         <tr>
                             <td class="metadata" name="number">序號</td>
                             <td class="metadata" name="year">年度</td>
                             <td class="metadata" name="planName">計畫名稱</td>
                             <td class="metadata" name="planNumber">計畫編號</td>
-                            <td class="metadata" name="executeTime">執行期間</td>
+                            <td class="metadata" name="startTime">執行期間-起始日</td>
+                            <td class="metadata" name="lastTime">執行期間-結束日</td>
                             <td class="metadata">功能</td>
                         </tr>
-                        <tr name="new"><td colspan="6" style="text-align: center"><button type="button" onclick="createPatent()">新增</button></td></tr>
+                        <tr name="new"><td colspan="7" style="text-align: center"><button type="button" onclick="createPlan()">新增</button></td></tr>
                 </tbody>
             </table>
         </div>
@@ -246,7 +262,7 @@
                         <td class="metadata" name="author">第一作者或兩名內通訊作者</td>
                         <td class="metadata">功能</td>
                     </tr>
-                    <tr name="new"><td colspan="6" style="text-align: center"><button type="button" onclick="createTechnologyTransfer()">新增</button></td></tr>
+                    <tr name="new"><td colspan="6" style="text-align: center"><button type="button" onclick="createPaper()">新增</button></td></tr>
                 </tbody>
             </table>
         </div>
@@ -263,7 +279,7 @@
                         <td class="metadata" name="ISBN">ISBN</td>
                         <td class="metadata">功能</td>
                     </tr>
-                    <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createAuthorization()">新增</button></td></tr>
+                    <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createBook()">新增</button></td></tr>
                 </tbody>
             </table>
         </div><div name="reward">
@@ -277,14 +293,14 @@
                 <td class="metadata" name="reason">頒獎緣由</td>
                 <td class="metadata">功能</td>
             </tr>
-            <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createAuthorization()">新增</button></td></tr>
+            <tr name="new"><td colspan="9" style="text-align: center"><button type="button" onclick="createReward()">新增</button></td></tr>
             </tbody>
         </table>
     </div>
         <div>
             <table>
                 <tbody>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input class="back" type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input class="back" type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </div>
