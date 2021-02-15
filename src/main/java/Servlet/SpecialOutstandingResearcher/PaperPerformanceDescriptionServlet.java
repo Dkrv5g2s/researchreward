@@ -45,7 +45,6 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         int project_id = (int)session.getAttribute( "project_id" );
         boolean readonly = (Boolean)session.getAttribute("readonly");
         String table_d = req.getParameter("table_d");
-        System.out.println(table_d);
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
