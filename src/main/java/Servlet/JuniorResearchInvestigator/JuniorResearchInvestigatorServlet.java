@@ -19,22 +19,21 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        int project_id = turnIdInSessionToInt(session, "projectId");
-        req.setAttribute("json", juniorResearchInvestigatorService.show(project_id));
-
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        req.setAttribute("json", juniorResearchInvestigatorService.show(projectId));
         req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigator.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        int project_id = turnIdInSessionToInt(session, "projectId");
+        int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
 
         String jsonString = readJSONString(req);
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonObject.put("user_number", user_number);
-        juniorResearchInvestigatorService.save(jsonObject, project_id);
+        juniorResearchInvestigatorService.save(jsonObject, projectId);
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();

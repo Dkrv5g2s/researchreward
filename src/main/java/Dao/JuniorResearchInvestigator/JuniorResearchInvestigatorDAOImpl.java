@@ -11,24 +11,24 @@ import java.sql.SQLException;
 
 public class JuniorResearchInvestigatorDAOImpl implements JuniorResearchInvestigatorDAO{
 	private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM junior_research_investigator WHERE project_id = ?";
+    private static final String SELECT = "SELECT * FROM junior_research_investigator WHERE projectId = ?";
     private static final String INSERT =
     		"INSERT INTO junior_research_investigator (user_number, user_name, applicant_title, department, birth_date," +
-                    " identity_number, employment_date, extension_number, cellphone_number, recommended_reason, project_id)"+
+                    " identity_number, employment_date, extension_number, cellphone_number, recommended_reason, projectId)"+
     		" values(?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
             "UPDATE junior_research_investigator "+
                     "SET user_number = ?,user_name = ?,applicant_title = ?,department = ?,birth_date = ?,identity_number = ?,employment_date = ?," +
                     "extension_number = ?,cellphone_number = ?,recommended_reason = ?"+
-                    " WHERE project_id = ?";
+                    " WHERE projectId = ?";
 
     @Override
-    public void save(JuniorResearchInvestigator object, int project_id) {
+    public void save(JuniorResearchInvestigator object, int projectId) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
-            preparedStatement.setInt(1, project_id);
+            preparedStatement.setInt(1, projectId);
 
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
@@ -43,17 +43,17 @@ public class JuniorResearchInvestigatorDAOImpl implements JuniorResearchInvestig
     }
 
     @Override
-    public JuniorResearchInvestigator show(int project_id) {
+    public JuniorResearchInvestigator show(int projectId) {
         Connection connection = dbConnection.getConnection();
         ResultSet resultSet;
         JuniorResearchInvestigator juniorResearchInvestigator = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
-            preparedStatement.setInt(1, project_id);
+            preparedStatement.setInt(1, projectId);
         	resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 juniorResearchInvestigator = new JuniorResearchInvestigator(
-                        resultSet.getInt("project_id"),
+                        resultSet.getInt("projectId"),
                         resultSet.getInt("user_number"),
                         resultSet.getString("user_name"),
                         resultSet.getString("applicant_title"),

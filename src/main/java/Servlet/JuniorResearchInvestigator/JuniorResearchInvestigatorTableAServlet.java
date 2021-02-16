@@ -27,18 +27,14 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
         String jsonString = readJSONString(req);
         if (!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
-
             HttpSession session = req.getSession();
             juniorResearchInvestigatorTableAService.save(json, session.getAttribute("projectId").toString());
         }
-
     }
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
-        HttpSession session = req.getSession();
         req.setCharacterEncoding("UTF-8");
-//        System.out.print("projectId:"+session.getAttribute("projectId").toString());
+        HttpSession session = req.getSession();
         req.setAttribute("json", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
-        System.out.print("Junior req:"+req);
     }
 }
