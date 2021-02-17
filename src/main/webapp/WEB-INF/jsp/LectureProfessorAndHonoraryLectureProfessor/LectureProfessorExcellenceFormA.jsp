@@ -70,7 +70,231 @@
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function commit(){
+            $.ajax({
+                type: 'POST',
+                url: 'LectureProfessorExcellenceFormA',
+                dataType: 'text',
+                data: JSON.stringify(InputToJson()),
+                contentType: 'application/json',
+                success: function(data){
+                    alert('存檔成功');
+                }
+            });
 
+        };
+
+        function InputToJson(){
+            var data = {};
+
+            for (var i=0; i<document.getElementsByTagName("input").length; i++) {
+
+                data[ document.getElementsByTagName("input")[i].name] = document.getElementsByTagName("input")[i].value;
+
+            }
+
+            for (var j=0; j<document.getElementsByTagName("td").length; j++) {
+
+                data[ document.getElementsByTagName("td")[j].id] = document.getElementsByTagName("td")[j].innerHTML;
+
+            }
+
+            for (var k=0; k<document.getElementsByTagName("label").length; k++) {
+
+                data[ document.getElementsByTagName("label")[k].id] = document.getElementsByTagName("label")[k].innerHTML;
+
+            }
+            data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+            return data;
+        }
+
+        function update_article(obj){
+            let count = $(obj).parent().parent();
+            total_count=parseInt(count.find('.ic1').val())+parseInt(count.find('.ic2').val())+parseInt(count.find('.ic3').val())+parseInt(count.find('.ic4').val())+parseInt(count.find('.ic5').val());
+            total_point=parseInt(count.next().find('.pc1').text())+parseInt(count.next().find('.pc2').text())+parseInt(count.next().find('.pc3').text())+parseInt(count.next().find('.pc4').text())+parseInt(count.next().find('.pc5').text());
+
+            if(!isNaN(total_count)){
+                count.find('.total_count').text(total_count);
+            }
+            if(!isNaN(total_point)){
+                count.next().find('.total_point').text(total_point);
+            }
+        }
+
+        function update_project_count(obj){
+            let count = $(obj).parent().parent();
+            total_count=parseInt(count.find('.ic1').val())+parseInt(count.find('.ic2').val())+parseInt(count.find('.ic3').val())+parseInt(count.find('.ic4').val())+parseInt(count.find('.ic5').val());
+
+            if(!isNaN(total_count)){
+                count.find('.total_count').text(total_count);
+            }
+        }
+
+        function update_project(obj){
+            let money = $(obj).parent().parent();
+            total_count=parseInt(money.prev().find('.ic1').val())+parseInt(money.prev().find('.ic2').val())+parseInt(money.prev().find('.ic3').val())+parseInt(money.prev().find('.ic4').val())+parseInt(money.prev().find('.ic5').val());
+            total_money=parseInt(money.find('.ip1').val())+parseInt(money.find('.ip2').val())+parseInt(money.find('.ip3').val())+parseInt(money.find('.ip4').val())+parseInt(money.find('.ip5').val());
+            total_point=parseFloat(money.next().find('.pc1').text())+parseFloat(money.next().find('.pc2').text())+parseFloat(money.next().find('.pc3').text())+parseFloat(money.next().find('.pc4').text())+parseFloat(money.next().find('.pc5').text());
+
+            if(!isNaN(total_count)){
+                money.prev().find('.total_count').text(total_count);
+            }
+            if(!isNaN(total_money)){
+                money.find('.total_project_money').text(total_money);
+            }
+            if(!isNaN(total_point)){
+                money.next().find('.total_point').text(total_point);
+            }
+        }
+
+        function update_project_manage(obj){
+            let money = $(obj).parent().parent();
+            total_count=parseInt(money.prev().prev().find('.ic1').val())+parseInt(money.prev().prev().find('.ic2').val())+parseInt(money.prev().prev().find('.ic3').val())+parseInt(money.prev().prev().find('.ic4').val())+parseInt(money.prev().prev().find('.ic5').val());
+            total_money=parseInt(money.find('.ip1').val())+parseInt(money.find('.ip2').val())+parseInt(money.find('.ip3').val())+parseInt(money.find('.ip4').val())+parseInt(money.find('.ip5').val());
+            total_manage_money=parseInt(money.prev().find('.mp1').val())+parseInt(money.prev().find('.mp2').val())+parseInt(money.prev().find('.mp3').val())+parseInt(money.prev().find('.mp4').val())+parseInt(money.prev().find('.mp5').val());
+            total_point=parseFloat(money.next().find('.pc1').text())+parseFloat(money.next().find('.pc2').text())+parseFloat(money.next().find('.pc3').text())+parseFloat(money.next().find('.pc4').text())+parseFloat(money.next().find('.pc5').text());
+
+            if(!isNaN(total_count)){
+                money.prev().prev().find('.total_count').text(total_count);
+            }
+            if(!isNaN(total_money)){
+                money.find('.total_project_money').text(total_money);
+            }
+            if(!isNaN(total_manage_money)){
+                money.prev().find('.total_manage_money').text(total_manage_money);
+            }
+            if(!isNaN(total_point)){
+                money.next().find('.total_point').text(total_point);
+            }
+        }
+
+        function update_manage_project(obj){
+            let money = $(obj).parent().parent();
+            total_count=parseInt(money.prev().find('.ic1').val())+parseInt(money.prev().find('.ic2').val())+parseInt(money.prev().find('.ic3').val())+parseInt(money.prev().find('.ic4').val())+parseInt(money.prev().find('.ic5').val());
+            total_money=parseInt(money.next().find('.ip1').val())+parseInt(money.next().find('.ip2').val())+parseInt(money.next().find('.ip3').val())+parseInt(money.next().find('.ip4').val())+parseInt(money.next().find('.ip5').val());
+            total_manage_money=parseInt(money.find('.mp1').val())+parseInt(money.find('.mp2').val())+parseInt(money.find('.mp3').val())+parseInt(money.find('.mp4').val())+parseInt(money.find('.mp5').val());
+            total_point=parseFloat(money.next().next().find('.pc1').text())+parseFloat(money.next().next().find('.pc2').text())+parseFloat(money.next().next().find('.pc3').text())+parseFloat(money.next().next().find('.pc4').text())+parseFloat(money.next().next().find('.pc5').text());
+
+            if(!isNaN(total_count)){
+                money.prev().find('.total_count').text(total_count);
+            }
+            if(!isNaN(total_money)){
+                money.next().find('.total_project_money').text(total_money);
+            }
+            if(!isNaN(total_manage_money)){
+                money.find('.total_manage_money').text(total_manage_money);
+            }
+            if(!isNaN(total_point)){
+                money.next().next().find('.total_point').text(total_point);
+            }
+        }
+
+        function article(class_name,point_id){
+
+            $('.count').on( 'keyup',class_name,function(){
+                update_article(this);
+            });
+
+            $('.count1').on( 'keyup',class_name,function(){
+                var count = +$(this).val();
+                $(this).parents('.count1').next().find(point_id).text(2*count);
+                update_article(this);
+            });
+
+            $('.count2').on( 'keyup',class_name,function(){
+                var count = +$(this).val();
+                $(this).parents('.count2').next().find(point_id).text(6*count);
+                update_article(this);
+            });
+        }
+
+        function project(count,class_name,point_id){
+
+            $('.count').on( 'keyup',count,function(){
+                update_project_count(this);
+            });
+
+            $('.project_money1').on( 'keyup',class_name,function(){
+                var money = +$(this).val();
+                $(this).parents('.project_money1').next().find(point_id).text(money/2);
+                update_project(this);
+            });
+
+            $('.project_money2').on( 'keyup',class_name,function(){
+                var money = +$(this).val();
+                $(this).parents('.project_money2').next().find(point_id).text(money/5);
+                update_project(this);
+            });
+
+        }
+
+        function project_with_manage(count,project_class,manage_class,point_id){
+
+            $('.count').on( 'keyup',count,function(){
+                update_project_count(this);
+            });
+
+            $('.project_money3').on( 'keyup',project_class,function(){
+                var money = +$(this).val();
+                var manage = $(this).parents('.project_money3').prev().find(manage_class).val();
+                $(this).parents('.project_money3').next().find(point_id).text((parseInt(money)+parseInt(manage))/5);
+                update_project_manage(this);
+            });
+
+            $('.mamage_money1').on( 'keyup',manage_class,function(){
+                var manage = +$(this).val();
+                var money = $(this).parents('.mamage_money1').next().find(project_class).val();
+                $(this).parents('.mamage_money1').next().next().find(point_id).text((parseInt(money)+parseInt(manage))/5);
+                update_manage_project(this);
+            });
+
+            $('.project_money4').on( 'keyup',project_class,function(){
+                var money = +$(this).val();
+                var manage = $(this).parents('.project_money4').prev().find(manage_class).val();
+                $(this).parents('.project_money4').next().find(point_id).text((parseInt(money)+parseInt(manage))/2);
+                update_project_manage(this);
+            });
+
+            $('.mamage_money2').on( 'keyup',manage_class,function(){
+                var manage = +$(this).val();
+                var money = $(this).parents('.mamage_money2').next().find(project_class).val();
+                $(this).parents('.mamage_money2').next().next().find(point_id).text((parseInt(money)+parseInt(manage))/2);
+                update_manage_project(this);
+            });
+
+        }
+
+        $(document).ready(function(){
+            $("input").blur(function(){
+                if($(this).val()== ""){
+                    $(this).val("0");
+                    update_article(this);
+                    update_project_count(this);
+                    update_project(this);
+                    update_project_manage(this);
+                    update_manage_project(this);
+                }
+            });
+
+            article('.ic1','.pc1');
+            article('.ic2','.pc2');
+            article('.ic3','.pc3');
+            article('.ic4','.pc4');
+            article('.ic5','.pc5');
+            project('.ic1','.ip1','.pc1');
+            project('.ic2','.ip2','.pc2');
+            project('.ic3','.ip3','.pc3');
+            project('.ic4','.ip4','.pc4');
+            project('.ic5','.ip5','.pc5');
+            project_with_manage('.ic1','.ip1','.mp1','.pc1');
+            project_with_manage('.ic2','.ip2','.mp2','.pc2');
+            project_with_manage('.ic3','.ip3','.mp3','.pc3');
+            project_with_manage('.ic4','.ip4','.mp4','.pc4');
+            project_with_manage('.ic5','.ip5','.mp5','.pc5');
+
+        });
+    </script>
 </head>
 <body>
 <div class="content">

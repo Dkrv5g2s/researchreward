@@ -151,7 +151,6 @@
         JSONArray jsonArray = (JSONArray)json.get(0);
         for(Object object: jsonArray){
             JSONObject jsonObject = (JSONObject)object;
-
     %>
     <script>
         $(document).ready(function () {
