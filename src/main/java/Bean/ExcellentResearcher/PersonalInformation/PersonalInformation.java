@@ -21,7 +21,8 @@ public class PersonalInformation {
     private String level;
     private String price;
     private int projectId;
-
+    private String workContent;
+    private String pastPrice;
 
     public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, int projectId, String price) {
         this.college = college;
@@ -46,6 +47,22 @@ public class PersonalInformation {
 
     public PersonalInformation() {
 
+    }
+
+    public String getPastPrice() {
+        return pastPrice;
+    }
+
+    public void setPastPrice(String pastPrice) {
+        this.pastPrice = pastPrice;
+    }
+
+    public String getWorkContent() {
+        return workContent;
+    }
+
+    public void setWorkContent(String workContent) {
+        this.workContent = workContent;
     }
 
     public int getProjectId() {

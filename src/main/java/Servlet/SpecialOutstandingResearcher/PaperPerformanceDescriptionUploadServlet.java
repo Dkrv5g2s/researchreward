@@ -50,15 +50,25 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
         int project_id = (int)session.getAttribute( "project_id" );
         boolean readonly = (Boolean)session.getAttribute("readonly");
+        String table_d = req.getParameter("table_d");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
-        String json_form = service.query( project_id ) ;
+        String json_form = "";
+        if (table_d!=null && table_d.equals("1"))
+            json_form = service.query( -project_id );
+        else
+            json_form = service.query( project_id );
+
         String reward_type = service.queryRewardType(project_id);
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
 
-        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
+        if (table_d!=null && table_d.equals("1")){
+            req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableDUpload.jsp").forward(req, resp);
+        }else{
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
+        }
 
     }
 

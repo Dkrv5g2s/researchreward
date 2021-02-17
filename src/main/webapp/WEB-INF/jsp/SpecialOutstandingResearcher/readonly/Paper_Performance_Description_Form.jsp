@@ -41,7 +41,7 @@
         <tbody id="data_table" style="text-align: center;">
 
         </tbody>
-        <tbody >
+        <tbody>
             <tr>
                 <td colspan="4" class="three_years" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>
                 <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>

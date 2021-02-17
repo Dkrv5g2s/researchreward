@@ -47,11 +47,11 @@ public class SeniorityDAOImpl implements SeniorityDAO {
             preparedStatement.setInt(1,projectId);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                resultSet.next();
-
-                seniority.setYear(resultSet.getString("year"));
-                seniority.setMonth(resultSet.getString("month"));
-                seniority.setProjectId(resultSet.getInt("projectId"));
+                if(resultSet.next()) {
+                    seniority.setYear(resultSet.getString("year"));
+                    seniority.setMonth(resultSet.getString("month"));
+                    seniority.setProjectId(resultSet.getInt("projectId"));
+                }
             }catch (SQLException ex){
                 ex.printStackTrace();
             }

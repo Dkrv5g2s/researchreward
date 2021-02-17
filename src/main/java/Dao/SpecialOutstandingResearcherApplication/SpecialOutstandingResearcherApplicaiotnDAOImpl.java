@@ -43,22 +43,28 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
     private void insert_all_standard_of_specified_project(List<SpecialOutstandingResearcherStandard> specialOutstandingResearcherStandardList, int project_id){
         Connection connection = dbConnection.getConnection();
 
-
-
         for ( SpecialOutstandingResearcherStandard specialOutstandingResearcherStandard : specialOutstandingResearcherStandardList ) {
-
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SPECIFED_Special_Outstanding_Researcher_Applicaiotn_Standard))
             {
                 preparedStatement.setInt(1,project_id);
-
+                System.out.println( project_id );
+                System.out.println( specialOutstandingResearcherStandard.getLevel_num() );
+                System.out.println( specialOutstandingResearcherStandard.getStandard());
+                System.out.println( specialOutstandingResearcherStandard.getSub_standard());
                 preparedStatement.setString(2,specialOutstandingResearcherStandard.getLevel_num());
                 preparedStatement.setString(3,specialOutstandingResearcherStandard.getStandard());
                 preparedStatement.setString(4,specialOutstandingResearcherStandard.getSub_standard());
                 preparedStatement.executeUpdate();
-                connection.close();
+
             } catch (Exception e) {
 //                e.printStackTrace();
             }
+        }
+
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 

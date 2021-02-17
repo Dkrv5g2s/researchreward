@@ -292,8 +292,21 @@
     		project_with_manage('.ic3','.ip3','.mp3','.pc3');
     		project_with_manage('.ic4','.ip4','.mp4','.pc4');
     		project_with_manage('.ic5','.ip5','.mp5','.pc5');
+    		
+    		$("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
     				 			 	
 		});
+	    
+	    function checkRepresentationClause() {
+	        if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
+	            $("input[name='save_the_page']").prop( "disabled", false );
+	        }
+	        else {
+	            $("input[name='save_the_page']").prop( "disabled", true  );
+	        }
+	    }
+
+	    
     </script>
 </head>
 <body>
@@ -325,7 +338,7 @@
 		                <td colspan="1" width="10%" id="sw_article_count_total" class="total_count"><%=json.get("sw_article_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
-		                <td colspan="1" width="10%">點數<br>(請參照表B)</td>
+		                <td colspan="1" width="10%">點數<br>(請參照<a  href="javascript:" onClick="window.open('https://rnd.ntut.edu.tw/var/file/42/1042/img/955/324957124.pdf')">附表一</a>)</td>
 		                <td colspan="1" width="12%" id="sw_point1" class="pc1" ><%=json.get("sw_point1")%></td>
 		                <td colspan="1" width="12%" id="sw_point2" class="pc2" ><%=json.get("sw_point2")%></td>
 		                <td colspan="1" width="12%" id="sw_point3" class="pc3" ><%=json.get("sw_point3")%></td>
@@ -394,7 +407,7 @@
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td colspan="4" width="54%">近五年FWCI值：<label id="fwci_value_past_five_year"><%=json.get("fwci_value_past_five_year")%></label>，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 75px;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
@@ -609,14 +622,14 @@
                     	</td>
 		            </tr>
 		            <tr>
-		                <td colspan="9" width="100%"><input type="checkbox" name="declaration" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
+		                <td colspan="9" width="100%"><input type="checkbox" name="representationClause" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
 		                    <a style="margin-left: 800px">日期:<input type="date" name="commit_date" value="<%=json.get("commit_date")%>"></a>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-	            <input type="button" name="save" value="存檔" onclick="commit()">
+	            <input type="button" name="save_the_page" value="存檔" onclick="commit()" disabled = "disabled">
 	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>
