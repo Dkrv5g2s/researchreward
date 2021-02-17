@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container" style="margin: 0px auto; width: 1200px">
-
+    <title>附表一：國立臺北科技大學論文點數計算公式</title>
 
 
     <p>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</p>

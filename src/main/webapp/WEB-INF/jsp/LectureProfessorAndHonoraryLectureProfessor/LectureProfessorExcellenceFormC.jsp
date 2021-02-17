@@ -114,8 +114,8 @@
                 </label></td>
             </tr>
             <tr>
-                <td class="metadata">申請機構推薦理由</td>
-                <td><textarea class="singleRow" name ="recommendationReason" required maxlength="2000" placeholder="申請機構推薦理由填寫於此" style="height:100%"><%=json.get("recommendationReason")%></textarea></td>
+                <td style="height:600px;">申請機構推薦理由</td>
+                <td><textarea style="width:100%; height:100%;" name ="recommendationReason" required maxlength="2000" placeholder="申請機構推薦理由填寫於此" style="height:100%"><%=json.get("recommendationReason")%></textarea></td>
             </tr>
 
             </tbody>

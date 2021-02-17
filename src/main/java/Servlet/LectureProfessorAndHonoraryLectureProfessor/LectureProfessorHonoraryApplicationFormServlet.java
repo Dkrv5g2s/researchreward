@@ -20,12 +20,12 @@ public class LectureProfessorHonoraryApplicationFormServlet extends ServletEntry
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        System.out.println("POSTAAAA");
+     //   System.out.println("POSTAAAA");
         getForm(req);
         String jsonString = readJSONString(req);
         if(!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
-            System.out.println("POST");
+    //        System.out.println("POST");
             lectureProfessorHonoraryApplicationFormService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
         }
     }

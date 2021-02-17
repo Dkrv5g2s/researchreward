@@ -1,5 +1,7 @@
 package Servlet.LectureProfessorAndHonoraryLectureProfessor;
 
+
+
 import Service.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorAppDocInstructionsService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONArray;
@@ -22,19 +24,15 @@ public class LectureProfessorAppDocInstructionsServlet extends ServletEntryPoint
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if((String)session.getAttribute("userNumber") != "") {
-            getForm(req);
-        }
-
+        
+        getForm(req);
+        
         String jsonString = readJSONString(req);
-
+        
         if(!jsonString.equals("")) {
             JSONArray json = new JSONArray(jsonString);
             lectureProfessorAppDocInstructionsService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
-            req.getRequestDispatcher("/LectureProfessorAppDocInstructions").forward(req, resp);
-        }
-        else {
-            req.getRequestDispatcher("WEB-INF/jsp/LectureProfessorAndHonoraryLectureProfessor/LectureProfessorApplicationForm.jsp").forward(req, resp);
+
         }
     }
 

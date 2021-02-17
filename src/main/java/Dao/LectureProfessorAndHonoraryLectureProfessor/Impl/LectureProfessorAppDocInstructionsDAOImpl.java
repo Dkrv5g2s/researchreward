@@ -17,19 +17,23 @@ public class LectureProfessorAppDocInstructionsDAOImpl implements LectureProfess
     private static final String SELECT = "SELECT * FROM lectureprofessorappdocinstructions WHERE projectID = ?";
     private static final String INSERT =
             "INSERT INTO lectureprofessorappdocinstructions (projectID,userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+
-                    " values(?,?,?,?,?,?,?)";
+            " values(?,?,?,?,?,?,?)";
     private static final String DELETE =
             "DELETE FROM lectureprofessorappdocinstructions "+
-                    " WHERE projectID = ?";
+            " WHERE projectID = ?";
     @Override
     public void save(List<LectureProfessorAppDocInstructions> object, String userNumber,String projectID) {
         Connection connection = dbConnection.getConnection();
-
+        
         delete(connection,projectID);
         if(!object.isEmpty()) {
             insert(connection,object,projectID);
         }
-
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
@@ -75,6 +79,7 @@ public class LectureProfessorAppDocInstructionsDAOImpl implements LectureProfess
 
                 preparedStatement.addBatch();
             }
+
             preparedStatement.executeBatch();
 
         } catch (SQLException e) {

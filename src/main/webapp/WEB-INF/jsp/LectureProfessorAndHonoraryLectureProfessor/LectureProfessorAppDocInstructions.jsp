@@ -84,7 +84,7 @@
             $.ajax({
                 type: 'POST',
                 url: 'LectureProfessorAppDocInstructions',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(table),
                 contentType: 'application/json',
                 success: function(data){

@@ -89,6 +89,7 @@
             return data;
         }
 
+    
         $( document ).ready(function() {
             $("input[name='lectureCategoryExp']").prop("checked", <%=json.get("lectureCategoryExp")%>);
             $("input[name='lectureCategoryInv']").prop("checked", <%=json.get("lectureCategoryInv")%>);
@@ -273,7 +274,7 @@
             申請人聲明充分了解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全法律責任。
         </td>
         <p>
-            <input type="button" name="save" value="存檔" onclick="commit()">
+            <input type="button" name="save" value="存檔" onclick="commit()" >
             <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
         </p>
     </form>

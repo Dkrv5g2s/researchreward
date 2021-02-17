@@ -28,7 +28,6 @@ public class LectureProfessorAppDocInstructionsService {
                     jsonObject.getString("technologyTransferFundBringInDate")));
         }
 
-
         lectureProfessorAppDocInstructionsDAO.save(list, userNumber, projectID);
     }
 

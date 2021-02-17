@@ -31,6 +31,15 @@ public class LectureProfessorHonoraryApplicationFormService {
         if(lectureProfessorHonoraryApplicationForm == null) {
             lectureProfessorHonoraryApplicationForm = new LectureProfessorHonoraryApplicationForm(userNumber,"","","","","","","");
         }
+
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getUsernum());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getName());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getJobAndDept());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getEmail());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getResearchroomext());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getCellphone());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getIndivisualEducation());
+        // System.out.println(lectureProfessorHonoraryApplicationForm.getRecommendationReason());
         JSONObject object = new JSONObject();
 
         try {

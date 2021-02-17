@@ -132,7 +132,7 @@
             </tr>
             <tr style="height:200px;">
                 <td >
-                    <textarea style="width:100%; height:100%;" name ="indivisualEducation" value=<%=json.get("indivisualEducation")%>></textarea>
+                    <textarea style="width:100%; height:100%;" name ="indivisualEducation" ><%=json.get("indivisualEducation")%></textarea>
                 </td>
             </tr>
             <tr>
@@ -142,7 +142,7 @@
             </tr>
             <tr style="height:200px;">
                 <td >
-                    <textarea style="width:100%; height:100%;" name ="recommendationReason" value=<%=json.get("recommendationReason")%>></textarea>
+                    <textarea style="width:100%; height:100%;" name ="recommendationReason" ><%=json.get("recommendationReason")%><%=json.get("recommendationReason")%></textarea>
                 </td>
             </tr>
 

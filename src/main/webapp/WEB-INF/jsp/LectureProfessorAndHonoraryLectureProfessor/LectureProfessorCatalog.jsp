@@ -50,7 +50,7 @@
         </tr>
         <tr class="">
             <td>4</td>
-            <td align="left"><a style="color:blue" href="LectureProfessorExcellenceFormA" >近五年內傑出績效說明表</a></td>
+            <td align="left"><a style="color:blue" href="LectureProfessorExcellenceFormA" >近五年內傑出績效說明表(表A)</a></td>
             <%--            <% if(c002_Form.getComplete_rate()<100){ %>--%>
             <%--            <td><span style="color:red;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
             <%--            <% }else{ %>--%>
@@ -59,7 +59,16 @@
         </tr>
         <tr class="">
             <td>5</td>
-            <td align="left"><a style="color:blue" href="LectureProfessorExcellenceFormB" >國立臺北科技大學傑出論文績效說明表</a></td>
+            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionForm" >國立臺北科技大學傑出論文績效說明表(表B)</a></td>
+            <%--            <% if(c002_Form.getComplete_rate()<100){ %>--%>
+            <%--            <td><span style="color:red;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
+            <%--            <% }else{ %>--%>
+            <%--            <td><span style="color:green;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
+            <%--            <% } %>--%>
+        </tr>
+        <tr class="">
+            <td>5</td>
+            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload" >國立臺北科技大學傑出論文績效說明表(表B)-上傳檔案</a></td>
             <%--            <% if(c002_Form.getComplete_rate()<100){ %>--%>
             <%--            <td><span style="color:red;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
             <%--            <% }else{ %>--%>
