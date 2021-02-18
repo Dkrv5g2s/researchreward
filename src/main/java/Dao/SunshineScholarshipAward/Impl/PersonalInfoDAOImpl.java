@@ -49,7 +49,6 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
             preparedStatement.setString(19,object.getExtensionNumber());
             preparedStatement.setString(20,object.getCellphoneNumber());
             preparedStatement.setString(21,object.getEmailAddress());
-//            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -60,13 +59,11 @@ public class PersonalInfoDAOImpl implements PersonalInfoDAO {
 
     @Override
     public PersonalInformation get(int projectId) {
-//        System.out.println("daoimpl:"+projectId);
         Connection connection = dbConnection.getConnection();
         PersonalInformation result = new PersonalInformation();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_OBJECT))
         {
             preparedStatement.setInt(1,projectId);
-//            System.out.println(preparedStatement.toString());
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if(rs.next()) {
                     result.setChineseName(rs.getString("chinese_name"));

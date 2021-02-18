@@ -26,13 +26,30 @@ public class RewardListServlet extends ServletEntryPoint {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         req.setCharacterEncoding("utf-8");
         JSONObject json = new JSONObject(readJSONString(req));
+        String userRole = (String)session.getAttribute("userRole");
 
-        HttpSession session = req.getSession();
         session.setAttribute("projectId",json.getString("projectId"));
+        session.setAttribute("readonly",isUserRoleAdminLevel(userRole) );
 
         resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
+    }
+    private boolean isUserRoleAdminLevel(String userRole){
+        switch (userRole){
+            case "admin":
+            case "department":
+            case "college":
+            case "researchAndDevelopmentOffice":
+            case "industryLiaisonOffice":
+                return true;
+            case "teacher":
+            default:
+                return false;
+        }
+
+
     }
 
 //    @Override

@@ -28,13 +28,13 @@ public class OutstandingResearchAwardServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        int project_id = turnIdInSessionToInt(session, "projectId");
+        int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
 
         String jsonString = readJSONString(req);
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonObject.put("user_number", user_number);
-        outstandingResearchAwardService.save(jsonObject, project_id);
+        outstandingResearchAwardService.save(jsonObject, projectId);
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();

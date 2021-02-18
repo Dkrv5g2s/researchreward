@@ -33,7 +33,11 @@
             <td><button onclick="javascript:location.href='SunshineScholarshipAwardTableA'">編輯</button></td>
             <td>幾時幾分填寫</td>
         </tr>
-
+        <tr>
+            <td>表A.論文績效說明表-檔案上傳</td>
+            <td><button onclick="javascript:location.href='SunshineScholarshipAwardTableAUpload'">編輯</button></td>
+            <td>幾時幾分填寫</td>
+        </tr>
 <%--        <tr>--%>
 <%--            <td><a href="/CatalogOfWorks">著作目錄</a></td>--%>
 <%--        </tr>--%>

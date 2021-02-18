@@ -38,7 +38,6 @@ public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json", outstandingResearchAwardTableAService.get(session.getAttribute("projectId").toString()));
-        System.out.print("req:"+req);
 
     }
 
