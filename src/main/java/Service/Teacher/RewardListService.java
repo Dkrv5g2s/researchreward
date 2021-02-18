@@ -48,6 +48,10 @@ public class RewardListService {
         return array;
     }
 
+    public void updateRewardStatus(int projectId, String status){
+        projectDAO.UpdateProjectStatus(projectId, status);
+    }
+
     private void transformListToJSONArray(JSONArray array, List<RewardProject> list){
 
         for (RewardProject element : list) {

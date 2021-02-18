@@ -67,7 +67,10 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
         if (table_d!=null && table_d.equals("1")){
             req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableDUpload.jsp").forward(req, resp);
         }else{
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
+            if ( readonly )
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
+            else
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
         }
 
     }

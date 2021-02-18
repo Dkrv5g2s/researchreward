@@ -147,6 +147,14 @@
         <url-pattern>/AdminMenu</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RewardPendingListServlet</servlet-name>
+        <servlet-class>Servlet.admin.RewardPendingListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewardPendingListServlet</servlet-name>
+        <url-pattern>/RewardPendingList</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>ReviewSupportingInformationServlet</servlet-name>
@@ -294,6 +302,15 @@
     <servlet-mapping>
         <servlet-name>TraceProgressServlet</servlet-name>
         <url-pattern>/TraceProgress</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SendApplyServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.SendApplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendApplyServlet</servlet-name>
+        <url-pattern>/SendApply</url-pattern>
     </servlet-mapping>
 
     <servlet>
