@@ -27,7 +27,6 @@ public class OutstandingResearchAwardService {
         outstandingResearchAward.setExtensionNumber(jsonObject.getString("extension_number"));
         outstandingResearchAward.setCellphoneNumber(jsonObject.getString("cellphone_number"));
         outstandingResearchAward.setRecommendedReason(jsonObject.getString("recommended_reason"));
-        System.out.println(outstandingResearchAward);
         outstandingResearchAwardDAO.save(outstandingResearchAward, project_id);
     }
 

@@ -16,25 +16,41 @@
 <div class="content">
     <table>
         <thead>
-        <th>
+        <th  colspan="3" >
             傑出研究獎
         </th>
         </thead>
         <tbody>
         <tr>
-            <td><a href="/OutstandingResearchAward">推薦申請表</a></td>
+            <td class="metadata">表格名稱</td>
+            <td class="metadata">操作</td>
+            <td class="metadata">表格狀態</td>
         </tr>
         <tr>
-            <td><a href="/OutstandingResearchAwardReviewInformation">審查資料</a></td>
+            <td>推薦申請表</td>
+            <td><button onclick="location.href='OutstandingResearchAward'">編輯</button></td>
+            <td>【Time】填寫</td>
+
         </tr>
         <tr>
-            <td>
-<%--                <button onclick="javascript:location.href='OutstandingResearchAwardTableA'">附件A 近三年內發表之期刊論文統計表</button>--%>
-                <a href="/OutstandingResearchAwardTableA">附件A 近三年內發表之期刊論文統計表</a>
-            </td>
+            <td>審查資料表</td>
+            <td><button onclick="location.href='OutstandingResearchAwardReviewInformation'">編輯</button></td>
+            <td>【Time】填寫</td>
         </tr>
         <tr>
-            <td><a href="/OutstandingResearchAwardTableB">附件B 國立臺北科技大學傑出論文績效說明表</a></td>
+            <td>檢附表A 近三年內發表之期刊論文統計表</td>
+            <td><button onclick="location.href='OutstandingResearchAwardTableA'">編輯</button></td>
+            <td>【Time】填寫</td>
+        </tr>
+        <tr>
+            <td>檢附表B 傑出論文績效說明表</td>
+            <td><button onclick="location.href='OutstandingResearchAwardTableB'">編輯</button></td>
+            <td>【Time】填寫</td>
+        </tr>
+        <tr>
+            <td>檢附表B 傑出論文績效說明表-檔案上傳</td>
+            <td><button onclick="location.href='PaperPerformanceDescriptionUpload'">編輯</button></td>
+            <td>【Time】填寫</td>
         </tr>
         </tbody>
     </table>

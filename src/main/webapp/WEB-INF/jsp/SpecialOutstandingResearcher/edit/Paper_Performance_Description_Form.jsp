@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
+<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 
 <%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
@@ -12,6 +13,11 @@
 //    Gson gson = new Gson();
 
 
+%>
+
+<%
+    JSONObject json = (JSONObject) request.getAttribute("json");
+    System.out.println("json:"+json);
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
@@ -85,6 +91,7 @@
 <script>
     var latest_data = ${latest_data} ;
     var wight = ${weight} ;
+    var pid = ${projectId} ;
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
     function load(){
@@ -368,25 +375,31 @@
 
     function calculateTotal() {
         datasFromTable()
-
+        let sumOfTotalcolumn = 0.0;
+        console.log("latest_data[paper_performance_list]",latest_data["paper_performance_list"]);
         for(var i=0;i<latest_data["paper_performance_list"].length;i++){
             var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' )) ;
 
-            if ( isNaN(cal_total) )
+            if ( isNaN(cal_total) ){
                 cal_total = "請確認W1至w4欄位皆勾選";
+            }else{
+                sumOfTotalcolumn += cal_total;
+            }
+            $("label[name='cal_point"+i+"']").text(financial(cal_total));
 
-            $("label[name='cal_point"+i+"']").text(cal_total);
 
         }
 
         $('input[name="fwci_value_past_five_year"]').val("0") ;
-        $('label[id="total_point"]').text("0") ;
+        $('label[id="total_point"]').text(financial(cal_total));
 
     }
-
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
 
     $(document).on("change", "input[data-selection-block='onlyone']", function () {
         $(this).siblings().prop("checked", false) ;
@@ -400,7 +413,7 @@
 
     function InputFormToJson() {
         <%--latest_data["project_id"] = <%=project.getProject_id()%>   ;--%>
-        latest_data["project_id"] = ${project_id};
+        <%--latest_data["project_id"] = ${projectId};--%>
         return JSON.stringify(latest_data) ;
     }
 

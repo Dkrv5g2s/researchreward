@@ -114,7 +114,7 @@
                 location.href="DistinguishedProfessorCatalog";
                 break;
             case "傑出研究獎":
-                window.history.back();
+                location.href="OutstandingResearchAwardCatalog";
                 break;
             case "講座教授/榮譽講座教授":
                 window.history.back();

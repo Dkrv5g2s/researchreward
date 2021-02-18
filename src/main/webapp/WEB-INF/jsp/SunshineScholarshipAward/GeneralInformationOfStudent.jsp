@@ -9,7 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
-//    System.out.println("json:"+json);
 %>
 <html>
 <head>
@@ -74,10 +73,12 @@
         <tr style="text-align: center;">
             <td rowspan="1" colspan="0" width="20%" style="text-align: left;">E-mail:&nbsp;<input id="emailAddress" maxlength="40"></td>
         </tr>
+        <tr>
         <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
             <button type="button" width="10%" onclick="javascript:location.href='SunshineScholarshipCatalog'">回上頁</button>
             <button type="button" width="10%" onclick="commit()">存檔</button>
         </td>
+        </tr>
         </tbody>
     </table>
 </body>
@@ -111,11 +112,10 @@
             }
 
         }
-        // console.log("inputdata is :", data);
         for (var j=0; j<document.getElementsByTagName("select").length; j++){
             data[ document.getElementsByTagName("select")[j].id] = document.getElementsByTagName("select")[j].value;
         }
-        // console.log("data is :", data);
+
         return data;
     }
 

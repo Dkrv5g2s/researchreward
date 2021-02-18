@@ -76,7 +76,6 @@ public class OutstandingResearchAwardDAOImpl implements OutstandingResearchAward
     	try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
             setStatement(preparedStatement, object);
-            System.out.println("insert:"+preparedStatement.toString());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +86,6 @@ public class OutstandingResearchAwardDAOImpl implements OutstandingResearchAward
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE))
         {
             setStatement(preparedStatement, object);
-            System.out.println("update:"+preparedStatement.toString());
     		preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

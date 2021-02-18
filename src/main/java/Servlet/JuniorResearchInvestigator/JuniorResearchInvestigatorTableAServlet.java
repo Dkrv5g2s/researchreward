@@ -39,6 +39,5 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
         req.setCharacterEncoding("UTF-8");
 //        System.out.print("projectId:"+session.getAttribute("projectId").toString());
         req.setAttribute("json", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
-        System.out.print("Junior req:"+req);
     }
 }

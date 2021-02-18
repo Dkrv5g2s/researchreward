@@ -37,7 +37,6 @@ public class FWCIUserInputDAOImpl implements FWCIUserInputDAO {
             preparedStatement.setBoolean(10,object.isTeacherFormCheck());
             preparedStatement.setString(11,object.getCommitDate());
             preparedStatement.setInt(12,object.getProjectId());
-//            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
@@ -69,7 +68,6 @@ public class FWCIUserInputDAOImpl implements FWCIUserInputDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        System.out.println("result:"+result);
         return result;
     }
 }

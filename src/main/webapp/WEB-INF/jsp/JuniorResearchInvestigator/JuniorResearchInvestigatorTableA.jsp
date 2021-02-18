@@ -10,7 +10,6 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
-    System.out.println("get json:"+ json);
 %>
 <html>
 <head>
@@ -30,7 +29,7 @@
         input {
             height: 100%;
             width: 100%;
-            border-style: initial;
+            /*border-style: initial;*/
             text-align: center;
         }
         input::-webkit-outer-spin-button,

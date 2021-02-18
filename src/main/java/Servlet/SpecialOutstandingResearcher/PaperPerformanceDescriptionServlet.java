@@ -42,7 +42,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession() ;
-        int project_id = (int)session.getAttribute( "project_id" );
+        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
         boolean readonly = (Boolean)session.getAttribute("readonly");
         String table_d = req.getParameter("table_d");
 
