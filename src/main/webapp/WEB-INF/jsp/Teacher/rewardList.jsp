@@ -34,6 +34,7 @@
         };
 
         $(document).on("click", "button[name='modify']",function(){
+            
             var projectId = $(this).parents("tr").find("td").eq(0).text();
             var rewardName = $(this).parents("tr").find("td").eq(1).text();
             commit(projectId,rewardName);
