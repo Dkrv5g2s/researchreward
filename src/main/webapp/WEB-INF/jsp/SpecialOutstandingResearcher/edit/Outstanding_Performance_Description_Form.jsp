@@ -297,8 +297,21 @@
     		project_with_manage('.ic3','.ip3','.mp3','.pc3');
     		project_with_manage('.ic4','.ip4','.mp4','.pc4');
     		project_with_manage('.ic5','.ip5','.mp5','.pc5');
-    				 			 	
+			$("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
 		});
+
+
+		function checkRepresentationClause() {
+			if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
+				$("input[name='save_the_page']").prop( "disabled", false );
+			}
+			else {
+				$("input[name='save_the_page']").prop( "disabled", true  );
+			}
+		}
+
+
+
     </script>
 </head>
 <body>
@@ -571,14 +584,14 @@
 						</td>
 					</tr>
 		            <tr >
-		                <td colspan="9" width="100%"><input type="checkbox" name="declaration" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
+		                <td colspan="9" width="100%"><input type="checkbox" name="representationClause" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
 		                    <a style="margin-left: 800px">日期:<input type="date" name="commit_date" value="<%=json.get("commit_date")%>"></a>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-	            <input type="button" name="save" value="存檔" onclick="commit()">
+	            <input type="button" name="save_the_page" value="存檔" onclick="commit()" disabled = "disabled">
 	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
        		</p>
         </form>
