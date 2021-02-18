@@ -37,6 +37,8 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String UPDATE_SPECIFIED_Paper_Performance_File_Path = "UPDATE paper_performance SET joint_authoriztion_agreement_file_path = ?, paper_home_file_path=? WHERE paper_id = ?" ;
 
+    private static final String SELECT_TOTAL_PAPER_TITLE = "SELECT book_name FROM paper_performance";
+
     private PaperPerformanceDescriptionForm query_specified_paper_performance_description( int project_id ) {
         Connection connection = dbConnection.getConnection();
         PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = new PaperPerformanceDescriptionForm( project_id ) ;
@@ -330,5 +332,25 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         }
     }
 
+    public List<String> query_total_paper_title() {
 
+        List<String> paper_title_list = new ArrayList<>() ;
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TOTAL_PAPER_TITLE))
+        {
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+
+            while ( resultSet.next() ) {
+                paper_title_list.add( resultSet.getString( "book_name" ) );
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return  paper_title_list ;
+    }
 }

@@ -64,8 +64,9 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
-        PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
-        service.save(jsonObject);
+        PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
+
+        paperPerformanceDescriptionService.save(jsonObject);
 
     }
     private void setDisplaySection(String reward_type, HttpServletRequest req) {

@@ -338,8 +338,6 @@
     }
 
     function InputFormToJson() {
-        <%--latest_data["project_id"] = <%=project.getProject_id()%>   ;--%>
-        latest_data["project_id"] = ${projectId};
         return JSON.stringify(latest_data) ;
     }
 

@@ -32,11 +32,11 @@ public class RewardListServlet extends ServletEntryPoint {
         String userRole = (String)session.getAttribute("userRole");
 
         session.setAttribute("projectId",json.getString("projectId"));
-        session.setAttribute("readonly",isUserRoleAdminLevel(userRole) );
+        session.setAttribute("readonly",isUserRoleReviewerLevel(userRole) );
 
         resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
     }
-    private boolean isUserRoleAdminLevel(String userRole){
+    private boolean isUserRoleReviewerLevel(String userRole){
         switch (userRole){
             case "admin":
             case "department":
