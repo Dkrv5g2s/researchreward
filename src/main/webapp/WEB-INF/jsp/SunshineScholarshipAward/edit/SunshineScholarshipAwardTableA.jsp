@@ -301,7 +301,7 @@
 
     function calculateTotal() {
         getDatasFromTable()
-        let columtotal = 0.0;
+        let sumOfTotalcolumn = 0.0;
         for(var i=0;i<latest_data["paper_performance_list"].length;i++){
             var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
@@ -311,17 +311,15 @@
             if ( isNaN(cal_total) ){
                 cal_total = "請確認W1至w4欄位皆勾選";
             }else{
-                columtotal += cal_total;
+                sumOfTotalcolumn += cal_total;
             }
-
-
             $("label[name='cal_point"+i+"']").text(financial(cal_total));
         }
 
         $('input[name="fwci_value_past_five_year"]').val("0") ;
 
 
-        $('label[id="total_point"]').text(financial(columtotal)) ;
+        $('label[id="total_point"]').text(financial(sumOfTotalcolumn)) ;
 
     }
     function financial(x) {

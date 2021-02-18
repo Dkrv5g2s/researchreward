@@ -112,11 +112,10 @@
             }
 
         }
-        // console.log("inputdata is :", data);
         for (var j=0; j<document.getElementsByTagName("select").length; j++){
             data[ document.getElementsByTagName("select")[j].id] = document.getElementsByTagName("select")[j].value;
         }
-        // console.log("data is :", data);
+
         return data;
     }
 
