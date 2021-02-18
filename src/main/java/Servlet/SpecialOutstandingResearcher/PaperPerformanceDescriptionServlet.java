@@ -42,15 +42,19 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession() ;
-        int project_id = (int)session.getAttribute( "project_id" );
+        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
         boolean readonly = (Boolean)session.getAttribute("readonly");
+        String table_d = req.getParameter("table_d");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
         String wight = bFormFormulaService.get().toString() ;
 
-
-        String json_form = service.query( project_id ) ;
+        String json_form = "";
+        if (table_d!=null && table_d.equals("1"))
+            json_form = service.query( -project_id );
+        else
+            json_form = service.query( project_id );
 
         String reward_type = service.queryRewardType(project_id);
         setDisplaySection(reward_type, req);
@@ -58,10 +62,14 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
 
-        if ( readonly )
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
-        else
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        if (table_d!=null && table_d.equals("1")){
+            req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableD.jsp").forward(req, resp);
+        }else{
+            if ( readonly )
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
+            else
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        }
 
     }
 

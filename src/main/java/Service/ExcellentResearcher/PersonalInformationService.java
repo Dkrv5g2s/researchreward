@@ -15,12 +15,12 @@ public class PersonalInformationService {
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
 
-    public void save(JSONObject jsonObject, int projectId){
+    public void saveAtFirstTimeApplying(JSONObject jsonObject, int projectId){
         Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
         Education education = new Education(jsonObject.getString("schoolName"),
                 jsonObject.getString("major"),
                 jsonObject.getString("degree"),
-                jsonObject.getString("graduateMonth"),
+                jsonObject.getString("graduateYear"),
                 jsonObject.getString("graduateMonth"),
                 projectId);
         Experiment experiment = new Experiment(jsonObject.getString("ServiceOrganization"),
@@ -48,11 +48,10 @@ public class PersonalInformationService {
                 null,
                 null,
                 jsonObject.getBoolean("qualification1"),
-                jsonObject.getBoolean("qualification1"),
+                jsonObject.getBoolean("qualification2"),
                 jsonObject.getString("level"),
                 projectId,
                 jsonObject.getString("price"));
-
 
         seniorityDAO.save(seniority);
         experimentDAO.save(experiment);
@@ -61,6 +60,46 @@ public class PersonalInformationService {
         personalInformationDAO.save(personalInformation);
     }
 
+    public void saveAtSecondTimeApplying(JSONObject jsonObject, int projectId){
+        Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
+
+        MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
+                jsonObject.getString("planNumber"),
+                jsonObject.getDate("startTime"),
+                jsonObject.getDate("lastTime"),
+                projectId);
+        Experiment experiment = new Experiment(null,
+                null,
+                jsonObject.getString("pastTitle"),
+                null,
+                null,
+                projectId);
+        PersonalInformation personalInformation = new PersonalInformation(jsonObject.getString("college"),
+                jsonObject.getString("department"),
+                jsonObject.getString("hiredYear"),
+                jsonObject.getString("hiredMonth"),
+                null,
+                jsonObject.getString("cName"),
+                jsonObject.getString("eName"),
+                jsonObject.getString("title"),
+                jsonObject.getString("country"),
+                jsonObject.getString("gender"),
+                null,
+                null,
+                null,
+                jsonObject.getBoolean("qualification1"),
+                jsonObject.getBoolean("qualification2"),
+                jsonObject.getString("level"),
+                projectId,
+                jsonObject.getString("price"));
+        personalInformation.setWorkContent(jsonObject.getString("workContent"));
+        personalInformation.setPastPrice(jsonObject.getString("pastPrice"));
+
+        seniorityDAO.save(seniority);
+        experimentDAO.save(experiment);
+        mostPlanDAO.save(mostPlan);
+        personalInformationDAO.save(personalInformation);
+    }
 
 
     public JSONObject get(int projectId) {

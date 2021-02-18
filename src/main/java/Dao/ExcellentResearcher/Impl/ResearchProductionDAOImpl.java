@@ -1,6 +1,5 @@
 package Dao.ExcellentResearcher.Impl;
 
-import Bean.ExcellentResearcher.PersonalInformation.MOSTPlan;
 import Bean.ExcellentResearcher.ResearchProduction.Patent;
 import Bean.ExcellentResearcher.ResearchProduction.ResearchProduction;
 import Bean.ExcellentResearcher.ResearchProduction.Technology;
@@ -31,24 +30,29 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
     @Override
     public void save(ResearchProduction object) {
 
-        Connection connection = dbConnection.getConnection();
-        this.deletePatents(object.getProjectId());
-        this.deleteTechnology(object.getProjectId());
-        this.deleteWorkAuthorization(object.getProjectId());
-        this.savePatents(connection, object.getPatentList());
-        this.saveTechnology(connection, object.getTechnologyList());
-        this.saveWorkAuthorization(connection, object.getWorkAuthorizationList());
+        try (Connection connection = dbConnection.getConnection()){
+            this.deletePatents(object.getProjectId());
+            this.deleteTechnology(object.getProjectId());
+            this.deleteWorkAuthorization(object.getProjectId());
+            this.savePatents(connection, object.getPatentList());
+            this.saveTechnology(connection, object.getTechnologyList());
+            this.saveWorkAuthorization(connection, object.getWorkAuthorizationList());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public ResearchProduction get(int projectId) {
-        Connection connection = dbConnection.getConnection();
         ResearchProduction result = new ResearchProduction();
 
-        result.setPatentList(getPatents(connection,projectId));
-        result.setTechnologyList(getTechnology(connection,projectId));
-        result.setWorkAuthorizationList(getWorkAuthorization(connection,projectId));
-
+        try (Connection connection = dbConnection.getConnection()){
+            result.setPatentList(getPatents(connection,projectId));
+            result.setTechnologyList(getTechnology(connection,projectId));
+            result.setWorkAuthorizationList(getWorkAuthorization(connection,projectId));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
@@ -210,7 +214,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-            connection.close();
+
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -222,7 +226,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-            connection.close();
+
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -234,7 +238,7 @@ public class ResearchProductionDAOImpl implements ResearchProductionDAO {
         {
             preparedStatement.setInt(1,projectId);
             preparedStatement.executeUpdate();
-            connection.close();
+
         } catch (SQLException e){
             e.printStackTrace();
         }

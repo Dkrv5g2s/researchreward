@@ -79,6 +79,8 @@ public class RewardListService {
                 return "/JuniorResearchInvestigatorCatalog";
             case "傑出研究獎":
                 return "/OutstandingResearchAwardCatalog";
+            case "(續撥)獎勵新聘特殊優秀研究人才":
+                return "/SecondExcellentResearcherCatalog";
             default:
                 return "/Menu";
         }

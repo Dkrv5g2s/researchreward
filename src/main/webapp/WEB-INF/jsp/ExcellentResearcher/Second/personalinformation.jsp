@@ -19,7 +19,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/PersonalInformation',
+                url: '/SecondPersonalInformation',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
@@ -35,7 +35,7 @@
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    continue;
+                    data[ document.getElementsByTagName("input")[j].name] = "false";
                 }else {
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
                 }
@@ -52,8 +52,8 @@
         $( document ).ready(function() {
             // 在這撰寫javascript程式碼
             $('#level').val("<%=json.get("level")%>");
-            $('#qualification1').prop("checked","<%=json.get("qualification1")%>");
-            $('#qualification2').prop("checked","<%=json.get("qualification2")%>");
+            $('#qualification1').prop("checked","<%=json.get("qualification1")%>"=="true"?true:false);
+            $('#qualification2').prop("checked","<%=json.get("qualification2")%>"=="true"?true:false);
         });
     </script>
 </head>
@@ -104,23 +104,16 @@
                         <td><input type="text" name="gender" value="<%= json.get("gender") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">最高學歷</td>
+                        <td class="metadata">受本校延攬前之工作單位/職稱</td>
                         <td>
-                            學校名稱:<input type="text" name="schoolName" value="<%= json.get("schoolName") %>" required>
-                            主修學門系所:<input type="text" name="major" value="<%= json.get("major") %>" required>
-                            學位:<input type="text" name="degree" value="<%= json.get("degree") %>" required><br>
-                            畢業年月:<input type="number" name="graduateYear" value="<%= json.get("graduateYear") %>" required>年
-                            <input type="number" name="graduateMonth" value="<%= json.get("graduateMonth") %>" required>月
+                            <input type="text" name="pastTitle" value="<%= json.get("pastTitle") %>" required>
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">重要經歷</td>
+                        <td class="metadata">前一年度獲核定獎勵金額
+                        </td>
                         <td>
-                            服務機構:<input type="text" name="ServiceOrganization" value="<%= json.get("serviceOrganization") %>" required>
-                            服務部門:<input type="text" name="ServiceDepartment" value="<%= json.get("serviceDepartment") %>" required>
-                            職稱:<input type="text" name="pastTitle" value="<%= json.get("pastTitle") %>" required><br>
-                            起迄年月:<input type="number" name="pastYear" value="<%= json.get("pastYear") %>" required>年
-                            <input type="number" name="pastMonth" value="<%= json.get("pastMonth") %>" required>月
+                            每月新台幣<input type="text" name="pastPrice" value="<%= json.get("pastPrice") %>" required>萬元
                         </td>
                     </tr>
                     <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">申請獎勵等級及符合資格</td></tr>
@@ -131,24 +124,29 @@
                         執行期間:<input type="date" name="startTime" value="<%= json.get("startTime") %>" required>至<input type="date" name="lastTime" value="<%= json.get("lastTime") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">獎助資格(請檢附證明文件)</td>
+                        <td class="metadata">本次申請續撥期間及每月獎勵金</td>
                         <td>
-                            <input type="checkbox" name="qualification1" id="qualification1" value="true">非曾任或非現任國內學術研究機構編制內之專任教學、研究人員。
-                            <input type="checkbox" name="qualification2" id="qualification2" value="true">於正式納編前五年間均任職於國外學術研究機構。
+                            <select name="level" id="level">
+                                <option value="second">第二年</option>
+                                <option value="third">第三年</option>
+                            </select>
+                            每月新台幣<input type="number" name="price" value="<%= json.get("price") %>" required>萬元
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">申請獎勵等級及額度</td>
+                        <td class="metadata">定期考評</td>
                         <td>
-                            <select name="level" id="level">
-                                <option value="prof">教授級</option>
-                                <option value="ap">副教授級</option>
-                                <option value="asst">助理教授級</option>
-                            </select>
-                            每月獎勵額度<input type="number" name="price" value="<%= json.get("price") %>" required>萬元
+                            <input type="checkbox" name="qualification1" id="qualification1" value="true">獲獎勵期間學術研究成果及貢獻
+                            <input type="checkbox" name="qualification2" id="qualification2" value="true">前一年度具體執行績效
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='ExcellentResearcherCatalog'"></span></td></tr>
+                    <tr>
+                        <td class="metadata">獲奬勵期間工作內容</td>
+                        <td>
+                            <input type="text" name="workContent" id="workContent" value=<%= json.get("workContent") %>>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
                 </tbody>
             </table>
         </form>

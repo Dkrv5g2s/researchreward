@@ -14,13 +14,6 @@ public class SunshineScholarshipCatalogServlet extends ServletEntryPoint{
         System.out.println("SunshineScholarshipCatalogServlet:"+req.toString());
         req.getRequestDispatcher("WEB-INF/jsp/SunshineScholarshipAward/SunshineScholarshipCatalog.jsp").forward(req,resp);
         System.out.println("SunshineScholarshipCatalogServlet:");
-        ShowSessionValue(req.getSession());
 
     }
-
-    private void ShowSessionValue(HttpSession session){
-        for(int i =0;i<session.getValueNames().length;i++)
-            System.out.println("Key:"+session.getValueNames()[i]+"value:"+session.getAttribute(session.getValueNames()[i]));
-    }
-
 }

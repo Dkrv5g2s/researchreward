@@ -1,11 +1,9 @@
-package Servlet.ExcellentResearcher;
+package Servlet.ExcellentResearcher.Second;
 
 
-import Bean.ExcellentResearcher.PersonalInformation.PersonalInformation;
 import Service.ExcellentResearcher.PersonalInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +23,7 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",personalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/personalinformation.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/Second/personalinformation.jsp").forward(req, resp);
     }
 
     @Override
@@ -34,9 +32,8 @@ public class PersonalInformationServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        personalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        personalInformationService.saveAtSecondTimeApplying(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
-        req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/RecruitDescription.jsp").forward(req, resp);
     }
 
 

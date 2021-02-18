@@ -8,6 +8,7 @@
     <title>國立臺北科技大學特聘教授論文績效說明表(表B)</title>
 
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<%--    <link rel="stylesheet" type="text/css" href="/css/body.css">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
@@ -23,6 +24,7 @@
         .con{
             margin: 0 auto;
             padding: 50px;
+            width: 80%;
         }
         .file_title{
             text-align: center;
@@ -41,12 +43,14 @@
         .initial_input {
             height: 100%;
             width: 100%;
-            border-style: initial;
+            /*border-style: initial;*/
             text-align: center;
         }
         .left{
             text-align: left;
         }
+
+
     </style>
 </head>
 <body>

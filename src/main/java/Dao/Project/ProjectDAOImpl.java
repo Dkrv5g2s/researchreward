@@ -15,7 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String INSERT_PROJECT = "INSERT INTO reward_project (staff_code,status,reward_type) values(?,?,?)";
     private static final String GET_PROJECT = "SELECT * FROM reward_project WHERE staff_code=? AND status=?";
-    private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status=? WHERE project_id =? AND staff_code=? ";
+    private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status=? WHERE project_id =?";
     private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
     private static final String GET_REWARD_TYPE = "SELECT reward_type FROM reward_project WHERE project_id=?";
 

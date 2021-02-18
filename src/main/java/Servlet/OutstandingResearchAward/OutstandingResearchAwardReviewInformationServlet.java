@@ -27,7 +27,7 @@ public class OutstandingResearchAwardReviewInformationServlet extends ServletEnt
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        int project_id = turnIdInSessionToInt(session, "projectId");
+        int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
 
         String jsonString = readJSONString(req);
@@ -36,7 +36,7 @@ public class OutstandingResearchAwardReviewInformationServlet extends ServletEnt
             JSONObject jsonObject = (JSONObject)object;
             jsonObject.put("userNumber", user_number);
         }
-        ORAReviewInformationService.save(json,project_id);
+        ORAReviewInformationService.save(json,projectId);
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();
@@ -53,7 +53,7 @@ public class OutstandingResearchAwardReviewInformationServlet extends ServletEnt
     }
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
         HttpSession session = req.getSession();
-        int project_id = turnIdInSessionToInt(session, "projectId");
-        req.setAttribute("json", ORAReviewInformationService.get(project_id));
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        req.setAttribute("json", ORAReviewInformationService.get(projectId));
     }
 }

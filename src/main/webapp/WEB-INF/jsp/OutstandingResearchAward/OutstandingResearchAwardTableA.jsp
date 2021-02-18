@@ -28,7 +28,7 @@
         input {
             height: 100%;
             width: 100%;
-            border-style: initial;
+            /*border-style: initial;*/
             text-align: center;
         }
         input::-webkit-outer-spin-button,

@@ -32,6 +32,7 @@ public class SelectInformationServlet extends ServletEntryPoint {
 
 
         switch ((String)session.getAttribute("userRole")){
+
             case "teacher":
             case "admin":
                 req.getRequestDispatcher(STAFF_URL).forward(req,resp);

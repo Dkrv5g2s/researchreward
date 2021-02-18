@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>ResearchProductionServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.ResearchProductionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.ResearchProductionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResearchProductionServlet</servlet-name>
@@ -23,7 +23,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.RecruitDescriptionServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.RecruitDescriptionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RecruitDescriptionServlet</servlet-name>
@@ -31,7 +31,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.CatalogOfWorksServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.CatalogOfWorksServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CatalogOfWorksServlet</servlet-name>
@@ -39,13 +39,13 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>PersonalInformationServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.PersonalInformationServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.PersonalInformationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonalInformationServlet</servlet-name>
         <url-pattern>/PersonalInformation</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorCatalogServlet</servlet-class>
@@ -54,7 +54,7 @@
         <servlet-name>DistinguishedProfessorCatalogServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorCatalog</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorFormServlet</servlet-class>
@@ -63,7 +63,7 @@
         <servlet-name>DistinguishedProfessorFormServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorForm</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DistinguishedProfessorAppDocInstructionsServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorAppDocInstructionsServlet</servlet-class>
@@ -72,7 +72,7 @@
         <servlet-name>DistinguishedProfessorAppDocInstructionsServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorAppDocInstructions</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorTableAServlet</servlet-class>
@@ -81,7 +81,7 @@
         <servlet-name>DistinguishedProfessorTableAServlet</servlet-name>
         <url-pattern>/DistinguishedProfessorTableA</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
         <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorTableBServlet</servlet-class>
@@ -176,7 +176,27 @@
         <url-pattern>/SunshineScholarshipCatalog</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SunshineScholarshipAwardTableAServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardTableAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SunshineScholarshipAwardTableAServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipAwardTableA</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SunshineScholarshipAwardTableAUploadServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardTableAUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SunshineScholarshipAwardTableAUploadServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipAwardTableAUpload</url-pattern>
+    </servlet-mapping>
+
+
 <!--    SunshineScholarshipAward-->
+
 <!--    OutstandingResearcherAward-->
     <servlet>
         <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
@@ -313,11 +333,20 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
-        <servlet-class>Servlet.ExcellentResearcher.ExcellentResearcherCatalogServlet</servlet-class>
+        <servlet-class>Servlet.ExcellentResearcher.First.ExcellentResearcherCatalogServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ExcellentResearcherCatalogServlet</servlet-name>
         <url-pattern>/ExcellentResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SecondExcellentResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ExcellentResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondExcellentResearcherCatalogServlet</servlet-name>
+        <url-pattern>/SecondExcellentResearcherCatalog</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -398,5 +427,32 @@
         <url-pattern>/JuniorResearchInvestigatorTableB</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>SecondPersonalInformationServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.PersonalInformationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondPersonalInformationServlet</servlet-name>
+        <url-pattern>/SecondPersonalInformation</url-pattern>
+    </servlet-mapping>
+    ResearchProductionServlet
+    <servlet>
+        <servlet-name>ExecutedPerformanceServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ExecutedPerformanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExecutedPerformanceServlet</servlet-name>
+        <url-pattern>/SecondExecutedPerformance</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SecondResearchProductionServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ResearchProductionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondResearchProductionServlet</servlet-name>
+        <url-pattern>/SecondResearchProduction</url-pattern>
+    </servlet-mapping>
 
 </web-app>
