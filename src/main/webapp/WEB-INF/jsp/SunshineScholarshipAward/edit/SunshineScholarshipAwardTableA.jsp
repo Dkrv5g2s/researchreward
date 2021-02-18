@@ -69,6 +69,7 @@
 <script>
     var latest_data = ${latest_data} ;
     var wight = ${weight} ;
+
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
     function load(){
@@ -324,14 +325,6 @@
     }
     function financial(x) {
         return Number.parseFloat(x).toFixed(2);
-    }
-    function countTotalPoint(num){
-        var total_point_value = financial(document.getElementById("total_point").textContent);
-        console.log("total_point_value:", total_point_value);
-        console.log("num:", num,typeof(num));
-        let result = total_point_value - financial(num)
-        console.log("result:", result,typeof(result));
-        return result;
     }
 
     $(document).on("change", "input[data-selection-block='onlyone']", function () {
