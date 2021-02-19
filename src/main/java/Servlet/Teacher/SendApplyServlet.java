@@ -1,6 +1,5 @@
 package Servlet.Teacher;
 
-import Constants.ProgressConstant;
 import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 
@@ -18,6 +17,6 @@ public class SendApplyServlet extends ServletEntryPoint {
         HttpSession session = req.getSession() ;
         int project_id = Integer.parseInt((String)session.getAttribute("projectId"));
 
-        rewardListService.updateRewardStatus(project_id, ProgressConstant.SUBMIT_DEPARTMENT_FOR_REVIEW);
+        rewardListService.updateRewardStatusToNext(project_id);
     }
 }
