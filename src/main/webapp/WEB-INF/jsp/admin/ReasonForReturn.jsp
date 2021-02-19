@@ -49,7 +49,6 @@
             });
         };
         function commit(){
-            let json = <%=request.getSession().getAttribute("json")%>;
             let yes = confirm('確定要送出退件嗎?');
             if (!yes) {
                 return;

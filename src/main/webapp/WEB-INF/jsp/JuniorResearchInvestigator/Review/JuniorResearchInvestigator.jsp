@@ -2,7 +2,7 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    JSONObject jsonObject = (JSONObject) request.getAttribute("json");
+    JSONObject jsonObject = (JSONObject) request.getAttribute("data");
 %>
 <html lang="zh">
 <head>

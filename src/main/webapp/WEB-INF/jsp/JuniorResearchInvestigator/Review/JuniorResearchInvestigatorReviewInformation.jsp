@@ -3,7 +3,7 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONArray" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    JSONArray json = (JSONArray) request.getAttribute("json");
+    JSONArray json = (JSONArray) request.getAttribute("data");
 %>
 <html lang="zh">
 <head>

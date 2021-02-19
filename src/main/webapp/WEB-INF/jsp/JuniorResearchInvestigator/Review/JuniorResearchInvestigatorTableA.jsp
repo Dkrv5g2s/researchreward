@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%
-    JSONObject json = (JSONObject) request.getAttribute("json");
+    JSONObject json = (JSONObject) request.getAttribute("data");
 %>
 <html>
 <head>

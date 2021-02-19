@@ -1,6 +1,5 @@
 package Servlet.JuniorResearchInvestigator;
 
-import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogService;
 import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -16,13 +15,12 @@ import java.util.Map;
 public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
 
     private JuniorResearchInvestigatorService juniorResearchInvestigatorService = new JuniorResearchInvestigatorService();
-    private JuniorResearchInvestigatorCatalogService juniorResearchInvestigatorCatalogService = new JuniorResearchInvestigatorCatalogService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         int projectId = turnIdInSessionToInt(session, "projectId");
-        req.setAttribute("json", juniorResearchInvestigatorService.show(projectId));
+        req.setAttribute("data", juniorResearchInvestigatorService.show(projectId));
 
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
@@ -43,7 +41,6 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonObject.put("user_number", user_number);
         juniorResearchInvestigatorService.save(jsonObject, projectId);
-        juniorResearchInvestigatorCatalogService.saveEditStatus(projectId, "JuniorResearchInvestigator");
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();

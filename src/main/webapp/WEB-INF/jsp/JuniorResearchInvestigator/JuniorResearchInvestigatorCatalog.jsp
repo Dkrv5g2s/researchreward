@@ -62,6 +62,7 @@
         <button type="button" name="return_last_page" onclick="location.href='ReasonForReturn'">退件</button>
         <button type="button" name="confirm" onclick="commit()">審查完成</button>
     </div>
+</div>
 </body>
 <script>
     $(document).ready(function () {
@@ -75,21 +76,24 @@
         }
     })
     function commit(){
-        alert("確定要送出嗎?");
+        let send = confirm('送出後無法取消，確定要送出嗎?');
+        if (!send) {
+            return;
+        }
         $.ajax({
             type: 'POST',
-            url: 'JuniorResearchInvestigatorCatalog',
+            url: 'SendApply',
             dataType: 'text',
-            data: JSON.stringify({"projectId": ${projectId}}),
+            data: "",
             contentType: 'application/json',
             success: function(){
                 alert("送出完成");
-                window.location.href="RewardList";
+                window.location.href="RewardPendingList";
             },
             error:function() {
                 alert("送出失敗");
             }
         });
-    };
+    }
 </script>
 </html>

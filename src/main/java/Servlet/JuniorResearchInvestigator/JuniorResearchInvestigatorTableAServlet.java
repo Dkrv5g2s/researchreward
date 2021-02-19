@@ -19,7 +19,7 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
-        req.setAttribute("json", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
+        req.setAttribute("data", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
 
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
