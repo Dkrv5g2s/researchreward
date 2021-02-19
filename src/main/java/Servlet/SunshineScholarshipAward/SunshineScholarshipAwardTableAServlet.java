@@ -65,8 +65,18 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
+        System.out.println(jsonObject);
 
-        paperPerformanceDescriptionService.save(jsonObject);
+        if(paperPerformanceDescriptionService.verifyPaperTitle(jsonObject).equals("the paper is Duplicate!")){
+            //compose the error resp msg
+            System.out.println("Get duplicated Data!!");
+        }
+        else{
+            //detect the paper title in paperlist
+            System.out.println("Data is unique !!");
+            paperPerformanceDescriptionService.save(jsonObject);
+        }
+
 
     }
     private void setDisplaySection(String reward_type, HttpServletRequest req) {
