@@ -1,5 +1,6 @@
 package Servlet.JuniorResearchInvestigator;
 
+import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogService;
 import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorReviewInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONArray;
@@ -16,11 +17,22 @@ import java.util.Map;
 
 public class JuniorResearchInvestigatorReviewInformationServlet extends ServletEntryPoint {
 
-    JuniorResearchInvestigatorReviewInformationService juniorResearchInvestigatorReviewInformationService = new JuniorResearchInvestigatorReviewInformationService();
+    private JuniorResearchInvestigatorReviewInformationService juniorResearchInvestigatorReviewInformationService = new JuniorResearchInvestigatorReviewInformationService();
+    private JuniorResearchInvestigatorCatalogService juniorResearchInvestigatorCatalogService = new JuniorResearchInvestigatorCatalogService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getForm(req);
-        req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigatorReviewInformation.jsp").forward(req, resp);
+        HttpSession session = req.getSession();
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        req.setAttribute("json", juniorResearchInvestigatorReviewInformationService.show(projectId));
+
+        Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
+        if(readonly){//送審
+            req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigatorReviewInformation.jsp").forward(req, resp);
+        }
+        else{
+            req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigatorReviewInformation.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -35,21 +47,10 @@ public class JuniorResearchInvestigatorReviewInformationServlet extends ServletE
             JSONObject jsonObject = (JSONObject)object;
             jsonObject.put("userNumber", user_number);
         }
-        juniorResearchInvestigatorReviewInformationService.save(json,projectId);
-
-        resp.setContentType("text/html;charset=UTF-8");
-        Map map = new HashMap();
-        map.put("status", "存檔成功");
-        String jackyJsonString = map.toString();
-        JSONObject respJson = new JSONObject(jackyJsonString);
-        resp.getWriter().write(String.valueOf(respJson));
+        juniorResearchInvestigatorReviewInformationService.save(json, projectId);
+        juniorResearchInvestigatorCatalogService.saveEditStatus(projectId, "JuniorResearchInvestigatorReviewInformation");
     }
     private int turnIdInSessionToInt(HttpSession session, String id){
         return Integer.parseInt(session.getAttribute(id).toString());
-    }
-    private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
-        HttpSession session = req.getSession();
-        int projectId = turnIdInSessionToInt(session, "projectId");
-        req.setAttribute("json", juniorResearchInvestigatorReviewInformationService.show(projectId));
     }
 }

@@ -157,6 +157,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ReasonForReturnServlet</servlet-name>
+        <servlet-class>Servlet.admin.ReasonForReturnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReasonForReturnServlet</servlet-name>
+        <url-pattern>/ReasonForReturn</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ReviewSupportingInformationServlet</servlet-name>
         <servlet-class>Servlet.SpecialOutstandingResearcher.ReviewSupportingInformationServlet</servlet-class>
     </servlet>

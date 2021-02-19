@@ -21,6 +21,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
     private static final String GET_REWARD_TYPE = "SELECT reward_type FROM reward_project WHERE project_id=?";
     private static final String GET_MAX_STATUS_ID = "SELECT status_id FROM rss.reward_project_status order by status_id DESC LIMIT 1";
+    private static final String UPDATE_REASON_FOR_RETURN = "UPDATE reward_project SET reason_for_return=? WHERE project_id =?";
 
     @Override
     public void insertNewProject( String staff_code, int status_id, String reward_type ) {
@@ -178,4 +179,16 @@ public class ProjectDAOImpl implements ProjectDAO {
         return result;
     }
 
+    public void updateReasonForReturn(int project_id, String reason_for_return) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REASON_FOR_RETURN))
+        {
+            preparedStatement.setString(1, reason_for_return);
+            preparedStatement.setInt(2, project_id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

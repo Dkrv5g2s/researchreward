@@ -19,7 +19,6 @@
             text-align:center;
         }
         td{
-            font-size:20px;
             text-align:center;
         }
         input {
@@ -29,6 +28,8 @@
         }
         th{
             background-color:rgb(255, 255, 240);
+            border-style: solid;
+            border-width: thin;
         }
         h2 {
             font-weight: bold;
@@ -48,14 +49,14 @@
     %>
     <script>
         $(document).ready(function () {
-            var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=\"<%=jsonObject.get("technologyTransferFund")%>\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=\"<%=jsonObject.get("technologyTransferFundBringInDate")%>\"></td>\n" +
-                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-                "                </tr>";
+            let data = "<tr name=\"technologyTransfer\">\n" +
+                    "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
+                    "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +
+                    "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
+                    "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=\"<%=jsonObject.get("technologyTransferFund")%>\"></td>\n" +
+                    "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=\"<%=jsonObject.get("technologyTransferFundBringInDate")%>\"></td>\n" +
+                    "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                    "                </tr>";
             $("div[name='technologyTransfer'] tr[name=add]").before(data);
         })
     </script>

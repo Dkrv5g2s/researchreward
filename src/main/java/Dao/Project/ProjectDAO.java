@@ -13,4 +13,5 @@ public interface ProjectDAO {
     public List<RewardProject> adminsGetPendingProjects(int status_id);
     public String getRewardType(int project_id);
     public int getMaxStatusId();
+    public void updateReasonForReturn(int project_id, String reason_for_return);
 }
