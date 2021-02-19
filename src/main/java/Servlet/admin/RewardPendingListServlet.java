@@ -19,10 +19,10 @@ public class RewardPendingListServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        String userNumber = (String) session.getAttribute("userNumber");
-        req.setAttribute("json",service.getPendingList(userNumber));
+        String userRole = (String) session.getAttribute("userRole");
+        req.setAttribute("json",service.getPendingList(userRole));
 
-        req.getRequestDispatcher("WEB-INF/jsp/admin/rewardPendingList.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/jsp/admin/RewardPendingList.jsp").forward(req,resp);
     }
 
     @Override

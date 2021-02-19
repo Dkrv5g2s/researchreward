@@ -14,8 +14,8 @@ public class RewardPendingListService {
 
     private ProjectDAO projectDAO = new ProjectDAOImpl();
 
-    public JSONArray getPendingList(String staffCode){
-        List<RewardProject> list = projectDAO.adminsGetPendingProjects(2);
+    public JSONArray getPendingList(String userRole){
+        List<RewardProject> list = projectDAO.adminsGetPendingProjects(getPendingListStatusId(userRole));
         JSONArray array = new JSONArray();
 
         transformListToJSONArray(array,list);
@@ -34,6 +34,20 @@ public class RewardPendingListService {
                 e.printStackTrace();
             }
         }
+    }
+
+    private int getPendingListStatusId(String userRole){
+        switch (userRole) {
+            case "department":
+                return 2;
+            case "college":
+                return 3;
+            case "industryLiaisonOffice":
+                return 4;
+            case "researchAndDevelopmentOffice":
+                return 5;
+        }
+        return 1;
     }
 
     public String getCatalogURL(String rewardName) {

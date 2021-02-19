@@ -102,6 +102,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ApproveApplyServlet</servlet-name>
+        <servlet-class>Servlet.admin.ApproveApplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApproveApplyServlet</servlet-name>
+        <url-pattern>/ApproveApply</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AwardTimeLimitServlet</servlet-name>
         <servlet-class>Servlet.admin.AwardTimeLimitServlet</servlet-class>
     </servlet>
