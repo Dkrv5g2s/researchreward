@@ -1,13 +1,11 @@
 package Service.Teacher;
 
 import Bean.Project.RewardProject;
-import Constants.ProgressConstant;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
@@ -17,7 +15,7 @@ public class RewardListService {
     private ProjectDAO projectDAO = new ProjectDAOImpl();
 
     public JSONArray getDraftList(String staffCode){
-        List<RewardProject> list = projectDAO.getProjects(staffCode, ProgressConstant.DRAFT);
+        List<RewardProject> list = projectDAO.getPersonalProjects(staffCode, 1, 1);
         JSONArray array = new JSONArray();
 
         transformListToJSONArray(array,list);
@@ -26,30 +24,23 @@ public class RewardListService {
     }
 
     public void createReward(String staffCode, String rewardName){
-        projectDAO.insertNewProject(staffCode,ProgressConstant.DRAFT,rewardName);
+        projectDAO.insertNewProject(staffCode, 1, rewardName);
     }
 
     public JSONArray traceProgress(String staffCode){
-        List<String> constantsList = new ArrayList<>();
-
-        constantsList.add(ProgressConstant.SUBMIT_DEPARTMENT_FOR_REVIEW);
-        constantsList.add(ProgressConstant.SUBMIT_COLLEGE_FOR_REVIEW);
-        constantsList.add(ProgressConstant.SUBMIT_SCHOOL_FOR_REVIEW);
-        constantsList.add(ProgressConstant.REVIEW_FINISHED);
-        constantsList.add(ProgressConstant.RESULT_WAITING);
-
         JSONArray array = new JSONArray();
-        for (String status : constantsList) {
-            List<RewardProject> result = projectDAO.getProjects(staffCode, status);
+        List<RewardProject> result = projectDAO.getPersonalProjects(staffCode, 2, projectDAO.getMaxStatusId());
 
-            transformListToJSONArray(array,result);
-        }
+        transformListToJSONArray(array,result);
 
         return array;
     }
 
-    public void updateRewardStatus(int projectId, String status){
-        projectDAO.UpdateProjectStatus(projectId, status);
+    public void updateRewardStatusToNext(int projectId){
+        int status_id = projectDAO.getStatusIdByProjectId(projectId);
+        int max_id = projectDAO.getMaxStatusId();
+        if (status_id < max_id)
+            projectDAO.updateProjectStatus(projectId, ++status_id);
     }
 
     private void transformListToJSONArray(JSONArray array, List<RewardProject> list){

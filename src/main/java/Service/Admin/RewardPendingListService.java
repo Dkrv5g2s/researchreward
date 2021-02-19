@@ -1,13 +1,11 @@
 package Service.Admin;
 
 import Bean.Project.RewardProject;
-import Constants.ProgressConstant;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
@@ -17,7 +15,7 @@ public class RewardPendingListService {
     private ProjectDAO projectDAO = new ProjectDAOImpl();
 
     public JSONArray getPendingList(String staffCode){
-        List<RewardProject> list = projectDAO.adminsGetProjects(ProgressConstant.SUBMIT_DEPARTMENT_FOR_REVIEW);
+        List<RewardProject> list = projectDAO.adminsGetPendingProjects(2);
         JSONArray array = new JSONArray();
 
         transformListToJSONArray(array,list);
