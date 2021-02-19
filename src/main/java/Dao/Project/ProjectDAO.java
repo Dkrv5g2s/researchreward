@@ -14,4 +14,5 @@ public interface ProjectDAO {
     public String getRewardType(int project_id);
     public int getMaxStatusId();
     public void updateReasonForReturn(int project_id, String reason_for_return);
+    public void updateReviewInfo(int project_id, String userRole, String userNumber);
 }
