@@ -11,9 +11,6 @@ import java.io.IOException;
 public class SunshineScholarshipCatalogServlet extends ServletEntryPoint{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("SunshineScholarshipCatalogServlet:"+req.toString());
         req.getRequestDispatcher("WEB-INF/jsp/SunshineScholarshipAward/SunshineScholarshipCatalog.jsp").forward(req,resp);
-        System.out.println("SunshineScholarshipCatalogServlet:");
-
     }
 }

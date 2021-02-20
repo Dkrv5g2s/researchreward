@@ -5,26 +5,26 @@ import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDA
 
 import java.util.List;
 import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 public class VerifyUtils {
-    private PaperPerformanceDescriptionDAO dao ;
+    public boolean isInputasDuplicatePaperTitle(String inputPaperTitle ,List<String> total_paper_title_list){
 
-    public boolean isInputaDuplicatePaperTitle(String inputPaperTitle){
         String trimmedInputPaperTitle = removeSpace(inputPaperTitle);
-        Boolean result = false;
+        boolean result = false;
 
-        dao = new PaperPerformanceDescriptionDAOImpl();
-        List<String> paper_title_list = dao.query_total_paper_title();
+        List<String> paper_title_list = total_paper_title_list.stream().collect(Collectors.toList());//copy the list
+
         ListIterator<String> it = paper_title_list.listIterator();
-        while (it.hasNext()) {
-            String item = removeSpace(it.next());
 
-            if (item.equals(trimmedInputPaperTitle)) {
-                //duplicated paper title
+        while (it.hasNext()) {
+            String item = it.next();
+            if (trimmedInputPaperTitle.equals(removeSpace(item))) {
+                //the new paper title is a duplicated paper title
                 result =  true;
+                break;
             }
         }
-
         return result;
 
     }

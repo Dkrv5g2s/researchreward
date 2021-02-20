@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
@@ -62,18 +63,23 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+        resp.setContentType("text/; charset = UTF-8");  // Set content type of the response so that jQuery knows what it can expect.
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
-        System.out.println(jsonObject);
 
-        if(paperPerformanceDescriptionService.verifyPaperTitle(jsonObject).equals("the paper is Duplicate!")){
-            //compose the error resp msg
-            System.out.println("Get duplicated Data!!");
+        if((paperPerformanceDescriptionService.verifyPaperTitle(jsonObject)).equals("the paper is Duplicate!")){
+            //compose the error resp msg1
+            String errorMessage = "論文重複";
+            PrintWriter out = resp.getWriter();
+            resp.setStatus(400);
+            out.print(errorMessage);
+            out.flush();
+
+
         }
         else{
-            //detect the paper title in paperlist
-            System.out.println("Data is unique !!");
             paperPerformanceDescriptionService.save(jsonObject);
         }
 

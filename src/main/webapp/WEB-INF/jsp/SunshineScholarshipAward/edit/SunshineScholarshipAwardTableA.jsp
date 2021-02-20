@@ -354,9 +354,11 @@
                 success: function(data){
                     alert('success');
                 },
-                error:function(data){
-                    alert("error")
-                }
+                error: function(jqXHR, textStatus, message) {
+                    //error handling
+                    console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
+                    alert("發生錯誤:"+jqXHR.responseText)
+                },
             });
 
         }

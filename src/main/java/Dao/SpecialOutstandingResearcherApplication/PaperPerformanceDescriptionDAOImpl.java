@@ -38,7 +38,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String UPDATE_SPECIFIED_Paper_Performance_File_Path = "UPDATE paper_performance SET joint_authoriztion_agreement_file_path = ?, paper_home_file_path=? WHERE paper_id = ?" ;
 
-    private static final String SELECT_TOTAL_PAPER_TITLE = "SELECT book_name FROM paper_performance WHERE paper_id = ?";
+    private static final String SELECT_TOTAL_PAPER_TITLE = "SELECT book_name FROM paper_performance ";
 
     private static final String SELECT_SPECIFIED_PAPER_TITLE = "SELECT * FROM paper_performance WHERE paper_id = ? AND book_name = ?";
 
@@ -356,28 +356,22 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
         return  paper_title_list ;
     }
-
-    public boolean query_specified_paper_existed(PaperPerformance paperPerformance){
-        boolean query_result = false;
-        System.out.println("query_specified_paper_existed start");
+    @Override
+    public boolean query_if_specified_paperitem_existed_already(PaperPerformance paperPerformance){
+        boolean query_result = true;
         Connection connection = dbConnection.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_TITLE))
         {
             preparedStatement.setInt(1,paperPerformance.getPaper_id());
             preparedStatement.setString(2, paperPerformance.getBook_name());
-            System.out.println(preparedStatement.toString());
             ResultSet resultSet = preparedStatement.executeQuery() ;
-            while ( resultSet.next() ) {
-                System.out.println("query_result get");
+            if(!resultSet.next()){
+                query_result = false;
             }
-
-
             connection.close();
         } catch (Exception e) {
-            System.out.println("error get");
             e.printStackTrace();
         }
-
         return   query_result;
     }
 }
