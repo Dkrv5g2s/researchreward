@@ -17,7 +17,6 @@
 
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
-    System.out.println("json:"+json);
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
@@ -430,9 +429,11 @@
                 success: function(data){
                     alert('success');
                 },
-                error:function(data){
-                    alert("error")
-                }
+                error: function(jqXHR, textStatus, message) {
+                    //error handling
+                    console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
+                    alert("ERROR:"+jqXHR.responseText)
+                },
             });
 
         }

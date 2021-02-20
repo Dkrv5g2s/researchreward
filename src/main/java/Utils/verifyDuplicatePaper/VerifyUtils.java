@@ -8,24 +8,20 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class VerifyUtils {
-    public boolean isInputasDuplicatePaperTitle(String inputPaperTitle ,List<String> total_paper_title_list){
-
+    public String getDuplicatePaperTitle(String inputPaperTitle ,List<String> totalPaperTitleList){
         String trimmedInputPaperTitle = removeSpace(inputPaperTitle);
-        boolean result = false;
+        String duplicatePaperTitle = "";
 
-        List<String> paper_title_list = total_paper_title_list.stream().collect(Collectors.toList());//copy the list
-
-        ListIterator<String> it = paper_title_list.listIterator();
+        ListIterator<String> it = totalPaperTitleList.listIterator();
 
         while (it.hasNext()) {
-            String item = it.next();
-            if (trimmedInputPaperTitle.equals(removeSpace(item))) {
-                //the new paper title is a duplicated paper title
-                result =  true;
+            String paperTitle = it.next();
+            if (trimmedInputPaperTitle.equals(removeSpace(paperTitle))) {
+                duplicatePaperTitle = paperTitle;
                 break;
             }
         }
-        return result;
+        return duplicatePaperTitle;
 
     }
     private String removeSpace(String input ){

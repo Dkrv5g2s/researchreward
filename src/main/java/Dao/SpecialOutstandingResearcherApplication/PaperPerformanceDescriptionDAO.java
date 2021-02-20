@@ -16,5 +16,5 @@ public interface PaperPerformanceDescriptionDAO {
 
     public List<String> query_total_paper_title();
 
-    public boolean query_if_specified_paperitem_existed_already(PaperPerformance paperPerformance);
+    public boolean query_whether_specified_paperitem_existed_already(PaperPerformance paperPerformance);
 }

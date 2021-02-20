@@ -357,7 +357,7 @@
                 error: function(jqXHR, textStatus, message) {
                     //error handling
                     console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
-                    alert("發生錯誤:"+jqXHR.responseText)
+                    alert("ERROR:"+jqXHR.responseText)
                 },
             });
 

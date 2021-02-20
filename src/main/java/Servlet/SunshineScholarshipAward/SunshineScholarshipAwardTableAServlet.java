@@ -63,20 +63,22 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-        resp.setContentType("text/; charset = UTF-8");  // Set content type of the response so that jQuery knows what it can expect.
-        HttpSession session = req.getSession();
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/; charset = UTF-8");
+
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
-
-        if((paperPerformanceDescriptionService.verifyPaperTitle(jsonObject)).equals("the paper is Duplicate!")){
-            //compose the error resp msg1
-            String errorMessage = "論文重複";
+        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
+        if(duplicatePaperTitle.length()>0){
+            //means the new paper column is duplicate
+//            String appliedApplicants = paperPerformanceDescriptionService.getAppliedApplicantUserInfo(duplicatePaperTitle);
+            String appliedApplicants = "王大頭";
+            String errorMessage = "論文【"+duplicatePaperTitle+"】" +
+                    "已由【"+appliedApplicants+"】進行申請，請調整填寫內容。";
             PrintWriter out = resp.getWriter();
             resp.setStatus(400);
             out.print(errorMessage);
             out.flush();
-
 
         }
         else{

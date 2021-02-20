@@ -357,7 +357,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         return  paper_title_list ;
     }
     @Override
-    public boolean query_if_specified_paperitem_existed_already(PaperPerformance paperPerformance){
+    public boolean query_whether_specified_paperitem_existed_already(PaperPerformance paperPerformance){
         boolean query_result = true;
         Connection connection = dbConnection.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_TITLE))

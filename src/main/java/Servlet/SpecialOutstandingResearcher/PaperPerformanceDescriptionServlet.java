@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
@@ -75,19 +76,32 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/; charset = UTF-8");
+
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
         User user = new User( "root", "password1234", "上帝", "108598065" ) ;
-
+        PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
+        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
         this.logger.info( user.getStaff_code() + " has modified PaperPerformanceDescriptionForm with json message " + jsonObject.toString() );
 
-        PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        if(duplicatePaperTitle.length()>0){
+            //means the new paper column is duplicate
+//            String appliedApplicants = paperPerformanceDescriptionService.getAppliedApplicantUserInfo(duplicatePaperTitle);
+            String appliedApplicants = "王大頭";
+            String errorMessage = "論文【"+duplicatePaperTitle+"】" +
+                    "已由【"+appliedApplicants+"】進行申請，請調整填寫內容。";
+            PrintWriter out = resp.getWriter();
+            resp.setStatus(400);
+            out.print(errorMessage);
+            out.flush();
 
-        //service.save(jsonObject, (String)session.getAttribute("userNumber")); //正式
-        service.save(jsonObject);
 
-
+        }
+        else{
+            paperPerformanceDescriptionService.save(jsonObject);
+        }
     }
 
     private void setDisplaySection(String reward_type, HttpServletRequest req) {
