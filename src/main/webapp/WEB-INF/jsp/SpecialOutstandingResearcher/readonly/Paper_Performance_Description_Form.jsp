@@ -65,7 +65,8 @@
             </tr>
             <tr>
                 <td colspan="7" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()" >
+                    <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="goBack()" >
+                    <button type="button" name="confirm" onclick="location.href='PaperPerformanceDescriptionUpload'">此頁審查完成</button>
                 </td>
             </tr>
         </tbody>

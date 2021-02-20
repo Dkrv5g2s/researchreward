@@ -1,7 +1,5 @@
 package Bean.JuniorResearchInvestigator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.Date;
 
 public class JuniorResearchInvestigatorReviewInformation {
@@ -12,8 +10,6 @@ public class JuniorResearchInvestigatorReviewInformation {
     private Date contractDate;
     private String technologyTransferFund;
     private Date technologyTransferFundBringInDate;
-//    private List<JuniorResearchInvestigatorReviewInformation> juniorResearchInvestigatorReviewInformationList = new ArrayList<>();
-
 
     public JuniorResearchInvestigatorReviewInformation(int projectId, int userNumber, String technologyTransferContractName, String technologyTransferDepartment, Date contractDate, String technologyTransferFund, Date technologyTransferFundBringInDate) {
         this.projectId = projectId;
@@ -83,13 +79,4 @@ public class JuniorResearchInvestigatorReviewInformation {
     public void setTechnologyTransferFundBringInDate(Date technologyTransferFundBringInDate) {
         this.technologyTransferFundBringInDate = technologyTransferFundBringInDate;
     }
-
-//    public List<JuniorResearchInvestigatorReviewInformation> getJuniorResearchInvestigatorReviewInformationList() {
-//        return juniorResearchInvestigatorReviewInformationList;
-//    }
-//
-//    public void setJuniorResearchInvestigatorReviewInformationList(
-//            List<JuniorResearchInvestigatorReviewInformation> juniorResearchInvestigatorReviewInformationList) {
-//        this.juniorResearchInvestigatorReviewInformationList = juniorResearchInvestigatorReviewInformationList;
-//    }
 }

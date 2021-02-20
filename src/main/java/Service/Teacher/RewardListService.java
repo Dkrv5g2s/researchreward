@@ -56,6 +56,10 @@ public class RewardListService {
         }
     }
 
+    public String getRewardType(int project_id) {
+        return projectDAO.getRewardType(project_id);
+    }
+
     public String getCatalogURL(String rewardName) {
         System.out.println("rewardName:"+rewardName);
         // 這邊的命名之後要調整 重複性有點太高了

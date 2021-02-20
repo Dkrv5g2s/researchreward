@@ -20,7 +20,12 @@ public class ProjectDAOImpl implements ProjectDAO {
     private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status_id=? WHERE project_id =?";
     private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
     private static final String GET_REWARD_TYPE = "SELECT reward_type FROM reward_project WHERE project_id=?";
-    private static final String GET_MAX_STATUS_ID = "SELECT status_id FROM rss.reward_project_status order by status_id DESC LIMIT 1";
+    private static final String GET_MAX_STATUS_ID = "SELECT status_id FROM reward_project_status ORDER BY status_id DESC LIMIT 1";
+    private static final String UPDATE_REASON_FOR_RETURN = "UPDATE reward_project SET reason_for_return=? WHERE project_id =?";
+    private static final String UPDATE_DEPARTMENT_REVIEW_INFO = "UPDATE reward_project SET department_reviewer=?, department_review_time=NOW() WHERE project_id =?";
+    private static final String UPDATE_COLLEGE_REVIEW_INFO = "UPDATE reward_project SET college_reviewer=?, college_review_time=NOW() WHERE project_id =?";
+    private static final String UPDATE_INDUSTRY_LIAISON_OFFICE_REVIEW_INFO = "UPDATE reward_project SET industry_liaison_office_reviewer=?, industry_liaison_office_review_time=NOW() WHERE project_id =?";
+    private static final String UPDATE_RESEARCH_AND_DEVELOPMENT_OFFICE_REVIEW_INFO = "UPDATE reward_project SET research_and_development_office_reviewer=?, research_and_development_office_review_time=NOW() WHERE project_id =?";
 
     @Override
     public void insertNewProject( String staff_code, int status_id, String reward_type ) {
@@ -178,4 +183,47 @@ public class ProjectDAOImpl implements ProjectDAO {
         return result;
     }
 
+    public void updateReasonForReturn(int project_id, String reason_for_return) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REASON_FOR_RETURN))
+        {
+            preparedStatement.setString(1, reason_for_return);
+            preparedStatement.setInt(2, project_id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateReviewInfo(int project_id, String userRole, String userNumber) {
+        String statement = getUpdateReviewInfoStatement(userRole);
+        if (statement != null){
+            Connection connection = dbConnection.getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(statement))
+            {
+                preparedStatement.setString(1, userNumber);
+                preparedStatement.setInt(2, project_id);
+                preparedStatement.executeUpdate();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String getUpdateReviewInfoStatement(String userRole) {
+        switch (userRole) {
+            case "department":
+                return UPDATE_DEPARTMENT_REVIEW_INFO;
+            case "college":
+                return UPDATE_COLLEGE_REVIEW_INFO;
+            case "industryLiaisonOffice":
+                return UPDATE_INDUSTRY_LIAISON_OFFICE_REVIEW_INFO;
+            case "researchAndDevelopmentOffice":
+                return UPDATE_RESEARCH_AND_DEVELOPMENT_OFFICE_REVIEW_INFO;
+        }
+        return null;
+    }
 }

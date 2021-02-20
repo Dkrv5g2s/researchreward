@@ -13,7 +13,7 @@ public class TeacherHireResearcherCatalogServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession() ;
         int project_id = turnIdInSessionToInt(session, "projectId");
-        int user_number = turnIdInSessionToInt(session, "userNumber");
+
         Boolean readonly = false ;//TODO role判斷
 
         session.setAttribute( "project_id", project_id );

@@ -10,10 +10,10 @@ import static Utils.ReflectUtils.addBeanPropertyToJson;
 public class JuniorResearchInvestigatorService {
 
     private JuniorResearchInvestigatorDAO juniorResearchInvestigatorDAO = new JuniorResearchInvestigatorDAOImpl();
-    public void save(JSONObject jsonObject, int project_id){
+    public void save(JSONObject jsonObject, int projectId){
         JuniorResearchInvestigator juniorResearchInvestigator = new JuniorResearchInvestigator();// = null;
 
-        juniorResearchInvestigator.setProjectId(project_id);
+        juniorResearchInvestigator.setProjectId(projectId);
         juniorResearchInvestigator.setUserNumber(jsonObject.getInt("user_number"));
         juniorResearchInvestigator.setUserName(jsonObject.getString("user_name"));
         juniorResearchInvestigator.setApplicantTitle(jsonObject.getString("applicant_title"));
@@ -25,11 +25,11 @@ public class JuniorResearchInvestigatorService {
         juniorResearchInvestigator.setCellphoneNumber(jsonObject.getString("cellphone_number"));
         juniorResearchInvestigator.setRecommendedReason(jsonObject.getString("recommended_reason"));
 
-        juniorResearchInvestigatorDAO.save(juniorResearchInvestigator, project_id);
+        juniorResearchInvestigatorDAO.save(juniorResearchInvestigator, projectId);
     }
 
-    public JSONObject show(int project_id) {
-        JuniorResearchInvestigator juniorResearchInvestigator = juniorResearchInvestigatorDAO.show(project_id);
+    public JSONObject show(int projectId) {
+        JuniorResearchInvestigator juniorResearchInvestigator = juniorResearchInvestigatorDAO.show(projectId);
         JSONObject object = new JSONObject();
         if(juniorResearchInvestigator != null) {
             try {

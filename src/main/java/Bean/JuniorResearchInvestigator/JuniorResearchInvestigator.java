@@ -3,7 +3,7 @@ package Bean.JuniorResearchInvestigator;
 import java.sql.Date;
 
 public class JuniorResearchInvestigator {
-    private int project_id;
+    private int projectId;
     private int user_number;
     private String user_name;
     private String applicant_title;
@@ -15,8 +15,8 @@ public class JuniorResearchInvestigator {
     private String cellphone_number;
     private String recommended_reason;
 
-    public JuniorResearchInvestigator(int project_id, int user_number, String user_name, String applicant_title, String department, Date birth_date, String identity_number, Date employment_date, String extension_number, String cellphone_number, String recommended_reason) {
-        this.project_id = project_id;
+    public JuniorResearchInvestigator(int projectId, int user_number, String user_name, String applicant_title, String department, Date birth_date, String identity_number, Date employment_date, String extension_number, String cellphone_number, String recommended_reason) {
+        this.projectId = projectId;
         this.user_number = user_number;
         this.user_name = user_name;
         this.applicant_title = applicant_title;
@@ -32,9 +32,9 @@ public class JuniorResearchInvestigator {
     public JuniorResearchInvestigator() {}
 
 
-    public int getProjectId() { return project_id; }
-    public void setProjectId(int project_id) {
-        this.project_id = project_id;
+    public int getProjectId() { return projectId; }
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public int getUserNumber() {

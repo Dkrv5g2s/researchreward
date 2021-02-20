@@ -19,7 +19,7 @@ public class JuniorResearchInvestigatorTableAService {
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
 
-    public void save(JSONObject jsonObject, String projectID){
+    public void save(JSONObject jsonObject, String projectId){
         ArticleAA aaa = new ArticleAA(
                 jsonObject.getString("a_article_count1"),
                 jsonObject.getString("a_article_count2"),
@@ -110,9 +110,8 @@ public class JuniorResearchInvestigatorTableAService {
                 jsonObject.getString("year3"),
                 null,
                 null,
-                projectID,
+                projectId,
                 jsonObject.getString("other_data"),
-//                jsonObject.getBoolean("declaration"),
                 jsonObject.getString("commit_date")
         );
         TechProject tp = new TechProject(
@@ -162,25 +161,25 @@ public class JuniorResearchInvestigatorTableAService {
                 jsonObject.getString("tech_transfer_point_total")
         );
 
-        articleAADAO.save(aaa, projectID);
-        articleABDAO.save(aab, projectID);
-        articleSWDAO.save(asw, projectID);
-        articleTTDAO.save(att, projectID);
-        coopProjectDAO.save(cp, projectID);
-        otherDataDAO.save(od, projectID);
-        techProjectDAO.save(tp, projectID);
-        techTransferDAO.save(tt, projectID);
+        articleAADAO.save(aaa, projectId);
+        articleABDAO.save(aab, projectId);
+        articleSWDAO.save(asw, projectId);
+        articleTTDAO.save(att, projectId);
+        coopProjectDAO.save(cp, projectId);
+        otherDataDAO.save(od, projectId);
+        techProjectDAO.save(tp, projectId);
+        techTransferDAO.save(tt, projectId);
     }
 
-    public JSONObject show(String projectID) {
-        ArticleAA aaa = articleAADAO.show(projectID);
-        ArticleAB aab = articleABDAO.show(projectID);
-        ArticleSW asw = articleSWDAO.show(projectID);
-        ArticleTT att = articleTTDAO.show(projectID);
-        CoopProject cp = coopProjectDAO.show(projectID);
-        OtherData od = otherDataDAO.show(projectID);
-        TechProject tp = techProjectDAO.show(projectID);
-        TechTransfer tt = techTransferDAO.show(projectID);
+    public JSONObject show(String projectId) {
+        ArticleAA aaa = articleAADAO.show(projectId);
+        ArticleAB aab = articleABDAO.show(projectId);
+        ArticleSW asw = articleSWDAO.show(projectId);
+        ArticleTT att = articleTTDAO.show(projectId);
+        CoopProject cp = coopProjectDAO.show(projectId);
+        OtherData od = otherDataDAO.show(projectId);
+        TechProject tp = techProjectDAO.show(projectId);
+        TechTransfer tt = techTransferDAO.show(projectId);
 
         LocalDateTime dt = LocalDateTime.now();
         int year = dt.getYear()-1912;
@@ -191,7 +190,7 @@ public class JuniorResearchInvestigatorTableAService {
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectId,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }

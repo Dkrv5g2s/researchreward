@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%
-    JSONObject json = (JSONObject) request.getAttribute("json");
+    JSONObject json = (JSONObject) request.getAttribute("data");
 %>
 <html>
 <head>
@@ -306,7 +306,7 @@
                     <p>註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。</p>
                     <p>
                         <input type="checkbox" name="declaration" class="auto"/>
-                        <b>申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</b>
+                        <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
                     </p>
                 </td>
             </tr>
@@ -314,7 +314,7 @@
         </table>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
-            <button type="button" name="save" onclick="commit()">存檔</button>
+            <button type="button" name="save" onclick="commit()" disabled = "disabled">存檔</button>
         </p>
     </form>
 </div>
@@ -324,6 +324,16 @@
         const total = $('#other_data').val().length;
         document.getElementById('nowWords').innerHTML = total;
     }
+
+    function checkDeclaration() {
+        if ( $("input:not(:checked)[name='declaration']").length == 0  ) {
+            $("button[name='save']").prop( "disabled", false );
+        }
+        else {
+            $("button[name='save']").prop( "disabled", true  );
+        }
+    }
+    $("input[name='declaration']").on('change', function() { checkDeclaration(); } ) ;
 
     function commit(){
         $.ajax({
@@ -361,7 +371,6 @@
             }
         }
         data["other_data"] = $("#other_data").val();
-        data["declaration"] = document.getElementsByName("declaration")[0].checked;
         data["commit_date"] = moment(new Date()).format("YYYY-MM-DD");
         return data;
     }
@@ -537,13 +546,6 @@
     $(document).ready(function(){
         $("#other_data").val("<%=json.optString("other_data", "")%>");
         wordsTotal();
-
-        if(<%=json.optBoolean("declaration", false)%>){
-            $('input[name="declaration"]').attr("checked","checked");
-        }
-        else{
-            $('input[name="declaration"]').removeAttr("checked");
-        }
 
         $("input").blur(function(){
             if($(this).val()===""){

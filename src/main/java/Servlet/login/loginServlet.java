@@ -36,6 +36,10 @@ public class loginServlet extends HttpServlet {
                 resp.sendRedirect(TEACHER_URL);
                 break;
             case "admin":
+            case "department":
+            case "college":
+            case "industryLiaisonOffice":
+            case "researchAndDevelopmentOffice":
                 resp.sendRedirect(ADMIN_URL);
                 break;
             default:
