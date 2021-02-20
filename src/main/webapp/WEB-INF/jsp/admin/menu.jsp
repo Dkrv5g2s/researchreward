@@ -29,6 +29,7 @@
                     <li class='top'><a href='AwardTimeLimit'  class='top_link' target="iframe"><span class='down'>獎項開放時間</span></a></li>
                     <li class='top'><a href='BFormFormula'  class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>
                     <li class='top'><a href='RewardPendingList'  class='top_link' target="iframe"><span class='down'>待審核獎項</span></a></li>
+                    <li class='top'><a href='ApprovedRewardList'  class='top_link' target="iframe"><span class='down'>已審核獎項</span></a></li>
                 </ul>
             </div>
 

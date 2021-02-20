@@ -111,6 +111,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ApprovedRewardListServlet</servlet-name>
+        <servlet-class>Servlet.admin.ApprovedRewardListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApprovedRewardListServlet</servlet-name>
+        <url-pattern>/ApprovedRewardList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AwardTimeLimitServlet</servlet-name>
         <servlet-class>Servlet.admin.AwardTimeLimitServlet</servlet-class>
     </servlet>
