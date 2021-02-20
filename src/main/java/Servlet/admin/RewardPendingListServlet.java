@@ -1,6 +1,8 @@
 package Servlet.admin;
 
 import Service.Admin.RewardPendingListService;
+import Service.Login.RoleAuthorizationService;
+import Service.Login.RoleAuthorizationServiceImpl;
 import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -13,27 +15,29 @@ import java.io.IOException;
 
 public class RewardPendingListServlet extends ServletEntryPoint {
 
-    private RewardPendingListService service = new RewardPendingListService();
+    private RewardPendingListService rewardPendingListService = new RewardPendingListService();
+    private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         String userRole = (String) session.getAttribute("userRole");
-        req.setAttribute("json",service.getPendingList(userRole));
+        req.setAttribute("json",rewardPendingListService.getPendingList(userRole));
 
         req.getRequestDispatcher("WEB-INF/jsp/admin/RewardPendingList.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         req.setCharacterEncoding("utf-8");
         JSONObject json = new JSONObject(readJSONString(req));
 
-        HttpSession session = req.getSession();
         session.setAttribute("projectId",json.getString("projectId"));
+        session.setAttribute("readonly",roleAuthorizationService.isUserRoleReviewerLevel(session));
 
-        resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
+        resp.sendRedirect(rewardPendingListService.getCatalogURL(json.getString("rewardName")));
     }
 
 //    @Override
