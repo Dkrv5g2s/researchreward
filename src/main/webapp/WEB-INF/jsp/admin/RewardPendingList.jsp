@@ -57,8 +57,6 @@
                 <td><%=json.getString("reward_type")%></td>
                 <td>
                     <span><button type="button" name="review">查看</button></span>
-                    <span><button type="button" name="approve">審核完成</button></span>
-                    <span><button type="button" name="return">退件</button></span>
                 </td>
             </tr>
             <%

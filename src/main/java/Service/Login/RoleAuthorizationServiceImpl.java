@@ -22,4 +22,19 @@ public class RoleAuthorizationServiceImpl implements RoleAuthorizationService{
             return "";
     }
 
+    @Override
+    public boolean isUserRoleReviewerLevel(HttpSession session){
+        String userRole = (String)session.getAttribute("userRole");
+        switch (userRole){
+            case "teacher":
+                return false;
+            case "admin":
+            case "department":
+            case "college":
+            case "researchAndDevelopmentOffice":
+            case "industryLiaisonOffice":
+            default:
+                return true;
+        }
+    }
 }

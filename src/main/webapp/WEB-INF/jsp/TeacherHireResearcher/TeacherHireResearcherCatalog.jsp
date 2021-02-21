@@ -41,6 +41,17 @@
                 if (confirm("確定要退件?"))
                     window.location.href="/ReasonForReturn";
             };
+
+            $(document).ready(function () {
+                $(".review").hide();
+                $(".edit").hide();
+                if(${readonly}){
+                    $(".review").show();
+                }
+                else{
+                    $(".edit").show();
+                }
+            })
         </script>
     </head>
     <body>
@@ -74,11 +85,16 @@
                 </tr>
                 </tbody>
             </table>
-            <p style="text-align: center;">
-                <input type="button" name="commit" value="提出申請" onclick="sendApply()">
-                <input type="button" name="approve" value="確認審理" onclick="approveApply()">
-                <input type="button" name="reject" value="退件" onclick="rejectApply()">
-                <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardList'">
+            <p>
+                <div style="text-align: center;" class="edit">
+                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardList'">
+                    <input type="button" name="commit" value="提出申請" onclick="sendApply()">
+                </div>
+                <div style="text-align: center;" class="review">
+                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardPendingList'">
+                    <input type="button" name="reject" value="退件" onclick="rejectApply()">
+                    <input type="button" name="approve" value="審查完成" onclick="approveApply()">
+                </div>
             </p>
         </form>
     </div>

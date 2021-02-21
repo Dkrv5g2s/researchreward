@@ -1,5 +1,7 @@
 package Servlet.Teacher;
 
+import Service.Login.RoleAuthorizationService;
+import Service.Login.RoleAuthorizationServiceImpl;
 import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -12,14 +14,15 @@ import java.io.IOException;
 
 public class RewardListServlet extends ServletEntryPoint {
 
-    private RewardListService service = new RewardListService();
+    private RewardListService rewardListService = new RewardListService();
+    private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         String userNumber = (String) session.getAttribute("userNumber");
-        req.setAttribute("json",service.getDraftList(userNumber));
+        req.setAttribute("json",rewardListService.getDraftList(userNumber));
 
         req.getRequestDispatcher("WEB-INF/jsp/Teacher/rewardList.jsp").forward(req,resp);
     }
@@ -29,27 +32,11 @@ public class RewardListServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         req.setCharacterEncoding("utf-8");
         JSONObject json = new JSONObject(readJSONString(req));
-        String userRole = (String)session.getAttribute("userRole");
 
         session.setAttribute("projectId",json.getString("projectId"));
-        session.setAttribute("readonly",isUserRoleReviewerLevel(userRole) );
+        session.setAttribute("readonly",roleAuthorizationService.isUserRoleReviewerLevel(session));
 
-        resp.sendRedirect(service.getCatalogURL(json.getString("rewardName")));
-    }
-    private boolean isUserRoleReviewerLevel(String userRole){
-        switch (userRole){
-            case "admin":
-            case "department":
-            case "college":
-            case "researchAndDevelopmentOffice":
-            case "industryLiaisonOffice":
-                return true;
-            case "teacher":
-            default:
-                return false;
-        }
-
-
+        resp.sendRedirect(rewardListService.getCatalogURL(json.getString("rewardName")));
     }
 
 //    @Override
