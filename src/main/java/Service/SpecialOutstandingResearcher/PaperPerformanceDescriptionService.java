@@ -68,8 +68,10 @@ public class PaperPerformanceDescriptionService {
         return  result;
 
     }
-//    public String getAppliedApplicantUserInfo(String  duplicatePaperTitle){
-//        PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
-//    }
+
+    public String getAppliedApplicantUserName(String  duplicatePaperTitle){
+        PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
+        return dao.queryUserNameByPaperTitle(duplicatePaperTitle);
+    }
 }
 

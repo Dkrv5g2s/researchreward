@@ -71,10 +71,9 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
         String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
-//            String appliedApplicants = paperPerformanceDescriptionService.getAppliedApplicantUserInfo(duplicatePaperTitle);
-            String appliedApplicants = "王大頭";
+            String appliedApplicantName = paperPerformanceDescriptionService.getAppliedApplicantUserName(duplicatePaperTitle);
             String errorMessage = "論文【"+duplicatePaperTitle+"】" +
-                    "已由【"+appliedApplicants+"】進行申請，請調整填寫內容。";
+                    "已由【"+appliedApplicantName+"】進行申請，請調整填寫內容。";
             PrintWriter out = resp.getWriter();
             resp.setStatus(400);
             out.print(errorMessage);

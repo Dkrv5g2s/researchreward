@@ -42,6 +42,12 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String SELECT_SPECIFIED_PAPER_TITLE = "SELECT * FROM paper_performance WHERE paper_id = ? AND book_name = ?";
 
+    private static final String SELECT_USER_NAME_VIA_PAPER_TITLE =
+            "SELECT name FROM user where number in (" +
+            "SELECT staff_code FROM reward_project where project_id in (" +
+            "SELECT project_id FROM paper_performance where book_name = ?))";
+
+
     private PaperPerformanceDescriptionForm query_specified_paper_performance_description( int project_id ) {
         Connection connection = dbConnection.getConnection();
         PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = new PaperPerformanceDescriptionForm( project_id ) ;
@@ -374,4 +380,25 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         }
         return   query_result;
     }
+    @Override
+    public String queryUserNameByPaperTitle(String PaperTitle){
+        String queryResult = "";
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_NAME_VIA_PAPER_TITLE))
+        {
+            preparedStatement.setString(1, PaperTitle);
+            System.out.println(preparedStatement.toString());
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+            while ( resultSet.next() ) {
+                queryResult = resultSet.getString("name");
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return   queryResult;
+    }
+
+
 }
