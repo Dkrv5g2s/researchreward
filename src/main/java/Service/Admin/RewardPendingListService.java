@@ -16,22 +16,22 @@ public class RewardPendingListService {
 
     public JSONArray getPendingList(String userRole){
         int statusId = getPendingListStatusId(userRole);
-        List<RewardProject> list = projectDAO.getProjectsForAdmins(statusId, statusId);
         JSONArray array = new JSONArray();
-
-        transformListToJSONArray(array, list, userRole);
-
+        if (statusId != -1) {
+            List<RewardProject> list = projectDAO.getProjectsForAdmins(statusId, statusId);
+            transformListToJSONArray(array, list, userRole);
+        }
         return array;
     }
 
     public JSONArray getApprovedRewardList(String userRole){
         int beginStatusId = getPendingListStatusId(userRole)+1;
-        int endStatusId = projectDAO.getMaxStatusId();
-        List<RewardProject> list = projectDAO.getProjectsForAdmins(beginStatusId, endStatusId);
         JSONArray array = new JSONArray();
-
-        transformListToJSONArray(array, list, userRole);
-
+        if (beginStatusId != 0) {
+            int endStatusId = projectDAO.getMaxStatusId();
+            List<RewardProject> list = projectDAO.getProjectsForAdmins(beginStatusId, endStatusId);
+            transformListToJSONArray(array, list, userRole);
+        }
         return array;
     }
 
@@ -86,30 +86,6 @@ public class RewardPendingListService {
             case "researchAndDevelopmentOffice":
                 return 5;
         }
-        return 1;
-    }
-
-    public String getCatalogURL(String rewardName) {
-        // 這邊的命名之後要調整 重複性有點太高了
-        switch (rewardName){
-        	case "特聘教授":
-        		return "/DistinguishedProfessorCatalog";
-            case "獎勵新聘特殊優秀研究人才":
-                return "/ExcellentResearcherCatalog";
-            case "優秀人才申請":
-                return "/SpecialOutstandingResearcherCatalog";
-            case "陽光獎助金論文獎勵":
-                return "/SunshineScholarshipCatalog";
-            case "績優教師聘任研究人員":
-                return "/TeacherHireResearcherCatalog";
-            case "年輕學者獎":
-                return "/JuniorResearchInvestigatorCatalog";
-            case "傑出研究獎":
-                return "/OutstandingResearchAwardCatalog";
-            case "(續撥)獎勵新聘特殊優秀研究人才":
-                return "/SecondExcellentResearcherCatalog";
-            default:
-                return "/Menu";
-        }
+        return -1;
     }
 }
