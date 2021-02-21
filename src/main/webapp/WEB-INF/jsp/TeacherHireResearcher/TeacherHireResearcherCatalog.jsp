@@ -15,7 +15,7 @@
                         contentType: 'application/text',
                         success: function (data) {
                             alert('申請成功');
-                            window.location.href = "/RewardList";
+                            window.location.href = "/TraceProgress";
                         }
                     });
                 }

@@ -84,14 +84,7 @@ public class ProjectDAOImpl implements ProjectDAO {
             preparedStatement.setInt(2,begin_status_id);
             preparedStatement.setInt(3,end_status_id);
 
-            try (ResultSet resultSet = preparedStatement.executeQuery()){
-                while (resultSet.next()){
-                    result.add(new RewardProject(resultSet.getInt("project_id"),
-                            resultSet.getString("staff_code"),
-                            resultSet.getString("status"),
-                            resultSet.getString("reward_type")));
-                }
-            }
+            transformResultSetToList(result, preparedStatement);
 
             connection.close();
         } catch (SQLException e) {
@@ -130,24 +123,7 @@ public class ProjectDAOImpl implements ProjectDAO {
             preparedStatement.setInt(1,begin_status_id);
             preparedStatement.setInt(2,end_status_id);
 
-            try (ResultSet resultSet = preparedStatement.executeQuery()){
-                while (resultSet.next()){
-                    result.add(new RewardProject(resultSet.getInt("project_id"),
-                            resultSet.getString("staff_code"),
-                            resultSet.getString("reward_type"),
-                            resultSet.getInt("status_id"),
-                            resultSet.getString("status"),
-                            resultSet.getString("reason_for_return"),
-                            resultSet.getString("department_reviewer"),
-                            resultSet.getString("college_reviewer"),
-                            resultSet.getString("industry_liaison_office_reviewer"),
-                            resultSet.getString("research_and_development_office_reviewer"),
-                            resultSet.getString("department_review_time"),
-                            resultSet.getString("college_review_time"),
-                            resultSet.getString("industry_liaison_office_review_time"),
-                            resultSet.getString("research_and_development_office_review_time")));
-                }
-            }
+            transformResultSetToList(result, preparedStatement);
 
             connection.close();
         } catch (SQLException e) {
@@ -221,6 +197,29 @@ public class ProjectDAOImpl implements ProjectDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void transformResultSetToList(List<RewardProject> result, PreparedStatement preparedStatement){
+        try (ResultSet resultSet = preparedStatement.executeQuery()){
+            while (resultSet.next()){
+                result.add(new RewardProject(resultSet.getInt("project_id"),
+                        resultSet.getString("staff_code"),
+                        resultSet.getString("reward_type"),
+                        resultSet.getInt("status_id"),
+                        resultSet.getString("status"),
+                        resultSet.getString("reason_for_return"),
+                        resultSet.getString("department_reviewer"),
+                        resultSet.getString("college_reviewer"),
+                        resultSet.getString("industry_liaison_office_reviewer"),
+                        resultSet.getString("research_and_development_office_reviewer"),
+                        resultSet.getString("department_review_time"),
+                        resultSet.getString("college_review_time"),
+                        resultSet.getString("industry_liaison_office_review_time"),
+                        resultSet.getString("research_and_development_office_review_time")));
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

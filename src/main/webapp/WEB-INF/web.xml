@@ -332,6 +332,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ReturnedRewardListServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.ReturnedRewardListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReturnedRewardListServlet</servlet-name>
+        <url-pattern>/ReturnedRewardList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>SendApplyServlet</servlet-name>
         <servlet-class>Servlet.Teacher.SendApplyServlet</servlet-class>
     </servlet>

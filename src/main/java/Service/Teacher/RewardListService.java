@@ -15,7 +15,15 @@ public class RewardListService {
     private ProjectDAO projectDAO = new ProjectDAOImpl();
 
     public JSONArray getDraftList(String staffCode){
-        List<RewardProject> list = projectDAO.getPersonalProjects(staffCode, 1, 1);
+        return getRewardList(staffCode, 1);
+    }
+
+    public JSONArray getReturnedList(String staffCode){
+        return getRewardList(staffCode, 0);
+    }
+
+    private JSONArray getRewardList(String staffCode, int statusId){
+        List<RewardProject> list = projectDAO.getPersonalProjects(staffCode, statusId, statusId);
         JSONArray array = new JSONArray();
 
         transformListToJSONArray(array,list);
@@ -39,7 +47,9 @@ public class RewardListService {
     public void updateRewardStatusToNext(int projectId){
         int status_id = projectDAO.getStatusIdByProjectId(projectId);
         int max_id = projectDAO.getMaxStatusId();
-        if (status_id < max_id)
+        if (status_id == 0)
+            projectDAO.updateProjectStatus(projectId, 2);
+        else if (status_id < max_id)
             projectDAO.updateProjectStatus(projectId, ++status_id);
     }
 
