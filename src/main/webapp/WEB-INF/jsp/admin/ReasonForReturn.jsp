@@ -66,7 +66,7 @@
                 contentType: 'application/json',
                 success: function(){
                     alert('退件成功');
-                    window.location.href="RewardPendingList";
+                    window.location.href="ApprovedRewardList";
                 },
                 error:function() {
                     alert("退件失敗");

@@ -1,5 +1,6 @@
 package Servlet.admin;
 
+import Service.Admin.ApproveApplyService;
 import Service.Admin.ReasonForReturnService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.Teacher.RewardListService;
@@ -15,6 +16,7 @@ import java.io.IOException;
 public class ReasonForReturnServlet extends ServletEntryPoint {
     private ReasonForReturnService reasonForReturnService = new ReasonForReturnService();
     private PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+    private ApproveApplyService approveApplyService = new ApproveApplyService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,5 +32,11 @@ public class ReasonForReturnServlet extends ServletEntryPoint {
         req.setCharacterEncoding("utf-8");
         JSONObject json = new JSONObject(readJSONString(req));
         reasonForReturnService.updateReasonForReturn(json.getInt("projectId"), json.getString("reason_for_return"));
+
+        HttpSession session = req.getSession() ;
+        int project_id = Integer.parseInt((String)session.getAttribute("projectId"));
+        String userRole = (String)session.getAttribute("userRole");
+        String userNumber = (String)session.getAttribute("userNumber");
+        approveApplyService.updateReviewerAndReviewTime(project_id, userRole, userNumber);
     }
 }

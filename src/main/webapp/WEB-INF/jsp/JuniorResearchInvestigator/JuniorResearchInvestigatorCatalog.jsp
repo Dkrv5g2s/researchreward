@@ -56,11 +56,11 @@
     </table>
     <div style="margin: 1rem;" class="edit">
         <button type="button" name="return_last_page" onclick="location.href='RewardList'">回上頁</button>
-        <button type="button" name="send_application" onclick="commit()">提出申請</button>
+        <button type="button" name="send_application" onclick="sendApply()">提出申請</button>
     </div>
     <div style="margin: 1rem;" class="review">
-        <button type="button" name="return_last_page" onclick="location.href='ReasonForReturn'">退件</button>
-        <button type="button" name="confirm" onclick="commit()">審查完成</button>
+        <button type="button" name="return_last_page" onclick="rejectApply()">退件</button>
+        <button type="button" name="confirm" onclick="approveApply()">審查完成</button>
     </div>
 </div>
 </body>
@@ -75,25 +75,41 @@
             $(".edit").show();
         }
     })
-    function commit(){
-        let send = confirm('送出後無法取消，確定要送出嗎?');
-        if (!send) {
-            return;
+    function sendApply(){
+        if (confirm("確定要送出申請?")) {
+            $.ajax({
+                type: 'POST',
+                url: '/SendApply',
+                dataType: 'text',
+                data: "",
+                contentType: 'application/text',
+                success: function (data) {
+                    alert('申請成功');
+                    window.location.href = "/TraceProgress";
+                }
+            });
         }
-        $.ajax({
-            type: 'POST',
-            url: 'SendApply',
-            dataType: 'text',
-            data: "",
-            contentType: 'application/json',
-            success: function(){
-                alert("送出完成");
-                window.location.href="RewardPendingList";
-            },
-            error:function() {
-                alert("送出失敗");
-            }
-        });
-    }
+    };
+
+    function approveApply(){
+        if (confirm("確定要確認審理?")) {
+            $.ajax({
+                type: 'POST',
+                url: '/ApproveApply',
+                dataType: 'text',
+                data: "",
+                contentType: 'application/text',
+                success: function (data) {
+                    alert('確認審理成功');
+                    window.location.href = "/ApprovedRewardList";
+                }
+            });
+        }
+    };
+
+    function rejectApply(){
+        if (confirm("確定要退件?"))
+            window.location.href="/ReasonForReturn";
+    };
 </script>
 </html>
