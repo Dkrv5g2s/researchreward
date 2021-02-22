@@ -21,7 +21,7 @@ public class ExecutedPerformanceServlet extends ServletEntryPoint {
 
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",catalogsService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
-
+        req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/Second/ExecutedPerformance.jsp").forward(req, resp);
     }
 

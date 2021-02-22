@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Function.js"></script>
     <script>
         function commit(){
             $.ajax({
@@ -54,7 +55,9 @@
             $('#level').val("<%=json.get("level")%>");
             $('#qualification1').prop("checked","<%=json.get("qualification1")%>"=="true"?true:false);
             $('#qualification2').prop("checked","<%=json.get("qualification2")%>"=="true"?true:false);
+            setReadOnly(<%=request.getAttribute("readonly")%>);
         });
+
     </script>
 </head>
 <body>

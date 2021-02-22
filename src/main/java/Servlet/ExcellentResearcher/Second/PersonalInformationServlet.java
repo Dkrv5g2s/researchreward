@@ -22,7 +22,7 @@ public class PersonalInformationServlet extends ServletEntryPoint {
 
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",personalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
-
+        req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/Second/personalinformation.jsp").forward(req, resp);
     }
 

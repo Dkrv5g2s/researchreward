@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="/css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Function.js"></script>
     <style>
         td.metadata{
             text-align: center;
@@ -226,6 +227,11 @@
     <%
         }
     %>
+    <script>
+        $(document).ready(function (){
+            setReadOnly(<%=request.getAttribute("readonly")%>);
+        })
+    </script>
 </head>
 <body>
 <div class="content">

@@ -22,7 +22,7 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
 
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",recruitDescriptionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
-
+        req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/RecruitDescription.jsp").forward(req, resp);
     }
 
