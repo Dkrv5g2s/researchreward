@@ -489,7 +489,7 @@
         <servlet-name>SecondPersonalInformationServlet</servlet-name>
         <url-pattern>/SecondPersonalInformation</url-pattern>
     </servlet-mapping>
-    ResearchProductionServlet
+
     <servlet>
         <servlet-name>ExecutedPerformanceServlet</servlet-name>
         <servlet-class>Servlet.ExcellentResearcher.Second.ExecutedPerformanceServlet</servlet-class>
