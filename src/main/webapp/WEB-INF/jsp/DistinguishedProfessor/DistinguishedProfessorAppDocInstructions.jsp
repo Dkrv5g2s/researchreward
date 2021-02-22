@@ -8,6 +8,7 @@
 <head>
     <title>國立臺北科技大學特聘教授申請表審查資料【填寫說明】</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Function.js"></script>
     <style>
         body {
             margin: 20px 0px 0px 0px;
@@ -146,6 +147,11 @@
         <%
 	        }		        
 	    %>
+	    <script>
+		    $(document).ready(function (){
+	            setReadOnly(<%=request.getAttribute("readonly")%>);
+	        })
+	    </script>
 </head>
 <body>
     <div name="technologyTransfer" class="content">
@@ -203,7 +209,7 @@
                 </tbody>
             </table>
             <p style="text-align: center;">
-	            <input type="button" name="save" value="存檔" onclick="commit()">
+	            <button type="button" name="save" onclick="commit()">存檔</button>
 	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>
