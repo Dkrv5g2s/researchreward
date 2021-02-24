@@ -28,7 +28,7 @@
             <tr>
                 <td colspan="2" width="40%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
-                </td>7
+                </td>
                 <td colspan="1" width="30%">共同著作授權同意書</td>
                 <td colspan="1" width="30%">該篇論文首頁</td>
             </tr>
