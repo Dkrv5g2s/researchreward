@@ -18,8 +18,10 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
 
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
 		getForm(req);
 		
+		req.setAttribute("readonly",session.getAttribute("readonly"));
 		req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorForm.jsp").forward(req, resp);
         
     }

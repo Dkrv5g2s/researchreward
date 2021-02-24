@@ -70,6 +70,7 @@
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Function.js"></script>
     <script>
 	    function commit(){
 	    	$.ajax({
@@ -299,15 +300,20 @@
 	    
 	    function checkRepresentationClause() {
 	        if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
-	            $("input[name='save_the_page']").prop( "disabled", false );
+	            $("button[name='save_the_page']").prop( "disabled", false );
 	        }
 	        else {
-	            $("input[name='save_the_page']").prop( "disabled", true  );
+	            $("button[name='save_the_page']").prop( "disabled", true  );
 	        }
 	    }
 
 	    
     </script>
+    <script>
+	    $(document).ready(function (){
+            setReadOnly(<%=request.getAttribute("readonly")%>);
+        });
+	</script>
 </head>
 <body>
     <div class="content">
@@ -629,7 +635,7 @@
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-	            <input type="button" name="save_the_page" value="存檔" onclick="commit()" disabled = "disabled">
+	            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
 	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>

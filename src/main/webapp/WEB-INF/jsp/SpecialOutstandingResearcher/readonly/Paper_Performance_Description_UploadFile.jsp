@@ -1,27 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
 
-<%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
     response.setHeader("Pragma","no-cache");
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
 <%
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
     Object latest_data = request.getAttribute( "latest_data" );
-
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-<div class="container" style="margin: 0px auto; width: 1200px">
+<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<div class="container">
     <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
 </div>
-<div class="container" style="margin: 0px auto; width: 1600px">
+<div class="container" style="margin: 0px auto;width: 80%;">
     <form id="c001_form">
-        <table border="1" cellpadding="6" cellspacing="1" width="50%" align="center" style="border-spacing:0px;" class="inputForm">
+        <table border="1" cellpadding="6" cellspacing="1" align="center" class="inputForm">
             <thead style="text-align: center;">
             <%--            <tr>--%>
             <%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
@@ -29,11 +26,11 @@
             <%--                <td colspan="1" width="10%"></td>--%>
             <%--            </tr>--%>
             <tr>
-                <td colspan="2" width="30%">Journal Papers<br>
+                <td colspan="2" width="40%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
                 </td>
-                <td colspan="1" width="35%">共同著作授權同意書</td>
-                <td colspan="1" width="40%">該篇論文首頁</td>
+                <td colspan="1" width="30%">共同著作授權同意書</td>
+                <td colspan="1" width="30%">該篇論文首頁</td>
             </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;">

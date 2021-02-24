@@ -19,8 +19,10 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
 	DistinguishedProfessorAppDocInstructionsService distinguishedProfessorAppDocInstructionsService = new DistinguishedProfessorAppDocInstructionsService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    	HttpSession session = req.getSession();
+    	
     	getForm(req);
+    	req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorAppDocInstructions.jsp").forward(req, resp);
     }
     

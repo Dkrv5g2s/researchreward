@@ -40,7 +40,7 @@
             <div id="page" >
                 <div id="content">
                     <div class="main_func">
-                        <iframe src="" name="iframe" id="iframe" frameborder="0" style="width: 100%;height: 100%"></iframe>
+                        <iframe src="" name="iframe" id="iframe" frameborder="0" scrolling="no" style="width: 100%;" onload="this.height=100"></iframe>
                     </div>
                 </div>
                 <!-- end #content -->
@@ -64,4 +64,16 @@
 
 
 </body>
+<script type="text/javascript">
+    function reinitIframe(){
+        var iframe = document.getElementById("iframe");
+        try{
+            var bHeight = iframe.contentWindow.document.body.scrollHeight;
+            var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+            var height = Math.max(bHeight, dHeight);
+            iframe.height = height;
+        }catch (ex){}
+    }
+    window.setInterval("reinitIframe()", 200);
+</script>
 </html>
