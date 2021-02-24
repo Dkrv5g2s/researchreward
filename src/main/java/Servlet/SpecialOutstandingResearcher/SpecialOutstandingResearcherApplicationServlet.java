@@ -28,18 +28,17 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         }else if ( method.equals("POST")) {
             doPost(req, resp);
         }else {
-            //doPost(req, resp);
+
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        ProjectDAO dao = new ProjectDAOImpl() ;
-//        dao.insertNewProject("108598065", "草稿(暫存中)", "優秀人才申請"); //暫時的precondition
+
         HttpSession session = req.getSession() ;
 
-        int project_id = (int)session.getAttribute( "project_id" );
+        int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         SpecialOutstandingResearcherApplicationService service = new SpecialOutstandingResearcherApplicationService() ;

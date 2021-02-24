@@ -36,7 +36,7 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
 
         HttpSession session = req.getSession() ;
 
-        int project_id = (int)session.getAttribute( "project_id" );
+        int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
