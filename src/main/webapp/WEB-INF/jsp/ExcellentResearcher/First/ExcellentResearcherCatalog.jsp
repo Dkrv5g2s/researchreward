@@ -11,6 +11,10 @@
     <title>目錄</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Function.js"></script>
+    <script>
+        setReadOnly(<%=request.getAttribute("readonly")%>);
+    </script>
 </head>
 <body>
     <div class="content">
