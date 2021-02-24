@@ -20,16 +20,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 
     <style type="text/css">
-        div.content{
-            width:80%;
-        }
         tr{
             text-align:center;
         }
         input {
             height: 100%;
             width: 100%;
-            /*border-style: initial;*/
             text-align: center;
         }
         input::-webkit-outer-spin-button,
@@ -53,6 +49,7 @@
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            margin-top: 0;
         }
         .title{
             background:#C0C0C0;
@@ -95,7 +92,7 @@
                 <td id="sw_article_count_total" class="total_count"><%=json.optString("sw_article_count_total", "0")%></td>
             </tr>
             <tr class="count">
-                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf" target="_blank">附表一</a> )</td>
+                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf#page=3" target="_blank">附表一</a> )</td>
                 <td><input id="sw_point1" name="sw_point1" type="number" class="ic1" value="<%=json.optString("sw_point1", "0")%>"></td>
                 <td><input id="sw_point2" name="sw_point2" type="number" class="ic2" value="<%=json.optString("sw_point2", "0")%>"></td>
                 <td><input id="sw_point3" name="sw_point3" type="number" class="ic3" value="<%=json.optString("sw_point3", "0")%>"></td>

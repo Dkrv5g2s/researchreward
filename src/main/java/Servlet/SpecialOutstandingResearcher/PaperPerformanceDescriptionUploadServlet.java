@@ -47,8 +47,7 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession() ;
-        System.out.println("PaperPerformanceDescriptionUploadServlet");
-        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
+        int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
         String table_d = req.getParameter("table_d");
 
@@ -180,16 +179,12 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
-        User user = new User( "root", "password1234", "上帝", "108598065" ) ;
-
         String func = req.getParameter( "func" ) ;
-
+        String staff_code = session.getAttribute("userNumber").toString();
         if ( func.equals( "joint_authorization_agreement" ) ) {
-            save_joint_authorization_agreement(req,resp, user.getStaff_code()) ;
+            save_joint_authorization_agreement(req,resp, staff_code) ;
         }else if ( func.equals( "paper_home" ) ){
-            save_paper_home( req,resp,user.getStaff_code() ) ;
+            save_paper_home( req,resp,staff_code ) ;
         }
-
     }
 }
