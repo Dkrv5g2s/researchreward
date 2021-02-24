@@ -27,7 +27,6 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         String method = req.getMethod();
 
         if (method.equals("GET")) {
@@ -80,11 +79,13 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         resp.setContentType("text/; charset = UTF-8");
 
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
-        //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
-        User user = new User( "root", "password1234", "上帝", "108598065" ) ;
+
+        HttpSession session = req.getSession();
+        String staff_code = session.getAttribute("userNumber").toString();
+
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
         String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
-        this.logger.info( user.getStaff_code() + " has modified PaperPerformanceDescriptionForm with json message " + jsonObject.toString() );
+        this.logger.info( staff_code + " has modified PaperPerformanceDescriptionForm with json message " + jsonObject.toString() );
 
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
