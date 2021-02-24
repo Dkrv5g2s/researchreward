@@ -1,30 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
-<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 
-<%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
     response.setHeader("Pragma","no-cache");
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
-<% // RewardProject project = (RewardProject)request.getAttribute("project");
-//    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
-//    Gson gson = new Gson();
-
-
-%>
-
-<%
-    JSONObject json = (JSONObject) request.getAttribute("json");
-%>
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="container" style="margin: 0px auto; width: 1200px">
+<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<div class="container">
 <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
 </div>
-<div class="container" style="margin: 0px auto; width: 70%">
+<div class="container" style="margin: 0px auto; width: 90%">
 <form method="post" id="c001_form">
     <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
         <thead style="text-align: center;">
