@@ -38,9 +38,9 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String UPDATE_SPECIFIED_Paper_Performance_File_Path = "UPDATE paper_performance SET joint_authoriztion_agreement_file_path = ?, paper_home_file_path=? WHERE paper_id = ?" ;
 
-    private static final String SELECT_TOTAL_PAPER_TITLE = "SELECT book_name FROM paper_performance ";
+    private static final String SELECT_TOTAL_PAPER_SENTENCE = "SELECT book_name,scholarly_journals_name FROM paper_performance ";
 
-    private static final String SELECT_SPECIFIED_PAPER_TITLE = "SELECT * FROM paper_performance WHERE paper_id = ? AND book_name = ?";
+    private static final String SELECT_SPECIFIED_PAPER_TITLE = "SELECT * FROM paper_performance WHERE paper_id = ? AND book_name = ? AND scholarly_journals_name = ?";
 
     private static final String SELECT_USER_NAME_VIA_PAPER_TITLE =
             "SELECT name FROM user where number in (" +
@@ -341,18 +341,19 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         }
     }
 
-    public List<String> query_total_paper_title() {
+    public List<String> query_total_paper_sentence() {
 
         List<String> paper_title_list = new ArrayList<>() ;
 
         Connection connection = dbConnection.getConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TOTAL_PAPER_TITLE))
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TOTAL_PAPER_SENTENCE))
         {
             ResultSet resultSet = preparedStatement.executeQuery() ;
 
             while ( resultSet.next() ) {
-                paper_title_list.add( resultSet.getString( "book_name" ) );
+                String paperSentence = resultSet.getString( "book_name" ) + resultSet.getString( "scholarly_journals_name" );
+                paper_title_list.add( paperSentence );
             }
 
             connection.close();
@@ -363,13 +364,14 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         return  paper_title_list ;
     }
     @Override
-    public boolean query_whether_specified_paperitem_existed_already(PaperPerformance paperPerformance){
+    public boolean query_whether_specified_paper_sentence_existed_already(PaperPerformance paperPerformance){
         boolean query_result = true;
         Connection connection = dbConnection.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_TITLE))
         {
             preparedStatement.setInt(1,paperPerformance.getPaper_id());
             preparedStatement.setString(2, paperPerformance.getBook_name());
+            preparedStatement.setString(3, paperPerformance.getScholarly_journals_name());
             ResultSet resultSet = preparedStatement.executeQuery() ;
             if(!resultSet.next()){
                 query_result = false;
@@ -387,7 +389,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_NAME_VIA_PAPER_TITLE))
         {
             preparedStatement.setString(1, PaperTitle);
-            System.out.println(preparedStatement.toString());
+//            System.out.println(preparedStatement.toString());
             ResultSet resultSet = preparedStatement.executeQuery() ;
             while ( resultSet.next() ) {
                 queryResult = resultSet.getString("name");

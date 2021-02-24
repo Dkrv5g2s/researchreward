@@ -142,7 +142,6 @@ public class ProjectDAOImpl implements ProjectDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()){
                 if (resultSet.next()){
                     result = resultSet.getString("reward_type");
-                    System.out.println("result:"+result);
                 }
             }
             connection.close();

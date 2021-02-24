@@ -28,13 +28,14 @@ public class UserDAOImpl implements UserDAO {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
-
                 user = new User();
                 user.setRole(resultSet.getString("role"));
                 user.setStaff_code(resultSet.getString("number"));
             }
             connection.close();
         } catch (SQLException e) {
+
+
             e.printStackTrace();
         }
 

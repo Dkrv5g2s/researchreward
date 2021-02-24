@@ -89,7 +89,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
             String appliedApplicantName = paperPerformanceDescriptionService.getAppliedApplicantUserName(duplicatePaperTitle);
-            String errorMessage = "論文【"+duplicatePaperTitle+"】" +
+            String errorMessage = "論文【"+duplicatePaperTitle+"】重覆申請，" +
                     "已由【"+appliedApplicantName+"】進行申請，請調整填寫內容。";
             PrintWriter out = resp.getWriter();
             resp.setStatus(400);
