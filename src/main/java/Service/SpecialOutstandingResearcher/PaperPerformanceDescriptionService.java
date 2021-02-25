@@ -13,6 +13,7 @@ import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 public class PaperPerformanceDescriptionService {
 
@@ -44,8 +45,8 @@ public class PaperPerformanceDescriptionService {
     public String verifyPaperTitle(JSONObject json){
 
         // only check the paperdata which is new application
-        // if the papertitle(book_name in db) has existed in db,it means the title is duplicate,return the title.
-        VerifyUtils Util = new VerifyUtils();
+        // if the paperTitle(book_name in db) has existed in db,it means the title is reapplied,return the title.
+        VerifyUtils verifyUtils = new VerifyUtils();
         String result = "";
 
         PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
@@ -54,15 +55,19 @@ public class PaperPerformanceDescriptionService {
         List<PaperPerformance> paperPerformanceList = specialOutstandingResearcherForm.getPaper_performance_list() ;
         ListIterator<PaperPerformance> it = paperPerformanceList.listIterator();
 
-        List<String> totalPaperTitleList = dao.query_total_paper_title();
+        List<String> totalPaperSentenceList = dao.query_total_paper_sentence();
 
         while (it.hasNext()) {
             PaperPerformance item = it.next();
-            boolean queryResult = dao.query_whether_specified_paperitem_existed_already(item);//smell
+            boolean queryResult = dao.query_whether_specified_paper_sentence_existed_already(item);//smell
+
             if (queryResult == false) {
-                // means the paperitem is not existed in list->check the book_name
-                String paperTitle = item.getBook_name();
-                return Util.getDuplicatePaperTitle(paperTitle,totalPaperTitleList);
+                // means the paper is not existed in list->check the book_name
+                String inputPaperToken = item.getBook_name() + item.getScholarly_journals_name();
+                if(verifyUtils.isPaperReapplied(inputPaperToken,totalPaperSentenceList));
+                {
+                    return item.getBook_name();
+                }
             }
         }
         return  result;

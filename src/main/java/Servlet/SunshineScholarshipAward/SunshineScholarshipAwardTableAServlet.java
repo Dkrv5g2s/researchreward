@@ -17,7 +17,6 @@ import java.io.UnsupportedEncodingException;
 public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     private static final String TableA_Edit_URL = "WEB-INF/jsp/SunshineScholarshipAward/edit/SunshineScholarshipAwardTableA.jsp";
     private static final String TableA_Readonly_URL = "WEB-INF/jsp/SunshineScholarshipAward/readonly/SunshineScholarshipAwardTableA.jsp";
-    private LogUtil loggerUtil = new LogUtil(this.getClass().getName());
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,7 +36,6 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession() ;
-        System.out.println("SunshineScholarshipAwardTableAServlet doGet");
 //        loggerUtil.ShowSessionInfo(session);
 
         int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
@@ -72,7 +70,7 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
             String appliedApplicantName = paperPerformanceDescriptionService.getAppliedApplicantUserName(duplicatePaperTitle);
-            String errorMessage = "論文【"+duplicatePaperTitle+"】" +
+            String errorMessage = "論文【"+duplicatePaperTitle+"】，" +
                     "已由【"+appliedApplicantName+"】進行申請，請調整填寫內容。";
             PrintWriter out = resp.getWriter();
             resp.setStatus(400);
