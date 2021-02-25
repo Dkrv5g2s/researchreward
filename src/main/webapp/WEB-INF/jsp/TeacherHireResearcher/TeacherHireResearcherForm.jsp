@@ -32,10 +32,7 @@
             body {
                 margin: 20px 0px 0px 0px;
                 padding: 0;
-                background: #FFFFCC;
                 font-size: 20px;
-                color: #3C3D3F;
-                background-color: #E9F2FF;
                 font: normal 16px Verdana;
                 width: 100%;
             }
@@ -66,7 +63,7 @@
             div.content{
                 margin: 0 auto;
                 padding: 50px;
-                width: 1200px;
+                width: 75%;
                 background-color: white;
             }
 
@@ -268,7 +265,7 @@
                                 計畫名稱<font color="red">*</font>
                             </td>
                             <td colspan="2" width="5%">
-                                <input name="projectName" value="<%= json.get("projectName")%>" size="20" maxlength="40">
+                                <input name="projectName" value="<%= json.get("projectName")%>" size="15" maxlength="40">
                             </td>
                             <td colspan="1" width="10%" class="metadata">
                                 計畫金額<font color="red">*</font>

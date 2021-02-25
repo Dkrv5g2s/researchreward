@@ -19,12 +19,9 @@
     <title>國立臺北科技大學績優教師聘任研究人員近五年內發表之期刊論文統計表(表A)</title>
     <style>
         body {
-            margin: 20px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
             font-size: 20px;
-            color: #3C3D3F;
-            background-color: #E9F2FF;
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -51,7 +48,7 @@
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            width: 80%;
             background-color: white;
         }
        /* Chrome, Safari, Edge, Opera */
@@ -64,6 +61,18 @@
 		/* Firefox */
 		input[type=number] {
 		  -moz-appearance: textfield;
+		}
+		input{
+			width: 100%;
+		}
+		input.button {
+			width: 55px;
+		}
+		input.date {
+			width: 135px;
+		}
+		input.check {
+			width: 10px;
 		}
 
     </style>
@@ -178,23 +187,23 @@
 		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
                         <% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="year<%=i+1%>" type="number" value="<%=json.get("year"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none; background-color:transparent;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="year<%=i+1%>" type="number" value="<%=json.get("year"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none; background-color:transparent;" tabindex="-1" readonly></td>
                         <% } %>
 		            </tr>
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="3" colspan="1" width="20%">Scopus 或 WOS 資料庫</td>
 		                <td colspan="1" width="10%">篇數</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="sw_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" value="<%=json.get("sw_article_count"+(i+1))%>" size="5" maxlength="40" style="text-align:center; width: 75px;"/></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="sw_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" value="<%=json.get("sw_article_count"+(i+1))%>" size="5" maxlength="40" style="text-align:center; width: 75%;"/></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="sw_article_count_total" type="number" class="total_count" value="<%=json.get("sw_article_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="sw_article_count_total" type="number" class="total_count" value="<%=json.get("sw_article_count_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%">點數<br>(請參照<a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/182608393.pdf#page=6" target="_blank">附表一</a>)</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="sw_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("sw_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="sw_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("sw_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="sw_point_total" type="number" class="total_point" value="<%=json.get("sw_point_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="sw_point_total" type="number" class="total_point" value="<%=json.get("sw_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;">
 		                <td colspan="<%=cellsNum+2%>" width="80%">說明：論文請檢附-表B「傑出論文績效說明表」</td>
@@ -203,9 +212,9 @@
 		                <td rowspan="2" colspan="1" width="20%">TSSCI/THCI (限設計及人社學院)</td>
 		                <td colspan="1" width="10%">篇數</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="t_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("t_article_count"+(i+1))%>" style="text-align:center; width: 75px;" ></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="t_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("t_article_count"+(i+1))%>" style="text-align:center; width: 75%;" ></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="t_article_count_total" type="number" class="total_count" value="<%=json.get("t_article_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="t_article_count_total" type="number" class="total_count" value="<%=json.get("t_article_count_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%" >
@@ -213,17 +222,17 @@
 							<input type="hidden" name="multiple" value="<%=TSSCIPointPerArticle%>">
 						</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="t_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("t_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="t_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("t_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="t_point_total" type="number" class="total_point" value="<%=json.get("t_point_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="t_point_total" type="number" class="total_point" value="<%=json.get("t_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="2" colspan="1" width="20%">人文、設計、藝術或社會之學術專書</td>
 		                <td colspan="1" width="10%">冊數</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="a_book_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("a_book_count"+(i+1))%>" style="text-align:center; width: 75px;"></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="a_book_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("a_book_count"+(i+1))%>" style="text-align:center; width: 75%;"></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="a_book_count_total" type="number" class="total_count" value="<%=json.get("a_book_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="a_book_count_total" type="number" class="total_count" value="<%=json.get("a_book_count_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%">
@@ -231,17 +240,17 @@
 							<input type="hidden" name="multiple" value="<%=artsBooksPerBooks%>">
 						</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="a_book_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("a_book_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="a_book_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("a_book_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="a_book_point_total" type="number" class="total_point" value="<%=json.get("a_book_point_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="a_book_point_total" type="number" class="total_point" value="<%=json.get("a_book_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="2" colspan="1" width="20%">人文、設計、藝術或社會之學術專書單篇(章)</td>
 		                <td colspan="1" width="10%">篇數</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="a_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("a_article_count"+(i+1))%>" style="text-align:center; width: 75px;"></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="a_article_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("a_article_count"+(i+1))%>" style="text-align:center; width: 75%;"></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="a_article_count_total" type="number" class="total_count" value="<%=json.get("a_article_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="a_article_count_total" type="number" class="total_count" value="<%=json.get("a_article_count_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%">
@@ -249,14 +258,14 @@
 							<input type="hidden" name="multiple" value="<%=artsArticlePerArticle%>">
 						</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="a_article_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("a_article_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="a_article_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("a_article_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="a_article_point_total" type="number" class="total_point" value="<%=json.get("a_article_point_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="a_article_point_total" type="number" class="total_point" value="<%=json.get("a_article_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" type="number" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 75px;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" type="number" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 						<td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
-						<td colspan="<%=cellsNum-3%>" width="22%" ><input name="a_plus_b_total_point" type="number" value="<%=json.get("a_plus_b_total_point")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="<%=cellsNum-3%>" width="22%" ><input name="a_plus_b_total_point" type="number" value="<%=json.get("a_plus_b_total_point")%>" style="text-align:center; width: 10%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">科 技 部 計 畫</td>
@@ -272,16 +281,16 @@
 		                <td rowspan="4" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
 		                <td colspan="1" width="10%">件數</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="tech_project_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("tech_project_count"+(i+1))%>" style="text-align:center; width: 75px;"></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="tech_project_count<%=i+1%>" type="number" class="ic<%=i+1%>" size="5" maxlength="40" value="<%=json.get("tech_project_count"+(i+1))%>" style="text-align:center; width: 75%;"></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="tech_project_count_total" type="number" class="total_count_tech_project" value="<%=json.get("tech_project_count_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="tech_project_count_total" type="number" class="total_count_tech_project" value="<%=json.get("tech_project_count_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="project_money">
 		                <td colspan="1" width="10%">計畫金額<br>(萬元)</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%"><input name="tech_project_money<%=i+1%>" type="number" class="ip<%=i+1%>" size="5" maxlength="40" value="<%=json.get("tech_project_money"+(i+1))%>" style="text-align:center; width: 75px;"></td>
+							<td colspan="1" width="<%=60/cellsNum%>%"><input name="tech_project_money<%=i+1%>" type="number" class="ip<%=i+1%>" size="5" maxlength="40" value="<%=json.get("tech_project_money"+(i+1))%>" style="text-align:center; width: 75%;"></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="tech_project_money_total" type="number" class="total_project_money_tech_project" value="<%=json.get("tech_project_money_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="tech_project_money_total" type="number" class="total_project_money_tech_project" value="<%=json.get("tech_project_money_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%">
@@ -289,9 +298,9 @@
 							<input type="hidden" name="multiple" value="<%=(double)ministryOfTechnologyProjectPoint/ministryOfTechnologyProjectMoney%>">
 						</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="tech_project_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("tech_project_point"+(i+1))%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="tech_project_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("tech_project_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 						<% } %>
-						<td colspan="1" width="10%" ><input name="tech_project_point_total" type="number" class="total_point_tech_project" value="<%=json.get("tech_project_point_total")%>" style="text-align:center; width: 75px; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="1" width="10%" ><input name="tech_project_point_total" type="number" class="total_point_tech_project" value="<%=json.get("tech_project_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            
 		            <tr>
@@ -309,16 +318,16 @@
                     	</td>
 		            </tr>
 		            <tr>
-		                <td colspan="<%=cellsNum+4%>" width="100%"><input type="checkbox" name="declaration" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br>
+		                <td colspan="<%=cellsNum+4%>" width="100%"><input type="checkbox" name="declaration" class="check">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br>
 							註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。<br>
-		                    <a style="margin-left: 800px">日期:<input type="date" name="commit_date" value="<%=json.get("commit_date")%>"></a>
+		                    <a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.get("commit_date")%>"></a>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-	            <input type="button" name="save" value="存檔" onclick="commit()">
-	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
+	            <input type="button" name="save" class="button" value="存檔" onclick="commit()">
+	            <input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
        		</p>
         </form>
     </div>
