@@ -10,7 +10,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
-<p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+<p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+<p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 90%">
 <form method="post" id="c001_form">
@@ -40,7 +41,7 @@
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
-                <td colspan="4" class="three_years" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>
+                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>
                 <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>
                 <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)+(B)</td>
                 <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
@@ -52,10 +53,11 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;3.若某篇論文為SSCI且有企業及國際合著者，權重至多1.8倍計。<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;4.每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。
                 </td>
-                <td colspan="8" style="text-align: left;" class="three_years five_years">
+                <td colspan="8" style="text-align: left;" class="three_years five_years table_d">
                     <p>說明事項：</p>
                     <p class="three_years" style="padding-left: 2rem;">1. 近三年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
                     <p class="five_years" style="padding-left: 2rem;">1. 近五年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
+                    <p class="table_d" style="padding-left: 2rem;">1. <b>績優教師執行第一期</b>以本校名義發表之學術論著。</p>
                     <p style="padding-left: 2rem;">2. 論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</p>
                     <p style="padding-left: 2rem;">3. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
                 </td>
@@ -92,6 +94,7 @@
         $(".three_years").hide();
         $(".five_years").hide();
         $(".four_sections").hide();
+        $(".table_d").hide();
         let displayExplanation = "${displayExplanation}";
 
         if(displayExplanation==="four_sections"){
@@ -100,8 +103,11 @@
         else if(displayExplanation==="three_years"){
             $(".three_years").show();
         }
-        else{
+        else if(displayExplanation==="five_years"){
             $(".five_years").show();
+        }
+        else{
+            $(".table_d").show();
         }
     }
     function goBack() {

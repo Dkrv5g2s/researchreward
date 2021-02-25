@@ -14,7 +14,8 @@
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
-    <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+    <p class="table_b" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+    <p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
 </div>
 <div class="container" style="margin: 0px auto;width: 80%;">
     <form id="c001_form">
@@ -166,7 +167,19 @@
     }
 
     function load(){
-        showDatas() ;
+        showDatas();
+        showSection();
+    }
+
+    function showSection(){
+        $(".table_b").hide();
+        $(".table_d").hide();
+        let is_table_d = ${table_d};
+
+        if(is_table_d)
+            $(".table_d").show();
+        else
+            $(".table_b").show();
     }
 
     $(document).ready( load() );

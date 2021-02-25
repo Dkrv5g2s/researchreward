@@ -51,26 +51,23 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         String wight = bFormFormulaService.get().toString() ;
 
         String json_form = "";
-        if (table_d!=null && table_d.equals("1"))
+        boolean isTableD = false;
+        if (table_d!=null && table_d.equals("1")){
+            isTableD = true;
             json_form = service.query( -project_id );
-        else
+        }else
             json_form = service.query( project_id );
 
         String reward_type = service.queryRewardType(project_id);
-        setDisplaySection(reward_type, req);
+        setDisplaySection(reward_type, req, isTableD);
 
         req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
 
-        if (table_d!=null && table_d.equals("1")){
-            req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableD.jsp").forward(req, resp);
-        }else{
-            if ( readonly )
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
-            else
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
-        }
-
+        if ( readonly )
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        else
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
     }
 
     @Override
@@ -102,7 +99,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         }
     }
 
-    private void setDisplaySection(String reward_type, HttpServletRequest req) {
+    private void setDisplaySection(String reward_type, HttpServletRequest req, boolean isTableD) {
         String displayExplanation = "five_years";
         if(reward_type.compareTo("優秀人才申請")==0) {
             displayExplanation = "four_sections";
@@ -110,6 +107,8 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         else if(reward_type.compareTo("年輕學者獎")==0 || reward_type.compareTo("傑出研究獎")==0) {
             displayExplanation = "three_years";
         }
+        if(isTableD)
+            displayExplanation = "table_d";
         req.setAttribute("displayExplanation", displayExplanation );
         req.setAttribute("reward_type", reward_type );
     }

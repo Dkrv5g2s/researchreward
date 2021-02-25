@@ -53,25 +53,24 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         String json_form = "";
-        if (table_d!=null && table_d.equals("1"))
+        if (table_d!=null && table_d.equals("1")){
             json_form = service.query( -project_id );
-        else
+            req.setAttribute("table_d", true );
+        }
+        else{
             json_form = service.query( project_id );
+            req.setAttribute("table_d", false );
+        }
 
         String reward_type = service.queryRewardType(project_id);
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
 
-        if (table_d!=null && table_d.equals("1")){
-            req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableDUpload.jsp").forward(req, resp);
-        }else{
-            if ( readonly )
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
-            else
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
-        }
-
+        if ( readonly )
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
+        else
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
     }
 
     void save_joint_authorization_agreement(HttpServletRequest req, HttpServletResponse resp, String staff_code) {
