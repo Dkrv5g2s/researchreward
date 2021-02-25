@@ -13,10 +13,7 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
             font-size: 20px;
-            color: #3C3D3F;
-            background-color: #E9F2FF;
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -41,7 +38,7 @@
             vertical-align: text-middle;
         }
         table td.metadata{
-            width: 150px;
+            width: 75%;
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
@@ -49,27 +46,33 @@
             width: 1%;
         }
         table td.checkboxcontent{
-            width: 500px;
+            width: 75%;
             background-color: rgb(255, 255, 240);
             text-align: left;
         }
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            width: 75%;
             background-color: white;
         }
+        input{
+            width: 100%;
+        }
+        input.back {
+    		width: 55px;
+		}
 
     </style>
     <script>
         function create() {
             var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
-                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
+                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
+                "                    <td colspan=\"1\" width=\"18%\"><input type=\"date\" name=\"contractDate\"></td>\n" +
+                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
+                "                    <td colspan=\"1\" width=\"18%\"><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
+                "                    <td colspan=\"1\" width=\"10%\"><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
                 "                </tr>";
             $("div[name='technologyTransfer'] tr[name=add]").before(data);
         }
@@ -134,12 +137,12 @@
 	        $(document).ready(function () {
 	
 	            var data = "<tr name=\"technologyTransfer\">\n" +
-	                "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
-	                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=<%=jsonObject.get("technologyTransferDepartment")%>></td>\n" +
-	                "                    <td><input type=\"date\" name=\"contractDate\" value=<%=jsonObject.get("contractDate")%>></td>\n" +
-	                "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=<%=jsonObject.get("technologyTransferFund")%>></td>\n" +
-	                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=<%=jsonObject.get("technologyTransferFundBringInDate")%>></td>\n" +
-	                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+	                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
+	                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferDepartment\" value=<%=jsonObject.get("technologyTransferDepartment")%>></td>\n" +
+	                "                    <td colspan=\"1\" width=\"18%\"><input type=\"date\" name=\"contractDate\" value=<%=jsonObject.get("contractDate")%>></td>\n" +
+	                "                    <td colspan=\"1\" width=\"18%\"><input type=\"text\" name=\"technologyTransferFund\" value=<%=jsonObject.get("technologyTransferFund")%>></td>\n" +
+	                "                    <td colspan=\"1\" width=\"18%\"><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=<%=jsonObject.get("technologyTransferFundBringInDate")%>></td>\n" +
+	                "                    <td colspan=\"1\" width=\"10%\"><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
 	                "                </tr>";
 	            $("table[name='technologyTransfer'] tr[name=add]").before(data);
 	        })
@@ -210,7 +213,7 @@
             </table>
             <p style="text-align: center;">
 	            <button type="button" name="save" onclick="commit()">存檔</button>
-	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
+	            <input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>
     </div>

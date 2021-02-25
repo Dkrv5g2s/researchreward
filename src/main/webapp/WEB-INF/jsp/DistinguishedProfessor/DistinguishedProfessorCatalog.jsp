@@ -11,7 +11,7 @@
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="container" style="margin: 0px auto; width: 1200px">
+<div class="container" style="margin: 0px auto; width: 75%">
     <table >
         <thead>
             <tr  >

@@ -9,11 +9,8 @@
     <style>
         body {
             margin: 20px 0px 0px 0px;
-            padding: 0;
-            background: #FFFFCC;
+            padding: 0;         
             font-size: 20px;
-            color: #3C3D3F;
-            background-color: #E9F2FF;
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -53,7 +50,7 @@
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            width: 75%;
             background-color: white;
         }
 

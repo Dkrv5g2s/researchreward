@@ -16,12 +16,6 @@ public class DistinguishedProfessorCatalogServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        Boolean readonly = false ;
-
-        HttpSession session = req.getSession() ;
-        session.setAttribute( "project_id", Integer.valueOf((String) session.getAttribute("projectId")));
-        session.setAttribute( "readonly", readonly );
 
         req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorCatalog.jsp").forward(req, resp);
 

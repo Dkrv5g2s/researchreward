@@ -8,12 +8,9 @@
     <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</title>
     <style>
         body {
-            margin: 20px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
             font-size: 20px;
-            color: #3C3D3F;
-            background-color: #E9F2FF;
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -53,7 +50,7 @@
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            width: 80%;
             background-color: white;
         }
        /* Chrome, Safari, Edge, Opera */
@@ -66,6 +63,18 @@
 		/* Firefox */
 		input[type=number] {
 		  -moz-appearance: textfield;
+		}
+		input{
+            width: 100%;
+        }
+        input.back {
+    		width: 55px;
+		}
+		input.date {
+    		width: 135px;
+		}
+		input.check {
+    		width: 10px;
 		}
 
     </style>
@@ -336,11 +345,11 @@
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="3" colspan="1" width="20%">Scopus 或 WOS 資料庫</td>
 		                <td colspan="1" width="10%">篇數</td>
-		                <td colspan="1" width="12%"><input name="sw_article_count1" type="number" class="ic1" value="<%=json.get("sw_article_count1")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="sw_article_count2" type="number" class="ic2" value="<%=json.get("sw_article_count2")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="sw_article_count3" type="number" class="ic3" value="<%=json.get("sw_article_count3")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="sw_article_count4" type="number" class="ic4" value="<%=json.get("sw_article_count4")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="sw_article_count5" type="number" class="ic5" value="<%=json.get("sw_article_count5")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="sw_article_count1" type="number" class="ic1" value="<%=json.get("sw_article_count1")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_article_count2" type="number" class="ic2" value="<%=json.get("sw_article_count2")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_article_count3" type="number" class="ic3" value="<%=json.get("sw_article_count3")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_article_count4" type="number" class="ic4" value="<%=json.get("sw_article_count4")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_article_count5" type="number" class="ic5" value="<%=json.get("sw_article_count5")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="sw_article_count_total" class="total_count"><%=json.get("sw_article_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -358,11 +367,11 @@
 		            <tr style="text-align: center;" class="count1">
 		                <td rowspan="2" colspan="1" width="20%">TSSCI/THCI (限設計及人社學院)</td>
 		                <td colspan="1" width="10%">篇數</td>
-		                <td colspan="1" width="12%"><input name="t_article_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("t_article_count1")%>" style="text-align:center; width: 75px;" ></td>
-		                <td colspan="1" width="12%"><input name="t_article_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("t_article_count2")%>" style="text-align:center; width: 75px;" ></td>
-		                <td colspan="1" width="12%"><input name="t_article_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("t_article_count3")%>" style="text-align:center; width: 75px;" ></td>
-		                <td colspan="1" width="12%"><input name="t_article_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("t_article_count4")%>" style="text-align:center; width: 75px;" ></td>
-		                <td colspan="1" width="12%"><input name="t_article_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("t_article_count5")%>" style="text-align:center; width: 75px;" ></td>
+		                <td colspan="1" width="12%"><input name="t_article_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("t_article_count1")%>" style="text-align:center; width: 75%;" ></td>
+		                <td colspan="1" width="12%"><input name="t_article_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("t_article_count2")%>" style="text-align:center; width: 75%;" ></td>
+		                <td colspan="1" width="12%"><input name="t_article_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("t_article_count3")%>" style="text-align:center; width: 75%;" ></td>
+		                <td colspan="1" width="12%"><input name="t_article_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("t_article_count4")%>" style="text-align:center; width: 75%;" ></td>
+		                <td colspan="1" width="12%"><input name="t_article_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("t_article_count5")%>" style="text-align:center; width: 75%;" ></td>
 		                <td colspan="1" width="10%" id="t_article_count_total" class="total_count"><%=json.get("t_article_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -377,11 +386,11 @@
 		            <tr style="text-align: center;" class="count2">
 		                <td rowspan="2" colspan="1" width="20%">人文、設計、藝術或社會之學術專書</td>
 		                <td colspan="1" width="10%">冊數</td>
-		                <td colspan="1" width="12%"><input name="a_book_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("a_book_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_book_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("a_book_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_book_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("a_book_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_book_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("a_book_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_book_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("a_book_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="a_book_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("a_book_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_book_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("a_book_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_book_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("a_book_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_book_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("a_book_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_book_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("a_book_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="a_book_count_total" class="total_count"><%=json.get("a_book_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -396,11 +405,11 @@
 		            <tr style="text-align: center;" class="count1">
 		                <td rowspan="2" colspan="1" width="20%">人文、設計、藝術或社會之學術專書單篇(章)</td>
 		                <td colspan="1" width="10%">篇數</td>
-		                <td colspan="1" width="12%"><input name="a_article_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("a_article_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_article_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("a_article_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_article_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("a_article_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_article_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("a_article_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="a_article_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("a_article_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="a_article_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("a_article_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_article_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("a_article_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_article_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("a_article_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_article_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("a_article_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="a_article_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("a_article_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="a_article_count_total" class="total_count"><%=json.get("a_article_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -413,7 +422,7 @@
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 75px;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
@@ -432,20 +441,20 @@
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="4" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
 		                <td colspan="1" width="10%">件數</td>
-		                <td colspan="1" width="12%"><input name="tech_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_project_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_project_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("tech_project_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("tech_project_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("tech_project_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_project_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_project_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("tech_project_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("tech_project_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("tech_project_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="tech_project_count_total" class="total_count"><%=json.get("tech_project_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="project_money1">
 		                <td colspan="1" width="10%">計畫金額<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="tech_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("tech_project_money1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("tech_project_money2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("tech_project_money3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("tech_project_money4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("tech_project_money5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("tech_project_money1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("tech_project_money2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("tech_project_money3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("tech_project_money4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("tech_project_money5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="tech_project_money_total" class="total_project_money"><%=json.get("tech_project_money_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -479,20 +488,20 @@
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="3" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>
 		                <td colspan="1" width="10%">件數</td>
-		                <td colspan="1" width="12%"><input name="edu_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("edu_project_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("edu_project_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("edu_project_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("edu_project_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("edu_project_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("edu_project_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("edu_project_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("edu_project_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("edu_project_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("edu_project_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="edu_project_count_total" class="total_count"><%=json.get("edu_project_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="project_money2">
 		                <td colspan="1" width="10%">計畫金額<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="edu_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("edu_project_money1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("edu_project_money2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("edu_project_money3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("edu_project_money4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="edu_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("edu_project_money5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("edu_project_money1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("edu_project_money2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("edu_project_money3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("edu_project_money4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="edu_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("edu_project_money5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="edu_project_money_total" class="total_project_money"><%=json.get("edu_project_money_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -520,29 +529,29 @@
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
 		                <td colspan="1" width="10%">件數</td>
-		                <td colspan="1" width="12%"><input name="coop_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("coop_project_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("coop_project_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("coop_project_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("coop_project_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("coop_project_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("coop_project_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("coop_project_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("coop_project_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("coop_project_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("coop_project_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="coop_project_count_total" class="total_count"><%=json.get("coop_project_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="mamage_money1">
 		                <td colspan="1" width="10%">管理費<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="coop_project_management1" type="number" class="mp1" size="5" maxlength="40" value="<%=json.get("coop_project_management1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_management2" type="number" class="mp2" size="5" maxlength="40" value="<%=json.get("coop_project_management2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_management3" type="number" class="mp3" size="5" maxlength="40" value="<%=json.get("coop_project_management3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_management4" type="number" class="mp4" size="5" maxlength="40" value="<%=json.get("coop_project_management4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_management5" type="number" class="mp5" size="5" maxlength="40" value="<%=json.get("coop_project_management5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_management1" type="number" class="mp1" size="5" maxlength="40" value="<%=json.get("coop_project_management1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_management2" type="number" class="mp2" size="5" maxlength="40" value="<%=json.get("coop_project_management2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_management3" type="number" class="mp3" size="5" maxlength="40" value="<%=json.get("coop_project_management3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_management4" type="number" class="mp4" size="5" maxlength="40" value="<%=json.get("coop_project_management4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_management5" type="number" class="mp5" size="5" maxlength="40" value="<%=json.get("coop_project_management5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="coop_project_management_total" class="total_manage_money"><%=json.get("coop_project_management_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="project_money3">
 		                <td colspan="1" width="10%">計畫金額<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="coop_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("coop_project_money1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("coop_project_money2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("coop_project_money3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("coop_project_money4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="coop_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("coop_project_money5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("coop_project_money1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("coop_project_money2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("coop_project_money3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("coop_project_money4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="coop_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("coop_project_money5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="coop_project_money_total" class="total_project_money"><%=json.get("coop_project_money_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -577,29 +586,29 @@
 		            <tr style="text-align: center;" class="count">
 		                <td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲之實收技術移轉金統計表</td>
 		                <td colspan="1" width="10%">件數</td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_transfer_count1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_transfer_count2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("tech_transfer_count3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("tech_transfer_count4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("tech_transfer_count5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_transfer_count1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_transfer_count2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("tech_transfer_count3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("tech_transfer_count4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("tech_transfer_count5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="tech_transfer_count_total" class="total_count"><%=json.get("tech_transfer_count_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="mamage_money2">
 		                <td colspan="1" width="10%">管理費<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_management1" type="number" class="mp1" size="5" maxlength="40" value="<%=json.get("tech_transfer_management1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_management2" type="number" class="mp2" size="5" maxlength="40" value="<%=json.get("tech_transfer_management2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_management3" type="number" class="mp3" size="5" maxlength="40" value="<%=json.get("tech_transfer_management3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_management4" type="number" class="mp4" size="5" maxlength="40" value="<%=json.get("tech_transfer_management4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_management5" type="number" class="mp5" size="5" maxlength="40" value="<%=json.get("tech_transfer_management5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_management1" type="number" class="mp1" size="5" maxlength="40" value="<%=json.get("tech_transfer_management1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_management2" type="number" class="mp2" size="5" maxlength="40" value="<%=json.get("tech_transfer_management2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_management3" type="number" class="mp3" size="5" maxlength="40" value="<%=json.get("tech_transfer_management3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_management4" type="number" class="mp4" size="5" maxlength="40" value="<%=json.get("tech_transfer_management4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_management5" type="number" class="mp5" size="5" maxlength="40" value="<%=json.get("tech_transfer_management5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="tech_transfer_management_total" class="total_manage_money"><%=json.get("tech_transfer_management_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="project_money4">
 		                <td colspan="1" width="10%">技轉金額<br>(萬元)</td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("tech_transfer_money1")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("tech_transfer_money2")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("tech_transfer_money3")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("tech_transfer_money4")%>" style="text-align:center; width: 75px;"></td>
-		                <td colspan="1" width="12%"><input name="tech_transfer_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("tech_transfer_money5")%>" style="text-align:center; width: 75px;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("tech_transfer_money1")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("tech_transfer_money2")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("tech_transfer_money3")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("tech_transfer_money4")%>" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="tech_transfer_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("tech_transfer_money5")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="tech_transfer_money_total" class="total_project_money"><%=json.get("tech_transfer_money_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="point">
@@ -628,15 +637,15 @@
                     	</td>
 		            </tr>
 		            <tr>
-		                <td colspan="9" width="100%"><input type="checkbox" name="representationClause" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
-		                    <a style="margin-left: 800px">日期:<input type="date" name="commit_date" value="<%=json.get("commit_date")%>"></a>
+		                <td colspan="9" width="100%"><input type="checkbox" name="representationClause" class="check" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
+		                    <a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.get("commit_date")%>"></a>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
 	            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
-	            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
+	            <input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>
     </div>
