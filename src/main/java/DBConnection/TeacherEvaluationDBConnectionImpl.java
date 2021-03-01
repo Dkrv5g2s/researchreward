@@ -19,6 +19,7 @@ public class TeacherEvaluationDBConnectionImpl implements DBConnection{
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException ex){
+            System.out.println("connect fail");
             ex.printStackTrace();
         }
         return conn;
