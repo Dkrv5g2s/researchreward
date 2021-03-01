@@ -41,7 +41,7 @@
             <tbody >
             <tr>
                 <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
                 </td>
             </tr>
             </tbody>
@@ -107,32 +107,6 @@
     latest_data
     var latest_data = <%=latest_data%> ;
 
-    function goBack() {
-        switch ("${reward_type}") {
-            case "特聘教授":
-                location.href="DistinguishedProfessorCatalog";
-                break;
-            case "傑出研究獎":
-                location.href="OutstandingResearchAwardCatalog";
-                break;
-            case "講座教授/榮譽講座教授":
-                window.history.back();
-                break;
-            case "年輕學者獎":
-                location.href="JuniorResearchInvestigatorCatalog";
-                break;
-            case "陽光獎助金論文獎勵":
-                location.href="SunshineScholarshipCatalog";
-                break;
-            case "優秀人才申請":
-            case "獎勵特殊優秀研究人才":
-                location.href="SpecialOutstandingResearcherCatalog";
-                break;
-            case "績優教師聘任研究人員":
-                location.href="TeacherHireResearcherCatalog";
-                break;
-        }
-    }
 
     function downloadFile1( index ) {
         var path = "File?func=joint_authorization_agreement&id=" + $("input[name='paper_id"+index+"']").val() ;

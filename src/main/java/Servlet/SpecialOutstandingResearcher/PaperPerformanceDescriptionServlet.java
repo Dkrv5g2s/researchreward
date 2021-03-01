@@ -11,6 +11,7 @@ import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherA
 import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
+import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -63,6 +64,9 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
         req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
+
+        RewardListService rewardListService = new RewardListService();
+        req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
         if ( readonly )
             req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);

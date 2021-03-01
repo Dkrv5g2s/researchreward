@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
                     <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
                 </td>
             </tr>
@@ -108,32 +108,6 @@
         }
         else{
             $(".table_d").show();
-        }
-    }
-    function goBack() {
-        switch ("${reward_type}") {
-            case "特聘教授":
-                location.href="DistinguishedProfessorCatalog";
-                break;
-            case "傑出研究獎":
-                window.history.back();
-                break;
-            case "講座教授/榮譽講座教授":
-                window.history.back();
-                break;
-            case "年輕學者獎":
-                location.href="JuniorResearchInvestigatorCatalog";
-                break;
-            case "陽光獎助金論文獎勵":
-                location.href="SunshineScholarshipCatalog";
-                break;
-            case "優秀人才申請":
-            case "獎勵特殊優秀研究人才":
-                location.href="SpecialOutstandingResearcherCatalog";
-                break;
-            case "績優教師聘任研究人員":
-                location.href="TeacherHireResearcherCatalog";
-                break;
         }
     }
     function setWeight() {
