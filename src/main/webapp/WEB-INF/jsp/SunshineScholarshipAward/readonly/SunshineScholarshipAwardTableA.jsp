@@ -6,22 +6,21 @@
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
-<% // RewardProject project = (RewardProject)request.getAttribute("project");
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
-    Gson gson = new Gson();
 
-%>
 <!DOCTYPE HTML>
 <html lang="zh">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學論文績效說明表(表A)</p>
 </div>
-<div class="container" style="margin: 0px auto; width: 1600px">
-    <form method="post" action="Plan?func=international_formC001" enctype="multipart/form-data" id="c001_form">
+<div class="container" style="margin: 0px auto; width: 70%">
+    <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead style="text-align: center;">
+
             <tr>
                 <td colspan="2" width="20%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
@@ -30,20 +29,34 @@
                 <td colspan="1" width="15%">作者排序<br>(W2)</td>
                 <td colspan="1" width="15%">通訊作者數<br>(W3)</td>
                 <td colspan="1" width="15%">額外加權<br>(W4)</td>
-                <td colspan="1" width="15%">換算點數(=W1×W2×W3×W4)</td>
+                <td colspan="1" width="15%">換算點數<br><br>(=W1×W2×W3×W4)</td>
+                <td colspan="1" width="5%"></td>
             </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;">
-
             </tbody>
-            <tbody>
+            <tbody >
             <tr>
+                <td colspan="8" style="text-align: center;">
+                    <input type="button" value="新增" name="add_new_paper" onclick="add_new_item()">
+                </td>
+            </tr>
+            <tr  style="border-color: #000000">
+                <td colspan="4" style="text-align: left;border-width:3px;"></td>
                 <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br></td>
-                <td colspan="2" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
+                <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="text-align: left;"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="text-align: left;font-weight: bold;"><input type="checkbox" name="representationClause"><font color="red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</font><br>
+                </td>
             </tr>
             <tr>
                 <td colspan="7" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()" >
+                    <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="goBack()" >
+                    <button type="button" name="confirm" onclick="location.href='PaperPerformanceDescriptionUpload'">此頁審查完成</button>
                 </td>
             </tr>
             </tbody>
@@ -51,9 +64,12 @@
         </table>
     </form>
 </div>
+</body>
+
 <script>
     var latest_data = ${latest_data} ;
     var wight = ${weight} ;
+
     //var paper_performence_list = latest_data["paper_performance_list"] ;
 
     function load(){
@@ -62,6 +78,9 @@
         calculateTotal() ;
     }
 
+    function goBack() {
+        location.href="SunshineScholarshipCatalog";
+    }
     function setWeight() {
         $("input[value='Nature、Science及Cell']" ).attr( 'data-weight', wight["w1_1"] );
         $("input[value='R≦1%及附表三期刊']" ).attr( 'data-weight', wight["w1_2"] );
@@ -129,9 +148,18 @@
 
     $(document).ready( load() );
 
+    function removeData(index){
+        getDatasFromTable();
+        if(confirm("您確定要刪除此筆資料嗎?")){
+            latest_data["paper_performance_list"].splice(index,1);
+            showDatas();
+            calculateTotal();
+        }
+        showDatas();
+    }
 
     function add_new_item(){
-        datasFromTable();
+        getDatasFromTable();
         var item = {};
         item.author_name = "" ;
         item.book_name = "";
@@ -161,7 +189,7 @@
         html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5' readonly><br>" ;
         html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5' readonly><br>" ;
         html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='40' readonly>" ;
-        html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly >" ;
+        html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
         html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell'><label name='1_1'>Nature、Science及Cell</label><br>" ;
@@ -209,8 +237,7 @@
         return html_of_item ;
     }
 
-
-    function datasFromTable(){
+    function getDatasFromTable(){
         latest_data["paper_performance_list"] = [];
         var i=0;
         while($("input[name='author_name"+i+"']").length>0){
@@ -271,31 +298,83 @@
 
     }
 
-
     function calculateTotal() {
-        datasFromTable()
-
+        getDatasFromTable()
+        let sumOfTotalcolumn = 0.0;
         for(var i=0;i<latest_data["paper_performance_list"].length;i++){
             var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' )) ;
 
-            if ( isNaN(cal_total) )
+            if ( isNaN(cal_total) ){
                 cal_total = "請確認W1至w4欄位皆勾選";
-
-            $("label[name='cal_point"+i+"']").text(cal_total);
-
+            }else{
+                sumOfTotalcolumn += cal_total;
+            }
+            $("label[name='cal_point"+i+"']").text(financial(cal_total));
         }
 
         $('input[name="fwci_value_past_five_year"]').val("0") ;
-        $('label[id="total_point"]').text("0") ;
+
+
+        $('label[id="total_point"]').text(financial(sumOfTotalcolumn)) ;
 
     }
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
 
-    $(document).on("click", "input[type='checkbox']", function () {
-        return false ;
-    })
+    $(document).on("change", "input[data-selection-block='onlyone']", function () {
+        $(this).siblings().prop("checked", false) ;
+        calculateTotal()
+    } ) ;
+
+
+    function checkDatas() {
+        return true ;
+    }
+
+    function InputFormToJson() {
+        return JSON.stringify(latest_data) ;
+    }
+
+    function saveDatas(){
+        if(checkDatas()){
+            getDatasFromTable();
+
+            $.ajax({
+                type: 'POST',
+                url: 'SunshineScholarshipAwardTableA',
+                dataType: 'text',
+                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
+                //contentType: 'application/text',
+                success: function(data){
+                    alert('success');
+                },
+                error: function(jqXHR, textStatus, message) {
+                    //error handling
+                    console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
+                    alert(jqXHR.responseText);
+                },
+            });
+
+        }
+        else{
+            alert("有資料格式錯誤或未填寫");
+        }
+    }
+
+    function checkRepresentationClause() {
+        if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
+            $("input[name='save_the_page']").prop( "disabled", false );
+        }
+        else {
+            $("input[name='save_the_page']").prop( "disabled", true  );
+        }
+    }
+
+    $("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
 
 </script>
 </html>

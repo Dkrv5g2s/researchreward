@@ -10,18 +10,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
-<p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
-<p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
+    <p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+    <p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 90%">
-<form method="post" id="c001_form">
-    <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
-        <thead style="text-align: center;">
-<%--            <tr>--%>
-<%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
-<%--                <td colspan="3" width="40%">系所/職稱:<input name="dep_job" size="20" maxlength="40"></td>--%>
-<%--                <td colspan="1" width="10%"></td>--%>
-<%--            </tr>--%>
+    <form method="post" id="c001_form">
+        <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
+            <thead style="text-align: center;">
+            <%--            <tr>--%>
+            <%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
+            <%--                <td colspan="3" width="40%">系所/職稱:<input name="dep_job" size="20" maxlength="40"></td>--%>
+            <%--                <td colspan="1" width="10%"></td>--%>
+            <%--            </tr>--%>
             <tr>
                 <td colspan="2" width="20%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
@@ -33,10 +33,10 @@
                 <td colspan="1" width="15%">換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
                 <td colspan="1" width="5%"></td>
             </tr>
-        </thead>
-        <tbody id="data_table" style="text-align: center;">
-        </tbody>
-        <tbody >
+            </thead>
+            <tbody id="data_table" style="text-align: center;">
+            </tbody>
+            <tbody >
             <tr>
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
@@ -72,10 +72,10 @@
                     <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
                 </td>
             </tr>
-        </tbody>
+            </tbody>
 
-    </table>
-</form>
+        </table>
+    </form>
 </div>
 <script>
     var latest_data = ${latest_data} ;
@@ -202,16 +202,6 @@
     }
 
     $(document).ready( load() );
-
-    function removeData(index){
-        datasFromTable();
-        if(confirm("您確定要刪除此筆資料嗎?")){
-            datas.splice(index,1);
-            showDatas();
-            calculateTotal();
-        }
-        showDatas();
-    }
 
     function add_new_item(){
         datasFromTable();
@@ -382,12 +372,12 @@
                 sumOfTotalcolumn += cal_total;
             }
             $("label[name='cal_point"+i+"']").text(financial(cal_total));
-
-
         }
 
         $('input[name="fwci_value_past_five_year"]').val("0") ;
-        $('label[id="total_point"]').text(financial(cal_total));
+
+
+        $('label[id="total_point"]').text(financial(sumOfTotalcolumn)) ;
 
     }
     function financial(x) {
@@ -426,7 +416,7 @@
                 error: function(jqXHR, textStatus, message) {
                     //error handling
                     console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
-                    alert("ERROR:"+jqXHR.responseText)
+                    alert(jqXHR.responseText);
                 },
             });
 
