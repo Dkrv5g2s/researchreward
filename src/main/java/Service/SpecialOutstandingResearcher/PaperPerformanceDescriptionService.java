@@ -10,12 +10,14 @@ import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDA
 import Utils.json_transformer_util;
 import Utils.verifyDuplicatePaper.VerifyUtils;
 import fr.opensagres.xdocreport.document.json.JSONObject;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
 public class PaperPerformanceDescriptionService {
+    private Logger logger = Logger.getLogger(this.getClass());
 
     public void save(JSONObject json) {
 
@@ -64,12 +66,16 @@ public class PaperPerformanceDescriptionService {
             if (queryResult == false) {
                 // means the paper is not existed in list->check the book_name
                 String inputPaperToken = item.getBook_name() + item.getScholarly_journals_name();
-                if(verifyUtils.isPaperReapplied(inputPaperToken,totalPaperSentenceList));
+                boolean isPaperReapplied = verifyUtils.isPaperReapplied(inputPaperToken,totalPaperSentenceList);
+                if(isPaperReapplied)
                 {
-                    return item.getBook_name();
+                    result =  item.getBook_name();
+                    break;
                 }
             }
         }
+
+        this.logger.info("result :"+ result);
         return  result;
 
     }

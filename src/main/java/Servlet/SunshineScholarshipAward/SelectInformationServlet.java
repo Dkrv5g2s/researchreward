@@ -17,8 +17,8 @@ import java.util.Map;
 
 
 public class SelectInformationServlet extends ServletEntryPoint {
-    private static final String STAFF_URL = "WEB-INF/jsp/SunshineScholarshipAward/GeneralInformationOfStaff.jsp";
-    private static final String STUDENT_URL = "WEB-INF/jsp/SunshineScholarshipAward/GeneralInformationOfStudent.jsp";
+    private static final String STAFF_URL_EDIT = "WEB-INF/jsp/SunshineScholarshipAward/edit/GeneralInformationOfStaff.jsp";
+    private static final String STAFF_URL_READONLY = "WEB-INF/jsp/SunshineScholarshipAward/readonly/GeneralInformationOfStaff.jsp";
     private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
     private GeneralInformationService generalInformationService= new GeneralInformationService();
 
@@ -26,25 +26,18 @@ public class SelectInformationServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         //userRole has been stored in session when login
-        System.out.println("SelectInformationServlet:"+req.toString());
+        boolean readonly = (Boolean)session.getAttribute("readonly");
+//        System.out.println("SelectInformationServlet:"+req.toString());
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
-
-        switch ((String)session.getAttribute("userRole")){
-
-            case "teacher":
-            case "admin":
-                req.getRequestDispatcher(STAFF_URL).forward(req,resp);
-                break;
-            case "student":
-                req.getRequestDispatcher(STUDENT_URL).forward(req,resp);
-                break;
-            default:
-                req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
-                break;
+        if(readonly){
+            req.getRequestDispatcher(STAFF_URL_READONLY).forward(req,resp);
         }
-
+        else{
+//            req.getRequestDispatcher(STAFF_URL_READONLY).forward(req,resp);
+            req.getRequestDispatcher(STAFF_URL_EDIT).forward(req,resp);
+        }
     }
 
     @Override
@@ -54,13 +47,4 @@ public class SelectInformationServlet extends ServletEntryPoint {
         generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
     }
-
-    private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
-        HttpSession session = req.getSession();
-        req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
-    }
-
-
-
 }

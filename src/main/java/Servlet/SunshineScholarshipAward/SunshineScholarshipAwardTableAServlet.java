@@ -5,6 +5,7 @@ import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Servlet.login.ServletEntryPoint;
 import Utils.LogUtil;
 import fr.opensagres.xdocreport.document.json.JSONObject;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import java.io.UnsupportedEncodingException;
 public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     private static final String TableA_Edit_URL = "WEB-INF/jsp/SunshineScholarshipAward/edit/SunshineScholarshipAwardTableA.jsp";
     private static final String TableA_Readonly_URL = "WEB-INF/jsp/SunshineScholarshipAward/readonly/SunshineScholarshipAwardTableA.jsp";
+    private Logger logger = Logger.getLogger(this.getClass());
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -67,6 +69,8 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
         String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
+        System.out.println(duplicatePaperTitle);
+        this.logger.info("duplicatePaperTitle :"+ duplicatePaperTitle);
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
             String appliedApplicantName = paperPerformanceDescriptionService.getAppliedApplicantUserName(duplicatePaperTitle);
