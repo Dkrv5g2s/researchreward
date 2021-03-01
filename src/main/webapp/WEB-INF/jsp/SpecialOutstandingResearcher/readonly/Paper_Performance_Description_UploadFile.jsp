@@ -40,7 +40,7 @@
             <tbody >
             <tr>
                 <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="goBack()">
+                    <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
                     <button type="button" name="return_last_page" onclick="location.href='ReasonForReturn'">退件</button>
                     <button type="button" name="confirm" onclick="commit()">審查完成</button>
                 </td>
@@ -107,33 +107,6 @@
     //var latest_data = ${latest_data} ;
     latest_data
     var latest_data = <%=latest_data%> ;
-
-    function goBack() {
-        switch ("${reward_type}") {
-            case "特聘教授":
-                location.href="DistinguishedProfessorCatalog";
-                break;
-            case "傑出研究獎":
-                window.history.back();
-                break;
-            case "講座教授/榮譽講座教授":
-                window.history.back();
-                break;
-            case "年輕學者獎":
-                location.href="JuniorResearchInvestigatorCatalog";
-                break;
-            case "陽光獎助金論文獎勵":
-                location.href="SunshineScholarshipCatalog";
-                break;
-            case "優秀人才申請":
-            case "獎勵特殊優秀研究人才":
-                location.href="SpecialOutstandingResearcherCatalog";
-                break;
-            case "績優教師聘任研究人員":
-                location.href="TeacherHireResearcherCatalog";
-                break;
-        }
-    }
 
     function commit(){
         let send = confirm('送出後無法取消，確定要送出嗎?');
