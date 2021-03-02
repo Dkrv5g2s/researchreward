@@ -23,7 +23,8 @@ import java.util.TreeMap;
 
 public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
     private static final String TableA_Upload_Edit_URL = "WEB-INF/jsp/SunshineScholarshipAward/edit/SunshineScholarshipAwardTableAUpload.jsp";
-    private LogUtil loggerUtil = new LogUtil(this.getClass().getName());
+    private static final String TableA_Upload_Readonly_URL = "WEB-INF/jsp/SunshineScholarshipAward/readonly/SunshineScholarshipAwardTableAUpload.jsp";
+
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
     private static final int LIMIT_UPLOAD_SIZE = 1024*1024*20;//限制上傳大小 20M
 
@@ -46,8 +47,7 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession() ;
-//        loggerUtil.ShowSessionInfo(session);
-        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
+        int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
@@ -59,10 +59,10 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
 
-
-        req.getRequestDispatcher(TableA_Upload_Edit_URL).forward(req, resp);
-
-
+        if ( readonly )
+            req.getRequestDispatcher(TableA_Upload_Readonly_URL).forward(req, resp);
+        else
+            req.getRequestDispatcher(TableA_Upload_Edit_URL).forward(req, resp);
     }
 
     void save_joint_authorization_agreement(HttpServletRequest req, HttpServletResponse resp, String staff_code) {
@@ -170,18 +170,12 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
-        User user = new User( "root", "password1234", "上帝", "108598065" ) ;
-
         String func = req.getParameter( "func" ) ;
-
+        String staff_code = session.getAttribute("userNumber").toString();
         if ( func.equals( "joint_authorization_agreement" ) ) {
-            save_joint_authorization_agreement(req,resp, user.getStaff_code()) ;
+            save_joint_authorization_agreement(req,resp, staff_code) ;
         }else if ( func.equals( "paper_home" ) ){
-            save_paper_home( req,resp,user.getStaff_code() ) ;
+            save_paper_home( req,resp,staff_code ) ;
         }
-
     }
-
-
 }

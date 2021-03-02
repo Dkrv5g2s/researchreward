@@ -7,10 +7,7 @@
     response.setDateHeader("Expires", 0);
 %>
 <%
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
     Object latest_data = request.getAttribute( "latest_data" );
-
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
@@ -22,9 +19,9 @@
 <div class="container" style="margin: 0px auto; width: 1200px">
     <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學論文績效說明表(表A)</p>
 </div>
-<div class="container" style="margin: 0px auto; width: 1600px">
+<div class="container" style="margin: 0px auto;width: 80%;">
     <form id="c001_form">
-        <table border="1" cellpadding="6" cellspacing="1" width="50%" align="center" style="border-spacing:0px;" class="inputForm">
+        <table border="1" cellpadding="6" cellspacing="1" align="center" class="inputForm">
             <thead style="text-align: center;">
             <%--            <tr>--%>
             <%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
@@ -32,11 +29,11 @@
             <%--                <td colspan="1" width="10%"></td>--%>
             <%--            </tr>--%>
             <tr>
-                <td colspan="2" width="30%">Journal Papers<br>
+                <td colspan="2" width="40%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
                 </td>
-                <td colspan="1" width="35%">共同著作授權同意書</td>
-                <td colspan="1" width="40%">該篇論文首頁</td>
+                <td colspan="1" width="30%">共同著作授權同意書</td>
+                <td colspan="1" width="30%">該篇論文首頁</td>
             </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;">
@@ -45,7 +42,7 @@
             <tbody >
             <tr>
                 <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="goBack()"  >
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
                 </td>
             </tr>
             </tbody>
@@ -113,10 +110,6 @@
     latest_data
     var latest_data = <%=latest_data%> ;
 
-    function goBack() {
-        location.href="SunshineScholarshipCatalog";
-
-    }
 
     function downloadFile1( index ) {
         var path = "File?func=joint_authorization_agreement&id=" + $("input[name='paper_id"+index+"']").val() ;
@@ -141,11 +134,11 @@
         html_of_item += "<tr>" ;
 
         html_of_item += "<td colspan='2' style='text-align: left;'>姓名:<input name='author_name" + i + "' size='10' maxlength='40' readonly><br>" ;
-        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='40' readonly><br>" ;
-        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='40' readonly><br>" ;
+        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='150' readonly><br>" ;
+        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='150' readonly><br>" ;
         html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5' readonly><br>" ;
         html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5' readonly><br>" ;
-        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='40' readonly>" ;
+        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='4' readonly>" ;
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 

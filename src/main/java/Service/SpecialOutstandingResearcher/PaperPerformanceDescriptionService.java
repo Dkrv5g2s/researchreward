@@ -75,7 +75,7 @@ public class PaperPerformanceDescriptionService {
             }
         }
 
-        this.logger.info("result :"+ result);
+        this.logger.debug("result :"+ result);
         return  result;
 
     }

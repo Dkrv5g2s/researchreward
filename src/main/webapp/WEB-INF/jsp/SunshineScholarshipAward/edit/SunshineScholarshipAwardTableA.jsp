@@ -183,11 +183,11 @@
         html_of_item += "<tr>" ;
 
         html_of_item += "<td colspan='2' style='text-align: left;'>姓名:<input name='author_name" + i + "' size='10' maxlength='40'><br>" ;
-        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='40'><br>" ;
-        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='40'><br>" ;
+        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='150'><br>" ;
+        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
         html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
         html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5'><br>" ;
-        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='40'>" ;
+        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='4'>" ;
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 

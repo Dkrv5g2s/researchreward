@@ -41,9 +41,10 @@
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
-                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>
-                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>
-                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)+(B)</td>
+<%--                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+<%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+                <td colspan="4" style="text-align: left;border-width:3px;"></td>
+                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)</td>
                 <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
             </tr>
             <tr>
@@ -203,11 +204,11 @@
         html_of_item += "<tr>" ;
 
         html_of_item += "<td colspan='2' style='text-align: left;'>姓名:<input name='author_name" + i + "' size='10' maxlength='40'><br>" ;
-        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='40'><br>" ;
-        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='40'><br>" ;
+        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='150'><br>" ;
+        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
         html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
         html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5'><br>" ;
-        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='40'>" ;
+        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='4'>" ;
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 

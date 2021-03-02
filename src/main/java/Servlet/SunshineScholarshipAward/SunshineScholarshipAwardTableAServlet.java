@@ -2,6 +2,7 @@ package Servlet.SunshineScholarshipAward;
 
 import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
+import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 import Utils.LogUtil;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -55,6 +56,9 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
 
         req.setAttribute( "weight", weight );
         req.setAttribute("latest_data", json_form );
+        RewardListService rewardListService = new RewardListService();
+        req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
+
         if (readonly)
             req.getRequestDispatcher(TableA_Readonly_URL).forward(req, resp);
         else

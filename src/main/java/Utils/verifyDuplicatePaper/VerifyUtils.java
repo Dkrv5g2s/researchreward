@@ -32,7 +32,7 @@ public class VerifyUtils {
             }
         }
 
-        this.logger.info("isPaperReappliedResult:"+ isPaperReappliedResult);
+        this.logger.debug("isPaperReappliedResult:"+ isPaperReappliedResult);
         return isPaperReappliedResult;
 
     }
