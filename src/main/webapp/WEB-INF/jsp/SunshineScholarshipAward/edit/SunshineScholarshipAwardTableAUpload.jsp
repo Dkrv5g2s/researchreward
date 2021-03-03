@@ -113,6 +113,7 @@
 
     function downloadFile1( index ) {
         var path = "File?func=joint_authorization_agreement&id=" + $("input[name='paper_id"+index+"']").val() ;
+
         window.open(path);
     }
 

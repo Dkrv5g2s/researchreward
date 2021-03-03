@@ -7,6 +7,7 @@ import Bean.User.User;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
+import Service.Teacher.RewardListService;
 import Utils.SystemUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.log4j.Logger;
@@ -66,6 +67,9 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
+
+        RewardListService rewardListService = new RewardListService();
+        req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
         if ( readonly )
             req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_UploadFile.jsp").forward(req, resp);
