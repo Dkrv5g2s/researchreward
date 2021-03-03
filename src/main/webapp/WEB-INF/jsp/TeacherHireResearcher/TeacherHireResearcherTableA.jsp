@@ -77,6 +77,7 @@
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/Function.js"></script>
     <script>
 	    function commit(){
 	    	if (!$("input[name='declaration']").prop("checked")){
@@ -126,6 +127,7 @@
 			if($("input[name='commit_date']").val()===""){
 				$("input[name='commit_date']").val("<%=dateUtil.getNowDate()%>");
 			}
+			setReadOnly(${readonly});
 		});
 
 		function updateSubTotal(trObj){
@@ -326,7 +328,8 @@
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-	            <input type="button" name="save" class="button" value="存檔" onclick="commit()">
+<%--	            <input type="button" name="save" class="button" value="存檔" onclick="commit()">--%>
+				<button type="button" name="save" onclick="commit()">存檔</button>
 	            <input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
        		</p>
         </form>

@@ -6,11 +6,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>研發獎勵系統</title>
     <link rel="stylesheet" type="text/css" href="/css/MenuStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/Style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            if(<%=request.getAttribute("flag")%>) {
+                $("li[name='a']").remove();
+                $("li[name='b']").remove();
+            }
+        })
+    </script>
 </head>
 
 <body>
@@ -26,10 +36,10 @@
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">
-                    <li class='top'><a href='AwardTimeLimit'  class='top_link' target="iframe"><span class='down'>獎項開放時間</span></a></li>
-                    <li class='top'><a href='BFormFormula'  class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>
-                    <li class='top'><a href='RewardPendingList'  class='top_link' target="iframe"><span class='down'>待審核獎項</span></a></li>
-                    <li class='top'><a href='ApprovedRewardList'  class='top_link' target="iframe"><span class='down'>已審核獎項</span></a></li>
+                    <li class='top' name="a"><a href='AwardTimeLimit' class='top_link' target="iframe"><span class='down'>獎項開放時間</span></a></li>
+                    <li class='top' name="b"><a href='BFormFormula' class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>
+                    <li class='top' name="c"><a href='RewardPendingList' class='top_link' target="iframe"><span class='down'>待審核獎項</span></a></li>
+                    <li class='top' name="d"><a href='ApprovedRewardList' class='top_link' target="iframe"><span class='down'>已審核獎項</span></a></li>
                 </ul>
             </div>
 

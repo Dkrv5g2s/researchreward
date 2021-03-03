@@ -16,7 +16,7 @@ public class AwardTimeLimitService {
     private AwardTimeLimitDAO awardTimeLimitDAO = new AwardTimeLimitDAOImpl();
 
     public void save(JSONObject jsonObject){
-        awardTimeLimitDAO.save(new AwardTimeLimit(new Date(jsonObject.getDate("s1").getTime()),
+        AwardTimeLimit awardTimeLimit = new AwardTimeLimit(new Date(jsonObject.getDate("s1").getTime()),
                 new Date(jsonObject.getDate("s2").getTime()),
                 new Date(jsonObject.getDate("s3").getTime()),
                 new Date(jsonObject.getDate("s4").getTime()),
@@ -32,7 +32,9 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("l6").getTime()),
                 new Date(jsonObject.getDate("l7").getTime()),
                 new Date(jsonObject.getDate("l8").getTime()),
-                jsonObject.getDouble("fwci")));
+                jsonObject.getDouble("fwciOfFiveYear"));
+        awardTimeLimit.setFwciOfThreeYear(jsonObject.getDouble("fwciOfThreeYear"));
+        awardTimeLimitDAO.save(awardTimeLimit);
     }
 
     public JSONObject get(){

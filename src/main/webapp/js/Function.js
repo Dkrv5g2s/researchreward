@@ -4,6 +4,7 @@ function setReadOnly(flags){
         $("input[type='button']").prop("disabled",false);
         $("textarea").prop("disabled",true);
         $("button").remove();
+        $("select").prop("disabled",true);
     }else{
         //don't need set readonly
     }

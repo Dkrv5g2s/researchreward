@@ -37,4 +37,14 @@ public class RoleAuthorizationServiceImpl implements RoleAuthorizationService{
                 return true;
         }
     }
+    @Override
+    public boolean isResearchAndDevelopmentOffice(HttpSession session){
+        String userRole = (String)session.getAttribute("userRole");
+        switch (userRole){
+            case "researchAndDevelopmentOffice":
+                return true;
+            default:
+                return false;
+        }
+    }
 }

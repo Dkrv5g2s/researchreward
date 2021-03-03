@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,l1,l2,l3,l4,l5,l6,l7,l8,fwci) " +
-            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,l1,l2,l3,l4,l5,l6,l7,l8,fwciOfFiveYear,fwciOfThreeYear) " +
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
     private static final String GET_OBJECT = "SELECT * FROM awardtimelimit";
     private static final String DELETE_OBJECT = "DELETE FROM awardtimelimit";
 
@@ -48,7 +48,8 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
                     result.setS6(resultSet.getDate("s6"));
                     result.setS7(resultSet.getDate("s7"));
                     result.setS8(resultSet.getDate("s8"));
-                    result.setFwci(resultSet.getDouble("fwci"));
+                    result.setFwciOfFiveYear(resultSet.getDouble("fwciOfFiveYear"));
+                    result.setFwciOfThreeYear(resultSet.getDouble("fwciOfThreeYear"));
                 }else{
                     return result;
                 }
@@ -95,7 +96,8 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
             preparedStatement.setDate(14,object.getL6());
             preparedStatement.setDate(15,object.getL7());
             preparedStatement.setDate(16,object.getL8());
-            preparedStatement.setDouble(17,object.getFwci());
+            preparedStatement.setDouble(17,object.getFwciOfFiveYear());
+            preparedStatement.setDouble(18,object.getFwciOfThreeYear());
 
 
             preparedStatement.executeUpdate();
