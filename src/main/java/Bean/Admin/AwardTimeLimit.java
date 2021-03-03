@@ -19,10 +19,11 @@ public class AwardTimeLimit {
     private Date l6 = new Date(System.currentTimeMillis());
     private Date l7 = new Date(System.currentTimeMillis());
     private Date l8 = new Date(System.currentTimeMillis());
-    private double fwci;
+    private double fwciOfFiveYear;
+    private double fwciOfThreeYear;
 
 
-    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwci) {
+    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwciOfFiveYear) {
         this.s1 = s1;
         this.s2 = s2;
         this.s3 = s3;
@@ -39,20 +40,27 @@ public class AwardTimeLimit {
         this.l6 = l6;
         this.l7 = l7;
         this.l8 = l8;
-        this.fwci = fwci;
+        this.fwciOfFiveYear = fwciOfFiveYear;
     }
 
     public AwardTimeLimit() {
 
     }
 
-
-    public double getFwci() {
-        return fwci;
+    public double getFwciOfThreeYear() {
+        return fwciOfThreeYear;
     }
 
-    public void setFwci(double fwci) {
-        this.fwci = fwci;
+    public void setFwciOfThreeYear(double fwciOfThreeYear) {
+        this.fwciOfThreeYear = fwciOfThreeYear;
+    }
+
+    public double getFwciOfFiveYear() {
+        return fwciOfFiveYear;
+    }
+
+    public void setFwciOfFiveYear(double fwciOfFiveYear) {
+        this.fwciOfFiveYear = fwciOfFiveYear;
     }
 
     public Date getS1() {
