@@ -644,8 +644,8 @@
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
+            	<input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
 	            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
-	            <input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
        		</p>
         </form>
     </div>
