@@ -24,136 +24,85 @@
         <tr class="">
             <td>1</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorForm">特聘教授申請表</a></td>
-<%--            <% if(c001_Form.getComplete_rate()<100){ %>--%>
-<%--            <td><span style="color:red;"><%=c001_Form.getComplete_rate()%>%</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;"><%=c001_Form.getComplete_rate()%>%</span></td>--%>
-<%--            <% } %>--%>
         </tr>
         <tr class="">
             <td>2</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
-<%--            <% if(c002_Form.getComplete_rate()<100){ %>--%>
-<%--            <td><span style="color:red;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;"><%=c002_Form.getComplete_rate()%>%</span></td>--%>
-<%--            <% } %>--%>
         </tr>
         <tr class="">
             <td>3</td>
             <td align="left"><a style="color:blue" href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
-<%--            <% if(c003_Form.getC003_Form_Datas().size()==0){ %>--%>
-<%--            <td><span style="color:red;">※請至少填寫一個</span></td>--%>
-<%--            <% }else { %>--%>
-<%--            <td><span style="color:green;">已填寫</span></td>--%>
-<%--            <% } %>--%>
         </tr>
        <tr class="">
             <td>4</td>
             <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
-<%--            <%if(c004_Form.getC004_Form_Data01s().size()>0||c004_Form.getC004_Form_Data02s().size()>0){ %>--%>
-<%--            <td><span style="color:green;">已填寫</span></td>--%>
-<%--            <% }else { %>--%>
-<%--            <td><span style="color:red;">未填寫(非必填)</span></td>--%>
-<%--            <% } %>--%>
         </tr>
         <tr class="">
             <td>5</td>
             <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
-<%--            <%if(c005_Form.getC005_Form_Datas().size()>0){ %>--%>
-<%--            <td><span style="color:green;">已填寫</span></td>--%>
-<%--            <% }else { %>--%>
-<%--            <td><span style="color:red;">未填寫(非必填)</span></td>--%>
-<%--            <% } %>--%>
         </tr>
-<%--        <tr class="">--%>
-<%--            <td>C006</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC006&id=<%=id%>">儀器設備費</a></td>--%>
-<%--            <%if(c006_Form.getC006_Form_Datas().size()>0){ %>--%>
-<%--            <td><span style="color:green;">已填寫</span></td>--%>
-<%--            <% }else { %>--%>
-<%--            <td><span style="color:red;">未填寫(非必填)</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>C007</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC007&id=<%=id%>">整合型研究計畫項目及重點說明</a></td>--%>
-<%--            <% if(!c001_Form.getProject_type().equals("integration")){ %>--%>
-<%--            <td><span style="color:green;">※非整合型研究計畫不需上傳</span></td>--%>
-<%--            <% }else {--%>
-<%--                if(c007to303_Form.getC007_path().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% }--%>
-<%--            } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>C008</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC008&id=<%=id%>">研究計畫中英文摘要</a></td>--%>
-<%--            <% if(c007to303_Form.getC008_path().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>C009</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC009&id=<%=id%>">研究計畫內容</a></td>--%>
-<%--            <% if(c007to303_Form.getC009_path().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>C010</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC010&id=<%=id%>">近五年內執行之研究計畫</a></td>--%>
-<%--            <% if(c007to303_Form.getC010_path().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td rowspan="2">C301、C302、C303</td>--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC301to303_01&id=<%=id%>">本校申請人員個人資料表</a></td>--%>
-<%--            <% if(c007to303_Form.getC301to303_path01().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td align="left"><a style="color:blue" href="Main?func=formC301to303_02&id=<%=id%>">合作學校申請人員個人資料表</a></td>--%>
-<%--            <% if(c007to303_Form.getC301to303_path02().equals("")){ %>--%>
-<%--            <td><span style="color:red;">未上傳</span></td>--%>
-<%--            <% }else{ %>--%>
-<%--            <td><span style="color:green;">已上傳</span></td>--%>
-<%--            <% } %>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>SCI成果調查</td>--%>
-<%--            <td align="left">--%>
-<%--                <a style="color:blue" href="Main?func=sci_project&staff_code=<%=project.getStaff_code()%>">SCI成果資料</a>--%>
-<%--            </td>--%>
-<%--            <td><span style="color:red;">(曾獲校際學術合作補助者須填寫)</span></td>--%>
-<%--        </tr>--%>
-<%--        <tr class="">--%>
-<%--            <td>其他成果資料</td>--%>
-<%--            <td align="left">--%>
-<%--                <a style="color:blue" href="Main?func=other_achievement&staff_code=<%=project.getStaff_code()%>">其他成果資料</a>--%>
-<%--            </td>--%>
-<%--            <td><span style="color:red;">(曾獲校際學術合作補助者須填寫)</span></td>--%>
-<%--        </tr>--%>
         </tbody>
-        <thead>
-        <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
-        </thead>
+        
     </table>
+    <br>
+	<div style="text-align: center;" class="edit">
+        <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardList'">
+        <input type="button" name="commit" value="提出申請" onclick="sendApply()">
+    </div>
+    <div style="text-align: center;" class="review">
+        <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardPendingList'">
+        <input type="button" name="reject" value="退件" onclick="rejectApply()">
+        <input type="button" name="approve" value="審查完成" onclick="approveApply()">
+    </div>
 </div>
 <script>
-
+	function sendApply(){
+	    if (confirm("確定要送出申請?")) {
+	        $.ajax({
+	            type: 'POST',
+	            url: '/SendApply',
+	            dataType: 'text',
+	            data: "",
+	            contentType: 'application/text',
+	            success: function (data) {
+	                alert('申請成功');
+	                window.location.href = "/TraceProgress";
+	            }
+	        });
+	    }
+	};
+	
+	function approveApply(){
+	    if (confirm("確定要確認審理?")) {
+	        $.ajax({
+	            type: 'POST',
+	            url: '/ApproveApply',
+	            dataType: 'text',
+	            data: "",
+	            contentType: 'application/text',
+	            success: function (data) {
+	                alert('確認審理成功');
+	                window.location.href = "/RewardPendingList";
+	            }
+	        });
+	    }
+	};
+	
+	function rejectApply(){
+	    if (confirm("確定要退件?"))
+	        window.location.href="/ReasonForReturn";
+	};
+	
+	$(document).ready(function () {
+	    $(".review").hide();
+	    $(".edit").hide();
+	    if(${readonly}){
+	        $(".review").show();
+	    }
+	    else{
+	        $(".edit").show();
+	    }
+	})
 
 </script>
 </html>
