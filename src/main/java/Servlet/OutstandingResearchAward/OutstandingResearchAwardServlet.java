@@ -13,20 +13,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OutstandingResearchAwardServlet extends ServletEntryPoint {
-    private static final String Award_URL = "WEB-INF/jsp/OutstandingResearchAward/OutstandingResearchAward.jsp";
-    private OutstandingResearchAwardService outstandingResearchAwardService = new OutstandingResearchAwardService();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",outstandingResearchAwardService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+        final String Award_URL_Edit = "WEB-INF/jsp/OutstandingResearchAward/edit/OutstandingResearchAward.jsp";
+        final String Award_URL_Readonly = "WEB-INF/jsp/OutstandingResearchAward/readonly/OutstandingResearchAward.jsp";
+        OutstandingResearchAwardService outstandingResearchAwardService = new OutstandingResearchAwardService();
 
-        req.getRequestDispatcher(Award_URL).forward(req,resp);
+
+        HttpSession session = req.getSession();
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        req.setAttribute("data", outstandingResearchAwardService.get(projectId));
+
+        Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
+        if(readonly){//送審
+            req.getRequestDispatcher(Award_URL_Readonly).forward(req, resp);
+        }
+        else{
+            req.getRequestDispatcher(Award_URL_Edit).forward(req, resp);
+        }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        OutstandingResearchAwardService outstandingResearchAwardService = new OutstandingResearchAwardService();
+
         HttpSession session = req.getSession();
         int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");

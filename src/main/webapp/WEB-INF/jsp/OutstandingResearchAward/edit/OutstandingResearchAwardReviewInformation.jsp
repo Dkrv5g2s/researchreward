@@ -10,7 +10,7 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONArray" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    JSONArray json = (JSONArray) request.getAttribute("json");
+    JSONArray json = (JSONArray) request.getAttribute("data");
 %>
 <html lang="zh">
 <head>
@@ -36,6 +36,8 @@
         }
         th{
             background-color:rgb(255, 255, 240);
+            border-style: solid;
+            border-width: thin;
         }
         h2 {
             font-weight: bold;
@@ -55,8 +57,7 @@
     %>
     <script>
         $(document).ready(function () {
-            console.log("jsonObject", <%=jsonObject%>);
-            var data = "<tr name=\"technologyTransfer\">\n" +
+            let data = "<tr name=\"technologyTransfer\">\n" +
                 "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
                 "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +
                 "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
@@ -125,7 +126,7 @@
         $.ajax({
             type: 'POST',
             url: 'OutstandingResearchAwardReviewInformation',
-            dataType: 'json',
+            dataType: 'text',
             data: JSON.stringify(table),
             contentType: 'application/json',
             success: function(data){
@@ -159,4 +160,3 @@
     }
 </script>
 </html>
-

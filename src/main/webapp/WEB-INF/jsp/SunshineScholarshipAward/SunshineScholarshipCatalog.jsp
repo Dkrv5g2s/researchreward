@@ -11,28 +11,40 @@
     <title>目錄</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <style type="text/css">
+        body{
+            text-align-last: center;
+        }
+        thead{
+            background-color: rgb(255, 255, 240);
+        }
+        th{
+            border-style: solid;
+            border-width: thin;
+        }
+        .left{
+            text-align-last: left;
+        }
+    </style>
 </head>
 <body>
 <div class="content">
+    <h2>陽光獎助金論文申請</h2>
     <table>
         <thead>
-        <th  colspan="3" >
-            陽光獎助金論文申請
-        </th>
+            <tr>
+                <th>申請表名稱</th>
+            </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="metadata">表格名稱</td>
+            <td class="left"><a href="SelectInformation">陽光獎助學金論文(教職研人員)獎勵申請表</a></td>
         </tr>
         <tr>
-            <td ><a href="SelectInformation">陽光獎助學金論文(教職研人員)獎勵申請表</a></td>
+            <td class="left"><a href="SunshineScholarshipAwardTableA">表A.論文績效說明表</a></td>
         </tr>
         <tr>
-            <td ><a href="SunshineScholarshipAwardTableA">表A.論文績效說明表</a></td>
-        </tr>
-        <tr>
-            <td ><a href="SunshineScholarshipAwardTableAUpload">表A.論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a href="SunshineScholarshipAwardTableAUpload">表A.論文績效說明表-檔案上傳</a></td>
         </tr>
         </tbody>
     </table>

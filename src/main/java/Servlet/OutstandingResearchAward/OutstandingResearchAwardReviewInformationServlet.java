@@ -16,17 +16,28 @@ import java.util.Map;
 
 public class OutstandingResearchAwardReviewInformationServlet extends ServletEntryPoint {
 
-    private static final String Review_URL = "WEB-INF/jsp/OutstandingResearchAward/OutstandingResearchAwardReviewInformation.jsp";
-
-    OutstandingResearchAwardReviewInformationService ORAReviewInformationService = new OutstandingResearchAwardReviewInformationService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getForm(req);
-        req.getRequestDispatcher(Review_URL).forward(req,resp);
+        final String Review_URL_Edit = "WEB-INF/jsp/OutstandingResearchAward/edit/OutstandingResearchAwardReviewInformation.jsp";
+        final String Review_URL_Readonly = "WEB-INF/jsp/OutstandingResearchAward/readonly/OutstandingResearchAwardReviewInformation.jsp";
+        OutstandingResearchAwardReviewInformationService ORAReviewInformationService = new OutstandingResearchAwardReviewInformationService();
+
+        HttpSession session = req.getSession();
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        req.setAttribute("data", ORAReviewInformationService.get(projectId));
+
+        Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
+        if(readonly){//送審
+            req.getRequestDispatcher(Review_URL_Readonly).forward(req, resp);
+        }
+        else{
+            req.getRequestDispatcher(Review_URL_Edit).forward(req, resp);
+        }
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        OutstandingResearchAwardReviewInformationService ORAReviewInformationService = new OutstandingResearchAwardReviewInformationService();
         int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
 
@@ -38,22 +49,9 @@ public class OutstandingResearchAwardReviewInformationServlet extends ServletEnt
         }
         ORAReviewInformationService.save(json,projectId);
 
-        resp.setContentType("text/html;charset=UTF-8");
-        Map map = new HashMap();
-        map.put("status", "存檔成功");
-        String jackyJsonString = map.toString();
-        JSONObject respJson = new JSONObject(jackyJsonString);
-        resp.getWriter().write(String.valueOf(respJson));
     }
-
-
-
     private int turnIdInSessionToInt(HttpSession session, String id){
         return Integer.parseInt(session.getAttribute(id).toString());
     }
-    private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {
-        HttpSession session = req.getSession();
-        int projectId = turnIdInSessionToInt(session, "projectId");
-        req.setAttribute("json", ORAReviewInformationService.get(projectId));
-    }
+
 }

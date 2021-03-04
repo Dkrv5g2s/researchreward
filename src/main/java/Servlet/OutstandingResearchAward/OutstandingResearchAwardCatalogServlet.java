@@ -15,8 +15,6 @@ public class OutstandingResearchAwardCatalogServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession() ;
         // 為了給表B上傳的
-
-        System.out.println("OutstandingResearchAwardCatalogServlet");
         req.getRequestDispatcher(Catalog_URL).forward(req,resp);
     }
     private int turnIdInSessionToInt(HttpSession session, String id){
