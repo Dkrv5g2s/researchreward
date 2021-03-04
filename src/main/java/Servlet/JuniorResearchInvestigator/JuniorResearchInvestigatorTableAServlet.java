@@ -1,5 +1,6 @@
 package Servlet.JuniorResearchInvestigator;
 
+import Service.Admin.AwardTimeLimitService;
 import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorTableAService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -14,13 +15,14 @@ import java.io.UnsupportedEncodingException;
 public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
 
     private JuniorResearchInvestigatorTableAService juniorResearchInvestigatorTableAService = new JuniorResearchInvestigatorTableAService();
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         req.setAttribute("data", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
-
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfThreeYear"));
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
             req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigatorTableA.jsp").forward(req, resp);
