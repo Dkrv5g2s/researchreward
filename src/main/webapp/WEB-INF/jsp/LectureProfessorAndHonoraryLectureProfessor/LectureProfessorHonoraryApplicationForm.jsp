@@ -60,7 +60,6 @@
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
             background-color: white;
         }
 
