@@ -5,6 +5,8 @@ import Dao.ExcellentResearcher.*;
 import Dao.ExcellentResearcher.Impl.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
+import java.sql.Date;
+
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
 public class PersonalInformationService {
@@ -31,8 +33,8 @@ public class PersonalInformationService {
                 projectId);
         MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
                 jsonObject.getString("planNumber"),
-                jsonObject.getDate("startTime"),
-                jsonObject.getDate("lastTime"),
+                jsonObject.getString("startTime").equals("") ? null : jsonObject.getDate("startTime"),
+                jsonObject.getString("lastTime").equals("") ? null : jsonObject.getDate("lastTime"),
                 projectId);
         PersonalInformation personalInformation = new PersonalInformation(jsonObject.getString("college"),
                 jsonObject.getString("department"),
@@ -65,8 +67,8 @@ public class PersonalInformationService {
 
         MOSTPlan mostPlan = new MOSTPlan(jsonObject.getString("planName"),
                 jsonObject.getString("planNumber"),
-                jsonObject.getDate("startTime"),
-                jsonObject.getDate("lastTime"),
+                jsonObject.getString("startTime").equals("") ? null : jsonObject.getDate("startTime"),
+                jsonObject.getString("lastTime").equals("") ? null : jsonObject.getDate("lastTime"),
                 projectId);
         Experiment experiment = new Experiment(null,
                 null,

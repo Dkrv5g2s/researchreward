@@ -131,6 +131,7 @@ public class PaperPerformance {
     }
 
     public String getPaper_home_file_path() {
+        System.out.println(paper_home_file_path);
         return paper_home_file_path;
     }
 

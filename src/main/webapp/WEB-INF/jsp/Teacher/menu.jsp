@@ -11,6 +11,11 @@
     <title>研發獎勵系統</title>
     <link rel="stylesheet" type="text/css" href="/css/MenuStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/Style.css">
+    <style>
+        body {
+            background-color:#E9F2FF;
+        }
+    </style>
 </head>
 
 <body>

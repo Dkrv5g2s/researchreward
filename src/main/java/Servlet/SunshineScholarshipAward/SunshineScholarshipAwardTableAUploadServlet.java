@@ -6,6 +6,7 @@ import Bean.User.User;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
+import Service.Teacher.RewardListService;
 import Utils.LogUtil;
 import Utils.SystemUtil;
 import org.apache.commons.fileupload.FileItem;
@@ -58,6 +59,8 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
+        RewardListService rewardListService = new RewardListService();
+        req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
         if ( readonly )
             req.getRequestDispatcher(TableA_Upload_Readonly_URL).forward(req, resp);
@@ -75,6 +78,7 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
         }
 
         int paper_id = CommonFunction.setInt(parameterMap.get("upload_paper_id"),0);
+        System.out.println("paper_id:"+paper_id);
         PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
         PaperPerformance paperPerformance = dao.query_specified_paper_performance(paper_id) ;
 
@@ -90,8 +94,9 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
             String fileName = CommonFunction.setInt(parameterMap.get("paper_id"),0)+"_joint_authorization_agreement.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
             String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-
-
+//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+            System.out.println("fileName:"+fileName);
+            System.out.println(path+fileName);
             try {
                 if(!new File(path).isDirectory())
                     new File(path).mkdir();
@@ -140,6 +145,7 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
             String fileName = CommonFunction.setInt(parameterMap.get("paper_id"),0)+"_paper_home.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
             String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
 
 
             try {

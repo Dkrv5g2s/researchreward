@@ -158,6 +158,10 @@
 			$(".total_point").each(function(){
 				total += toFloat(this.value);
 			});
+			let school_fwci_value_past_five_year = ${school_fwci_value_past_five_year};
+			let fwci_value_past_five_year = toFloat($("input[name='fwci_value_past_five_year']").val());
+			if (fwci_value_past_five_year >= school_fwci_value_past_five_year*1.5)
+				total += 10;
 			$("input[name='a_plus_b_total_point']").val(total);
 		}
 
@@ -203,7 +207,7 @@
 		            <tr style="text-align: center;" class="point">
 		                <td colspan="1" width="10%">點數<br>(請參照<a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/182608393.pdf#page=6" target="_blank">附表一</a>)</td>
 						<% for (int i=0; i<cellsNum; i++){ %>
-							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="sw_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("sw_point"+(i+1))%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
+							<td colspan="1" width="<%=60/cellsNum%>%" ><input name="sw_point<%=i+1%>" type="number" class="pc<%=i+1%>" value="<%=json.get("sw_point"+(i+1))%>" style="text-align:center; width: 75%;"></td>
 						<% } %>
 						<td colspan="1" width="10%" ><input name="sw_point_total" type="number" class="total_point" value="<%=json.get("sw_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
@@ -267,7 +271,7 @@
 		            <tr style="text-align: center;">
 		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" type="number" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 						<td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
-						<td colspan="<%=cellsNum-3%>" width="22%" ><input name="a_plus_b_total_point" type="number" value="<%=json.get("a_plus_b_total_point")%>" style="text-align:center; width: 10%; border:none; outline:none;" tabindex="-1" readonly></td>
+						<td colspan="<%=cellsNum-3%>" width="22%" ><input name="a_plus_b_total_point" type="number" value="<%=json.get("a_plus_b_total_point")%>" style="text-align:center; width: 40%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">科 技 部 計 畫</td>

@@ -377,10 +377,10 @@
         let t_point_total = parseInt($("#t_point_total").text());
         let a_book_point_total = parseInt($("#a_book_point_total").text());
         let a_article_point_total = parseInt($("#a_article_point_total").text());
-        let fwci_value_past_three_year = parseInt($("#fwci_value_past_three_year")[0].value);
-        let school_fwci_value_past_three_year = <%=json.optDouble("fwci", 0.0)%>;
+        let fwci_value_past_three_year = parseFloat($("#fwci_value_past_three_year")[0].value);
+        let school_fwci_value_past_three_year = ${fwci};
         let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
-        if(fwci_value_past_three_year >= school_fwci_value_past_three_year*1.5) {
+        if(parseFloat(fwci_value_past_three_year) >= parseFloat(school_fwci_value_past_three_year*1.5).toFixed(3)) {
             update_A_plus_B += 10;
         }
         $("#a_plus_b_total_point").text(update_A_plus_B);

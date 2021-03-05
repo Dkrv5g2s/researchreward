@@ -143,7 +143,7 @@
                     <tbody>
                         <tr>
                             <td class="metadata">
-                                申請類別<font color="red">＊</font>
+                                申請類別
                             </td>
                             <td colspan="2">
                                 <label>
@@ -162,7 +162,7 @@
                                 </label>
                             </td>
                             <td class="metadata">
-                                聘任研究人員類別<font color="red">*</font>
+                                聘任研究人員類別
                             </td>
                             <td colspan="3">
                                 <label><input type="radio" name="researcherType" value="teacher" <%= researcherTypeChecked[0]%>>研究型教師</label><br>
@@ -171,13 +171,13 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                申請人姓名<font color="red">＊</font><br>(英文姓名)
+                                申請人姓名<br>(英文姓名)
                             </td>
                             <td colspan="2">
                                 <input name="applicantName" value="<%= json.get("applicantName")%>" size="10" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                職稱<font color="red">*</font>
+                                職稱
                             </td>
                             <td colspan="3">
                                 <input name="applicantJobTitle" value="<%= json.get("applicantJobTitle")%>" size="10" maxlength="40">
@@ -185,13 +185,13 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                服務系所<font color="red">＊</font>
+                                服務系所
                             </td>
                             <td colspan="2">
                                 <input name="applicantDepartment" value="<%= json.get("applicantDepartment")%>" size="20" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                E-mail<font color="red">*</font>
+                                E-mail
                             </td>
                             <td colspan="3">
                                 <input name="applicantEmail" value="<%= json.get("applicantEmail")%>" size="30" maxlength="50">
@@ -199,13 +199,13 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                任職本校年資<font color="red">＊</font>
+                                任職本校年資
                             </td>
                             <td colspan="2">
                                 <input name="applicantSeniority" value="<%= json.get("applicantSeniority")%>" size="20" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                聯絡電話<font color="red">*</font>
+                                聯絡電話
                             </td>
                             <td colspan="3">
                                 研究室分機:<input name="applicantResearchRoomExt" value="<%= json.get("applicantResearchRoomExt")%>" size="5" maxlength="40"><br>
@@ -214,13 +214,13 @@
                         </tr>
                         <tr>
                             <td colspan="1" rowspan="3" class="metadata">
-                                受聘人姓名<font color="red">＊</font><br>(研究人員)
+                                受聘人姓名<br>(研究人員)
                             </td>
                             <td colspan="2" rowspan="3">
                                 <input name="researcherName" value="<%= json.get("researcherName")%>" size="10" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                出生日期<font color="red">*</font>
+                                出生日期
                             </td>
                             <td colspan="3">
                                 <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=dateUtil.getNowDate()%>">
@@ -228,7 +228,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                身份證字號<font color="red">*</font>
+                                身份證字號
                             </td>
                             <td colspan="3">
                                 <input name="researcherIdNum" value="<%= json.get("researcherIdNum")%>" size="10" maxlength="40">
@@ -236,7 +236,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                聯絡電話<font color="red">*</font>
+                                聯絡電話
                             </td>
                             <td colspan="3">
                                 <input name="researcherPhone" value="<%= json.get("researcherPhone")%>" size="10" maxlength="40">
@@ -244,13 +244,13 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                擬聘用職稱<font color="red">＊</font>
+                                擬聘用職稱
                             </td>
                             <td colspan="2">
                                 <input name="researcherJobTitle" value="<%= json.get("researcherJobTitle")%>" size="20" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                擬聘用薪級(月)<font color="red">*</font>
+                                擬聘用薪級(月)
                             </td>
                             <td colspan="3">
                                 <input name="researcherSalaryScale" value="<%= json.get("researcherSalaryScale")%>" size="20" maxlength="40">
@@ -258,19 +258,19 @@
                         </tr>
                         <tr>
                             <td colspan="1" width="15%" class="metadata">
-                                計畫類別<font color="red">＊</font><br>(主持人為研究人員)
+                                計畫類別<br>(主持人為研究人員)
                             </td>
                             <td colspan="1" width="20%">
                                 <input name="projectCategory" value="<%= json.get("projectCategory")%>" size="10" maxlength="40">
                             </td>
                             <td colspan="1" width="10%" class="metadata">
-                                計畫名稱<font color="red">*</font>
+                                計畫名稱
                             </td>
                             <td colspan="2" width="5%">
                                 <input name="projectName" value="<%= json.get("projectName")%>" size="15" maxlength="40">
                             </td>
                             <td colspan="1" width="10%" class="metadata">
-                                計畫金額<font color="red">*</font>
+                                計畫金額
                             </td>
                             <td colspan="1" width="20%">
                                 <input name="projectAmount" value="<%= json.get("projectAmount")%>" size="10" maxlength="40">
@@ -278,7 +278,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                預期績效<font color="red">＊</font>
+                                預期績效
                             </td>
                             <td colspan="6">
                                 近五年平均論文點數:
@@ -291,7 +291,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                申請補助項目<font color="red">＊</font><br>(含總補助金額)
+                                申請補助項目<br>(含總補助金額)
                             </td>
                             <td colspan="6">
                                 <textarea name="applyForSubsidies" rows="4" cols="50" required><%= json.get("applyForSubsidies")%></textarea>

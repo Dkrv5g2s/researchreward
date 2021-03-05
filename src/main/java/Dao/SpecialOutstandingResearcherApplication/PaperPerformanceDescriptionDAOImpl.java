@@ -292,10 +292,9 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         Connection connection = dbConnection.getConnection();
         PaperPerformance paperPerformance = new PaperPerformance() ;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_TITLE))
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_Paper_Performance_with_paper_id))
         {
             preparedStatement.setInt(1,paper_id);
-            preparedStatement.setInt(2,paper_id);
             ResultSet resultSet = preparedStatement.executeQuery() ;
             if ( resultSet.next() ) {
                 paperPerformance.setPaper_id( paper_id );

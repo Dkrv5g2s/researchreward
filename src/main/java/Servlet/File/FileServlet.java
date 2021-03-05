@@ -58,6 +58,7 @@ public class FileServlet extends HttpServlet {
                 if (!CommonFunction.setString(paperPerformance.getJoint_authorization_agreement_file_path()).equals("")) {
                     //filePath = this.getServletContext().getRealPath("/")+""WEB-INF\\uploadFile\\"+paperPerformance.getJoint_authorization_agreement_file_path();
                     filePath = "C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\" + paperPerformance.getJoint_authorization_agreement_file_path();
+//                    filePath = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\" + paperPerformance.getJoint_authorization_agreement_file_path();
 
                 }
 
@@ -76,6 +77,7 @@ public class FileServlet extends HttpServlet {
                 if (!CommonFunction.setString(paperPerformance.getPaper_home_file_path()).equals("")) {
                     //filePath = this.getServletContext().getRealPath("/")+""WEB-INF\\uploadFile\\"+paperPerformance.getPaper_home_file_path();
                     filePath = "C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\" + paperPerformance.getPaper_home_file_path();
+//                    filePath = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\" + paperPerformance.getPaper_home_file_path();
 
                 }
 

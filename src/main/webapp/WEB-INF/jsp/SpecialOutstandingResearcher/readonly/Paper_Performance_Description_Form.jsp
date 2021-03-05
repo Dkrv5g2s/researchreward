@@ -11,18 +11,18 @@
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container">
-<p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
-<p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
+    <p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
+    <p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
 </div>
 <div class="container" style="margin: 0px auto;width: 90%;">
-<form method="post" action="Plan?func=international_formC001" enctype="multipart/form-data" id="c001_form">
-    <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
-        <thead style="text-align: center;">
-<%--            <tr>--%>
-<%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
-<%--                <td colspan="3" width="40%">系所/職稱:<input name="dep_job" size="20" maxlength="40"></td>--%>
-<%--                <td colspan="1" width="10%"></td>--%>
-<%--            </tr>--%>
+    <form method="post" action="Plan?func=international_formC001" enctype="multipart/form-data" id="c001_form">
+        <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
+            <thead style="text-align: center;">
+            <%--            <tr>--%>
+            <%--                <td colspan="4" width="50%">申請人姓名(中/英文):<input name="applicant_name" size="20" maxlength="40"></td>--%>
+            <%--                <td colspan="3" width="40%">系所/職稱:<input name="dep_job" size="20" maxlength="40"></td>--%>
+            <%--                <td colspan="1" width="10%"></td>--%>
+            <%--            </tr>--%>
             <tr>
                 <td colspan="2" width="20%">Journal Papers<br>
                     請依序填寫：姓名、著作名稱、期刊名稱、卷數、頁數、發表年份(SCI/SSCI,Impact Factor;Scopus CiteScore Rank,領域別) 並以＊註記該篇所有之通訊作者，檢附每篇論文首頁與以Scopus資料庫為主之證明文件。範例:AAA*, BBB, CCC, “Synergistic oooooooooocomposites,“Optics Express,Vol.127(2), pp1047-1053, May,2018. (SCI, Impact Factor =7.3;CiteScore Rank: 5/88=5.7%,Optics )
@@ -33,14 +33,14 @@
                 <td colspan="1" width="15%">額外加權<br>(W4)</td>
                 <td colspan="1" width="15%">換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
             </tr>
-        </thead>
-        <tbody id="data_table" style="text-align: center;">
+            </thead>
+            <tbody id="data_table" style="text-align: center;">
 
-        </tbody>
-        <tbody>
+            </tbody>
+            <tbody>
             <tr>
-<%--                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
-<%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+                <%--                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+                <%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
                 <td colspan="4" style="text-align: left;border-width:3px;"></td>
                 <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)</td>
                 <td colspan="2" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
@@ -67,10 +67,10 @@
                     <button type="button" name="confirm" onclick="location.href='PaperPerformanceDescriptionUpload'">此頁審查完成</button>
                 </td>
             </tr>
-        </tbody>
+            </tbody>
 
-    </table>
-</form>
+        </table>
+    </form>
 </div>
 <script>
     var latest_data = ${latest_data} ;
@@ -318,26 +318,35 @@
 
     function calculateTotal() {
         datasFromTable()
-
+        let sumOfTotalcolumn = 0.0;
+        console.log("latest_data[paper_performance_list]",latest_data["paper_performance_list"]);
         for(var i=0;i<latest_data["paper_performance_list"].length;i++){
             var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' )) ;
 
-            if ( isNaN(cal_total) )
+            if ( isNaN(cal_total) ){
                 cal_total = "請確認W1至w4欄位皆勾選";
-
-            $("label[name='cal_point"+i+"']").text(cal_total);
-
+            }else{
+                sumOfTotalcolumn += cal_total;
+            }
+            $("label[name='cal_point"+i+"']").text(financial(cal_total));
         }
 
         $('input[name="fwci_value_past_five_year"]').val("0") ;
-        $('label[id="total_point"]').text("0") ;
+
+
+        $('label[id="total_point"]').text(financial(sumOfTotalcolumn)) ;
 
     }
-
-
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
+    $(document).on("change", "input[data-selection-block='onlyone']", function () {
+        $(this).siblings().prop("checked", false) ;
+        calculateTotal()
+    } ) ;
 
     $(document).on("click", "input[type='checkbox']", function () {
         return false ;

@@ -134,7 +134,7 @@ public class ResearchProductionService {
                     jsonObject.getString("patentNumber"),
                     jsonObject.getString("inventor"),
                     jsonObject.getString("patentee"),
-                    jsonObject.getDate("approvalDate"),
+                    jsonObject.getString("approvalDate").equals("")?null:jsonObject.getDate("approvalDate"),
                     jsonObject.getString("mstPlanNumber"),
                     projectId));
         }
@@ -148,7 +148,7 @@ public class ResearchProductionService {
             JSONObject jsonObject = (JSONObject)element;
             technologyList.add(new Technology(jsonObject.getString("authorizedUnit"),
                     jsonObject.getString("patentName"),
-                    jsonObject.getDate("contractDate"),
+                    jsonObject.getString("contractDate").equals("")?null:jsonObject.getDate("contractDate"),
                     jsonObject.getString("technologyName"),
                     jsonObject.getString("toAuthorizedUnit"),
                     jsonObject.getString("mstPlanNumber"),
@@ -200,8 +200,8 @@ public class ResearchProductionService {
             plan.setYear(jsonObject.getString("year"));
             plan.setPlanName(jsonObject.getString("planName"));
             plan.setPlanNumber(jsonObject.getString("planNumber"));
-            plan.setStartTime(jsonObject.getDate("startTime"));
-            plan.setLastTime(jsonObject.getDate("lastTime"));
+            plan.setStartTime(jsonObject.getString("startTime").equals("")?null:jsonObject.getDate("startTime"));
+            plan.setLastTime(jsonObject.getString("lastTime").equals("")?null:jsonObject.getDate("lastTime"));
             plan.setProjectId(projectId);
 
             aggregate.addPlan(plan);
@@ -227,7 +227,7 @@ public class ResearchProductionService {
             Reward reward = new Reward();
             reward.setRewardName(jsonObject.getString("rewardName"));
             reward.setOrganization(jsonObject.getString("organization"));
-            reward.setRewardDate(jsonObject.getDate("rewardDate"));
+            reward.setRewardDate(jsonObject.getDate("rewardDate").equals("")?null:jsonObject.getDate("rewardDate"));
             reward.setReason(jsonObject.getString("reason"));
             reward.setProjectId(projectId);
             aggregate.addReward(reward);
