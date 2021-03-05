@@ -56,7 +56,7 @@
     </head>
     <body>
     <div class="content">
-        <h2>績優教師聘任研究人員</h2>
+        <h2 style="text-align:center;">績優教師聘任研究人員</h2>
         <form>
             <table>
                 <tbody>

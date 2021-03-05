@@ -11,6 +11,11 @@
     <title>研發獎勵系統</title>
     <link rel="stylesheet" type="text/css" href="/css/MenuStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/Style.css">
+    <style>
+        body {
+            background-color:#E9F2FF;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +27,7 @@
             </div>
         </div>
         <div id="menuline">
-            <div style="width:1200px;;margin: 0px auto 0px auto;background-color:red;">
+            <div style="width:100%;background-color:red;">
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">

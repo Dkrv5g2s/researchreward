@@ -75,7 +75,7 @@
                         <td><input type="date" name="s4" value="<%= jsonObject.getDate("s4")%>" required>至<input type="date" name="l4" value="<%= jsonObject.getDate("l4")%>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">年輕學者獎</td>
+                        <td class="metadata">年輕學者研究獎</td>
                         <td><input type="date" name="s5" value="<%= jsonObject.getDate("s5")%>" required>至<input type="date" name="l5" value="<%= jsonObject.getDate("l5")%>" required></td>
                     </tr>
                     <tr>
