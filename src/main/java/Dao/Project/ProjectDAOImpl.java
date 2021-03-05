@@ -183,13 +183,13 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    public void updateReviewInfo(int project_id, String userRole, String userNumber) {
+    public void updateReviewInfo(int project_id, String userRole, String userName) {
         String statement = getUpdateReviewInfoStatement(userRole);
         if (statement != null){
             Connection connection = dbConnection.getConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement))
             {
-                preparedStatement.setString(1, userNumber);
+                preparedStatement.setString(1, userName);
                 preparedStatement.setInt(2, project_id);
                 preparedStatement.executeUpdate();
                 connection.close();

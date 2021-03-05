@@ -31,6 +31,7 @@ public class UserDAOImpl implements UserDAO {
                 user = new User();
                 user.setRole(resultSet.getString("role"));
                 user.setStaff_code(resultSet.getString("number"));
+                user.setName(resultSet.getString("name"));
             }
             connection.close();
         } catch (SQLException e) {
