@@ -81,6 +81,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Function.js"></script>
     <script>
+	    function wordsTotal() {
+	        const total = $('#other_data').val().length;
+	        document.getElementById('nowWords').innerHTML = total;
+	    }
 	    function commit(){
 	    	$.ajax({
 	            type: 'POST',
@@ -119,6 +123,20 @@
 	        return data;
 	    }
 	    
+	    function update_A_plus_B(){
+	        let sw_point_total = parseInt($("#sw_point_total").text());
+	        let t_point_total = parseInt($("#t_point_total").text());
+	        let a_book_point_total = parseInt($("#a_book_point_total").text());
+	        let a_article_point_total = parseInt($("#a_article_point_total").text());
+	        let fwci_value_past_five_year = parseInt($("#fwci_value_past_five_year")[0].value);
+	        let school_fwci_value_past_five_year = ${fwci};
+	        let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
+	        if(fwci_value_past_five_year >= school_fwci_value_past_five_year*1.5) {
+	            update_A_plus_B += 10;
+	        }
+	        $("#a_plus_b_total_point").text(update_A_plus_B);
+	    }
+	    
     	function update_article(obj){
     		let count = $(obj).parent().parent();
     		total_count=parseInt(count.find('.ic1').val())+parseInt(count.find('.ic2').val())+parseInt(count.find('.ic3').val())+parseInt(count.find('.ic4').val())+parseInt(count.find('.ic5').val());
@@ -130,6 +148,7 @@
 		    if(!isNaN(total_point)){
 		    	count.next().find('.total_point').text(total_point);
 		    }
+		    update_A_plus_B();
     	}
     	
     	function update_project_count(obj){
@@ -217,6 +236,10 @@
 				$(this).parents('.count2').next().find(point_id).text(6*count);
 				update_article(this);
 			});
+    		
+    		$('.count3').on( 'keyup',function(){
+                update_A_plus_B();
+            });
     	}
     	
     	function project(count,class_name,point_id){
@@ -276,6 +299,9 @@
     	}
     	
 	    $(document).ready(function(){
+	    	$("#other_data").val("<%=json.optString("other_data", "")%>");
+	        wordsTotal();
+	        
 	    	$("input").blur(function(){
 	    		if($(this).val()== ""){
 	    			$(this).val("0");
@@ -352,14 +378,14 @@
 		                <td colspan="1" width="12%"><input name="sw_article_count5" type="number" class="ic5" value="<%=json.get("sw_article_count5")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="10%" id="sw_article_count_total" class="total_count"><%=json.get("sw_article_count_total")%></td>
 		            </tr>
-		            <tr style="text-align: center;" class="point">
+		            <tr style="text-align: center;" class="count">
 		                <td colspan="1" width="10%">點數<br>(請參照<a  href="javascript:" onClick="window.open('https://rnd.ntut.edu.tw/var/file/42/1042/img/955/324957124.pdf')">附表一</a>)</td>
-		                <td colspan="1" width="12%" id="sw_point1" class="pc1" ><%=json.get("sw_point1")%></td>
-		                <td colspan="1" width="12%" id="sw_point2" class="pc2" ><%=json.get("sw_point2")%></td>
-		                <td colspan="1" width="12%" id="sw_point3" class="pc3" ><%=json.get("sw_point3")%></td>
-		                <td colspan="1" width="12%" id="sw_point4" class="pc4" ><%=json.get("sw_point4")%></td>
-		                <td colspan="1" width="12%" id="sw_point5" class="pc5" ><%=json.get("sw_point5")%></td>
-		                <td colspan="1" width="10%" id="sw_point_total" class="total_point" ><%=json.get("sw_point_total")%></td>
+		                <td colspan="1" width="12%"><input name="sw_point1" type="number" id="sw_point1" class="ic1" value="<%=json.get("sw_point1")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_point2" type="number" id="sw_point2" class="ic2" value="<%=json.get("sw_point2")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_point3" type="number" id="sw_point3" class="ic3" value="<%=json.get("sw_point3")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_point4" type="number" id="sw_point4" class="ic4" value="<%=json.get("sw_point4")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="12%"><input name="sw_point5" type="number" id="sw_point5" class="ic5" value="<%=json.get("sw_point5")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
+		                <td colspan="1" width="10%" id="sw_point_total" class="total_count" ><%=json.get("sw_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;">
 		                <td colspan="7" width="80%">說明：採計Scopus論文者，請檢附-表B「傑出論文績效說明表」</td>
@@ -421,8 +447,8 @@
 		                <td colspan="1" width="12%" id="a_article_point5" class="pc5"><%=json.get("a_article_point5")%></td>
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
-		            <tr style="text-align: center;">
-		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		            <tr style="text-align: center;" class="count3">
+		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" id="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
@@ -629,11 +655,14 @@
 		                </td>
 		            </tr>
 		            <tr>
-		                <td colspan="9" width="100%" style="text-align: center; background: #C0C0C0">其 它 傑 出 表 現 說 明</td>
+		                <td colspan="9" width="100%" style="text-align: center; background: #C0C0C0">
+		                <label for="other_data"><b>其 它 傑 出 表 現 說 明</b></label>
+		                <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/500</div>
+		                </td>
 		            </tr>
 		            <tr>
 		                <td colspan="9" width="100%">其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。
-                        	<p><textarea style="resize:none;width:100%;height:200px;" name="other_data" ><%=json.get("other_data")%></textarea></p>
+                        	<p><textarea style="resize:none;width:100%;height:200px;" name="other_data" id="other_data" maxlength="500" onkeyup="wordsTotal()" ><%=json.get("other_data")%></textarea></p>
                     	</td>
 		            </tr>
 		            <tr>

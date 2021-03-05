@@ -84,7 +84,7 @@ public class RewardListService {
                 return "/SunshineScholarshipCatalog";
             case "績優教師聘任研究人員":
                 return "/TeacherHireResearcherCatalog";
-            case "年輕學者獎":
+            case "年輕學者研究獎":
                 return "/JuniorResearchInvestigatorCatalog";
             case "傑出研究獎":
                 return "/OutstandingResearchAwardCatalog";
