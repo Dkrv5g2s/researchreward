@@ -119,6 +119,20 @@
 	        return data;
 	    }
 	    
+	    function update_A_plus_B(){
+	        let sw_point_total = parseInt($("#sw_point_total").text());
+	        let t_point_total = parseInt($("#t_point_total").text());
+	        let a_book_point_total = parseInt($("#a_book_point_total").text());
+	        let a_article_point_total = parseInt($("#a_article_point_total").text());
+	        let fwci_value_past_five_year = parseInt($("#fwci_value_past_five_year")[0].value);
+	        let school_fwci_value_past_five_year = toFloat($("input[name='fwci_value_past_five_year']").val());
+	        let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
+	        if(fwci_value_past_five_year >= school_fwci_value_past_five_year*1.5) {
+	            update_A_plus_B += 10;
+	        }
+	        $("#a_plus_b_total_point").text(update_A_plus_B);
+	    }
+	    
     	function update_article(obj){
     		let count = $(obj).parent().parent();
     		total_count=parseInt(count.find('.ic1').val())+parseInt(count.find('.ic2').val())+parseInt(count.find('.ic3').val())+parseInt(count.find('.ic4').val())+parseInt(count.find('.ic5').val());
@@ -130,6 +144,7 @@
 		    if(!isNaN(total_point)){
 		    	count.next().find('.total_point').text(total_point);
 		    }
+		    update_A_plus_B();
     	}
     	
     	function update_project_count(obj){
@@ -217,6 +232,10 @@
 				$(this).parents('.count2').next().find(point_id).text(6*count);
 				update_article(this);
 			});
+    		
+    		$('.count3').on( 'keyup',function(){
+                update_A_plus_B();
+            });
     	}
     	
     	function project(count,class_name,point_id){
@@ -421,8 +440,8 @@
 		                <td colspan="1" width="12%" id="a_article_point5" class="pc5"><%=json.get("a_article_point5")%></td>
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
-		            <tr style="text-align: center;">
-		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		            <tr style="text-align: center;" class="count3">
+		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" id="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
