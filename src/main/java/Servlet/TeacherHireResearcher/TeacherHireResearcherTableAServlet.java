@@ -1,5 +1,6 @@
 package Servlet.TeacherHireResearcher;
 
+import Service.Admin.AwardTimeLimitService;
 import Service.TeacherHireResearcher.TeacherHireResearcherTableAService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class TeacherHireResearcherTableAServlet extends ServletEntryPoint {
     private TeacherHireResearcherTableAService teacherHireResearcherTableAService = new TeacherHireResearcherTableAService();
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,6 +21,7 @@ public class TeacherHireResearcherTableAServlet extends ServletEntryPoint {
 
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json", teacherHireResearcherTableAService.get((String)session.getAttribute("projectId")));
+        req.setAttribute("school_fwci_value_past_five_year", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
 
         req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableA.jsp").forward(req,resp);
     }
