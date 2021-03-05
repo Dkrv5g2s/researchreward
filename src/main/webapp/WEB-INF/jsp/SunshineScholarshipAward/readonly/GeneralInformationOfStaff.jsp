@@ -300,14 +300,14 @@
 
     function calculatePrize(){
 
-        var FWCIValueofntut = document.getElementById("FWCIValueOfNTUT").textContent;
+        var FWCIValueofntut = ${fwci};
         var FWCIValueofuser = document.getElementById("FWCIValueOfUser").value;
         var multiple = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
 
         document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multiple;
         document.getElementById("FWCIPrize").innerHTML = getPrize(multiple);
 
-        console.log("user:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multiple,"FWCIPrize:",getPrize(multiple))
+        // console.log("user:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multiple,"FWCIPrize:",getPrize(multiple))
     }
     function getPrize(multiple){
         var prize = "";

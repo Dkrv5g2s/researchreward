@@ -1,6 +1,7 @@
 package Servlet.SunshineScholarshipAward;
 
 
+import Service.Admin.AwardTimeLimitService;
 import Service.SunshineScholarshipAward.GeneralInformationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -24,11 +25,14 @@ public class SelectInformationServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
+
         HttpSession session = req.getSession();
         //userRole has been stored in session when login
         boolean readonly = (Boolean)session.getAttribute("readonly");
 //        System.out.println("SelectInformationServlet:"+req.toString());
         req.setCharacterEncoding("UTF-8");
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
         if(readonly){

@@ -97,7 +97,7 @@
             </tbody>
         </table>
         <div class="footer">
-            <button type="button" name="return_last_page" onclick="javascript:location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
+            <button type="button" name="return_last_page" onclick="javascript:location.href='OutstandingResearchAwardCatalog'">回上頁</button>
             <button type="button" name="confirm" onclick="commit()">存檔</button>
         </div>
     </form>

@@ -291,8 +291,8 @@
             </tbody>
         </table>
         <p style="text-align: center;">
-            <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorTableB'">此頁審查完成</button>
+            <button type="button" name="return_last_page" onclick="location.href='OutstandingResearchAwardCatalog'">回目錄</button>
+            <button type="button" name="confirm" onclick="location.href='OutstandingResearchAwardTableB'">此頁審查完成</button>
         </p>
     </form>
 </div>
