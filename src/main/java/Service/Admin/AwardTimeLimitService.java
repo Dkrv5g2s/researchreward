@@ -71,7 +71,7 @@ public class AwardTimeLimitService {
             rewards.add("傑出研究獎");
         }
         if(result.getS5().getTime() < systemTime && systemTime < result.getL5().getTime()){
-            rewards.add("年輕學者獎");
+            rewards.add("年輕學者研究獎");
         }
         if(result.getS6().getTime() < systemTime && systemTime < result.getL6().getTime()){
             rewards.add("獎勵特殊優秀研究人才");
