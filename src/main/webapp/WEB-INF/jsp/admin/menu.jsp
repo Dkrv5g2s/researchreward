@@ -21,6 +21,11 @@
             }
         })
     </script>
+    <style>
+        body {
+            background-color:#E9F2FF;
+        }
+    </style>
 </head>
 
 <body>
