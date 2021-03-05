@@ -124,6 +124,10 @@
                 calculatePoint($(this).parent().parent());
 			});
 
+			$("#other_data").on('change paste keyup', function(){
+				countWordsTotal();
+			});
+
 			if($("input[name='commit_date']").val()===""){
 				$("input[name='commit_date']").val("<%=dateUtil.getNowDate()%>");
 			}
@@ -176,6 +180,11 @@
 			if($(obj).val()== "" && $(obj).attr("type")==="number"){
 				$(obj).val("0");
 			}
+		}
+
+		function countWordsTotal() {
+			const total = document.getElementById('other_data').value.length;
+			document.getElementById('wordsCount').innerHTML = total;
 		}
 
     </script>
@@ -320,11 +329,13 @@
 		            </tr>
 		            <tr>
 		                <td colspan="<%=cellsNum+4%>" width="100%">其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。
-                        	<p><textarea style="resize:none;width:100%;height:200px;" name="other_data" ><%=json.get("other_data")%></textarea></p>
+                        	<p><textarea style="resize:none;width:100%;height:200px;" id="other_data" name="other_data" maxlength="500"><%=json.get("other_data")%></textarea></p>
                     	</td>
 		            </tr>
 		            <tr>
-		                <td colspan="<%=cellsNum+4%>" width="100%"><input type="checkbox" name="declaration" class="check">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br>
+		                <td colspan="<%=cellsNum+4%>" width="100%">
+							<div style="float:right;">目前輸入字數:<span id="wordsCount">0</span>/500</div>
+							<input type="checkbox" name="declaration" class="check">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br>
 							註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。<br>
 		                    <a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.get("commit_date")%>"></a>
 		                </td>
@@ -332,9 +343,8 @@
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-<%--	            <input type="button" name="save" class="button" value="存檔" onclick="commit()">--%>
+				<input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
 				<button type="button" name="save" onclick="commit()">存檔</button>
-	            <input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
        		</p>
         </form>
     </div>
