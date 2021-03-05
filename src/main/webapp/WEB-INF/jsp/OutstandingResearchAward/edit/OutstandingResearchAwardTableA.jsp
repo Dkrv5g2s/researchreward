@@ -91,8 +91,7 @@
                 <td id="sw_article_count_total" class="total_count"><%=json.optString("sw_article_count_total", "0")%></td>
             </tr>
             <tr class="count">
-<%--                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf#page=3" target="_blank">附表一</a> )</td>--%>
-                <td colspan="2"><b>點數</b><br>(請參照附表一 )</td>
+                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.rpage.ntut.edu.tw/var/file/42/1042/img/955/111309993.pdf#page=3" target="_blank">附表一</a> )</td>
                 <td><input id="sw_point1" name="sw_point1" type="number" class="ic1" value="<%=json.optString("sw_point1", "0")%>"></td>
                 <td><input id="sw_point2" name="sw_point2" type="number" class="ic2" value="<%=json.optString("sw_point2", "0")%>"></td>
                 <td><input id="sw_point3" name="sw_point3" type="number" class="ic3" value="<%=json.optString("sw_point3", "0")%>"></td>
