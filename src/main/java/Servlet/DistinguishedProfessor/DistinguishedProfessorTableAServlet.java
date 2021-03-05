@@ -24,7 +24,7 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
 		getForm(req);
 		
 		req.setAttribute("readonly",session.getAttribute("readonly"));
-		req.setAttribute("school_fwci_value_past_five_year", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+		req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
 		req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorTableA.jsp").forward(req, resp);
         
     }

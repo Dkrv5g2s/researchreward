@@ -11,28 +11,44 @@
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="container" style="margin: 0px auto; width: 75%">
+<style type="text/css">
+        body{
+            text-align-last: center;
+        }
+        thead{
+            background-color: rgb(255, 255, 240);
+        }
+        th{
+            border-style: solid;
+            border-width: thin;
+        }
+        .left{
+            text-align-last: left;
+        }
+</style>
+<div class="content">
+	<h2>特聘教授</h2>
     <table >
         <thead>
             <tr  >
-                <td class="metadata" style="width:40%;">表格名稱</td>
+                <td>申請表名稱</td>
             </tr>
         </thead>
         <tbody>
-        <tr class="">
-            <td align="left"><a style="color:blue" href="DistinguishedProfessorForm">特聘教授申請表</a></td>
+        <tr>
+            <td class="left"><a style="color:blue" href="DistinguishedProfessorForm">特聘教授申請表</a></td>
         </tr>
-        <tr class="">
-            <td align="left"><a style="color:blue" href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
+        <tr>
+            <td class="left"><a style="color:blue" href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
         </tr>
-        <tr class="">
-            <td align="left"><a style="color:blue" href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
+        <tr>
+            <td class="left"><a style="color:blue" href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
         </tr>
-       <tr class="">
-            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
+       <tr>
+            <td class="left"><a style="color:blue" href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
         </tr>
-        <tr class="">
-            <td align="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
+        <tr>
+            <td class="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
         </tr>
         </tbody>
         

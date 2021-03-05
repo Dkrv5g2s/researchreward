@@ -27,7 +27,7 @@
             </div>
         </div>
         <div id="menuline">
-            <div style="width:1200px;;margin: 0px auto 0px auto;background-color:red;">
+            <div style="width:100%;background-color:red;">
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">
