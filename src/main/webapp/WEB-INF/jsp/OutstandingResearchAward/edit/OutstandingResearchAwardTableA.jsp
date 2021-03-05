@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%
-    JSONObject json = (JSONObject) request.getAttribute("json");
+    JSONObject json = (JSONObject) request.getAttribute("data");
 %>
 <html>
 <head>
@@ -19,16 +19,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 
     <style type="text/css">
-        div.content{
-            width:80%;
-        }
         tr{
             text-align:center;
         }
         input {
             height: 100%;
             width: 100%;
-            /*border-style: initial;*/
             text-align: center;
         }
         input::-webkit-outer-spin-button,
@@ -52,6 +48,7 @@
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            margin-top: 0;
         }
         .title{
             background:#C0C0C0;
@@ -94,7 +91,8 @@
                 <td id="sw_article_count_total" class="total_count"><%=json.optString("sw_article_count_total", "0")%></td>
             </tr>
             <tr class="count">
-                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf" target="_blank">附表一</a> )</td>
+<%--                <td colspan="2"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf#page=3" target="_blank">附表一</a> )</td>--%>
+                <td colspan="2"><b>點數</b><br>(請參照附表一 )</td>
                 <td><input id="sw_point1" name="sw_point1" type="number" class="ic1" value="<%=json.optString("sw_point1", "0")%>"></td>
                 <td><input id="sw_point2" name="sw_point2" type="number" class="ic2" value="<%=json.optString("sw_point2", "0")%>"></td>
                 <td><input id="sw_point3" name="sw_point3" type="number" class="ic3" value="<%=json.optString("sw_point3", "0")%>"></td>
@@ -305,7 +303,7 @@
                     <p>註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。</p>
                     <p>
                         <input type="checkbox" name="declaration" class="auto"/>
-                        <b>申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</b>
+                        <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
                     </p>
                 </td>
             </tr>
@@ -313,7 +311,7 @@
         </table>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='OutstandingResearchAwardCatalog'">回上頁</button>
-            <button type="button" name="save" onclick="commit()">存檔</button>
+            <button type="button" name="save" onclick="commit()" disabled = "disabled">存檔</button>
         </p>
     </form>
 </div>
@@ -323,6 +321,16 @@
         const total = $('#other_data').val().length;
         document.getElementById('nowWords').innerHTML = total;
     }
+
+    function checkDeclaration() {
+        if ( $("input:not(:checked)[name='declaration']").length == 0  ) {
+            $("button[name='save']").prop( "disabled", false );
+        }
+        else {
+            $("button[name='save']").prop( "disabled", true  );
+        }
+    }
+    $("input[name='declaration']").on('change', function() { checkDeclaration(); } ) ;
 
     function commit(){
         $.ajax({
@@ -360,7 +368,6 @@
             }
         }
         data["other_data"] = $("#other_data").val();
-        data["declaration"] = document.getElementsByName("declaration")[0].checked;
         data["commit_date"] = moment(new Date()).format("YYYY-MM-DD");
         return data;
     }
@@ -370,7 +377,7 @@
         let t_point_total = parseInt($("#t_point_total").text());
         let a_book_point_total = parseInt($("#a_book_point_total").text());
         let a_article_point_total = parseInt($("#a_article_point_total").text());
-        let fwci_value_past_three_year = parseInt($("#fwci_value_past_three_year")[0].value);
+        let fwci_value_past_three_year = parseInt($("#fwci_value_past_three_year")[0].value); //user input
         let school_fwci_value_past_three_year = <%=json.optDouble("fwci", 0.0)%>;
         let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
         if(fwci_value_past_three_year >= school_fwci_value_past_three_year*1.5) {
@@ -413,7 +420,7 @@
             money.find('.total_project_money').text(total_money);
         }
         if(!isNaN(total_point)){
-            money.next().find('.total_point').text(total_point);
+            money.next().find('.total_point').text(total_point.toFixed(3));
         }
     }
 
@@ -536,13 +543,6 @@
     $(document).ready(function(){
         $("#other_data").val("<%=json.optString("other_data", "")%>");
         wordsTotal();
-
-        if(<%=json.optBoolean("declaration", false)%>){
-            $('input[name="declaration"]').attr("checked","checked");
-        }
-        else{
-            $('input[name="declaration"]').removeAttr("checked");
-        }
 
         $("input").blur(function(){
             if($(this).val()===""){

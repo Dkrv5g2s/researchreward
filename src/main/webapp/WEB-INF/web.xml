@@ -273,15 +273,6 @@
         <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/OutstandingResearchAwardTableB</url-pattern>
     </servlet-mapping>
-
-<!--    <servlet>-->
-<!--        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>-->
-<!--        <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardTableBServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>OutstandingResearchAwardTableBServlet</servlet-name>-->
-<!--        <url-pattern>/OutstandingResearchAwardTableB</url-pattern>-->
-<!--    </servlet-mapping>-->
 <!--    OutstandingResearcherAward-->
 
 

@@ -1,7 +1,6 @@
 package DAO.SpecialOutstandingResearcherApplication;
 
 import Bean.Project.RewardProject;
-import Constants.ProgressConstant;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;

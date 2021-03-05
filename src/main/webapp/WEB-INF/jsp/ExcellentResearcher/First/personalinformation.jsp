@@ -53,8 +53,8 @@
         $( document ).ready(function() {
             // 在這撰寫javascript程式碼
             $('#level').val("<%=json.get("level")%>");
-            $('#qualification1').prop("checked","<%=json.getBoolean("qualification1")%>"=="true"?true:false);
-            $('#qualification2').prop("checked","<%=json.getBoolean("qualification2")%>"=="true"?true:false);
+            $('#qualification1').prop("checked","<%=json.get("qualification1")%>"=="true"?true:false);
+            $('#qualification2').prop("checked","<%=json.get("qualification2")%>"=="true"?true:false);
             setReadOnly(<%=request.getAttribute("readonly")%>);
         });
     </script>

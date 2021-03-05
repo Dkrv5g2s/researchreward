@@ -184,39 +184,39 @@
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_1'>Nature、Science及Cell</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='40' name='rank_of_scholarly_journals" + i +"' value='R≦1%及附表三期刊' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_2'>R≦1%及附表三期刊</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='20' name='rank_of_scholarly_journals" + i + "' value='1%<R≦5%' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_3'>1%&lt;R≦5%</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='10' name='rank_of_scholarly_journals"+ i +"' value='5%<R≦10%' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_4'>5%&lt;R≦10%</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='5' name='rank_of_scholarly_journals" + i + "' value='10%<R≦25%' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_5'>10%&lt;R≦25%</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='2' name='rank_of_scholarly_journals" + i + "' value='25%<R≦40%' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_6'>25%&lt;R≦40%</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1' name='rank_of_scholarly_journals" + i + "' value='R>40%' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='1_7'>R&gt;40%</label>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell' ><label name='1_1'>Nature、Science及Cell</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='40' name='rank_of_scholarly_journals" + i +"' value='R≦1%及附表三期刊' ><label name='1_2'>R≦1%及附表三期刊</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='20' name='rank_of_scholarly_journals" + i + "' value='1%<R≦5%' ><label name='1_3'>1%&lt;R≦5%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='10' name='rank_of_scholarly_journals"+ i +"' value='5%<R≦10%' ><label name='1_4'>5%&lt;R≦10%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='5' name='rank_of_scholarly_journals" + i + "' value='10%<R≦25%' ><label name='1_5'>10%&lt;R≦25%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='2' name='rank_of_scholarly_journals" + i + "' value='25%<R≦40%' ><label name='1_6'>25%&lt;R≦40%</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1' name='rank_of_scholarly_journals" + i + "' value='R>40%' ><label name='1_7'>R&gt;40%</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input id='2_1' type='checkbox' data-selection-block='onlyone' data-weight='1' name='author_order"+i+"' value='第一作者或通訊作者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_1'>第一作者或通訊作者</label><br>" ;
-        html_of_item += "<input id='2_2' type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='author_order"+i+"' value='第二作者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_2'>第二作者</label><br>" ;
-        html_of_item += "<input id='2_3' type='checkbox' data-selection-block='onlyone' data-weight='0.6' name='author_order"+i+"' value='第三作者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_3'>第三作者</label><br>" ;
-        html_of_item += "<input id='2_4' type='checkbox' data-selection-block='onlyone' data-weight='0.4' name='author_order"+i+"' value='第四作者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_4'>第四作者</label><br>" ;
-        html_of_item += "<input id='2_5' type='checkbox' data-selection-block='onlyone' data-weight='0.2' name='author_order"+i+"' value='第五作者以上' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_5'>第五作者以上</label><br>" ;
-        html_of_item += "<input id='2_6' type='checkbox' data-selection-block='onlyone' data-weight='0.9' name='author_order"+i+"' value='有多位Equal Contribution' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='2_6'>多位Equal Contribution</label>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input id='2_1' type='checkbox' data-selection-block='onlyone' data-weight='1' name='author_order"+i+"' value='第一作者或通訊作者' ><label name='2_1'>第一作者或通訊作者</label><br>" ;
+        html_of_item += "<input id='2_2' type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='author_order"+i+"' value='第二作者' ><label name='2_2'>第二作者</label><br>" ;
+        html_of_item += "<input id='2_3' type='checkbox' data-selection-block='onlyone' data-weight='0.6' name='author_order"+i+"' value='第三作者' ><label name='2_3'>第三作者</label><br>" ;
+        html_of_item += "<input id='2_4' type='checkbox' data-selection-block='onlyone' data-weight='0.4' name='author_order"+i+"' value='第四作者' ><label name='2_4'>第四作者</label><br>" ;
+        html_of_item += "<input id='2_5' type='checkbox' data-selection-block='onlyone' data-weight='0.2' name='author_order"+i+"' value='第五作者以上' ><label name='2_5'>第五作者以上</label><br>" ;
+        html_of_item += "<input id='2_6' type='checkbox' data-selection-block='onlyone' data-weight='0.9' name='author_order"+i+"' value='有多位Equal Contribution' ><label name='2_6'>多位Equal Contribution</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1' name='communication_author_count"+i+"' value='1位通訊作者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='3_1'>1位通訊作者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='communication_author_count"+i+"' value='2位(含)以上' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='3_2'>2位(含)以上</label>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1' name='communication_author_count"+i+"' value='1位通訊作者' ><label name='3_1'>1位通訊作者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='communication_author_count"+i+"' value='2位(含)以上' ><label name='3_2'>2位(含)以上</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_1'>企業</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_2'>國際學者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SDG' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_3'>SDG</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_4'>SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_5'>企業及國際學者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='企業、SDG' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_6'>企業、SDG</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='企業、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_7'>企業、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='國際學者、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_8'>國際學者、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='SDG、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_9'>SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、SDG、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_10'>企業、SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='國際學者、SDG、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_11'>國際學者、SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、國際學者、SDG、SSCI' onclick='return false;' onkeydown='e = e || window.event; if(e.keyCode !== 9) return false;'><label name='4_12'>企業、國際學者、SDG、SSCI</label>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業' ><label name='4_1'>企業</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者' ><label name='4_2'>國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SDG' ><label name='4_3'>SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SSCI' ><label name='4_4'>SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者' ><label name='4_5'>企業及國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='企業、SDG' ><label name='4_6'>企業、SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='企業、SSCI' ><label name='4_7'>企業、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='國際學者、SSCI' ><label name='4_8'>國際學者、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='SDG、SSCI' ><label name='4_9'>SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、SDG、SSCI' ><label name='4_10'>企業、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='國際學者、SDG、SSCI' ><label name='4_11'>國際學者、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、國際學者、SDG、SSCI' ><label name='4_12'>企業、國際學者、SDG、SSCI</label>" ;
 
         html_of_item += "</td>" ;
 
@@ -322,51 +322,11 @@
         calculateTotal()
     } ) ;
 
+    $(document).on("click", "input[type='checkbox']", function () {
+        return false ; //this make checkbox can be readonly
+    })
 
-    function checkDatas() {
-        return true ;
-    }
 
-    function InputFormToJson() {
-        return JSON.stringify(latest_data) ;
-    }
-
-    function saveDatas(){
-        if(checkDatas()){
-            getDatasFromTable();
-
-            $.ajax({
-                type: 'POST',
-                url: 'SunshineScholarshipAwardTableA',
-                dataType: 'text',
-                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
-                //contentType: 'application/text',
-                success: function(data){
-                    alert('success');
-                },
-                error: function(jqXHR, textStatus, message) {
-                    //error handling
-                    console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
-                    alert(jqXHR.responseText);
-                },
-            });
-
-        }
-        else{
-            alert("有資料格式錯誤或未填寫");
-        }
-    }
-
-    function checkRepresentationClause() {
-        if ( $("input:not(:checked)[name='representationClause']").length == 0  ) {
-            $("input[name='save_the_page']").prop( "disabled", false );
-        }
-        else {
-            $("input[name='save_the_page']").prop( "disabled", true  );
-        }
-    }
-
-    $("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
 
 </script>
 </html>
