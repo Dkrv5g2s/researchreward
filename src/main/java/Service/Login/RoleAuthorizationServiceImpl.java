@@ -16,6 +16,7 @@ public class RoleAuthorizationServiceImpl implements RoleAuthorizationService{
         if(user != null) {
             session.setAttribute("userNumber",user.getStaff_code());
             session.setAttribute("userRole",user.getRole());
+            session.setAttribute("userName",user.getName());
             return user.getRole();
         }
         else

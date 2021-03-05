@@ -80,8 +80,8 @@
             </tbody>
         </table>
         <div class="footer">
-            <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorTableA'">此頁審查完成</button>
+            <button type="button" name="return_last_page" onclick="location.href='OutstandingResearchAwardCatalog'">回目錄</button>
+            <button type="button" name="confirm" onclick="location.href='OutstandingResearchAwardTableA'">此頁審查完成</button>
         </div>
     </form>
 </div>

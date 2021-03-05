@@ -93,8 +93,8 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
 
             String fileName = CommonFunction.setInt(parameterMap.get("paper_id"),0)+"_joint_authorization_agreement.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
             System.out.println("fileName:"+fileName);
             System.out.println(path+fileName);
             try {
@@ -144,8 +144,8 @@ public class SunshineScholarshipAwardTableAUploadServlet extends HttpServlet {
 
             String fileName = CommonFunction.setInt(parameterMap.get("paper_id"),0)+"_paper_home.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
 
 
             try {
