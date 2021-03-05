@@ -290,12 +290,12 @@
             <tr>
                 <td colspan="7" class="title">
                     <label for="other_data"><b>其 它 傑 出 表 現 說 明</b></label>
-                    <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/200</div>
+                    <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/500</div>
                 </td>
             </tr>
             <tr>
                 <td colspan="7" class="left">
-                    <textarea id="other_data" maxlength="200" onkeyup="wordsTotal()" placeholder="其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。"></textarea>
+                    <textarea id="other_data" maxlength="500" onkeyup="wordsTotal()" placeholder="其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。"></textarea>
                 </td>
             </tr>
             <tr>
