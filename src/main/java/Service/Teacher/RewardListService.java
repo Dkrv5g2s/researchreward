@@ -78,7 +78,7 @@ public class RewardListService {
         		return "/DistinguishedProfessorCatalog";
             case "獎勵新聘特殊優秀研究人才":
                 return "/ExcellentResearcherCatalog";
-            case "優秀人才申請":
+            case "獎勵特殊優秀研究人才":
                 return "/SpecialOutstandingResearcherCatalog";
             case "陽光獎助金論文獎勵":
                 return "/SunshineScholarshipCatalog";
