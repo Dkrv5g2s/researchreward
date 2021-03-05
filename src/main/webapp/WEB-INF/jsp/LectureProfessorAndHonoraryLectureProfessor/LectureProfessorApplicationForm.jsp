@@ -71,7 +71,6 @@
                     alert('success');
                 }
             });
-
         };
 
         function InputToJson(){
@@ -81,7 +80,10 @@
                 if (document.getElementsByTagName("input")[j].type=='checkbox'){
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].checked;
                 }
-                else {
+                else if(document.getElementsByTagName("input")[j].type=='radio'){
+                    data[ document.getElementsByTagName("input")[j].id] = document.getElementsByTagName("input")[j].checked;
+                }
+                else{
                     data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
                 }
             }
@@ -89,11 +91,11 @@
             return data;
         }
 
-    
+
         $( document ).ready(function() {
-            $("input[name='lectureCategoryExp']").prop("checked", <%=json.get("lectureCategoryExp")%>);
-            $("input[name='lectureCategoryInv']").prop("checked", <%=json.get("lectureCategoryInv")%>);
-            $("input[name='lectureCategoryLif']").prop("checked", <%=json.get("lectureCategoryLif")%>);
+            $("input[id='lectureCategoryExp']").prop("checked", <%=json.get("lectureCategoryExp")%>);
+            $("input[id='lectureCategoryInv']").prop("checked", <%=json.get("lectureCategoryInv")%>);
+            $("input[id='lectureCategoryLif']").prop("checked", <%=json.get("lectureCategoryLif")%>);
             $("input[name='applicationrequirements1']").prop("checked", <%=json.get("applicationrequirements1")%>);
             $("input[name='applicationrequirements2']").prop("checked", <%=json.get("applicationrequirements2")%>);
             $("input[name='applicationrequirements3']").prop("checked", <%=json.get("applicationrequirements3")%>);
@@ -165,9 +167,9 @@
             <tr>
                 <td class="metadata">申請講座項目</td>
                 <td>
-                    <input type ="checkbox" name="lectureCategoryExp">專任講座
-                    <input type ="checkbox" name="lectureCategoryInv">客座講座
-                    <input type ="checkbox" name="lectureCategoryLif">終生講座
+                    <input type ="radio" id="lectureCategoryExp" name="lectureCategory">專任講座
+                    <input type ="radio" id="lectureCategoryInv" name="lectureCategory">客座講座
+                    <input type ="radio" id="lectureCategoryLif" name="lectureCategory">終生講座
                 </td>
             </tr>
             </tbody>
@@ -226,7 +228,7 @@
             <tr>
                 <td class="cb" align="center"><input type="checkbox" name="applicationrequirements9" ></td>
                 <td class="checkboxcontent">
-                    國際知名之國家院
+                    國際知名之國家院士
                 </td>
             </tr>
             <tr>
