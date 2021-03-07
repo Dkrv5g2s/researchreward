@@ -20,6 +20,7 @@
         <tr>
             <td class="metadata">申請編號</td>
             <td class="metadata">申請獎項</td>
+            <td class="metadata">申請時間</td>
             <td class="metadata">送審進度</td>
         </tr>
         <%
@@ -29,6 +30,7 @@
         <tr>
             <td><%=json.getInt("project_id")%></td>
             <td><%=json.getString("reward_type")%></td>
+            <td><%=json.getDate("apply_date")%></td>
             <td><%=json.getString("status")%></td>
         </tr>
         <%

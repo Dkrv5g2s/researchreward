@@ -1,10 +1,13 @@
 package Bean.Project;
 
+import java.sql.Date;
+
 public class RewardProject {
     private int project_id;
     private String staff_code ;
     private String reward_type ;
     private int status_id;
+    private Date apply_date;
     private String status ;
     private String reason_for_return;
     private String department_reviewer;
@@ -16,14 +19,15 @@ public class RewardProject {
     private String industry_liaison_office_review_time;
     private String research_and_development_office_review_time;
 
-    public RewardProject(int project_id, String staff_code, String status, String reward_type) {
+    public RewardProject(int project_id, String staff_code, String status, Date apply_date, String reward_type) {
         this.project_id = project_id;
         this.staff_code = staff_code;
         this.status = status;
+        this.apply_date = apply_date;
         this.reward_type = reward_type;
     }
 
-    public RewardProject(int project_id, String staff_code, String reward_type, int status_id, String status,
+    public RewardProject(int project_id, String staff_code, String reward_type, int status_id, Date apply_date, String status,
                          String reason_for_return, String department_reviewer, String college_reviewer,
                          String industry_liaison_office_reviewer, String research_and_development_office_reviewer,
                          String department_review_time, String college_review_time,
@@ -32,6 +36,7 @@ public class RewardProject {
         this.staff_code = staff_code;
         this.reward_type = reward_type;
         this.status_id = status_id;
+        this.apply_date = apply_date;
         this.status = status;
         this.reason_for_return = reason_for_return;
         this.department_reviewer = department_reviewer;
@@ -82,6 +87,14 @@ public class RewardProject {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getApply_date() {
+        return apply_date;
+    }
+
+    public void setApply_date(Date apply_date) {
+        this.apply_date = apply_date;
     }
 
     public String getReason_for_return() {
