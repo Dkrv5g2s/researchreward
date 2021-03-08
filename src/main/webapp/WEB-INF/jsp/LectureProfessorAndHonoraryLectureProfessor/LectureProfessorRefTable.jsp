@@ -31,39 +31,39 @@
         <tbody>
         <tr class="">
             <td>1	</td>
-            <td align="left"><a>euron</a></td>
+            <td align="left"><a>Neuron</a></td>
         </tr>
         <tr class="">
             <td>2	</td>
-            <td align="left"><a>ature Biotechnology</a></td>
+            <td align="left"><a>Nature Biotechnology</a></td>
         </tr>
         <tr class="">
             <td>3	</td>
-            <td align="left"><a>ature Chemical Biology</a></td>
+            <td align="left"><a>Nature Chemical Biology</a></td>
         </tr>
         <tr class="">
             <td>4	</td>
-            <td align="left"><a>ature Chemistry</a></td>
+            <td align="left"><a>Nature Chemistry</a></td>
         </tr>
         <tr class="">
             <td>5	</td>
-            <td align="left"><a>ature Communications</a></td>
+            <td align="left"><a>Nature Communications</a></td>
         </tr>
         <tr class="">
             <td>6	</td>
-            <td align="left"><a>ature Climate Change</a></td>
+            <td align="left"><a>Nature Climate Change</a></td>
         </tr>
         <tr class="">
             <td>7	</td>
-            <td align="left"><a>ature Cell Biology</a></td>
+            <td align="left"><a>Nature Cell Biology</a></td>
         </tr>
         <tr class="">
             <td>8	</td>
-            <td align="left"><a>ature Materials</a></td>
+            <td align="left"><a>Nature Materials</a></td>
         </tr>
         <tr class="">
             <td>9	</td>
-            <td align="left"><a>ature Medicine</a></td>
+            <td align="left"><a>Nature Medicine</a></td>
         </tr>
         <tr class="">
             <td>10</td>

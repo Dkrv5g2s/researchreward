@@ -196,6 +196,10 @@
                 update_article(this);
             });
 
+            $('.countP').on( 'keyup',class_name,function(){
+                update_article(this);
+            });
+
             $('.count1').on( 'keyup',class_name,function(){
                 var count = +$(this).val();
                 $(this).parents('.count1').next().find(point_id).text(2*count);
@@ -324,14 +328,14 @@
                 <td colspan="1" width="12%"><input name="sw_article_count5" type="number" class="ic5" value="<%=json.get("sw_article_count5")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
                 <td colspan="1" width="10%" id="sw_article_count_total" class="total_count"><%=json.get("sw_article_count_total")%></td>
             </tr>
-            <tr style="text-align: center;" class="point">
-                <td colspan="1" width="10%">點數<br>(請參照表B)</td>
-                <td colspan="1" width="12%" id="sw_point1" class="pc1" ><%=json.get("sw_point1")%></td>
-                <td colspan="1" width="12%" id="sw_point2" class="pc2" ><%=json.get("sw_point2")%></td>
-                <td colspan="1" width="12%" id="sw_point3" class="pc3" ><%=json.get("sw_point3")%></td>
-                <td colspan="1" width="12%" id="sw_point4" class="pc4" ><%=json.get("sw_point4")%></td>
-                <td colspan="1" width="12%" id="sw_point5" class="pc5" ><%=json.get("sw_point5")%></td>
-                <td colspan="1" width="10%" id="sw_point_total" class="total_point" ><%=json.get("sw_point_total")%></td>
+            <tr style="text-align: center;" class="countP">
+                <td colspan="1"><b>點數</b><br>(請參照 <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/214/488059897.pdf#page=3" target="_blank">附表一</a> )</td>
+                <td colspan="1" width="12%"> <input name="sw_point1" type="number" class="ic1" value="<%=json.get("sw_point1")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+                <td colspan="1" width="12%"> <input name="sw_point2" type="number" class="ic2" value="<%=json.get("sw_point2")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+                <td colspan="1" width="12%"> <input name="sw_point3" type="number" class="ic3" value="<%=json.get("sw_point3")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+                <td colspan="1" width="12%"> <input name="sw_point4" type="number" class="ic4" value="<%=json.get("sw_point4")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+                <td colspan="1" width="12%"> <input name="sw_point5" type="number" class="ic5" value="<%=json.get("sw_point5")%>" size="5" maxlength="40" style="text-align:center; width: 75px;"></td>
+                <td colspan="1" width="10%" id="sw_point_total" class="total_count"><%=json.get("sw_point_total")%></td>
             </tr>
             <tr style="text-align: center;">
                 <td colspan="7" width="80%">說明：採計Scopus論文者，請檢附-表B「傑出論文績效說明表」</td>

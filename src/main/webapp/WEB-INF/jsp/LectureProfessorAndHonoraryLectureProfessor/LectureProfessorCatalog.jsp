@@ -63,12 +63,13 @@
         <tr>
             <td class="left"><a href="LectureProfessorExcellenceFormD" >講座期間之績效表現(申請第二任以上者填寫)</a></td>
         </tr>
-        <tr>
+  <!--      <tr>
             <td class="left"><a href="LectureProfessorRefPoint" >附表一：國立臺北科技大學論文點數計算公式</a></td>
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorRefTable" >附件一：優質期刊清單</a></td>
         </tr>
+        -->
         </tbody>
     </table>
     <div style="margin: 1rem;" class="edit">
