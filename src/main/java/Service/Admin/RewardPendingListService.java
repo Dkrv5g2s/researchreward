@@ -35,6 +35,17 @@ public class RewardPendingListService {
         return array;
     }
 
+    public Boolean havePendingReward(String userRole){
+        int statusId = getPendingListStatusId(userRole);
+        if (statusId != -1) {
+            List<RewardProject> list = projectDAO.getProjectsForAdmins(statusId, statusId);
+            if (list.isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void transformListToJSONArray(JSONArray array, List<RewardProject> list, String userRole){
 
         for (RewardProject element : list) {

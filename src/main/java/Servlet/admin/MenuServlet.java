@@ -1,5 +1,6 @@
 package Servlet.admin;
 
+import Service.Admin.RewardPendingListService;
 import Service.Login.RoleAuthorizationService;
 import Service.Login.RoleAuthorizationServiceImpl;
 import Servlet.login.ServletEntryPoint;
@@ -14,11 +15,13 @@ public class MenuServlet extends ServletEntryPoint {
 
     private static final String URL = "WEB-INF/jsp/admin/menu.jsp";
     private RoleAuthorizationService roleAuthorizationService = new RoleAuthorizationServiceImpl();
+    private RewardPendingListService rewardPendingListService = new RewardPendingListService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         req.setAttribute("flag",!roleAuthorizationService.isResearchAndDevelopmentOffice(session));
+        req.setAttribute("pendingReward",rewardPendingListService.havePendingReward((String) session.getAttribute("userRole")));
 
         req.getRequestDispatcher(URL).forward(req, resp);
     }

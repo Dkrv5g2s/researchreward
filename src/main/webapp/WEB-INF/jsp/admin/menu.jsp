@@ -19,6 +19,9 @@
                 $("li[name='a']").remove();
                 $("li[name='b']").remove();
             }
+            if(<%=request.getAttribute("pendingReward")%>){
+                $("#head").append("<span style=\"font-size:24pt\">您有尚未審核的獎項</span>");
+            }
         })
     </script>
     <style>
@@ -33,7 +36,7 @@
     <div id="header-wrapper" >
         <div id="header">
             <div id="logo">
-                <h1><span>研發獎勵系統</span></h1>
+                <h1 id = "head"><span style="padding-right: 10%">研發獎勵系統</span></h1>
             </div>
         </div>
         <div id="menuline">
