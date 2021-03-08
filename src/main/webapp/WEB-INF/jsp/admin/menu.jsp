@@ -20,7 +20,7 @@
                 $("li[name='b']").remove();
             }
             if(<%=request.getAttribute("pendingReward")%>){
-                $("#head").append("<span style=\"font-size:24pt\">您有尚未審核的獎項</span>");
+                $("#head").append("<span style=\"font-size:12pt;font-family: 'Microsoft Tai Le'\">您有尚未審核的獎項</span>");
             }
         })
     </script>
