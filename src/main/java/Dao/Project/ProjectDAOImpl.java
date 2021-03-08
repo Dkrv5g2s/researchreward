@@ -4,10 +4,7 @@ import Bean.Project.RewardProject;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     private static final String GET_STATUS_ID_BY_PROJECT_ID = "SELECT status_id FROM reward_project WHERE project_id =?";
     private static final String GET_PROJECTS_FOR_ADMINS = "SELECT * FROM reward_project LEFT JOIN reward_project_status on reward_project.status_id=reward_project_status.status_id WHERE reward_project.status_id BETWEEN ? AND ?";
     private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status_id=? WHERE project_id =?";
+    private static final String UPDATE_APPLY_PROJECT_STATUS = "UPDATE reward_project SET status_id=? , apply_date=? WHERE project_id =?";
     private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
     private static final String GET_REWARD_TYPE = "SELECT reward_type FROM reward_project WHERE project_id=?";
     private static final String GET_MAX_STATUS_ID = "SELECT status_id FROM reward_project_status ORDER BY status_id DESC LIMIT 1";
@@ -61,11 +59,25 @@ public class ProjectDAOImpl implements ProjectDAO {
     @Override
     public void updateProjectStatus(int project_id, int status_id) {
         Connection connection = dbConnection.getConnection();
-
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PROJECT_STATUS))
         {
             preparedStatement.setInt(1, status_id);
             preparedStatement.setInt(2, project_id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void applyProject(int project_id, Date apply_date) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_APPLY_PROJECT_STATUS))
+        {
+            preparedStatement.setInt(1, 2);
+            preparedStatement.setDate(2, apply_date);
+            preparedStatement.setInt(3, project_id);
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -183,13 +195,13 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    public void updateReviewInfo(int project_id, String userRole, String userNumber) {
+    public void updateReviewInfo(int project_id, String userRole, String userName) {
         String statement = getUpdateReviewInfoStatement(userRole);
         if (statement != null){
             Connection connection = dbConnection.getConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement))
             {
-                preparedStatement.setString(1, userNumber);
+                preparedStatement.setString(1, userName);
                 preparedStatement.setInt(2, project_id);
                 preparedStatement.executeUpdate();
                 connection.close();
@@ -206,6 +218,7 @@ public class ProjectDAOImpl implements ProjectDAO {
                         resultSet.getString("staff_code"),
                         resultSet.getString("reward_type"),
                         resultSet.getInt("status_id"),
+                        resultSet.getDate("apply_date"),
                         resultSet.getString("status"),
                         resultSet.getString("reason_for_return"),
                         resultSet.getString("department_reviewer"),

@@ -111,12 +111,12 @@
             <tr>
                 <td colspan="8" class="title">
                     <label for="recommended_reason">推&nbsp;薦&nbsp;理&nbsp;由</label>
-                    <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/200</div>
+                    <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/500</div>
                 </td>
             </tr>
             <tr>
                 <td colspan="8">
-                    <textarea id="recommended_reason" type="text" onkeyup="wordsTotal()" rows="3" cols="8"></textarea>
+                    <textarea id="recommended_reason" type="text" onkeyup="wordsTotal()" rows="3" cols="8" maxlength="500"></textarea>
                 </td>
             </tr>
             </tbody>

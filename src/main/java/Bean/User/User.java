@@ -7,6 +7,8 @@ public class User {
     private String role = "";
     private String staff_code = "";
 
+    private String name = "";
+
     public User(String account, String password, String role, String staff_code) {
         this.account = account;
         this.password = password;
@@ -47,5 +49,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

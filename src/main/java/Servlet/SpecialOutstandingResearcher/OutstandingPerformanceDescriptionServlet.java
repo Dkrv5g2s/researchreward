@@ -5,6 +5,7 @@ import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
 import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
+import Service.Admin.AwardTimeLimitService;
 import Service.DistinguishedProfessor.DistinguishedProfessorTableAService;
 import Service.SpecialOutstandingResearcher.OutstandingPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
@@ -24,13 +25,15 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
 
     private OutstandingPerformanceDescriptionService outstandingPerformanceDescriptionService = new OutstandingPerformanceDescriptionService();
-
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         getForm(req);
-
+        req.setAttribute("readonly",session.getAttribute("readonly"));
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp").forward(req, resp);
         // "WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp"
     }
@@ -42,7 +45,7 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
         getForm(req);
 
         String jsonString = readJSONString(req);
-        System.out.println("Post content:" +jsonString);
+
         if(!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
             outstandingPerformanceDescriptionService.save(json,String.valueOf(session.getAttribute("project_id")));
@@ -54,7 +57,7 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        System.out.println("Get content:" +outstandingPerformanceDescriptionService.show(String.valueOf(session.getAttribute("project_id"))));
+
 
         req.setAttribute("json",outstandingPerformanceDescriptionService.show(String.valueOf(session.getAttribute("project_id"))));
 

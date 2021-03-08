@@ -129,8 +129,17 @@
 
             }
 
+            function countWordsTotal() {
+                const total = document.getElementById('applyForSubsidies').value.length;
+                document.getElementById('wordsCount').innerHTML = total;
+            }
+
+
             $(document).ready(function (){
                 changeTextVisible(document.querySelector('input[name="applyType"]:checked').value);
+                $("#applyForSubsidies").on('change paste keyup', function(){
+                    countWordsTotal();
+                });
                 setReadOnly(${readonly});
             });
         </script>
@@ -294,15 +303,15 @@
                                 申請補助項目<br>(含總補助金額)
                             </td>
                             <td colspan="6">
-                                <textarea name="applyForSubsidies" rows="4" cols="50" required><%= json.get("applyForSubsidies")%></textarea>
+                                <textarea id="applyForSubsidies" name="applyForSubsidies" rows="8" cols="60" maxlength="500" required><%= json.get("applyForSubsidies")%></textarea>
+                                <div style="float:right;">目前輸入字數:<span id="wordsCount">0</span>/500</div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p align="center">
-<%--                    <input type="button" name="save" value="存檔" onclick="commit()">--%>
+                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'">
                     <button type="button" name="save" onclick="commit()">存檔</button>
-                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
                 </p>
             </form>
         </div>

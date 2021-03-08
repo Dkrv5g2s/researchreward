@@ -1,5 +1,6 @@
 package Servlet.OutstandingResearchAward;
 
+import Service.Admin.AwardTimeLimitService;
 import Service.OutstandingResearchAward.OutstandingResearchAwardTableAService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -18,11 +19,11 @@ public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String TableA_URL_Edit = "WEB-INF/jsp/OutstandingResearchAward/edit/OutstandingResearchAwardTableA.jsp";
         final String TableA_URL_Readonly = "WEB-INF/jsp/OutstandingResearchAward/readonly/OutstandingResearchAwardTableA.jsp";
-
+        AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         req.setAttribute("data", outstandingResearchAwardTableAService.get(session.getAttribute("projectId").toString()));
-
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfThreeYear"));
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){
             req.getRequestDispatcher(TableA_URL_Readonly).forward(req,resp);

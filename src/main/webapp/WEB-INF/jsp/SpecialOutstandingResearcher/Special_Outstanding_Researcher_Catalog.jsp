@@ -27,18 +27,18 @@
 
             </tr>
             <tr>
-                <td><a  href="OutstandingPerformanceDescriptionForm">特殊優秀研究人才傑出績效說明表</a></td>
+                <td><a  href="OutstandingPerformanceDescriptionForm">表A 特殊優秀研究人才傑出績效說明表</a></td>
             </tr>
             <tr >
                 <td ><a  href="ReviewSupportingInformationForm" >審查佐證資料</a></td>
 
             </tr>
             <tr >
-                <td><a  href="PaperPerformanceDescriptionForm" >論文績效說明表(表B)</a></td>
+                <td><a  href="PaperPerformanceDescriptionForm" >表B 論文績效說明表</a></td>
 
             </tr>
             <tr >
-                <td ><a  href="PaperPerformanceDescriptionUpload" >論文績效說明表(表B)-上傳檔案</a></td>
+                <td ><a  href="PaperPerformanceDescriptionUpload" >表B 論文績效說明表-上傳檔案</a></td>
             </tr>
             <tr><td class="metadata" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
         </tbody>

@@ -20,8 +20,10 @@ public class ApproveApplyServlet extends ServletEntryPoint {
         int project_id = Integer.parseInt((String)session.getAttribute("projectId"));
         String userRole = (String)session.getAttribute("userRole");
         String userNumber = (String)session.getAttribute("userNumber");
+        String userName = (String)session.getAttribute("userName");
+
 
         rewardListService.updateRewardStatusToNext(project_id);
-        approveApplyService.updateReviewerAndReviewTime(project_id, userRole, userNumber);
+        approveApplyService.updateReviewerAndReviewTime(project_id, userRole, userName);
     }
 }
