@@ -5,6 +5,7 @@ import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 import java.sql.Date;
 import java.util.List;
@@ -96,5 +97,9 @@ public class RewardListService {
             default:
                 return "/Menu";
         }
+    }
+
+    public void deleteRewardProject(int projectId,String staffCode){
+        projectDAO.deleteProject(projectId,staffCode);
     }
 }

@@ -49,6 +49,7 @@ public class ProjectDAOImpl implements ProjectDAO {
         {
             preparedStatement.setInt(1,project_id);
             preparedStatement.setString(2,staff_code);
+            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {

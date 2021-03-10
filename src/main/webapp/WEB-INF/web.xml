@@ -341,6 +341,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DeleteRewardServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.DeleteRewardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteRewardServlet</servlet-name>
+        <url-pattern>/deleteRewardList</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>APItestServlet</servlet-name>
         <servlet-class>Servlet.SpecialOutstandingResearcher.APItestServlet</servlet-class>
     </servlet>
