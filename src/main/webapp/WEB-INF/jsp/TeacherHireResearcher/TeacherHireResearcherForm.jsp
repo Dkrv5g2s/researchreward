@@ -137,6 +137,7 @@
 
             $(document).ready(function (){
                 changeTextVisible(document.querySelector('input[name="applyType"]:checked').value);
+                countWordsTotal();
                 $("#applyForSubsidies").on('change paste keyup', function(){
                     countWordsTotal();
                 });

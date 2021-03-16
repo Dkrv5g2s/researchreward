@@ -124,6 +124,7 @@
                 calculatePoint($(this).parent().parent());
 			});
 
+            countWordsTotal();
 			$("#other_data").on('change paste keyup', function(){
 				countWordsTotal();
 			});
