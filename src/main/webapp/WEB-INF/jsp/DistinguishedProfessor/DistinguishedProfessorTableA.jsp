@@ -299,7 +299,6 @@
     	}
     	
 	    $(document).ready(function(){
-	    	$("#other_data").val("<%=json.optString("other_data", "")%>");
 	        wordsTotal();
 	        
 	    	$("input").blur(function(){
