@@ -22,8 +22,9 @@
     <body>
         <div class="content">
             <h2 style="text-align: center;"><%=request.getAttribute("reward_type")%></h2>
-            <p>請輸入退件原因</p>
-            <textarea id="reason_for_return" maxlength="500"></textarea>
+            <label for="reason_for_return">請輸入退件原因</label>
+            <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/500</div>
+            <textarea id="reason_for_return" maxlength="500" type="text" onkeyup="wordsTotal()" style="height:200px;"></textarea>
             <div class="footer">
                 <button type="button" name="return_last_page" onclick="returnCatalog()">返回上頁</button>
                 <button type="button" name="confirm" onclick="commit()">送出退件</button>
@@ -31,6 +32,10 @@
         </div>
     </body>
     <script>
+        function wordsTotal() {
+            const total = document.getElementById('reason_for_return').value.length;
+            document.getElementById('nowWords').innerHTML = total;
+        }
         function returnCatalog(){
             $.ajax({
                 type: 'POST',
