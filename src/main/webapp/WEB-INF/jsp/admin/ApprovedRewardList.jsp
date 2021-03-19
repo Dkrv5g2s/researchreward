@@ -15,6 +15,7 @@
                 <td class="metadata">申請獎項</td>
                 <td class="metadata">審查者</td>
                 <td class="metadata">審查時間</td>
+                <td class="metadata">審查狀態</td>
             </tr>
             <%
                 for(Object element: array){
@@ -25,6 +26,7 @@
                 <td><%=json.optString("reward_type", "null")%></td>
                 <td><%=json.optString("reviewer", "null")%></td>
                 <td><%=json.optString("review_time", "null")%></td>
+                <td><%=json.optString("status", "null")%></td>
             </tr>
             <%
                 }

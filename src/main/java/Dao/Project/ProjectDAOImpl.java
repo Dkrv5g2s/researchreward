@@ -13,7 +13,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     private static final String INSERT_PROJECT = "INSERT INTO reward_project (staff_code, status_id, reward_type) values(?,?,?)";
     private static final String GET_PERSONAL_PROJECTS = "SELECT * FROM reward_project LEFT JOIN reward_project_status on reward_project.status_id=reward_project_status.status_id WHERE staff_code=? AND reward_project.status_id BETWEEN ? AND ? ";
     private static final String GET_STATUS_ID_BY_PROJECT_ID = "SELECT status_id FROM reward_project WHERE project_id =?";
-    private static final String GET_PROJECTS_FOR_ADMINS = "SELECT * FROM reward_project LEFT JOIN reward_project_status on reward_project.status_id=reward_project_status.status_id WHERE reward_project.status_id BETWEEN ? AND ?";
+    private static final String GET_PROJECTS_FOR_ADMINS = "SELECT * FROM reward_project LEFT JOIN reward_project_status on reward_project.status_id=reward_project_status.status_id WHERE reward_project.status_id = 0 OR reward_project.status_id BETWEEN ? AND ?";
     private static final String UPDATE_PROJECT_STATUS = "UPDATE reward_project SET status_id=? WHERE project_id =?";
     private static final String UPDATE_APPLY_PROJECT_STATUS = "UPDATE reward_project SET status_id=? , apply_date=? WHERE project_id =?";
     private static final String DELETE_PROJECT = "DELETE FROM reward_project WHERE project_id = ? AND staff_code=?";
@@ -97,7 +97,7 @@ public class ProjectDAOImpl implements ProjectDAO {
             preparedStatement.setInt(2,begin_status_id);
             preparedStatement.setInt(3,end_status_id);
 
-            transformResultSetToList(result, preparedStatement);
+            transformResultSetToList(result, preparedStatement, begin_status_id);
 
             connection.close();
         } catch (SQLException e) {
@@ -136,7 +136,7 @@ public class ProjectDAOImpl implements ProjectDAO {
             preparedStatement.setInt(1,begin_status_id);
             preparedStatement.setInt(2,end_status_id);
 
-            transformResultSetToList(result, preparedStatement);
+            transformResultSetToList(result, preparedStatement, begin_status_id);
 
             connection.close();
         } catch (SQLException e) {
@@ -212,24 +212,26 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
     }
 
-    private void transformResultSetToList(List<RewardProject> result, PreparedStatement preparedStatement){
+    private void transformResultSetToList(List<RewardProject> result, PreparedStatement preparedStatement, int role_status_id){
         try (ResultSet resultSet = preparedStatement.executeQuery()){
             while (resultSet.next()){
-                result.add(new RewardProject(resultSet.getInt("project_id"),
-                        resultSet.getString("staff_code"),
-                        resultSet.getString("reward_type"),
-                        resultSet.getInt("status_id"),
-                        resultSet.getDate("apply_date"),
-                        resultSet.getString("status"),
-                        resultSet.getString("reason_for_return"),
-                        resultSet.getString("department_reviewer"),
-                        resultSet.getString("college_reviewer"),
-                        resultSet.getString("industry_liaison_office_reviewer"),
-                        resultSet.getString("research_and_development_office_reviewer"),
-                        resultSet.getString("department_review_time"),
-                        resultSet.getString("college_review_time"),
-                        resultSet.getString("industry_liaison_office_review_time"),
-                        resultSet.getString("research_and_development_office_review_time")));
+                if(isProjectReviewed(resultSet, role_status_id)){  //審查過再加入
+                    result.add(new RewardProject(resultSet.getInt("project_id"),
+                            resultSet.getString("staff_code"),
+                            resultSet.getString("reward_type"),
+                            resultSet.getInt("status_id"),
+                            resultSet.getDate("apply_date"),
+                            resultSet.getString("status"),
+                            resultSet.getString("reason_for_return"),
+                            resultSet.getString("department_reviewer"),
+                            resultSet.getString("college_reviewer"),
+                            resultSet.getString("industry_liaison_office_reviewer"),
+                            resultSet.getString("research_and_development_office_reviewer"),
+                            resultSet.getString("department_review_time"),
+                            resultSet.getString("college_review_time"),
+                            resultSet.getString("industry_liaison_office_review_time"),
+                            resultSet.getString("research_and_development_office_review_time")));
+                }
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -248,5 +250,31 @@ public class ProjectDAOImpl implements ProjectDAO {
                 return UPDATE_RESEARCH_AND_DEVELOPMENT_OFFICE_REVIEW_INFO;
         }
         return null;
+    }
+
+    private boolean isProjectReviewed(ResultSet resultSet, int role_status_id) throws SQLException {
+            switch (role_status_id) {
+                case 3://department
+                    if(resultSet.getString("department_reviewer") == null){
+                        return false;
+                    }
+                    break;
+                case 4://college
+                    if(resultSet.getString("college_reviewer") == null){
+                        return false;
+                    }
+                    break;
+                case 5://industryLiaisonOffice
+                    if(resultSet.getString("industry_liaison_office_reviewer") == null){
+                        return false;
+                    }
+                    break;
+                case 6://researchAndDevelopmentOffice
+                    if(resultSet.getString("research_and_development_office_reviewer") == null){
+                        return false;
+                    }
+                    break;
+            }
+        return true;
     }
 }
