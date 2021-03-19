@@ -26,7 +26,7 @@ public class VerifyUtils {
             double similarityRate = LDAlgo.getNormalizedSimilarity(inputPaperSentenceSpaceRemoved,removeSpace(dbPaperSentence));
             this.logger.debug("similarityRate :"+ similarityRate);
             if(isSimilarityRateOverStandard(similarityRate)) {
-                this.logger.info("Rate over 95%:"+ dbPaperSentence);
+                this.logger.debug("Rate over 95%:"+ dbPaperSentence);
                 isPaperReappliedResult = true;
                 break;
             }

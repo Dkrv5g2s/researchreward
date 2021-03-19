@@ -40,6 +40,10 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String SELECT_TOTAL_PAPER_SENTENCE = "SELECT book_name,scholarly_journals_name FROM paper_performance ";
 
+    private static final String SELECT_TOTAL_PAPER_SENTENCE_IN_SPECIFIED_REWARD =
+            "SELECT book_name,scholarly_journals_name FROM paper_performance where project_id in (" +
+            "SELECT project_id FROM reward_project where reward_type =  ?)";
+
     private static final String SELECT_SPECIFIED_PAPER_TITLE = "SELECT * FROM paper_performance WHERE paper_id = ? AND book_name = ? AND scholarly_journals_name = ?";
 
     private static final String SELECT_USER_NAME_VIA_PAPER_TITLE =
@@ -339,7 +343,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             e.printStackTrace();
         }
     }
-
+    @Override
     public List<String> query_total_paper_sentence() {
 
         List<String> paper_title_list = new ArrayList<>() ;
@@ -362,6 +366,32 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
         return  paper_title_list ;
     }
+    @Override
+    public List<String> query_total_paper_sentence_in_specified_reward(String reward_type) {
+
+        List<String> paper_title_list = new ArrayList<>() ;
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TOTAL_PAPER_SENTENCE_IN_SPECIFIED_REWARD))
+        {
+            preparedStatement.setString(1, reward_type);
+
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+
+            while ( resultSet.next() ) {
+                String paperSentence = resultSet.getString( "book_name" ) + resultSet.getString( "scholarly_journals_name" );
+                paper_title_list.add( paperSentence );
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return  paper_title_list ;
+    }
+
     @Override
     public boolean query_whether_specified_paper_sentence_existed_already(PaperPerformance paperPerformance){
         boolean query_result = true;

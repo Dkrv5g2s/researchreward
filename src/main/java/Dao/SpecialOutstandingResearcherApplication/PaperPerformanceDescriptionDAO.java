@@ -17,6 +17,8 @@ public interface PaperPerformanceDescriptionDAO {
 
     public List<String> query_total_paper_sentence();
 
+    public List<String> query_total_paper_sentence_in_specified_reward(String reward_type);
+
 //    public Map<String,String> query_total_paper_info_as_dict();
 
     public boolean query_whether_specified_paper_sentence_existed_already(PaperPerformance paperPerformance);

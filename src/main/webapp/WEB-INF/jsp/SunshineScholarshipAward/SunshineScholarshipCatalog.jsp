@@ -81,6 +81,11 @@
                 success: function (data) {
                     alert('申請成功');
                     window.location.href = "/TraceProgress";
+                },
+                error: function(jqXHR, textStatus, message) {
+                    //error handling
+                    // console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
+                    alert(jqXHR.responseText);
                 }
             });
         }
