@@ -49,7 +49,11 @@ public class RewardListService {
     public void updateRewardStatusToNext(int projectId){
         int status_id = projectDAO.getStatusIdByProjectId(projectId);
         int max_id = projectDAO.getMaxStatusId();
-        if (status_id == 0 || status_id == 1)
+        if (status_id == 0 ){
+            projectDAO.initializeProjectReviewState(projectId);
+            projectDAO.applyProject(projectId, new Date(System.currentTimeMillis()));
+        }
+        else if( status_id == 1)
             projectDAO.applyProject(projectId, new Date(System.currentTimeMillis()));
         else if (status_id < max_id)
             projectDAO.updateProjectStatus(projectId, ++status_id);

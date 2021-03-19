@@ -24,7 +24,16 @@ public class ProjectDAOImpl implements ProjectDAO {
     private static final String UPDATE_COLLEGE_REVIEW_INFO = "UPDATE reward_project SET college_reviewer=?, college_review_time=NOW() WHERE project_id =?";
     private static final String UPDATE_INDUSTRY_LIAISON_OFFICE_REVIEW_INFO = "UPDATE reward_project SET industry_liaison_office_reviewer=?, industry_liaison_office_review_time=NOW() WHERE project_id =?";
     private static final String UPDATE_RESEARCH_AND_DEVELOPMENT_OFFICE_REVIEW_INFO = "UPDATE reward_project SET research_and_development_office_reviewer=?, research_and_development_office_review_time=NOW() WHERE project_id =?";
-
+    private static final String INITIALIZE_REVIEWER_STATE = "UPDATE reward_project " +
+            "SET reason_for_return = NULL," +
+            "department_reviewer = NULL," +
+            "college_reviewer = NULL," +
+            "industry_liaison_office_reviewer = NULL," +
+            "research_and_development_office_reviewer = NULL," +
+            "department_review_time = NULL," +
+            "college_review_time= NULL," +
+            "industry_liaison_office_review_time = NULL," +
+            "research_and_development_office_review_time= NULL WHERE project_id = ?";
     @Override
     public void insertNewProject( String staff_code, int status_id, String reward_type ) {
         Connection connection = dbConnection.getConnection();
@@ -64,6 +73,19 @@ public class ProjectDAOImpl implements ProjectDAO {
         {
             preparedStatement.setInt(1, status_id);
             preparedStatement.setInt(2, project_id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initializeProjectReviewState(int project_id) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INITIALIZE_REVIEWER_STATE))
+        {
+            preparedStatement.setInt(1, project_id);
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
