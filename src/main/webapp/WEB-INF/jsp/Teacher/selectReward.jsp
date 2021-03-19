@@ -16,7 +16,7 @@
 <body>
     <div class="content" style="width: 60%">
         <form action="/SelectReward" method="post">
-            <p style="text-align:left;font-weight:bold;font-size:20px;">新增獎項： </p>
+            <p style="text-align:left;font-weight:bold;font-size:20px;">申請獎項： </p>
             <table>
                 <tr>
                     <td class="metadata">選擇申請獎項</td>
@@ -30,7 +30,7 @@
                         </select>
                     </td>
                 </tr>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="新增獎項"></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><input type="submit" value="申請"></td></tr>
             </table>
         </form>
     </div>
