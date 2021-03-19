@@ -7,7 +7,9 @@ import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -86,5 +88,15 @@ public class AwardTimeLimitService {
 
         return rewards;
 
+    }
+    public boolean isRewardOpening(String rewardType){
+        long systemTime = System.currentTimeMillis();
+        List<String> openingRewards = this.getOpeningReward();
+        if(openingRewards.indexOf(rewardType) != -1) {
+           return true;
+        }
+        else{
+            return false;
+        }
     }
 }

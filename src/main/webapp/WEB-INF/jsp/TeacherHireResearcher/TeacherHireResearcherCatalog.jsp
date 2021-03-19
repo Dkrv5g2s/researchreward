@@ -16,6 +16,10 @@
                         success: function (data) {
                             alert('申請成功');
                             window.location.href = "/TraceProgress";
+                        },
+                        error: function(jqXHR, textStatus, message) {
+                            //error handling
+                            alert(jqXHR.responseText);
                         }
                     });
                 }
