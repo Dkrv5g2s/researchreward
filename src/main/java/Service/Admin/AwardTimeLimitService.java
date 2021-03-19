@@ -36,6 +36,7 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("l8").getTime()),
                 jsonObject.getDouble("fwciOfFiveYear"));
         awardTimeLimit.setFwciOfThreeYear(jsonObject.getDouble("fwciOfThreeYear"));
+        awardTimeLimit.setH5Index(jsonObject.getDouble("h5Index"));
         awardTimeLimitDAO.save(awardTimeLimit);
     }
 

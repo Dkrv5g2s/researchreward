@@ -21,6 +21,7 @@ public class AwardTimeLimit {
     private Date l8 = new Date(System.currentTimeMillis());
     private double fwciOfFiveYear;
     private double fwciOfThreeYear;
+    private double h5Index;
 
 
     public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwciOfFiveYear) {
@@ -62,6 +63,15 @@ public class AwardTimeLimit {
     public void setFwciOfFiveYear(double fwciOfFiveYear) {
         this.fwciOfFiveYear = fwciOfFiveYear;
     }
+
+    public double getH5Index() {
+        return h5Index;
+    }
+
+    public void setH5Index(double h5Index) {
+        this.h5Index = h5Index;
+    }
+
 
     public Date getS1() {
         return s1;

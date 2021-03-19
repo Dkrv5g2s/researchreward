@@ -43,7 +43,9 @@ public class GeneralInformationService {
                 jsonObject.getString("FWCIValueOfUser"),
                 jsonObject.getBoolean("TeacherFormCheck"),
                 jsonObject.getString("CommitDate"),
-                projectId
+                projectId,
+                jsonObject.getString("h5IndexOfUser")
+
         );
         personalInformationDAO.save(personalInformation);
         fwciUserInputDAO.save(fwciUserInputInfomation);

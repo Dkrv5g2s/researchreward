@@ -89,16 +89,25 @@
             </tr>
 
             <tr style="text-align: center;">
-                <td rowspan="1"  width="20%">申請人如於近5年內發表之論文篇數達15篇（含）以上<br>（5年內曾刊登於本校優質期刊清單者不在此限），於SciVal資料庫中近五年FWCI值<br> ，若為本校近五年FWCI值之倍數加計獎金對應表如下：
+                <td rowspan="1" colspan="2"  width="20%">
+                    <p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計獎金，對應表如下：</p>
                     <br>
                     <table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
                         <tr>
-                            <td rowspan="1" colspan="2" width="20%">倍數</td>
-                            <td rowspan="1" colspan="2" width="20%">1.1-1.3</td>
-                            <td rowspan="1" colspan="2" width="20%">1.3-1.5</td>
-                            <td rowspan="1" colspan="2" width="20%">1.5-1.8</td>
-                            <td rowspan="1" colspan="2" width="20%">1.8-2.2</td>
+                            <td rowspan="1" colspan="2" width="20%">FWCI倍數</td>
+                            <td rowspan="1" colspan="2" width="20%">1.1-1.3(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">1.3-1.5(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">1.5-1.8(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">1.8-2.2(不含)</td>
                             <td rowspan="1" colspan="2" width="20%">2.2以上</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="2" width="20%">h-5指數之倍數</td>
+                            <td rowspan="1" colspan="2" width="20%">0.10-0.15(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">0.15-0.25(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">0.25-0.40(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">0.40-0.55(不含)</td>
+                            <td rowspan="1" colspan="2" width="20%">0.55以上</td>
                         </tr>
                         <tr>
                             <td rowspan="1" colspan="2" width="20%">加計獎金(元)<br><span style="font-style:normal; font-size: 12px;">(依年底預算浮動)</span></td>
@@ -109,12 +118,13 @@
                             <td rowspan="1" colspan="2" width="10%" id="OverTwoPointTwoPrize"></td>
                         </tr>
                     </table>
+                    <br>
+                    <p align="left">申請人近5年FWCI值:&nbsp;<input id="FWCIValueOfUser" maxlength="40" oninput="calculatePrize()">&nbsp;
+                    為本校近五年FWCI值<span >${fwci}</span>之<span id="FWCIValueOfUserDivideNTUT"></span>倍。<br></p>
+                    <p align="left">申請人h-5指數:&nbsp;<input id="h5IndexOfUser" maxlength="40" oninput="calculatePrize()">&nbsp;
+                    為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
 
-                </td>
-                <td rowspan="1"  width="20%">
-                    申請人近5年(2015-2019)FWCI值:&nbsp;<input id="FWCIValueOfUser" maxlength="40" oninput="calculatePrize()"><br> 為本校近五年(2015-2019)FWCI值 <span id="FWCIValueOfNTUT"></span>之&nbsp;
-                    <span id="FWCIValueOfUserDivideNTUT"></span>倍<br> 加計獎金(請對照左表)：&nbsp;
-                    <span id="FWCIPrize"></span>元
+                    <p align="left">上述兩者擇最優一項，加計獎金：&nbsp;<span id="FWCIPrize"></span>元</p>
 
                 </td>
             </tr>
@@ -156,7 +166,6 @@
 
     })
 
-
     function loadPersonalData(){
         $("#chineseName").val("<%=json.optString("chineseName","")%>");
         $("#englishName").val("<%=json.optString("englishName","")%>");
@@ -180,7 +189,8 @@
         $('#FWCIValueOfUser').trigger("input");
         $("#TeacherFormCheck").prop("checked","<%=json.optBoolean("teacherFormCheck",false)%>");
         $("#CommitDate").val("<%=json.optString("commitDate","")%>");
-
+        $('#h5IndexOfUser').prop('value', "<%=json.optString("h5IndexOfUser","")%>");
+        $('#h5IndexOfUser').trigger("input");
 
 
     }
@@ -192,9 +202,7 @@
         $("#UnderOnePointEightPrize").html("<%=json.optString("UnderOnePointEightPrize","")%>");
         $("#UnderTwoPointTwoPrize").html("<%=json.optString("UnderTwoPointTwoPrize","")%>");
         $("#OverTwoPointTwoPrize").html("<%=json.optString("OverTwoPointTwoPrize","")%>");
-        // $("#FWCIValueOfNTUT").html("");
         console.log("loadFWCIPrizeData");
-
     }
 
     function commit(){
@@ -251,29 +259,36 @@
 
         var FWCIValueofntut = ${fwci};
         var FWCIValueofuser = document.getElementById("FWCIValueOfUser").value;
-        var multiple = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
+        var multipleofFWCI = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
 
-        document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multiple;
-        document.getElementById("FWCIPrize").innerHTML = getPrize(multiple);
+        var h5Indexofntut = ${h5Index};
+        var h5Indexofuser = document.getElementById("h5IndexOfUser").value;
+        var multipleofh5 = roundDecimal(FloatDiv(h5Indexofuser,h5Indexofntut),2).toString();
 
-        // console.log("user:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multiple,"FWCIPrize:",getPrize(multiple))
+        document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
+        document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
+        let betterAmount = getPrizeByFWCIMultiple(multipleofFWCI) >= getPrizeByh5Multiple(multipleofh5) ? getPrizeByFWCIMultiple(multipleofFWCI) :getPrizeByh5Multiple(multipleofh5);
+        document.getElementById("FWCIPrize").innerHTML = betterAmount;
+
+        console.log("FWCIuser:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multipleofFWCI,"FWCIPrize:",getPrizeByFWCIMultiple(multipleofFWCI))
+        console.log("h5user:",h5Indexofuser,"ntut:",h5Indexofntut,"multiple:",multipleofh5,"FWCIPrize:",getPrizeByh5Multiple(multipleofh5))
     }
-    function getPrize(multiple){
+    function getPrizeByFWCIMultiple(multiple){
         var prize = "";
 
-        if(parseFloat(multiple)>parseFloat("2.2")){
+        if(parseFloat(multiple)>=parseFloat("2.2")){
             prize = "26000";
         }
-        else if (parseFloat(multiple)>parseFloat("1.8") && parseFloat(multiple)<=parseFloat("2.2")){
+        else if (parseFloat(multiple)>=parseFloat("1.8") && parseFloat(multiple)<parseFloat("2.2")){
             prize = "22000";
         }
-        else if (parseFloat(multiple)>parseFloat("1.5") && parseFloat(multiple)<=parseFloat("1.8")){
+        else if (parseFloat(multiple)>=parseFloat("1.5") && parseFloat(multiple)<parseFloat("1.8")){
             prize = "18000";
         }
-        else if (parseFloat(multiple)>parseFloat("1.3") && parseFloat(multiple)<=parseFloat("1.5")){
+        else if (parseFloat(multiple)>=parseFloat("1.3") && parseFloat(multiple)<parseFloat("1.5")){
             prize = "14000";
         }
-        else if (parseFloat(multiple)>parseFloat("1.1") && parseFloat(multiple)<=parseFloat("1.3")){
+        else if (parseFloat(multiple)>=parseFloat("1.1") && parseFloat(multiple)<parseFloat("1.3")){
             prize = "10000";
         }
         else {
@@ -282,6 +297,29 @@
         return prize;
     }
 
+    function getPrizeByh5Multiple(multiple){
+        var prize = "";
+
+        if(parseFloat(multiple)>=parseFloat("0.55")){
+            prize = "26000";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.40") && parseFloat(multiple)<parseFloat("0.55")){
+            prize = "22000";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.25") && parseFloat(multiple)<parseFloat("0.40")){
+            prize = "18000";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.15") && parseFloat(multiple)<parseFloat("0.25")){
+            prize = "14000";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.10") && parseFloat(multiple)<parseFloat("0.15")){
+            prize = "10000";
+        }
+        else {
+            prize = "0";
+        }
+        return prize;
+    }
 
     function FloatDiv(arg1, arg2){
         var t1 = 0, t2 = 0, r1, r2;

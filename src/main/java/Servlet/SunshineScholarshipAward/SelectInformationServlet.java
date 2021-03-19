@@ -33,6 +33,7 @@ public class SelectInformationServlet extends ServletEntryPoint {
 //        System.out.println("SelectInformationServlet:"+req.toString());
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
 
         if(readonly){

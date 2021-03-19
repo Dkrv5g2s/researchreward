@@ -16,9 +16,9 @@ public class FWCIUserInputDAOImpl implements FWCIUserInputDAO {
     private static final String GET_OBJECT = "SELECT * FROM sunshine_scholarship_award_fwci_user_input WHERE project_id=?";
 
     private static final String INSERT_OBJECT = "INSERT INTO sunshine_scholarship_award_fwci_user_input " +
-            "(sw_article_count_one,sw_point_one,user_fwci_value,teacher_form_check,commit_date,project_id) " +
-            "values(?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
-            "sw_article_count_one=?,sw_point_one=?,user_fwci_value=?,teacher_form_check=?,commit_date=?,project_id=?;";
+            "(sw_article_count_one,sw_point_one,user_fwci_value,teacher_form_check,commit_date,project_id,user_h5_value) " +
+            "values(?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "sw_article_count_one=?,sw_point_one=?,user_fwci_value=?,teacher_form_check=?,commit_date=?,project_id=?,user_h5_value=?;";
 
     @Override
     public void save(FWCIUserInputInfomation object){
@@ -31,12 +31,14 @@ public class FWCIUserInputDAOImpl implements FWCIUserInputDAO {
             preparedStatement.setBoolean(4,object.isTeacherFormCheck());
             preparedStatement.setString(5,object.getCommitDate());
             preparedStatement.setInt(6,object.getProjectId());
-            preparedStatement.setString(7,object.getSwArticleCountOne());
-            preparedStatement.setString(8,object.getSwPointOne());
-            preparedStatement.setString(9,object.getFwciValueOfUser());
-            preparedStatement.setBoolean(10,object.isTeacherFormCheck());
-            preparedStatement.setString(11,object.getCommitDate());
-            preparedStatement.setInt(12,object.getProjectId());
+            preparedStatement.setString(7,object.getH5IndexOfUser());
+            preparedStatement.setString(8,object.getSwArticleCountOne());
+            preparedStatement.setString(9,object.getSwPointOne());
+            preparedStatement.setString(10,object.getFwciValueOfUser());
+            preparedStatement.setBoolean(11,object.isTeacherFormCheck());
+            preparedStatement.setString(12,object.getCommitDate());
+            preparedStatement.setInt(13,object.getProjectId());
+            preparedStatement.setString(14,object.getH5IndexOfUser());
             preparedStatement.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
@@ -59,6 +61,7 @@ public class FWCIUserInputDAOImpl implements FWCIUserInputDAO {
                     result.setTeacherFormCheck(rs.getBoolean("teacher_form_check"));
                     result.setCommitDate(rs.getString("commit_date"));
                     result.setProjectId(rs.getInt("project_id"));
+                    result.setH5IndexOfUser(rs.getString("user_h5_value"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();

@@ -163,7 +163,7 @@
 
                 </td>
                 <td rowspan="1"  width="20%">
-                    申請人近5年(2015-2019)FWCI值:&nbsp;<input id="FWCIValueOfUser" maxlength="40" oninput="calculatePrize()" readonly><br> 為本校近五年(2015-2019)FWCI值 <span id="FWCIValueOfNTUT"></span>之&nbsp;
+                    申請人近5年(2015-2019)FWCI值:&nbsp;<input id="FWCIValueOfUser" maxlength="40" oninput="calculatePrize()" readonly><br> 為本校近五年(2015-2019)FWCI值 <span>${fwci}</span>之&nbsp;
                     <span id="FWCIValueOfUserDivideNTUT"></span>倍<br> 加計獎金(請對照左表)：&nbsp;
                     <span id="FWCIPrize"></span>元
 
@@ -243,7 +243,7 @@
         $("#UnderOnePointEightPrize").html("<%=json.optString("UnderOnePointEightPrize","")%>");
         $("#UnderTwoPointTwoPrize").html("<%=json.optString("UnderTwoPointTwoPrize","")%>");
         $("#OverTwoPointTwoPrize").html("<%=json.optString("OverTwoPointTwoPrize","")%>");
-        $("#FWCIValueOfNTUT").html("<%=json.optString("FWCIValueOfNTUT","")%>");
+        <%--$("#FWCIValueOfNTUT").html("<%=json.optString("FWCIValueOfNTUT","")%>");--%>
         console.log("loadFWCIPrizeData");
 
     }

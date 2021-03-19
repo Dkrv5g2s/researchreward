@@ -379,10 +379,11 @@
         let fwci_value_past_three_year = parseFloat($("#fwci_value_past_three_year")[0].value); //user input
         let school_fwci_value_past_three_year = <%=json.optDouble("fwci", 0.0)%>;
         let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
-        if(parseFloat(fwci_value_past_three_year) >= parseFloat(school_fwci_value_past_three_year*1.5).toFixed(3)) {
+        if(parseFloat(fwci_value_past_three_year) >= parseFloat(school_fwci_value_past_three_year*1.5).toFixed(2)) {
             update_A_plus_B += 10;
         }
         $("#a_plus_b_total_point").text(update_A_plus_B);
+        console.log("3y:",school_fwci_value_past_three_year)
     }
 
     function update_article(obj){
@@ -419,7 +420,7 @@
             money.find('.total_project_money').text(total_money);
         }
         if(!isNaN(total_point)){
-            money.next().find('.total_point').text(total_point.toFixed(3));
+            money.next().find('.total_point').text(total_point.toFixed(2));
         }
     }
 
