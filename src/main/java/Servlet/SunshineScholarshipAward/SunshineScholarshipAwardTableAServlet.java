@@ -69,12 +69,16 @@ public class SunshineScholarshipAwardTableAServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/; charset = UTF-8");
-
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
+        HttpSession session = req.getSession();
+        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
+
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
-        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
+        String reward_type = paperPerformanceDescriptionService.queryRewardType(project_id);
+
+        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject,reward_type);
         System.out.println(duplicatePaperTitle);
-        this.logger.info("duplicatePaperTitle :"+ duplicatePaperTitle);
+        this.logger.debug("duplicatePaperTitle :"+ duplicatePaperTitle);
         if(duplicatePaperTitle.length()>0){
             //means the new paper column is duplicate
             String appliedApplicantName = paperPerformanceDescriptionService.getAppliedApplicantUserName(duplicatePaperTitle);

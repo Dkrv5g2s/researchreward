@@ -78,14 +78,15 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/; charset = UTF-8");
-
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
 
         HttpSession session = req.getSession();
         String staff_code = session.getAttribute("userNumber").toString();
+        int project_id = Integer.valueOf((String)session.getAttribute("projectId"));
 
         PaperPerformanceDescriptionService paperPerformanceDescriptionService = new PaperPerformanceDescriptionService() ;
-        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject);
+        String reward_type = paperPerformanceDescriptionService.queryRewardType(project_id);
+        String duplicatePaperTitle = paperPerformanceDescriptionService.verifyPaperTitle(jsonObject,reward_type);
         this.logger.info( staff_code + " has modified PaperPerformanceDescriptionForm with json message " + jsonObject.toString() );
 
         if(duplicatePaperTitle.length()>0){

@@ -44,7 +44,7 @@ public class PaperPerformanceDescriptionService {
         return reward_type;
     }
 
-    public String verifyPaperTitle(JSONObject json){
+    public String verifyPaperTitle(JSONObject json,String reward_type){
 
         // only check the paperdata which is new application
         // if the paperTitle(book_name in db) has existed in db,it means the title is reapplied,return the title.
@@ -57,7 +57,9 @@ public class PaperPerformanceDescriptionService {
         List<PaperPerformance> paperPerformanceList = specialOutstandingResearcherForm.getPaper_performance_list() ;
         ListIterator<PaperPerformance> it = paperPerformanceList.listIterator();
 
-        List<String> totalPaperSentenceList = dao.query_total_paper_sentence();
+//        List<String> totalPaperSentenceList = dao.query_total_paper_sentence();
+
+        List<String> totalPaperSentenceList = dao.query_total_paper_sentence_in_specified_reward(reward_type);
 
         while (it.hasNext()) {
             PaperPerformance item = it.next();
