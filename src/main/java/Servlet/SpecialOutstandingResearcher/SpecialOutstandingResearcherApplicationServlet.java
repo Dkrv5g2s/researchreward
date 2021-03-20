@@ -62,7 +62,7 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
 
-        User user = new User( "root", "password1234", "上帝", "108598065" ) ;
+        User user = new User( "root", "password1234", "測試", "staff1221" ) ;
 
         this.logger.info( user.getStaff_code() + " has modified SpecialOutstandingResearcherApplicationForm with json message " + jsonObject.toString() );
 

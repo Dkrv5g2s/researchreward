@@ -157,6 +157,17 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AwardDistributionAmountOrPrincipleSevlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.AwardDistributionAmountOrPrincipleSevlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AwardDistributionAmountOrPrincipleSevlet</servlet-name>
+        <url-pattern>/AwardDistributionAmountOrPrincipleForm</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
         <servlet-name>Menu</servlet-name>
         <servlet-class>Servlet.admin.MenuServlet</servlet-class>
     </servlet>

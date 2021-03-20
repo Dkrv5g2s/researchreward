@@ -1,7 +1,7 @@
 package Servlet.SpecialOutstandingResearcher;
 
 import Bean.User.User;
-import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
+import Service.SpecialOutstandingResearcher.AwardDistributionAmountOrPrincipleService;
 import Service.SpecialOutstandingResearcher.ReviewSupportingInformationService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ReviewSupportingInformationServlet extends HttpServlet {
+public class AwardDistributionAmountOrPrincipleSevlet extends HttpServlet {
     private Logger logger = Logger.getLogger(this.getClass());//Log4j
 
     @Override
@@ -39,15 +39,16 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
         int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
-        ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
+        AwardDistributionAmountOrPrincipleService service = new AwardDistributionAmountOrPrincipleService() ;
         String json_form = service.query( project_id ) ;
 
         req.setAttribute("latest_data", json_form );
 
         if ( readonly )
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Review_Supporting_Information_Form.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Award_Distribution_Amount_Or_Principle_Form.jsp").forward(req, resp);
         else
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Review_Supporting_Information_Form.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Award_Distribution_Amount_Or_Principle_Form.jsp").forward(req, resp);
+
     }
 
     @Override
@@ -57,12 +58,11 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
         //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
         User user = new User( "root", "password1234", "測試", "staff1221" ) ;
 
-        this.logger.info( user.getStaff_code() + " has modifiedReviewSupportingInformationForm with json message " + jsonObject.toString() );
+        this.logger.info( user.getStaff_code() + " has modifiedAwardDistributionAmountOrPrincipleForm with json message " + jsonObject.toString() );
 
-        ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
+        AwardDistributionAmountOrPrincipleService service = new AwardDistributionAmountOrPrincipleService() ;
 
         service.save(jsonObject);
-
 
     }
 }

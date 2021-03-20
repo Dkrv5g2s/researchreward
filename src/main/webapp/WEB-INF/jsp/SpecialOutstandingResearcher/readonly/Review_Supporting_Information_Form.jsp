@@ -6,9 +6,7 @@
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
-<% // RewardProject project = (RewardProject)request.getAttribute("project");
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
+<%
     Gson gson = new Gson();
 
 %>

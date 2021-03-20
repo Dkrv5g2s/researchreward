@@ -119,4 +119,16 @@ public class json_transformer_util {
 
         return null ;
     }
+
+    public String award_distribution_amount_or_principle_form_to_json(AwardDistributionAmountOrPrincipleForm awardDistributionAmountOrPrincipleForm) {
+
+        return new Gson().toJson(awardDistributionAmountOrPrincipleForm);
+
+    }
+
+    public AwardDistributionAmountOrPrincipleForm json_to_award_distribution_amount_or_principle_form(JSONObject json) {
+
+        return new Gson().fromJson(json.toString(), AwardDistributionAmountOrPrincipleForm.class);
+
+    }
 }

@@ -40,6 +40,13 @@
             <tr >
                 <td ><a  href="PaperPerformanceDescriptionUpload" >表B 論文績效說明表-上傳檔案</a></td>
             </tr>
+
+            <tr >
+                <td ><a  href="AwardDistributionAmountOrPrincipleForm" >獎勵特殊優秀研究人才獎勵金分配金額或原則表</a></td>
+            </tr>
+
+
+
             <tr><td class="metadata" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">提出申請</button></td></tr>
         </tbody>
 

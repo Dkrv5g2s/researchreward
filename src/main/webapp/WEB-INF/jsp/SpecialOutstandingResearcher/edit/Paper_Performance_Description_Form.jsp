@@ -43,7 +43,9 @@
             <tr>
 <%--                <td colspan="4" class="three_years table_d" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
 <%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
-                <td colspan="4" style="text-align: left;border-width:3px;"></td>
+                <td colspan="4" style="text-align: left;border-width:3px;border-color: #000000">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</td>
+
+
                 <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)</td>
                 <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
             </tr>

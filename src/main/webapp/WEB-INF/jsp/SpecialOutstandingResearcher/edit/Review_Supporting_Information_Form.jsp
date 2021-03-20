@@ -6,9 +6,7 @@
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
-<% // RewardProject project = (RewardProject)request.getAttribute("project");
-    RewardProject project = new RewardProject(1,"108598065","草稿", "優秀人才申請") ;
-    //International_C001_Form c001_form = (International_C001_Form)request.getAttribute("c001_form");
+<%
     Gson gson = new Gson();
 
 %>
@@ -25,7 +23,7 @@
     <pre style="font-size: 15px">二、 以傑出研究奬、特聘教授等奬項申請者，請檢附相關聘書資料影本供參。</pre>
     <pre style="font-size: 15px">三、 每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附
      其他教師同意書<a style="font-weight: bold;">(共同著作授權同意書)</a>。</pre>
-    <pre style="font-size: 15px">四、 學術論著採計Scopus / WOS論文者，請檢附<a style="font-weight: bold;background: #C0C0C0">表B「傑出論文績效說明表」</a>。並請
+    <pre style="font-size: 15px">四、 學術論著採計Scopus / WOS論文者以本校「教師評鑑及基本資料庫」登錄為準，請檢附<a style="font-weight: bold;background: #C0C0C0">表B「傑出論文績效說明表」</a>。並請
      檢附證明文件「期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系
      統之佐證」及「各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國
      際學者、企業、FWCI)」。</pre>
@@ -164,7 +162,7 @@
     }
 
     function InputFormToJson() {
-        latest_data["project_id"] = <%=project.getProject_id()%>   ;
+        latest_data["project_id"] = ${projectId} ;
 
         return JSON.stringify(latest_data) ;
     }
