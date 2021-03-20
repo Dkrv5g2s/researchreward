@@ -83,7 +83,7 @@ public class TeacherHireResearcherTableAService {
                 jsonObject.getString("year4"),
                 jsonObject.getString("year5"),
                 projectID,
-                jsonObject.getString("other_data"),
+                "",
                 jsonObject.getString("commit_date"));
 
         TechProject tp = new TechProject(

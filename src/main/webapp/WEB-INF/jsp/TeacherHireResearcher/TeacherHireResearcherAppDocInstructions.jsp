@@ -15,9 +15,11 @@
                         </tr>
                         <tr>
                             <td>二、 學術論著採計Scopus / WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<a style="font-weight: bold;background: #C0C0C0">表B「傑出論文績效說明表」</a>。並請檢附下列證明文件：
-                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(一) 期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證。</a>
-                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(二) 各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、FWCI、SDG之佐證。</a>
-                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(三) SciVal分析系統之教師近五年FWCI或h-5指數。</a>
+                                <ol>
+                                    <li><a style="font-weight: bold;">期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證。</a></li>
+                                    <li><a style="font-weight: bold;">各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、FWCI、SDG之佐證。</a></li>
+                                    <li><a style="font-weight: bold;">SciVal分析系統之教師近五年FWCI或h-5指數。</a></li>
+                                </ol>
                             </td>
                         </tr>
                         <tr>
