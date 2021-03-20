@@ -14,7 +14,11 @@
                             <td>一、 每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書(共同著作授權同意書)。</td>
                         </tr>
                         <tr>
-                            <td>二、 學術論著採計Scopus / WOS論文者，請檢附<a style="font-weight: bold;background: #C0C0C0">表B「傑出論文績效說明表」</a>。並請檢附證明文件<a style="font-weight: bold;">「期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證」</a>及<a style="font-weight: bold;">「各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、FWCI、SDG)」</a>。</td>
+                            <td>二、 學術論著採計Scopus / WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<a style="font-weight: bold;background: #C0C0C0">表B「傑出論文績效說明表」</a>。並請檢附下列證明文件：
+                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(一) 期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證。</a>
+                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(二) 各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、FWCI、SDG之佐證。</a>
+                                <br><a style="font-weight: bold;">&nbsp;&nbsp;(三) SciVal分析系統之教師近五年FWCI或h-5指數。</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>三、 科技部計畫(不包含科技部產學合作計畫)請以教評系統為準提供相關佐證資料。計畫年度(1/1~12/31)之認定以「計畫開始日期」為準；計畫主持人及共同主持人依所執行計畫分配金額計算執行經費；多年期計畫分年計算單一年度執行金額。</td>
