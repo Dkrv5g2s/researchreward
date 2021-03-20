@@ -1,22 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
-<%@ page import="Utils.DateUtil" %>
 <%
     JSONObject json = (JSONObject) request.getAttribute("json");
-    DateUtil dateUtil = new DateUtil();
-    String TeacherDescription = "";
-    String DepartmentDescription = "";
-
-    String[] applyTypeChecked = {"", "", ""};
-    if (json.getString("applyType").equals("teacher")) {
-        applyTypeChecked[1] = "checked";
-        TeacherDescription = json.getString("applyTypeDescription");
-    }else if (json.getString("applyType").equals("department")) {
-        applyTypeChecked[2] = "checked";
-        DepartmentDescription = json.getString("applyTypeDescription");
-    }else {
-        applyTypeChecked[0] = "checked";
-    }
 
     String[] researcherTypeChecked = {"", ""};
     if (json.getString("researcherType").equals("postDoctoral")) {
@@ -27,7 +12,7 @@
 %>
 <html>
     <head>
-        <title>國立臺北科技大學績優教師聘任研究人員申請表</title>
+        <title>國立臺北科技大學奬助研究績優教師聘任研究人員申請表</title>
         <style>
             body {
                 margin: 20px 0px 0px 0px;
@@ -87,46 +72,21 @@
             }
 
             function InputToJson(){
-                var data = {};
-                data["applyTypeDescription"] = "";
+                let data = {};
 
-                for (var j=0; j<document.getElementsByTagName("input").length; j++) {
+                for (let j=0; j<document.getElementsByTagName("input").length; j++) {
                     let inputElem = document.getElementsByTagName("input")[j];
                     if (inputElem.type!=="button" &&
                         (inputElem.type!=="radio" || (inputElem.type==="radio" && inputElem.checked))) {
-
-                        if (inputElem.id==="applyTypeTeacher")
-                            data["applyTypeDescription"] = document.getElementById("applyTypeTeacherDescription").value;
-                        else if (inputElem.id==="applyTypeDepartment")
-                            data["applyTypeDescription"] = document.getElementById("applyTypeDepartmentDescription").value;
                         data[inputElem.name] = inputElem.value;
-
                     }
                 }
 
-                for (var j=0; j<document.getElementsByTagName("textarea").length; j++) {
+                for (let j=0; j<document.getElementsByTagName("textarea").length; j++) {
                     data[document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
                 }
 
                 return data;
-            }
-
-            function changeTextVisible(option) {
-                if(option === 'teacher'){
-                    document.getElementById("applyTypeTeacherDescription").disabled=false;
-                    document.getElementById("applyTypeDepartmentDescription").disabled=true;
-                    document.getElementById("applyTypeDepartmentDescription").value="";
-                }else if(option === 'department'){
-                    document.getElementById("applyTypeTeacherDescription").disabled=true;
-                    document.getElementById("applyTypeTeacherDescription").value="";
-                    document.getElementById("applyTypeDepartmentDescription").disabled=false;
-                }else {
-                    document.getElementById("applyTypeTeacherDescription").disabled=true;
-                    document.getElementById("applyTypeTeacherDescription").value="";
-                    document.getElementById("applyTypeDepartmentDescription").disabled=true;
-                    document.getElementById("applyTypeDepartmentDescription").value="";
-                }
-
             }
 
             function countWordsTotal() {
@@ -136,7 +96,6 @@
 
 
             $(document).ready(function (){
-                changeTextVisible(document.querySelector('input[name="applyType"]:checked').value);
                 countWordsTotal();
                 $("#applyForSubsidies").on('change paste keyup', function(){
                     countWordsTotal();
@@ -151,34 +110,6 @@
             <form>
                 <table border="1" cellpadding="7" cellspacing="1" width="70%" align="center" style="border-spacing:0px;">
                     <tbody>
-                        <tr>
-                            <td class="metadata">
-                                申請類別
-                            </td>
-                            <td colspan="2">
-                                <label>
-                                    <input type="radio" name="applyType" id="applyTypeAlone" value="alone" onFocus="changeTextVisible('alone')" <%= applyTypeChecked[0]%>>
-                                    單獨申請<br>
-                                </label>
-                                <label>
-                                    <input type="radio" name="applyType" id="applyTypeTeacher" value="teacher" onFocus="changeTextVisible('teacher')" <%= applyTypeChecked[1]%>>
-                                    共同申請教師姓名:
-                                    <input name="applyTypeTeacherDescription" id="applyTypeTeacherDescription" value="<%= TeacherDescription%>" size="10" maxlength="40"><br>
-                                </label>
-                                <label>
-                                    <input type="radio" name="applyType" id="applyTypeDepartment" value="department" onFocus="changeTextVisible('department')" <%= applyTypeChecked[2]%>>
-                                    教學、研究、行政單位<br>
-                                    單位名稱:<input name="applyTypeDepartmentDescription" id="applyTypeDepartmentDescription" value="<%= DepartmentDescription%>" size="10" maxlength="40">
-                                </label>
-                            </td>
-                            <td class="metadata">
-                                聘任研究人員類別
-                            </td>
-                            <td colspan="3">
-                                <label><input type="radio" name="researcherType" value="teacher" <%= researcherTypeChecked[0]%>>研究型教師</label><br>
-                                <label><input type="radio" name="researcherType" value="postDoctoral" <%= researcherTypeChecked[1]%>>博士後研究人員</label>
-                            </td>
-                        </tr>
                         <tr>
                             <td colspan="1" class="metadata">
                                 申請人姓名<br>(英文姓名)
@@ -223,33 +154,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" rowspan="3" class="metadata">
+                            <td colspan="1" class="metadata">
+                                聘任研究人員類別
+                            </td>
+                            <td colspan="2">
+                                <label><input type="radio" name="researcherType" value="teacher" <%= researcherTypeChecked[0]%>>研究型教師</label><br>
+                                <label><input type="radio" name="researcherType" value="postDoctoral" <%= researcherTypeChecked[1]%>>博士後研究人員</label>
+                            </td>
+                            <td colspan="1" class="metadata">
                                 受聘人姓名<br>(研究人員)
                             </td>
-                            <td colspan="2" rowspan="3">
+                            <td colspan="3">
                                 <input name="researcherName" value="<%= json.get("researcherName")%>" size="10" maxlength="40">
-                            </td>
-                            <td colspan="1" class="metadata">
-                                出生日期
-                            </td>
-                            <td colspan="3">
-                                <input type="date" name="researcherBirthDate" value="<%= json.get("researcherBirthDate")%>" max="<%=dateUtil.getNowDate()%>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" class="metadata">
-                                身份證字號
-                            </td>
-                            <td colspan="3">
-                                <input name="researcherIdNum" value="<%= json.get("researcherIdNum")%>" size="10" maxlength="40">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" class="metadata">
-                                聯絡電話
-                            </td>
-                            <td colspan="3">
-                                <input name="researcherPhone" value="<%= json.get("researcherPhone")%>" size="10" maxlength="40">
                             </td>
                         </tr>
                         <tr>
@@ -295,13 +211,13 @@
                                 <input name="expectedPerformanceNearFiveYears" value="<%= json.get("expectedPerformanceNearFiveYears")%>" size="40" maxlength="50"><br>
                                 預期每年論文點數:
                                 <input name="expectedPerformancePerYears" value="<%= json.get("expectedPerformancePerYears")%>" size="40" maxlength="50"><br>
-                                其它:
-                                <input name="expectedPerformanceOthers" value="<%= json.get("expectedPerformanceOthers")%>" size="40" maxlength="50">
+                                其它(分列執行第一期、第二期…之論文總點數/平均點數，如C表):
+                                <input name="expectedPerformanceOthers" value="<%= json.get("expectedPerformanceOthers")%>" size="60" maxlength="50">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                申請補助項目<br>(含總補助金額)
+                                申請補助項目<br>(人事費)
                             </td>
                             <td colspan="6">
                                 <textarea id="applyForSubsidies" name="applyForSubsidies" rows="8" cols="60" maxlength="500" required><%= json.get("applyForSubsidies")%></textarea>

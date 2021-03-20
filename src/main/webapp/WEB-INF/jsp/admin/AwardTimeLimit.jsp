@@ -59,7 +59,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="metadata">績優教師聘任研究人員</td>
+                        <td class="metadata">奬助研究績優教師聘任研究人員</td>
                         <td><input type="date" name="s1" value="<%= jsonObject.getDate("s1")%>" required>至<input type="date" name="l1" value="<%= jsonObject.getDate("l1")%>" required></td>
                     </tr>
                     <tr>

@@ -2,9 +2,6 @@ package Bean.TeacherHireResearcher;
 
 public class TeacherHireResearcherForm {
     private int rewardProjectId;
-    private String applyType;
-    private String applyTypeDescription;
-    private String researcherType;
     private String applicantName;
     private String applicantJobTitle;
     private String applicantDepartment;
@@ -12,10 +9,8 @@ public class TeacherHireResearcherForm {
     private String applicantSeniority;
     private String applicantResearchRoomExt;
     private String applicantPhone;
+    private String researcherType;
     private String researcherName;
-    private String researcherBirthDate;
-    private String researcherIdNum;
-    private String researcherPhone;
     private String researcherJobTitle;
     private String researcherSalaryScale;
     private String projectCategory;
@@ -26,16 +21,13 @@ public class TeacherHireResearcherForm {
     private String expectedPerformanceOthers;
     private String applyForSubsidies;
 
-    public TeacherHireResearcherForm(int rewardProjectId, String applyType, String applyTypeDescription, String researcherType, String applicantName,
+    public TeacherHireResearcherForm(int rewardProjectId, String applicantName,
                                      String applicantJobTitle, String applicantDepartment, String applicantEmail, String applicantSeniority,
-                                     String applicantResearchRoomExt, String applicantPhone, String researcherName, String researcherBirthDate,
-                                     String researcherIdNum, String researcherPhone, String researcherJobTitle, String researcherSalaryScale,
+                                     String applicantResearchRoomExt, String applicantPhone, String researcherType, String researcherName,
+                                     String researcherJobTitle, String researcherSalaryScale,
                                      String projectCategory, String projectName, String projectAmount, String expectedPerformanceNearFiveYears,
                                      String expectedPerformancePerYears, String expectedPerformanceOthers, String applyForSubsidies){
         this.rewardProjectId = rewardProjectId;
-        this.applyType = applyType;
-        this.applyTypeDescription = applyTypeDescription;
-        this.researcherType = researcherType;
         this.applicantName = applicantName;
         this.applicantJobTitle = applicantJobTitle;
         this.applicantDepartment = applicantDepartment;
@@ -43,10 +35,8 @@ public class TeacherHireResearcherForm {
         this.applicantSeniority = applicantSeniority;
         this.applicantResearchRoomExt = applicantResearchRoomExt;
         this.applicantPhone = applicantPhone;
+        this.researcherType = researcherType;
         this.researcherName = researcherName;
-        this.researcherBirthDate = researcherBirthDate;
-        this.researcherIdNum = researcherIdNum;
-        this.researcherPhone = researcherPhone;
         this.researcherJobTitle = researcherJobTitle;
         this.researcherSalaryScale = researcherSalaryScale;
         this.projectCategory = projectCategory;
@@ -68,30 +58,6 @@ public class TeacherHireResearcherForm {
 
     public void setRewardProjectId(int rewardProjectId) {
         this.rewardProjectId = rewardProjectId;
-    }
-
-    public String getApplyType() {
-        return applyType;
-    }
-
-    public void setApplyType(String applyType) {
-        this.applyType = applyType;
-    }
-
-    public String getApplyTypeDescription() {
-        return applyTypeDescription;
-    }
-
-    public void setApplyTypeDescription(String applyTypeDescription) {
-        this.applyTypeDescription = applyTypeDescription;
-    }
-
-    public String getResearcherType() {
-        return researcherType;
-    }
-
-    public void setResearcherType(String researcherType) {
-        this.researcherType = researcherType;
     }
 
     public String getApplicantName() {
@@ -150,36 +116,20 @@ public class TeacherHireResearcherForm {
         this.applicantPhone = applicantPhone;
     }
 
+    public String getResearcherType() {
+        return researcherType;
+    }
+
+    public void setResearcherType(String researcherType) {
+        this.researcherType = researcherType;
+    }
+
     public String getResearcherName() {
         return researcherName;
     }
 
     public void setResearcherName(String researcherName) {
         this.researcherName = researcherName;
-    }
-
-    public String getResearcherBirthDate() {
-        return researcherBirthDate;
-    }
-
-    public void setResearcherBirthDate(String researcherBirthDate) {
-        this.researcherBirthDate = researcherBirthDate;
-    }
-
-    public String getResearcherIdNum() {
-        return researcherIdNum;
-    }
-
-    public void setResearcherIdNum(String researcherIdNum) {
-        this.researcherIdNum = researcherIdNum;
-    }
-
-    public String getResearcherPhone() {
-        return researcherPhone;
-    }
-
-    public void setResearcherPhone(String researcherPhone) {
-        this.researcherPhone = researcherPhone;
     }
 
     public String getResearcherJobTitle() {

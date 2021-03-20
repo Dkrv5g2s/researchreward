@@ -1,6 +1,5 @@
 package Servlet.Teacher;
 
-import Bean.Admin.AwardTimeLimit;
 import Service.Admin.AwardTimeLimitService;
 import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;

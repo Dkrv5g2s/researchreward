@@ -13,9 +13,6 @@ public class TeacherHireResearcherFormService {
     public void save(JSONObject jsonObject, int rewardProjectId){
         TeacherHireResearcherForm teacherHireResearcherForm = new TeacherHireResearcherForm(
                 rewardProjectId,
-                jsonObject.getString("applyType"),
-                jsonObject.getString("applyTypeDescription"),
-                jsonObject.getString("researcherType"),
                 jsonObject.getString("applicantName"),
                 jsonObject.getString("applicantJobTitle"),
                 jsonObject.getString("applicantDepartment"),
@@ -23,10 +20,8 @@ public class TeacherHireResearcherFormService {
                 jsonObject.getString("applicantSeniority"),
                 jsonObject.getString("applicantResearchRoomExt"),
                 jsonObject.getString("applicantPhone"),
+                jsonObject.getString("researcherType"),
                 jsonObject.getString("researcherName"),
-                jsonObject.getString("researcherBirthDate"),
-                jsonObject.getString("researcherIdNum"),
-                jsonObject.getString("researcherPhone"),
                 jsonObject.getString("researcherJobTitle"),
                 jsonObject.getString("researcherSalaryScale"),
                 jsonObject.getString("projectCategory"),

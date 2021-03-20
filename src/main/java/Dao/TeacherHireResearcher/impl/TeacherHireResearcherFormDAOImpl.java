@@ -15,19 +15,19 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String SELECT = "SELECT * FROM teacher_hire_researcher_form WHERE reward_project_id = ?";
     private static final String INSERT =
-            "INSERT INTO teacher_hire_researcher_form (reward_project_id, apply_type, apply_type_description, researcher_type, applicant_name, " +
+            "INSERT INTO teacher_hire_researcher_form (reward_project_id, applicant_name, " +
                     "applicant_job_title, applicant_department, applicant_email, applicant_seniority, applicant_research_room_ext, applicant_phone, " +
-                    "researcher_name, researcher_birth_date, researcher_id_num, researcher_phone, researcher_job_title, researcher_salary_scale, " +
+                    "researcher_type, researcher_name, researcher_job_title, researcher_salary_scale, " +
                     "project_category, project_name, project_amount, expected_performance_near_five_years, expected_performance_per_years, " +
                     "expected_performance_others, apply_for_subsidies) " +
-                    "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
             "UPDATE teacher_hire_researcher_form " +
-                    "SET apply_type = ?, apply_type_description = ?, researcher_type = ?, applicant_name = ?, applicant_job_title = ?, " +
-                    "applicant_department = ?, applicant_email = ?, applicant_seniority = ?,  applicant_research_room_ext = ?, applicant_phone = ?, " +
-                    "researcher_name = ?, researcher_birth_date = ?, researcher_id_num = ?, researcher_phone = ?, researcher_job_title = ?, " +
-                    "researcher_salary_scale = ?, project_category = ?, project_name = ?, project_amount = ?, expected_performance_near_five_years = ?," +
-                    "expected_performance_per_years = ?, expected_performance_others = ?, apply_for_subsidies = ?" +
+                    "SET applicant_name = ?, applicant_job_title = ?, " +
+                    "applicant_department = ?, applicant_email = ?, applicant_seniority = ?, applicant_research_room_ext = ?, applicant_phone = ?, " +
+                    "researcher_type = ?, researcher_name = ?, researcher_job_title = ?, " +
+                    "researcher_salary_scale = ?, project_category = ?, project_name = ?, project_amount = ?, expected_performance_near_five_years = ?, " +
+                    "expected_performance_per_years = ?, expected_performance_others = ?, apply_for_subsidies = ? " +
                     "WHERE reward_project_id = ?";
 
     @Override
@@ -36,7 +36,6 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
         ResultSet resultSet = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT))
         {
-            //project id source??
             preparedStatement.setInt(1, object.getRewardProjectId());
             resultSet = preparedStatement.executeQuery();
 
@@ -71,9 +70,6 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 teacherHireResearcherForm.setRewardProjectId(resultSet.getInt("reward_project_id"));
-                teacherHireResearcherForm.setApplyType(resultSet.getString("apply_type"));
-                teacherHireResearcherForm.setApplyTypeDescription(resultSet.getString("apply_type_description"));
-                teacherHireResearcherForm.setResearcherType(resultSet.getString("researcher_type"));
                 teacherHireResearcherForm.setApplicantName(resultSet.getString("applicant_name"));
                 teacherHireResearcherForm.setApplicantJobTitle(resultSet.getString("applicant_job_title"));
                 teacherHireResearcherForm.setApplicantDepartment(resultSet.getString("applicant_department"));
@@ -81,10 +77,8 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
                 teacherHireResearcherForm.setApplicantSeniority(resultSet.getString("applicant_seniority"));
                 teacherHireResearcherForm.setApplicantResearchRoomExt(resultSet.getString("applicant_research_room_ext"));
                 teacherHireResearcherForm.setApplicantPhone(resultSet.getString("applicant_phone"));
+                teacherHireResearcherForm.setResearcherType(resultSet.getString("researcher_type"));
                 teacherHireResearcherForm.setResearcherName(resultSet.getString("researcher_name"));
-                teacherHireResearcherForm.setResearcherBirthDate(resultSet.getString("researcher_birth_date"));
-                teacherHireResearcherForm.setResearcherIdNum(resultSet.getString("researcher_id_num"));
-                teacherHireResearcherForm.setResearcherPhone(resultSet.getString("researcher_phone"));
                 teacherHireResearcherForm.setResearcherJobTitle(resultSet.getString("researcher_job_title"));
                 teacherHireResearcherForm.setResearcherSalaryScale(resultSet.getString("researcher_salary_scale"));
                 teacherHireResearcherForm.setProjectCategory(resultSet.getString("project_category"));
@@ -106,29 +100,24 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {
             preparedStatement.setInt(1,object.getRewardProjectId());
-            preparedStatement.setString(2,object.getApplyType());
-            preparedStatement.setString(3,object.getApplyTypeDescription());
-            preparedStatement.setString(4,object.getResearcherType());
-            preparedStatement.setString(5,object.getApplicantName());
-            preparedStatement.setString(6,object.getApplicantJobTitle());
-            preparedStatement.setString(7,object.getApplicantDepartment());
-            preparedStatement.setString(8,object.getApplicantEmail());
-            preparedStatement.setString(9,object.getApplicantSeniority());
-            preparedStatement.setString(10,object.getApplicantResearchRoomExt());
-            preparedStatement.setString(11,object.getApplicantPhone());
-            preparedStatement.setString(12,object.getResearcherName());
-            preparedStatement.setString(13,object.getResearcherBirthDate());
-            preparedStatement.setString(14,object.getResearcherIdNum());
-            preparedStatement.setString(15,object.getResearcherPhone());
-            preparedStatement.setString(16,object.getResearcherJobTitle());
-            preparedStatement.setString(17,object.getResearcherSalaryScale());
-            preparedStatement.setString(18,object.getProjectCategory());
-            preparedStatement.setString(19,object.getProjectName());
-            preparedStatement.setString(20,object.getProjectAmount());
-            preparedStatement.setString(21,object.getExpectedPerformanceNearFiveYears());
-            preparedStatement.setString(22,object.getExpectedPerformancePerYears());
-            preparedStatement.setString(23,object.getExpectedPerformanceOthers());
-            preparedStatement.setString(24,object.getApplyForSubsidies());
+            preparedStatement.setString(2,object.getApplicantName());
+            preparedStatement.setString(3,object.getApplicantJobTitle());
+            preparedStatement.setString(4,object.getApplicantDepartment());
+            preparedStatement.setString(5,object.getApplicantEmail());
+            preparedStatement.setString(6,object.getApplicantSeniority());
+            preparedStatement.setString(7,object.getApplicantResearchRoomExt());
+            preparedStatement.setString(8,object.getApplicantPhone());
+            preparedStatement.setString(9,object.getResearcherType());
+            preparedStatement.setString(10,object.getResearcherName());
+            preparedStatement.setString(11,object.getResearcherJobTitle());
+            preparedStatement.setString(12,object.getResearcherSalaryScale());
+            preparedStatement.setString(13,object.getProjectCategory());
+            preparedStatement.setString(14,object.getProjectName());
+            preparedStatement.setString(15,object.getProjectAmount());
+            preparedStatement.setString(16,object.getExpectedPerformanceNearFiveYears());
+            preparedStatement.setString(17,object.getExpectedPerformancePerYears());
+            preparedStatement.setString(18,object.getExpectedPerformanceOthers());
+            preparedStatement.setString(19,object.getApplyForSubsidies());
 
             preparedStatement.executeUpdate();
             connection.close();
@@ -140,30 +129,25 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
     private void update(Connection connection,TeacherHireResearcherForm object) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE))
         {
-            preparedStatement.setString(1,object.getApplyType());
-            preparedStatement.setString(2,object.getApplyTypeDescription());
-            preparedStatement.setString(3,object.getResearcherType());
-            preparedStatement.setString(4,object.getApplicantName());
-            preparedStatement.setString(5,object.getApplicantJobTitle());
-            preparedStatement.setString(6,object.getApplicantDepartment());
-            preparedStatement.setString(7,object.getApplicantEmail());
-            preparedStatement.setString(8,object.getApplicantSeniority());
-            preparedStatement.setString(9,object.getApplicantResearchRoomExt());
-            preparedStatement.setString(10,object.getApplicantPhone());
-            preparedStatement.setString(11,object.getResearcherName());
-            preparedStatement.setString(12,object.getResearcherBirthDate());
-            preparedStatement.setString(13,object.getResearcherIdNum());
-            preparedStatement.setString(14,object.getResearcherPhone());
-            preparedStatement.setString(15,object.getResearcherJobTitle());
-            preparedStatement.setString(16,object.getResearcherSalaryScale());
-            preparedStatement.setString(17,object.getProjectCategory());
-            preparedStatement.setString(18,object.getProjectName());
-            preparedStatement.setString(19,object.getProjectAmount());
-            preparedStatement.setString(20,object.getExpectedPerformanceNearFiveYears());
-            preparedStatement.setString(21,object.getExpectedPerformancePerYears());
-            preparedStatement.setString(22,object.getExpectedPerformanceOthers());
-            preparedStatement.setString(23,object.getApplyForSubsidies());
-            preparedStatement.setInt(24,object.getRewardProjectId());
+            preparedStatement.setString(1,object.getApplicantName());
+            preparedStatement.setString(2,object.getApplicantJobTitle());
+            preparedStatement.setString(3,object.getApplicantDepartment());
+            preparedStatement.setString(4,object.getApplicantEmail());
+            preparedStatement.setString(5,object.getApplicantSeniority());
+            preparedStatement.setString(6,object.getApplicantResearchRoomExt());
+            preparedStatement.setString(7,object.getApplicantPhone());
+            preparedStatement.setString(8,object.getResearcherType());
+            preparedStatement.setString(9,object.getResearcherName());
+            preparedStatement.setString(10,object.getResearcherJobTitle());
+            preparedStatement.setString(11,object.getResearcherSalaryScale());
+            preparedStatement.setString(12,object.getProjectCategory());
+            preparedStatement.setString(13,object.getProjectName());
+            preparedStatement.setString(14,object.getProjectAmount());
+            preparedStatement.setString(15,object.getExpectedPerformanceNearFiveYears());
+            preparedStatement.setString(16,object.getExpectedPerformancePerYears());
+            preparedStatement.setString(17,object.getExpectedPerformanceOthers());
+            preparedStatement.setString(18,object.getApplyForSubsidies());
+            preparedStatement.setInt(19,object.getRewardProjectId());
 
             preparedStatement.executeUpdate();
             connection.close();

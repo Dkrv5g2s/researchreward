@@ -5,7 +5,6 @@ import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 import java.sql.Date;
 import java.util.List;
@@ -88,7 +87,7 @@ public class RewardListService {
                 return "/SpecialOutstandingResearcherCatalog";
             case "陽光獎助金論文獎勵":
                 return "/SunshineScholarshipCatalog";
-            case "績優教師聘任研究人員":
+            case "奬助研究績優教師聘任研究人員":
                 return "/TeacherHireResearcherCatalog";
             case "年輕學者研究獎":
                 return "/JuniorResearchInvestigatorCatalog";
