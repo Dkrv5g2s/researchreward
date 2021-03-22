@@ -98,6 +98,10 @@
                         <td class="metadata">本校近3年FWCI值</td>
                         <td><input type="number" name="fwciOfThreeYear" value="<%= jsonObject.getDouble("fwciOfThreeYear")%>" required></td>
                     </tr>
+                    <tr>
+                        <td class="metadata">h5指數</td>
+                        <td><input type="number" name="h5Index" value="<%= jsonObject.getDouble("h5Index")%>" required></td>
+                    </tr>
                     <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><button type="button" onclick="commit()">存檔</button></td></tr>
                 </tbody>
             </table>
