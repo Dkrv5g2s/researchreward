@@ -387,7 +387,7 @@
 		                <td colspan="1" width="10%" id="sw_point_total" class="total_count" ><%=json.get("sw_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td colspan="7" width="80%">說明：採計Scopus論文者，請檢附-表B「傑出論文績效說明表」</td>
+		                <td colspan="7" width="80%">說明：論文請檢附-表B「傑出論文績效說明表」</td>
 		            </tr>
 		            <tr style="text-align: center;" class="count1">
 		                <td rowspan="2" colspan="1" width="20%">TSSCI/THCI (限設計及人社學院)</td>
@@ -451,8 +451,15 @@
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
+		            <tr>
+		                <td colspan="8"><p>說明：</p>
+		                    <p>1.近五年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
+		                    <p>2.論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</p>
+		                    <p>3.每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</p>
+		                </td>
+		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
-		                <td rowspan="2" colspan="2" width="30%">科 技 部 計 畫</td>
+		                <td rowspan="2" colspan="2" width="30%">科 技 部 計 畫<br>(不包含科技部產學合作計畫)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
 		                <td rowspan="2" width="10%" colspan="1">小計</td>
 		            </tr>
@@ -499,7 +506,7 @@
 		                </td>
 		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
-		                <td rowspan="2" colspan="2" width="30%">教 育 部 計 畫</td>
+		                <td rowspan="2" colspan="2" width="30%">教 育 部 計 畫<br>(USR)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
 		                <td rowspan="2" width="10%" colspan="1">小計</td>
 		            </tr>
@@ -540,7 +547,7 @@
 		            </tr>
 		            
 		            <tr style="text-align:center;background:  #C0C0C0 ">
-		                <td rowspan="2" colspan="2" width="30%">產 學 合 作 計 畫</td>
+		                <td rowspan="2" colspan="2" width="30%">產 學 合 作 計 畫<br>(不包含以學校名義開授訓練課程招生收入)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
 		                <td rowspan="2" width="10%" colspan="1">小計</td>
 		            </tr>
@@ -597,7 +604,7 @@
 		                </td>
 		            </tr>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
-		                <td rowspan="2" colspan="2" width="30%">技 術 移 轉 金</td>
+		                <td rowspan="2" colspan="2" width="30%">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
 		                <td rowspan="2" width="10%" colspan="1">小計</td>
 		            </tr>
