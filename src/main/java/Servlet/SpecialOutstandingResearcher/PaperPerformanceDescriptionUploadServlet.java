@@ -8,7 +8,9 @@ import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDA
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.Teacher.RewardListService;
+import Service.TeacherHireResearcher.TeacherHireResearcherTableCService;
 import Utils.SystemUtil;
+import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.log4j.Logger;
 
@@ -50,23 +52,28 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
         HttpSession session = req.getSession() ;
         int project_id = Integer.valueOf(session.getAttribute("projectId").toString());
         boolean readonly = (Boolean)session.getAttribute("readonly");
-        String table_d = req.getParameter("table_d");
+        String table_c = req.getParameter("table_c");
 
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
+        TeacherHireResearcherTableCService teacherHireResearcherTableCService = new TeacherHireResearcherTableCService();
+
         String json_form = "";
-        if (table_d!=null && table_d.equals("1")){
+        JSONObject tableCJson = new JSONObject();
+        if (table_c!=null && table_c.equals("1")){
             json_form = service.query( -project_id );
-            req.setAttribute("table_d", true );
+            tableCJson.put("isTableC", true);
+            tableCJson.putAll(teacherHireResearcherTableCService.get(-project_id));
         }
         else{
             json_form = service.query( project_id );
-            req.setAttribute("table_d", false );
+            tableCJson.put("isTableC", false);
         }
 
         String reward_type = service.queryRewardType(project_id);
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("reward_type", reward_type );
+        req.setAttribute("tableCJson", tableCJson);
 
         RewardListService rewardListService = new RewardListService();
         req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));

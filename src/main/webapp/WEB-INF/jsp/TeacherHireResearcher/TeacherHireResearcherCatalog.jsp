@@ -83,10 +83,10 @@
                     <td><a href="/PaperPerformanceDescriptionUpload">傑出論文績效說明表(表B)-上傳檔案</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm?table_d=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)</a></td>
+                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload?table_d=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)-上傳檔案</a></td>
+                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)-上傳檔案</a></td>
                 </tr>
                 </tbody>
             </table>

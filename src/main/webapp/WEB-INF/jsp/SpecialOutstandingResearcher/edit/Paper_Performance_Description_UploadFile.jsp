@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
     <p class="table_b" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
-    <p class="table_d" style="font-weight:bold;font-size:20px;text-align: center;">績優教師執行第一期績效說明表(申請第二期者填寫)(表D)</p>
+    <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="2" maxlength="4" style="text-align:center;" readonly>期績效說明表(申請第二期以上者填寫)(表C)</p>
 </div>
 <div class="container" style="margin: 0px auto;width: 80%;">
     <form id="c001_form">
@@ -106,6 +106,8 @@
     //var latest_data = ${latest_data} ;
     latest_data
     var latest_data = <%=latest_data%> ;
+    let tableCJson = ${tableCJson};
+    let IsTableC = tableCJson.isTableC;
 
 
     function downloadFile1( index ) {
@@ -125,11 +127,10 @@
 
     function showSection(){
         $(".table_b").hide();
-        $(".table_d").hide();
-        let is_table_d = ${table_d};
+        $(".table_c").hide();
 
-        if(is_table_d)
-            $(".table_d").show();
+        if(IsTableC)
+            $(".table_c").show();
         else
             $(".table_b").show();
     }
@@ -208,6 +209,9 @@
         if(html=="")
             html = "<tr></tr>";
         $("#data_table").html(html);
+
+        if(IsTableC)
+            $("input[id='numOfPerformancePeriod']").val(tableCJson.numOfPerformancePeriod);
 
         for(var i=0;i<paper_performence.length;i++){
 
