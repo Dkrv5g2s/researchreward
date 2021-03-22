@@ -18,6 +18,7 @@
             if(<%=request.getAttribute("flag")%>) {
                 $("li[name='a']").remove();
                 $("li[name='b']").remove();
+                $("li[name='c']").remove();
             }
             if(<%=request.getAttribute("pendingReward")%>){
                 $("#head").append("<span style=\"font-size:12pt;font-family: 'Microsoft Tai Le'\">您有尚未審核的獎項</span>");
@@ -44,10 +45,11 @@
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">
-                    <li class='top' name="a"><a href='AwardTimeLimit' class='top_link' target="iframe"><span class='down'>獎項開放時間</span></a></li>
-                    <li class='top' name="b"><a href='BFormFormula' class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>
-                    <li class='top' name="c"><a href='RewardPendingList' class='top_link' target="iframe"><span class='down'>待審核獎項</span></a></li>
-                    <li class='top' name="d"><a href='ApprovedRewardList' class='top_link' target="iframe"><span class='down'>已審核獎項</span></a></li>
+                    <li class='top' name="a"><a href='SpecialOutstandingResearcherSetting' class='top_link' target="iframe"><span class='down'>特殊優秀研究人才申請表年度設定</span></a></li>
+                    <li class='top' name="b"><a href='AwardTimeLimit' class='top_link' target="iframe"><span class='down'>獎項開放時間</span></a></li>
+                    <li class='top' name="c"><a href='BFormFormula' class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>
+                    <li class='top' name="d"><a href='RewardPendingList' class='top_link' target="iframe"><span class='down'>待審核獎項</span></a></li>
+                    <li class='top' name="e"><a href='ApprovedRewardList' class='top_link' target="iframe"><span class='down'>已審核獎項</span></a></li>
                 </ul>
             </div>
 
