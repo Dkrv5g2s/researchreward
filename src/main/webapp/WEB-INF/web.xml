@@ -82,15 +82,6 @@
         <url-pattern>/DistinguishedProfessorTableA</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
-        <servlet-class>Servlet.DistinguishedProfessor.DistinguishedProfessorTableBServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DistinguishedProfessorTableBServlet</servlet-name>
-        <url-pattern>/DistinguishedProfessorTableB</url-pattern>
-    </servlet-mapping>
-
 
     <servlet>
         <servlet-name>SpecialOutstandingResearcherApplicationServlet</servlet-name>
@@ -616,6 +607,15 @@
     <servlet-mapping>
     <servlet-name>LectureProfessorExcellenceFormDServlet</servlet-name>
     <url-pattern>/LectureProfessorExcellenceFormD</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherSettingServlet</servlet-name>
+        <servlet-class>Servlet.admin.SpecialOutstandingResearcherSettingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherSettingServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherSetting</url-pattern>
     </servlet-mapping>
 
 </web-app>

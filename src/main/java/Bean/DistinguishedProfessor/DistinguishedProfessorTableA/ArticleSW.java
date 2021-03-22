@@ -15,12 +15,12 @@ public class ArticleSW {
     private String sw_point_total; 
     private String fwci_value;
     private String h5_index;
-	private String a_plus_b_total_point;
-    
+    private String a_plus_b_total_point;
+
 	public ArticleSW(String sw_article_count1, String sw_article_count2, String sw_article_count3, String sw_article_count4,
-			String sw_article_count5, String sw_article_count_total, String sw_point1, String sw_point2,
-			String sw_point3, String sw_point4, String sw_point5, String sw_point_total,
-			String fwci_value, String h5_index, String a_plus_b_total_point) {
+					 String sw_article_count5, String sw_article_count_total, String sw_point1, String sw_point2,
+					 String sw_point3, String sw_point4, String sw_point5, String sw_point_total,
+					 String fwci_value, String h5_index, String a_plus_b_total_point) {
 		this.sw_article_count1 = sw_article_count1;
 		this.sw_article_count2 = sw_article_count2;
 		this.sw_article_count3 = sw_article_count3;
