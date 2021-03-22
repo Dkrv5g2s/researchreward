@@ -618,4 +618,13 @@
     <url-pattern>/LectureProfessorExcellenceFormD</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherSettingServlet</servlet-name>
+        <servlet-class>Servlet.admin.SpecialOutstandingResearcherSettingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherSettingServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherSetting</url-pattern>
+    </servlet-mapping>
+
 </web-app>
