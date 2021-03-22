@@ -2,6 +2,7 @@ package Servlet.SpecialOutstandingResearcher;
 
 import Bean.User.User;
 
+import Service.Admin.SpecialOutstandingResearcherSettingService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -42,8 +43,9 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         boolean readonly = (Boolean)session.getAttribute("readonly");
 
         SpecialOutstandingResearcherApplicationService service = new SpecialOutstandingResearcherApplicationService() ;
+        SpecialOutstandingResearcherSettingService specialOutstandingResearcherSettingService = new SpecialOutstandingResearcherSettingService() ;
         String json_form = service.query( project_id ) ;
-        String date_info=service.queryDateInformation() ;
+        JSONObject date_info = specialOutstandingResearcherSettingService.get() ;
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("date_info", date_info );

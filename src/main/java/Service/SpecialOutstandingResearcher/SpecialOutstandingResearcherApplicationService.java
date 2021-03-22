@@ -29,9 +29,4 @@ public class SpecialOutstandingResearcherApplicationService {
     }
 
 
-    public String queryDateInformation() {
-        SpecialOutstandingResearcherApplicaiotnDAO dao = new SpecialOutstandingResearcherApplicaiotnDAOImpl() ;
-
-        SpecialOutstandingResearcherForm specialOutstandingResearcherForm = dao.queryDateInfo(project_id);
-    }
 }

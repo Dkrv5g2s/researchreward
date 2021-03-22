@@ -48,5 +48,4 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
 
     }
 
-
 }
