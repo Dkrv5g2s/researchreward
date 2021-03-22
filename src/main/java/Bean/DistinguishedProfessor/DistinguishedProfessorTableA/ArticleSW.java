@@ -14,12 +14,13 @@ public class ArticleSW {
     private String sw_point5;
     private String sw_point_total; 
     private String fwci_value;
+    private String h5_index;
     private String a_plus_b_total_point;
-    
+
 	public ArticleSW(String sw_article_count1, String sw_article_count2, String sw_article_count3, String sw_article_count4,
 					 String sw_article_count5, String sw_article_count_total, String sw_point1, String sw_point2,
 					 String sw_point3, String sw_point4, String sw_point5, String sw_point_total,
-					 String fwci_value, String a_plus_b_total_point) {
+					 String fwci_value, String h5_index, String a_plus_b_total_point) {
 		this.sw_article_count1 = sw_article_count1;
 		this.sw_article_count2 = sw_article_count2;
 		this.sw_article_count3 = sw_article_count3;
@@ -33,6 +34,7 @@ public class ArticleSW {
 		this.sw_point5 = sw_point5;
 		this.sw_point_total = sw_point_total;
 		this.fwci_value = fwci_value;
+		this.h5_index = h5_index;
 		this.a_plus_b_total_point = a_plus_b_total_point;
 	}
 	
@@ -115,6 +117,15 @@ public class ArticleSW {
 	public void setFwci_value(String fwci_value) {
 		this.fwci_value = fwci_value;
 	}
+
+	public String getH5_index() {
+		return h5_index;
+	}
+
+	public void setH5_index(String h5_index) {
+		this.h5_index = h5_index;
+	}
+
 	public String getA_plus_b_total_point() {
 		return a_plus_b_total_point;
 	}
