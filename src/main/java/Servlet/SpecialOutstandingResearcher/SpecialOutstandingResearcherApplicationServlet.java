@@ -43,8 +43,10 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
 
         SpecialOutstandingResearcherApplicationService service = new SpecialOutstandingResearcherApplicationService() ;
         String json_form = service.query( project_id ) ;
+        String date_info=service.queryDateInformation() ;
 
         req.setAttribute("latest_data", json_form );
+        req.setAttribute("date_info", date_info );
 
         if (readonly)
             req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Special_Outstanding_Researcher_Application_Form.jsp").forward(req, resp);

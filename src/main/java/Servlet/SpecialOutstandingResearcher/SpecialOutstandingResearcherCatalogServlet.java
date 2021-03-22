@@ -41,8 +41,8 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
 
 
 //        Boolean readonly = true ;
-
-//        session.setAttribute( "readonly", readonly );
+//        HttpSession session = req.getSession();
+//        session.setAttribute( "readonly", true );
 
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Special_Outstanding_Researcher_Catalog.jsp").forward(req, resp);
 

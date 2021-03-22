@@ -14,7 +14,7 @@
 
 <html lang="zh">
 <div class="container" style="margin: 0px auto; width: 1200px">
-    <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才申請表</p>
+    <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學<label name='year'></label>年度獎勵特殊優秀研究人才申請表</p>
 </div>
 
 <div class="container" style="margin: 0px auto; width: 1200px">
@@ -45,14 +45,14 @@
                     <input name="college" value="" size="10" maxlength="40">&nbsp;學院&nbsp;
                     <input name="department" value="" size="10" maxlength="40">&nbsp;系(所)
                 </td>
-                <td colspan="1">任職本校年資(計算至上一年度)<font color="red">*</font>
+                <td colspan="1">任職本校年資(計算至<label name='seniority_end'></label>止)<font color="red">*</font>
                 </td>
                 <td colspan="2">
                     <input name="seniority" value="" size="10" maxlength="40">
                 </td>
             </tr>
             <tr>
-                <td colspan="1"><label id="dep_title">補助起日前一年度是否曾執行科技部計畫</label>
+                <td colspan="1"><label id="dep_title">補助起日前一年(<label name='mostStart'></label>~<label name='mostEnd'></label>)是否曾執行科技部計畫</label>
                     <font color="red">＊</font>
                 </td>
                 <td colspan="5">
