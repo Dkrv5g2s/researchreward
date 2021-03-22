@@ -16,12 +16,12 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
     private static final String SELECT = "SELECT * FROM articlesw WHERE projectID = ?"; 
     private static final String INSERT = 
     		"INSERT INTO articlesw (projectID,sw_article_count1,sw_article_count2,sw_article_count3,sw_article_count4,sw_article_count5,sw_article_count_total,sw_point1,sw_point2,sw_point3," +
-            "sw_point4,sw_point5,sw_point_total,fwci_value_past_five_year,a_plus_b_total_point)"+
-    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "sw_point4,sw_point5,sw_point_total,fwci_value,h5_index,a_plus_b_total_point)"+
+    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = 
     		"UPDATE articlesw "
     		+ "SET sw_article_count1 = ?,sw_article_count2 = ?,sw_article_count3 = ?,sw_article_count4 = ?,sw_article_count5 = ?,sw_article_count_total = ?,sw_point1 = ?,sw_point2 = ?," +
-            "sw_point3 = ?,sw_point4 = ?,sw_point5 = ?,sw_point_total = ?,fwci_value_past_five_year = ?,a_plus_b_total_point = ? "+
+            "sw_point3 = ?,sw_point4 = ?,sw_point5 = ?,sw_point_total = ?,fwci_value = ?,h5_index=?,a_plus_b_total_point = ? "+
     		" WHERE projectID = ?";
     @Override
     public void save(ArticleSW object,String projectID) {
@@ -76,7 +76,8 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
         				resultSet.getString("sw_point4"),
         				resultSet.getString("sw_point5"),
         				resultSet.getString("sw_point_total"),
-        				resultSet.getString("fwci_value_past_five_year"),
+        				resultSet.getString("fwci_value"),
+        				resultSet.getString("h5_index"),
         				resultSet.getString("a_plus_b_total_point"));
         				
          	
@@ -106,8 +107,9 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
             preparedStatement.setString(11,object.getSw_point4());
             preparedStatement.setString(12,object.getSw_point5());
             preparedStatement.setString(13,object.getSw_point_total());
-            preparedStatement.setString(14,object.getFwci_value_past_five_year());
-            preparedStatement.setString(15,object.getA_plus_b_total_point());
+            preparedStatement.setString(14,object.getFwci_value());
+            preparedStatement.setString(15,object.getH5_index());
+            preparedStatement.setString(16,object.getA_plus_b_total_point());
 
 
             preparedStatement.executeUpdate();
@@ -133,9 +135,10 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
             preparedStatement.setString(10,object.getSw_point4());
             preparedStatement.setString(11,object.getSw_point5());
             preparedStatement.setString(12,object.getSw_point_total());
-            preparedStatement.setString(13,object.getFwci_value_past_five_year());
-            preparedStatement.setString(14,object.getA_plus_b_total_point());
-            preparedStatement.setString(15,projectID);
+            preparedStatement.setString(13,object.getFwci_value());
+            preparedStatement.setString(14,object.getH5_index());
+            preparedStatement.setString(15,object.getA_plus_b_total_point());
+            preparedStatement.setString(16,projectID);
 
 
             preparedStatement.executeUpdate();

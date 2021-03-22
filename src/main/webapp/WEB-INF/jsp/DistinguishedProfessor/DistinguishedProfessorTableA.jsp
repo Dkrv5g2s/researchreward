@@ -123,20 +123,6 @@
 	        return data;
 	    }
 	    
-	    function update_A_plus_B(){
-	        let sw_point_total = parseInt($("#sw_point_total").text());
-	        let t_point_total = parseInt($("#t_point_total").text());
-	        let a_book_point_total = parseInt($("#a_book_point_total").text());
-	        let a_article_point_total = parseInt($("#a_article_point_total").text());
-	        let fwci_value_past_five_year = parseInt($("#fwci_value_past_five_year")[0].value);
-	        let school_fwci_value_past_five_year = ${fwci};
-	        let update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total;
-	        if(fwci_value_past_five_year >= school_fwci_value_past_five_year*1.5) {
-	            update_A_plus_B += 10;
-	        }
-	        $("#a_plus_b_total_point").text(update_A_plus_B);
-	    }
-	    
     	function update_article(obj){
     		let count = $(obj).parent().parent();
     		total_count=parseInt(count.find('.ic1').val())+parseInt(count.find('.ic2').val())+parseInt(count.find('.ic3').val())+parseInt(count.find('.ic4').val())+parseInt(count.find('.ic5').val());
@@ -148,7 +134,7 @@
 		    if(!isNaN(total_point)){
 		    	count.next().find('.total_point').text(total_point);
 		    }
-		    update_A_plus_B();
+		    calculatePrize();
     	}
     	
     	function update_project_count(obj){
@@ -238,7 +224,7 @@
 			});
     		
     		$('.count3').on( 'keyup',function(){
-                update_A_plus_B();
+    			calculatePrize();
             });
     	}
     	
@@ -298,6 +284,98 @@
     		
     	}
     	
+    	function calculatePrize(){
+
+            var FWCIValueofntut = ${fwci};
+            var FWCIValueofuser = document.getElementById("fwci_value").value;
+            var multipleofFWCI = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
+
+            var h5Indexofntut = ${h5Index};
+            var h5Indexofuser = document.getElementById("h5_index").value;
+            var multipleofh5 = roundDecimal(FloatDiv(h5Indexofuser,h5Indexofntut),2).toString();
+
+            document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
+            document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
+            console.log("FWCIuser:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multipleofFWCI,"FWCIPrize:",getPrizeByFWCIMultiple(multipleofFWCI))
+            console.log("h5user:",h5Indexofuser,"ntut:",h5Indexofntut,"multiple:",multipleofh5,"FWCIPrize:",getPrizeByh5Multiple(multipleofh5))
+            let betterAmount = parseFloat(getPrizeByFWCIMultiple(multipleofFWCI)) >= parseFloat(getPrizeByh5Multiple(multipleofh5)) ? getPrizeByFWCIMultiple(multipleofFWCI) :getPrizeByh5Multiple(multipleofh5);
+            document.getElementById("FWCIPrize").innerHTML = betterAmount;
+            
+            var sw_point_total = parseInt($("#sw_point_total").text());
+            var t_point_total = parseInt($("#t_point_total").text());
+            var a_book_point_total = parseInt($("#a_book_point_total").text());
+            var a_article_point_total = parseInt($("#a_article_point_total").text());
+
+            var update_A_plus_B = sw_point_total+t_point_total+a_book_point_total+a_article_point_total+parseInt(betterAmount);
+            
+            $("#a_plus_b_total_point").text(update_A_plus_B);
+
+        }
+    	
+        function getPrizeByFWCIMultiple(multiple){
+            var point = "";
+
+            if(parseFloat(multiple)>=parseFloat("2.2")){
+            	point = "15";
+            }
+            else if (parseFloat(multiple)>=parseFloat("1.8") && parseFloat(multiple)<parseFloat("2.2")){
+            	point = "13";
+            }
+            else if (parseFloat(multiple)>=parseFloat("1.5") && parseFloat(multiple)<parseFloat("1.8")){
+            	point = "10";
+            }
+            else if (parseFloat(multiple)>=parseFloat("1.3") && parseFloat(multiple)<parseFloat("1.5")){
+            	point = "8";
+            }
+            else if (parseFloat(multiple)>=parseFloat("1.1") && parseFloat(multiple)<parseFloat("1.3")){
+            	point = "6";
+            }
+            else {
+            	point = "0";
+            }
+            return point;
+        }
+
+        function getPrizeByh5Multiple(multiple){
+            var point = "";
+
+            if(parseFloat(multiple)>=parseFloat("0.55")){
+            	point = "15";
+            }
+            else if (parseFloat(multiple)>=parseFloat("0.40") && parseFloat(multiple)<parseFloat("0.55")){
+            	point = "13";
+            }
+            else if (parseFloat(multiple)>=parseFloat("0.25") && parseFloat(multiple)<parseFloat("0.40")){
+            	point = "10";
+            }
+            else if (parseFloat(multiple)>=parseFloat("0.15") && parseFloat(multiple)<parseFloat("0.25")){
+            	point = "8";
+            }
+            else if (parseFloat(multiple)>=parseFloat("0.10") && parseFloat(multiple)<parseFloat("0.15")){
+            	point = "6";
+            }
+            else {
+            	point = "0";
+            }
+            return point;
+        }
+        
+        var roundDecimal = function (val, precision) {
+            return Math.round(Math.round(val * Math.pow(10, (precision || 0) + 1)) / 10) / Math.pow(10, (precision || 0));
+        }
+        
+        function FloatDiv(arg1, arg2){
+            var t1 = 0, t2 = 0, r1, r2;
+            try { t1 = arg1.toString().split(".")[1].length } catch (e) { }
+            try { t2 = arg2.toString().split(".")[1].length } catch (e) { }
+
+            r1 = Number(arg1.toString().replace(".", ""))
+            r2 = Number(arg2.toString().replace(".", ""))
+            return (r1 / r2) * Math.pow(10, t2 - t1);
+
+        }
+
+    	
 	    $(document).ready(function(){
 	        wordsTotal();
 	        
@@ -327,7 +405,7 @@
     		project_with_manage('.ic3','.ip3','.mp3','.pc3');
     		project_with_manage('.ic4','.ip4','.mp4','.pc4');
     		project_with_manage('.ic5','.ip5','.mp5','.pc5');
-    		
+    		calculatePrize();
     		$("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
     				 			 	
 		});
@@ -447,7 +525,44 @@
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="count3">
-		                <td colspan="4" width="54%">近五年FWCI值：<input name="fwci_value_past_five_year" id="fwci_value_past_five_year" value="<%=json.get("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		                <td colspan="4"  width="54%">
+		                    <p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</p>
+		                    <br>
+		                    <table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
+		                        <tr>
+		                            <td rowspan="1" colspan="2" width="20%">FWCI倍數</td>
+		                            <td rowspan="1" colspan="2" width="20%">1.1-1.3(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">1.3-1.5(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">1.5-1.8(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">1.8-2.2(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">2.2以上</td>
+		                        </tr>
+		                        <tr>
+		                            <td rowspan="1" colspan="2" width="20%">h-5指數之倍數</td>
+		                            <td rowspan="1" colspan="2" width="20%">0.10-0.15(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">0.15-0.25(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">0.25-0.40(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">0.40-0.55(不含)</td>
+		                            <td rowspan="1" colspan="2" width="20%">0.55以上</td>
+		                        </tr>
+		                        <tr>
+		                            <td rowspan="1" colspan="2" width="20%">加計點數<br><span style="font-style:normal; font-size: 12px;">(依年底預算浮動)</span></td>
+		                            <td rowspan="1" colspan="2" width="10%" >6</td>
+		                            <td rowspan="1" colspan="2" width="10%" >8</td>
+		                            <td rowspan="1" colspan="2" width="10%" >10</td>
+		                            <td rowspan="1" colspan="2" width="10%" >13</td>
+		                            <td rowspan="1" colspan="2" width="10%" >15</td>
+		                        </tr>
+		                    </table>
+		                    <br>
+		                    <p align="left">申請人近5年FWCI值:&nbsp;<input name="fwci_value" id="fwci_value" value="<%=json.get("fwci_value")%>" style="text-align:center; width: 10%;" oninput="calculatePrize()">&nbsp;
+		                    為本校近五年FWCI值<span >${fwci}</span>之<span id="FWCIValueOfUserDivideNTUT"></span>倍。<br></p>
+		                    <p align="left">申請人h-5指數:&nbsp;<input name="h5_index" id="h5_index" value="<%=json.get("h5_index")%>" style="text-align:center; width: 10%;" oninput="calculatePrize()">&nbsp;
+		                    為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
+		
+		                    <p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>元</p>
+		
+		                </td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
 		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>

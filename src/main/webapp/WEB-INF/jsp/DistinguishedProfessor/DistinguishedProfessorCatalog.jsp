@@ -36,19 +36,19 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a style="color:blue" href="DistinguishedProfessorForm">特聘教授申請表</a></td>
+            <td class="left"><a href="DistinguishedProfessorForm">特聘教授申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a style="color:blue" href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
+            <td class="left"><a href="DistinguishedProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a style="color:blue" href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
+            <td class="left"><a href="DistinguishedProfessorTableA" >近五年內發表之期刊論文統計表(表A)</a></td>
         </tr>
        <tr>
-            <td class="left"><a style="color:blue" href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
         </tr>
         <tr>
-            <td class="left"><a style="color:blue" href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload">論文績效說明表(表B)-上傳檔案</a></td>
         </tr>
         </tbody>
         
