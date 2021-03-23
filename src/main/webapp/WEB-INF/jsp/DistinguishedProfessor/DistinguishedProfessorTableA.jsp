@@ -149,59 +149,59 @@
     	function update_project(obj){
     		let money = $(obj).parent().parent();
     		total_count=parseInt(money.prev().find('.ic1').val())+parseInt(money.prev().find('.ic2').val())+parseInt(money.prev().find('.ic3').val())+parseInt(money.prev().find('.ic4').val())+parseInt(money.prev().find('.ic5').val());
-    		total_money=parseInt(money.find('.ip1').val())+parseInt(money.find('.ip2').val())+parseInt(money.find('.ip3').val())+parseInt(money.find('.ip4').val())+parseInt(money.find('.ip5').val());
+    		total_money=parseFloat(money.find('.ip1').val())+parseFloat(money.find('.ip2').val())+parseFloat(money.find('.ip3').val())+parseFloat(money.find('.ip4').val())+parseFloat(money.find('.ip5').val());
 			total_point=parseFloat(money.next().find('.pc1').text())+parseFloat(money.next().find('.pc2').text())+parseFloat(money.next().find('.pc3').text())+parseFloat(money.next().find('.pc4').text())+parseFloat(money.next().find('.pc5').text());
 			
 			if(!isNaN(total_count)){
 				money.prev().find('.total_count').text(total_count);
 		    }
 			if(!isNaN(total_money)){
-				money.find('.total_project_money').text(total_money);
+				money.find('.total_project_money').text(total_money.toFixed(2));
 		    }
 		    if(!isNaN(total_point)){
-		    	money.next().find('.total_point').text(total_point);
+		    	money.next().find('.total_point').text(total_point.toFixed(2));
 		    }
     	}
     	
     	function update_project_manage(obj){
     		let money = $(obj).parent().parent();
     		total_count=parseInt(money.prev().prev().find('.ic1').val())+parseInt(money.prev().prev().find('.ic2').val())+parseInt(money.prev().prev().find('.ic3').val())+parseInt(money.prev().prev().find('.ic4').val())+parseInt(money.prev().prev().find('.ic5').val());
-    		total_money=parseInt(money.find('.ip1').val())+parseInt(money.find('.ip2').val())+parseInt(money.find('.ip3').val())+parseInt(money.find('.ip4').val())+parseInt(money.find('.ip5').val());
-    		total_manage_money=parseInt(money.prev().find('.mp1').val())+parseInt(money.prev().find('.mp2').val())+parseInt(money.prev().find('.mp3').val())+parseInt(money.prev().find('.mp4').val())+parseInt(money.prev().find('.mp5').val());
+    		total_money=parseFloat(money.find('.ip1').val())+parseFloat(money.find('.ip2').val())+parseFloat(money.find('.ip3').val())+parseFloat(money.find('.ip4').val())+parseFloat(money.find('.ip5').val());
+    		total_manage_money=parseFloat(money.prev().find('.mp1').val())+parseFloat(money.prev().find('.mp2').val())+parseFloat(money.prev().find('.mp3').val())+parseFloat(money.prev().find('.mp4').val())+parseFloat(money.prev().find('.mp5').val());
 			total_point=parseFloat(money.next().find('.pc1').text())+parseFloat(money.next().find('.pc2').text())+parseFloat(money.next().find('.pc3').text())+parseFloat(money.next().find('.pc4').text())+parseFloat(money.next().find('.pc5').text());
 			
 			if(!isNaN(total_count)){
 				money.prev().prev().find('.total_count').text(total_count);
 		    }
 			if(!isNaN(total_money)){
-				money.find('.total_project_money').text(total_money);
+				money.find('.total_project_money').text(total_money.toFixed(2));
 		    }
 			if(!isNaN(total_manage_money)){
-				money.prev().find('.total_manage_money').text(total_manage_money);
+				money.prev().find('.total_manage_money').text(total_manage_money.toFixed(2));
 		    }
 		    if(!isNaN(total_point)){
-		    	money.next().find('.total_point').text(total_point);
+		    	money.next().find('.total_point').text(total_point.toFixed(2));
 		    }
     	}
     	
     	function update_manage_project(obj){
     		let money = $(obj).parent().parent();
     		total_count=parseInt(money.prev().find('.ic1').val())+parseInt(money.prev().find('.ic2').val())+parseInt(money.prev().find('.ic3').val())+parseInt(money.prev().find('.ic4').val())+parseInt(money.prev().find('.ic5').val());
-    		total_money=parseInt(money.next().find('.ip1').val())+parseInt(money.next().find('.ip2').val())+parseInt(money.next().find('.ip3').val())+parseInt(money.next().find('.ip4').val())+parseInt(money.next().find('.ip5').val());
-    		total_manage_money=parseInt(money.find('.mp1').val())+parseInt(money.find('.mp2').val())+parseInt(money.find('.mp3').val())+parseInt(money.find('.mp4').val())+parseInt(money.find('.mp5').val());
+    		total_money=parseFloat(money.next().find('.ip1').val())+parseFloat(money.next().find('.ip2').val())+parseFloat(money.next().find('.ip3').val())+parseFloat(money.next().find('.ip4').val())+parseFloat(money.next().find('.ip5').val());
+    		total_manage_money=parseFloat(money.find('.mp1').val())+parseFloat(money.find('.mp2').val())+parseFloat(money.find('.mp3').val())+parseFloat(money.find('.mp4').val())+parseFloat(money.find('.mp5').val());
 			total_point=parseFloat(money.next().next().find('.pc1').text())+parseFloat(money.next().next().find('.pc2').text())+parseFloat(money.next().next().find('.pc3').text())+parseFloat(money.next().next().find('.pc4').text())+parseFloat(money.next().next().find('.pc5').text());
 			
 			if(!isNaN(total_count)){
 				money.prev().find('.total_count').text(total_count);
 		    }
 			if(!isNaN(total_money)){
-				money.next().find('.total_project_money').text(total_money);
+				money.next().find('.total_project_money').text(total_money.toFixed(2));
 		    }
 			if(!isNaN(total_manage_money)){
-				money.find('.total_manage_money').text(total_manage_money);
+				money.find('.total_manage_money').text(total_manage_money.toFixed(2));
 		    }
 		    if(!isNaN(total_point)){
-		    	money.next().next().find('.total_point').text(total_point);
+		    	money.next().next().find('.total_point').text(total_point.toFixed(2));
 		    }
     	}
     
@@ -236,13 +236,13 @@
     		
     		$('.project_money1').on( 'keyup',class_name,function(){
 				var money = +$(this).val();
-				$(this).parents('.project_money1').next().find(point_id).text(money/2);
+				$(this).parents('.project_money1').next().find(point_id).text((money/2).toFixed(2));
 				update_project(this);
 			});
     		
     		$('.project_money2').on( 'keyup',class_name,function(){
 				var money = +$(this).val();
-				$(this).parents('.project_money2').next().find(point_id).text(money/5);
+				$(this).parents('.project_money2').next().find(point_id).text((money/5).toFixed(2));
 				update_project(this);
 			});
     		
@@ -257,28 +257,28 @@
     		$('.project_money3').on( 'keyup',project_class,function(){
 				var money = +$(this).val();
 				var manage = $(this).parents('.project_money3').prev().find(manage_class).val();
-				$(this).parents('.project_money3').next().find(point_id).text((parseInt(money)+parseInt(manage))/5);
+				$(this).parents('.project_money3').next().find(point_id).text(((parseFloat(money)+parseFloat(manage))/5).toFixed(2));
 				update_project_manage(this);
 			});
     		
     		$('.mamage_money1').on( 'keyup',manage_class,function(){
 				var manage = +$(this).val();
 				var money = $(this).parents('.mamage_money1').next().find(project_class).val();
-				$(this).parents('.mamage_money1').next().next().find(point_id).text((parseInt(money)+parseInt(manage))/5);
+				$(this).parents('.mamage_money1').next().next().find(point_id).text(((parseFloat(money)+parseFloat(manage))/5).toFixed(2));
 				update_manage_project(this);
 			});
     		
     		$('.project_money4').on( 'keyup',project_class,function(){
 				var money = +$(this).val();
 				var manage = $(this).parents('.project_money4').prev().find(manage_class).val();
-				$(this).parents('.project_money4').next().find(point_id).text((parseInt(money)+parseInt(manage))/2);
+				$(this).parents('.project_money4').next().find(point_id).text(((parseFloat(money)+parseFloat(manage))/2).toFixed(2));
 				update_project_manage(this);
 			});
     		
     		$('.mamage_money2').on( 'keyup',manage_class,function(){
 				var manage = +$(this).val();
 				var money = $(this).parents('.mamage_money2').next().find(project_class).val();
-				$(this).parents('.mamage_money2').next().next().find(point_id).text((parseInt(money)+parseInt(manage))/2);
+				$(this).parents('.mamage_money2').next().next().find(point_id).text(((parseFloat(money)+parseFloat(manage))/2).toFixed(2));
 				update_manage_project(this);
 			});
     		
