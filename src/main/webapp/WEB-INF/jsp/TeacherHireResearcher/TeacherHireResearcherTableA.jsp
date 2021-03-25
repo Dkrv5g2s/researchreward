@@ -115,7 +115,7 @@
 				$(this).find("input").each(function(){
 					fillSpaceWithZero(this);
 				});
-				updateSubTotal($(this));
+				calculatePoint($(this));
 			});
 
 			$("input").on('change paste keyup', function(){
@@ -157,11 +157,90 @@
 			$(".total_point").each(function(){
 				total += toFloat(this.value);
 			});
-			let school_fwci_value_past_five_year = ${school_fwci_value_past_five_year};
-			let fwci_value_past_five_year = toFloat($("input[name='fwci_value_past_five_year']").val());
-			if (fwci_value_past_five_year >= school_fwci_value_past_five_year*1.5)
-				total += 10;
+			calculatePrize();
+			let betterAmount = document.getElementById("FWCIPrize").innerHTML;
+			total += toFloat(betterAmount);
+
 			$("input[name='a_plus_b_total_point']").val(total);
+		}
+
+		function calculatePrize(){
+			let FWCIValueofntut = ${fwci};
+			let FWCIValueofuser = document.getElementById("fwci_value").value;
+			let multipleofFWCI = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
+
+			let h5Indexofntut = ${h5Index};
+			let h5Indexofuser = document.getElementById("h5_index").value;
+			let multipleofh5 = roundDecimal(FloatDiv(h5Indexofuser,h5Indexofntut),2).toString();
+
+			document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
+			document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
+
+			let betterAmount = toFloat(getPrizeByFWCIMultiple(multipleofFWCI)) >= toFloat(getPrizeByh5Multiple(multipleofh5)) ? getPrizeByFWCIMultiple(multipleofFWCI) :getPrizeByh5Multiple(multipleofh5);
+			document.getElementById("FWCIPrize").innerHTML = betterAmount;
+		}
+
+		function getPrizeByFWCIMultiple(multiple){
+			var point = "";
+
+			if(parseFloat(multiple)>=parseFloat("2.2")){
+				point = "15";
+			}
+			else if (parseFloat(multiple)>=parseFloat("1.8") && parseFloat(multiple)<parseFloat("2.2")){
+				point = "13";
+			}
+			else if (parseFloat(multiple)>=parseFloat("1.5") && parseFloat(multiple)<parseFloat("1.8")){
+				point = "10";
+			}
+			else if (parseFloat(multiple)>=parseFloat("1.3") && parseFloat(multiple)<parseFloat("1.5")){
+				point = "8";
+			}
+			else if (parseFloat(multiple)>=parseFloat("1.1") && parseFloat(multiple)<parseFloat("1.3")){
+				point = "6";
+			}
+			else {
+				point = "0";
+			}
+			return point;
+		}
+
+		function getPrizeByh5Multiple(multiple){
+			var point = "";
+
+			if(parseFloat(multiple)>=parseFloat("0.55")){
+				point = "15";
+			}
+			else if (parseFloat(multiple)>=parseFloat("0.40") && parseFloat(multiple)<parseFloat("0.55")){
+				point = "13";
+			}
+			else if (parseFloat(multiple)>=parseFloat("0.25") && parseFloat(multiple)<parseFloat("0.40")){
+				point = "10";
+			}
+			else if (parseFloat(multiple)>=parseFloat("0.15") && parseFloat(multiple)<parseFloat("0.25")){
+				point = "8";
+			}
+			else if (parseFloat(multiple)>=parseFloat("0.10") && parseFloat(multiple)<parseFloat("0.15")){
+				point = "6";
+			}
+			else {
+				point = "0";
+			}
+			return point;
+		}
+
+		var roundDecimal = function (val, precision) {
+			return Math.round(Math.round(val * Math.pow(10, (precision || 0) + 1)) / 10) / Math.pow(10, (precision || 0));
+		}
+
+		function FloatDiv(arg1, arg2){
+			var t1 = 0, t2 = 0, r1, r2;
+			try { t1 = arg1.toString().split(".")[1].length } catch (e) { }
+			try { t2 = arg2.toString().split(".")[1].length } catch (e) { }
+
+			r1 = Number(arg1.toString().replace(".", ""))
+			r2 = Number(arg2.toString().replace(".", ""))
+			return (r1 / r2) * Math.pow(10, t2 - t1);
+
 		}
 
 		function toFloat(num){
@@ -268,7 +347,43 @@
 						<td colspan="1" width="10%" ><input name="a_article_point_total" type="number" class="total_point" value="<%=json.opt("a_article_point_total")%>" style="text-align:center; width: 75%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>
 		            <tr style="text-align: center;">
-		                <td colspan="<%=cellsNum%>" width="<%=90 - (60/cellsNum * 2)%>%">近五年FWCI值：<input name="fwci_value_past_five_year" type="number" value="<%=json.opt("fwci_value_past_five_year")%>" style="text-align:center; width: 10%;">，若為本校近五年FWCI值之1.5倍則加計點數10點(B)</td>
+		                <td colspan="<%=cellsNum%>" width="<%=90 - (60/cellsNum * 2)%>%">
+							<p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</p>
+							<br>
+							<table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
+								<tr>
+									<td rowspan="1" colspan="2" width="20%">FWCI倍數</td>
+									<td rowspan="1" colspan="2" width="20%">1.1-1.3(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">1.3-1.5(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">1.5-1.8(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">1.8-2.2(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">2.2以上</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" width="20%">h-5指數之倍數</td>
+									<td rowspan="1" colspan="2" width="20%">0.10-0.15(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">0.15-0.25(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">0.25-0.40(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">0.40-0.55(不含)</td>
+									<td rowspan="1" colspan="2" width="20%">0.55以上</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" width="20%">加計點數<br><span style="font-style:normal; font-size: 12px;">(依年底預算浮動)</span></td>
+									<td rowspan="1" colspan="2" width="10%" >6</td>
+									<td rowspan="1" colspan="2" width="10%" >8</td>
+									<td rowspan="1" colspan="2" width="10%" >10</td>
+									<td rowspan="1" colspan="2" width="10%" >13</td>
+									<td rowspan="1" colspan="2" width="10%" >15</td>
+								</tr>
+							</table>
+							<br>
+							<p align="left">申請人近5年FWCI值:&nbsp;<input name="fwci_value" type="number" id="fwci_value" value="<%=json.get("fwci_value")%>" style="text-align:center; width: 10%;">&nbsp;
+								為本校近五年FWCI值<span >${fwci}</span>之<span id="FWCIValueOfUserDivideNTUT"></span>倍。<br></p>
+							<p align="left">申請人h-5指數:&nbsp;<input name="h5_index" type="number" id="h5_index" value="<%=json.get("h5_index")%>" style="text-align:center; width: 10%;">&nbsp;
+								為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
+
+							<p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>點(B)</p>
+						</td>
 						<td colspan="1" width="<%=60/cellsNum%>%">總計點數<br>(A)+(B)</td>
 						<td colspan="2" width="<%=60/cellsNum+10%>%" ><input name="a_plus_b_total_point" type="number" value="<%=json.opt("a_plus_b_total_point")%>" style="text-align:center; width: 40%; border:none; outline:none;" tabindex="-1" readonly></td>
 		            </tr>

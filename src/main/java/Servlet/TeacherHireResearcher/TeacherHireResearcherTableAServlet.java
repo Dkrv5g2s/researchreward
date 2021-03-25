@@ -21,7 +21,8 @@ public class TeacherHireResearcherTableAServlet extends ServletEntryPoint {
 
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("json", teacherHireResearcherTableAService.get((String)session.getAttribute("projectId")));
-        req.setAttribute("school_fwci_value_past_five_year", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
 
         req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherTableA.jsp").forward(req,resp);
     }
