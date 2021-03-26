@@ -23,6 +23,8 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         req.setAttribute("data", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfThreeYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
+
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
             req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigatorTableA.jsp").forward(req, resp);
