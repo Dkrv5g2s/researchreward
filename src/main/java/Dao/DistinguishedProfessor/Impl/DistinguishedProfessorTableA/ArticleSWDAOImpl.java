@@ -17,7 +17,7 @@ public class ArticleSWDAOImpl implements ArticleSWDAO {
     private static final String INSERT = 
     		"INSERT INTO articlesw (projectID,sw_article_count1,sw_article_count2,sw_article_count3,sw_article_count4,sw_article_count5,sw_article_count_total,sw_point1,sw_point2,sw_point3," +
             "sw_point4,sw_point5,sw_point_total,fwci_value,h5_index,a_plus_b_total_point)"+
-    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    		" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = 
     		"UPDATE articlesw "
     		+ "SET sw_article_count1 = ?,sw_article_count2 = ?,sw_article_count3 = ?,sw_article_count4 = ?,sw_article_count5 = ?,sw_article_count_total = ?,sw_point1 = ?,sw_point2 = ?," +
