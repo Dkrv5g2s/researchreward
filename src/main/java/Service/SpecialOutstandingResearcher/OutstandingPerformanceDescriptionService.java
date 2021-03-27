@@ -15,7 +15,7 @@ public class OutstandingPerformanceDescriptionService {
     private ArticleSWDAO articleSWDAO = new ArticleSWDAOImpl();
     private ArticleTTDAO articleTTDAO = new ArticleTTDAOImpl();
     private CoopProjectDAO coopProjectDAO = new CoopProjectDAOImpl();
-//    private EduProjectDAO eduProjectDAO = new EduProjectDAOImpl();
+    private EduProjectDAO eduProjectDAO = new EduProjectDAOImpl();
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
@@ -61,7 +61,8 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("sw_point4"),
                 jsonObject.getString("sw_point5"),
                 jsonObject.getString("sw_point_total"),
-                jsonObject.getString("fwci_value_past_five_year"),
+                jsonObject.getString("fwci_value"),
+                jsonObject.getString("h5_index"),
                 jsonObject.getString("a_plus_b_total_point"));
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
@@ -192,7 +193,7 @@ public class OutstandingPerformanceDescriptionService {
         ArticleSW asw = articleSWDAO.show(projectID);
         ArticleTT att = articleTTDAO.show(projectID);
         CoopProject cp = coopProjectDAO.show(projectID);
-        //EduProject ep = eduProjectDAO.show(projectID);
+        EduProject ep = eduProjectDAO.show(projectID);
         OtherData od = otherDataDAO.show(projectID);
         TechProject tp = techProjectDAO.show(projectID);
         TechTransfer tt = techTransferDAO.show(projectID);
@@ -203,10 +204,10 @@ public class OutstandingPerformanceDescriptionService {
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
-            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            //ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
@@ -219,14 +220,13 @@ public class OutstandingPerformanceDescriptionService {
             addBeanPropertyToJson(object,asw);
             addBeanPropertyToJson(object,att);
             addBeanPropertyToJson(object,cp);
-            //addBeanPropertyToJson(object,ep);
+            addBeanPropertyToJson(object,ep);
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);
         }catch(IllegalAccessException e){
-            e.printStackTrace();
-        }
 
+        }
         return object;
     }
 

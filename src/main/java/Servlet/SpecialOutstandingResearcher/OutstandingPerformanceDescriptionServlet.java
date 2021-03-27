@@ -1,14 +1,11 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.User.User;
-import Dao.Project.ProjectDAO;
-import Dao.Project.ProjectDAOImpl;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
+
 import Service.Admin.AwardTimeLimitService;
+
 import Service.DistinguishedProfessor.DistinguishedProfessorTableAService;
 import Service.SpecialOutstandingResearcher.OutstandingPerformanceDescriptionService;
-import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
+
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -22,11 +19,12 @@ import java.io.UnsupportedEncodingException;
 
 
 public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint {
-    private Logger logger = Logger.getLogger(this.getClass());//Log4j
+
 
     private OutstandingPerformanceDescriptionService outstandingPerformanceDescriptionService = new OutstandingPerformanceDescriptionService();
-    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
 
+
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +32,10 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
         getForm(req);
         req.setAttribute("readonly",session.getAttribute("readonly"));
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp").forward(req, resp);
-        // "WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp"
+//        // "WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp"
+
     }
 
     @Override
@@ -48,7 +48,8 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
 
         if(!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
-            outstandingPerformanceDescriptionService.save(json,String.valueOf(session.getAttribute("project_id")));
+
+            outstandingPerformanceDescriptionService.save(json,String.valueOf(session.getAttribute("projectId")));
         }
 
     }
@@ -58,8 +59,7 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
 
         req.setCharacterEncoding("UTF-8");
 
-
-        req.setAttribute("json",outstandingPerformanceDescriptionService.show(String.valueOf(session.getAttribute("project_id"))));
+        req.setAttribute("json",outstandingPerformanceDescriptionService.show(String.valueOf(session.getAttribute("projectId"))));
 
     }
 
