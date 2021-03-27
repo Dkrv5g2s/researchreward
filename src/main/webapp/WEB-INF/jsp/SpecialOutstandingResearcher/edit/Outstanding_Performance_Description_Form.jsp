@@ -427,7 +427,7 @@
 <body>
 <div class="content">
 	<form>
-		<p>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</p>
+		<p>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表(表A)</p>
 		<table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 			<tbody>
 			<tr style="text-align:center;background:  #C0C0C0 ">
