@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=/login">
+    <title></title>
   </head>
+
   <body>
-  $END$
   </body>
 </html>
