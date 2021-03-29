@@ -65,7 +65,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("fwci_value"),
                 jsonObject.getString("h5_index"),
                 jsonObject.getString("a_plus_b_total_point"));
-
+*/
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
