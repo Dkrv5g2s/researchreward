@@ -48,7 +48,7 @@ public class OutstandingResearchAwardTableAService {
                 null,
                 jsonObject.getString("a_book_point_total")
         );
-        ArticleSW asw = new ArticleSW(
+/*        ArticleSW asw = new ArticleSW(
                 jsonObject.getString("sw_article_count1"),
                 jsonObject.getString("sw_article_count2"),
                 jsonObject.getString("sw_article_count3"),
@@ -63,7 +63,7 @@ public class OutstandingResearchAwardTableAService {
                 jsonObject.getString("sw_point_total"),
                 jsonObject.getString("fwci_value_past_three_year"),
                 jsonObject.getString("a_plus_b_total_point")
-        );
+        );*/
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
@@ -164,7 +164,7 @@ public class OutstandingResearchAwardTableAService {
 
         articleAADAO.save(aaa, projectID);
         articleABDAO.save(aab, projectID);
-        articleSWDAO.save(asw, projectID);
+//        articleSWDAO.save(asw, projectID);
         articleTTDAO.save(att, projectID);
         coopProjectDAO.save(cp, projectID);
         otherDataDAO.save(od, projectID);
@@ -188,7 +188,7 @@ public class OutstandingResearchAwardTableAService {
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
-            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+       //     asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");

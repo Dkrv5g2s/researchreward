@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Service.Admin.AwardTimeLimitService;
 import Service.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormAService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -15,11 +16,15 @@ import java.io.UnsupportedEncodingException;
 public class LectureProfessorExcellenceFormAServlet extends ServletEntryPoint {
 
     private LectureProfessorExcellenceFormAService lectureProfessorExcellenceFormAService = new LectureProfessorExcellenceFormAService();
-
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         getForm(req);
 
+        req.setAttribute("readonly",session.getAttribute("readonly"));
+        req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
         req.getRequestDispatcher("WEB-INF/jsp/LectureProfessorAndHonoraryLectureProfessor/LectureProfessorExcellenceFormA.jsp").forward(req, resp);
 
     }

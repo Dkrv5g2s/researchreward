@@ -42,6 +42,10 @@ public class LectureProfessorExcellenceFormAService {
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
 
 
+
+
+
+
     public void save(JSONObject jsonObject, String projectID){
         ArticleAA aaa = new ArticleAA(
                 jsonObject.getString("a_article_count1"),
@@ -82,7 +86,8 @@ public class LectureProfessorExcellenceFormAService {
                 jsonObject.getString("sw_point4"),
                 jsonObject.getString("sw_point5"),
                 jsonObject.getString("sw_point_total"),
-                jsonObject.getString("fwci_value_past_five_year"),
+                jsonObject.getString("fwci_value"),
+                jsonObject.getString("h5_index"),
                 jsonObject.getString("a_plus_b_total_point"));
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
@@ -203,7 +208,7 @@ public class LectureProfessorExcellenceFormAService {
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
-            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");

@@ -48,7 +48,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("a_book_point4"),
                 jsonObject.getString("a_book_point5"),
                 jsonObject.getString("a_book_point_total"));
-        ArticleSW asw = new ArticleSW(
+   /*     ArticleSW asw = new ArticleSW(
                 jsonObject.getString("sw_article_count1"),
                 jsonObject.getString("sw_article_count2"),
                 jsonObject.getString("sw_article_count3"),
@@ -62,7 +62,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("sw_point5"),
                 jsonObject.getString("sw_point_total"),
                 jsonObject.getString("fwci_value_past_five_year"),
-                jsonObject.getString("a_plus_b_total_point"));
+                jsonObject.getString("a_plus_b_total_point"));*/
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
@@ -177,7 +177,7 @@ public class OutstandingPerformanceDescriptionService {
 
         articleAADAO.save(aaa, projectID);
         articleABDAO.save(aab, projectID);
-        articleSWDAO.save(asw, projectID);
+       // articleSWDAO.save(asw, projectID);
         articleTTDAO.save(att, projectID);
         coopProjectDAO.save(cp, projectID);
 //        eduProjectDAO.save(ep, projectID);
@@ -203,7 +203,7 @@ public class OutstandingPerformanceDescriptionService {
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
-            asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
+      //      asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             //ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
