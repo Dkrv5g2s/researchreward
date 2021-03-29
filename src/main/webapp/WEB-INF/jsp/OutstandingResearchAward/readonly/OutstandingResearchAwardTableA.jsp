@@ -130,17 +130,58 @@
             </tr>
             <tr class="count4">
                 <td colspan="3">
-                    近三年FWCI值：<b><label id="fwci_value_past_three_year" name="fwci_value_past_three_year" class="input_fwci">
-                    <%=json.optString("fwci_value_past_five_year","0")%>
-                </label></b>
-                    ，若為本校近三年FWCI值之1.5倍則加計點數10點<b>(B)</b>
+                    <p align="left">申請人於SciVal資料庫中近三年FWCI值及h-5指數，若為本校近三年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</p>
+                    <br>
+                    <table style="border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
+                        <tr>
+                            <td colspan="2">FWCI之倍數</td>
+                            <td colspan="2">1.1-1.3(不含)</td>
+                            <td colspan="2">1.3-1.5(不含)</td>
+                            <td colspan="2">1.5-1.8(不含)</td>
+                            <td colspan="2">1.8-2.2(不含)</td>
+                            <td colspan="2">2.2以上</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">h-5指數之倍數</td>
+                            <td colspan="2">0.10-0.15(不含)</td>
+                            <td colspan="2">0.15-0.25(不含)</td>
+                            <td colspan="2">0.25-0.40(不含)</td>
+                            <td colspan="2">0.40-0.55(不含)</td>
+                            <td colspan="2">0.55以上</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">加計點數</td>
+                            <td colspan="2">6</td>
+                            <td colspan="2">8</td>
+                            <td colspan="2">10</td>
+                            <td colspan="2">13</td>
+                            <td colspan="2">15</td>
+                        </tr>
+                    </table>
+                    <p align="left">申請人近3年FWCI值：<label id="fwci_value"><%=json.get("fwci_value")%></label>
+                        為本校近三年FWCI值<span>${fwci}</span>之<span id="FWCIValueOfUserDivideNTUT"></span>倍。</p>
+                    <p align="left">申請人h-5指數：<label id="h5_index"><%=json.get("h5_index")%></label>
+                        為本校h-5指數<span>${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。</p>
+
+                    <p align="left">上述兩者擇最優一項，加計點數：<span id="pointB" class="total_point"></span>點(B)。</p>
+
                 </td>
-                <td colspan="2"><b>總計點數 (A)+(B)</b></td>
-                <td colspan="2" id="a_plus_b_total_point" class="total_point"><%=json.optString("a_plus_b_total_point","0")%></td>
+                <td colspan="2">總計點數 (A)+(B)</td>
+                <td colspan="2" id="a_plus_b_total_point" class="total_point"><%=json.get("a_plus_b_total_point")%></td>
+            </tr>
+            <tr>
+                <td colspan="7" align="left">
+                    說明：
+                    <ol>
+                        <li>近三年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</li>
+                        <li>論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</li>
+                        <li>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</li>
+                    </ol>
+                </td>
             </tr>
 
             <tr class="title">
-                <td rowspan="2" colspan="3">科 技 部 計 畫</td>
+                <td rowspan="2" colspan="3">科 技 部 計 畫<br>(不包含科技部產學合作計畫)</td>
                 <td colspan="3">年度</td>
                 <td rowspan="2"><b>小計</b></td>
             </tr>
@@ -150,7 +191,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義主持科技部各類型計畫統計表</td>
+                <td rowspan="3" >近三年以本校名義主持科技部各類型計畫統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_project_count1" class="ic1"><%=json.optString("tech_project_count1","0")%></label></td>
                 <td><label name="tech_project_count2" class="ic2"><%=json.optString("tech_project_count2","0")%></label></td>
@@ -171,14 +212,9 @@
                 <td id="tech_project_point3" class="pc3"><%=json.optString("tech_project_point3","0")%></td>
                 <td id="tech_project_point_total" class="total_point"><%=json.optString("tech_project_point_total","0")%></td>
             </tr>
-            <tr>
-                <td colspan="6">
-                    <p>說明：不包含科技部產學合作計畫。</p>
-                </td>
-            </tr>
 
             <tr class="title">
-                <td rowspan="2" colspan="3">產 學 合 作 計 畫</td>
+                <td rowspan="2" colspan="3">產 學 合 作 計 畫<br>(不包含以學校名義開授訓練課程招生收入)</td>
                 <td colspan="3">年度</td>
                 <td rowspan="2"><b>小計</b></td>
             </tr>
@@ -188,7 +224,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="coop_project_count1" class="ic1"><%=json.optString("coop_project_count1","0")%></label></td>
                 <td><label name="coop_project_count2" class="ic2"><%=json.optString("coop_project_count2","0")%></label></td>
@@ -217,14 +253,8 @@
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
 
-            <tr>
-                <td colspan="6" class="left">
-                    <p>說明：1.包含科技部產學合作計畫、政府機關及財團法人之研究型計畫。</p>
-                    <p style="margin-left: 2.5rem;">2.不包含以學校名義開授訓練課程招生收入。</p>
-                </td>
-            </tr>
             <tr class="title">
-                <td rowspan="2" colspan="3">技 術 移 轉 金</td>
+                <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
                 <td colspan="3">年度</td>
                 <td rowspan="2"><b>小計</b></td>
             </tr>
@@ -234,7 +264,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_transfer_count1" class="ic1"><%=json.optString("tech_transfer_count1","0")%></label></td>
                 <td><label name="tech_transfer_count2" class="ic2"><%=json.optString("tech_transfer_count2","0")%></label></td>
@@ -264,12 +294,6 @@
             </tr>
 
             <tr>
-                <td colspan="6" class="left">
-                    <p>說明：1.包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金。</p>
-                    <p style="margin-left: 2.5rem;">2.不包含科技部先期技術移轉授權金。</p>
-                </td>
-            </tr>
-            <tr>
                 <td colspan="7" class="title">
                     <label for="other_data"><b>其 它 傑 出 表 現 說 明</b></label>
                 </td>
@@ -296,5 +320,97 @@
         </p>
     </form>
 </div>
+<script>
+    $(document).ready(function(){
+        calculatePoint();
+    });
+    function calculatePoint(){
+        let FWCIValueofntut = "${fwci}";
+        let FWCIValueofuser = document.getElementById("fwci_value").innerHTML;
+        let multipleofFWCI = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
+
+        let h5Indexofntut = "${h5Index}";
+        let h5Indexofuser = document.getElementById("h5_index").innerHTML;
+        let multipleofh5 = roundDecimal(FloatDiv(h5Indexofuser,h5Indexofntut),2).toString();
+
+        document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
+        document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
+
+        let pointOfFWCI = getPointByFWCIMultiple(multipleofFWCI);
+        let pointOfH5Index = getPointByh5Multiple(multipleofh5);
+        let betterAmount = parseFloat(pointOfFWCI) >= parseFloat(pointOfH5Index) ? pointOfFWCI :pointOfH5Index;
+        document.getElementById("pointB").innerHTML = betterAmount;
+        update_A_plus_B();
+    }
+    function update_A_plus_B(){
+        let sw_point_total = parseInt($("#sw_point_total").text());
+        let t_point_total = parseInt($("#t_point_total").text());
+        let a_book_point_total = parseInt($("#a_book_point_total").text());
+        let a_article_point_total = parseInt($("#a_article_point_total").text());
+        let betterAmount = parseInt($("#pointB").text());
+        let a_plus_b = sw_point_total+t_point_total+a_book_point_total+a_article_point_total+betterAmount;
+        $("#a_plus_b_total_point").text(a_plus_b);
+    }
+    function getPointByFWCIMultiple(multiple){
+        let point = "";
+        if(parseFloat(multiple)>=parseFloat("2.2")){
+            point = "15";
+        }
+        else if (parseFloat(multiple)>=parseFloat("1.8") && parseFloat(multiple)<parseFloat("2.2")){
+            point = "13";
+        }
+        else if (parseFloat(multiple)>=parseFloat("1.5") && parseFloat(multiple)<parseFloat("1.8")){
+            point = "10";
+        }
+        else if (parseFloat(multiple)>=parseFloat("1.3") && parseFloat(multiple)<parseFloat("1.5")){
+            point = "8";
+        }
+        else if (parseFloat(multiple)>=parseFloat("1.1") && parseFloat(multiple)<parseFloat("1.3")){
+            point = "6";
+        }
+        else {
+            point = "0";
+        }
+        return point;
+    }
+
+    function getPointByh5Multiple(multiple){
+        let point = "";
+        if(parseFloat(multiple)>=parseFloat("0.55")){
+            point = "15";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.40") && parseFloat(multiple)<parseFloat("0.55")){
+            point = "13";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.25") && parseFloat(multiple)<parseFloat("0.40")){
+            point = "10";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.15") && parseFloat(multiple)<parseFloat("0.25")){
+            point = "8";
+        }
+        else if (parseFloat(multiple)>=parseFloat("0.10") && parseFloat(multiple)<parseFloat("0.15")){
+            point = "6";
+        }
+        else {
+            point = "0";
+        }
+        return point;
+    }
+
+    function roundDecimal(val, precision) {
+        return Math.round(Math.round(val * Math.pow(10, (precision || 0) + 1)) / 10) / Math.pow(10, (precision || 0));
+    }
+
+    function FloatDiv(arg1, arg2){
+        let t1 = 0, t2 = 0, r1, r2;
+        let str1 = String(arg1), str2 = String(arg2);
+        try { t1 = str1.split(".")[1].length } catch (e) { }
+        try { t2 = str2.split(".")[1].length } catch (e) { }
+
+        r1 = Number(str1.replace(".", ""))
+        r2 = Number(str2.replace(".", ""))
+        return (r1 / r2) * Math.pow(10, t2 - t1);
+    }
+</script>
 </body>
 </html>

@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
-   private OutstandingResearchAwardTableAService outstandingResearchAwardTableAService = new OutstandingResearchAwardTableAService();
-
+    private OutstandingResearchAwardTableAService outstandingResearchAwardTableAService = new OutstandingResearchAwardTableAService();
+    private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String TableA_URL_Edit = "WEB-INF/jsp/OutstandingResearchAward/edit/OutstandingResearchAwardTableA.jsp";
@@ -24,6 +24,8 @@ public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         req.setAttribute("data", outstandingResearchAwardTableAService.get(session.getAttribute("projectId").toString()));
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfThreeYear"));
+        req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
+
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){
             req.getRequestDispatcher(TableA_URL_Readonly).forward(req,resp);
