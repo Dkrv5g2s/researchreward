@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>年輕學者研究獎 附件A 近三年內發表之期刊論文統計表</title>
+    <title>年輕學者研究獎 近三年內發表之期刊論文統計表</title>
 
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -40,11 +40,6 @@
             height:200px;
             font-size: 16px;
         }
-        .input_fwci{
-            height: auto;
-            width: 4rem;
-            border-style: revert;
-        }
         .file_title{
             text-align: center;
             font-size: 24px;
@@ -70,7 +65,7 @@
 <body>
 <div class="content">
     <form>
-        <p class="file_title">年輕學者研究獎 表A 近三年內發表之期刊論文統計表</p>
+        <p class="file_title">年輕學者研究獎 近三年內發表之期刊論文統計表</p>
         <table>
             <tbody>
             <tr class="title">
@@ -100,7 +95,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <p>說明：論文請檢附-表B「傑出論文績效說明表」</p>
+                    <p>說明：論文請檢附-「傑出論文績效說明表」</p>
                 </td>
             </tr>
 
