@@ -8,9 +8,6 @@ public class PaperPerformanceDescriptionForm {
     private String total_point ;
     List<PaperPerformance> paper_performance_list ;
 
-
-
-
     public PaperPerformanceDescriptionForm() {
     }
 

@@ -44,13 +44,13 @@
                 <td class="left"><a href="JuniorResearchInvestigatorReviewInformation">審查資料</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="JuniorResearchInvestigatorTableA">表A 近三年內發表之期刊論文統計表</a></td>
+                <td class="left"><a href="JuniorResearchInvestigatorTableA">近三年內發表之期刊論文統計表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="JuniorResearchInvestigatorTableB">表B 傑出論文績效說明表</a></td>
+                <td class="left"><a href="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="PaperPerformanceDescriptionUpload">表B 傑出論文績效說明表-上傳檔案</a></td>
+                <td class="left"><a href="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
             </tr>
         </tbody>
     </table>

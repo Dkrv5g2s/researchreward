@@ -68,7 +68,7 @@
 <div name="technologyTransfer" class="content">
     <h2>年輕學者研究獎 審查資料</h2>
     <p>一、每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書<strong>(共同著作授權同意書)</strong>。<p>
-    <p>二、學術論著採計Scopus / WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<strong>表B「傑出論文績效說明表」</strong>。並請檢附下列證明文件：</p>
+    <p>二、學術論著採計Scopus / WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<strong>「傑出論文績效說明表」</strong>。並請檢附下列證明文件：</p>
     <div style="padding-left: 2rem;">
         <p>(一) 期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證。</p>
         <p>(二) 各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、SDG之佐證。</p>
