@@ -60,32 +60,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <label for="department">服務系所</label>
                     </td>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <label id="department" maxlength="45"></label>
-                    </td>
-                    <td colspan="2">
-                        <label for="birth_date">出生日期</label>
-                    </td>
-                    <td colspan="2">
-                        <label id="birth_date" type="date"></label>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label for="identity_number">身份證字號</label>
-                    </td>
-                    <td colspan="2">
-                        <label id="identity_number" name="identity_number" type="text" maxlength="10"></label>
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2" colspan="2">
-                        <label for="employment_date">本校任職日期</label>
-                    </td>
-                    <td rowspan="2" colspan="2">
-                        <label id="employment_date" type="date"></label>
                     </td>
                     <td rowspan="2">聯絡電話</td>
                     <td>
@@ -96,6 +75,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2">
+                        <label for="employment_date">本校任職日期</label>
+                    </td>
+                    <td colspan="2">
+                        <label id="employment_date" type="date"></label>
+                    </td>
                     <td>
                         <label for="cellphone_number">手機</label>
                     </td>
@@ -111,6 +96,42 @@
                 <tr>
                     <td colspan="8">
                         <label id="recommended_reason" type="text" style="word-break: break-all;"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="department_conference">推 薦 單 位 主 管</label>
+                    </td>
+                    <td colspan="4">
+                        <label for="college_conference">學 院 院 長</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p>
+                            本推薦案業經 <input id="department_academic_year" maxlength="3"/> 學年度第 <input id="department_semester" maxlength="1"/> 學期<br>
+                            第 <input id="department_conference_times" maxlength="5"/> 次 系<input id="department_conference" maxlength="13" style="width: 15ch;"/>會議審議通過<br>
+                            （<input id="department_sign_date" type="date" style="width: auto;">）
+                        </p>
+                    </td>
+                    <td colspan="4">
+                        <p>
+                            本推薦案業經 <input id="college_academic_year" maxlength="3"/> 學年度第 <input id="college_semester" maxlength="1"/> 學期<br>
+                            第 <input id="college_conference_times" maxlength="5"/> 次 院 <input id="college_conference" maxlength="13" style="width: 15ch;"/> 會議審議通過<br>
+                            （<input id="college_sign_date" type="date" style="width: auto;">）
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>研發處</label>
+                    </td>
+                    <td colspan="6">
+                        <p style="text-align: center;">
+                            中 華 民 國 <input id="research_and_development_office_sign_year" maxlength="3" style="width: 3ch;">
+                            年<input id="research_and_development_office_sign_month" maxlength="2" style="width: 3ch;">
+                            月<input id="research_and_development_office_sign_date" maxlength="2" style="width: 3ch;">日
+                        </p>
                     </td>
                 </tr>
             </tbody>

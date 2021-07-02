@@ -33,6 +33,15 @@
         .title{
             background:#C0C0C0;
         }
+        td > p{
+            margin: 3rem 0 0;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        td > p > input{
+            height: auto;
+            width: 3ch;
+        }
         .footer{
             text-align-last: center;
             margin: 1rem;
@@ -65,32 +74,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <label for="department">服務系所</label>
                     </td>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <input id="department" maxlength="45">
-                    </td>
-                    <td colspan="2">
-                        <label for="birth_date">出生日期</label>
-                    </td>
-                    <td colspan="2">
-                        <input id="birth_date" type="date">
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label for="identity_number">身份證字號</label>
-                    </td>
-                    <td colspan="2">
-                        <input id="identity_number" name="identity_number" type="text" maxlength="10">
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2" colspan="2">
-                        <label for="employment_date">本校任職日期</label>
-                    </td>
-                    <td rowspan="2" colspan="2">
-                        <input id="employment_date" type="date">
                     </td>
                     <td rowspan="2">聯絡電話</td>
                     <td>
@@ -101,6 +89,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2">
+                        <label for="employment_date">本校任職日期</label>
+                    </td>
+                    <td colspan="2">
+                        <input id="employment_date" type="date">
+                    </td>
                     <td>
                         <label for="cellphone_number">手機</label>
                     </td>
@@ -119,6 +113,40 @@
                         <textarea id="recommended_reason" maxlength="500" type="text" onkeyup="wordsTotal()" rows="3" cols="8"></textarea>
                     </td>
                 </tr>
+                <read-only>
+                    <tr>
+                        <td colspan="4">
+                            <label for="department_conference">推 薦 單 位 主 管</label>
+                        </td>
+                        <td colspan="4">
+                            <label for="college_conference">學 院 院 長</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p id="department_conference">
+                                本推薦案業經　 　 學年度第  　學期<br>
+                                第   　次 系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                                （　    　 年　    　月    　　日）
+                            </p>
+                        </td>
+                        <td colspan="4">
+                            <p id="college_conference">
+                                本推薦案業經　 　 學年度第  　學期<br>
+                                第   　次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                                （　    　年　    　月    　　日）
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label>研發處</label>
+                        </td>
+                        <td colspan="6">
+                            <p style="text-align: center;">中 華 民 國　    　年　    　月    　　日</p>
+                        </td>
+                    </tr>
+                </read-only>
             </tbody>
         </table>
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
