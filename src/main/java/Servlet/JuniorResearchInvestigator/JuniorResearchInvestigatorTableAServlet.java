@@ -21,6 +21,8 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
         req.setAttribute("data", juniorResearchInvestigatorTableAService.show(session.getAttribute("projectId").toString()));
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfThreeYear"));
         req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));

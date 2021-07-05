@@ -28,6 +28,15 @@
         .title{
             background:#C0C0C0;
         }
+        td > p{
+            margin: 3rem 0 0;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        td > input{
+            border-style: initial;
+            readonly: readonly;
+        }
         .footer{
             text-align-last: center;
             margin: 1rem;
@@ -94,7 +103,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="8">
+                    <td colspan="8" rowspn="3">
                         <label id="recommended_reason" type="text" style="word-break: break-all;"></label>
                     </td>
                 </tr>
@@ -109,16 +118,16 @@
                 <tr>
                     <td colspan="4">
                         <p>
-                            本推薦案業經 <input id="department_academic_year" maxlength="3"/> 學年度第 <input id="department_semester" maxlength="1"/> 學期<br>
-                            第 <input id="department_conference_times" maxlength="5"/> 次 系<input id="department_conference" maxlength="13" style="width: 15ch;"/>會議審議通過<br>
-                            （<input id="department_sign_date" type="date" style="width: auto;">）
+                            本推薦案業經 <input id="department_academic_year" class="department" maxlength="3" style="width: 3ch;"/> 學年度第 <input id="department_semester" class="department" maxlength="1" style="width: 3ch;"/> 學期<br>
+                            第 <input id="department_conference_times" class="department" maxlength="5" style="width: 5ch;"/> 次 系<input id="department_conference" class="department" maxlength="13" style="width: 15ch;"/>會議審議通過<br>
+                            （<input id="department_sign_date" class="department" type="date" style="width: auto;">）
                         </p>
                     </td>
                     <td colspan="4">
-                        <p>
-                            本推薦案業經 <input id="college_academic_year" maxlength="3"/> 學年度第 <input id="college_semester" maxlength="1"/> 學期<br>
-                            第 <input id="college_conference_times" maxlength="5"/> 次 院 <input id="college_conference" maxlength="13" style="width: 15ch;"/> 會議審議通過<br>
-                            （<input id="college_sign_date" type="date" style="width: auto;">）
+                        <p class="college">
+                            本推薦案業經 <input id="college_academic_year" class="college" maxlength="3" style="width: 3ch;"/> 學年度第 <input id="college_semester" class="college" maxlength="1" style="width: 3ch;"/> 學期<br>
+                            第 <input id="college_conference_times" class="college" maxlength="5" style="width: 5ch;"/> 次 院 <input id="college_conference" class="college" maxlength="13" style="width: 15ch;"/> 會議審議通過<br>
+                            （<input id="college_sign_date" type="date" class="college" style="width: auto;">）
                         </p>
                     </td>
                 </tr>
@@ -128,9 +137,10 @@
                     </td>
                     <td colspan="6">
                         <p style="text-align: center;">
-                            中 華 民 國 <input id="research_and_development_office_sign_year" maxlength="3" style="width: 3ch;">
-                            年<input id="research_and_development_office_sign_month" maxlength="2" style="width: 3ch;">
-                            月<input id="research_and_development_office_sign_date" maxlength="2" style="width: 3ch;">日
+                            中 華 民 國
+                            <input id="research_and_development_office_sign_year" class="researchAndDevelopmentOffice" maxlength="3" style="width: 3ch;">年
+                            <input id="research_and_development_office_sign_month" class="researchAndDevelopmentOffice" maxlength="2" style="width: 3ch;">月
+                            <input id="research_and_development_office_sign_date" class="researchAndDevelopmentOffice" maxlength="2" style="width: 3ch;">日
                         </p>
                     </td>
                 </tr>
@@ -139,22 +149,57 @@
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorReviewInformation'">此頁審查完成</button>
+            <button type="button" name="confirm" onclick="reviewed()">此頁審查完成</button>
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#user_name").html("<%=jsonObject.optString("user_name", "")%>");
-        $("#applicant_title").html("<%=jsonObject.optString("applicant_title", "")%>");
-        $("#department").html("<%=jsonObject.optString("department", "")%>");
-        $("#birth_date").html("<%=jsonObject.optString("birth_date", "")%>");
-        $("#identity_number").html("<%=jsonObject.optString("identity_number", "")%>");
-        $("#employment_date").html("<%=jsonObject.optString("employment_date", "")%>");
-        $("#extension_number").html("<%=jsonObject.optString("extension_number", "")%>");
-        $("#cellphone_number").html("<%=jsonObject.optString("cellphone_number", "")%>");
-        $("#recommended_reason").html("<%=jsonObject.optString("recommended_reason", "")%>");
+        setUserData();
+        setReviewData();
+        $("input").attr("disabled", "disabled");
+        $(".${role}").removeAttr("disabled");
     })
+
+    function setUserData(){
+        $("#user_name").val("<%=jsonObject.optString("user_name", "")%>");
+        $("#applicant_title").val("<%=jsonObject.optString("applicant_title", "")%>");
+        $("#department").val("<%=jsonObject.optString("department", "")%>");
+        $("#employment_date").val("<%=jsonObject.optString("employment_date", "")%>");
+        $("#extension_number").val("<%=jsonObject.optString("extension_number", "")%>");
+        $("#cellphone_number").val("<%=jsonObject.optString("cellphone_number", "")%>");
+        $("#recommended_reason").val("<%=jsonObject.optString("recommended_reason", "")%>");
+    }
+
+    function setReviewData(){
+        //department
+        $("#department_academic_year").val("<%=jsonObject.optString("department_academic_year", "")%>");
+        $("#department_semester").val("<%=jsonObject.optString("department_semester", "")%>");
+        $("#department_conference_times").val("<%=jsonObject.optString("department_conference_times", "")%>");
+        $("#department_conference").val("<%=jsonObject.optString("department_conference", "")%>");
+        $("#department_sign_date").val("<%=jsonObject.optString("department_sign_date", "")%>");
+        //college
+        $("#college_academic_year").val("<%=jsonObject.optString("college_academic_year", "")%>");
+        $("#college_semester").val("<%=jsonObject.optString("college_semester", "")%>");
+        $("#college_conference_times").val("<%=jsonObject.optString("college_conference_times", "")%>");
+        $("#college_conference").val("<%=jsonObject.optString("college_conference", "")%>");
+        $("#college_sign_date").val("<%=jsonObject.optString("college_sign_date", "")%>");
+        //researchAndDevelopmentOffice
+        $("#research_and_development_office_sign_year").val("<%=jsonObject.optString("research_and_development_office_sign_year", "")%>");
+        $("#research_and_development_office_sign_month").val("<%=jsonObject.optString("research_and_development_office_sign_month", "")%>");
+        $("#research_and_development_office_sign_date").val("<%=jsonObject.optString("research_and_development_office_sign_date", "")%>");
+    }
+    function reviewed(){
+        let data = {};
+        let input_data = document.getElementsByClassName("${role}");
+        for (let i=0; i<input_data.length; i++){
+            data[input_data[i].id] = input_data[i].value;
+        }
+        console.log("data", data);
+        //TODO: save
+
+        // location.href='JuniorResearchInvestigatorReviewInformation';
+    }
 </script>
 </html>

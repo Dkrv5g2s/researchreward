@@ -113,40 +113,43 @@
                         <textarea id="recommended_reason" maxlength="500" type="text" onkeyup="wordsTotal()" rows="3" cols="8"></textarea>
                     </td>
                 </tr>
-                <read-only>
-                    <tr>
-                        <td colspan="4">
-                            <label for="department_conference">推 薦 單 位 主 管</label>
-                        </td>
-                        <td colspan="4">
-                            <label for="college_conference">學 院 院 長</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <p id="department_conference">
-                                本推薦案業經　 　 學年度第  　學期<br>
-                                第   　次 系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
-                                （　    　 年　    　月    　　日）
-                            </p>
-                        </td>
-                        <td colspan="4">
-                            <p id="college_conference">
-                                本推薦案業經　 　 學年度第  　學期<br>
-                                第   　次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
-                                （　    　年　    　月    　　日）
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label>研發處</label>
-                        </td>
-                        <td colspan="6">
-                            <p style="text-align: center;">中 華 民 國　    　年　    　月    　　日</p>
-                        </td>
-                    </tr>
-                </read-only>
+                <tr>
+                    <td colspan="4">
+                        <label for="department_conference">推 薦 單 位 主 管</label>
+                    </td>
+                    <td colspan="4">
+                        <label for="college_conference">學 院 院 長</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p class="department">
+                            本推薦案業經 <label id="department_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="department_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
+                            第 <label id="department_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 系<label id="department_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
+                            （<label id="department_sign_date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>）
+                        </p>
+                    </td>
+                    <td colspan="4">
+                        <p class="college">
+                            本推薦案業經 <label id="college_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="college_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
+                            第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院<label id="college_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
+                            （<label id="college_sign_date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>）
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>研發處</label>
+                    </td>
+                    <td colspan="6">
+                        <p class="researchAndDevelopmentOffice" style="text-align: center;">
+                            中 華 民 國
+                            <label id="research_and_development_office_sign_year"></label>年
+                            <label id="research_and_development_office_sign_month"></label>月
+                            <label id="research_and_development_office_sign_date"></label>日
+                        </p>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
@@ -187,7 +190,8 @@
         data[ document.getElementById("recommended_reason").id] = document.getElementById("recommended_reason").value;
         return data;
     }
-    $(document).ready(function () {
+
+    function setUserData(){
         $("#user_name").val("<%=jsonObject.optString("user_name", "")%>");
         $("#applicant_title").val("<%=jsonObject.optString("applicant_title", "")%>");
         $("#department").val("<%=jsonObject.optString("department", "")%>");
@@ -197,6 +201,28 @@
         $("#extension_number").val("<%=jsonObject.optString("extension_number", "")%>");
         $("#cellphone_number").val("<%=jsonObject.optString("cellphone_number", "")%>");
         $("#recommended_reason").val("<%=jsonObject.optString("recommended_reason", "")%>");
+    }
+    function setReviewData(){
+        //department
+        $("#department_academic_year").html("<%=jsonObject.optString("department_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_semester").html("<%=jsonObject.optString("department_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference_times").html("<%=jsonObject.optString("department_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference").html("<%=jsonObject.optString("department_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_sign_date").html("<%=jsonObject.optString("department_sign_date", "　    　年　    　月    　　日")%>");
+        //college
+        $("#college_academic_year").html("<%=jsonObject.optString("college_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_semester").html("<%=jsonObject.optString("college_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference_times").html("<%=jsonObject.optString("college_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference").html("<%=jsonObject.optString("college_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_sign_date").html("<%=jsonObject.optString("college_sign_date", "　    　年　    　月    　　日")%>");
+        //researchAndDevelopmentOffice
+        $("#research_and_development_office_sign_year").html("<%=jsonObject.optString("research_and_development_office_sign_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_month").html("<%=jsonObject.optString("research_and_development_office_sign_month", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_date").html("<%=jsonObject.optString("research_and_development_office_sign_date", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+    }
+    $(document).ready(function () {
+        setUserData();
+        setReviewData();
         wordsTotal();
     })
 </script>

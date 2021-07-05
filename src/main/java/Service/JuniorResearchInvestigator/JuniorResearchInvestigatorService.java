@@ -11,15 +11,13 @@ public class JuniorResearchInvestigatorService {
 
     private JuniorResearchInvestigatorDAO juniorResearchInvestigatorDAO = new JuniorResearchInvestigatorDAOImpl();
     public void save(JSONObject jsonObject, int projectId){
-        JuniorResearchInvestigator juniorResearchInvestigator = new JuniorResearchInvestigator();// = null;
+        JuniorResearchInvestigator juniorResearchInvestigator = new JuniorResearchInvestigator();
 
         juniorResearchInvestigator.setProjectId(projectId);
         juniorResearchInvestigator.setUserNumber(jsonObject.getInt("user_number"));
         juniorResearchInvestigator.setUserName(jsonObject.getString("user_name"));
         juniorResearchInvestigator.setApplicantTitle(jsonObject.getString("applicant_title"));
         juniorResearchInvestigator.setDepartment(jsonObject.getString("department"));
-        juniorResearchInvestigator.setBirthDate(jsonToDate(jsonObject, "birth_date"));
-        juniorResearchInvestigator.setIdentityNumber(jsonObject.getString("identity_number"));
         juniorResearchInvestigator.setEmploymentDate(jsonToDate(jsonObject, "employment_date"));
         juniorResearchInvestigator.setExtensionNumber(jsonObject.getString("extension_number"));
         juniorResearchInvestigator.setCellphoneNumber(jsonObject.getString("cellphone_number"));

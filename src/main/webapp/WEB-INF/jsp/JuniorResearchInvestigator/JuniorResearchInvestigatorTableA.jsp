@@ -240,7 +240,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="6" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><input name="coop_project_count1" type="number" class="ic1" value="<%=json.optString("coop_project_count1","0")%>"></td>
                 <td><input name="coop_project_count2" type="number" class="ic2" value="<%=json.optString("coop_project_count2","0")%>"></td>
@@ -268,6 +268,31 @@
                 <td id="coop_project_point3" class="pc3"><%=json.optString("coop_project_point3","0")%></td>
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
+            <tr>
+                <td rowspan="2" colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" style="vertical-align: top;text-align: left;">
+                    <p>
+                        <label for="reviewer1">承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="vertical-align: top;border-left-style: hidden;text-align: left;">
+                    <p>
+                        <label for="unit_chief1">單位主管</label>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <label id="reviewer1"><%=json.optString("reviewer1","AAA")%></label>  <%--TODO--%>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <label id="unit_chief1"><%=json.optString("unit_chief1","BBBB")%></label>  <%--TODO--%>
+                    </p>
+                </td>
+            </tr>
 
             <tr class="title">
                 <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
@@ -280,7 +305,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="6" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><input name="tech_transfer_count1" type="number" class="ic1" value="<%=json.optString("tech_transfer_count1","0")%>"></td>
                 <td><input name="tech_transfer_count2" type="number" class="ic2" value="<%=json.optString("tech_transfer_count2","0")%>"></td>
@@ -307,6 +332,31 @@
                 <td id="tech_transfer_point2" class="pc2"><%=json.optString("tech_transfer_point2","0")%></td>
                 <td id="tech_transfer_point3" class="pc3"><%=json.optString("tech_transfer_point3","0")%></td>
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
+            </tr>
+            <tr>
+                <td rowspan="2" colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" style="vertical-align: top;text-align: left;">
+                    <p>
+                        <label for="reviewer2">承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="vertical-align: top;border-left-style: hidden;text-align: left;">
+                    <p>
+                        <label for="unit_chief2">單位主管</label>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <label id="reviewer2"><%=json.optString("reviewer2","AAA")%></label>  <%--TODO--%>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <label id="unit_chief2"><%=json.optString("unit_chief2","BBBB")%></label>  <%--TODO--%>
+                    </p>
+                </td>
             </tr>
 
             <tr>

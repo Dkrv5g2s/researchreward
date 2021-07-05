@@ -225,7 +225,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="6" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="coop_project_count1" class="ic1"><%=json.optString("coop_project_count1","0")%></label></td>
                 <td><label name="coop_project_count2" class="ic2"><%=json.optString("coop_project_count2","0")%></label></td>
@@ -253,6 +253,31 @@
                 <td id="coop_project_point3" class="pc3"><%=json.optString("coop_project_point3","0")%></td>
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
+            <tr>
+                <td rowspan="2" colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" style="vertical-align: top;text-align: left;">
+                    <p>
+                        <label for="reviewer1">承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="vertical-align: top;border-left-style: hidden;text-align: left;">
+                    <p>
+                        <label for="unit_chief1">單位主管</label>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <input id="reviewer1" class="industryLiaisonOffice"/>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <input id="unit_chief1" class="industryLiaisonOffice"/>
+                    </p>
+                </td>
+            </tr>
 
             <tr class="title">
                 <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
@@ -265,7 +290,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="6" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_transfer_count1" class="ic1"><%=json.optString("tech_transfer_count1","0")%></label></td>
                 <td><label name="tech_transfer_count2" class="ic2"><%=json.optString("tech_transfer_count2","0")%></label></td>
@@ -293,6 +318,31 @@
                 <td id="tech_transfer_point3" class="pc3"><%=json.optString("tech_transfer_point3","0")%></td>
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
             </tr>
+            <tr>
+                <td rowspan="2" colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" style="vertical-align: top;text-align: left;">
+                    <p>
+                        <label for="reviewer2">承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="vertical-align: top;border-left-style: hidden;text-align: left;">
+                    <p>
+                        <label for="unit_chief2">單位主管</label>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <input id="reviewer2" class="industryLiaisonOffice"/>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;border-top-style: hidden;">
+                    <p style="margin: 0.5rem 0;">
+                        <input id="unit_chief2" class="industryLiaisonOffice"/>
+                    </p>
+                </td>
+            </tr>
 
             <tr>
                 <td colspan="7" class="title">
@@ -317,14 +367,39 @@
         </table>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorTableB'">此頁審查完成</button>
+            <button type="button" name="confirm" onclick="reviewed()">此頁審查完成</button>
         </p>
     </form>
 </div>
 <script>
     $(document).ready(function(){
         calculatePoint();
+        setReviewData();
     });
+    function setReviewData(){
+        $("input").attr("disabled", "disabled");
+        $(".${role}").removeAttr("disabled");
+        //industryLiaisonOffice
+        $("#reviewer1").val('<%=json.optString("reviewer1", "")%>');
+        $("#unit_chief1").val('<%=json.optString("unit_chief1", "")%>');
+        $("#reviewer2").val('<%=json.optString("reviewer2", "")%>');
+        $("#unit_chief2").val('<%=json.optString("unit_chief2", "")%>');
+    }
+    function reviewed(){
+        let data = {};
+        let role = "${role}";
+        let input_data;
+        if(role === "industryLiaisonOffice")
+            input_data = document.getElementsByClassName(role);
+        for (let i=0; i<input_data.length; i++){
+            data[input_data[i].id] = input_data[i].value;
+        }
+        console.log("data", data);
+        //TODO: save
+
+        // location.href='JuniorResearchInvestigatorTableB';
+    }
+
     function calculatePoint(){
         let FWCIValueofntut = "${fwci}";
         let FWCIValueofuser = document.getElementById("fwci_value").innerHTML;

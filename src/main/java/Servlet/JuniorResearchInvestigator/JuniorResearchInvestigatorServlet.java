@@ -22,6 +22,10 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
         int projectId = turnIdInSessionToInt(session, "projectId");
         req.setAttribute("data", juniorResearchInvestigatorService.show(projectId));
 
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
+
+
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
             req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigator.jsp").forward(req, resp);
@@ -36,6 +40,8 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
+        String userRole = session.getAttribute("userRole").toString();
+        System.out.println("doPost role:"+userRole);
 
         String jsonString = readJSONString(req);
         JSONObject jsonObject = new JSONObject(jsonString);
