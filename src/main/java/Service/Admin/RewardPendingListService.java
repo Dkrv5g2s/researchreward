@@ -18,18 +18,27 @@ public class RewardPendingListService {
         int statusId = getPendingListStatusId(userRole);
         JSONArray array = new JSONArray();
         if (statusId != -1) {
-            List<RewardProject> list = projectDAO.getProjectsForAdmins(statusId, statusId);
+            List<RewardProject> list = projectDAO.getPendingProjects(statusId, "applied");
+            transformListToJSONArray(array, list, userRole);
+        }
+        return array;
+    }
+
+    public JSONArray getReturnedPendingList(String userRole){
+        int statusId = getPendingListStatusId(userRole);
+        JSONArray array = new JSONArray();
+        if (statusId != -1) {
+            List<RewardProject> list = projectDAO.getPendingProjects(statusId, "returned");
             transformListToJSONArray(array, list, userRole);
         }
         return array;
     }
 
     public JSONArray getApprovedRewardList(String userRole){
-        int beginStatusId = getPendingListStatusId(userRole)+1;
+        int statusId = getPendingListStatusId(userRole);
         JSONArray array = new JSONArray();
-        if (beginStatusId != 0) {
-            int endStatusId = projectDAO.getMaxStatusId();
-            List<RewardProject> list = projectDAO.getProjectsForAdmins(beginStatusId, endStatusId);
+        if (statusId != -1) {
+            List<RewardProject> list = projectDAO.getReviewedProjects(statusId);
             transformListToJSONArray(array, list, userRole);
         }
         return array;
@@ -38,7 +47,18 @@ public class RewardPendingListService {
     public Boolean havePendingReward(String userRole){
         int statusId = getPendingListStatusId(userRole);
         if (statusId != -1) {
-            List<RewardProject> list = projectDAO.getProjectsForAdmins(statusId, statusId);
+            List<RewardProject> list = projectDAO.getPendingProjects(statusId, "applied");
+            if (list.isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Boolean haveReturnedPendingReward(String userRole){
+        int statusId = getPendingListStatusId(userRole);
+        if (statusId != -1) {
+            List<RewardProject> list = projectDAO.getPendingProjects(statusId, "returned");
             if (list.isEmpty()){
                 return false;
             }

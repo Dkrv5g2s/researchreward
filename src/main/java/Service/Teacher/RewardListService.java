@@ -52,10 +52,21 @@ public class RewardListService {
             projectDAO.initializeProjectReviewState(projectId);
             projectDAO.applyProject(projectId, new Date(System.currentTimeMillis()));
         }
-        else if( status_id == 1)
+        else if( status_id == 1){
             projectDAO.applyProject(projectId, new Date(System.currentTimeMillis()));
-        else if (status_id < max_id)
+            updateHistoryHighestStatusId(projectId, ++status_id);
+        }
+        else if (status_id < max_id){
             projectDAO.updateProjectStatus(projectId, ++status_id);
+            updateHistoryHighestStatusId(projectId, status_id);
+        }
+        projectDAO.updateProjectLastStatusIdChangedDirection(projectId, "applied");
+    }
+
+    private void updateHistoryHighestStatusId(int projectId, int status_id) {
+        int historyHighestStatusId = projectDAO.getHistoryHighestStatusIdByProjectId(projectId);
+        if (status_id > historyHighestStatusId)
+            projectDAO.updateProjectHistoryHighestStatus(projectId, status_id);
     }
 
     private void transformListToJSONArray(JSONArray array, List<RewardProject> list){

@@ -22,6 +22,7 @@ public class MenuServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         req.setAttribute("flag",!roleAuthorizationService.isResearchAndDevelopmentOffice(session));
         req.setAttribute("pendingReward",rewardPendingListService.havePendingReward((String) session.getAttribute("userRole")));
+        req.setAttribute("returnedPendingReward",rewardPendingListService.haveReturnedPendingReward((String) session.getAttribute("userRole")));
 
         req.getRequestDispatcher(URL).forward(req, resp);
     }
