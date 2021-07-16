@@ -24,14 +24,14 @@
                     <td>作者排序<br>(W2)</td>
                     <td>通訊作者數<br>(W3)</td>
                     <td>額外加權<br>(W4)</td>
-                    <td>換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
+                    <td>換算點數 (A)<br>(=W1×W2×W3×W4)</td>
                 </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;"></tbody>
             <tbody>
-                <tr>
-                    <td colspan="4" style="border-width: 3px;border-color: #000000">總計點數 (A)</td>
-                    <td colspan="4" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
+                <tr style="border-width: 3px;border-color: #000000;">
+                    <td colspan="4" style="text-align: right;">總計點數</td>
+                    <td colspan="4" style="text-align: center;"><label id="total_point"></label></td>
                 </tr>
                 <tr>
                     <td colspan="7" style="text-align: left;">

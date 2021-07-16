@@ -115,10 +115,10 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <label for="department_conference">推 薦 單 位 主 管</label>
+                        <label>推 薦 單 位 主 管</label>
                     </td>
                     <td colspan="4">
-                        <label for="college_conference">學 院 院 長</label>
+                        <label>學 院 院 長</label>
                     </td>
                 </tr>
                 <tr>
@@ -126,14 +126,14 @@
                         <p class="department">
                             本推薦案業經 <label id="department_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="department_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
                             第 <label id="department_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 系<label id="department_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
-                            （<label id="department_sign_date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>）
+                            （<input id="department_sign_date" type="date" style="width: auto;" disabled>）
                         </p>
                     </td>
                     <td colspan="4">
                         <p class="college">
                             本推薦案業經 <label id="college_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="college_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
-                            第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院<label id="college_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
-                            （<label id="college_sign_date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>）
+                            第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                            （<input id="college_sign_date" type="date" style="width: auto;" disabled>）
                         </p>
                     </td>
                 </tr>
@@ -172,7 +172,6 @@
             url: 'JuniorResearchInvestigator',
             dataType: 'json',
             data: JSON.stringify(InputToJson()),
-            contentType: 'application/json',
             success: function(data){
                 alert(data.status);
                 window.location.href="JuniorResearchInvestigator";
@@ -182,6 +181,7 @@
             }
         });
     };
+
     function InputToJson(){
         let data = {};
         for (let j=0; j<document.getElementsByTagName("input").length; j++) {
@@ -208,13 +208,13 @@
         $("#department_semester").html("<%=jsonObject.optString("department_semester", "&nbsp;&nbsp;&nbsp;")%>");
         $("#department_conference_times").html("<%=jsonObject.optString("department_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
         $("#department_conference").html("<%=jsonObject.optString("department_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
-        $("#department_sign_date").html("<%=jsonObject.optString("department_sign_date", "　    　年　    　月    　　日")%>");
+        $("#department_sign_date").val("<%=jsonObject.optString("department_sign_date", "")%>");
         //college
         $("#college_academic_year").html("<%=jsonObject.optString("college_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
         $("#college_semester").html("<%=jsonObject.optString("college_semester", "&nbsp;&nbsp;&nbsp;")%>");
         $("#college_conference_times").html("<%=jsonObject.optString("college_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
         $("#college_conference").html("<%=jsonObject.optString("college_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
-        $("#college_sign_date").html("<%=jsonObject.optString("college_sign_date", "　    　年　    　月    　　日")%>");
+        $("#college_sign_date").val("<%=jsonObject.optString("college_sign_date", "")%>");
         //researchAndDevelopmentOffice
         $("#research_and_development_office_sign_year").html("<%=jsonObject.optString("research_and_development_office_sign_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
         $("#research_and_development_office_sign_month").html("<%=jsonObject.optString("research_and_development_office_sign_month", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");

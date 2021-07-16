@@ -24,7 +24,7 @@
                         <td colspan="1" width="15%">作者排序<br>(W2)</td>
                         <td colspan="1" width="15%">通訊作者數<br>(W3)</td>
                         <td colspan="1" width="15%">額外加權<br>(W4)</td>
-                        <td colspan="1" width="15%">換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
+                        <td colspan="1" width="15%">換算點數 (A)<br>(=W1×W2×W3×W4)</td>
                         <td colspan="1" width="5%"></td>
                     </tr>
                 </thead>
@@ -34,9 +34,9 @@
                     <tr>
                         <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
                     </tr>
-                    <tr>
-                        <td colspan="4" style="border-width: 3px;border-color: #000000">總計點數 (A)</td>
-                        <td colspan="4" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
+                    <tr style="border-width: 3px;border-color: #000000;">
+                        <td colspan="4" style="text-align: right;">總計點數</td>
+                        <td colspan="4" style="text-align: center;"><label id="total_point"></label></td>
                     </tr>
                     <tr>
                         <td colspan="8" style="text-align: left;">
