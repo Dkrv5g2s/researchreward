@@ -62,10 +62,10 @@ public class AwardTimeLimitService {
         AwardTimeLimit result = awardTimeLimitDAO.get();
         long systemTime = System.currentTimeMillis();
         if(result.getS1().getTime() < systemTime && systemTime < result.getL1().getTime()){
-            rewards.add("奬助研究績優教師聘任研究人員");
+            rewards.add("奬助研究及產學績優教師聘任研究人員辦法");
         }
         if(result.getS2().getTime() < systemTime && systemTime < result.getL2().getTime()){
-            rewards.add("講座教授/榮譽講座教授");
+            rewards.add("講座教授");
         }
         if(result.getS3().getTime() < systemTime && systemTime < result.getL3().getTime()){
             rewards.add("特聘教授");
