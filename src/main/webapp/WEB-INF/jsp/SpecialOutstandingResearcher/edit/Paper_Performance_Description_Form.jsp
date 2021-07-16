@@ -91,7 +91,6 @@
     function load(){
         showSection();
         showDatas() ;
-        setWeight();
         calculateTotal() ;
     }
 
@@ -239,8 +238,8 @@
 
         html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業'><label name='4_1'>企業</label><br>" ;
         html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者'><label name='4_2'>國際學者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SDG'><label name='4_3'>SDG</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SSCI'><label name='4_4'>SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='SDG'><label name='4_3'>SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='SSCI'><label name='4_4'>SSCI</label><br>" ;
         html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者'><label name='4_5'>企業及國際學者</label><br>" ;
         html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='企業、SDG'><label name='4_6'>企業、SDG</label><br>" ;
         html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='企業、SSCI'><label name='4_7'>企業、SSCI</label><br>" ;
@@ -334,7 +333,7 @@
             $("input[name='additional_weight" + i + "'][value='"+paper_performence[i]["additional_weight"] + "']").prop("checked",true);
             $("label[name='cal_point"+i+"']").text(paper_performence[i].cal_point);
         }
-
+        setWeight();
     }
 
 
