@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td colspan="7" style="text-align: left;font-weight: bold;">
-                        <input type="checkbox" name="representationClause" checked readonly>申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。<br>
+                        <input type="checkbox" name="representationClause" checked readonly><label style="color:red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</label><br>
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +64,6 @@
 
     function load(){
         showData() ;
-        setWeight();
         calculateTotal() ;
     }
     function setWeight() {
@@ -98,6 +97,9 @@
         $("input[value='企業、SDG、SSCI']" ).attr( 'data-weight', wight["w4_10"] );
         $("input[value='國際學者、SDG、SSCI']" ).attr( 'data-weight', wight["w4_11"] );
         $("input[value='企業、國際學者、SDG、SSCI']" ).attr( 'data-weight', wight["w4_12"] );
+        $("input[value='國際學者、SDG']" ).attr( 'data-weight', wight["w4_13"] );
+        $("input[value='企業、國際學者、SDG']" ).attr( 'data-weight', wight["w4_14"] );
+        $("input[value='企業、國際學者、SSCI']" ).attr( 'data-weight', wight["w4_15"] );
 
         $("label[name='1_1']").text( "Nature、Science及Cell(" + wight["w1_1"] + "點)" ) ;
         $("label[name='1_2']").text( "R≦1%及附表三期刊(" + wight["w1_2"] + "點)" ) ;
@@ -129,6 +131,9 @@
         $("label[name='4_10']").text( "企業、SDG、SSCI(×" + wight["w4_10"] + "點)" ) ;
         $("label[name='4_11']").text( "國際學者、SDG、SSCI(×" + wight["w4_11"] + "點)" ) ;
         $("label[name='4_12']").text( "企業、國際學者、SDG、SSCI(×" + wight["w4_12"] + "點)" ) ;
+        $("label[name='4_13']").text( "國際學者、SDG(×" + wight["w4_13"] + "點)" ) ;
+        $("label[name='4_14']").text( "企業、國際學者、SDG(×" + wight["w4_14"] + "點)" ) ;
+        $("label[name='4_15']").text( "企業、國際學者、SSCI(×" + wight["w4_15"] + "點)" ) ;
 
     }
 
@@ -189,18 +194,21 @@
         html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0.8' name='communication_author_count"+i+"' value='2位(含)以上'><label name='3_2'>2位(含)以上</label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='企業'><label name='4_1'>企業</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.1' name='additional_weight"+i+"' value='國際學者'><label name='4_2'>國際學者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SDG'><label name='4_3'>SDG</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='0' name='additional_weight"+i+"' value='SSCI'><label name='4_4'>SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.2' name='additional_weight"+i+"' value='企業及國際學者'><label name='4_5'>企業及國際學者</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.5' name='additional_weight"+i+"' value='企業、SDG'><label name='4_6'>企業、SDG</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='企業、SSCI'><label name='4_7'>企業、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.65' name='additional_weight"+i+"' value='國際學者、SSCI'><label name='4_8'>國際學者、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='SDG、SSCI'><label name='4_9'>SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、SDG、SSCI'><label name='4_10'>企業、SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='國際學者、SDG、SSCI'><label name='4_11'>國際學者、SDG、SSCI</label><br>" ;
-        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='1.8' name='additional_weight"+i+"' value='企業、國際學者、SDG、SSCI'><label name='4_12'>企業、國際學者、SDG、SSCI</label>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_1"] +"' name='additional_weight"+i+"' value='企業'><label name='4_1'>企業</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_2"] +"' name='additional_weight"+i+"' value='國際學者'><label name='4_2'>國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_3"] +"' name='additional_weight"+i+"' value='SDG'><label name='4_3'>SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_4"] +"' name='additional_weight"+i+"' value='SSCI'><label name='4_4'>SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_5"] +"' name='additional_weight"+i+"' value='企業及國際學者'><label name='4_5'>企業、國際學者</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_6"] +"' name='additional_weight"+i+"' value='企業、SDG'><label name='4_6'>企業、SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_13"] +"' name='additional_weight"+i+"' value='國際學者、SDG'><label name='4_13'>國際學者、SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_7"] +"' name='additional_weight"+i+"' value='企業、SSCI'><label name='4_7'>企業、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_8"] +"' name='additional_weight"+i+"' value='國際學者、SSCI'><label name='4_8'>國際學者、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_9"] +"' name='additional_weight"+i+"' value='SDG、SSCI'><label name='4_9'>SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_14"] +"' name='additional_weight"+i+"' value='企業、國際學者、SDG'><label name='4_14'>企業、國際學者、SDG</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_15"] +"' name='additional_weight"+i+"' value='企業、國際學者、SSCI '><label name='4_15'>企業、國際學者、SSCI </label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_10"] +"' name='additional_weight"+i+"' value='企業、SDG、SSCI'><label name='4_10'>企業、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_11"] +"' name='additional_weight"+i+"' value='國際學者、SDG、SSCI'><label name='4_11'>國際學者、SDG、SSCI</label><br>" ;
+        html_of_item += "<input type='checkbox' data-selection-block='onlyone' data-weight='" + wight["w4_12"] +"' name='additional_weight"+i+"' value='企業、國際學者、SDG、SSCI'><label name='4_12'>企業、國際學者、SDG、SSCI</label>" ;
 
         html_of_item += "</td>" ;
 
@@ -270,9 +278,8 @@
             $("input[name='additional_weight" + i + "'][value='"+paper_performence[i]["additional_weight"] + "']").prop("checked",true);
             $("label[name='cal_point"+i+"']").text(paper_performence[i].cal_point);
         }
-
+        setWeight();
     }
-
 
     function calculateTotal() {
         dataFromTable()
@@ -281,14 +288,16 @@
             var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
-            cal_total *= parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' )) ;
+            let additional_weight = parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' ));
+            cal_total *= isNaN(additional_weight) ? 1 : additional_weight;
 
             if ( isNaN(cal_total) ){
-                cal_total = "請確認W1至w4欄位皆勾選";
+                cal_total = "請確認W1至w3欄位皆勾選";
             }else{
+                cal_total = financial(cal_total);
                 sum_of_total_column += cal_total;
             }
-            $("label[name='cal_point"+i+"']").text(financial(cal_total));
+            $("label[name='cal_point"+i+"']").text(cal_total);
         }
         $('input[name="fwci_value_past_five_year"]').val("0");  //fwci_value_past_three_years
         $('label[id="total_point"]').text(financial(sum_of_total_column)) ;

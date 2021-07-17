@@ -23,6 +23,7 @@
                 contentType: 'application/json',
                 success: function(data){
                     alert('存檔成功');
+                    location.reload();
                 }
             });
 
@@ -148,6 +149,10 @@
                 <td><input type="number" name="w4_6" value="<%= jsonObject.getDouble("w4_6")%>" required>倍率</td>
             </tr>
             <tr>
+                <td class="metadata">國際學者、SDG:</td>
+                <td><input type="number" name="w4_13" value="<%= jsonObject.getDouble("w4_13")%>" required>倍率</td>
+            </tr>
+            <tr>
                 <td class="metadata">企業、SSCI:</td>
                 <td><input type="number" name="w4_7" value="<%= jsonObject.getDouble("w4_7")%>" required>倍率</td>
             </tr>
@@ -158,6 +163,14 @@
             <tr>
                 <td class="metadata">SDG、SSCI:</td>
                 <td><input type="number" name="w4_9" value="<%= jsonObject.getDouble("w4_9")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">企業、國際學者、SDG:</td>
+                <td><input type="number" name="w4_14" value="<%= jsonObject.getDouble("w4_14")%>" required>倍率</td>
+            </tr>
+            <tr>
+                <td class="metadata">企業、國際學者、SSCI:</td>
+                <td><input type="number" name="w4_15" value="<%= jsonObject.getDouble("w4_15")%>" required>倍率</td>
             </tr>
             <tr>
                 <td class="metadata">企業、SDG、SSCI:</td>

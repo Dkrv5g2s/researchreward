@@ -28,6 +28,9 @@ public class BFormFormula {
     private double w4_10;
     private double w4_11;
     private double w4_12;
+    private double w4_13;
+    private double w4_14;
+    private double w4_15;
 
 
     public double getW4_8() {
@@ -246,5 +249,27 @@ public class BFormFormula {
         this.w4_7 = w4_7;
     }
 
+    public double getW4_13() {
+        return w4_13;
+    }
 
+    public void setW4_13(double w4_13) {
+        this.w4_13 = w4_13;
+    }
+
+    public double getW4_14() {
+        return w4_14;
+    }
+
+    public void setW4_14(double w4_14) {
+        this.w4_14 = w4_14;
+    }
+
+    public double getW4_15() {
+        return w4_15;
+    }
+
+    public void setW4_15(double w4_15) {
+        this.w4_15 = w4_15;
+    }
 }
