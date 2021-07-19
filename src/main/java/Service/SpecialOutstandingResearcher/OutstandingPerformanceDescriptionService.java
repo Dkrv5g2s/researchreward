@@ -48,7 +48,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("a_book_point4"),
                 jsonObject.getString("a_book_point5"),
                 jsonObject.getString("a_book_point_total"));
-   /*     ArticleSW asw = new ArticleSW(
+        ArticleSW asw = new ArticleSW(
                 jsonObject.getString("sw_article_count1"),
                 jsonObject.getString("sw_article_count2"),
                 jsonObject.getString("sw_article_count3"),
@@ -65,7 +65,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("fwci_value"),
                 jsonObject.getString("h5_index"),
                 jsonObject.getString("a_plus_b_total_point"));
-*/
+
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
@@ -180,7 +180,7 @@ public class OutstandingPerformanceDescriptionService {
 
         articleAADAO.save(aaa, projectID);
         articleABDAO.save(aab, projectID);
-       // articleSWDAO.save(asw, projectID);
+        articleSWDAO.save(asw, projectID);
         articleTTDAO.save(att, projectID);
         coopProjectDAO.save(cp, projectID);
 //        eduProjectDAO.save(ep, projectID);

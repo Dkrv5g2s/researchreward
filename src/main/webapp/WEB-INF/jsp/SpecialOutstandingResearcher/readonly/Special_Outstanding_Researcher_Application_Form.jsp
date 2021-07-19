@@ -204,6 +204,7 @@
         }
         else {
             $("input[name='executed_tech_proj_yes']").prop( "checked",false  ) ;
+            $("input[name='executed_tech_proj_no']").prop( "checked",true  ) ;
         }
 
 
