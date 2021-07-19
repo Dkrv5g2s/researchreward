@@ -110,8 +110,8 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
             String fileName =CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_joint_authorization_agreement.pdf";
             System.out.println( fileName );
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
 
             try {
                 if(!new File(path).isDirectory())
@@ -158,8 +158,8 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
 
             String fileName = CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_paper_home.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
 
             try {
                 if(!new File(path).isDirectory())
