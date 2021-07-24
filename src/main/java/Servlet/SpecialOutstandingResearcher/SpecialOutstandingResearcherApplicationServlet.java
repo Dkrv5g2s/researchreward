@@ -66,14 +66,14 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
 
-        User user = new User( "root", "password1234", "測試", "staff1221" ) ;
+        String staff_code = session.getAttribute("userNumber").toString();
 
-        this.logger.info( user.getStaff_code() + " has modified SpecialOutstandingResearcherApplicationForm with json message " + jsonObject.toString() );
+        this.logger.info( staff_code + " has modified SpecialOutstandingResearcherApplicationForm with json message " + jsonObject.toString() );
 
         SpecialOutstandingResearcherApplicationService service = new SpecialOutstandingResearcherApplicationService() ;
 
         //service.save(jsonObject, (String)session.getAttribute("userNumber")); /正式
 
-        service.save(jsonObject, "108598065");
+        service.save(jsonObject, staff_code);
     }
 }

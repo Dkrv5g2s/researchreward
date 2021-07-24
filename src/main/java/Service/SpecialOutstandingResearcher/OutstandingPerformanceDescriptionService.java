@@ -15,7 +15,6 @@ public class OutstandingPerformanceDescriptionService {
     private ArticleSWDAO articleSWDAO = new ArticleSWDAOImpl();
     private ArticleTTDAO articleTTDAO = new ArticleTTDAOImpl();
     private CoopProjectDAO coopProjectDAO = new CoopProjectDAOImpl();
-//    private EduProjectDAO eduProjectDAO = new EduProjectDAOImpl();
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
@@ -48,7 +47,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("a_book_point4"),
                 jsonObject.getString("a_book_point5"),
                 jsonObject.getString("a_book_point_total"));
-   /*     ArticleSW asw = new ArticleSW(
+        ArticleSW asw = new ArticleSW(
                 jsonObject.getString("sw_article_count1"),
                 jsonObject.getString("sw_article_count2"),
                 jsonObject.getString("sw_article_count3"),
@@ -65,7 +64,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("fwci_value"),
                 jsonObject.getString("h5_index"),
                 jsonObject.getString("a_plus_b_total_point"));
-*/
+
         ArticleTT att = new ArticleTT(
                 jsonObject.getString("t_article_count1"),
                 jsonObject.getString("t_article_count2"),
@@ -104,25 +103,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("coop_project_point4"),
                 jsonObject.getString("coop_project_point5"),
                 jsonObject.getString("coop_project_point_total"));
-//        EduProject ep = new EduProject(
-//                jsonObject.getString("edu_project_count1"),
-//                jsonObject.getString("edu_project_count2"),
-//                jsonObject.getString("edu_project_count3"),
-//                jsonObject.getString("edu_project_count4"),
-//                jsonObject.getString("edu_project_count5"),
-//                jsonObject.getString("edu_project_count_total"),
-//                jsonObject.getString("edu_project_money1"),
-//                jsonObject.getString("edu_project_money2"),
-//                jsonObject.getString("edu_project_money3"),
-//                jsonObject.getString("edu_project_money4"),
-//                jsonObject.getString("edu_project_money5"),
-//                jsonObject.getString("edu_project_money_total"),
-//                jsonObject.getString("edu_project_point1"),
-//                jsonObject.getString("edu_project_point2"),
-//                jsonObject.getString("edu_project_point3"),
-//                jsonObject.getString("edu_project_point4"),
-//                jsonObject.getString("edu_project_point5"),
-//                jsonObject.getString("edu_project_point_total"));
+
         OtherData od = new OtherData(
                 jsonObject.getString("year1"),
                 jsonObject.getString("year2"),
@@ -130,7 +111,7 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("year4"),
                 jsonObject.getString("year5"),
                 projectID,
-                jsonObject.getString("other_data"),
+                "",
                 jsonObject.getString("commit_date"));
         TechProject tp = new TechProject(
                 jsonObject.getString("tech_project_count1"),
@@ -177,13 +158,11 @@ public class OutstandingPerformanceDescriptionService {
                 jsonObject.getString("tech_transfer_point5"),
                 jsonObject.getString("tech_transfer_point_total"));
 
-
         articleAADAO.save(aaa, projectID);
         articleABDAO.save(aab, projectID);
-       // articleSWDAO.save(asw, projectID);
+        articleSWDAO.save(asw, projectID);
         articleTTDAO.save(att, projectID);
         coopProjectDAO.save(cp, projectID);
-//        eduProjectDAO.save(ep, projectID);
         otherDataDAO.save(od, projectID);
         techProjectDAO.save(tp, projectID);
         techTransferDAO.save(tt, projectID);
@@ -195,7 +174,6 @@ public class OutstandingPerformanceDescriptionService {
         ArticleSW asw = articleSWDAO.show(projectID);
         ArticleTT att = articleTTDAO.show(projectID);
         CoopProject cp = coopProjectDAO.show(projectID);
-//        EduProject ep = eduProjectDAO.show(projectID);
         OtherData od = otherDataDAO.show(projectID);
         TechProject tp = techProjectDAO.show(projectID);
         TechTransfer tt = techTransferDAO.show(projectID);
@@ -206,12 +184,9 @@ public class OutstandingPerformanceDescriptionService {
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
-
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-//            ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
@@ -221,12 +196,9 @@ public class OutstandingPerformanceDescriptionService {
         try {
             addBeanPropertyToJson(object,aaa);
             addBeanPropertyToJson(object,aab);
-
-
             addBeanPropertyToJson(object,asw);
             addBeanPropertyToJson(object,att);
             addBeanPropertyToJson(object,cp);
-//            addBeanPropertyToJson(object,ep);
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);

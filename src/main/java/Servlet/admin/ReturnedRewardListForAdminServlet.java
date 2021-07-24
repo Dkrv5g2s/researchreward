@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class RewardPendingListServlet extends ServletEntryPoint {
+public class ReturnedRewardListForAdminServlet extends ServletEntryPoint {
 
     private RewardPendingListService rewardPendingListService = new RewardPendingListService();
 
@@ -17,8 +17,8 @@ public class RewardPendingListServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String userRole = (String) session.getAttribute("userRole");
-        req.setAttribute("json",rewardPendingListService.getPendingList(userRole));
+        req.setAttribute("json",rewardPendingListService.getReturnedPendingList(userRole));
 
-        req.getRequestDispatcher("WEB-INF/jsp/admin/RewardPendingList.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/jsp/admin/ReturnedRewardListForAdmin.jsp").forward(req,resp);
     }
 }

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class BFormFormulaDAOImpl implements BFormFormulaDAO {
 
-    private static final String INSERT_OBJECT = "INSERT INTO weight (w1_1,w1_2,w1_3,w1_4,w1_5,w1_6,w1_7,w2_1,w2_2,w2_3,w2_4,w2_5,w2_6,w3_1,w3_2,w4_1,w4_2,w4_3,w4_4,w4_5,w4_6,w4_7,w4_8,w4_9,w4_10,w4_11,w4_12) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO weight (w1_1,w1_2,w1_3,w1_4,w1_5,w1_6,w1_7,w2_1,w2_2,w2_3,w2_4,w2_5,w2_6,w3_1,w3_2,w4_1,w4_2,w4_3,w4_4,w4_5,w4_6,w4_7,w4_8,w4_9,w4_10,w4_11,w4_12,w4_13,w4_14,w4_15) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_OBJECT = "SELECT * FROM weight";
     private static final String DELETE_OBJECT = "DELETE FROM weight";
     private DBConnection dbConnection = new DBConnectionImpl();
@@ -61,6 +61,9 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
                     result.setW4_10(resultSet.getDouble("w4_10"));
                     result.setW4_11(resultSet.getDouble("w4_11"));
                     result.setW4_12(resultSet.getDouble("w4_12"));
+                    result.setW4_13(resultSet.getDouble("w4_13"));
+                    result.setW4_14(resultSet.getDouble("w4_14"));
+                    result.setW4_15(resultSet.getDouble("w4_15"));
                 }
             }
 
@@ -118,9 +121,9 @@ public class BFormFormulaDAOImpl implements BFormFormulaDAO {
             preparedStatement.setDouble(25,object.getW4_10());
             preparedStatement.setDouble(26,object.getW4_11());
             preparedStatement.setDouble(27,object.getW4_12());
-
-
-
+            preparedStatement.setDouble(28,object.getW4_13());
+            preparedStatement.setDouble(29,object.getW4_14());
+            preparedStatement.setDouble(30,object.getW4_15());
 
             preparedStatement.executeUpdate();
             connection.close();

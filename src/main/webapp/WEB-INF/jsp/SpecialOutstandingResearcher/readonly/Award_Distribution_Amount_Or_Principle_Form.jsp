@@ -72,17 +72,17 @@
         var html_of_item = "";
         html_of_item += "<tr>" ;
 
-        html_of_item += "<td colspan='1' width='16%'><select name='applicant_type"+i+"' >" +
+        html_of_item += "<td colspan='1' width='16%'><select name='applicant_type"+i+"' disabled>" +
                         "<option value='' selected disabled hidden>請選擇</option>" +
                         "<option value='績優教師'>績優教師</option>" +
                         "<option value='聘任單位主管'>聘任單位主管</option>" +
                         "<option value='研究人員'>研究人員</option>" +
                         "</select></td>" ;
-        html_of_item += "<td colspan='1' width='16%'><input name='name"+i+"' size='10' maxlength='40'></td>";
-        html_of_item += "<td colspan='1' width='16%'><input name='college_and_department"+i+"' size='10' maxlength='40' ></td>" ;
-        html_of_item += "<td colspan='1' width='16%'><input name='job"+i+"' size='10' maxlength='40'></td>" ;
-        html_of_item += "<td colspan='1' width='16%'><input name='year"+i+"' size='6' maxlength='40' >年<br><input name='month"+i+"' size='6' maxlength='40' >月</td>" ;
-        html_of_item += "<td colspan='1' width='20%'><textarea style='resize:none;width:100%;height:75px;' name='principle"+i+"' maxlength='300' onkeyup='wordsTotal()' ></textarea></td>" ;
+        html_of_item += "<td colspan='1' width='16%'><input name='name"+i+"' size='10' maxlength='40' readonly></td>";
+        html_of_item += "<td colspan='1' width='16%'><input name='college_and_department"+i+"' size='10' maxlength='40' readonly></td>" ;
+        html_of_item += "<td colspan='1' width='16%'><input name='job"+i+"' size='10' maxlength='40' readonly></td>" ;
+        html_of_item += "<td colspan='1' width='16%'><input name='year"+i+"' size='6' maxlength='40' readonly>年<br><input name='month"+i+"' size='6' maxlength='40' readonly>月</td>" ;
+        html_of_item += "<td colspan='1' width='20%'><textarea style='resize:none;width:100%;height:75px;' name='principle"+i+"' maxlength='300' onkeyup='wordsTotal()' readonly></textarea></td>" ;
         html_of_item += "</tr>" ;
 
         return html_of_item ;

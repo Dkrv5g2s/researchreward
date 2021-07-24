@@ -22,6 +22,9 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
         int projectId = turnIdInSessionToInt(session, "projectId");
         req.setAttribute("data", juniorResearchInvestigatorService.show(projectId));
 
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
+
         Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
             req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigator.jsp").forward(req, resp);
@@ -35,12 +38,13 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         int projectId = turnIdInSessionToInt(session, "projectId");
-        int user_number = turnIdInSessionToInt(session, "userNumber");
+        String user_number = session.getAttribute("userNumber").toString();
+        String userRole = session.getAttribute("userRole").toString();
 
         String jsonString = readJSONString(req);
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonObject.put("user_number", user_number);
-        juniorResearchInvestigatorService.save(jsonObject, projectId);
+        juniorResearchInvestigatorService.save(jsonObject, projectId, userRole);
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();

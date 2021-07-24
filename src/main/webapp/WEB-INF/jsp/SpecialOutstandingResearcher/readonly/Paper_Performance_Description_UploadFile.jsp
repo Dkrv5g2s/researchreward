@@ -11,11 +11,11 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="https://malsup.github.io/jquery.form.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
     <p class="table_b" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表(表B)</p>
-    <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="2" maxlength="4" style="text-align:center;" readonly>期績效說明表(申請第二期以上者填寫)(表C)</p>
+    <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="2" maxlength="4" style="text-align:center; border:none; outline:none;" tabindex="-1" readonly>期績效說明表(申請第二期以上者填寫)(表C)</p>
 </div>
 <div class="container" style="margin: 0px auto;width: 80%;">
     <form id="c001_form">

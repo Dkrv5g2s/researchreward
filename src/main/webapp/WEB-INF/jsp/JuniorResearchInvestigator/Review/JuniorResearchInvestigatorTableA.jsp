@@ -45,6 +45,12 @@
         .total_point{
             font-weight: bold;
         }
+        .sign{
+            vertical-align: top;
+            text-align: left;
+            width: 200px;
+            height: 80px;"
+        }
     </style>
 </head>
 <body>
@@ -225,7 +231,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="coop_project_count1" class="ic1"><%=json.optString("coop_project_count1","0")%></label></td>
                 <td><label name="coop_project_count2" class="ic2"><%=json.optString("coop_project_count2","0")%></label></td>
@@ -253,6 +259,19 @@
                 <td id="coop_project_point3" class="pc3"><%=json.optString("coop_project_point3","0")%></td>
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
+            </tr>
 
             <tr class="title">
                 <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
@@ -265,7 +284,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_transfer_count1" class="ic1"><%=json.optString("tech_transfer_count1","0")%></label></td>
                 <td><label name="tech_transfer_count2" class="ic2"><%=json.optString("tech_transfer_count2","0")%></label></td>
@@ -292,6 +311,19 @@
                 <td id="tech_transfer_point2" class="pc2"><%=json.optString("tech_transfer_point2","0")%></td>
                 <td id="tech_transfer_point3" class="pc3"><%=json.optString("tech_transfer_point3","0")%></td>
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
+            </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
             </tr>
 
             <tr>
@@ -325,24 +357,26 @@
     $(document).ready(function(){
         calculatePoint();
     });
+
     function calculatePoint(){
-        let FWCIValueofntut = "${fwci}";
-        let FWCIValueofuser = document.getElementById("fwci_value").innerHTML;
-        let multipleofFWCI = roundDecimal(FloatDiv(FWCIValueofuser,FWCIValueofntut),2).toString();
+        let FWCIValueOfNTUT = "${fwci}";
+        let FWCIValueOfUser = document.getElementById("fwci_value").innerHTML;
+        let multipleOfFWCI = roundDecimal(FloatDiv(FWCIValueOfUser,FWCIValueOfNTUT),2).toString();
 
-        let h5Indexofntut = "${h5Index}";
-        let h5Indexofuser = document.getElementById("h5_index").innerHTML;
-        let multipleofh5 = roundDecimal(FloatDiv(h5Indexofuser,h5Indexofntut),2).toString();
+        let h5IndexOfNTUT = "${h5Index}";
+        let h5IndexOfUser = document.getElementById("h5_index").innerHTML;
+        let multipleOfH5 = roundDecimal(FloatDiv(h5IndexOfUser, h5IndexOfNTUT),2).toString();
 
-        document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
-        document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
+        document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleOfFWCI;
+        document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleOfH5;
 
-        let pointOfFWCI = getPointByFWCIMultiple(multipleofFWCI);
-        let pointOfH5Index = getPointByh5Multiple(multipleofh5);
+        let pointOfFWCI = getPointByFWCIMultiple(multipleOfFWCI);
+        let pointOfH5Index = getPointByh5Multiple(multipleOfH5);
         let betterAmount = parseFloat(pointOfFWCI) >= parseFloat(pointOfH5Index) ? pointOfFWCI :pointOfH5Index;
         document.getElementById("pointB").innerHTML = betterAmount;
         update_A_plus_B();
     }
+
     function update_A_plus_B(){
         let sw_point_total = parseInt($("#sw_point_total").text());
         let t_point_total = parseInt($("#t_point_total").text());

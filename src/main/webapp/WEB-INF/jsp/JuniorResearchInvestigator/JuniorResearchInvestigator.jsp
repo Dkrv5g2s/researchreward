@@ -33,6 +33,15 @@
         .title{
             background:#C0C0C0;
         }
+        td > p{
+            margin: 3rem 0 0;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        td > p > input{
+            height: auto;
+            width: 3ch;
+        }
         .footer{
             text-align-last: center;
             margin: 1rem;
@@ -65,32 +74,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <label for="department">服務系所</label>
                     </td>
-                    <td rowspan="2" colspan="2">
+                    <td colspan="2">
                         <input id="department" maxlength="45">
-                    </td>
-                    <td colspan="2">
-                        <label for="birth_date">出生日期</label>
-                    </td>
-                    <td colspan="2">
-                        <input id="birth_date" type="date">
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label for="identity_number">身份證字號</label>
-                    </td>
-                    <td colspan="2">
-                        <input id="identity_number" name="identity_number" type="text" maxlength="10">
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2" colspan="2">
-                        <label for="employment_date">本校任職日期</label>
-                    </td>
-                    <td rowspan="2" colspan="2">
-                        <input id="employment_date" type="date">
                     </td>
                     <td rowspan="2">聯絡電話</td>
                     <td>
@@ -101,6 +89,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2">
+                        <label for="employment_date">本校任職日期</label>
+                    </td>
+                    <td colspan="2">
+                        <input id="employment_date" type="date">
+                    </td>
                     <td>
                         <label for="cellphone_number">手機</label>
                     </td>
@@ -117,6 +111,43 @@
                 <tr>
                     <td colspan="8">
                         <textarea id="recommended_reason" maxlength="500" type="text" onkeyup="wordsTotal()" rows="3" cols="8"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label>推 薦 單 位 主 管</label>
+                    </td>
+                    <td colspan="4">
+                        <label>學 院 院 長</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p class="department">
+                            本推薦案業經 <label id="department_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="department_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
+                            第 <label id="department_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 系<label id="department_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
+                            （<input id="department_sign_date" type="date" style="width: auto;" disabled>）
+                        </p>
+                    </td>
+                    <td colspan="4">
+                        <p class="college">
+                            本推薦案業經 <label id="college_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="college_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
+                            第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                            （<input id="college_sign_date" type="date" style="width: auto;" disabled>）
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>研發處</label>
+                    </td>
+                    <td colspan="6">
+                        <p class="researchAndDevelopmentOffice" style="text-align: center;">
+                            中 華 民 國
+                            <label id="research_and_development_office_sign_year"></label>年
+                            <label id="research_and_development_office_sign_month"></label>月
+                            <label id="research_and_development_office_sign_date"></label>日
+                        </p>
                     </td>
                 </tr>
             </tbody>
@@ -141,7 +172,6 @@
             url: 'JuniorResearchInvestigator',
             dataType: 'json',
             data: JSON.stringify(InputToJson()),
-            contentType: 'application/json',
             success: function(data){
                 alert(data.status);
                 window.location.href="JuniorResearchInvestigator";
@@ -151,6 +181,7 @@
             }
         });
     };
+
     function InputToJson(){
         let data = {};
         for (let j=0; j<document.getElementsByTagName("input").length; j++) {
@@ -159,7 +190,8 @@
         data[ document.getElementById("recommended_reason").id] = document.getElementById("recommended_reason").value;
         return data;
     }
-    $(document).ready(function () {
+
+    function setUserData(){
         $("#user_name").val("<%=jsonObject.optString("user_name", "")%>");
         $("#applicant_title").val("<%=jsonObject.optString("applicant_title", "")%>");
         $("#department").val("<%=jsonObject.optString("department", "")%>");
@@ -169,6 +201,28 @@
         $("#extension_number").val("<%=jsonObject.optString("extension_number", "")%>");
         $("#cellphone_number").val("<%=jsonObject.optString("cellphone_number", "")%>");
         $("#recommended_reason").val("<%=jsonObject.optString("recommended_reason", "")%>");
+    }
+    function setReviewData(){
+        //department
+        $("#department_academic_year").html("<%=jsonObject.optString("department_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_semester").html("<%=jsonObject.optString("department_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference_times").html("<%=jsonObject.optString("department_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference").html("<%=jsonObject.optString("department_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_sign_date").val("<%=jsonObject.optString("department_sign_date", "")%>");
+        //college
+        $("#college_academic_year").html("<%=jsonObject.optString("college_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_semester").html("<%=jsonObject.optString("college_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference_times").html("<%=jsonObject.optString("college_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference").html("<%=jsonObject.optString("college_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_sign_date").val("<%=jsonObject.optString("college_sign_date", "")%>");
+        //researchAndDevelopmentOffice
+        $("#research_and_development_office_sign_year").html("<%=jsonObject.optString("research_and_development_office_sign_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_month").html("<%=jsonObject.optString("research_and_development_office_sign_month", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_date").html("<%=jsonObject.optString("research_and_development_office_sign_date", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+    }
+    $(document).ready(function () {
+        setUserData();
+        setReviewData();
         wordsTotal();
     })
 </script>

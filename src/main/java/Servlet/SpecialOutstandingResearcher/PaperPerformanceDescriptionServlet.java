@@ -78,10 +78,18 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         RewardListService rewardListService = new RewardListService();
         req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
-        if ( readonly )
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
-        else
-            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        if ( readonly ) {
+            if (reward_type.compareTo("年輕學者研究獎") == 0)
+                req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigatorTableB.jsp").forward(req, resp);
+            else
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        }
+        else {
+            if (reward_type.compareTo("年輕學者研究獎") == 0)
+                req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigatorTableB.jsp").forward(req, resp);
+            else
+                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -124,7 +132,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         if(reward_type.compareTo("優秀人才申請")==0) {//TODO 獎勵特殊優秀研究人才?
             displayExplanation = "four_sections";
         }
-        else if(reward_type.compareTo("年輕學者研究獎")==0 || reward_type.compareTo("傑出研究獎")==0) {
+        else if(reward_type.compareTo("傑出研究獎")==0) {
             displayExplanation = "three_years";
         }
         if(isTableC)
