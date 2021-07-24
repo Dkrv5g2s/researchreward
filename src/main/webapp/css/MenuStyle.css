@@ -138,7 +138,7 @@ a:hover {
 
 /* Footer */
 #footer {
-    width: 100%;
+    width: 80%;
     height: 50px;
     margin: 5 auto;
     padding: 5px 0 5px 0;
@@ -168,6 +168,25 @@ a:hover {
 
 .page_list .now_page {
     background-color:#80ffff;
+}
+
+/* Logout */
+#logout {
+    margin-top: 0px;
+    padding: 0;
+    color: #000000;
+    position: relative;
+}
+#logout h3 {
+    font-family:"敺株�迤暺��", "Microsoft JhengHei", serif;
+    text-shadow: #888 0 0 1px, #000 0 0 0px, #000 0 0 0px;
+    font-size: 30pt;
+    color: #0C0C0C;
+    position: absolute;
+    right: 26.5%;
+}
+#logout h3 span {
+    color: #EB1D1D;
 }
 
 

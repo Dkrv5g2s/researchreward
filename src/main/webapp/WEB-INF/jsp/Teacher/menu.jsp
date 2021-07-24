@@ -22,9 +22,16 @@
 <div id="wrapper" class="realBox">
     <div id="header-wrapper" >
         <div id="header">
-            <div id="logo">
+            <div id="logo" style="float: left;">
                 <h1><span>研發獎勵系統</span></h1>
             </div>
+        </div>
+        <div id="logout">
+            <h3>
+                <form action='logout'  method="post" style="overflow: hidden">
+                    <input style="float: right; clear: both; " name="button" type="submit" id="button" value="登出">
+                </form>
+            </h3>
         </div>
         <div id="menuline">
             <div style="width:100%;background-color:red;">
@@ -45,6 +52,7 @@
             <div id="page" >
                 <div id="content">
                     <div class="main_func">
+                        <!-- frameborder=0 means hide border;scrolling=no means the embedded web will not shot scroll bar -->
                         <iframe src="" name="iframe" id="iframe" frameborder="0" scrolling="no" style="width: 100%;" onload="this.height=100"></iframe>
                     </div>
                 </div>
@@ -71,6 +79,8 @@
 
 </body>
 <script type="text/javascript">
+
+
     function reinitIframe(){
         var iframe = document.getElementById("iframe");
         try{

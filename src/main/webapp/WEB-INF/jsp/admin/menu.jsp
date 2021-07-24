@@ -43,7 +43,17 @@
         <div id="header">
             <div id="logo">
                 <h1 id = "head"><span style="padding-right: 10%">研發獎勵系統</span></h1>
+                <form action='Logout'  method="post">
+                    <h1><input name="button" type="submit" id="button" value="Logout"></h1>
+                </form>
             </div>
+        </div>
+        <div id="logout">
+            <h3>
+                <form action='logout'  method="post" style="overflow: hidden">
+                    <input style="float: right; clear: both; " name="button" type="submit" id="button" value="登出">
+                </form>
+            </h3>
         </div>
         <div id="menuline">
             <div style="width:100%;background-color:red;">
