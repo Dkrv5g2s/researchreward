@@ -62,29 +62,36 @@ public class AwardTimeLimitService {
         AwardTimeLimit result = awardTimeLimitDAO.get();
         long systemTime = System.currentTimeMillis();
         if(result.getS1().getTime() < systemTime && systemTime < result.getL1().getTime()){
-            rewards.add("奬助研究及產學績優教師聘任研究人員辦法");
+            String awardName = "奬助研究及產學績優教師聘任研究人員辦法" + formatAwardApplicationPeriod(result.getS1(),result.getL1());
+            rewards.add(awardName);
         }
         if(result.getS2().getTime() < systemTime && systemTime < result.getL2().getTime()){
-            rewards.add("講座教授");
+            String awardName = "講座教授" + formatAwardApplicationPeriod(result.getS2(),result.getL2());
+            rewards.add(awardName);
         }
         if(result.getS3().getTime() < systemTime && systemTime < result.getL3().getTime()){
-            rewards.add("特聘教授");
+            String awardName = "特聘教授" + formatAwardApplicationPeriod(result.getS3(),result.getL3());
+            rewards.add(awardName);
         }
         if(result.getS4().getTime() < systemTime && systemTime < result.getL4().getTime()){
-            rewards.add("傑出研究獎");
+            String awardName = "傑出研究獎" + formatAwardApplicationPeriod(result.getS4(),result.getL4());
+            rewards.add(awardName);
         }
         if(result.getS5().getTime() < systemTime && systemTime < result.getL5().getTime()){
-            rewards.add("年輕學者研究獎");
+            String awardName = "年輕學者研究獎" + formatAwardApplicationPeriod(result.getS5(),result.getL5());
+            rewards.add(awardName);
         }
         if(result.getS6().getTime() < systemTime && systemTime < result.getL6().getTime()){
-            rewards.add("獎勵特殊優秀研究人才");
+            String awardName = "獎勵特殊優秀研究人才" + formatAwardApplicationPeriod(result.getS6(),result.getL6());
+            rewards.add(awardName);
         }
         if(result.getS7().getTime() < systemTime && systemTime < result.getL7().getTime()){
-            rewards.add("獎勵新聘特殊優秀研究人才");
-            rewards.add("(續撥)獎勵新聘特殊優秀研究人才");
+            rewards.add("獎勵新聘特殊優秀研究人才" + formatAwardApplicationPeriod(result.getS7(),result.getL7()));
+            rewards.add("(續撥)獎勵新聘特殊優秀研究人才" + formatAwardApplicationPeriod(result.getS7(),result.getL7()));
         }
         if(result.getS8().getTime() < systemTime && systemTime < result.getL8().getTime()){
-            rewards.add("陽光獎助金論文獎勵");
+            String awardName = "陽光獎助金論文獎勵" + formatAwardApplicationPeriod(result.getS8(),result.getL8());
+            rewards.add(awardName);
         }
 
         return rewards;
@@ -99,5 +106,8 @@ public class AwardTimeLimitService {
         else{
             return false;
         }
+    }
+    private String formatAwardApplicationPeriod(Date startDate , Date endDate){
+        return "("+ startDate + "～" + endDate + ")";
     }
 }
