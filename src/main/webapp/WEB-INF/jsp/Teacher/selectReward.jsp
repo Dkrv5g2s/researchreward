@@ -25,7 +25,7 @@
                             <%
                                 for (String reward: (List<String>)request.getAttribute("rewardList")){
                             %>
-                                <option value="<%=reward%>"><%=reward%></option>
+                                <option value="<%=reward.substring(0,reward.indexOf("("))%>"><%=reward%></option>
                             <%}%>
                         </select>
                     </td>
