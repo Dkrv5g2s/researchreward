@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container" style="margin: 0px auto; width: 1200px">
-    <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學論文績效說明表(表A)</p>
+    <p style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學 論文績效說明表</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 70%">
     <form method="post" id="c001_form">

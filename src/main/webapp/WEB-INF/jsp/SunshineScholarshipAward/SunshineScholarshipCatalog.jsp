@@ -41,10 +41,10 @@
             <td class="left"><a href="SelectInformation">陽光獎助學金論文(教職研人員)獎勵申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="SunshineScholarshipAwardTableA">表A.論文績效說明表</a></td>
+            <td class="left"><a href="SunshineScholarshipAwardTableA">論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="SunshineScholarshipAwardTableAUpload">表A.論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a href="SunshineScholarshipAwardTableAUpload">論文績效說明表-檔案上傳</a></td>
         </tr>
         </tbody>
     </table>

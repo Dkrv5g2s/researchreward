@@ -44,13 +44,13 @@
             <td class="left"><a href="OutstandingResearchAwardReviewInformation">審查資料表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableA">檢附表A 近三年內發表之期刊論文統計表</a></td>
+            <td class="left"><a href="OutstandingResearchAwardTableA">近三年內發表之期刊論文統計表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableB">檢附表B 傑出論文績效說明表</a></td>
+            <td class="left"><a href="OutstandingResearchAwardTableB">傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload">檢附表B 傑出論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
         </tr>
         </tbody>
     </table>
