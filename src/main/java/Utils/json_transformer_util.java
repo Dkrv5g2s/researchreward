@@ -2,7 +2,6 @@ package Utils;
 
 import Bean.SpecialOutstandingResearcher.*;
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -129,6 +128,51 @@ public class json_transformer_util {
     public AwardDistributionAmountOrPrincipleForm json_to_award_distribution_amount_or_principle_form(JSONObject json) {
 
         return new Gson().fromJson(json.toString(), AwardDistributionAmountOrPrincipleForm.class);
+
+    }
+
+    public SpecialOutstandingResearcherReview json_to_special_researcher_review(JSONObject json_review) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            @Override
+            public Date deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+                    throws JsonParseException {
+                try {
+                    return df.parse(json.getAsString());
+                } catch (ParseException e) {
+                    return null;
+                }
+            }
+        });
+
+        try {
+            Gson gson = gsonBuilder.create();
+            return gson.fromJson(json_review.toString(), SpecialOutstandingResearcherReview.class);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return  null ;
+    }
+
+    public String special_researcher_reviwe_to_json(SpecialOutstandingResearcherReview specialOutstandingResearcherReview) {
+
+        Gson gson = new Gson() ;
+        JSONObject jsonObject = new JSONObject( gson.toJson(specialOutstandingResearcherReview) ) ;
+        try {
+            jsonObject.put("college_review_date", new java.sql.Date(specialOutstandingResearcherReview.getCollege_review_date().getTime()).toString()) ;
+        }
+        catch (Exception e ) {
+            jsonObject.put("college_review_date", "") ;
+        }
+        try {
+            jsonObject.put("research_office_review_date", new java.sql.Date(specialOutstandingResearcherReview.getResearch_office_review_date().getTime()).toString()) ;
+        }
+        catch (Exception e ) {
+            jsonObject.put("research_office_review_date", "") ;
+        }
+        return jsonObject.toString() ;
 
     }
 }

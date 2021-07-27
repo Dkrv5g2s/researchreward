@@ -1,6 +1,7 @@
 package Dao.SpecialOutstandingResearcherApplication;
 
 
+import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherReview;
 import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherForm;
 import Bean.SpecialOutstandingResearcher.SpecialOutstandingResearcherStandard;
 import DBConnection.DBConnection;
@@ -26,6 +27,12 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
 
     private static final String SELECT_SPECIFIED_Special_Outstanding_Researcher_Applicaiotn = "SELECT * FROM special_researcher_application WHERE project_id = ? " ;
     private static final String SELECT_SPECIFIED_Special_Outstanding_Researcher_Applicaiotn_Standard = "SELECT * FROM special_researcher_application_standard WHERE project_id = ? " ;
+
+
+    private static final String UPDATE_SPECIFED_Special_Outstanding_Researcher_Review = "UPDATE special_researcher_application SET department_review=?, college_review_date=?, research_office_review_date=? WHERE project_id=? ;";
+
+    private static final String SELECT_SPECIFED_Special_Outstanding_Researcher_Review = "SELECT department_review, college_review_date, research_office_review_date FROM special_researcher_application WHERE project_id=? ";
+
 
     private void delete_specified_standard( int project_id ) {
         Connection connection = dbConnection.getConnection();
@@ -185,7 +192,66 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
         SpecialOutstandingResearcherForm specialOutstandingResearcherForm = query_specified_special_researcher_application(project_id) ;
         specialOutstandingResearcherForm.setStandard_list( query_specified_special_researcher_application_standard(project_id) );
 
-
         return specialOutstandingResearcherForm ;
+    }
+
+    @Override
+    public void update_review(SpecialOutstandingResearcherReview specialOutstandingResearcherReview) {
+
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SPECIFED_Special_Outstanding_Researcher_Review))
+        {
+            preparedStatement.setInt(4, specialOutstandingResearcherReview.getProject_id());
+            preparedStatement.setBoolean(1, specialOutstandingResearcherReview.getDepartment_review());
+
+            try{
+                preparedStatement.setDate(2,new java.sql.Date(specialOutstandingResearcherReview.getCollege_review_date().getTime()));
+            }catch ( Exception e ) {
+                preparedStatement.setDate(2,null);
+            }
+
+            try{
+                preparedStatement.setDate(3,new java.sql.Date(specialOutstandingResearcherReview.getResearch_office_review_date().getTime()));
+            }catch ( Exception e ) {
+                preparedStatement.setDate(3,null);
+            }
+
+            preparedStatement.executeUpdate();
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public SpecialOutstandingResearcherReview query_review(int project_id) {
+
+        Connection connection = dbConnection.getConnection();
+        SpecialOutstandingResearcherReview specialOutstandingResearcherReview = new SpecialOutstandingResearcherReview() ;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFED_Special_Outstanding_Researcher_Review))
+        {
+            preparedStatement.setInt(1, project_id);
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+
+            if ( resultSet.next()) {
+
+                specialOutstandingResearcherReview.setProject_id( project_id );
+                specialOutstandingResearcherReview.setDepartment_review(resultSet.getBoolean("department_review"));
+                specialOutstandingResearcherReview.setCollege_review_date(resultSet.getDate("college_review_date"));
+                specialOutstandingResearcherReview.setResearch_office_review_date(resultSet.getDate("research_office_review_date"));
+
+            }
+
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return specialOutstandingResearcherReview;
     }
 }
