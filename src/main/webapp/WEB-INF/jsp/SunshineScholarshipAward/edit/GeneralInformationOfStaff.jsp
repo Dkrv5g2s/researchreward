@@ -28,29 +28,27 @@
             <tbody>
             <!-- 大列1 -->
             <tr style="text-align: center;">
-                <td rowspan="3" colspan="1" width="20%" style="font-size:22px"><strong>申請人姓名</strong></td>
-                <td width="10%" style="text-align: left;">中文:&nbsp;<input  id="chineseName" maxlength="40" ></td>
+                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><strong>申請人姓名</strong></td>
+                <td colspan="2" width="10%" style="text-align: left;">中文:&nbsp;<input  id="chineseName" maxlength="40" ></td>
             </tr>
             <tr style="text-align: left;">
-                <td width="10%">英文:&nbsp;<input  id="englishName" maxlength="40" ></td>
-
+                <td colspan="2" width="10%">英文:&nbsp;<input  id="englishName" maxlength="40" ></td>
             </tr>
             <tr style="text-align: left;">
-                <td width="10%">身分證字號(ARC No.):&nbsp;<input  id="nationalIDNumber" maxlength="40" ></td>
-
+                <td colspan="2" width="10%">身分證字號(ARC No.):&nbsp;<input  id="nationalIDNumber" maxlength="40" ></td>
             </tr>
             <!-- 大列2 -->
             <tr style="text-align: center;">
-                <td rowspan="1" colspan="1" width="20%" style="font-size:22px"><strong>單位(系所):</strong></td>
-                <td rowspan="1" colspan="0" width="38%" style="font-size:22px;text-align: left;"><input  id="department" maxlength="40" ></td>
+                <td rowspan="1" colspan="4" width="20%" style="font-size:22px"><strong>單位(系所):</strong></td>
+                <td rowspan="1" colspan="2" width="38%" style="font-size:22px;text-align: left;"><input  id="department" maxlength="40" ></td>
             </tr>
 
 
             <!-- 大列3 -->
             <tr style="text-align: center;" id="FacultyTr">
-                <td rowspan="1" colspan="1" width="20%" style="font-size:22px">
+                <td rowspan="1" colspan="4" width="20%" style="font-size:22px">
                     <strong>教職員<br>職&nbsp;&nbsp;&nbsp;稱</strong></td>
-                <td rowspan="1" colspan="1" width="20%" style="font-size:13px;text-align: left;" id="FacultyTable">
+                <td rowspan="1" colspan="2" width="20%" style="font-size:13px;text-align: left;" id="FacultyTable">
                     <select  size="1" id = "titles" onchange="changeFunc();" >
                         <option value="" selected>請選擇教職員類型</option>
                         <option value="FullTimeTeacher">專任教師</option>
@@ -66,30 +64,32 @@
 
             <!-- 大列4 -->
             <tr style="text-align: center;">
-                <td rowspan="3" colspan="1" width="20%" style="font-size:22px"><strong>聯絡方式:</strong></td>
-                <td rowspan="1" colspan="0" width="20%" style="text-align: left;">研究室分機:&nbsp;<input  id="extensionNumber" maxlength="15"></td>
+                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><strong>聯絡方式:</strong></td>
+                <td rowspan="1" colspan="2" width="20%" style="text-align: left;">研究室分機:&nbsp;<input  id="extensionNumber" maxlength="15"></td>
+            </tr>
+
+            <tr style="text-align: center;">
+                <td rowspan="1" colspan="2" width="20%" style="text-align: left;">手機:&nbsp;<input  id="cellphoneNumber" maxlength="15" ></td>
             </tr>
             <tr style="text-align: center;">
-                <td rowspan="1" colspan="0" width="20%" style="text-align: left;">手機:&nbsp;<input  id="cellphoneNumber" maxlength="15" ></td>
+                <td rowspan="1" colspan="2" width="20%" style="text-align: left;">E-mail:&nbsp;<input  id="emailAddress" maxlength="40"  ></td>
             </tr>
-            <tr style="text-align: center;">
-                <td rowspan="1" colspan="0" width="20%" style="text-align: left;">E-mail:&nbsp;<input  id="emailAddress" maxlength="40"  ></td>
-            </tr>
-<%--           ^^ personal data--%>
+            <!-- 大列5 -->
             <tr style="text-align:center;background:  #C0C0C0 ">
-                <td rowspan="1"  width="50%" ><strong style="font-size:22px">學&nbsp;術&nbsp;論&nbsp;著</strong><br>(請參照附表一)</td>
-                <td rowspan="1"  width="50%"><strong>請於表A「論文績效說明表」檢附相關資訊</strong></td>
+                <td rowspan="1" colspan="4" width="50%" ><strong style="font-size:22px">學&nbsp;術&nbsp;論&nbsp;著</strong><br>(請參照附表一)</td>
+                <td rowspan="1" colspan="2" width="50%"><strong>請於表A「論文績效說明表」檢附相關資訊</strong></td>
             </tr>
+            <!-- 大列6 -->
             <tr style="text-align: center;">
-                <td rowspan="2" colspan="1" width="20%" style="background:  #C0C0C0 ">Scopus/WOS 資料庫</td>
-                <td colspan="2" width="20%" style="text-align: left;"><strong>篇數: <input id="SWArticleCountOne" maxlength="5"></strong></td>
+                <td rowspan="2" colspan="4" width="20%" style="background:  #C0C0C0 ">Scopus/WOS 資料庫</td>
+                <td colspan="2"  width="20%" style="text-align: left;"><strong>篇數: <input id="SWArticleCountOne" maxlength="5"></strong></td>
             </tr>
             <tr style="text-align: center;">
                 <td colspan="2" width="20%" style="text-align: left;"><strong>點數小計:  <input id="SWPointOne" maxlength="5"></strong></td>
             </tr>
-
+            <!-- 大列7 -->
             <tr style="text-align: center;">
-                <td rowspan="1" colspan="2"  width="20%">
+                <td rowspan="1" colspan="6"  width="20%">
                     <p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計獎金，對應表如下：</p>
                     <br>
                     <table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
@@ -125,18 +125,39 @@
                     為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
 
                     <p align="left">上述兩者擇最優一項，加計獎金：&nbsp;<span id="FWCIPrize"></span>元</p>
-
                 </td>
             </tr>
+            <!-- 大列8 -->
             <tr style="text-align: left; ">
-                <td rowspan="1 " colspan="6 " width="100% " style="font-weight: bold; ">
+                <td rowspan="1 " colspan="6" width="100% " style="font-weight: bold; ">
                     <input type="checkbox" id="TeacherFormCheck"><span style="color: #ff0000">申請人聲明&nbsp;&nbsp;&nbsp;充分了解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任</span>
                     <br><br><br>
                     日期:<input type="date" id="CommitDate">
 
                 </td>
             </tr>
-
+            <tr  style="text-align: center; font-size:22px ">
+                <td width="33%" colspan="2" style="font-weight: bold; ">
+                    系、所&nbsp;(簽章)
+                </td>
+                <td width="33%" colspan="2" style="font-weight: bold; ">
+                    學&nbsp;院&nbsp;(簽章)
+                </td>
+                <td width="33%" colspan="2" style="font-weight: bold; ">
+                    研發處(核備)
+                </td>
+            </tr>
+            <tr style="text-align: left; font-size:16px ">
+                <td  colspan="2" width="100% ">
+                    <br><br><br><br><br><br><br><br><br>本案業經<strong>系所評審委員會</strong>審議通過（請檢附<strong>會議記錄</strong>）
+                </td>
+                <td  colspan="2" width="100% " style="font-weight: bold; ">
+                    <br><br><br><br><br><br><br><br><br>
+                </td>
+                <td  colspan="2" width="100% " style="font-weight: bold; ">
+                    <br><br><br><br><br><br><br><br><br>
+                </td>
+            </tr>
 
             <tr>
                 <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
