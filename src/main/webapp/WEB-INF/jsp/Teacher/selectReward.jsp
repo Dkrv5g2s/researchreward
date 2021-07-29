@@ -1,4 +1,5 @@
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="Bean.Award.Award" %><%--
   Created by IntelliJ IDEA.
   User: z
   Date: 2021/1/20
@@ -23,9 +24,9 @@
                     <td>
                         <select name="reward">
                             <%
-                                for (String reward: (List<String>)request.getAttribute("rewardList")){
+                                for (Award award: (List<Award>)request.getAttribute("rewardList")){
                             %>
-                                <option value="<%=reward.substring(0,reward.indexOf("("))%>"><%=reward%></option>
+                                <option value="<%=award.getAwardName()%>"><%=award.getAwardNameWithApplicationPeriod()%></option>
                             <%}%>
                         </select>
                     </td>

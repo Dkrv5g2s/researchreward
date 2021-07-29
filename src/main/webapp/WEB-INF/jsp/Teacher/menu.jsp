@@ -42,6 +42,7 @@
                     <li class='top'><a class='top_link' href="/RewardList" target="iframe"><span class='down'>修改申請獎項</span></a></li>
                     <li class='top'><a class='top_link'  href="/TraceProgress" target="iframe"><span class='down'>申請進度追蹤</span></a></li>
                     <li class='top'><a class='top_link'  href="/ReturnedRewardList" target="iframe"><span class='down'>查看退件獎項</span></a></li>
+<%--                    <li class='top'><a class='top_link'   target="iframe"><span class='down'><span class='down'>登出</span></a></li>--%>
                 </ul>
             </div>
 
