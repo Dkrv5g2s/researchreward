@@ -2,11 +2,11 @@ package Service.SpecialOutstandingResearcher;
 
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
 import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
-import Bean.Project.RewardProject;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
+import Service.Teacher.ProjectFillRateService;
 import Utils.json_transformer_util;
 import Utils.verifyDuplicatePaper.VerifyUtils;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
 public class PaperPerformanceDescriptionService {
     private Logger logger = Logger.getLogger(this.getClass());
@@ -24,6 +23,9 @@ public class PaperPerformanceDescriptionService {
         PaperPerformanceDescriptionForm specialOutstandingResearcherForm = new json_transformer_util().json_to_paper_performance_description_form(json) ;
         PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
         dao.update( specialOutstandingResearcherForm ) ;
+
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(json.getInt("project_id"), json);
 
     }
 

@@ -95,7 +95,7 @@
         </table>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
-            <button type="button" name="confirm" onclick="commit()">存檔</button>
+            <button type="button" name="confirm" onclick="commit()">暫存</button>
         </div>
     </form>
 </div>
@@ -119,12 +119,11 @@
     });
 
     function commit(){
-        var table = tableToJson(document.getElementById("technologyTransfer"));
         $.ajax({
             type: 'POST',
             url: 'JuniorResearchInvestigatorReviewInformation',
             dataType: 'text',
-            data: JSON.stringify(table),
+            data: JSON.stringify(tableToJson()),
             contentType: 'application/json',
             success: function(data){
                 alert('存檔成功');
@@ -136,23 +135,33 @@
         });
     }
 
-    function tableToJson(table){
-        var data = [];
+    function tableToJson(){
+        const table = document.getElementById("technologyTransfer");
         // first row needs to be headers
-        var elements = table.getElementsByTagName("lable");
-        var headers = [];
-        for (var i=0; i<elements.length; i++) {
+        const elements = table.getElementsByTagName("lable");
+        let headers = [];
+        for (let i=0; i<elements.length; i++) {
             headers[i] = elements.item(i).getAttribute("name");
         }
         // go through cells
-        for (var i=1; i<table.rows.length-1; i++) {
-            var tableRow = table.rows[i];
-            var rowData = {};
-            for (var j=0; j<tableRow.cells.length-1; j++) {
-                rowData[ headers[j] ] = tableRow.cells[j].getElementsByTagName("input")[0].value;
+        let data = [];
+        let dataNumber = 0;
+        const tableRows = table.rows;
+        let tableCells = [];
+        for (let i=1; i<tableRows.length-1; i++) {
+            let tableRow = tableRows[i];
+            let rowData = {};
+            tableCells = tableRow.cells;
+            for (let j=0; j<tableCells.length-1; j++) {
+                const inputValue = tableCells[j].getElementsByTagName("input")[0].value;
+                rowData[ headers[j] ] = inputValue;
+                if(inputValue.length > 0){
+                    dataNumber++;
+                }
             }
             data.push(rowData);
         }
+        data.push({"fill_rate": tableCells.length === 0 ? 1 : dataNumber/((tableRows.length-2) * (tableCells.length-1))});
         return data;
     }
 </script>

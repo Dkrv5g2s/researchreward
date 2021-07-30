@@ -365,7 +365,7 @@
         </table>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
-            <button type="button" name="save" onclick="commit()" disabled = "disabled">存檔</button>
+            <button type="button" name="save" onclick="commit()" disabled = "disabled">暫存</button>
         </p>
     </form>
 </div>
@@ -422,7 +422,7 @@
         }
         data["other_data"] = $("#other_data").val();
         data["commit_date"] = moment(new Date()).format("YYYY-MM-DD");
-
+        data["fill_rate"] = $("input:not(:checked)[name='declaration']").length === 0 ? 1 : 0;
         return data;
     }
 

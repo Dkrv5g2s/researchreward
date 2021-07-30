@@ -23,9 +23,9 @@ public class JuniorResearchInvestigatorServlet extends ServletEntryPoint {
         req.setAttribute("data", juniorResearchInvestigatorService.show(projectId));
 
         String userRole = session.getAttribute("userRole").toString();
-        req.setAttribute("role", "college"); //userRole
+        req.setAttribute("role", userRole);
 
-        Boolean readonly = true ;//Boolean.parseBoolean(session.getAttribute("readonly").toString());
+        Boolean readonly = Boolean.parseBoolean(session.getAttribute("readonly").toString());
         if(readonly){//送審
             req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigator.jsp").forward(req, resp);
         }

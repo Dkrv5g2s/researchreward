@@ -3,6 +3,7 @@ package Service.JuniorResearchInvestigator;
 import Bean.JuniorResearchInvestigator.JuniorResearchInvestigator;
 import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorDAO;
 import Dao.JuniorResearchInvestigator.JuniorResearchInvestigatorDAOImpl;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import java.sql.Date;
 import static Utils.ReflectUtils.addBeanPropertyToJson;
@@ -10,6 +11,8 @@ import static Utils.ReflectUtils.addBeanPropertyToJson;
 public class JuniorResearchInvestigatorService {
 
     private JuniorResearchInvestigatorDAO juniorResearchInvestigatorDAO = new JuniorResearchInvestigatorDAOImpl();
+    private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+
     public void save(JSONObject jsonObject, int projectId, String userRole){
         JuniorResearchInvestigator juniorResearchInvestigator = new JuniorResearchInvestigator();
         juniorResearchInvestigator.setProjectId(projectId);
@@ -17,6 +20,7 @@ public class JuniorResearchInvestigatorService {
             case "teacher":
                 juniorResearchInvestigator = setUserData(juniorResearchInvestigator, jsonObject);
                 juniorResearchInvestigatorDAO.save(juniorResearchInvestigator);
+                projectFillRateService.save(projectId, "JuniorResearchInvestigator", jsonObject.getDouble("fill_rate"));
                 break;
             case "department":
                 juniorResearchInvestigator = setDepartmentData(juniorResearchInvestigator, jsonObject);

@@ -126,14 +126,14 @@
                         <p class="department">
                             本推薦案業經 <label id="department_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="department_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
                             第 <label id="department_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 系<label id="department_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
-                            （<input id="department_sign_date" type="date" style="width: auto;" disabled>）
+                            （<input id="department_sign_date" type="date" style="width: auto;" class="department" disabled>）
                         </p>
                     </td>
                     <td colspan="4">
                         <p class="college">
                             本推薦案業經 <label id="college_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="college_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
                             第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
-                            （<input id="college_sign_date" type="date" style="width: auto;" disabled>）
+                            （<input id="college_sign_date" type="date" style="width: auto;" class="department" disabled>）
                         </p>
                     </td>
                 </tr>
@@ -155,7 +155,7 @@
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="javascript:location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
-            <button type="button" name="confirm" onclick="commit()">存檔</button>
+            <button type="button" name="confirm" onclick="commit()">暫存</button>
         </div>
     </form>
 </div>
@@ -184,10 +184,22 @@
 
     function InputToJson(){
         let data = {};
-        for (let j=0; j<document.getElementsByTagName("input").length; j++) {
-            data[ document.getElementsByTagName("input")[j].id] = document.getElementsByTagName("input")[j].value;
+        let dataNumber = 0;
+        const inputList = document.getElementsByTagName("input");
+        for (let j=0; j<inputList.length; j++) {
+            data[ inputList[j].id] = inputList[j].value;
+            if(inputList[j].value.length > 0 && inputList[j].className.length === 0){
+                dataNumber++;
+            }
         }
-        data[ document.getElementById("recommended_reason").id] = document.getElementById("recommended_reason").value;
+        const textareaList = document.getElementsByTagName("textarea");
+        for (let j=0; j<textareaList.length; j++) {
+            data[ textareaList[j].id] = textareaList[j].value;
+            if(textareaList[j].value.length > 0 && inputList[j].className.length === 0){
+                dataNumber++;
+            }
+        }
+        data["fill_rate"] = dataNumber/(inputList.length + textareaList.length - 2);  //審核input不列入計算-2
         return data;
     }
 

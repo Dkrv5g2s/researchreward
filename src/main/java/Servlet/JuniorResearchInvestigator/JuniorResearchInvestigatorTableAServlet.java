@@ -2,6 +2,7 @@ package Servlet.JuniorResearchInvestigator;
 
 import Service.Admin.AwardTimeLimitService;
 import Service.JuniorResearchInvestigator.JuniorResearchInvestigatorTableAService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
 
@@ -42,7 +42,10 @@ public class JuniorResearchInvestigatorTableAServlet extends ServletEntryPoint {
         if (!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
             HttpSession session = req.getSession();
-            juniorResearchInvestigatorTableAService.save(json, session.getAttribute("projectId").toString());
+            String projectId = session.getAttribute("projectId").toString();
+            juniorResearchInvestigatorTableAService.save(json, projectId);
+            ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+            projectFillRateService.save(Integer.parseInt(projectId), "JuniorResearchInvestigatorTableA", json.getDouble("fill_rate"));
         }
     }
 }

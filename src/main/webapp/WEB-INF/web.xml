@@ -360,6 +360,15 @@
         <url-pattern>/deleteRewardList</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ProjectFillRateServlet</servlet-name>
+        <servlet-class>Servlet.Teacher.ProjectFillRateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectFillRateServlet</servlet-name>
+        <url-pattern>/ProjectFillRate</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>APItestServlet</servlet-name>
@@ -450,7 +459,7 @@
         <url-pattern>/TeacherHireResearcherTableA</url-pattern>
     </servlet-mapping>
 
-    <!--    JuniorResearchInvestigator-->
+    <!--JuniorResearchInvestigator-->
     <servlet>
         <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
         <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorCatalogServlet</servlet-class>

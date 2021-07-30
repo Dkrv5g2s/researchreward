@@ -53,7 +53,7 @@
                     <tr>
                         <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
                             <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
-                            <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveData()" disabled = "disabled" >
+                            <input type="button" width="10%" value="暫存" name="save_the_page" onclick="saveData()" disabled = "disabled">
                         </td>
                     </tr>
                 </tbody>
@@ -148,6 +148,12 @@
 
         function add_new_item(){
             dataFromTable();
+            latest_data["paper_performance_list"].push(createNewItem());
+            showData();
+            calculateTotal();
+        }
+
+        function createNewItem() {
             let item = {};
             item.author_name = "" ;
             item.book_name = "";
@@ -155,29 +161,26 @@
             item.total_roll = "";
             item.total_page = "";
             item.publish_time = "";
-            item.content = "";
             item.rank_of_scholarly_journals = "" ;
             item.author_order = "" ;
             item.communication_author_count = "" ;
             item.additional_weight = "" ;
             item.cal_point = "" ;
             item.paper_id = 0 ;
-            latest_data["paper_performance_list"].push(item);
-            showData();
-            calculateTotal();
+            return item;
         }
 
         function makeNewItemHtml( i ) {
             var html_of_item = "";
             html_of_item += "<tr>" ;
 
-            html_of_item += "<td colspan='2' style='text-align: left;'>姓名:<input name='author_name" + i + "' size='10' maxlength='40'><br>" ;
-            html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='150'><br>" ;
-            html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
-            html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
-            html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5'><br>" ;
-            html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='4'>" ;
-            html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
+            html_of_item += "<td colspan='2' style='text-align: left;'>姓名: <input type='text' name='author_name" + i + "' size='10' maxlength='40'><br>" ;
+            html_of_item += "著作名稱: <input type='text' name='book_name" + i + "' size='10' maxlength='150'><br>" ;
+            html_of_item += "期刊名稱: <input type='text' name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
+            html_of_item += "卷數: <input type='text' name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
+            html_of_item += "頁數: <input type='text' name='total_page" + i + "' size='5' maxlength='5'><br>" ;
+            html_of_item += "發表年份: <input type='text' name='publish_time" + i + "' size='15' maxlength='4'>" ;
+            html_of_item += " <input name='paper_id" + i + "' style='display: none' readonly>" ;
             html_of_item += "</td>" ;
 
             html_of_item += "<td colspan='1' style='text-align: left;'><input type='checkbox' data-selection-block='onlyone' data-weight='150' name='rank_of_scholarly_journals" + i + "' value='Nature、Science及Cell'><label name='1_1'>Nature、Science及Cell</label><br>" ;
@@ -261,8 +264,6 @@
                 latest_data["paper_performance_list"].push(item);
                 i++;
             }
-            latest_data["fwci_value_past_five_year"] = $('input[name="fwci_value_past_five_year"]').val() ;
-            latest_data["fwci_value_past_five_year"] = $('label[id="total_point"]').text() ;
         }
 
         function showData(){
@@ -330,7 +331,24 @@
         } ) ;
 
         function InputFormToJson() {
-            return JSON.stringify(latest_data) ;
+            let dataNumber = 0;
+            let inputList = latest_data["paper_performance_list"];
+            inputList.forEach(inputElement => {
+                let inoutJSONObject = JSON.parse(JSON.stringify(inputElement));
+                for(let singleInputKey in inoutJSONObject) {
+                    let singleInputValue = inoutJSONObject[singleInputKey];
+                    if(singleInputKey === "additional_weight"){  //additional_weight預設為1，不列入計算
+                        break;
+                    }
+                    if (singleInputValue.length > 0 && singleInputValue !== "請確認W1至w3欄位皆勾選") {
+                        dataNumber++;
+                    }
+                }
+            });
+            let item = createNewItem();
+            let fill_rate = dataNumber/(inputList.length * (Object.keys(item).length - 1) );
+            latest_data["rateData"] = {"column_name": "JuniorResearchInvestigatorTableB", "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
+            return JSON.stringify(latest_data);
         }
 
         function inputToJsonForTableC() {
@@ -343,27 +361,22 @@
         }
 
         function saveData(){
-            if(checkData()){
-                dataFromTable();
-                $.ajax({
-                    type: 'POST',
-                    url: 'PaperPerformanceDescriptionForm',
-                    dataType: 'text',
-                    data: { "data": InputFormToJson(), "func":"save", "tableCData":inputToJsonForTableC() },
-                    success: function(data){
-                        alert('存檔成功');
-                        location.reload();
-                    },
-                    error: function(jqXHR, textStatus, message) {
-                        //error handling
-                        console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
-                        alert(jqXHR.responseText);
-                    },
-                });
-            }
-            else{
-                alert("有資料格式錯誤或未填寫");
-            }
+            dataFromTable();
+            $.ajax({
+                type: 'POST',
+                url: 'PaperPerformanceDescriptionForm',
+                dataType: 'text',
+                data: { "data": InputFormToJson(), "func":"save", "tableCData":inputToJsonForTableC() },
+                success: function(data){
+                    alert('存檔成功');
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, message) {
+                    //error handling
+                    console.log("textStatus:",textStatus,",message:",message,"jqXHR:",jqXHR);
+                    alert(jqXHR.responseText);
+                },
+            });
         }
 
         function checkRepresentationClause() {
