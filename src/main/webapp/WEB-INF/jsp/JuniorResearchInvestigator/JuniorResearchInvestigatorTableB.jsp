@@ -300,10 +300,10 @@
         }
 
         function calculateTotal() {
-            dataFromTable()
+            dataFromTable();
             let sum_of_total_column = 0.0;
-            for(var i=0;i<latest_data["paper_performance_list"].length;i++){
-                var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
+            for(let i=0;i<latest_data["paper_performance_list"].length;i++){
+                let cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
                 cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
                 cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
                 let additional_weight = parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' ));
@@ -313,11 +313,10 @@
                     cal_total = "請確認W1至w3欄位皆勾選";
                 }else{
                     cal_total = financial(cal_total);
-                    sum_of_total_column += cal_total;
+                    sum_of_total_column += Number.parseFloat(cal_total);
                 }
                 $("label[name='cal_point"+i+"']").text(cal_total);
             }
-            $('input[name="fwci_value_past_five_year"]').val("0") ;
             $('label[id="total_point"]').text(financial(sum_of_total_column)) ;
         }
 
@@ -327,12 +326,8 @@
 
         $(document).on("change", "input[data-selection-block='onlyone']", function () {
             $(this).siblings().prop("checked", false) ;
-            calculateTotal()
+            calculateTotal();
         } ) ;
-
-        function checkData() {
-            return true ;
-        }
 
         function InputFormToJson() {
             return JSON.stringify(latest_data) ;

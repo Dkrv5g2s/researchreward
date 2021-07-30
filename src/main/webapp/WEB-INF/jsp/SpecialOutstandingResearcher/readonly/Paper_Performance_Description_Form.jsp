@@ -344,7 +344,7 @@
                 cal_total = "請確認W1至w3欄位皆勾選";
             }else{
                 cal_total = financial(cal_total);
-                sumOfTotalcolumn += cal_total;
+                sumOfTotalcolumn += Number.parseFloat(cal_total);
             }
             $("label[name='cal_point"+i+"']").text(cal_total);
         }
