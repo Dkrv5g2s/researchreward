@@ -359,6 +359,11 @@
                         <input type="checkbox" name="declaration" class="auto"/>
                         <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
                     </p>
+                    <p style="text-align: right;">
+                        <label style="margin-right: 15ch;">申請人簽章：</label>
+                        <label for="commit_date">日期：</label>
+                        <input type="date" id="commit_date" style="width: auto;" value="<%=json.optString("commit_date", "")%>">
+                    </p>
                 </td>
             </tr>
             </tbody>
@@ -421,8 +426,8 @@
             }
         }
         data["other_data"] = $("#other_data").val();
-        data["commit_date"] = moment(new Date()).format("YYYY-MM-DD");
-        data["fill_rate"] = $("input:not(:checked)[name='declaration']").length === 0 ? 1 : 0;
+        data["commit_date"] = $("#commit_date").val();
+        data["fill_rate"] = $("#commit_date").val() ? 1 : 0;
         return data;
     }
 
@@ -674,7 +679,7 @@
         wordsTotal();
 
         $("input").blur(function(){
-            if($(this).val()===""){
+            if($(this).val()==="" && $(this).type !== "date"){
                 $(this).val("0");
                 update_article(this);
                 update_project_count(this);
