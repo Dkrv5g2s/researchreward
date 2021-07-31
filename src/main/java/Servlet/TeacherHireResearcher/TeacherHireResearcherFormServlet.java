@@ -19,7 +19,10 @@ public class TeacherHireResearcherFormServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json", teacherHireResearcherFormService.get(Integer.parseInt((String)session.getAttribute("projectId"))));
+        req.setAttribute("json", teacherHireResearcherFormService.get(Integer.parseInt((String) session.getAttribute("projectId"))));
+
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
 
         req.getRequestDispatcher("WEB-INF/jsp/TeacherHireResearcher/TeacherHireResearcherForm.jsp").forward(req, resp);
     }
@@ -28,8 +31,21 @@ public class TeacherHireResearcherFormServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         JSONObject json = new JSONObject(readJSONString(req));
-
-        teacherHireResearcherFormService.save(json,Integer.parseInt((String)session.getAttribute("projectId")));
+        String userRole = session.getAttribute("userRole").toString();
+        switch (userRole) {
+            case "teacher":
+                teacherHireResearcherFormService.save(json, Integer.parseInt((String) session.getAttribute("projectId")));
+                break;
+            case "department":
+                teacherHireResearcherFormService.updateDepartmentReviewData(json, Integer.parseInt((String) session.getAttribute("projectId")));
+                break;
+            case "college":
+                teacherHireResearcherFormService.updateCollegeReviewData(json, Integer.parseInt((String) session.getAttribute("projectId")));
+                break;
+            case "researchAndDevelopmentOffice":
+                teacherHireResearcherFormService.updateRADOReviewData(json, Integer.parseInt((String) session.getAttribute("projectId")));
+                break;
+        }
 
         resp.sendRedirect("/TeacherHireResearcherCatalog");
     }

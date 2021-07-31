@@ -29,6 +29,21 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
                     "researcher_salary_scale = ?, project_category = ?, project_name = ?, project_amount = ?, expected_performance_near_five_years = ?, " +
                     "expected_performance_per_years = ?, expected_performance_others = ?, apply_for_subsidies = ? " +
                     "WHERE reward_project_id = ?";
+    private static final String UPDATE_DEPARTMENT_REVIEW_DATA =
+            "UPDATE teacher_hire_researcher_form " +
+                    "SET department_academic_year = ?, department_semester = ?, " +
+                    "department_conference_times = ?, department_sign_date = ? " +
+                    "WHERE reward_project_id = ?";
+    private static final String UPDATE_COLLEGE_REVIEW_DATA =
+            "UPDATE teacher_hire_researcher_form " +
+                    "SET college_academic_year = ?, college_semester = ?, " +
+                    "college_conference_times = ?, college_sign_date = ? " +
+                    "WHERE reward_project_id = ?";
+    private static final String UPDATE_RADO_REVIEW_DATA =
+            "UPDATE teacher_hire_researcher_form " +
+                    "SET research_and_development_office_sign_year = ?, research_and_development_office_sign_month = ?, " +
+                    "research_and_development_office_sign_date = ? " +
+                    "WHERE reward_project_id = ?";
 
     @Override
     public void save(TeacherHireResearcherForm object) {
@@ -51,6 +66,59 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
             else {
                 update(connection,object);
             }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateDepartmentReviewData(TeacherHireResearcherForm teacherHireResearcherForm){
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPARTMENT_REVIEW_DATA))
+        {
+            preparedStatement.setString(1, teacherHireResearcherForm.getDepartmentAcademicYear());
+            preparedStatement.setString(2, teacherHireResearcherForm.getDepartmentSemester());
+            preparedStatement.setString(3, teacherHireResearcherForm.getDepartmentConferenceTimes());
+            preparedStatement.setDate(4, teacherHireResearcherForm.getDepartmentSignDate());
+            preparedStatement.setInt(5,teacherHireResearcherForm.getRewardProjectId());
+
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateCollegeReviewData(TeacherHireResearcherForm teacherHireResearcherForm){
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_COLLEGE_REVIEW_DATA))
+        {
+            preparedStatement.setString(1, teacherHireResearcherForm.getCollegeAcademicYear());
+            preparedStatement.setString(2, teacherHireResearcherForm.getCollegeSemester());
+            preparedStatement.setString(3, teacherHireResearcherForm.getCollegeConferenceTimes());
+            preparedStatement.setDate(4, teacherHireResearcherForm.getCollegeSignDate());
+            preparedStatement.setInt(5,teacherHireResearcherForm.getRewardProjectId());
+
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateRADOReviewData(TeacherHireResearcherForm teacherHireResearcherForm){
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_RADO_REVIEW_DATA))
+        {
+            preparedStatement.setString(1, teacherHireResearcherForm.getResearchAndDevelopmentOfficeSignYear());
+            preparedStatement.setString(2, teacherHireResearcherForm.getResearchAndDevelopmentOfficeSignMonth());
+            preparedStatement.setString(3, teacherHireResearcherForm.getResearchAndDevelopmentOfficeSignDate());
+            preparedStatement.setInt(4,teacherHireResearcherForm.getRewardProjectId());
+
+            preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,6 +156,18 @@ public class TeacherHireResearcherFormDAOImpl implements TeacherHireResearcherFo
                 teacherHireResearcherForm.setExpectedPerformancePerYears(resultSet.getString("expected_performance_per_years"));
                 teacherHireResearcherForm.setExpectedPerformanceOthers(resultSet.getString("expected_performance_others"));
                 teacherHireResearcherForm.setApplyForSubsidies(resultSet.getString("apply_for_subsidies"));
+
+                teacherHireResearcherForm.setDepartmentAcademicYear(resultSet.getString("department_academic_year"));
+                teacherHireResearcherForm.setDepartmentSemester(resultSet.getString("department_semester"));
+                teacherHireResearcherForm.setDepartmentConferenceTimes(resultSet.getString("department_conference_times"));
+                teacherHireResearcherForm.setDepartmentSignDate(resultSet.getDate("department_sign_date"));
+                teacherHireResearcherForm.setCollegeAcademicYear(resultSet.getString("college_academic_year"));
+                teacherHireResearcherForm.setCollegeSemester(resultSet.getString("college_semester"));
+                teacherHireResearcherForm.setCollegeConferenceTimes(resultSet.getString("college_conference_times"));
+                teacherHireResearcherForm.setCollegeSignDate(resultSet.getDate("college_sign_date"));
+                teacherHireResearcherForm.setResearchAndDevelopmentOfficeSignYear(resultSet.getString("research_and_development_office_sign_year"));
+                teacherHireResearcherForm.setResearchAndDevelopmentOfficeSignMonth(resultSet.getString("research_and_development_office_sign_month"));
+                teacherHireResearcherForm.setResearchAndDevelopmentOfficeSignDate(resultSet.getString("research_and_development_office_sign_date"));
             }
             connection.close();
         } catch (SQLException e) {

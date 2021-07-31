@@ -45,6 +45,15 @@
                 background-color: rgb(255, 255, 240);
                 text-align: right;
             }
+            table td.sign_metadata{
+                background-color: rgb(255, 255, 240);
+                text-align: center;
+            }
+            td > p{
+                margin: 3rem 0 0;
+                text-align: left;
+                vertical-align: bottom;
+            }
             div.content{
                 margin: 0 auto;
                 padding: 50px;
@@ -94,13 +103,38 @@
                 document.getElementById('wordsCount').innerHTML = total;
             }
 
+            function setReviewData(){
+                //department
+                $("#departmentAcademicYear").val("<%=json.optString("departmentAcademicYear", "")%>");
+                $("#departmentSemester").val("<%=json.optString("departmentSemester", "")%>");
+                $("#departmentConferenceTimes").val("<%=json.optString("departmentConferenceTimes", "")%>");
+                $("#departmentSignDate").val("<%=json.optString("departmentSignDate", "")%>");
+                //college
+                $("#collegeAcademicYear").val("<%=json.optString("collegeAcademicYear", "")%>");
+                $("#collegeSemester").val("<%=json.optString("collegeSemester", "")%>");
+                $("#collegeConferenceTimes").val("<%=json.optString("collegeConferenceTimes", "")%>");
+                $("#collegeSignDate").val("<%=json.optString("collegeSignDate", "")%>");
+                //researchAndDevelopmentOffice
+                $("#researchAndDevelopmentOfficeSignYear").val("<%=json.optString("researchAndDevelopmentOfficeSignYear", "")%>");
+                $("#researchAndDevelopmentOfficeSignMonth").val("<%=json.optString("researchAndDevelopmentOfficeSignMonth", "")%>");
+                $("#researchAndDevelopmentOfficeSignDate").val("<%=json.optString("researchAndDevelopmentOfficeSignDate", "")%>");
+            }
 
             $(document).ready(function (){
                 countWordsTotal();
                 $("#applyForSubsidies").on('change paste keyup', function(){
                     countWordsTotal();
                 });
+
+                let role = "${role}";
+                if (role === "industryLiaisonOffice") {
+                    $("#save").remove();
+                }
                 setReadOnly(${readonly});
+                $(".${role}").removeAttr("readonly");
+                $(".${role}").removeAttr("disabled");
+
+                setReviewData();
             });
         </script>
     </head>
@@ -224,11 +258,48 @@
                                 <div style="float:right;">目前輸入字數:<span id="wordsCount">0</span>/500</div>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="3" class="sign_metadata">
+                                <label>推 薦 單 位 主 管</label>
+                            </td>
+                            <td colspan="4" class="sign_metadata">
+                                <label>學 院 院 長</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <p class="department">
+                                    本推薦案業經 <input id="departmentAcademicYear" name="departmentAcademicYear" class="department" maxlength="3" style="width: 4ch;" disabled/> 學年度第 <input id="departmentSemester" name="departmentSemester" class="department" maxlength="1" style="width: 3ch;" disabled/> 學期<br>
+                                    第 <input id="departmentConferenceTimes" name="departmentConferenceTimes" class="department" maxlength="5" style="width: 5ch;" disabled/> 次 系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                                    （<input id="departmentSignDate" name="departmentSignDate" class="department" type="date" style="width: auto;" disabled>）
+                                </p>
+                            </td>
+                            <td colspan="4">
+                                <p class="college">
+                                    本推薦案業經 <input id="collegeAcademicYear" name="collegeAcademicYear" class="college" maxlength="3" style="width: 4ch;" disabled/> 學年度第 <input id="collegeSemester" name="collegeSemester" class="college" maxlength="1" style="width: 3ch;" disabled/> 學期<br>
+                                    第 <input id="collegeConferenceTimes" name="collegeConferenceTimes" class="college" maxlength="5" style="width: 5ch;" disabled/> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
+                                    （<input id="collegeSignDate" name="collegeSignDate" type="date" class="college" style="width: auto;" disabled>）
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" class="metadata">
+                                <label>研發處</label>
+                            </td>
+                            <td colspan="6">
+                                <p class="researchAndDevelopmentOffice" style="text-align: center;">
+                                    中 華 民 國
+                                    <input id="researchAndDevelopmentOfficeSignYear" name="researchAndDevelopmentOfficeSignYear" class="researchAndDevelopmentOffice" maxlength="3" style="width: 4ch;" disabled>年
+                                    <input id="researchAndDevelopmentOfficeSignMonth" name="researchAndDevelopmentOfficeSignMonth" class="researchAndDevelopmentOffice" maxlength="2" style="width: 3ch;" disabled>月
+                                    <input id="researchAndDevelopmentOfficeSignDate" name="researchAndDevelopmentOfficeSignDate" class="researchAndDevelopmentOffice" maxlength="2" style="width: 3ch;" disabled>日
+                                </p>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <p align="center">
                     <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'">
-                    <button type="button" name="save" onclick="commit()">存檔</button>
+                    <input type="button" id="save" name="save" value="存檔" onclick="commit()"/>
                 </p>
             </form>
         </div>
