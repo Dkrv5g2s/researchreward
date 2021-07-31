@@ -16,7 +16,7 @@
 
 <html>
 <head>
-    <title>近五年內發表之期刊論文統計表(表A)</title>
+    <title>近五年內發表之期刊論文統計表</title>
     <style>
         body {
             margin: 0px 0px 0px 0px;
@@ -261,7 +261,7 @@
 <body>
     <div class="content">
         <form>
-			<p style="text-align:center;font-weight:bold;font-size:20px;">近五年內發表之期刊論文統計表(表A)</p>
+			<p style="text-align:center;font-weight:bold;font-size:20px;">近五年內發表之期刊論文統計表</p>
             <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 		        <tbody>
 		            <tr style="text-align:center;background:  #C0C0C0 ">

@@ -74,19 +74,19 @@
                     <td><a href="/TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/TeacherHireResearcherTableA">近五年內發表之期刊論文統計表(表A)</a></td>
+                    <td><a href="/TeacherHireResearcherTableA">近五年內發表之期刊論文統計表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm">傑出論文績效說明表(表B)</a></td>
+                    <td><a href="/PaperPerformanceDescriptionForm">傑出論文績效說明表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload">傑出論文績效說明表(表B)-上傳檔案</a></td>
+                    <td><a href="/PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)</a></td>
+                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)(表C)-上傳檔案</a></td>
+                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
                 </tr>
                 </tbody>
             </table>

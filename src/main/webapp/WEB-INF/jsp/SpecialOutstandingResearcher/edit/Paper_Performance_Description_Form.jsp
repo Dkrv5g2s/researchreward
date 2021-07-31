@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
     <p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表</p>
-    <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="2" maxlength="4" style="text-align:center;">期績效說明表(申請第二期以上者填寫)(表C)</p>
+    <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="text-align:center;">期績效說明表(申請第二期以上者填寫)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 90%">
     <form method="post" id="c001_form">
