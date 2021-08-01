@@ -125,7 +125,7 @@
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name] && fillRates[page.name] !== 0) {
+                if (!fillRates[page.name]) {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
