@@ -43,11 +43,12 @@ public class OutstandingResearchAwardServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         int projectId = turnIdInSessionToInt(session, "projectId");
         int user_number = turnIdInSessionToInt(session, "userNumber");
+        String userRole = session.getAttribute("userRole").toString();
 
         String jsonString = readJSONString(req);
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonObject.put("user_number", user_number);
-        outstandingResearchAwardService.save(jsonObject, projectId);
+        outstandingResearchAwardService.save(jsonObject, projectId,userRole);
 
         resp.setContentType("text/html;charset=UTF-8");
         Map map = new HashMap();

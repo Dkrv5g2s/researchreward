@@ -21,7 +21,7 @@
         input {
             height: 100%;
             width: 100%;
-            /*border-style: initial;*/
+            border-style: initial;
         }
         .file_title{
             padding-bottom: 1rem;
@@ -126,14 +126,14 @@
                     <p class="department">
                         本推薦案業經 <label id="department_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="department_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
                         第 <label id="department_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 系<label id="department_conference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>會議審議通過<br>
-                        （<input id="department_sign_date" type="date" style="width: auto;" disabled>）
+                        （<input id="department_sign_date" type="date" style="width: auto;" class="department" disabled>）
                     </p>
                 </td>
                 <td colspan="4">
                     <p class="college">
                         本推薦案業經 <label id="college_academic_year">&nbsp;&nbsp;&nbsp; </label> 學年度第 <label id="college_semester">&nbsp;&nbsp;&nbsp;</label> 學期<br>
                         第 <label id="college_conference_times">&nbsp;&nbsp;&nbsp;</label> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
-                        （<input id="college_sign_date" type="date" style="width: auto;" disabled>）
+                        （<input id="college_sign_date" type="date" style="width: auto;" class="department" disabled>）
                     </p>
                 </td>
             </tr>
@@ -155,7 +155,7 @@
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="javascript:location.href='OutstandingResearchAwardCatalog'">回上頁</button>
-            <button type="button" name="confirm" onclick="commit()">存檔</button>
+            <button type="button" name="confirm" onclick="commit()">暫存</button>
         </div>
     </form>
 </div>
@@ -172,7 +172,7 @@
             url: 'OutstandingResearchAward',
             dataType: 'json',
             data: JSON.stringify(InputToJson()),
-            contentType: 'application/json',
+            // contentType: 'application/json',
             success: function(data){
                 alert(data.status);
                 window.location.href="OutstandingResearchAward";
@@ -182,15 +182,30 @@
             }
         });
     };
+
     function InputToJson(){
         let data = {};
-        for (let j=0; j<document.getElementsByTagName("input").length; j++) {
-            data[ document.getElementsByTagName("input")[j].id] = document.getElementsByTagName("input")[j].value;
+        let dataNumber = 0;
+        const inputList = document.getElementsByTagName("input");
+        for (let j=0; j<inputList.length; j++) {
+            data[ inputList[j].id] = inputList[j].value;
+            if(inputList[j].value.length > 0 && inputList[j].className.length === 0){
+                dataNumber++;
+            }
         }
         data[ document.getElementById("recommended_reason").id] = document.getElementById("recommended_reason").value;
+        const textareaList = document.getElementsByTagName("textarea");
+        for (let j=0; j<textareaList.length; j++) {
+            data[ textareaList[j].id] = textareaList[j].value;
+            if(textareaList[j].value.length > 0 && inputList[j].className.length === 0){
+                dataNumber++;
+            }
+        }
+        data["fill_rate"] = dataNumber/(inputList.length + textareaList.length - 2);  //審核input不列入計算-2
         return data;
     }
-    $(document).ready(function () {
+
+    function setUserData(){
         $("#user_name").val("<%=jsonObject.optString("user_name", "")%>");
         $("#applicant_title").val("<%=jsonObject.optString("applicant_title", "")%>");
         $("#department").val("<%=jsonObject.optString("department", "")%>");
@@ -200,6 +215,28 @@
         $("#extension_number").val("<%=jsonObject.optString("extension_number", "")%>");
         $("#cellphone_number").val("<%=jsonObject.optString("cellphone_number", "")%>");
         $("#recommended_reason").val("<%=jsonObject.optString("recommended_reason", "")%>");
+    }
+    function setReviewData(){
+        //department
+        $("#department_academic_year").html("<%=jsonObject.optString("department_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_semester").html("<%=jsonObject.optString("department_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference_times").html("<%=jsonObject.optString("department_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_conference").html("<%=jsonObject.optString("department_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#department_sign_date").val("<%=jsonObject.optString("department_sign_date", "")%>");
+        //college
+        $("#college_academic_year").html("<%=jsonObject.optString("college_academic_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_semester").html("<%=jsonObject.optString("college_semester", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference_times").html("<%=jsonObject.optString("college_conference_times", "&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_conference").html("<%=jsonObject.optString("college_conference", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#college_sign_date").val("<%=jsonObject.optString("college_sign_date", "")%>");
+        //researchAndDevelopmentOffice
+        $("#research_and_development_office_sign_year").html("<%=jsonObject.optString("research_and_development_office_sign_year", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_month").html("<%=jsonObject.optString("research_and_development_office_sign_month", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+        $("#research_and_development_office_sign_date").html("<%=jsonObject.optString("research_and_development_office_sign_date", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")%>");
+    }
+    $(document).ready(function () {
+        setUserData();
+        setReviewData();
         wordsTotal();
     })
 </script>
