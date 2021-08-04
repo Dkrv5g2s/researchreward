@@ -31,7 +31,7 @@
                 <td><a  href="OutstandingPerformanceDescriptionForm">特殊優秀研究人才傑出績效說明表</a></td>
             </tr>
             <tr >
-                <td ><a  href="ReviewSupportingInformationForm" >審查佐證資料</a></td>
+                <td ><a  href="ReviewSupportingInformationForm" >審查資料【填寫說明】</a></td>
 
             </tr>
             <tr >

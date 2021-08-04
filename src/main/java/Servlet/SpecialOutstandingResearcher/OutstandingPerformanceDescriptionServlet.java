@@ -40,7 +40,6 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        System.out.println("POST");
         getForm(req);
 
         String jsonString = readJSONString(req);
@@ -49,9 +48,8 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
             JSONObject json = new JSONObject(jsonString);
 
             outstandingPerformanceDescriptionService.save(json,String.valueOf(session.getAttribute("projectId")));
-            System.out.println("save");
         }
-
+        
     }
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {

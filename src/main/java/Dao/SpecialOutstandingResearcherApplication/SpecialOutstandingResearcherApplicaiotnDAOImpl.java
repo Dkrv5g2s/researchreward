@@ -17,8 +17,8 @@ import java.util.List;
 public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOutstandingResearcherApplicaiotnDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String UPDATE_SPECIFED_Special_Outstanding_Researcher_Applicaiotn = "INSERT INTO special_researcher_application (project_id,applicant_name,job,college,department,seniority,executed_tech_proj,tech_proj_id,tech_proj_start_time,tech_proj_end_time) VALUES (?,?,?,?,?,?,?,?,?,?) " +
-            "ON DUPLICATE KEY UPDATE applicant_name = ?,job = ?,college=?, department=?, seniority=?, executed_tech_proj=?, tech_proj_id= ?, tech_proj_start_time=?, tech_proj_end_time=? ;";
+    private static final String INSERT_SPECIFED_Special_Outstanding_Researcher_Applicaiotn = "INSERT INTO special_researcher_application (project_id,applicant_name,job,college,department,seniority,executed_tech_proj,tech_proj_name,tech_proj_id,tech_proj_start_time,tech_proj_end_time) VALUES (?,?,?,?,?,?,?,?,?,?,?) " +
+            "ON DUPLICATE KEY UPDATE applicant_name = ?,job = ?,college=?, department=?, seniority=?, executed_tech_proj=?, tech_proj_name= ?, tech_proj_id= ?, tech_proj_start_time=?, tech_proj_end_time=?;";
 
 
     private static final String DELETE_SPECIFED_Special_Outstanding_Researcher_Applicaiotn_Standard = "DELETE FROM special_researcher_application_standard WHERE project_id = ? ";
@@ -29,9 +29,9 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
     private static final String SELECT_SPECIFIED_Special_Outstanding_Researcher_Applicaiotn_Standard = "SELECT * FROM special_researcher_application_standard WHERE project_id = ? " ;
 
 
-    private static final String UPDATE_SPECIFED_Special_Outstanding_Researcher_Review = "UPDATE special_researcher_application SET department_review=?, college_review_date=?, research_office_review_date=? WHERE project_id=? ;";
+    private static final String UPDATE_SPECIFED_Special_Outstanding_Researcher_Review = "UPDATE special_researcher_application SET department_review=?, college_recommended_order=?, college_review_date=?, research_office_review_date=? WHERE project_id=? ;";
 
-    private static final String SELECT_SPECIFED_Special_Outstanding_Researcher_Review = "SELECT department_review, college_review_date, research_office_review_date FROM special_researcher_application WHERE project_id=? ";
+    private static final String SELECT_SPECIFED_Special_Outstanding_Researcher_Review = "SELECT department_review, college_recommended_order, college_review_date, research_office_review_date FROM special_researcher_application WHERE project_id=? ";
 
 
     private void delete_specified_standard( int project_id ) {
@@ -54,10 +54,6 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SPECIFED_Special_Outstanding_Researcher_Applicaiotn_Standard))
             {
                 preparedStatement.setInt(1,project_id);
-                System.out.println( project_id );
-                System.out.println( specialOutstandingResearcherStandard.getLevel_num() );
-                System.out.println( specialOutstandingResearcherStandard.getStandard());
-                System.out.println( specialOutstandingResearcherStandard.getSub_standard());
                 preparedStatement.setString(2,specialOutstandingResearcherStandard.getLevel_num());
                 preparedStatement.setString(3,specialOutstandingResearcherStandard.getStandard());
                 preparedStatement.setString(4,specialOutstandingResearcherStandard.getSub_standard());
@@ -84,7 +80,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
     public void update(SpecialOutstandingResearcherForm specialOutstandingResearcherForm) {
         Connection connection = dbConnection.getConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SPECIFED_Special_Outstanding_Researcher_Applicaiotn))
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SPECIFED_Special_Outstanding_Researcher_Applicaiotn))
         {
             preparedStatement.setInt(1,specialOutstandingResearcherForm.getProject_id());
             preparedStatement.setString(2,specialOutstandingResearcherForm.getApplicant_name());
@@ -93,38 +89,39 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
             preparedStatement.setString(5,specialOutstandingResearcherForm.getDepartment());
             preparedStatement.setString(6,specialOutstandingResearcherForm.getSeniority());
             preparedStatement.setBoolean(7,specialOutstandingResearcherForm.isExecuted_tech_proj());
-            preparedStatement.setString(8,specialOutstandingResearcherForm.getTech_proj_id());
+            preparedStatement.setString(8,specialOutstandingResearcherForm.getTech_proj_name());
+            preparedStatement.setString(9,specialOutstandingResearcherForm.getTech_proj_id());
             try{
-                preparedStatement.setDate(9,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_start_time().getTime()));
-            }catch ( Exception e ) {
-                preparedStatement.setDate(9,null);
-            }
-
-            try{
-                preparedStatement.setDate(10,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_end_time().getTime()));
+                preparedStatement.setDate(10,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_start_time().getTime()));
             }catch ( Exception e ) {
                 preparedStatement.setDate(10,null);
             }
 
-            preparedStatement.setString(11,specialOutstandingResearcherForm.getApplicant_name());
-            preparedStatement.setString(12,specialOutstandingResearcherForm.getJob());
-            preparedStatement.setString(13,specialOutstandingResearcherForm.getCollege());
-            preparedStatement.setString(14,specialOutstandingResearcherForm.getDepartment());
-            preparedStatement.setString(15,specialOutstandingResearcherForm.getSeniority());
-            preparedStatement.setBoolean(16,specialOutstandingResearcherForm.isExecuted_tech_proj());
-            preparedStatement.setString(17,specialOutstandingResearcherForm.getTech_proj_id());
             try{
-                preparedStatement.setDate(18,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_start_time().getTime()));
+                preparedStatement.setDate(11,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_end_time().getTime()));
             }catch ( Exception e ) {
-                preparedStatement.setDate(18,null);
+                preparedStatement.setDate(11,null);
+            }
+
+            preparedStatement.setString(12,specialOutstandingResearcherForm.getApplicant_name());
+            preparedStatement.setString(13,specialOutstandingResearcherForm.getJob());
+            preparedStatement.setString(14,specialOutstandingResearcherForm.getCollege());
+            preparedStatement.setString(15,specialOutstandingResearcherForm.getDepartment());
+            preparedStatement.setString(16,specialOutstandingResearcherForm.getSeniority());
+            preparedStatement.setBoolean(17,specialOutstandingResearcherForm.isExecuted_tech_proj());
+            preparedStatement.setString(18,specialOutstandingResearcherForm.getTech_proj_name());
+            preparedStatement.setString(19,specialOutstandingResearcherForm.getTech_proj_id());
+            try{
+                preparedStatement.setDate(20,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_start_time().getTime()));
+            }catch ( Exception e ) {
+                preparedStatement.setDate(20,null);
             }
 
             try{
-                preparedStatement.setDate(19,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_end_time().getTime()));
+                preparedStatement.setDate(21,new java.sql.Date(specialOutstandingResearcherForm.getTech_proj_end_time().getTime()));
             }catch ( Exception e ) {
-                preparedStatement.setDate(19,null);
+                preparedStatement.setDate(21,null);
             }
-
             preparedStatement.executeUpdate();
             connection.close();
         } catch (Exception e) {
@@ -149,6 +146,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
                 specialOutstandingResearcherForm.setDepartment(resultSet.getString("department"));
                 specialOutstandingResearcherForm.setSeniority(resultSet.getString("seniority"));
                 specialOutstandingResearcherForm.setExecuted_tech_proj(resultSet.getBoolean("executed_tech_proj"));
+                specialOutstandingResearcherForm.setTech_proj_name(resultSet.getString("tech_proj_name"));
                 specialOutstandingResearcherForm.setTech_proj_id(resultSet.getString("tech_proj_id"));
                 specialOutstandingResearcherForm.setTech_proj_start_time(resultSet.getDate("tech_proj_start_time"));
                 specialOutstandingResearcherForm.setTech_proj_end_time(resultSet.getDate("tech_proj_end_time"));
@@ -202,19 +200,25 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SPECIFED_Special_Outstanding_Researcher_Review))
         {
-            preparedStatement.setInt(4, specialOutstandingResearcherReview.getProject_id());
+            preparedStatement.setInt(5, specialOutstandingResearcherReview.getProject_id());
             preparedStatement.setBoolean(1, specialOutstandingResearcherReview.getDepartment_review());
 
             try{
-                preparedStatement.setDate(2,new java.sql.Date(specialOutstandingResearcherReview.getCollege_review_date().getTime()));
+                preparedStatement.setString(2, specialOutstandingResearcherReview.getCollege_recommended_order());
             }catch ( Exception e ) {
                 preparedStatement.setDate(2,null);
             }
 
             try{
-                preparedStatement.setDate(3,new java.sql.Date(specialOutstandingResearcherReview.getResearch_office_review_date().getTime()));
+                preparedStatement.setDate(3,new java.sql.Date(specialOutstandingResearcherReview.getCollege_review_date().getTime()));
             }catch ( Exception e ) {
                 preparedStatement.setDate(3,null);
+            }
+
+            try{
+                preparedStatement.setDate(4,new java.sql.Date(specialOutstandingResearcherReview.getResearch_office_review_date().getTime()));
+            }catch ( Exception e ) {
+                preparedStatement.setDate(4,null);
             }
 
             preparedStatement.executeUpdate();
@@ -241,6 +245,7 @@ public class SpecialOutstandingResearcherApplicaiotnDAOImpl implements SpecialOu
 
                 specialOutstandingResearcherReview.setProject_id( project_id );
                 specialOutstandingResearcherReview.setDepartment_review(resultSet.getBoolean("department_review"));
+                specialOutstandingResearcherReview.setCollege_recommended_order(resultSet.getString("college_recommended_order"));
                 specialOutstandingResearcherReview.setCollege_review_date(resultSet.getDate("college_review_date"));
                 specialOutstandingResearcherReview.setResearch_office_review_date(resultSet.getDate("research_office_review_date"));
 

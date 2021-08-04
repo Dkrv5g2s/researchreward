@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-	<title>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表(表A)</title>
+	<title>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</title>
 	<style>
 		body {
 			margin: 0px 0px 0px 0px;
@@ -76,7 +76,16 @@
 		input.check {
 			width: 10px;
 		}
-
+		.sign{
+			vertical-align: top;
+			text-align: left;
+			width: 200px;
+			height: 80px;"
+		}
+		table tr.title{
+			text-align: center;
+			background: #C0C0C0;
+		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/Function.js"></script>
@@ -91,6 +100,7 @@
 				contentType: 'application/json',
 				success: function(data){
 					alert('存檔成功');
+					location.reload();
 				}
 			});
 
@@ -427,15 +437,15 @@
 <body>
 <div class="content">
 	<form>
-		<p>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表(表A)</p>
+		<p>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</p>
 		<table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 			<tbody>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td rowspan="2" colspan="2" width="30%">學術論著</td>
 				<td colspan="5" width="60%" style="text-align: center;">年度</td>
 				<td rowspan="2" width="10%" colspan="1">小計<br>(A)</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td colspan="1" width="12%"><label id="year1"><%=json.get("year1")%></label></td>
 				<td colspan="1" width="12%"><label id="year2"><%=json.get("year2")%></label></td>
 				<td colspan="1" width="12%"><label id="year3"><%=json.get("year3")%></label></td>
@@ -461,8 +471,8 @@
 				<td colspan="1" width="12%"><input name="sw_point5" type="number" id="sw_point5" class="ic5" value="<%=json.get("sw_point5")%>" size="5" maxlength="40" style="text-align:center; width: 75%;"></td>
 				<td colspan="1" width="10%" id="sw_point_total" class="total_count" ><%=json.get("sw_point_total")%></td>
 			</tr>
-			<tr style="text-align: center;">
-				<td colspan="7" width="80%">說明：論文請檢附-表B「傑出論文績效說明表」</td>
+			<tr>
+				<td colspan="7" width="80%">說明：採計Scopus論文者，請檢附-表B「傑出論文績效說明表」</td>
 			</tr>
 			<tr style="text-align: center;" class="count1">
 				<td rowspan="2" colspan="1" width="20%">TSSCI/THCI (限設計及人社學院)</td>
@@ -557,7 +567,7 @@
 					<p align="left">申請人h-5指數:&nbsp;<input name="h5_index" id="h5_index" value="<%=json.get("h5_index")%>" style="text-align:center; width: 10%;" oninput="calculatePrize()">&nbsp;
 						為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
 
-					<p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>元</p>
+					<p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>點(B)。</p>
 
 				</td>
 				<td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
@@ -570,12 +580,12 @@
 					<p>3.每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</p>
 				</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td rowspan="2" colspan="2" width="30%">科 技 部 計 畫<br>(不包含科技部產學合作計畫)</td>
 				<td colspan="5" width="60%" style="text-align: center;">年度</td>
 				<td rowspan="2" width="10%" colspan="1">小計</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td colspan="1" width="12%"><label id="year1"><%=json.get("year1")%></label></td>
 				<td colspan="1" width="12%"><label id="year2"><%=json.get("year2")%></label></td>
 				<td colspan="1" width="12%"><label id="year3"><%=json.get("year3")%></label></td>
@@ -583,7 +593,7 @@
 				<td colspan="1" width="12%"><label id="year5"><%=json.get("year5")%></label></td>
 			</tr>
 			<tr style="text-align: center;" class="count">
-				<td rowspan="4" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
+				<td rowspan="3" colspan="1" width="20%">近五年以本校名義主持科技部各類型計畫統計表</td>
 				<td colspan="1" width="10%">件數</td>
 				<td colspan="1" width="12%"><input name="tech_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_project_count1")%>" style="text-align:center; width: 75%;"></td>
 				<td colspan="1" width="12%"><input name="tech_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_project_count2")%>" style="text-align:center; width: 75%;"></td>
@@ -611,59 +621,12 @@
 				<td colspan="1" width="10%" id="tech_project_point_total" class="total_point"><%=json.get("tech_project_point_total")%></td>
 			</tr>
 
-			<tr>
-				<td colspan="7" width="80%">
-					<p>說明：</p>
-					<p>1.不包含科技部產學合作計畫。</p>
-				</td>
-			</tr>
-<%--			<tr style="text-align:center;background:  #C0C0C0 ;">--%>
-<%--				<td rowspan="2" colspan="2" width="30%">教 育 部 計 畫<br>(USR)</td>--%>
-<%--				<td colspan="5" width="60%" style="text-align: center;">年度</td>--%>
-<%--				<td rowspan="2" width="10%" colspan="1">小計</td>--%>
-<%--			</tr>--%>
-<%--			<tr style="text-align:center;background:  #C0C0C0 ">--%>
-<%--				<td colspan="1" width="12%"><label id="year1"><%=json.get("year1")%></label></td>--%>
-<%--				<td colspan="1" width="12%"><label id="year2"><%=json.get("year2")%></label></td>--%>
-<%--				<td colspan="1" width="12%"><label id="year3"><%=json.get("year3")%></label></td>--%>
-<%--				<td colspan="1" width="12%"><label id="year4"><%=json.get("year4")%></label></td>--%>
-<%--				<td colspan="1" width="12%"><label id="year5"><%=json.get("year5")%></label></td>--%>
-<%--			</tr>--%>
-<%--			<tr style="text-align: center;" class="count">--%>
-<%--				<td rowspan="3" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>--%>
-<%--				<td colspan="1" width="10%">件數</td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("edu_project_count1")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("edu_project_count2")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_count3" type="number" class="ic3" size="5" maxlength="40" value="<%=json.get("edu_project_count3")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_count4" type="number" class="ic4" size="5" maxlength="40" value="<%=json.get("edu_project_count4")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_count5" type="number" class="ic5" size="5" maxlength="40" value="<%=json.get("edu_project_count5")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="10%" id="edu_project_count_total" class="total_count"><%=json.get("edu_project_count_total")%></td>--%>
-<%--			</tr>--%>
-<%--			<tr style="text-align: center;" class="project_money2">--%>
-<%--				<td colspan="1" width="10%">計畫金額<br>(萬元)</td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_money1" type="number" class="ip1" size="5" maxlength="40" value="<%=json.get("edu_project_money1")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_money2" type="number" class="ip2" size="5" maxlength="40" value="<%=json.get("edu_project_money2")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_money3" type="number" class="ip3" size="5" maxlength="40" value="<%=json.get("edu_project_money3")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_money4" type="number" class="ip4" size="5" maxlength="40" value="<%=json.get("edu_project_money4")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="12%"><input name="edu_project_money5" type="number" class="ip5" size="5" maxlength="40" value="<%=json.get("edu_project_money5")%>" style="text-align:center; width: 75%;"></td>--%>
-<%--				<td colspan="1" width="10%" id="edu_project_money_total" class="total_project_money"><%=json.get("edu_project_money_total")%></td>--%>
-<%--			</tr>--%>
-<%--			<tr style="text-align: center;" class="point">--%>
-<%--				<td colspan="1" width="10%">點數<br>(<font color="blue">2點/10萬元</font>)</td>--%>
-<%--				<td colspan="1" width="12%" id="edu_project_point1" class="pc1"><%=json.get("edu_project_point1")%></td>--%>
-<%--				<td colspan="1" width="12%" id="edu_project_point2" class="pc2"><%=json.get("edu_project_point2")%></td>--%>
-<%--				<td colspan="1" width="12%" id="edu_project_point3" class="pc3"><%=json.get("edu_project_point3")%></td>--%>
-<%--				<td colspan="1" width="12%" id="edu_project_point4" class="pc4"><%=json.get("edu_project_point4")%></td>--%>
-<%--				<td colspan="1" width="12%" id="edu_project_point5" class="pc5"><%=json.get("edu_project_point5")%></td>--%>
-<%--				<td colspan="1" width="10%" id="edu_project_point_total" class="total_point"><%=json.get("edu_project_point_total")%></td>--%>
-<%--			</tr>--%>
-
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td rowspan="2" colspan="2" width="30%">產 學 合 作 計 畫<br>(不包含以學校名義開授訓練課程招生收入)</td>
 				<td colspan="5" width="60%" style="text-align: center;">年度</td>
 				<td rowspan="2" width="10%" colspan="1">小計</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td colspan="1" width="12%"><label id="year1"><%=json.get("year1")%></label></td>
 				<td colspan="1" width="12%"><label id="year2"><%=json.get("year2")%></label></td>
 				<td colspan="1" width="12%"><label id="year3"><%=json.get("year3")%></label></td>
@@ -671,7 +634,7 @@
 				<td colspan="1" width="12%"><label id="year5"><%=json.get("year5")%></label></td>
 			</tr>
 			<tr style="text-align: center;" class="count">
-				<td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+				<td rowspan="6" colspan="1" width="20%">近五年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
 				<td colspan="1" width="10%">件數</td>
 				<td colspan="1" width="12%"><input name="coop_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("coop_project_count1")%>" style="text-align:center; width: 75%;"></td>
 				<td colspan="1" width="12%"><input name="coop_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("coop_project_count2")%>" style="text-align:center; width: 75%;"></td>
@@ -707,20 +670,31 @@
 				<td colspan="1" width="12%" id="coop_project_point5" class="pc5"><%=json.get("coop_project_point5")%></td>
 				<td colspan="1" width="10%" id="coop_project_point_total" class="total_point"><%=json.get("coop_project_point_total")%></td>
 			</tr>
-
-			<tr>
-				<td colspan="7" width="80%">
-					<p>說明：</p>
-					<p>1.包含科技部產學合作計畫、政府機關及財團法人之研究型計畫。</p>
-					<p>2. 不包含以學校名義開授訓練課程招生收入。</p>
+			<tr style="text-align: center;">
+				<td rowspan="2">產學處<br>(簽章)</td>
+				<td colspan="3" class="sign">
+					<p>
+						<label>承辦人</label>
+					</p>
+				</td>
+				<td colspan="3" style="border-left-style: hidden;" class="sign">
+					<p>
+						<label>單位主管</label>
+					</p>
 				</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr>
+				<td colspan="6">
+					<p>※以第七級第4項、第八級及第九級第4項(3)申請者，請產學處填寫確認計畫及管理費總金額後核章</p>
+				</td>
+			</tr>
+
+			<tr class="title">
 				<td rowspan="2" colspan="2" width="30%">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
 				<td colspan="5" width="60%" style="text-align: center;">年度</td>
 				<td rowspan="2" width="10%" colspan="1">小計</td>
 			</tr>
-			<tr style="text-align:center;background:  #C0C0C0 ">
+			<tr class="title">
 				<td colspan="1" width="12%"><label id="year1"><%=json.get("year1")%></label></td>
 				<td colspan="1" width="12%"><label id="year2"><%=json.get("year2")%></label></td>
 				<td colspan="1" width="12%"><label id="year3"><%=json.get("year3")%></label></td>
@@ -728,7 +702,7 @@
 				<td colspan="1" width="12%"><label id="year5"><%=json.get("year5")%></label></td>
 			</tr>
 			<tr style="text-align: center;" class="count">
-				<td rowspan="5" colspan="1" width="20%">近五年以本校名義所獲之實收技術移轉金統計表</td>
+				<td rowspan="6" colspan="1" width="20%">近五年以本校名義所獲之實收技術移轉金統計表</td>
 				<td colspan="1" width="10%">件數</td>
 				<td colspan="1" width="12%"><input name="tech_transfer_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("tech_transfer_count1")%>" style="text-align:center; width: 75%;"></td>
 				<td colspan="1" width="12%"><input name="tech_transfer_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("tech_transfer_count2")%>" style="text-align:center; width: 75%;"></td>
@@ -764,17 +738,34 @@
 				<td colspan="1" width="12%" id="tech_transfer_point5" class="pc5"><%=json.get("tech_transfer_point5")%></td>
 				<td colspan="1" width="10%" id="tech_transfer_point_total" class="total_point"><%=json.get("tech_transfer_point_total")%></td>
 			</tr>
-
-			<tr>
-				<td colspan="7" width="80%">
-					<p>說明：</p>
-					<p>1.包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金。</p>
-					<p>2.不包含科技部先期技術移轉授權金。</p>
+			<tr style="text-align: center;">
+				<td rowspan="2">產學處<br>(簽章)</td>
+				<td colspan="3" class="sign">
+					<p>
+						<label>承辦人</label>
+					</p>
+				</td>
+				<td colspan="3" style="border-left-style: hidden;" class="sign">
+					<p>
+						<label>單位主管</label>
+					</p>
 				</td>
 			</tr>
-			<tr style="display: none" >
-				<td colspan="9" width="100%">其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。
-					<p><textarea style="resize:none;width:100%;height:200px;" name="other_data" id="other_data" maxlength="500"  ><%=json.get("other_data")%></textarea></p>
+			<tr>
+				<td colspan="6">
+					<p>※以第七級第5項、第八級及第九級第4項(4)申請者，請產學處填寫確認技轉金及管理費金額後核章</p>
+				</td>
+			</tr>
+
+			<tr class="title">
+				<td colspan="9" width="100%">
+					<p>其他傑出表現說明</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="9" width="100%">
+					<p>其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。</p>
+					<textarea style="resize:none;width:100%;height:200px;" name="other_data" id="other_data" maxlength="500"  ><%=json.get("other_data")%></textarea>
 				</td>
 			</tr>
 			<tr>

@@ -12,11 +12,11 @@
 %>
 
 <html lang="zh">
-<div class="container" style="margin: 0px auto; width: 1200px">
+<div class="container" style="margin: 0px auto;">
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
 </div>
 
-<div class="container" style="margin: 0px auto; width: 1200px">
+<div class="container" style="margin: 0px auto;">
     <form id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
@@ -54,12 +54,13 @@
                 <td colspan="1"><label id="dep_title">補助起日前一年(<label name='mostStart'><%= jsonObject.getDate("mostStart")%></label>~<label name='mostEnd'><%= jsonObject.getDate("mostEnd")%></label>)是否曾執行科技部計畫</label>
                     <font color="red">＊</font>
                 </td>
-                <td colspan="5">
-                    <input name="executed_tech_proj_yes" type="checkbox" >是。計畫編號:
-                    <input name="tech_proj_id" size="10" maxlength="40">&nbsp;執行期間:
-                    <input type="date" name="tech_proj_start_time" size="10" maxlength="20" type="text" id="d01" >
-                    至
-                    <input type="date" name="tech_proj_end_time" size="10" maxlength="20" type="text" id="d02" >
+                <td colspan="5" style="line-height: 2;">
+                    <input name="executed_tech_proj_yes" type="checkbox" >是。
+                    計畫名稱：<input name="tech_proj_name" size="30" maxlength="45">
+                    <br>
+                    計畫編號:<input name="tech_proj_id" size="10" maxlength="40">
+                    &nbsp;執行期間:<input type="date" name="tech_proj_start_time" size="10" maxlength="20" id="d01" >
+                    至<input type="date" name="tech_proj_end_time" size="10" maxlength="20" id="d02" >
                     <br>
                     <input name="executed_tech_proj_no" type="checkbox">否
                 </td>
@@ -71,7 +72,7 @@
             </tr>
             <tr>
                 <td colspan="6" style="text-align:center;background:  #C0C0C0 ">
-                    ※第一級至第四級請依「<a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/955/510983332.pdf">附表一：本校獎勵特殊優秀研究人才支給標準表</a>」之等級適用標準勾選
+                    ※第一級至第四級請依「<a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/955/312758612.pdf#page=3">附表一：本校獎勵特殊優秀研究人才支給標準表</a>」之等級適用標準勾選
                 </td>
             </tr>
             <!-- <tr>
@@ -112,16 +113,13 @@
                     <input type="checkbox" name="main_standard" id="level_five_number_three" value="前一年度獲科技部傑出研究獎且累積次數達二次以上">3.前一年度獲科技部傑出研究獎且累積次數達二次以上<br>
                     <input type="checkbox" name="main_standard" id="level_five_number_four" value="當年度獲聘為本校終身講座教授者">4.當年度獲聘為本校終身講座教授者<br>
                     <input type="checkbox" name="main_standard" id="level_five_number_five" value="前一年度發表之論文點數達250點以上(不含研討會論文)">5.前一年度發表之論文點數達250點以上(不含研討會論文)<br>
-                    <input type="checkbox" name="main_standard" id="level_five_number_six" value="相當於本級前述各項資格者">6.相當於本級前述各項資格者</td>
             </tr>
             <tr>
                 <td colspan="1" name="level_six">第六級</td>
                 <td colspan="5">
                     <input type="checkbox" name="main_standard" id="level_six_number_one" value="前一年度獲科技部傑出研究獎">1.前一年度獲科技部傑出研究獎<br>
-                    <input type="checkbox" name="main_standard" id="level_six_number_two" value="前一年度獲校外相當於科技部傑出研究獎之重要學術獎勵者">2.前一年度獲校外相當於科技部傑出研究獎之重要學術獎勵者<br>
-                    <input type="checkbox" name="main_standard" id="level_six_number_three" value="當年度獲聘為本校專任講座教授者">3.當年度獲聘為本校專任講座教授者<br>
-                    <input type="checkbox" name="main_standard" id="level_six_number_four" value="前一年度發表之論文點數達140點以上(不含研討會論文)">4.前一年度發表之論文點數達140點以上(不含研討會論文)<br>
-                    <input type="checkbox" name="main_standard" id="level_six_number_five" value="相當於本級前述各項資格者">5.相當於本級前述各項資格者</td>
+                    <input type="checkbox" name="main_standard" id="level_six_number_two" value="當年度獲聘為本校專任講座教授者">2.當年度獲聘為本校專任講座教授者<br>
+                    <input type="checkbox" name="main_standard" id="level_six_number_three" value="前一年度發表之論文點數達140點以上(不含研討會論文)">3.前一年度發表之論文點數達140點以上(不含研討會論文)<br>
             </tr>
             <tr>
                 <td colspan="1" name="level_seven">第七級</td>
@@ -131,7 +129,6 @@
                     <input type="checkbox" name="main_standard" id="level_seven_number_three" value="前一年度發表之論文點數達80點以上(不含研討會論文)">3.前一年度發表之論文點數達80點以上(不含研討會論文)<br>
                     <input type="checkbox" name="main_standard" id="level_seven_number_four" value="前一年度以本校名義所獲得之產學合作計畫點數達240點以上且管理費納入校務基金超過150萬元">4.前一年度以本校名義所獲得之產學合作計畫點數達240點以上且管理費納入校務基金超過150萬元<br>
                     <input type="checkbox" name="main_standard" id="level_seven_number_five" value="前一年度以本校名義所獲得之實收技術移轉金點數達175點以上且管理費納入校務基金超過50萬元">5.前一年度以本校名義所獲得之實收技術移轉金點數達175點以上且管理費納入校務基金超過50萬元<br>
-                    <input type="checkbox" name="main_standard" id="level_seven_number_six" value="相當於本級前述各項資格者">6.相當於本級前述各項資格者<br>
                     ※ 以本級第4、5項申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。
                 </td>
             </tr>
@@ -141,14 +138,13 @@
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_one" value="當年度獲聘為本校特聘教授者">1.當年度獲聘為本校特聘教授者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_two" value="前一年度獲本校傑出研究獎者">2.前一年度獲本校傑出研究獎者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_three" value="前一年度獲本校傑出產學合作獎者">3.前一年度獲本校傑出產學合作獎者<br>
-                    <input type="checkbox" name="main_standard" id="level_eight_to_night_number_four" value="在學術研究、產學研究或跨領域研究績效之傑出人員相當於前兩項者">4.在學術研究、產學研究或跨領域研究績效之傑出人員相當於前兩項者<br>
-                    <label value="基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者:<br>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_five_dash_one" value="近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。">(1)近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_five_dash_two" value="以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。">(2)以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_five_dash_three" value="近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。">(3)近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_five_dash_four" value="近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。">(4)近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。</pre>
+                    <label value="基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者:<br>
+                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_one" value="近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。">(1)近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。</pre>
+                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_two" value="以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。">(2)以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。</pre>
+                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_three" value="近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。">(3)近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。</pre>
+                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_four" value="近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。">(4)近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。</pre>
                     </label>
-<%--                    ※ 以本級第5項(3)、(4)申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。--%>
+                    <p>※ 以本級第4項(3)、(4)申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。</p>
             </tr>
 <%--            <tr style="background:#C0C0C0">--%>
 <%--                <td colspan="1">申請第5項(1)(2)院推薦排序</td>--%>
@@ -198,6 +194,7 @@
         $("input[name='seniority']").val( last_version_of_form["seniority"] ) ;
         if ( last_version_of_form["executed_tech_proj"] ) {
             $("input[name='executed_tech_proj_yes']").prop( "checked",last_version_of_form["executed_tech_proj"]  ) ;
+            $("input[name='tech_proj_name']").val( last_version_of_form["tech_proj_name"] ) ;
             $("input[name='tech_proj_id']").val( last_version_of_form["tech_proj_id"] ) ;
             $("input[name='tech_proj_start_time']").val( last_version_of_form["tech_proj_start_time"]  ) ;
             $("input[name='tech_proj_end_time']").val( last_version_of_form["tech_proj_end_time"]  ) ;
@@ -233,7 +230,7 @@
             //contentType: 'application/text',
             success: function(data){
                 alert('success');
-
+                location.reload();
             },
             error:function(data){
                 alert("error")
@@ -287,6 +284,7 @@
     function clear_executed_tech_proj_yes(){
         if ( $("input[name='executed_tech_proj_no']").prop('checked') ) {
             $("input[name='executed_tech_proj_yes']").prop( "checked", false ) ;
+            $("input[name='tech_proj_name']").val("") ;
             $("input[name='tech_proj_id']").val("") ;
             $("input[name='tech_proj_start_time']").val("") ;
             $("input[name='tech_proj_end_time']").val("") ;
