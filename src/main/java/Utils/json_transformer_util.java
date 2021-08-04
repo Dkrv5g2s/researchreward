@@ -160,6 +160,7 @@ public class json_transformer_util {
 
         Gson gson = new Gson() ;
         JSONObject jsonObject = new JSONObject( gson.toJson(specialOutstandingResearcherReview) ) ;
+        jsonObject.put("college_recommended_order", specialOutstandingResearcherReview.getCollege_recommended_order()) ;
         try {
             jsonObject.put("college_review_date", new java.sql.Date(specialOutstandingResearcherReview.getCollege_review_date().getTime()).toString()) ;
         }

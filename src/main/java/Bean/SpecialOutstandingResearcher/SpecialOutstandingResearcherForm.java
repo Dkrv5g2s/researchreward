@@ -12,6 +12,7 @@ public class SpecialOutstandingResearcherForm {
     private String department ;
     private String seniority ;
     private boolean executed_tech_proj ;
+    private String tech_proj_name ;
     private String tech_proj_id ;
     private Date tech_proj_start_time ;
     private Date tech_proj_end_time ;
@@ -28,6 +29,7 @@ public class SpecialOutstandingResearcherForm {
         this.department = "" ;
         this.seniority = "" ;
         this.executed_tech_proj = false ;
+        this.tech_proj_name = "";
         this.tech_proj_id = "" ;
         this.tech_proj_start_time = null ;
         this.tech_proj_end_time = null ;
@@ -35,7 +37,7 @@ public class SpecialOutstandingResearcherForm {
 
     }
 
-    public SpecialOutstandingResearcherForm(int project_id, String applicant_name, String job, String college, String department, String seniority, boolean executed_tech_proj, String tech_proj_id, Date tech_proj_start_time, Date tech_proj_end_time, List<SpecialOutstandingResearcherStandard> standard_list) {
+    public SpecialOutstandingResearcherForm(int project_id, String applicant_name, String job, String college, String department, String seniority, boolean executed_tech_proj, String tech_proj_name, String tech_proj_id, Date tech_proj_start_time, Date tech_proj_end_time, List<SpecialOutstandingResearcherStandard> standard_list) {
         this.project_id = project_id;
         this.applicant_name = applicant_name;
         this.job = job;
@@ -43,6 +45,7 @@ public class SpecialOutstandingResearcherForm {
         this.department = department;
         this.seniority = seniority;
         this.executed_tech_proj = executed_tech_proj;
+        this.tech_proj_name = tech_proj_name;
         this.tech_proj_id = tech_proj_id;
         this.tech_proj_start_time = tech_proj_start_time;
         this.tech_proj_end_time = tech_proj_end_time;
@@ -104,6 +107,14 @@ public class SpecialOutstandingResearcherForm {
 
     public void setExecuted_tech_proj(boolean executed_tech_proj) {
         this.executed_tech_proj = executed_tech_proj;
+    }
+
+    public String getTech_proj_name() {
+        return tech_proj_name;
+    }
+
+    public void setTech_proj_name(String tech_proj_name) {
+        this.tech_proj_name = tech_proj_name;
     }
 
     public String getTech_proj_id() {

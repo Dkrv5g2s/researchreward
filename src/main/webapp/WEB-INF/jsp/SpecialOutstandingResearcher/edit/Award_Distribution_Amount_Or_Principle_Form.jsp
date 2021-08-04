@@ -13,11 +13,11 @@
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div class="container" style="margin: 0px auto; width: 1200px">
+<div class="container" >
     <p style="font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
 </div>
 
-<div class="container" style="margin: 0px auto; width: 1200px">
+<div class="container" >
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
