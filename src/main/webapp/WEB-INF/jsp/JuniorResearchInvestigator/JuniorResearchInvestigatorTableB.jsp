@@ -338,7 +338,7 @@
                 for(let singleInputKey in inoutJSONObject) {
                     let singleInputValue = inoutJSONObject[singleInputKey];
                     if(singleInputKey === "additional_weight"){  //additional_weight預設為1，不列入計算
-                        break;
+                        continue;
                     }
                     if (singleInputValue.length > 0 && singleInputValue !== "請確認W1至w3欄位皆勾選") {
                         dataNumber++;

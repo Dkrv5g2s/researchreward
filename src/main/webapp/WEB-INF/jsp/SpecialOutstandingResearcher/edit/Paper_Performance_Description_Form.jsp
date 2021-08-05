@@ -30,7 +30,7 @@
                 <td colspan="1" width="15%">作者排序<br>(W2)</td>
                 <td colspan="1" width="15%">通訊作者數<br>(W3)</td>
                 <td colspan="1" width="15%">額外加權<br>(W4)</td>
-                <td colspan="1" width="15%">換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
+                <td colspan="1" width="15%">換算點數 (A)<br>(=W1×W2×W3×W4)</td>
                 <td colspan="1" width="5%"></td>
             </tr>
             </thead>
@@ -41,8 +41,8 @@
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
-<%--                <td colspan="4" class="three_years table_c" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
-<%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+                <%--                <td colspan="4" class="three_years table_c" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
+                <%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
                 <td colspan="4" style="text-align: left;border-width:3px;border-color: #000000">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</td>
 
 
@@ -72,21 +72,23 @@
             <tr>
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
                     <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
-                    <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()" disabled = "disabled" >
+                    <input type="button" width="10%" value="暫存" name="save_the_page" onclick="saveDatas()" disabled = "disabled">
                 </td>
             </tr>
             </tbody>
-
         </table>
     </form>
 </div>
 <script>
-    var latest_data = ${latest_data} ;
-    var wight = ${weight} ;
-    var pid = ${projectId} ;
+    let latest_data = ${latest_data};
+    let wight = ${weight};
+    let pid = ${projectId};
     let tableCJson = ${tableCJson};
+    let rewardType = '${reward_type}';
     let IsTableC = tableCJson.isTableC;
     //var paper_performence_list = latest_data["paper_performance_list"] ;
+
+
 
     function load(){
         showSection();
@@ -189,35 +191,37 @@
 
     function add_new_item(){
         datasFromTable();
-        var item = {};
+        latest_data["paper_performance_list"].push(createNewItem());
+        showDatas();
+        calculateTotal();
+    }
+    function createNewItem() {
+        let item = {};
         item.author_name = "" ;
         item.book_name = "";
         item.scholarly_journals_name = "";
         item.total_roll = "";
         item.total_page = "";
         item.publish_time = "";
-        item.content = "";
         item.rank_of_scholarly_journals = "" ;
         item.author_order = "" ;
         item.communication_author_count = "" ;
         item.additional_weight = "" ;
         item.cal_point = "" ;
         item.paper_id = 0 ;
-        latest_data["paper_performance_list"].push(item);
-        showDatas();
-        calculateTotal();
+        return item;
     }
 
     function makeNewItemHtml( i ) {
         var html_of_item = "";
         html_of_item += "<tr>" ;
 
-        html_of_item += "<td colspan='2' style='text-align: left;'>姓名:<input name='author_name" + i + "' size='10' maxlength='40'><br>" ;
-        html_of_item += "著作名稱:<input name='book_name" + i + "' size='10' maxlength='150'><br>" ;
-        html_of_item += "期刊名稱:<input name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
-        html_of_item += "卷數:<input name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
-        html_of_item += "頁數:<input name='total_page" + i + "' size='5' maxlength='5'><br>" ;
-        html_of_item += "發表年份:<input name='publish_time" + i + "' size='15' maxlength='4'>" ;
+        html_of_item += "<td colspan='2' style='text-align: left;'>姓名: <input type='text' name='author_name" + i + "' size='10' maxlength='40'><br>" ;
+        html_of_item += "著作名稱: <input type='text' name='book_name" + i + "' size='10' maxlength='150'><br>" ;
+        html_of_item += "期刊名稱: <input type='text' name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
+        html_of_item += "卷數: <input type='text' name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
+        html_of_item += "頁數: <input type='text' name='total_page" + i + "' size='5' maxlength='5'><br>" ;
+        html_of_item += "發表年份: <input type='text' name='publish_time" + i + "' size='15' maxlength='4'>" ;
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
 
@@ -285,7 +289,7 @@
         latest_data["paper_performance_list"] = [];
         var i=0;
         while($("input[name='author_name"+i+"']").length>0){
-            var item = {};
+            let item = {};
             item.author_name = $("input[name='author_name"+i+"']").val();
             item.book_name = $("input[name='book_name"+i+"']").val();
             item.scholarly_journals_name = $("input[name='scholarly_journals_name"+i+"']").val();
@@ -350,8 +354,8 @@
         datasFromTable()
         let sumOfTotalcolumn = 0.0;
         console.log("latest_data[paper_performance_list]",latest_data["paper_performance_list"]);
-        for(var i=0;i<latest_data["paper_performance_list"].length;i++){
-            var cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
+        for(let i=0;i<latest_data["paper_performance_list"].length;i++){
+            let cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='communication_author_count"+i+"']" ).attr( 'data-weight' )) ;
             let additional_weight = parseFloat( $("input:checked[name='additional_weight"+i+"']" ).attr( 'data-weight' ));
@@ -378,7 +382,7 @@
 
     $(document).on("change", "input[data-selection-block='onlyone']", function () {
         $(this).siblings().prop("checked", false) ;
-        calculateTotal()
+        calculateTotal();
     } ) ;
 
 
@@ -387,11 +391,62 @@
     }
 
     function InputFormToJson() {
-        <%--latest_data["project_id"] = <%=project.getProject_id()%>   ;--%>
-        <%--latest_data["project_id"] = ${projectId};--%>
+        let dataNumber = 0;
+        let inputList = latest_data["paper_performance_list"];
+
+        inputList.forEach(inputElement => {
+            let inoutJSONObject = JSON.parse(JSON.stringify(inputElement));
+            for(let singleInputKey in inoutJSONObject) {
+                let singleInputValue = inoutJSONObject[singleInputKey];
+                if(singleInputKey === "additional_weight"){  //additional_weight預設為1，不列入計算
+                    continue;
+                }
+                if (singleInputValue.length > 0 && singleInputValue !== "請確認W1至w3欄位皆勾選") {
+                    dataNumber++;
+                }
+            }
+        });
+        let item = createNewItem();
+        console.log(dataNumber,inputList.length,Object.keys(item).length - 1)
+        let fill_rate = dataNumber/(inputList.length * (Object.keys(item).length - 1) );
+        latest_data["rateData"] = {"column_name": translateRewardType(rewardType)+"TableB", "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
         return JSON.stringify(latest_data) ;
     }
+    function translateRewardType(rewardType){
+        let rewardTranslated;
 
+        switch (rewardType) {
+            case "奬助研究及產學績優教師聘任研究人員辦法":
+                rewardTranslated="TeacherHireResearcher";
+                break;
+            case "講座教授":
+                rewardTranslated="LectureProfessor";
+                break;
+            case "特聘教授":
+                rewardTranslated="DistinguishedProfessor";
+                break;
+            case "傑出研究獎":
+                rewardTranslated="OutstandingResearchAward";
+                break;
+            case "年輕學者研究獎":
+                rewardTranslated="JuniorResearchInvestigator";
+                break;
+            case "獎勵特殊優秀研究人才":
+                rewardTranslated="SpecialOutstandingResearcher";
+                break;
+            case "(續撥)獎勵新聘特殊優秀研究人才":
+                rewardTranslated="SecondExcellentResearcher";
+                break;
+            case "陽光獎助金論文獎勵":
+                rewardTranslated="SunshineScholarship";
+                break;
+            default:
+                rewardTranslated="WRONG REWARD TYPE!!!";
+                break;
+        }
+        return rewardTranslated;
+
+    }
     function inputToJsonForTableC() {
         let tableCData = {};
         tableCData["isTableC"] = IsTableC;
@@ -410,7 +465,6 @@
                 url: 'PaperPerformanceDescriptionForm',
                 dataType: 'text',
                 data: { "data": InputFormToJson(), "func":"save", "tableCData":inputToJsonForTableC() },   //JSON.stringify(InputToJson())
-                //contentType: 'application/text',
                 success: function(data){
                     alert('success');
                     location.reload();
@@ -436,8 +490,6 @@
             $("input[name='save_the_page']").prop( "disabled", true  );
         }
     }
-
     $("input[name='representationClause']").on('change', function() { checkRepresentationClause(); } ) ;
-
 </script>
 </html>
