@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
-    <p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表</p>
+    <p class="five_years sunshine_scholarship_award" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表</p>
     <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="text-align:center;">期績效說明表(申請第二期以上者填寫)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 90%">
@@ -41,28 +41,14 @@
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
-                <%--                <td colspan="4" class="three_years table_c" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
-                <%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
-                <td colspan="4" style="text-align: left;border-width:3px;border-color: #000000">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</td>
-
-
-                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)</td>
+                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數</td>
                 <td colspan="3" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
             </tr>
             <tr>
-                <td colspan="8" style="text-align: left;" class="four_sections">申請說明事項：<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;1.請檢附期刊發表之論文首頁及各篇期刊排名。學術論著正式出版年度以紙本刊登年度為準，若無紙本出版則以電子期刊出版年為基準。<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;2.請檢附Scopus資料庫或SciVal分析系統之佐證(含期刊排名CiteScore、國際學者、企業、FWCI)。<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;3.若某篇論文為SSCI且有企業及國際合著者，權重至多1.8倍計。<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;4.每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。
-                </td>
-                <td colspan="8" style="text-align: left;" class="three_years five_years table_c">
-                    <p>說明事項：</p>
-                    <p class="three_years" style="padding-left: 2rem;">1. 近三年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
-                    <p class="five_years" style="padding-left: 2rem;">1. 近五年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</p>
-                    <p class="table_c" style="padding-left: 2rem;">1. <b>績優教師執行第一期</b>以本校名義發表之學術論著。</p>
-                    <p style="padding-left: 2rem;">2. 論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</p>
-                    <p style="padding-left: 2rem;">3. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
+                <td colspan="8" style="text-align: left;" class="five_years table_c">
+                    <p>申請說明事項：</p>
+                    <p style="padding-left: 2rem;">1. 論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</p>
+                    <p style="padding-left: 2rem;">2. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
                 </td>
             </tr>
             <tr>
@@ -86,8 +72,6 @@
     let tableCJson = ${tableCJson};
     let rewardType = '${reward_type}';
     let IsTableC = tableCJson.isTableC;
-    //var paper_performence_list = latest_data["paper_performance_list"] ;
-
 
 
     function load(){
@@ -97,17 +81,14 @@
     }
 
     function showSection(){
-        $(".three_years").hide();
+
         $(".five_years").hide();
-        $(".four_sections").hide();
+        $(".sunshine_scholarship_award").hide();
         $(".table_c").hide();
         let displayExplanation = "${displayExplanation}";
 
-        if(displayExplanation==="four_sections"){
-            $(".four_sections").show();
-        }
-        else if(displayExplanation==="three_years"){
-            $(".three_years").show();
+        if(displayExplanation==="sunshine_scholarship_award"){
+            $(".sunshine_scholarship_award").show();
         }
         else if(displayExplanation==="five_years"){
             $(".five_years").show();
@@ -307,8 +288,6 @@
             i++;
         }
 
-        latest_data["fwci_value_past_five_year"] = $('input[name="fwci_value_past_five_year"]').val() ;
-        latest_data["fwci_value_past_five_year"] = $('label[id="total_point"]').text() ;
 
     }
 
@@ -370,9 +349,6 @@
             $("label[name='cal_point"+i+"']").text(cal_total);
         }
 
-        $('input[name="fwci_value_past_five_year"]').val("0") ;
-
-
         $('label[id="total_point"]').text(financial(sumOfTotalcolumn)) ;
 
     }
@@ -409,7 +385,7 @@
         let item = createNewItem();
         console.log(dataNumber,inputList.length,Object.keys(item).length - 1)
         let fill_rate = dataNumber/(inputList.length * (Object.keys(item).length - 1) );
-        latest_data["rateData"] = {"column_name": translateRewardType(rewardType)+"TableB", "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
+        latest_data["rateData"] = {"column_name": translateRewardType(rewardType), "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
         return JSON.stringify(latest_data) ;
     }
     function translateRewardType(rewardType){
@@ -417,28 +393,28 @@
 
         switch (rewardType) {
             case "奬助研究及產學績優教師聘任研究人員辦法":
-                rewardTranslated="TeacherHireResearcher";
+                rewardTranslated="TeacherHireResearcherTableB";
                 break;
             case "講座教授":
-                rewardTranslated="LectureProfessor";
+                rewardTranslated="LectureProfessorTableB";
                 break;
             case "特聘教授":
-                rewardTranslated="DistinguishedProfessor";
+                rewardTranslated="DistinguishedProfessorTableB";
                 break;
             case "傑出研究獎":
-                rewardTranslated="OutstandingResearchAward";
+                rewardTranslated="OutstandingResearchAwardTableB";
                 break;
             case "年輕學者研究獎":
-                rewardTranslated="JuniorResearchInvestigator";
+                rewardTranslated="JuniorResearchInvestigatorTableB";
                 break;
             case "獎勵特殊優秀研究人才":
-                rewardTranslated="SpecialOutstandingResearcher";
+                rewardTranslated="SpecialOutstandingResearcherTableB";
                 break;
             case "(續撥)獎勵新聘特殊優秀研究人才":
-                rewardTranslated="SecondExcellentResearcher";
+                rewardTranslated="SecondExcellentResearcherTableB";
                 break;
             case "陽光獎助金論文獎勵":
-                rewardTranslated="SunshineScholarship";
+                rewardTranslated="SunshineScholarshipAwardTableA";
                 break;
             default:
                 rewardTranslated="WRONG REWARD TYPE!!!";

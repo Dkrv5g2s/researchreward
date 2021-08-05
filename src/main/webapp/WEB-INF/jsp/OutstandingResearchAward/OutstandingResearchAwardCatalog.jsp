@@ -130,7 +130,6 @@
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
                 if (!fillRates[page.name]) {
-                    console.log(page.innerHTML)
                     unSavedPageName += page.innerHTML + " ";
                 }
             }

@@ -129,14 +129,15 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
     private void setDisplaySection(String reward_type, HttpServletRequest req, boolean isTableC) {
         String displayExplanation = "five_years";
-        if(reward_type.compareTo("優秀人才申請")==0) {//TODO 獎勵特殊優秀研究人才?
-            displayExplanation = "four_sections";
+        System.out.println(reward_type);
+        if(reward_type.compareTo("陽光獎助金論文獎勵")==0) {
+            displayExplanation = "sunshine_scholarship_award";
         }
-        else if(reward_type.compareTo("傑出研究獎")==0) {
-            displayExplanation = "three_years";
-        }
-        if(isTableC)
+
+        if(isTableC){
             displayExplanation = "table_c";
+        }
+
         req.setAttribute("displayExplanation", displayExplanation );
         req.setAttribute("reward_type", reward_type );
     }

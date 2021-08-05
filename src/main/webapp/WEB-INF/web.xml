@@ -205,12 +205,12 @@
 
 <!--    SunshineScholarshipAward-->
     <servlet>
-        <servlet-name>SelectInformationServlet</servlet-name>
-        <servlet-class>Servlet.SunshineScholarshipAward.SelectInformationServlet</servlet-class>
+        <servlet-name>SunshineScholarshipAwardGeneralInformationServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardGeneralInformationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SelectInformationServlet</servlet-name>
-        <url-pattern>/SelectInformation</url-pattern>
+        <servlet-name>SunshineScholarshipAwardGeneralInformationServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipAwardGeneralInformation</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -222,24 +222,10 @@
         <url-pattern>/SunshineScholarshipCatalog</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>SunshineScholarshipAwardTableAServlet</servlet-name>
-        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardTableAServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>SunshineScholarshipAwardTableAServlet</servlet-name>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/SunshineScholarshipAwardTableA</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>SunshineScholarshipAwardTableAUploadServlet</servlet-name>
-        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardTableAUploadServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SunshineScholarshipAwardTableAUploadServlet</servlet-name>
-        <url-pattern>/SunshineScholarshipAwardTableAUpload</url-pattern>
-    </servlet-mapping>
-
 
 <!--    SunshineScholarshipAward-->
 
