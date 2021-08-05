@@ -2,6 +2,7 @@ package Servlet.OutstandingResearchAward;
 
 import Service.Admin.AwardTimeLimitService;
 import Service.OutstandingResearchAward.OutstandingResearchAwardTableAService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -15,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
     private OutstandingResearchAwardTableAService outstandingResearchAwardTableAService = new OutstandingResearchAwardTableAService();
     private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String TableA_URL_Edit = "WEB-INF/jsp/OutstandingResearchAward/edit/OutstandingResearchAwardTableA.jsp";
@@ -43,7 +45,10 @@ public class OutstandingResearchAwardTableAServlet extends ServletEntryPoint {
             JSONObject json = new JSONObject(jsonString);
 
             HttpSession session = req.getSession();
+            String projectId = session.getAttribute("projectId").toString();
             outstandingResearchAwardTableAService.save(json, session.getAttribute("projectId").toString());
+            ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+            projectFillRateService.save(Integer.parseInt(projectId), "OutstandingResearchAwardTableA", json.getDouble("fill_rate"));
         }
 
     }

@@ -64,6 +64,12 @@
         .total_point{
             font-weight: bold;
         }
+        .sign{
+            vertical-align: top;
+            text-align: left;
+            width: 200px;
+            height: 80px;"
+        }
     </style>
 </head>
 <body>
@@ -78,9 +84,9 @@
                 <td rowspan="2"><b>小計<br>(A)</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3">Scopus 或 WOS 資料庫</td>
@@ -99,7 +105,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <p>說明：論文請檢附-表B「傑出論文績效說明表」</p>
+                    <p>說明：論文請檢附-「傑出論文績效說明表」</p>
                 </td>
             </tr>
 
@@ -206,9 +212,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3" >近三年以本校名義主持科技部各類型計畫統計表</td>
@@ -239,12 +245,12 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><input name="coop_project_count1" type="number" class="ic1" value="<%=json.optString("coop_project_count1","0")%>"></td>
                 <td><input name="coop_project_count2" type="number" class="ic2" value="<%=json.optString("coop_project_count2","0")%>"></td>
@@ -272,6 +278,19 @@
                 <td id="coop_project_point3" class="pc3"><%=json.optString("coop_project_point3","0")%></td>
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
+            </tr>
 
             <tr class="title">
                 <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
@@ -279,12 +298,12 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><input name="tech_transfer_count1" type="number" class="ic1" value="<%=json.optString("tech_transfer_count1","0")%>"></td>
                 <td><input name="tech_transfer_count2" type="number" class="ic2" value="<%=json.optString("tech_transfer_count2","0")%>"></td>
@@ -312,6 +331,19 @@
                 <td id="tech_transfer_point3" class="pc3"><%=json.optString("tech_transfer_point3","0")%></td>
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
             </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
+            </tr>
 
             <tr>
                 <td colspan="7" class="title">
@@ -330,6 +362,11 @@
                     <p>
                         <input type="checkbox" name="declaration" class="auto"/>
                         <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
+                    </p>
+                    <p style="text-align: right;">
+                        <label style="margin-right: 15ch;">申請人簽章：</label>
+                        <label for="commit_date">日期：</label>
+                        <input type="date" id="commit_date" style="width: auto;" value="<%=json.optString("commit_date", "")%>">
                     </p>
                 </td>
             </tr>
@@ -393,8 +430,8 @@
             }
         }
         data["other_data"] = $("#other_data").val();
-        data["commit_date"] = moment(new Date()).format("YYYY-MM-DD");
-
+        data["commit_date"] = $("#commit_date").val();
+        data["fill_rate"] = $("#commit_date").val() ? 1 : 0;
         return data;
     }
 
@@ -646,7 +683,7 @@
         wordsTotal();
 
         $("input").blur(function(){
-            if($(this).val()===""){
+            if($(this).val()==="" && $(this).type !== "date"){
                 $(this).val("0");
                 update_article(this);
                 update_project_count(this);

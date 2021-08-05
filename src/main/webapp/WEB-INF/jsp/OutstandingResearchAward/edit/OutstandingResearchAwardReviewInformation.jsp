@@ -56,17 +56,17 @@
             JSONObject jsonObject = (JSONObject)object;
     %>
     <script>
-        $(document).ready(function () {
-            let data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=\"<%=jsonObject.get("technologyTransferFund")%>\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=\"<%=jsonObject.get("technologyTransferFundBringInDate")%>\"></td>\n" +
-                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-                "                </tr>";
-            $("div[name='technologyTransfer'] tr[name=add]").before(data);
-        })
+        <%--$(document).ready(function () {--%>
+        <%--    let data = "<tr name=\"technologyTransfer\">\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +--%>
+        <%--        "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=\"<%=jsonObject.get("technologyTransferFund")%>\"></td>\n" +--%>
+        <%--        "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=\"<%=jsonObject.get("technologyTransferFundBringInDate")%>\"></td>\n" +--%>
+        <%--        "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +--%>
+        <%--        "                </tr>";--%>
+        <%--    $("div[name='technologyTransfer'] tr[name=add]").before(data);--%>
+        <%--})--%>
     </script>
     <%
         }
@@ -76,7 +76,7 @@
 <div name="technologyTransfer" class="content">
     <h2>傑出研究獎 ※審查資料【填寫說明】</h2>
     <p>一、每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書<strong>(共同著作授權同意書)</strong>。<p>
-    <p>二、學術論著採計Scopus/WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<strong>表B「傑出論文績效說明表」</strong>。並請檢附下列證明文件：</p>
+    <p>二、學術論著採計Scopus/WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<strong>「傑出論文績效說明表」</strong>。並請檢附下列證明文件：</p>
     <div style="padding-left: 2rem;">
         <p>(一) 期刊發表之論文首頁或以Scopus / WOS資料庫或SciVal分析系統之佐證。</p>
         <p>(二) 各篇期刊排名(以發表當年度為主) CiteScore / Journal Ranking、國際學者、企業、SDG之佐證。</p>
@@ -85,83 +85,83 @@
     <p>三、科技部計畫(不包含科技部產學合作計畫)請以教評系統為準提供相關佐證資料。計畫年度(1/1~12/31)之認定以「計畫開始日期」為準；計畫主持人及共同主持人依所執行計畫分配金額計算執行經費；多年期計畫分年計算單一年度執行金額。</p>
     <p>四、產學合作計畫(包含科技部產學合作計畫、政府機關及財團法人之研究型專案計畫；不含以學校名義開授訓練課程招生收入) 請以教評系統為準提供相關佐證資料。計畫年度(1/1~12/31)之認定以「計畫開始日期」為準；計畫主持人及共同主持人依所執行計畫分配金額計算執行經費；多年期計畫分年計算單一年度執行金額。</p>
     <p>五、技術移轉金(包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金；不包含科技部先期技術移轉授權金)請填列近三年以本校名義所獲得之實收技術移轉金資料(如下表)，並洽產學合作處技術移轉組確認核章後提出申請。技術移轉金計算以「實際納入校務基金日期」為準。</p>
-    <form method="post" id="c001_form">
-        <table id="technologyTransfer">
-            <thead>
-            <th width="18%"><lable name="technologyTransferContractName">技轉合約名稱</lable></th>
-            <th width="18%"><lable name="technologyTransferDepartment">技轉單位(企業)</lable></th>
-            <th width="18%"><lable name="contractDate">簽約日期</lable></th>
-            <th width="18%"><lable name="technologyTransferFund">實收技術移轉金金額</lable></th>
-            <th width="18%"><lable name="technologyTransferFundBringInDate">技轉金實際納入校務基金日期</lable></th>
-            <th width="10%"></th>
-            </thead>
-            <tbody style="text-align: center;">
-            <tr name="add">
-                <td colspan="6"><button type="button" class="btn btn-success btn-sm" onclick="create()">新增</button></td>
-            </tr>
-            </tbody>
-        </table>
+<%--    <form method="post" id="c001_form">--%>
+<%--        <table id="technologyTransfer">--%>
+<%--            <thead>--%>
+<%--            <th width="18%"><lable name="technologyTransferContractName">技轉合約名稱</lable></th>--%>
+<%--            <th width="18%"><lable name="technologyTransferDepartment">技轉單位(企業)</lable></th>--%>
+<%--            <th width="18%"><lable name="contractDate">簽約日期</lable></th>--%>
+<%--            <th width="18%"><lable name="technologyTransferFund">實收技術移轉金金額</lable></th>--%>
+<%--            <th width="18%"><lable name="technologyTransferFundBringInDate">技轉金實際納入校務基金日期</lable></th>--%>
+<%--            <th width="10%"></th>--%>
+<%--            </thead>--%>
+<%--            <tbody style="text-align: center;">--%>
+<%--            <tr name="add">--%>
+<%--                <td colspan="6"><button type="button" class="btn btn-success btn-sm" onclick="create()">新增</button></td>--%>
+<%--            </tr>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="javascript:location.href='OutstandingResearchAwardCatalog'">回上頁</button>
-            <button type="button" name="confirm" onclick="commit()">存檔</button>
+<%--            <button type="button" name="confirm" onclick="commit()">存檔</button>--%>
         </div>
-    </form>
+<%--    </form>--%>
 </div>
 </body>
 <script>
-    function create() {
-        var data = "<tr name=\"technologyTransfer\">\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
-            "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
-            "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
-            "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-            "                </tr>";
-        $("div[name='technologyTransfer'] tr[name=add]").before(data);
-    }
+    // function create() {
+    //     var data = "<tr name=\"technologyTransfer\">\n" +
+    //         "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
+    //         "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
+    //         "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
+    //         "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
+    //         "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
+    //         "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+    //         "                </tr>";
+    //     $("div[name='technologyTransfer'] tr[name=add]").before(data);
+    // }
 
-    $(document).on("click", "button[name='delete']",function(){
-        var thisTr = $(this).parents("tr");
-        thisTr.remove();
-    });
+    // $(document).on("click", "button[name='delete']",function(){
+    //     var thisTr = $(this).parents("tr");
+    //     thisTr.remove();
+    // });
 
-    function commit(){
-        var table = tableToJson(document.getElementById("technologyTransfer"));
-        $.ajax({
-            type: 'POST',
-            url: 'OutstandingResearchAwardReviewInformation',
-            dataType: 'text',
-            data: JSON.stringify(table),
-            contentType: 'application/json',
-            success: function(data){
-                alert('存檔成功');
-                window.location.href="OutstandingResearchAwardReviewInformation";
-            },
-            error:function(data) {
-                alert("存檔失敗");
-            }
-        });
-    };
+    // function commit(){
+    //     var table = tableToJson(document.getElementById("technologyTransfer"));
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'OutstandingResearchAwardReviewInformation',
+    //         dataType: 'text',
+    //         data: JSON.stringify(table),
+    //         contentType: 'application/json',
+    //         success: function(data){
+    //             alert('存檔成功');
+    //             window.location.href="OutstandingResearchAwardReviewInformation";
+    //         },
+    //         error:function(data) {
+    //             alert("存檔失敗");
+    //         }
+    //     });
+    // };
 
-    function tableToJson(table){
-        var data = [];
-        // first row needs to be headers
-        var elements = table.getElementsByTagName("lable");
-        var headers = [];
-        for (var i=0; i<elements.length; i++) {
-            headers[i] = elements.item(i).getAttribute("name");
-        }
-        // go through cells
-        for (var i=1; i<table.rows.length-1; i++) {
-            var tableRow = table.rows[i];
-            var rowData = {};
-            for (var j=0; j<tableRow.cells.length-1; j++) {
-                rowData[ headers[j] ] = tableRow.cells[j].getElementsByTagName("input")[0].value;
-            }
-            data.push(rowData);
-        }
-        return data;
-    }
+    // function tableToJson(table){
+    //     var data = [];
+    //     // first row needs to be headers
+    //     var elements = table.getElementsByTagName("lable");
+    //     var headers = [];
+    //     for (var i=0; i<elements.length; i++) {
+    //         headers[i] = elements.item(i).getAttribute("name");
+    //     }
+    //     // go through cells
+    //     for (var i=1; i<table.rows.length-1; i++) {
+    //         var tableRow = table.rows[i];
+    //         var rowData = {};
+    //         for (var j=0; j<tableRow.cells.length-1; j++) {
+    //             rowData[ headers[j] ] = tableRow.cells[j].getElementsByTagName("input")[0].value;
+    //         }
+    //         data.push(rowData);
+    //     }
+    //     return data;
+    // }
 </script>
 </html>

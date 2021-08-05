@@ -149,22 +149,73 @@
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="location.href='OutstandingResearchAwardCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='OutstandingResearchAwardReviewInformation'">此頁審查完成</button>
+            <button type="button" name="confirm" onclick="reviewed()">此頁審查完成</button>
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
+        setUserData();
+        setReviewData();
+        $("input").attr("disabled", "disabled");
+        $(".${role}").removeAttr("disabled");
+    })
+
+    function setUserData(){
         $("#user_name").html("<%=jsonObject.optString("user_name", "")%>");
         $("#applicant_title").html("<%=jsonObject.optString("applicant_title", "")%>");
         $("#department").html("<%=jsonObject.optString("department", "")%>");
-        $("#birth_date").html("<%=jsonObject.optString("birth_date", "")%>");
-        $("#identity_number").html("<%=jsonObject.optString("identity_number", "")%>");
         $("#employment_date").html("<%=jsonObject.optString("employment_date", "")%>");
         $("#extension_number").html("<%=jsonObject.optString("extension_number", "")%>");
         $("#cellphone_number").html("<%=jsonObject.optString("cellphone_number", "")%>");
         $("#recommended_reason").html("<%=jsonObject.optString("recommended_reason", "")%>");
-    })
+    }
+
+    function setReviewData(){
+        //department
+        $("#department_academic_year").val("<%=jsonObject.optString("department_academic_year", "")%>");
+        $("#department_semester").val("<%=jsonObject.optString("department_semester", "")%>");
+        $("#department_conference_times").val("<%=jsonObject.optString("department_conference_times", "")%>");
+        $("#department_sign_date").val("<%=jsonObject.optString("department_sign_date", "")%>");
+        //college
+        $("#college_academic_year").val("<%=jsonObject.optString("college_academic_year", "")%>");
+        $("#college_semester").val("<%=jsonObject.optString("college_semester", "")%>");
+        $("#college_conference_times").val("<%=jsonObject.optString("college_conference_times", "")%>");
+        $("#college_sign_date").val("<%=jsonObject.optString("college_sign_date", "")%>");
+        //researchAndDevelopmentOffice
+        $("#research_and_development_office_sign_year").val("<%=jsonObject.optString("research_and_development_office_sign_year", "")%>");
+        $("#research_and_development_office_sign_month").val("<%=jsonObject.optString("research_and_development_office_sign_month", "")%>");
+        $("#research_and_development_office_sign_date").val("<%=jsonObject.optString("research_and_development_office_sign_date", "")%>");
+    }
+    function reviewed(){
+        if("${role}" === "department" || "${role}" === "college" || "${role}" === "researchAndDevelopmentOffice"){
+            let data = {};
+            let input_data = document.getElementsByClassName("${role}");
+            for (let i=0; i<input_data.length; i++){
+                data[input_data[i].id] = input_data[i].value;
+            }
+            commit(data);
+        }
+        else{
+            location.href="OutstandingResearchAwardReviewInformation";
+        }
+    }
+
+    function commit(input_data){
+        $.ajax({
+            type: 'POST',
+            url: 'OutstandingResearchAward',
+            dataType: 'json',
+            data: JSON.stringify(input_data),
+            success: function(data){
+                alert(data.status);
+                location.href="OutstandingResearchAwardReviewInformation";
+            },
+            error:function(data) {
+                alert("存檔失敗");
+            }
+        });
+    };
 </script>
 </html>

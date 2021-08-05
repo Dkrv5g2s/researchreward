@@ -38,19 +38,19 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="OutstandingResearchAward">推薦申請表</a></td>
+            <td class="left"><a href="OutstandingResearchAward" name="OutstandingResearchAward">推薦申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardReviewInformation">審查資料表</a></td>
+            <td class="left"><a href="OutstandingResearchAwardReviewInformation" name="OutstandingResearchAwardReviewInformation">審查資料表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableA">近三年內發表之期刊論文統計表</a></td>
+            <td class="left"><a href="OutstandingResearchAwardTableA" name="OutstandingResearchAwardTableA">近三年內發表之期刊論文統計表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableB">傑出論文績效說明表</a></td>
+            <td class="left"><a href="OutstandingResearchAwardTableB" name="OutstandingResearchAwardTableB">傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
         </tr>
         </tbody>
     </table>
@@ -75,25 +75,86 @@
             $(".edit").show();
         }
     })
-    function sendApply(){
-        if (confirm("確定要送出申請?")) {
+    async function sendApply(){
+        if (!confirm("確定要送出申請?")) {
+            return;
+        }
+        new Promise((resolve, reject) => {
             $.ajax({
                 type: 'POST',
-                url: '/SendApply',
+                url: '/ProjectFillRate',
                 dataType: 'text',
                 data: "",
                 contentType: 'application/text',
-                success: function (data) {
-                    alert('申請成功');
-                    window.location.href = "/TraceProgress";
+                success: async function (data) {
+                    let rateData = JSON.parse(data);
+                    resolve(await checkFilled(rateData));
                 },
-                error: function(jqXHR, textStatus, message) {
-                    //error handling
-                    alert(jqXHR.responseText);
+                error: function (data) {
+                    console.log(data);
+                    reject(false);
                 }
             });
+        }).then(result=>{
+            if(result){
+                $.ajax({
+                    type: 'POST',
+                    url: '/SendApply',
+                    dataType: 'text',
+                    data: "",
+                    contentType: 'application/text',
+                    success: function (data) {
+                        alert('申請成功');
+                        window.location.href = "/TraceProgress";
+                    },
+                    error: function(jqXHR, textStatus, message) {
+                        alert(jqXHR.responseText);
+                    }
+                });
+            }
+        });
+    }
+
+    async function checkFilled(fillRates) {
+        if(!fillRates){
+            return false;
         }
-    };
+        console.log(fillRates)
+        let fillPage = document.getElementsByTagName("a");
+        let fillRatesKeys = Object.keys(fillRates);
+        // ReviewInformation page don't need to be checked fillRate.
+        console.log(fillPage.length)
+        console.log(fillRatesKeys.length)
+        if (fillRatesKeys.length < fillPage.length-1) {
+            let unSavedPageName = "";
+            for (let i = 0; i < fillPage.length; i++) {
+                let page = fillPage[i];
+                if (!fillRates[page.name]) {
+                    console.log(page.innerHTML)
+                    unSavedPageName += page.innerHTML + " ";
+                }
+            }
+            alert(unSavedPageName + "頁面尚未儲存");
+            return false;
+        } else if (fillRatesKeys.length === fillPage.length-1) {
+            let unFinishedPageName = "";
+            for (let i = 0; i < fillRatesKeys.length; i++) {
+                let fillRatesKey = fillRatesKeys[i];
+                const rate = fillRates[fillRatesKey];
+                if (rate < 1.0) {
+                    unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + " ";
+                }
+            }
+            if (unFinishedPageName.length > 0) {
+                alert(unFinishedPageName + "頁面尚未填寫完成");
+                return false;
+            } else {
+                console.log("send");
+                return true;
+            }
+        }
+        return false;
+    }
 
     function approveApply(){
         if (confirm("確定要確認審理?")) {

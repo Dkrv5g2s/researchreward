@@ -44,6 +44,12 @@
         .total_point{
             font-weight: bold;
         }
+        .sign{
+            vertical-align: top;
+            text-align: left;
+            width: 200px;
+            height: 80px;"
+        }
     </style>
 </head>
 <body>
@@ -79,7 +85,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <p>說明：論文請檢附-表B「傑出論文績效說明表」</p>
+                    <p>說明：論文請檢附-「傑出論文績效說明表」</p>
                 </td>
             </tr>
 
@@ -224,7 +230,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="coop_project_count1" class="ic1"><%=json.optString("coop_project_count1","0")%></label></td>
                 <td><label name="coop_project_count2" class="ic2"><%=json.optString("coop_project_count2","0")%></label></td>
@@ -252,6 +258,19 @@
                 <td id="coop_project_point3" class="pc3"><%=json.optString("coop_project_point3","0")%></td>
                 <td id="coop_project_point_total" class="total_point"><%=json.optString("coop_project_point_total","0")%></td>
             </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
+            </tr>
 
             <tr class="title">
                 <td rowspan="2" colspan="3">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
@@ -259,12 +278,12 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
-                <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year1"><%=json.get("year3")%></label></td>
+                <td><label id="year2"><%=json.get("year4")%></label></td>
+                <td><label id="year3"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="4" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_transfer_count1" class="ic1"><%=json.optString("tech_transfer_count1","0")%></label></td>
                 <td><label name="tech_transfer_count2" class="ic2"><%=json.optString("tech_transfer_count2","0")%></label></td>
@@ -291,6 +310,19 @@
                 <td id="tech_transfer_point2" class="pc2"><%=json.optString("tech_transfer_point2","0")%></td>
                 <td id="tech_transfer_point3" class="pc3"><%=json.optString("tech_transfer_point3","0")%></td>
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
+            </tr>
+            <tr>
+                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" class="sign">
+                    <p>
+                        <label>承辦人</label>
+                    </p>
+                </td>
+                <td colspan="2" style="border-left-style: hidden;" class="sign">
+                    <p>
+                        <label>單位主管</label>
+                    </p>
+                </td>
             </tr>
 
             <tr>
@@ -324,6 +356,7 @@
     $(document).ready(function(){
         calculatePoint();
     });
+
     function calculatePoint(){
         let FWCIValueofntut = "${fwci}";
         let FWCIValueofuser = document.getElementById("fwci_value").innerHTML;
