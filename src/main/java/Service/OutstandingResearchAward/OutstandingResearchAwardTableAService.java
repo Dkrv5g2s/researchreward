@@ -106,11 +106,11 @@ public class OutstandingResearchAwardTableAService {
                 jsonObject.getString("coop_project_point_total")
         );
         OtherData od = new OtherData(
-                jsonObject.getString("year1"),
-                jsonObject.getString("year2"),
+                null,
+                null,
                 jsonObject.getString("year3"),
-                null,
-                null,
+                jsonObject.getString("year4"),
+                jsonObject.getString("year5"),
                 projectID,
                 jsonObject.getString("other_data"),
                 jsonObject.getString("commit_date")
