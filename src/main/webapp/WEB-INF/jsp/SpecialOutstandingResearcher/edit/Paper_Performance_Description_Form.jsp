@@ -383,8 +383,13 @@
             }
         });
         let item = createNewItem();
-        console.log(dataNumber,inputList.length,Object.keys(item).length - 1)
-        let fill_rate = dataNumber/(inputList.length * (Object.keys(item).length - 1) );
+        let totalColumnNum = inputList.length * (Object.keys(item).length - 1);
+        if (IsTableC) { // 績優c表多一個期數需判斷
+            totalColumnNum++;
+            if ($("input[id='numOfPerformancePeriod']").val().length > 0)
+                dataNumber++;
+        }
+        let fill_rate = dataNumber / totalColumnNum;
         latest_data["rateData"] = {"column_name": translateRewardType(rewardType), "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
         return JSON.stringify(latest_data) ;
     }

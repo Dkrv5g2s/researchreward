@@ -22,6 +22,8 @@ public class ProjectFillRateService {
             fillRates.put(projectFillRate.getColumnName(), projectFillRate.getFillRate());
         }
         fillRates.put("PaperPerformanceDescriptionUpload", getUploadRate(projectId));
+        if (fillRates.containsKey("TeacherHireResearcherTableC"))   // 因為目前績優c表是用負數 暫時先這樣寫qq
+            fillRates.put("TeacherHireResearcherTableCUpload", getUploadRate(-projectId));
         return fillRates;
     }
 
@@ -34,7 +36,10 @@ public class ProjectFillRateService {
 
     public void save(int projectId, JSONObject jsonObject){
         JSONObject fillRateJSONObject = jsonObject.getJSONObject("rateData");
-        this.save(projectId, fillRateJSONObject.getString("column_name"), fillRateJSONObject.getDouble("fill_rate"));
+        if (projectId < 0) // 因為目前績優c表是用負數 暫時先這樣寫qq
+            this.save(Math.abs(projectId), "TeacherHireResearcherTableC", fillRateJSONObject.getDouble("fill_rate"));
+        else
+            this.save(projectId, fillRateJSONObject.getString("column_name"), fillRateJSONObject.getDouble("fill_rate"));
     }
 
     private Double getUploadRate(int projectId) {

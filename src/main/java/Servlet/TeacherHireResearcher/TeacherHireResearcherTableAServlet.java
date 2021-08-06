@@ -1,6 +1,7 @@
 package Servlet.TeacherHireResearcher;
 
 import Service.Admin.AwardTimeLimitService;
+import Service.Teacher.ProjectFillRateService;
 import Service.TeacherHireResearcher.TeacherHireResearcherTableAService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -32,7 +33,10 @@ public class TeacherHireResearcherTableAServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
         JSONObject json = new JSONObject(readJSONString(req));
 
-        teacherHireResearcherTableAService.save(json,(String)session.getAttribute("projectId"));
+        String projectId = (String)session.getAttribute("projectId");
+        teacherHireResearcherTableAService.save(json, projectId);
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(Integer.parseInt(projectId), "TeacherHireResearcherTableA", json.getDouble("fill_rate"));
 
         resp.sendRedirect("/TeacherHireResearcherCatalog");
     }
