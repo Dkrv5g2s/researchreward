@@ -89,6 +89,7 @@
                 success: async function (data) {
                     let rateData = JSON.parse(data);
                     resolve(await checkFilled(rateData));
+                    window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                 },
                 error: function (data) {
                     console.log(data);
