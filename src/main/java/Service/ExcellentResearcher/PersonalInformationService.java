@@ -103,6 +103,24 @@ public class PersonalInformationService {
         personalInformationDAO.save(personalInformation);
     }
 
+    public void updateDepartmentReviewData(JSONObject jsonObject, int projectId){
+        PersonalInformation personalInformation = new PersonalInformation();
+        personalInformation.setProjectId(projectId);
+        personalInformation.setDepartmentDirectorSignDate(jsonToDate(jsonObject, "departmentDirectorSignDate"));
+
+        personalInformationDAO.updateDepartmentReviewData(personalInformation);
+    }
+
+    public void updateCollegeReviewData(JSONObject jsonObject, int projectId){
+        PersonalInformation personalInformation = new PersonalInformation();
+        personalInformation.setProjectId(projectId);
+        personalInformation.setCollegeReviewedDate(jsonToDate(jsonObject, "collegeReviewedDate"));
+        personalInformation.setReviewedResult(jsonObject.getString("reviewedResult"));
+        personalInformation.setCollegeRecommendationRank(jsonObject.getString("collegeRecommendationRank"));
+        personalInformation.setCollegeDirectorSignDate(jsonToDate(jsonObject, "collegeDirectorSignDate"));
+
+        personalInformationDAO.updateCollegeReviewData(personalInformation);
+    }
 
     public JSONObject get(int projectId) {
 
@@ -128,5 +146,11 @@ public class PersonalInformationService {
 
     }
 
-
+    private Date jsonToDate(JSONObject jsonObject, String str) {
+        try {
+            return new Date(jsonObject.getDate(str).getTime());
+        }catch(Exception e){
+            return null;
+        }
+    }
 }
