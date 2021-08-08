@@ -28,7 +28,6 @@ public class ProjectFillRateService {
 
     public void save(int projectId, String columnName, Double fillRate){
         ProjectFillRate projectFillRate = new ProjectFillRate(projectId, columnName, fillRate);
-        System.out.println(projectId + columnName + ":" + fillRate);
         projectFillRateDAO.save(projectFillRate);
     }
 

@@ -1,6 +1,7 @@
 package Bean.DistinguishedProfessor;
 
 
+import java.sql.Date;
 
 public class DistinguishedProfessorForm {
     private String usernum;
@@ -22,33 +23,81 @@ public class DistinguishedProfessorForm {
     private Boolean applicationrequirements7;
     private Boolean applicationrequirements8;
     private Boolean applicationrequirements9;
-    
-  
 
+	private String department_academic_year;
+	private String department_semester;
+	private String department_conference_times;
+	private String department_sign_date;
 
-    public DistinguishedProfessorForm(String usernum, String name, String department, String hireddate, String certificatenum, String upgradedate, String seniority, String email, String researchroomext, String cellphone, Boolean applicationrequirements1, Boolean applicationrequirements2, Boolean applicationrequirements3, Boolean applicationrequirements4, Boolean applicationrequirements5, Boolean applicationrequirements6, Boolean applicationrequirements7, Boolean applicationrequirements8, Boolean applicationrequirements9) {
-        this.usernum = usernum;
-    	this.name = name;
-        this.department = department;
-        this.hireddate = hireddate;
-        this.certificatenum = certificatenum;
-        this.upgradedate = upgradedate;
-        this.seniority = seniority;
-        this.email = email;
-        this.researchroomext = researchroomext;
-        this.cellphone = cellphone;
-        this.applicationrequirements1 = applicationrequirements1;
-        this.applicationrequirements2 = applicationrequirements2;
-        this.applicationrequirements3 = applicationrequirements3;
-        this.applicationrequirements4 = applicationrequirements4;
-        this.applicationrequirements5 = applicationrequirements5;
-        this.applicationrequirements6 = applicationrequirements6;
-        this.applicationrequirements7 = applicationrequirements7;
-        this.applicationrequirements8 = applicationrequirements8;
-        this.applicationrequirements9 = applicationrequirements9;
+	private String college_academic_year;
+	private String college_semester;
+	private String college_conference_times;
+	private String college_sign_date;
+
+	private String research_and_development_office_sign_year;
+	private String research_and_development_office_sign_month;
+	private String research_and_development_office_sign_date;
+
+	public DistinguishedProfessorForm(String usernum, String name, String department, String hireddate, String certificatenum, String upgradedate, String seniority, String email, String researchroomext, String cellphone, Boolean applicationrequirements1, Boolean applicationrequirements2, Boolean applicationrequirements3, Boolean applicationrequirements4, Boolean applicationrequirements5, Boolean applicationrequirements6, Boolean applicationrequirements7, Boolean applicationrequirements8, Boolean applicationrequirements9, String department_academic_year, String department_semester, String department_conference_times, String department_sign_date, String college_academic_year, String college_semester, String college_conference_times, String college_sign_date, String research_and_development_office_sign_year, String research_and_development_office_sign_month, String research_and_development_office_sign_date) {
+		this.usernum = usernum;
+		this.name = name;
+		this.department = department;
+		this.hireddate = hireddate;
+		this.certificatenum = certificatenum;
+		this.upgradedate = upgradedate;
+		this.seniority = seniority;
+		this.email = email;
+		this.researchroomext = researchroomext;
+		this.cellphone = cellphone;
+		this.applicationrequirements1 = applicationrequirements1;
+		this.applicationrequirements2 = applicationrequirements2;
+		this.applicationrequirements3 = applicationrequirements3;
+		this.applicationrequirements4 = applicationrequirements4;
+		this.applicationrequirements5 = applicationrequirements5;
+		this.applicationrequirements6 = applicationrequirements6;
+		this.applicationrequirements7 = applicationrequirements7;
+		this.applicationrequirements8 = applicationrequirements8;
+		this.applicationrequirements9 = applicationrequirements9;
+		this.department_academic_year = department_academic_year;
+		this.department_semester = department_semester;
+		this.department_conference_times = department_conference_times;
+		this.department_sign_date = department_sign_date;
+		this.college_academic_year = college_academic_year;
+		this.college_semester = college_semester;
+		this.college_conference_times = college_conference_times;
+		this.college_sign_date = college_sign_date;
+		this.research_and_development_office_sign_year = research_and_development_office_sign_year;
+		this.research_and_development_office_sign_month = research_and_development_office_sign_month;
+		this.research_and_development_office_sign_date = research_and_development_office_sign_date;
+	}
+
+	public DistinguishedProfessorForm(String usernum, String name, String department, String hireddate, String certificatenum, String upgradedate, String seniority, String email, String researchroomext, String cellphone, Boolean applicationrequirements1, Boolean applicationrequirements2, Boolean applicationrequirements3, Boolean applicationrequirements4, Boolean applicationrequirements5, Boolean applicationrequirements6, Boolean applicationrequirements7, Boolean applicationrequirements8, Boolean applicationrequirements9) {
+		this.usernum = usernum;
+		this.name = name;
+		this.department = department;
+		this.hireddate = hireddate;
+		this.certificatenum = certificatenum;
+		this.upgradedate = upgradedate;
+		this.seniority = seniority;
+		this.email = email;
+		this.researchroomext = researchroomext;
+		this.cellphone = cellphone;
+		this.applicationrequirements1 = applicationrequirements1;
+		this.applicationrequirements2 = applicationrequirements2;
+		this.applicationrequirements3 = applicationrequirements3;
+		this.applicationrequirements4 = applicationrequirements4;
+		this.applicationrequirements5 = applicationrequirements5;
+		this.applicationrequirements6 = applicationrequirements6;
+		this.applicationrequirements7 = applicationrequirements7;
+		this.applicationrequirements8 = applicationrequirements8;
+		this.applicationrequirements9 = applicationrequirements9;
+	}
+
+	public DistinguishedProfessorForm() {
+
     }
-    
-    public String getUsernum() {
+
+	public String getUsernum() {
 		return usernum;
 	}
 
@@ -199,9 +248,96 @@ public class DistinguishedProfessorForm {
 	public void setApplicationrequirements9(Boolean applicationrequirements9) {
 		this.applicationrequirements9 = applicationrequirements9;
 	}
-    
 
-    @Override
+	public String getDepartmentAcademicYear() {
+		return department_academic_year;
+	}
+
+	public void setDepartmentAcademicYear(String department_academic_year) {
+		this.department_academic_year = department_academic_year;
+	}
+
+	public String getDepartmentSemester() {
+		return department_semester;
+	}
+
+	public void setDepartmentSemester(String department_semester) {
+		this.department_semester = department_semester;
+	}
+
+	public String getDepartmentConferenceTimes() {
+		return department_conference_times;
+	}
+
+	public void setDepartmentConferenceTimes(String department_conference_times) {
+		this.department_conference_times = department_conference_times;
+	}
+
+	public String getDepartmentSignDate() {
+		return department_sign_date;
+	}
+
+	public void setDepartmentSignDate(String department_sign_date) {
+		this.department_sign_date = department_sign_date;
+	}
+
+	public String getCollegeAcademicYear() {
+		return college_academic_year;
+	}
+
+	public void setCollegeAcademicYear(String college_academic_year) {
+		this.college_academic_year = college_academic_year;
+	}
+
+	public String getCollegeSemester() {
+		return college_semester;
+	}
+
+	public void setCollegeSemester(String college_semester) {
+		this.college_semester = college_semester;
+	}
+
+	public String getCollegeConferenceTimes() {
+		return college_conference_times;
+	}
+
+	public void setCollegeConferenceTimes(String college_conference_times) {
+		this.college_conference_times = college_conference_times;
+	}
+
+	public String getCollegeSignDate() {
+		return college_sign_date;
+	}
+
+	public void setCollegeSignDate(String college_sign_date) {
+		this.college_sign_date = college_sign_date;
+	}
+
+	public String getResearchAndDevelopmentOfficeSignYear() {
+		return research_and_development_office_sign_year;
+	}
+
+	public void setResearchAndDevelopmentOfficeSignYear(String research_and_development_office_sign_year) {
+		this.research_and_development_office_sign_year = research_and_development_office_sign_year;
+	}
+
+	public String getResearchAndDevelopmentOfficeSignMonth() {
+		return research_and_development_office_sign_month;
+	}
+
+	public void setResearchAndDevelopmentOfficeSignMonth(String research_and_development_office_sign_month) {
+		this.research_and_development_office_sign_month = research_and_development_office_sign_month;
+	}
+
+	public String getResearchAndDevelopmentOfficeSignDate() {
+		return research_and_development_office_sign_date;
+	}
+
+	public void setResearchAndDevelopmentOfficeSignDate(String research_and_development_office_sign_date) {
+		this.research_and_development_office_sign_date = research_and_development_office_sign_date;
+	}
+
+	@Override
     public String toString() {
         return "DistinguishedProfessorForm{" +
                 "usernum='" + usernum + '\'' +

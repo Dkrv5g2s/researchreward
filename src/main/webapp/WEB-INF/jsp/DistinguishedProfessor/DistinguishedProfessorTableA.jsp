@@ -14,26 +14,6 @@
             font: normal 16px Verdana;
             width: 100%;
         }
-        table {
-            color: black;
-            width: 100%;
-            border-width: thin;
-            border-spacing: 0px;
-            border-style: groove;
-            border-color: gray;
-            border-collapse: collapse;
-            background-color: white;
-            font: normal 13px Verdana;
-        }
-        table td{
-            border-width: 1px;
-            padding: 8px;
-            border-style: groove;
-            border-color: gray;
-            -moz-border-radius: 0px 0px 0px 0px;
-            height: 20px;
-            vertical-align: text-middle;
-        }
         table td.metadata{
             width: 150px;
             background-color: rgb(255, 255, 240);
@@ -64,9 +44,6 @@
 		input[type=number] {
 		  -moz-appearance: textfield;
 		}
-		input{
-            width: 100%;
-        }
         input.back {
     		width: 55px;
 		}
@@ -75,6 +52,18 @@
 		}
 		input.check {
     		width: 10px;
+		}
+		.sign_title{
+			text-align: center;
+		}
+		.sign{
+			vertical-align: top;
+			height: 80px;
+		}
+		.footer{
+			text-align: center;
+			margin: 1rem;
+			display: none;
 		}
 
     </style>
@@ -85,6 +74,7 @@
 	        const total = $('#other_data').val().length;
 	        document.getElementById('nowWords').innerHTML = total;
 	    }
+
 	    function commit(){
 	    	$.ajax({
 	            type: 'POST',
@@ -94,11 +84,20 @@
 	            contentType: 'application/json',
 	            success: function(data){
 	                alert('存檔成功');
-	            }
+					if(${readonly}){
+						location.href="PaperPerformanceDescriptionForm";
+					}
+					else {
+						location.reload();
+					}
+				},
+				error:function() {
+					alert("存檔失敗");
+				}
 	        });
 	
 	    };
-	
+
 	    function InputToJson(){
 	        var data = {};
 	
@@ -120,6 +119,8 @@
 	            
 	        }
 	        data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+
+			data["fill_rate"] = $("#commit_date").val() ? 1 : 0;
 	        return data;
 	    }
 	    
@@ -296,8 +297,6 @@
 
             document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
             document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
-            console.log("FWCIuser:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multipleofFWCI,"FWCIPrize:",getPrizeByFWCIMultiple(multipleofFWCI))
-            console.log("h5user:",h5Indexofuser,"ntut:",h5Indexofntut,"multiple:",multipleofh5,"FWCIPrize:",getPrizeByh5Multiple(multipleofh5))
             let betterAmount = parseFloat(getPrizeByFWCIMultiple(multipleofFWCI)) >= parseFloat(getPrizeByh5Multiple(multipleofh5)) ? getPrizeByFWCIMultiple(multipleofFWCI) :getPrizeByh5Multiple(multipleofh5);
             document.getElementById("FWCIPrize").innerHTML = betterAmount;
             
@@ -424,13 +423,23 @@
     <script>
 	    $(document).ready(function (){
             setReadOnly(<%=request.getAttribute("readonly")%>);
+			const role = "${role}";
+			if(role === "teacher"){
+				$(".review").attr('disabled','disabled');
+				$("#apply_footer").show();
+				$("#review_footer").remove();
+			}
+			else{
+				$("#review_footer").show();
+				$("#apply_footer").remove();
+			}
         });
 	</script>
 </head>
 <body>
     <div class="content">
         <form>
-            <p>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</p>
+			<p>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</p>
             <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 		        <tbody>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
@@ -527,7 +536,6 @@
 		            <tr style="text-align: center;" class="count3">
 		                <td colspan="4"  width="54%">
 		                    <p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</p>
-		                    <br>
 		                    <table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
 		                        <tr>
 		                            <td rowspan="1" colspan="2" width="20%">FWCI倍數</td>
@@ -554,13 +562,12 @@
 		                            <td rowspan="1" colspan="2" width="10%" >15</td>
 		                        </tr>
 		                    </table>
-		                    <br>
 		                    <p align="left">申請人近5年FWCI值:&nbsp;<input name="fwci_value" id="fwci_value" value="<%=json.get("fwci_value")%>" style="text-align:center; width: 10%;" oninput="calculatePrize()">&nbsp;
 		                    為本校近五年FWCI值<span >${fwci}</span>之<span id="FWCIValueOfUserDivideNTUT"></span>倍。<br></p>
 		                    <p align="left">申請人h-5指數:&nbsp;<input name="h5_index" id="h5_index" value="<%=json.get("h5_index")%>" style="text-align:center; width: 10%;" oninput="calculatePrize()">&nbsp;
 		                    為本校近五年h-5指數<span >${h5Index}</span>之<span id="h5IndexOfUserDivideNTUT"></span>倍。<br></p>
 		
-		                    <p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>元</p>
+		                    <p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>點(B)。</p>
 		
 		                </td>
 		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
@@ -613,13 +620,20 @@
 		                <td colspan="1" width="12%" id="tech_project_point5" class="pc5"><%=json.get("tech_project_point5")%></td>
 		                <td colspan="1" width="10%" id="tech_project_point_total" class="total_point"><%=json.get("tech_project_point_total")%></td>
 		            </tr>
-		            
-		            <tr>
-		                <td colspan="7" width="80%">
-		                    <p>說明：</p>
-		                    <p>1.不包含科技部產學合作計畫。</p>
-		                </td>
-		            </tr>
+					<tr>
+						<td class="sign_title">研發處<br>(簽章)</td>
+						<td colspan="3" class="sign">
+							<p>
+								<label>承辦人</label>
+							</p>
+						</td>
+						<td colspan="3" style="border-left-style: hidden;" class="sign">
+							<p>
+								<label>單位主管</label>
+							</p>
+						</td>
+					</tr>
+
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">教 育 部 計 畫<br>(USR)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
@@ -633,7 +647,7 @@
 		                <td colspan="1" width="12%"><label id="year5"><%=json.get("year5")%></label></td>
 		            </tr>
 		            <tr style="text-align: center;" class="count">
-		                <td rowspan="3" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>
+		                <td rowspan="4" colspan="1" width="20%">近五年以本校名義主持教育部補助大學在地實踐社會責任計畫</td>
 		                <td colspan="1" width="10%">件數</td>
 		                <td colspan="1" width="12%"><input name="edu_project_count1" type="number" class="ic1" size="5" maxlength="40" value="<%=json.get("edu_project_count1")%>" style="text-align:center; width: 75%;"></td>
 		                <td colspan="1" width="12%"><input name="edu_project_count2" type="number" class="ic2" size="5" maxlength="40" value="<%=json.get("edu_project_count2")%>" style="text-align:center; width: 75%;"></td>
@@ -660,6 +674,19 @@
 		                <td colspan="1" width="12%" id="edu_project_point5" class="pc5"><%=json.get("edu_project_point5")%></td>
 		                <td colspan="1" width="10%" id="edu_project_point_total" class="total_point"><%=json.get("edu_project_point_total")%></td>
 		            </tr>
+					<tr>
+						<td class="sign_title">社會責任辦公室(簽章)</td>
+						<td colspan="3" class="sign">
+							<p>
+								<label>承辦人</label>
+							</p>
+						</td>
+						<td colspan="3" style="border-left-style: hidden;" class="sign">
+							<p>
+								<label>單位主管</label>
+							</p>
+						</td>
+					</tr>
 		            
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">產 學 合 作 計 畫<br>(不包含以學校名義開授訓練課程招生收入)</td>
@@ -710,14 +737,20 @@
 		                <td colspan="1" width="12%" id="coop_project_point5" class="pc5"><%=json.get("coop_project_point5")%></td>
 		                <td colspan="1" width="10%" id="coop_project_point_total" class="total_point"><%=json.get("coop_project_point_total")%></td>
 		            </tr>
-		            
-		            <tr>
-		                <td colspan="7" width="80%">
-		                    <p>說明：</p>
-		                    <p>1.包含科技部產學合作計畫、政府機關及財團法人之研究型計畫。</p>
-		                    <p>2. 不包含以學校名義開授訓練課程招生收入。</p>
-		                </td>
-		            </tr>
+					<tr>
+						<td class="sign_title">產學處<br>(簽章)</td>
+						<td colspan="3" class="sign">
+							<p>
+								<label>承辦人</label>
+							</p>
+						</td>
+						<td colspan="3" style="border-left-style: hidden;" class="sign">
+							<p>
+								<label>單位主管</label>
+							</p>
+						</td>
+					</tr>
+
 		            <tr style="text-align:center;background:  #C0C0C0 ">
 		                <td rowspan="2" colspan="2" width="30%">技 術 移 轉 金<br>(不包含科技部先期技術移轉授權金)</td>
 		                <td colspan="5" width="60%" style="text-align: center;">年度</td>
@@ -767,14 +800,20 @@
 		                <td colspan="1" width="12%" id="tech_transfer_point5" class="pc5"><%=json.get("tech_transfer_point5")%></td>
 		                <td colspan="1" width="10%" id="tech_transfer_point_total" class="total_point"><%=json.get("tech_transfer_point_total")%></td>
 		            </tr>
-		           
-		            <tr>
-		                <td colspan="7" width="80%">
-		                    <p>說明：</p>
-		                    <p>1.包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金。</p>
-		                    <p>2.不包含科技部先期技術移轉授權金。</p>
-		                </td>
-		            </tr>
+					<tr>
+						<td class="sign_title">產學處<br>(簽章)</td>
+						<td colspan="3" class="sign">
+							<p>
+								<label>承辦人</label>
+							</p>
+						</td>
+						<td colspan="3" style="border-left-style: hidden;" class="sign">
+							<p>
+								<label>單位主管</label>
+							</p>
+						</td>
+					</tr>
+
 		            <tr>
 		                <td colspan="9" width="100%" style="text-align: center; background: #C0C0C0">
 		                <label for="other_data"><b>其 它 傑 出 表 現 說 明</b></label>
@@ -787,16 +826,29 @@
                     	</td>
 		            </tr>
 		            <tr>
-		                <td colspan="9" width="100%"><input type="checkbox" name="representationClause" class="check" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
-		                    <a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.get("commit_date")%>"></a>
+		                <td colspan="9" width="100%">
+							<p>
+								<input type="checkbox" name="representationClause" class="check" >
+								<b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
+							</p>
+							<p style="text-align: right;">
+								<label style="margin-right: 15ch;">申請人簽章：</label>
+								<label for="commit_date">日期：</label>
+								<input type="date" name="commit_date" id="commit_date" class="date" value="<%=json.optString("commit_date", "")%>">
+							</p>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
-            <p style="text-align: center;">
-            	<input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
-	            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
+			<p>註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。</p>
+            <p id="apply_footer" class="footer">
+				<button type="button" class="back" name="return_last_page" onclick="javascript:location.href='DistinguishedProfessorCatalog'">回上頁</button>
+	            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">暫存</button>
        		</p>
+			<p id="review_footer" class="footer">
+				<input type="button" name="go_to_catalog" class="review" value="回目錄" onclick="location.href='DistinguishedProfessorCatalog'" />
+				<input type="button" class="review" value="此頁審查完成" onclick="location.href='PaperPerformanceDescriptionForm'" />
+			</p>
         </form>
     </div>
 
