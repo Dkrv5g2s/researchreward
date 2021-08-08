@@ -283,14 +283,14 @@
     function commit(){
         $.ajax({
             type: 'POST',
-            url: '/SelectInformation',
+            url: '/SunshineScholarshipAwardGeneralInformation',
             dataType: 'text',
             data: JSON.stringify(InputToJson()),
             contentType: 'application/json',
             success: function(data){
                 // alert(data.status);
                 alert("存檔成功");
-                window.location.href="SelectInformation";
+                window.location.href="SunshineScholarshipAwardGeneralInformation";
             }
         });
 

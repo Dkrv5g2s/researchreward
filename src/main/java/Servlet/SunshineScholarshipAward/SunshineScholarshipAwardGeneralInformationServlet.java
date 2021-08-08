@@ -12,12 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 
-public class SelectInformationServlet extends ServletEntryPoint {
+
+public class SunshineScholarshipAwardGeneralInformationServlet extends ServletEntryPoint {
     private static final String STAFF_URL_EDIT = "WEB-INF/jsp/SunshineScholarshipAward/edit/GeneralInformationOfStaff.jsp";
     private static final String STAFF_URL_READONLY = "WEB-INF/jsp/SunshineScholarshipAward/readonly/GeneralInformationOfStaff.jsp";
     private static final String LOGIN_URL = "WEB-INF/jsp/login/login.jsp";
@@ -49,7 +47,11 @@ public class SelectInformationServlet extends ServletEntryPoint {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         JSONObject json = new JSONObject(readJSONString(req));
-        generalInformationService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        int projectId = turnIdInSessionToInt(session, "projectId");
+        generalInformationService.save(json,projectId);
 
+    }
+    private int turnIdInSessionToInt(HttpSession session, String id){
+        return Integer.parseInt(session.getAttribute(id).toString());
     }
 }

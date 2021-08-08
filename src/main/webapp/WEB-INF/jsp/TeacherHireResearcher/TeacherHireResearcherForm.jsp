@@ -82,19 +82,35 @@
 
             function InputToJson(){
                 let data = {};
+                let filledInputNum = 0;
+                let totalInputNum = 0;
 
                 for (let j=0; j<document.getElementsByTagName("input").length; j++) {
                     let inputElem = document.getElementsByTagName("input")[j];
                     if (inputElem.type!=="button" &&
                         (inputElem.type!=="radio" || (inputElem.type==="radio" && inputElem.checked))) {
                         data[inputElem.name] = inputElem.value;
+                        if (inputElem.className.length === 0) {
+                            if (inputElem.value.length > 0) {
+                                filledInputNum++;
+                            }
+                            totalInputNum++;
+                        }
                     }
                 }
 
                 for (let j=0; j<document.getElementsByTagName("textarea").length; j++) {
-                    data[document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
+                    let inputElem = document.getElementsByTagName("textarea")[j];
+                    data[inputElem.name] = inputElem.value;
+                    if (inputElem.className.length === 0) {
+                        if (inputElem.value.length > 0) {
+                            filledInputNum++;
+                        }
+                        totalInputNum++;
+                    }
                 }
 
+                data["fill_rate"] = filledInputNum / totalInputNum;
                 return data;
             }
 
@@ -299,7 +315,7 @@
                 </table>
                 <p align="center">
                     <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'">
-                    <input type="button" id="save" name="save" value="存檔" onclick="commit()"/>
+                    <input type="button" id="save" name="save" value="暫存" onclick="commit()"/>
                 </p>
             </form>
         </div>

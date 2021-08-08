@@ -11,6 +11,7 @@ import Dao.SunshineScholarshipAward.Impl.FWCIPrizeDAOImpl;
 import Dao.SunshineScholarshipAward.FWCIPrizeDAO;
 import Dao.SunshineScholarshipAward.Impl.FWCIUserInputDAOImpl;
 import Dao.SunshineScholarshipAward.FWCIUserInputDAO;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 
@@ -21,6 +22,7 @@ public class GeneralInformationService {
     private PersonalInfoDAO personalInformationDAO = new PersonalInfoDAOImpl();
     private FWCIUserInputDAO fwciUserInputDAO = new FWCIUserInputDAOImpl();
     private FWCIPrizeDAO fwciPrizeDAO = new FWCIPrizeDAOImpl();
+    private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
 
     public void save(JSONObject jsonObject, int projectId){
 
@@ -49,6 +51,8 @@ public class GeneralInformationService {
         );
         personalInformationDAO.save(personalInformation);
         fwciUserInputDAO.save(fwciUserInputInfomation);
+        projectFillRateService.save(projectId, "SunshineScholarshipAwardGeneralInformation", jsonObject.getDouble("fill_rate"));
+
     }
 
 

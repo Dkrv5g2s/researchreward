@@ -3,6 +3,7 @@ package Service.TeacherHireResearcher;
 import Bean.TeacherHireResearcher.TeacherHireResearcherForm;
 import Dao.TeacherHireResearcher.TeacherHireResearcherFormDAO;
 import Dao.TeacherHireResearcher.impl.TeacherHireResearcherFormDAOImpl;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
@@ -11,6 +12,7 @@ import static Utils.ReflectUtils.addBeanPropertyToJson;
 
 public class TeacherHireResearcherFormService {
     private TeacherHireResearcherFormDAO teacherHireResearcherFormDAO = new TeacherHireResearcherFormDAOImpl();
+    private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
 
     public void save(JSONObject jsonObject, int rewardProjectId){
         TeacherHireResearcherForm teacherHireResearcherForm = new TeacherHireResearcherForm(
@@ -36,6 +38,7 @@ public class TeacherHireResearcherFormService {
                 );
 
         teacherHireResearcherFormDAO.save(teacherHireResearcherForm);
+        projectFillRateService.save(rewardProjectId, "TeacherHireResearcherForm", jsonObject.getDouble("fill_rate"));
     }
 
     public void updateDepartmentReviewData(JSONObject jsonObject, int rewardProjectId) {

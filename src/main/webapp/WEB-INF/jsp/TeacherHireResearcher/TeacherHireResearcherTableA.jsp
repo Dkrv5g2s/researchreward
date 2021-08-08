@@ -107,6 +107,7 @@
 					data[inputElem.name] = inputElem.value;
 				}
 			}
+			data["fill_rate"] = $("#commit_date").val() ? 1 : 0;
 	        return data;
 	    }
 
@@ -440,14 +441,14 @@
 		                <td colspan="<%=cellsNum+3%>" width="100%">
 							<input type="checkbox" name="declaration" class="check">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br>
 							註：1.論文以當年度紙本刊登為準。 2.以本校「教師評鑑及基本資料庫」之資料為準。<br>
-		                    <a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.opt("commit_date")%>"></a>
+		                    <a style="margin-left: 65%">日期:<input id="commit_date" type="date" name="commit_date" class="date" value="<%=json.opt("commit_date")%>"></a>
 		                </td>
 		            </tr>
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
 				<input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
-				<button type="button" name="save" onclick="commit()">存檔</button>
+				<button type="button" name="save" onclick="commit()">暫存</button>
        		</p>
         </form>
     </div>

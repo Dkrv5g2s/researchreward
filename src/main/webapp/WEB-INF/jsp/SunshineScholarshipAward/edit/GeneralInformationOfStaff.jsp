@@ -229,22 +229,43 @@
     function commit(){
         $.ajax({
             type: 'POST',
-            url: '/SelectInformation',
+            url: '/SunshineScholarshipAwardGeneralInformation',
             dataType: 'text',
             data: JSON.stringify(InputToJson()),
             contentType: 'application/json',
             success: function(data){
                 // alert(data.status);
                 alert("存檔成功");
-                window.location.href="SelectInformation";
+                window.location.href="SunshineScholarshipAwardGeneralInformation";
             }
         });
 
     };
 
     function InputToJson(){
-        var data = {};
-        for (var j=0; j<document.getElementsByTagName("input").length; j++) {
+        let data = {};
+        let dataNumber = 0;
+        const inputList = document.getElementsByTagName("input");
+
+
+        for (let j=0; j<inputList.length; j++) {
+            data[ inputList[j].id] = inputList[j].value;
+            if(inputList[j].value.length > 0 && inputList[j].className.length === 0){
+                dataNumber++;
+            }
+        }
+
+        let resignedMemberInputStyle = document.getElementById("ResignedMemberInput").style;
+        if(resignedMemberInputStyle.display === "none"){
+            // 離職年月欄僅在有出現時需要納入填寫
+            data["fill_rate"] = dataNumber/(inputList.length-1);
+        }else{
+            data["fill_rate"] = dataNumber/(inputList.length);
+        }
+
+
+
+        for (let j=0; j<document.getElementsByTagName("input").length; j++) {
             if (document.getElementsByTagName("input")[j].type=='checkbox'){
                 if(document.getElementsByTagName("input")[j].checked == false){
                     continue;
