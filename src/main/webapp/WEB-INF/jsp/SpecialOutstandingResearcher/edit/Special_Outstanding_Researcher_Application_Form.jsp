@@ -1,12 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
-
-<%@ page import="Bean.Project.RewardProject" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
-<%  /*避免瀏覽器因cache而無法看到最新資料*/
-    response.setHeader("Pragma","no-cache");
-    response.setHeader("Cache-Control","no-cache");
-    response.setDateHeader("Expires", 0);
-%>
 <%
     JSONObject jsonObject = (JSONObject) request.getAttribute("date_info");
 %>
@@ -51,7 +44,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="1"><label id="dep_title">補助起日前一年(<label name='mostStart'><%= jsonObject.getDate("mostStart")%></label>~<label name='mostEnd'><%= jsonObject.getDate("mostEnd")%></label>)是否曾執行科技部計畫</label>
+                <td colspan="1"><label>補助起日前一年(<label name='mostStart'><%= jsonObject.getDate("mostStart")%></label>~<label name='mostEnd'><%= jsonObject.getDate("mostEnd")%></label>)是否曾執行科技部計畫</label>
                     <font color="red">＊</font>
                 </td>
                 <td colspan="5" style="line-height: 2;">
@@ -165,8 +158,8 @@
 
             <tr>
                 <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
-                    <input type="button" width="10%" value="存檔" name="save_the_page"  >
+                    <button type="button" width="10%" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">回上頁</button>
+                    <button type="button" width="10%" name="save_the_page">存檔</button>
                 </td>
             </tr>
             </tbody>
@@ -226,8 +219,7 @@
             type: 'POST',
             url: 'SpecialOutstandingResearcherApplicationForm',
             dataType: 'text',
-            data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
-            //contentType: 'application/text',
+            data: { "data": InputFormToJson(), "func":"save" },
             success: function(data){
                 alert('success');
                 location.reload();
@@ -258,7 +250,6 @@
 
                 var a_tuple_of_standard = { "level_num" : level_name, "standard" : standard_content, "sub_standard" : sub_standard_content } ;
                 list_of_standard.push(a_tuple_of_standard) ;
-            //
 
             }else if ( document.getElementsByTagName("input")[j].type !='checkbox' && document.getElementsByTagName("input")[j].name !='executed_tech_proj_yes' ) {
                 data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
@@ -271,13 +262,35 @@
         }
 
         data["executed_tech_proj"] = $("input[name='executed_tech_proj_yes']").prop('checked') ;
+        data["fill_rate"] = getFillRate(data);
         data["standard_list"] = list_of_standard ;
         data["project_id"] = ${projectId} ;
-
         return JSON.stringify(data)
     }
 
-    $(document).on( "click", "input[name='save_the_page']", function() {
+    function getFillRate(data){
+        let dataKeys = Object.keys(data);
+        let dataLength = dataKeys.length;
+        let executedTechProj = data["executed_tech_proj"];
+        let dataNumber = executedTechProj ? dataLength : dataLength-4;
+        let inputNumber = 0;
+        for(let i=0; i<dataLength; i++){
+            let dataKey = dataKeys[i];
+            let dataValue = data[dataKey];
+            if(dataValue===true || dataValue===false || dataValue.length>0){
+                if(executedTechProj) {
+                    inputNumber++;
+                }
+                else if(dataKey != "tech_proj_name" || dataKey != "tech_proj_id" || dataKey != "tech_proj_start_time" || dataKey != "tech_proj_end_time"){
+                    inputNumber++;
+                }
+            }
+        }
+        console.log(inputNumber/dataNumber, "=", inputNumber, "/", dataNumber);
+        return inputNumber/dataNumber;
+    }
+
+    $(document).on( "click", "button[name='save_the_page']", function() {
         commit();
     } ) ;
 

@@ -1,7 +1,5 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.User.User;
-import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.SpecialOutstandingResearcher.ReviewSupportingInformationService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -18,7 +16,6 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         String method = req.getMethod();
 
         if (method.equals("GET")) {
@@ -26,7 +23,6 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
         }else if ( method.equals("POST")) {
             doPost(req, resp);
         }else {
-            //doPost(req, resp);
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
         }
     }
@@ -54,15 +50,7 @@ public class ReviewSupportingInformationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
-        //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
-        User user = new User( "root", "password1234", "測試", "staff1221" ) ;
-
-        this.logger.info( user.getStaff_code() + " has modifiedReviewSupportingInformationForm with json message " + jsonObject.toString() );
-
         ReviewSupportingInformationService service = new ReviewSupportingInformationService() ;
-
         service.save(jsonObject);
-
-
     }
 }

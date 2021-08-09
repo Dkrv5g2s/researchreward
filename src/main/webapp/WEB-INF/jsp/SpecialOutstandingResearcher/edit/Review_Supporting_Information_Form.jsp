@@ -13,6 +13,8 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/Function.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <style>
     p {
         font-size: 15px;
@@ -34,7 +36,7 @@
     <p>七、 技術移轉金(包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金；不包含科技部先期技術移轉授權金)請填列近五年以本校名義所獲得之實收技術移轉金資料(如下表) ，並洽產學合作處技術移轉組確認核章後提出申請。技術移轉金之計算以「實際納入校務基金日期」為準。</p>
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
-            <thead style="display: table-column;">
+            <thead style="display: table-column; display:none;">
                     <th colspan="1" width="18%">技轉合約名稱</th>
                     <th colspan="1" width="18%">技轉單位(企業)</th>
                     <th colspan="1" width="18%">簽約日期</th>
@@ -42,17 +44,16 @@
                     <th colspan="1" width="18%">技轉金實際納入校務基金日期</th>
                     <th colspan="1" width="10%"></th>
                 </thead>
-            <tbody id="data_table" style="text-align: center;">
+            <tbody id="data_table" style="text-align: center; display:none;">
             </tbody>
             <tbody style="text-align: center;">
-                <tr>
+                <tr style="display:none;">
                     <td colspan="6" width="100%"><input type="button" name="add_new_contract" value="  新增  " onclick="add_new_item()"></td>
                 </tr>
                 <tr>
                     <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
-                        <input type="button" width="10%" value="下一頁" name="go_to_next_page" onclick="location.href='PaperPerformanceDescriptionForm'"  >
-<%--                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  >--%>
+                        <%--                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  >--%>
                     </td>
                 </tr>
             </tbody>
@@ -172,7 +173,7 @@
                 type: 'POST',
                 url: 'ReviewSupportingInformationForm',
                 dataType: 'text',
-                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
+                data: { "data": InputFormToJson()},
                 //contentType: 'application/text',
                 success: function(data){
                     alert('success');

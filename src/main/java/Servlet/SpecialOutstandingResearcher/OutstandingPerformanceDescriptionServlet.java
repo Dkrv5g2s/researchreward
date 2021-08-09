@@ -6,6 +6,7 @@ import Service.Admin.AwardTimeLimitService;
 import Service.DistinguishedProfessor.DistinguishedProfessorTableAService;
 import Service.SpecialOutstandingResearcher.OutstandingPerformanceDescriptionService;
 
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -33,21 +34,21 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp").forward(req, resp);
-//        // "WEB-INF/jsp/SpecialOutstandingResearcher/edit/Outstanding_Performance_Description_Form.jsp"
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        getForm(req);
-
         String jsonString = readJSONString(req);
 
         if(!jsonString.equals("")) {
             JSONObject json = new JSONObject(jsonString);
 
-            outstandingPerformanceDescriptionService.save(json,String.valueOf(session.getAttribute("projectId")));
+            String projectId = String.valueOf(session.getAttribute("projectId"));
+            outstandingPerformanceDescriptionService.save(json,projectId);
+
+            ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+            projectFillRateService.save(Integer.parseInt(projectId), "OutstandingPerformanceDescriptionForm", json.getDouble("fill_rate"));
         }
         
     }

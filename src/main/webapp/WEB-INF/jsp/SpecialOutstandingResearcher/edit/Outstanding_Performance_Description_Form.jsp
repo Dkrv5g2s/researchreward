@@ -1,42 +1,14 @@
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%
 	JSONObject json = (JSONObject) request.getAttribute("json");
 %>
 <html>
 <head>
 	<title>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</title>
+	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 	<style>
-		body {
-			margin: 0px 0px 0px 0px;
-			padding: 0;
-			font-size: 20px;
-			font: normal 16px Verdana;
-			width: 100%;
-		}
-		table {
-			color: black;
-			width: 100%;
-			border-width: thin;
-			border-spacing: 0px;
-			border-style: groove;
-			border-color: gray;
-			border-collapse: collapse;
-			background-color: white;
-			font: normal 13px Verdana;
-		}
-		table td{
-			border-width: 1px;
-			padding: 8px;
-			border-style: groove;
-			border-color: gray;
-			-moz-border-radius: 0px 0px 0px 0px;
-			height: 20px;
-			vertical-align: text-middle;
-		}
 		table td.metadata{
-			width: 150px;
-			background-color: rgb(255, 255, 240);
 			text-align: right;
 		}
 		table td.cb{
@@ -46,12 +18,6 @@
 			width: 500px;
 			background-color: rgb(255, 255, 240);
 			text-align: left;
-		}
-		div.content{
-			margin: 0 auto;
-			padding: 50px;
-			width: 80%;
-			background-color: white;
 		}
 		/* Chrome, Safari, Edge, Opera */
 		input::-webkit-outer-spin-button,
@@ -127,6 +93,7 @@
 
 			}
 			data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+			data["fill_rate"] = $("#commit_date").val() ? 1 : 0;
 			return data;
 		}
 
@@ -765,12 +732,20 @@
 			<tr>
 				<td colspan="9" width="100%">
 					<p>其他資料（例如：擔任國際重要學術學會理監事、國際知名學術期刊編輯/副編輯或評審委員、專利或技術移轉具體績效、獲獎情形及重要會議邀請演講…等）。</p>
-					<textarea style="resize:none;width:100%;height:200px;" name="other_data" id="other_data" maxlength="500"  ><%=json.get("other_data")%></textarea>
+					<textarea name="other_data" id="other_data" maxlength="500"  ><%=json.get("other_data")%></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="9" width="100%"><input type="checkbox" name="representationClause" class="check" >申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。<br><br><br>
-					<a style="margin-left: 65%">日期:<input type="date" name="commit_date" class="date" value="<%=json.get("commit_date")%>"></a>
+				<td colspan="9" width="100%">
+					<p>
+						<input type="checkbox" name="representationClause" class="check" >
+						<b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
+					</p>
+					<p style="text-align: right;">
+						<label style="margin-right: 15ch;">申請人簽章：</label>
+						<label for="commit_date">日期：</label>
+						<input type="date" name="commit_date" id="commit_date" class="date" value="<%=json.optString("commit_date", "")%>">
+					</p>
 				</td>
 			</tr>
 			</tbody>

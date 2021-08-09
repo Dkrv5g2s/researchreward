@@ -39,10 +39,16 @@
             </tbody>
             <tbody >
             <tr>
-                <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center">
+                <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center" class="review">
                     <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
                     <button type="button" name="return_last_page" onclick="location.href='ReasonForReturn'">退件</button>
                     <button type="button" name="confirm" onclick="commit()">審查完成</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center" class="review_for_special_outstanding_researcher">
+                    <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='SpecialOutstandingResearcherCatalog'">
+                    <button type="button" name="go_to_next_page" onclick="location.href='AwardDistributionAmountOrPrincipleForm'">此頁審查完成</button>
                 </td>
             </tr>
             </tbody>
@@ -149,11 +155,18 @@
     function showSection(){
         $(".table_b").hide();
         $(".table_c").hide();
+        $(".review").hide();
+        $(".review_for_special_outstanding_researcher").hide();
 
         if(IsTableC)
             $(".table_c").show();
         else
             $(".table_b").show();
+
+        if("${catalogURL}" === "/SpecialOutstandingResearcherCatalog")
+            $(".review_for_special_outstanding_researcher").show();
+        else
+            $(".review").show();
     }
 
     $(document).ready( load() );

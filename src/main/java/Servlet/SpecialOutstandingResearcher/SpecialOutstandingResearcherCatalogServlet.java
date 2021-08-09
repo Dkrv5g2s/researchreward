@@ -23,7 +23,6 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         String method = req.getMethod();
 
         if (method.equals("GET")) {
@@ -31,21 +30,13 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
         }else if ( method.equals("POST")) {
             doPost(req, resp);
         }else {
-            //doPost(req, resp);
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-//        Boolean readonly = true ;
-//        HttpSession session = req.getSession();
-//        session.setAttribute( "readonly", true );
-
         req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Special_Outstanding_Researcher_Catalog.jsp").forward(req, resp);
-
     }
 
 }

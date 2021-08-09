@@ -1,23 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
-
-<%@ page import="Bean.Project.RewardProject" %>
-<%  /*避免瀏覽器因cache而無法看到最新資料*/
-    response.setHeader("Pragma","no-cache");
-    response.setHeader("Cache-Control","no-cache");
-    response.setDateHeader("Expires", 0);
-%>
-<%
-    Gson gson = new Gson();
-%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 
-<div class="container" >
+<div class="content" style="width: 100%">
     <p style="font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
-</div>
-
-<div class="container" >
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
@@ -33,13 +21,17 @@
             </tbody>
             <tbody style="text-align: center;">
                 <tr>
-                    <td colspan="7" width="100%"><input type="button" name="add_new_contract" value="  新增  " onclick="add_new_item()"></td>
+                    <td colspan="7" width="100%">
+                        <input type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="background-color:rgb(255, 255, 240);" width="100%"><input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  ><input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  ></td>
+                    <td colspan="7" style="background-color:rgb(255, 255, 240);" width="100%">
+                        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">
+                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveData()">
+                    </td>
                 </tr>
             </tbody>
-
         </table>
     </form>
 </div>
@@ -48,24 +40,24 @@
 
 
     function load(){
-        showDatas() ;
+        showData() ;
 
     }
 
     $(document).ready( load() );
 
     function removeData(index){
-        datasFromTable();
+        dataFromTable();
         if(confirm("您確定要刪除此筆資料嗎?")){
             latest_data["award_distribution_amount_or_principle_list"].splice(index,1);
-            showDatas();
+            showData();
             calculateTotal();
         }
-        showDatas();
+        showData();
     }
 
     function add_new_item(){
-        datasFromTable();
+        dataFromTable();
         var item = {};
         item.applicant_type = "";
         item.name = "";
@@ -75,7 +67,7 @@
         item.month = "";
         item.principle = "" ;
         latest_data["award_distribution_amount_or_principle_list"].push(item);
-        showDatas();
+        showData();
 
     }
 
@@ -103,7 +95,7 @@
 
 
 
-    function datasFromTable(){
+    function dataFromTable(){
         latest_data["award_distribution_amount_or_principle_list"] = [];
         var i=0;
         while($("select[name='applicant_type"+i+"']").length>0){
@@ -122,7 +114,7 @@
 
     }
 
-    function showDatas(){
+    function showData(){
         var html = "";
         var award_distribution_amount_or_principle = latest_data["award_distribution_amount_or_principle_list"];
 
@@ -148,38 +140,44 @@
         }
     }
 
-    function checkDatas() {
-        return true ;
-    }
-
     function InputFormToJson() {
+        let inputNumber = 0;
+        let dataNumber = 0;
+        const inputList = latest_data["award_distribution_amount_or_principle_list"];
+        for(let i=0; i<inputList.length; i++){
+            let inputJson = inputList[i];
+            let inputJsonKeys = Object.keys(inputJson);
+            for(let j=0; j<inputJsonKeys.length; j++){
+                let key = inputJsonKeys[j];
+                inputNumber++;
+                if(inputJson[key] && inputJson[key].length>0){
+                    dataNumber++;
+                }
+            }
+        }
+        latest_data["fill_rate"] = dataNumber/inputNumber;
         latest_data["project_id"] = ${projectId}  ;
 
         return JSON.stringify(latest_data) ;
     }
 
-    function saveDatas(){
-        if(checkDatas()){
-            datasFromTable();
+    function saveData(){
+        dataFromTable();
 
-            $.ajax({
-                type: 'POST',
-                url: 'AwardDistributionAmountOrPrincipleForm',
-                dataType: 'text',
-                data: { "data": InputFormToJson(), "func":"save" },   //JSON.stringify(InputToJson())
-                //contentType: 'application/text',
-                success: function(data){
-                    alert('success');
-                },
-                error:function(data){
-                    alert("error")
-                }
-            });
-
-        }
-        else{
-            alert("有資料格式錯誤或未填寫");
-        }
+        $.ajax({
+            type: 'POST',
+            url: 'AwardDistributionAmountOrPrincipleForm',
+            dataType: 'text',
+            data: { "data": InputFormToJson()},
+            //contentType: 'application/text',
+            success: function(data){
+                alert('success');
+                location.reload();
+            },
+            error:function(data){
+                alert("error")
+            }
+        });
     }
 </script>
 </html>
