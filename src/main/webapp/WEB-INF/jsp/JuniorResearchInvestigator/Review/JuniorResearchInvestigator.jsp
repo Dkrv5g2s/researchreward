@@ -148,7 +148,7 @@
         </table>
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
-            <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
+            <button type="button" name="go_to_catalog" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
             <button type="button" name="confirm" onclick="reviewed()">此頁審查完成</button>
         </div>
     </form>

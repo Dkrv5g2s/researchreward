@@ -284,7 +284,7 @@
                 <td><label id="year3"><%=json.get("year3")%></label></td>
             </tr>
             <tr class="count">
-                <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
+                <td rowspan="6" >近三年以本校名義所獲之實收技術移轉金統計表</td>
                 <td colspan="2">件數</td>
                 <td><label name="tech_transfer_count1" class="ic1"><%=json.optString("tech_transfer_count1","0")%></label></td>
                 <td><label name="tech_transfer_count2" class="ic2"><%=json.optString("tech_transfer_count2","0")%></label></td>
@@ -313,7 +313,7 @@
                 <td id="tech_transfer_point_total" class="total_point"><%=json.optString("tech_transfer_point_total","0")%></td>
             </tr>
             <tr>
-                <td colspan="2">產學處<br>(簽章)</td>
+                <td colspan="2" rowspan="2">產學處<br>(簽章)</td>
                 <td colspan="2" class="sign">
                     <p>
                         <label>承辦人</label>
@@ -323,6 +323,11 @@
                     <p>
                         <label>單位主管</label>
                     </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border-top-style: hidden; font-size: 10px;">
+                    <p style="text-align: left;">※以符合本校Dr.Shechtman 年輕學者研究獎勵設置辦法第三條第三款申請者，請產學處填寫確認技轉及管理費金額後核章</p>
                 </td>
             </tr>
 
@@ -338,7 +343,6 @@
             </tr>
             <tr>
                 <td colspan="7" class="left">
-                    <p>註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。</p>
                     <p>
                         <input type="checkbox" name="declaration" class="auto" checked disabled="disabled"/>
                         <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
@@ -347,9 +351,10 @@
             </tr>
             </tbody>
         </table>
+        <p>註：1.論文以當年度紙本刊登為準。2.以本校「教師評鑑及基本資料庫」之資料為準。</p>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorTableB'">此頁審查完成</button>
+            <button type="button" name="confirm" onclick="location.href='PaperPerformanceDescriptionForm'">此頁審查完成</button>
         </p>
     </form>
 </div>
