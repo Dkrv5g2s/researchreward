@@ -3,6 +3,7 @@ package Service.ExcellentResearcher;
 import Bean.ExcellentResearcher.PersonalInformation.*;
 import Dao.ExcellentResearcher.*;
 import Dao.ExcellentResearcher.Impl.*;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class PersonalInformationService {
     private MOSTPlanDAO mostPlanDAO = new MOSTPlanDAOImpl();
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
+    private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
 
     public void saveAtFirstTimeApplying(JSONObject jsonObject, int projectId){
         Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
@@ -60,6 +62,8 @@ public class PersonalInformationService {
         mostPlanDAO.save(mostPlan);
         educationDAO.save(education);
         personalInformationDAO.save(personalInformation);
+
+        projectFillRateService.save(projectId, "PersonalInformation", jsonObject.getDouble("fill_rate"));
     }
 
     public void saveAtSecondTimeApplying(JSONObject jsonObject, int projectId){
@@ -103,6 +107,24 @@ public class PersonalInformationService {
         personalInformationDAO.save(personalInformation);
     }
 
+    public void updateDepartmentReviewData(JSONObject jsonObject, int projectId){
+        PersonalInformation personalInformation = new PersonalInformation();
+        personalInformation.setProjectId(projectId);
+        personalInformation.setDepartmentDirectorSignDate(jsonToDate(jsonObject, "departmentDirectorSignDate"));
+
+        personalInformationDAO.updateDepartmentReviewData(personalInformation);
+    }
+
+    public void updateCollegeReviewData(JSONObject jsonObject, int projectId){
+        PersonalInformation personalInformation = new PersonalInformation();
+        personalInformation.setProjectId(projectId);
+        personalInformation.setCollegeReviewedDate(jsonToDate(jsonObject, "collegeReviewedDate"));
+        personalInformation.setReviewedResult(jsonObject.getString("reviewedResult"));
+        personalInformation.setCollegeRecommendationRank(jsonObject.getString("collegeRecommendationRank"));
+        personalInformation.setCollegeDirectorSignDate(jsonToDate(jsonObject, "collegeDirectorSignDate"));
+
+        personalInformationDAO.updateCollegeReviewData(personalInformation);
+    }
 
     public JSONObject get(int projectId) {
 
@@ -128,5 +150,11 @@ public class PersonalInformationService {
 
     }
 
-
+    private Date jsonToDate(JSONObject jsonObject, String str) {
+        try {
+            return new Date(jsonObject.getDate(str).getTime());
+        }catch(Exception e){
+            return null;
+        }
+    }
 }
