@@ -89,10 +89,8 @@
                 success: async function (data) {
                     let rateData = JSON.parse(data);
                     resolve(await checkFilled(rateData));
-                    window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                 },
-                error: function (data) {
-                    console.log(data);
+                error: function () {
                     reject(false);
                 }
             });
@@ -107,6 +105,7 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "/TraceProgress";
+                        window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                     },
                     error: function (jqXHR, textStatus, message) {
                         alert(jqXHR.responseText);
@@ -145,7 +144,6 @@
                 alert(unFinishedPageName + "頁面尚未填寫完成");
                 return false;
             } else {
-                console.log("send");
                 return true;
             }
         }
@@ -163,14 +161,15 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "/ApprovedRewardList";
+                    window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                 }
             });
         }
-    };
+    }
 
     function rejectApply(){
         if (confirm("確定要退件?"))
             window.location.href="/ReasonForReturn";
-    };
+    }
 </script>
 </html>
