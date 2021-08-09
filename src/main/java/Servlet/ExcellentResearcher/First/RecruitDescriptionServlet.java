@@ -1,6 +1,7 @@
 package Servlet.ExcellentResearcher.First;
 
 import Service.ExcellentResearcher.RecruitDescriptionService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -21,7 +22,7 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("json",recruitDescriptionService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
+        req.setAttribute("json",recruitDescriptionService.get(Integer.parseInt((String)session.getAttribute("projectId"))));
         req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/ExcellentResearcher/First/RecruitDescription.jsp").forward(req, resp);
     }
@@ -31,7 +32,11 @@ public class RecruitDescriptionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        recruitDescriptionService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
 
+        int projectId = Integer.parseInt((String)session.getAttribute("projectId"));
+        recruitDescriptionService.save(json, projectId);
+
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(projectId, "RecruitDescription", json.getDouble("fill_rate"));
     }
 }

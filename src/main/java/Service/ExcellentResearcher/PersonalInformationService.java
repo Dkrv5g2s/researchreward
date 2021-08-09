@@ -3,6 +3,7 @@ package Service.ExcellentResearcher;
 import Bean.ExcellentResearcher.PersonalInformation.*;
 import Dao.ExcellentResearcher.*;
 import Dao.ExcellentResearcher.Impl.*;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class PersonalInformationService {
     private MOSTPlanDAO mostPlanDAO = new MOSTPlanDAOImpl();
     private EducationDAO educationDAO = new EducationDAOImpl();
     private ExperimentDAO experimentDAO = new ExperimentDAOImpl();
+    private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
 
     public void saveAtFirstTimeApplying(JSONObject jsonObject, int projectId){
         Seniority seniority = new Seniority(jsonObject.getString("year"),jsonObject.getString("month"),projectId);
@@ -60,6 +62,8 @@ public class PersonalInformationService {
         mostPlanDAO.save(mostPlan);
         educationDAO.save(education);
         personalInformationDAO.save(personalInformation);
+
+        projectFillRateService.save(projectId, "PersonalInformation", jsonObject.getDouble("fill_rate"));
     }
 
     public void saveAtSecondTimeApplying(JSONObject jsonObject, int projectId){

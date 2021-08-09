@@ -39,14 +39,23 @@
 
         function InputToJson(){
             var data = {};
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='radio'){
-                    data[ document.getElementsByTagName("input")[j].name] = $('input[name=' + document.getElementsByTagName("input")[j].name + ']:checked').val()
-                }else if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    data[ document.getElementsByTagName("input")[j].name] = "false";
+                let inputElem = document.getElementsByTagName("input")[j];
+                if (inputElem.type==='radio'){
+                    data[ inputElem.name] = $('input[name=' + inputElem.name + ']:checked').val()
+                }else if (inputElem.type==='checkbox' && inputElem.checked === false){
+                    data[ inputElem.name] = "false";
                 }else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+                    data[ inputElem.name] = inputElem.value;
+                    if (inputElem.className.length === 0) {
+                        if (inputElem.value.length > 0) {
+                            filledInputNum++;
+                        }
+                        totalInputNum++;
+                    }
                 }
 
             }
@@ -54,6 +63,8 @@
             for (var j=0; j<document.getElementsByTagName("select").length; j++){
                 data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
             }
+
+            data["fill_rate"] = filledInputNum / totalInputNum;
             return data;
         }
 

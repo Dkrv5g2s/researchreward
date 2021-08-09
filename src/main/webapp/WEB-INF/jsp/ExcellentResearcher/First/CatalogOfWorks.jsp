@@ -31,25 +31,29 @@
 
         function InputToJson(){
             var data = {};
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
-            for (var j=0; j<document.getElementsByTagName("textarea").length; j++) {
-
-                data[ document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
-
-            }
-
-
-            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    data[ document.getElementsByTagName("input")[j].name] = "false";
-                }else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+            for (let j=0; j<document.getElementsByTagName("textarea").length; j++) {
+                let inputElem = document.getElementsByTagName("textarea")[j];
+                data[inputElem.name] = inputElem.value;
+                if (inputElem.className.length === 0) {
+                    if (inputElem.value.length > 0) {
+                        filledInputNum++;
+                    }
+                    totalInputNum++;
                 }
-
             }
 
+            for (let j=0; j<document.getElementsByTagName("input").length; j++) {
+                if (document.getElementsByTagName("input")[j].type==='checkbox' && document.getElementsByTagName("input")[j].checked === false){
+                    data[document.getElementsByTagName("input")[j].name] = "false";
+                }else {
+                    data[document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+                }
+            }
 
-
+            data["fill_rate"] = filledInputNum / totalInputNum;
             return data;
         }
 

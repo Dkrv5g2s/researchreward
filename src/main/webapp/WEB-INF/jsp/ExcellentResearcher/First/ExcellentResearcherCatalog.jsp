@@ -23,25 +23,82 @@
                 $(".edit").show();
             }
         })
-        function sendApply(){
-            if (confirm("確定要送出申請?")) {
+
+        async function sendApply() {
+            if (!confirm("確定要送出申請?")) {
+                return;
+            }
+            new Promise((resolve, reject) => {
                 $.ajax({
                     type: 'POST',
-                    url: '/SendApply',
+                    url: '/ProjectFillRate',
                     dataType: 'text',
                     data: "",
                     contentType: 'application/text',
-                    success: function (data) {
-                        alert('申請成功');
-                        window.location.href = "/TraceProgress";
+                    success: async function (data) {
+                        let rateData = JSON.parse(data);
+                        resolve(await checkFilled(rateData));
                     },
-                    error: function(jqXHR, textStatus, message) {
-                        //error handling
-                        alert(jqXHR.responseText);
+                    error: function (data) {
+                        console.log(data);
+                        reject(false);
                     }
                 });
+            }).then(result=>{
+                if(result){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/SendApply',
+                        dataType: 'text',
+                        data: "",
+                        contentType: 'application/text',
+                        success: function (data) {
+                            alert('申請成功');
+                            window.location.href = "/TraceProgress";
+                        },
+                        error: function (jqXHR, textStatus, message) {
+                            alert(jqXHR.responseText);
+                        }
+                    });
+                }
+            });
+        }
+
+        async function checkFilled(fillRates) {
+            if(!fillRates){
+                return false;
             }
-        };
+            let fillPage = document.getElementsByTagName("a");
+            let fillRatesKeys = Object.keys(fillRates);
+            if (fillRatesKeys.length < fillPage.length) {
+                let unSavedPageName = "";
+                for (let i = 0; i < fillPage.length; i++) {
+                    let page = fillPage[i];
+                    if (!fillRates[page.name]) {
+                        unSavedPageName += page.innerHTML + "\n";
+                    }
+                }
+                alert(unSavedPageName + "\n頁面尚未儲存");
+                return false;
+            } else {
+                let unFinishedPageName = "";
+                for (let i = 0; i < fillRatesKeys.length; i++) {
+                    let fillRatesKey = fillRatesKeys[i];
+                    const rate = fillRates[fillRatesKey];
+                    if (fillPage.namedItem(fillRatesKey) && rate < 1.0) {
+                        unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + "\n";
+                    }
+                }
+                if (unFinishedPageName.length > 0) {
+                    alert(unFinishedPageName + "\n頁面尚未填寫完成");
+                    return false;
+                } else {
+                    console.log("send");
+                    return true;
+                }
+            }
+            return false;
+        }
 
         function approveApply(){
             if (confirm("確定要確認審理?")) {
@@ -74,16 +131,16 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="/PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a href="/PersonalInformation" name="PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
+                    <td><a href="/RecruitDescription" name="RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/CatalogOfWorks">著作目錄</a></td>
+                    <td><a href="/CatalogOfWorks" name="CatalogOfWorks">著作目錄</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
+                    <td><a href="/ResearchProduction" name="ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
                 </tr>
             </tbody>
         </table>
