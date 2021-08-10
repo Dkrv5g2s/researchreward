@@ -64,9 +64,9 @@
                 <td rowspan="2"><b>小計<br>(A)</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3">Scopus 或 WOS 資料庫</td>
@@ -180,7 +180,7 @@
                     說明：
                     <ol>
                         <li>近三年以本校名義發表之學術論著（此段期間曾生產或請育嬰假者得以延長，其延長期限依實際請假時間為依據，並檢附相關證明文件）始得採計。</li>
-                        <li>論文之期刊排名以出版年度為準，若無該出版年資料，則以前一年度為準。</li>
+                        <li>論文之期刊排名以<b>出版年度</b>為準，若無該出版年資料，則以前一年度為準。</li>
                         <li>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</li>
                     </ol>
                 </td>
@@ -192,9 +192,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3" >近三年以本校名義主持科技部各類型計畫統計表</td>
@@ -225,9 +225,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year1")%></label></td>
-                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
@@ -278,9 +278,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
-                <td><label id="year1"><%=json.get("year3")%></label></td>
-                <td><label id="year2"><%=json.get("year4")%></label></td>
-                <td><label id="year3"><%=json.get("year5")%></label></td>
+                <td><label id="year3"><%=json.get("year3")%></label></td>
+                <td><label id="year4"><%=json.get("year4")%></label></td>
+                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
