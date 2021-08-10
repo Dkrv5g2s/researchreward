@@ -17,11 +17,11 @@ public class LectureProfessorHonoraryApplicationFormDAOImpl implements LecturePr
     private DBConnection dbConnection = new DBConnectionImpl();
     private static final String SELECT = "SELECT * FROM lectureProfessorHonoraryApplicationForm WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO lectureProfessorHonoraryApplicationForm (projectID,usernum, name, jobAndDept, email, researchroomext, cellphone, indivisualEducation, recommendationReason)"+
+            "INSERT INTO lectureProfessorHonoraryApplicationForm (projectID,usernum, name, jobAndDept, email,cellphone, indivisualEducation, recommendationReason,commit_date)"+
                     " values(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
             "UPDATE lectureProfessorHonoraryApplicationForm "
-                    + "SET usernum = ?,name = ?,jobAndDept = ?,email = ?,researchroomext = ?,cellphone = ?,indivisualEducation = ?, recommendationReason = ?"+
+                    + "SET usernum = ?,name = ?,jobAndDept = ?,email = ?,researchroomext = ?,cellphone = ?,indivisualEducation = ?, recommendationReason = ?,commit_date=?"+
                     " WHERE projectID = ?";
     @Override
     public void save(LectureProfessorHonoraryApplicationForm object,String projectID) {
@@ -68,10 +68,10 @@ public class LectureProfessorHonoraryApplicationFormDAOImpl implements LecturePr
                         resultSet.getString("name"),
                         resultSet.getString("jobAndDept"),
                         resultSet.getString("email"),
-                        resultSet.getString("researchroomext"),
                         resultSet.getString("cellphone"),
                         resultSet.getString("indivisualEducation"),
                         resultSet.getString("recommendationReason"));
+                lpaf.setCommitDate(resultSet.getString("commit_date"));
 
                 return lpaf;
             }
@@ -91,10 +91,10 @@ public class LectureProfessorHonoraryApplicationFormDAOImpl implements LecturePr
             preparedStatement.setString(3,object.getName());
             preparedStatement.setString(4,object.getJobAndDept());
             preparedStatement.setString(5,object.getEmail());
-            preparedStatement.setString(6,object.getResearchroomext());
-            preparedStatement.setString(7,object.getCellphone());
-            preparedStatement.setString(8,object.getIndivisualEducation());
-            preparedStatement.setString(9,object.getRecommendationReason());
+            preparedStatement.setString(6,object.getCellphone());
+            preparedStatement.setString(7,object.getIndivisualEducation());
+            preparedStatement.setString(8,object.getRecommendationReason());
+            preparedStatement.setString(9,object.getCommitDate());
 
             preparedStatement.executeUpdate();
 
@@ -110,10 +110,10 @@ public class LectureProfessorHonoraryApplicationFormDAOImpl implements LecturePr
             preparedStatement.setString(2,object.getName());
             preparedStatement.setString(3,object.getJobAndDept());
             preparedStatement.setString(4,object.getEmail());
-            preparedStatement.setString(5,object.getResearchroomext());
-            preparedStatement.setString(6,object.getCellphone());
-            preparedStatement.setString(7,object.getIndivisualEducation());
-            preparedStatement.setString(8,object.getRecommendationReason());
+            preparedStatement.setString(5,object.getCellphone());
+            preparedStatement.setString(6,object.getIndivisualEducation());
+            preparedStatement.setString(7,object.getRecommendationReason());
+            preparedStatement.setString(8,object.getCommitDate());
             preparedStatement.setString(9,projectID);
 
 

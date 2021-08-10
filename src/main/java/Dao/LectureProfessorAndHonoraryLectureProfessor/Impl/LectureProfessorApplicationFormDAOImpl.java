@@ -1,5 +1,6 @@
 package Dao.LectureProfessorAndHonoraryLectureProfessor.Impl;
 import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationForm;
+import Bean.OutstandingResearchAward.OutstandingResearchAward;
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationFormDAO;
@@ -21,6 +22,21 @@ public class LectureProfessorApplicationFormDAOImpl implements LectureProfessorA
                     + "SET userNumber = ?,name = ?,job = ?,serviceSchoolAndDepartment = ?,certificatenum = ?,workStartDate = ?,seniority = ?,email = ?,researchroomext = ?,cellphone = ?," +
                     "applicationrequirements1 = ?,applicationrequirements2 = ?,applicationrequirements3 = ?,applicationrequirements4 = ?,applicationrequirements5 = ?,applicationrequirements6 = ?,applicationrequirements7 = ?,applicationrequirements8 = ?,applicationrequirements9 = ?,applicationrequirements10 = ?,applicationrequirements11 = ?,applicationrequirements12 = ?,applicationrequirements13 = ?,applicationrequirements14 = ?,applicationrequirements15 = ?,applicationrequirementsCheck = ?, lectureCategoryExp = ?, lectureCategoryInv = ?, lectureCategoryLif = ?, additionalInfo = ?"+
                     " WHERE projectID = ?";
+
+    private static final String UPDATE_DEPARTMENT_DATA =
+            "UPDATE lectureprofessorapplicationform "+
+                    "SET department_academic_year = ?,department_semester = ?,department_conference_times = ?, department_sign_date = ? " +
+                    "WHERE projectID = ?";
+    private static final String UPDATE_COLLEGE_DATA =
+            "UPDATE lectureprofessorapplicationform "+
+                    "SET college_academic_year = ?,college_semester = ?,college_conference_times = ?, college_sign_date = ? " +
+                    "WHERE projectID = ?";
+    private static final String UPDATE_RADO_DATA =
+            "UPDATE lectureprofessorapplicationform "+
+                    "SET research_and_development_office_sign_year = ?,research_and_development_office_sign_month = ?,research_and_development_office_sign_date = ?" +
+                    "WHERE projectID = ?";
+
+
     @Override
     public void save(LectureProfessorApplicationForm object,String projectID) {
         Connection connection = dbConnection.getConnection();
@@ -62,6 +78,7 @@ public class LectureProfessorApplicationFormDAOImpl implements LectureProfessorA
             while(resultSet.next()) {
                 LectureProfessorApplicationForm lpaf = null;
                 lpaf = new LectureProfessorApplicationForm(
+                        Integer.valueOf(projectID),
                         resultSet.getString("userNumber"),
                         resultSet.getString("name"),
                         resultSet.getString("job"),
@@ -188,4 +205,51 @@ public class LectureProfessorApplicationFormDAOImpl implements LectureProfessorA
         }
     }
 
+
+    @Override
+    public void updateDepartmentData(LectureProfessorApplicationForm lectureProfessorApplicationForm) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPARTMENT_DATA))
+        {
+            preparedStatement.setString(1,lectureProfessorApplicationForm.getDepartmentAcademicYear());
+            preparedStatement.setString(2,lectureProfessorApplicationForm.getDepartmentSemester());
+            preparedStatement.setString(3,lectureProfessorApplicationForm.getDepartmentConferenceTimes());
+            preparedStatement.setDate(4,lectureProfessorApplicationForm.getDepartmentSignDate());
+            preparedStatement.setString(5,Integer.toString(lectureProfessorApplicationForm.getProject_id()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateCollegeData(LectureProfessorApplicationForm lectureProfessorApplicationForm) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_COLLEGE_DATA))
+        {
+            preparedStatement.setString(1,lectureProfessorApplicationForm.getCollegeAcademicYear());
+            preparedStatement.setString(2,lectureProfessorApplicationForm.getCollegeSemester());
+            preparedStatement.setString(3,lectureProfessorApplicationForm.getCollegeConferenceTimes());
+            preparedStatement.setDate(4,lectureProfessorApplicationForm.getCollegeSignDate());
+            preparedStatement.setString(5,Integer.toString(lectureProfessorApplicationForm.getProject_id()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateRADOData(LectureProfessorApplicationForm lectureProfessorApplicationForm) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_RADO_DATA))
+        {
+            preparedStatement.setString(1,lectureProfessorApplicationForm.getResearchAndDevelopmentOfficeSignYear());
+            preparedStatement.setString(2,lectureProfessorApplicationForm.getResearchAndDevelopmentOfficeSignMonth());
+            preparedStatement.setString(3,lectureProfessorApplicationForm.getResearchAndDevelopmentOfficeSignDate());
+            preparedStatement.setString(4,Integer.toString(lectureProfessorApplicationForm.getProject_id()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

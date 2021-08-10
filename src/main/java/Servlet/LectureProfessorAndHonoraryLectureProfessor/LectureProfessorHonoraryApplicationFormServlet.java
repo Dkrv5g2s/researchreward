@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LectureProfessorHonoraryApplicationFormServlet extends ServletEntryPoint {
     private LectureProfessorHonoraryApplicationFormService lectureProfessorHonoraryApplicationFormService = new LectureProfessorHonoraryApplicationFormService();
@@ -28,6 +30,12 @@ public class LectureProfessorHonoraryApplicationFormServlet extends ServletEntry
     //        System.out.println("POST");
             lectureProfessorHonoraryApplicationFormService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
         }
+        resp.setContentType("text/html;charset=UTF-8");
+        Map map = new HashMap();
+        map.put("status", "存檔成功");
+        String jackyJsonString = map.toString();
+        JSONObject json = new JSONObject(jackyJsonString);
+        resp.getWriter().write(String.valueOf(json));
     }
 
     private void getForm(HttpServletRequest req) throws UnsupportedEncodingException {

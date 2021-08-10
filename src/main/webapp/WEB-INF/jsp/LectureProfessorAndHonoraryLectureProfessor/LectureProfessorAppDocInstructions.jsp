@@ -12,10 +12,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -60,90 +60,90 @@
 
     </style>
     <script>
-        function create() {
-            var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
-                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
-                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-                "                </tr>";
-            $("div[name='technologyTransfer'] tr[name=add]").before(data);
-        }
-
-        $(document).on("click", "button[name='delete']",function(){
-            var thisTr = $(this).parents("tr");
-            thisTr.remove();
-        });
-
-        function commit(){
-            var table = tableToJson($('form').find("table")[1]);
-
-            $.ajax({
-                type: 'POST',
-                url: 'LectureProfessorAppDocInstructions',
-                dataType: 'text',
-                data: JSON.stringify(table),
-                contentType: 'application/json',
-                success: function(data){
-                    alert('success');
-                }
-            });
-
-        };
-
-        function tableToJson(table){
-            var data = [];
-
-            // first row needs to be headers
-            var headers = [];
-            for (var i=0; i<table.rows[0].cells.length-1; i++) {
-                headers[i] = table.rows[0].cells[i].getAttribute("name");
-            }
-
-            console.log(headers);
-
-            // go through cells
-            for (var i=1; i<table.rows.length-1; i++) {
-
-                var tableRow = table.rows[i];
-                var rowData = {};
-
-                for (var j=0; j<tableRow.cells.length-1; j++) {
-
-                    rowData[ headers[j] ] = tableRow.cells[j].getElementsByTagName("input")[0].value;
-
-                }
-
-                data.push(rowData);
-            }
-
-            return data;
-        }
+        // function create() {
+        //     var data = "<tr name=\"technologyTransfer\">\n" +
+        //         "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
+        //         "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
+        //         "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
+        //         "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
+        //         "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
+        //         "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
+        //         "                </tr>";
+        //     $("div[name='technologyTransfer'] tr[name=add]").before(data);
+        // }
+        //
+        // $(document).on("click", "button[name='delete']",function(){
+        //     var thisTr = $(this).parents("tr");
+        //     thisTr.remove();
+        // });
+        //
+        // function commit(){
+        //     var table = tableToJson($('form').find("table")[1]);
+        //
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'LectureProfessorAppDocInstructions',
+        //         dataType: 'text',
+        //         data: JSON.stringify(table),
+        //         contentType: 'application/json',
+        //         success: function(data){
+        //             alert('success');
+        //         }
+        //     });
+        //
+        // };
+        //
+        // function tableToJson(table){
+        //     var data = [];
+        //
+        //     // first row needs to be headers
+        //     var headers = [];
+        //     for (var i=0; i<table.rows[0].cells.length-1; i++) {
+        //         headers[i] = table.rows[0].cells[i].getAttribute("name");
+        //     }
+        //
+        //     console.log(headers);
+        //
+        //     // go through cells
+        //     for (var i=1; i<table.rows.length-1; i++) {
+        //
+        //         var tableRow = table.rows[i];
+        //         var rowData = {};
+        //
+        //         for (var j=0; j<tableRow.cells.length-1; j++) {
+        //
+        //             rowData[ headers[j] ] = tableRow.cells[j].getElementsByTagName("input")[0].value;
+        //
+        //         }
+        //
+        //         data.push(rowData);
+        //     }
+        //
+        //     return data;
+        // }
     </script>
     <%
-        JSONArray jsonArray = (JSONArray)json.get(0);
-        for(Object object: jsonArray){
-            JSONObject jsonObject = (JSONObject)object;
+//        JSONArray jsonArray = (JSONArray)json.get(0);
+//        for(Object object: jsonArray){
+//            JSONObject jsonObject = (JSONObject)object;
 
     %>
     <script>
-        $(document).ready(function () {
+        <%--$(document).ready(function () {--%>
 
-            var data = "<tr name=\"technologyTransfer\">\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=<%=jsonObject.get("technologyTransferDepartment")%>></td>\n" +
-                "                    <td><input type=\"date\" name=\"contractDate\" value=<%=jsonObject.get("contractDate")%>></td>\n" +
-                "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=<%=jsonObject.get("technologyTransferFund")%>></td>\n" +
-                "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=<%=jsonObject.get("technologyTransferFundBringInDate")%>></td>\n" +
-                "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-                "                </tr>";
-            $("table[name='technologyTransfer'] tr[name=add]").before(data);
-        })
+        <%--    var data = "<tr name=\"technologyTransfer\">\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=<%=jsonObject.get("technologyTransferDepartment")%>></td>\n" +--%>
+        <%--        "                    <td><input type=\"date\" name=\"contractDate\" value=<%=jsonObject.get("contractDate")%>></td>\n" +--%>
+        <%--        "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=<%=jsonObject.get("technologyTransferFund")%>></td>\n" +--%>
+        <%--        "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=<%=jsonObject.get("technologyTransferFundBringInDate")%>></td>\n" +--%>
+        <%--        "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +--%>
+        <%--        "                </tr>";--%>
+        <%--    $("table[name='technologyTransfer'] tr[name=add]").before(data);--%>
+        <%--})--%>
     </script>
     <%
-        }
+//        }
     %>
 </head>
 <body>
@@ -172,24 +172,24 @@
             </tr>
             </tbody>
         </table>
-        <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm" name="technologyTransfer">
-            <tbody style="text-align: center;">
-            <tr>
-                <td colspan="1" width="18%" name="technologyTransferContractName">技轉合約名稱</td>
-                <td colspan="1" width="18%" name="technologyTransferDepartment">技轉單位(企業)</td>
-                <td colspan="1" width="18%" name="contractDate">簽約日期</td>
-                <td colspan="1" width="18%" name="technologyTransferFund">實收技術移轉金金額</td>
-                <td colspan="1" width="18%" name="technologyTransferFundBringInDate">技轉金實際納入校務基金日期</td>
-                <td colspan="1" width="10%"></td>
-            </tr>
+<%--        <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm" name="technologyTransfer">--%>
+<%--            <tbody style="text-align: center;">--%>
+<%--            <tr>--%>
+<%--                <td colspan="1" width="18%" name="technologyTransferContractName">技轉合約名稱</td>--%>
+<%--                <td colspan="1" width="18%" name="technologyTransferDepartment">技轉單位(企業)</td>--%>
+<%--                <td colspan="1" width="18%" name="contractDate">簽約日期</td>--%>
+<%--                <td colspan="1" width="18%" name="technologyTransferFund">實收技術移轉金金額</td>--%>
+<%--                <td colspan="1" width="18%" name="technologyTransferFundBringInDate">技轉金實際納入校務基金日期</td>--%>
+<%--                <td colspan="1" width="10%"></td>--%>
+<%--            </tr>--%>
 
-            <tr name="add">
-                <td colspan="6" width="100%"><button type="button" onclick="create()">新增</button></td>
-            </tr>
-            </tbody>
-        </table>
+<%--            <tr name="add">--%>
+<%--                <td colspan="6" width="100%"><button type="button" onclick="create()">新增</button></td>--%>
+<%--            </tr>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
         <p>
-            <input type="button" name="save" value="存檔" onclick="commit()">
+<%--            <input type="button" name="save" value="存檔" onclick="commit()">--%>
             <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
         </p>
     </form>

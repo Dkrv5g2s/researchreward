@@ -49,13 +49,13 @@
             <td class="left"><a href="LectureProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormA" >近五年內傑出績效說明表(表A)</a></td>
+            <td class="left"><a href="LectureProfessorExcellenceFormA" >近五年內傑出績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionForm" >國立臺北科技大學傑出論文績效說明表(表B)</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionForm" >國立臺北科技大學傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" >國立臺北科技大學傑出論文績效說明表(表B)-上傳檔案</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload" >國立臺北科技大學傑出論文績效說明表-上傳檔案</a></td>
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorExcellenceFormC" >傑出研究表現說明及申請機構推薦理由</a></td>
