@@ -595,14 +595,12 @@
         <url-pattern>/LectureProfessorExcellenceFormA</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>LectureProfessorExcellenceFormBServlet</servlet-name>
-        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormBServlet</servlet-class>
-    </servlet>
+
     <servlet-mapping>
-        <servlet-name>LectureProfessorExcellenceFormBServlet</servlet-name>
+        <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/LectureProfessorExcellenceFormB</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>LectureProfessorExcellenceFormCServlet</servlet-name>

@@ -17,10 +17,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -123,7 +123,7 @@
             </tr>
             <tr>
                 <td class="metadata">具體績效</td>
-                <td><textarea name="performance" placeholder="請說明具體績效（以1頁為原則)"><%=json.get("performance")%></textarea></td>
+                <td><textarea width = "100%" name="performance" placeholder="請說明具體績效（以1頁為原則)"><%=json.get("performance")%></textarea></td>
             </tr>
 
             </tbody>

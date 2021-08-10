@@ -17,10 +17,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -45,22 +45,22 @@
             vertical-align: middle;
         }
         table td.metadata{
-            width: 150px;
+            /*width: 150px;*/
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
         table td.cb{
-            width: 1%;
+            /*width: 1%;*/
         }
         table td.checkboxcontent{
-            width: 500px;
+            /*width: 500px;*/
             background-color: rgb(255, 255, 240);
             text-align: left;
         }
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            /*width: 1200px;*/
             background-color: white;
         }
 
