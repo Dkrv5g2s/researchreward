@@ -100,6 +100,10 @@
                 contentType: 'application/json',
                 success: function(data){
                     alert('存檔成功');
+                    window.location.href="LectureProfessorExcellenceFormA";
+                },
+                error:function() {
+                    alert("存檔失敗");
                 }
             });
 
@@ -126,6 +130,8 @@
 
             }
             data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+
+            data["fill_rate"] = $('input[name="commit_date"]').val() ? 1 : 0;
             return data;
         }
 
