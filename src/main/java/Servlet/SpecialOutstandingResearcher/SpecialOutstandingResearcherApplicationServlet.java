@@ -4,6 +4,7 @@ import Bean.User.User;
 
 import Service.Admin.SpecialOutstandingResearcherSettingService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -79,6 +80,9 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
             JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
             this.logger.info( staff_code + " has modified SpecialOutstandingResearcherApplicationForm with json message " + jsonObject.toString() );
             service.save(jsonObject, staff_code);
+
+            ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+            projectFillRateService.save(Integer.parseInt(session.getAttribute("projectId").toString()), "SpecialOutstandingResearcherApplicationForm", jsonObject.getDouble("fill_rate"));
         }
 
         if ( func.equals("review") ) {

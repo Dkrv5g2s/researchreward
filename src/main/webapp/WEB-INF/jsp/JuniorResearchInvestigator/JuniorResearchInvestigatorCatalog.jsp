@@ -47,10 +47,10 @@
                 <td class="left"><a href="JuniorResearchInvestigatorTableA" name="JuniorResearchInvestigatorTableA">近三年內發表之期刊論文統計表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="JuniorResearchInvestigatorTableB" name="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
+                <td class="left"><a href="PaperPerformanceDescriptionForm" name="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
+                <td class="left"><a href="PaperPerformanceDescriptionUpload" name="JuniorResearchInvestigatorUpload">傑出論文績效說明表-上傳檔案</a></td>
             </tr>
         </tbody>
     </table>
@@ -90,8 +90,7 @@
                     let rateData = JSON.parse(data);
                     resolve(await checkFilled(rateData));
                 },
-                error: function (data) {
-                    console.log(data);
+                error: function () {
                     reject(false);
                 }
             });
@@ -106,6 +105,7 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "/TraceProgress";
+                        window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                     },
                     error: function (jqXHR, textStatus, message) {
                         alert(jqXHR.responseText);
@@ -121,20 +121,20 @@
         }
         let fillPage = document.getElementsByTagName("a");
         let fillRatesKeys = Object.keys(fillRates);
-        if (fillRatesKeys.length < fillPage.length) {
+        if (fillRatesKeys.length < fillPage.length-1) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name]) {
+                if (!fillRates[page.name] && page.name!=="JuniorResearchInvestigatorReviewInformation") {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length) {
+        } else if (fillRatesKeys.length === fillPage.length-1) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
-                let fillRatesKey = fillRatesKeys[i];
+                const fillRatesKey = fillRatesKeys[i];
                 const rate = fillRates[fillRatesKey];
                 if (rate < 1.0) {
                     unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + " ";
@@ -144,7 +144,6 @@
                 alert(unFinishedPageName + "頁面尚未填寫完成");
                 return false;
             } else {
-                console.log("send");
                 return true;
             }
         }
@@ -162,14 +161,15 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "/ApprovedRewardList";
+                    window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                 }
             });
         }
-    };
+    }
 
     function rejectApply(){
         if (confirm("確定要退件?"))
             window.location.href="/ReasonForReturn";
-    };
+    }
 </script>
 </html>

@@ -82,14 +82,22 @@
         });
 
         function commit(){
-
-
             var table1 = tableToJson($('form').find("table")[0]);
             var table2 = tableToJson($('form').find("table")[1]);
             var table3 = tableToJson($('form').find("table")[2]);
 
-            var data = [table1,table2,table3];
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
+            for (let j=0; j<document.getElementsByTagName("input").length; j++) {
+                let inputElem = document.getElementsByTagName("input")[j];
+                if (inputElem.value.length > 0)
+                    filledInputNum++;
+                totalInputNum++;
+            }
+            let fillRate = filledInputNum / totalInputNum;
+
+            var data = [table1, table2, table3, fillRate];
 
             $.ajax({
                 type: 'POST',

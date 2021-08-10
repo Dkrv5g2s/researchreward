@@ -23,6 +23,18 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
     		+ "SET userNumber = ?,name = ?,department = ?,hireddate = ?,certificatenum = ?,upgradedate = ?,seniority = ?,email = ?,researchroomext = ?,cellphone = ?," +
             "applicationrequirements1 = ?,applicationrequirements2 = ?,applicationrequirements3 = ?,applicationrequirements4 = ?,applicationrequirements5 = ?,applicationrequirements6 = ?,applicationrequirements7 = ?,applicationrequirements8 = ?,applicationrequirements9 = ?"+
     		" WHERE projectID = ?";
+    private static final String UPDATE_DEPARTMENT_DATA =
+            "UPDATE distinguishedprofessorform "+
+                    "SET department_academic_year = ?,department_semester = ?,department_conference_times = ?, department_sign_date = ? " +
+                    "WHERE projectId = ?";
+    private static final String UPDATE_COLLEGE_DATA =
+            "UPDATE distinguishedprofessorform "+
+                    "SET college_academic_year = ?,college_semester = ?,college_conference_times = ?, college_sign_date = ? " +
+                    "WHERE projectId = ?";
+    private static final String UPDATE_RADO_DATA =
+            "UPDATE distinguishedprofessorform "+
+                    "SET research_and_development_office_sign_year = ?,research_and_development_office_sign_month = ?,research_and_development_office_sign_date = ?" +
+                    "WHERE projectId = ?";
     @Override
     public void save(DistinguishedProfessorForm object,String projectID) {
         Connection connection = dbConnection.getConnection();
@@ -82,7 +94,18 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         				resultSet.getBoolean("applicationrequirements6"),
         				resultSet.getBoolean("applicationrequirements7"),
         				resultSet.getBoolean("applicationrequirements8"),
-        				resultSet.getBoolean("applicationrequirements9"));
+        				resultSet.getBoolean("applicationrequirements9"),
+                        resultSet.getString("department_academic_year"),
+                        resultSet.getString("department_semester"),
+                        resultSet.getString("department_conference_times"),
+                        resultSet.getString("department_sign_date"),
+                        resultSet.getString("college_academic_year"),
+                        resultSet.getString("college_semester"),
+                        resultSet.getString("college_conference_times"),
+                        resultSet.getString("college_sign_date"),
+                        resultSet.getString("research_and_development_office_sign_year"),
+                        resultSet.getString("research_and_development_office_sign_month"),
+                        resultSet.getString("research_and_development_office_sign_date"));
          	
             	return dpf;
         	}
@@ -93,7 +116,54 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
         }
         return null;
     }
-    
+
+    @Override
+    public void saveDepartmentData(DistinguishedProfessorForm object,String projectID) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPARTMENT_DATA))
+        {
+            preparedStatement.setString(1,object.getDepartmentAcademicYear());
+            preparedStatement.setString(2,object.getDepartmentSemester());
+            preparedStatement.setString(3,object.getDepartmentConferenceTimes());
+            preparedStatement.setString(4,object.getDepartmentSignDate());
+            preparedStatement.setString(5,projectID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void saveCollegeData(DistinguishedProfessorForm object, String projectID) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_COLLEGE_DATA))
+        {
+            preparedStatement.setString(1,object.getCollegeAcademicYear());
+            preparedStatement.setString(2,object.getCollegeSemester());
+            preparedStatement.setString(3,object.getCollegeConferenceTimes());
+            preparedStatement.setString(4,object.getCollegeSignDate());
+            preparedStatement.setString(5,projectID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void saveRADOData(DistinguishedProfessorForm object, String projectID) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_RADO_DATA))
+        {
+            preparedStatement.setString(1,object.getResearchAndDevelopmentOfficeSignYear());
+            preparedStatement.setString(2,object.getResearchAndDevelopmentOfficeSignMonth());
+            preparedStatement.setString(3,object.getResearchAndDevelopmentOfficeSignDate());
+            preparedStatement.setString(4,projectID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void insert(Connection connection,DistinguishedProfessorForm object,String projectID) {
     	try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT))
         {

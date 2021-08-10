@@ -34,14 +34,14 @@
     <p>七、 技術移轉金(包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金；不包含科技部先期技術移轉授權金)請填列近五年以本校名義所獲得之實收技術移轉金資料(如下表) ，並洽產學合作處技術移轉組確認核章後提出申請。技術移轉金之計算以「實際納入校務基金日期」為準。</p>
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
-            <thead style="display: table-column;">
+            <thead style="display: none;">
                 <th colspan="1" width="18%">技轉合約名稱</th>
                 <th colspan="1" width="18%">技轉單位(企業)</th>
                 <th colspan="1" width="18%">簽約日期</th>
                 <th colspan="1" width="18%">實收技術移轉金金額</th>
                 <th colspan="1" width="18%">技轉金實際納入校務基金日期</th>
             </thead>
-            <tbody id="data_table" style="text-align: center;">
+            <tbody id="data_table" style="text-align: center; display:none;">
             </tbody>
             <tbody style="text-align: center;">
                 <tr>

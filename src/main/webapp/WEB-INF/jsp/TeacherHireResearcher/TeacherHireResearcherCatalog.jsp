@@ -5,25 +5,81 @@
         <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            function sendApply(){
-                if (confirm("確定要送出申請?")) {
+            async function sendApply() {
+                if (!confirm("確定要送出申請?")) {
+                    return;
+                }
+                new Promise((resolve, reject) => {
                     $.ajax({
                         type: 'POST',
-                        url: '/SendApply',
+                        url: '/ProjectFillRate',
                         dataType: 'text',
                         data: "",
                         contentType: 'application/text',
-                        success: function (data) {
-                            alert('申請成功');
-                            window.location.href = "/TraceProgress";
+                        success: async function (data) {
+                            let rateData = JSON.parse(data);
+                            resolve(await checkFilled(rateData));
                         },
-                        error: function(jqXHR, textStatus, message) {
-                            //error handling
-                            alert(jqXHR.responseText);
+                        error: function (data) {
+                            console.log(data);
+                            reject(false);
                         }
                     });
+                }).then(result=>{
+                    if(result){
+                        $.ajax({
+                            type: 'POST',
+                            url: '/SendApply',
+                            dataType: 'text',
+                            data: "",
+                            contentType: 'application/text',
+                            success: function (data) {
+                                alert('申請成功');
+                                window.location.href = "/TraceProgress";
+                            },
+                            error: function (jqXHR, textStatus, message) {
+                                alert(jqXHR.responseText);
+                            }
+                        });
+                    }
+                });
+            }
+
+            async function checkFilled(fillRates) {
+                if(!fillRates){
+                    return false;
                 }
-            };
+                let fillPage = document.getElementsByClassName("filledCheck");
+                let fillRatesKeys = Object.keys(fillRates);
+                if (fillRatesKeys.length < fillPage.length) {
+                    let unSavedPageName = "";
+                    for (let i = 0; i < fillPage.length; i++) {
+                        let page = fillPage[i];
+                        if (!fillRates[page.name]) {
+                            unSavedPageName += page.innerHTML + "\n";
+                        }
+                    }
+                    alert(unSavedPageName + "\n頁面尚未儲存");
+                    return false;
+                } else {
+                    let unFinishedPageName = "";
+                    for (let i = 0; i < fillRatesKeys.length; i++) {
+                        let fillRatesKey = fillRatesKeys[i];
+                        const rate = fillRates[fillRatesKey];
+                        if (fillPage.namedItem(fillRatesKey) && rate < 1.0) {
+                            unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + "\n";
+                        }
+                    }
+                    if (unFinishedPageName.length > 0) {
+                        alert(unFinishedPageName + "\n頁面尚未填寫完成");
+                        return false;
+                    } else {
+                        console.log("send");
+                        return true;
+                    }
+                }
+                return false;
+            }
 
             function approveApply(){
                 if (confirm("確定要確認審理?")) {
@@ -68,25 +124,25 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="/TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>
+                    <td><a class="filledCheck" href="/TeacherHireResearcherForm" name="TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>
+                    <td><a href="/TeacherHireResearcherAppDocInstructions" name="TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/TeacherHireResearcherTableA">近五年內發表之期刊論文統計表</a></td>
+                    <td><a class="filledCheck" href="/TeacherHireResearcherTableA" name="TeacherHireResearcherTableA">近五年內發表之期刊論文統計表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm">傑出論文績效說明表</a></td>
+                    <td><a class="filledCheck" href="/PaperPerformanceDescriptionForm" name="TeacherHireResearcherTableB">傑出論文績效說明表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
+                    <td><a class="filledCheck" href="/PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)</a></td>
+                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1" name="TeacherHireResearcherTableC">傑出論文績效說明表(申請第二期以上者填寫)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
+                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1" name="TeacherHireResearcherTableCUpload">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
                 </tr>
                 </tbody>
             </table>

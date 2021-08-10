@@ -17,6 +17,15 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
     private static final String INSERT_OBJECT = "INSERT INTO personalinformation (college,department,hiredYear,hiredMonth,cName,eName,title,country,gender,qualification1," +
             "qualification2,level,price,projectId,workContent,pastPrice) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_OBJECT = "SELECT * FROM personalinformation WHERE projectId=?";
+    private static final String UPDATE_DEPARTMENT_REVIEW_DATA =
+            "UPDATE personalinformation " +
+                    "SET departmentDirectorSignDate = ? " +
+                    "WHERE projectId = ?";
+    private static final String UPDATE_COLLEGE_REVIEW_DATA =
+            "UPDATE personalinformation " +
+                    "SET collegeReviewedDate = ?, reviewedResult = ?, " +
+                    "collegeRecommendationRank = ?, collegeDirectorSignDate = ? " +
+                    "WHERE projectId = ?";
 
     @Override
     public void save(PersonalInformation object) {
@@ -78,6 +87,11 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
                     result.setProjectId(rs.getInt("projectId"));
                     result.setWorkContent(rs.getString("workContent"));
                     result.setPastPrice(rs.getString("pastPrice"));
+                    result.setCollegeReviewedDate(rs.getDate("collegeReviewedDate"));
+                    result.setReviewedResult(rs.getString("reviewedResult"));
+                    result.setCollegeRecommendationRank(rs.getString("collegeRecommendationRank"));
+                    result.setDepartmentDirectorSignDate(rs.getDate("departmentDirectorSignDate"));
+                    result.setCollegeDirectorSignDate(rs.getDate("collegeDirectorSignDate"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();
@@ -89,6 +103,41 @@ public class PersonalInformationDAOImpl implements PersonalInformationDAO {
         }
 
         return result;
+    }
+
+    @Override
+    public void updateDepartmentReviewData(PersonalInformation object){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPARTMENT_REVIEW_DATA))
+        {
+            preparedStatement.setDate(1, object.getDepartmentDirectorSignDate());
+            preparedStatement.setInt(2, object.getProjectId());
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateCollegeReviewData(PersonalInformation object){
+        Connection connection = dbConnection.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_COLLEGE_REVIEW_DATA))
+        {
+            preparedStatement.setDate(1, object.getCollegeReviewedDate());
+            preparedStatement.setString(2, object.getReviewedResult());
+            preparedStatement.setString(3, object.getCollegeRecommendationRank());
+            preparedStatement.setDate(4, object.getCollegeDirectorSignDate());
+            preparedStatement.setInt(5, object.getProjectId());
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void delete(int projectId){

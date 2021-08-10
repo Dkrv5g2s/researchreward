@@ -1,5 +1,6 @@
 package Servlet.DistinguishedProfessor;
 
+import Bean.User.User;
 import Service.DistinguishedProfessor.DistinguishedProfessorFormService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
 
@@ -20,8 +23,10 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		getForm(req);
-		
-		req.setAttribute("readonly",session.getAttribute("readonly"));
+
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
+        req.setAttribute("readonly",session.getAttribute("readonly"));
 		req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorForm.jsp").forward(req, resp);
         
     }
@@ -29,14 +34,13 @@ public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        
-        getForm(req);
-        
         String jsonString = readJSONString(req);
-        
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
-            distinguishedProfessorFormService.save(json,(String)session.getAttribute("userNumber"),(String)session.getAttribute("projectId"));
+            User user = new User();
+            user.setStaff_code(session.getAttribute("userNumber").toString());
+            user.setRole(session.getAttribute("userRole").toString());
+            distinguishedProfessorFormService.save(json, user, session.getAttribute("projectId").toString());
         }
         
     }

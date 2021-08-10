@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import Service.Admin.AwardTimeLimitService;
 import Service.DistinguishedProfessor.DistinguishedProfessorTableAService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -22,7 +23,9 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		getForm(req);
-		
+
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
 		req.setAttribute("readonly",session.getAttribute("readonly"));
 		req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
@@ -40,7 +43,12 @@ public class DistinguishedProfessorTableAServlet extends ServletEntryPoint {
         
         if(!jsonString.equals("")) {
         	JSONObject json = new JSONObject(jsonString);
-        	distinguishedProfessorTableAService.save(json,(String)session.getAttribute("projectId"));
+        	String projectId = session.getAttribute("projectId").toString();
+        	distinguishedProfessorTableAService.save(json, projectId);
+        	if(session.getAttribute("userRole").toString().compareTo("teacher") == 0){
+                ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+                projectFillRateService.save(Integer.valueOf(projectId), "DistinguishedProfessorTableA", json.getDouble("fill_rate"));
+            }
         }
         
     }

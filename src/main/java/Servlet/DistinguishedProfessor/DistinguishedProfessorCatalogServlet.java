@@ -16,7 +16,9 @@ public class DistinguishedProfessorCatalogServlet extends ServletEntryPoint {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        HttpSession session = req.getSession();
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
         req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorCatalog.jsp").forward(req, resp);
 
     }

@@ -72,7 +72,7 @@
     <p>四、產學合作計畫(包含科技部產學合作計畫、政府機關及財團法人之研究型專案計畫；不含以學校名義開授訓練課程招生收入) 請以教評系統為準提供相關佐證資料。計畫年度(1/1~12/31)之認定以「計畫開始日期」為準；計畫主持人及共同主持人依所執行計畫分配金額計算執行經費；多年期計畫分年計算單一年度執行金額。</p>
     <p>五、技術移轉金(包含專利技術移轉金、著作權技術移轉金及知識性技術移轉金；不包含科技部先期技術移轉授權金)請填列近三年以本校名義所獲得之實收技術移轉金資料(如下表) ，並洽產學合作處技術移轉組確認核章後提出申請。技術移轉金計算以「實際納入校務基金日期」為準。</p>
     <form method="post" id="c001_form">
-        <table id="technologyTransfer">
+        <table id="technologyTransfer" style="display:none;">
             <thead>
             <th width="20%"><lable name="technologyTransferContractName">技轉合約名稱</lable></th>
             <th width="20%"><lable name="technologyTransferDepartment">技轉單位(企業)</lable></th>
@@ -81,12 +81,13 @@
             <th width="20%"><lable name="technologyTransferFundBringInDate">技轉金實際納入校務基金日期</lable></th>
             </thead>
             <tbody style="text-align: center;">
-                <tr name="add" display="none"></tr>
+                <tr name="add"></tr>
             </tbody>
         </table>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="location.href='JuniorResearchInvestigatorTableA'">此頁審查完成</button>
+<%--            <button type="button" onclick="location.href='JuniorResearchInvestigatorTableA'">此頁審查完成</button>--%>
+            <button type="button" onclick="location.href='JuniorResearchInvestigatorTableA'">下一頁</button>
         </div>
     </form>
 </div>

@@ -22,6 +22,9 @@ public class DistinguishedProfessorAppDocInstructionsServlet extends ServletEntr
     	HttpSession session = req.getSession();
     	
     	getForm(req);
+
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
     	req.setAttribute("readonly",session.getAttribute("readonly"));
         req.getRequestDispatcher("WEB-INF/jsp/DistinguishedProfessor/DistinguishedProfessorAppDocInstructions.jsp").forward(req, resp);
     }

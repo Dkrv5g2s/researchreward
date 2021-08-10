@@ -1,6 +1,7 @@
 package Bean.ExcellentResearcher.PersonalInformation;
 
 
+import java.sql.Date;
 
 public class PersonalInformation {
     private String college;
@@ -23,6 +24,11 @@ public class PersonalInformation {
     private int projectId;
     private String workContent;
     private String pastPrice;
+    private Date collegeReviewedDate;
+    private String reviewedResult;
+    private String collegeRecommendationRank;
+    private Date departmentDirectorSignDate;
+    private Date collegeDirectorSignDate;
 
     public PersonalInformation(String college, String department, String hiredYear, String hiredMonth, Seniority seniority, String cName, String eName, String title, String country, String gender, Education education, Experiment experiment, MOSTPlan mostPlan, Boolean qualification1, Boolean qualification2, String level, int projectId, String price) {
         this.college = college;
@@ -209,6 +215,46 @@ public class PersonalInformation {
         this.price = price;
     }
 
+    public Date getCollegeReviewedDate() {
+        return collegeReviewedDate;
+    }
+
+    public void setCollegeReviewedDate(Date collegeReviewedDate) {
+        this.collegeReviewedDate = collegeReviewedDate;
+    }
+
+    public String getReviewedResult() {
+        return reviewedResult;
+    }
+
+    public void setReviewedResult(String reviewedResult) {
+        this.reviewedResult = reviewedResult;
+    }
+
+    public String getCollegeRecommendationRank() {
+        return collegeRecommendationRank;
+    }
+
+    public void setCollegeRecommendationRank(String collegeRecommendationRank) {
+        this.collegeRecommendationRank = collegeRecommendationRank;
+    }
+
+    public Date getDepartmentDirectorSignDate() {
+        return departmentDirectorSignDate;
+    }
+
+    public void setDepartmentDirectorSignDate(Date departmentDirectorSignDate) {
+        this.departmentDirectorSignDate = departmentDirectorSignDate;
+    }
+
+    public Date getCollegeDirectorSignDate() {
+        return collegeDirectorSignDate;
+    }
+
+    public void setCollegeDirectorSignDate(Date collegeDirectorSignDate) {
+        this.collegeDirectorSignDate = collegeDirectorSignDate;
+    }
+
     @Override
     public String toString() {
         return "PersonalInformation{" +
@@ -230,6 +276,11 @@ public class PersonalInformation {
                 ", level='" + level + '\'' +
                 ", price='" + price + '\'' +
                 ", projectId='" + projectId + '\'' +
+                ", collegeReviewedDate='" + collegeReviewedDate + '\'' +
+                ", reviewedResult='" + reviewedResult + '\'' +
+                ", collegeRecommendationRank='" + collegeRecommendationRank + '\'' +
+                ", departmentDirectorSignDate='" + departmentDirectorSignDate + '\'' +
+                ", collegeDirectorSignDate='" + collegeDirectorSignDate + '\'' +
                 '}';
     }
 }

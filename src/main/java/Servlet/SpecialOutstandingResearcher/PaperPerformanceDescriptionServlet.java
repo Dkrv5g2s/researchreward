@@ -1,16 +1,7 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.Admin.BFormFormula;
-import Bean.User.User;
-import Dao.Admin.BFormFormulaDAO;
-import Dao.Admin.Impl.BFormFormulaDAOImpl;
-import Dao.Project.ProjectDAO;
-import Dao.Project.ProjectDAOImpl;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAO;
-import Dao.SpecialOutstandingResearcherApplication.SpecialOutstandingResearcherApplicaiotnDAOImpl;
 import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
-import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Service.Teacher.RewardListService;
 import Service.TeacherHireResearcher.TeacherHireResearcherTableCService;
 import Servlet.login.ServletEntryPoint;
@@ -79,16 +70,10 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
         if ( readonly ) {
-            if (reward_type.compareTo("年輕學者研究獎") == 0)
-                req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/Review/JuniorResearchInvestigatorTableB.jsp").forward(req, resp);
-            else
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/readonly/Paper_Performance_Description_Form.jsp").forward(req, resp);
         }
         else {
-            if (reward_type.compareTo("年輕學者研究獎") == 0)
-                req.getRequestDispatcher("WEB-INF/jsp/JuniorResearchInvestigator/JuniorResearchInvestigatorTableB.jsp").forward(req, resp);
-            else
-                req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/edit/Paper_Performance_Description_Form.jsp").forward(req, resp);
         }
     }
 

@@ -56,12 +56,14 @@
             width: 75%;
             background-color: white;
         }
-        input{
-            width: 100%;
-        }
         input.back {
     		width: 55px;
 		}
+        .footer{
+            display: none;
+            text-align-last: center;
+            margin: 1rem;
+        }
 
     </style>
     <script>
@@ -107,7 +109,6 @@
                 headers[i] = table.rows[0].cells[i].getAttribute("name");
             }
 
-            console.log(headers);
 
             // go through cells
             for (var i=1; i<table.rows.length-1; i++) {
@@ -153,6 +154,15 @@
 	    <script>
 		    $(document).ready(function (){
 	            setReadOnly(<%=request.getAttribute("readonly")%>);
+	            const role = "${role}";
+                if(role === "teacher"){
+                    $("#apply_footer").show();
+                    $("#review_footer").remove();
+                }
+                else{
+                    $("#review_footer").show();
+                    $("#apply_footer").remove();
+                }
 	        })
 	    </script>
 </head>
@@ -186,7 +196,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm" name="technologyTransfer">
+            <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;display: none;" class="inputForm" name="technologyTransfer">
 		        <tbody style="text-align: center;">
 		            <tr>
 		                <td colspan="1" width="18%" name="technologyTransferContractName">技轉合約名稱</td>
@@ -215,10 +225,14 @@
                     </tr>
                 </tbody>
             </table>
-            <p style="text-align: center;">
-            	<input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='DistinguishedProfessorCatalog'"  >
-	            <button type="button" name="save" onclick="commit()">存檔</button>
-       		</p>
+            <p id="apply_footer" class="footer">
+                <button type="button" name="return_last_page" onclick="location.href='DistinguishedProfessorCatalog'">回上頁</button>
+<%--                <button type="button" onclick="commit()">暫存</button>--%>
+            </p>
+            <p id="review_footer" class="footer">
+                <input type="button" name="go_to_catalog" class="review" value="回目錄" onclick="location.href='DistinguishedProfessorCatalog'" />
+                <input type="button" class="review" value="此頁審查完成" onclick="location.href='DistinguishedProfessorTableA'" />
+            </p>
         </form>
     </div>
 

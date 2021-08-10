@@ -3,6 +3,7 @@ package Servlet.SpecialOutstandingResearcher;
 import Bean.User.User;
 import Service.SpecialOutstandingResearcher.AwardDistributionAmountOrPrincipleService;
 import Service.SpecialOutstandingResearcher.ReviewSupportingInformationService;
+import Service.Teacher.ProjectFillRateService;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 import org.apache.log4j.Logger;
 
@@ -54,15 +55,14 @@ public class AwardDistributionAmountOrPrincipleSevlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        int projectId = Integer.valueOf(session.getAttribute("projectId").toString());
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
-        //User ud = (User)session.getAttribute("ud"); //正式 取得User 資料
-        User user = new User( "root", "password1234", "測試", "staff1221" ) ;
-
-        this.logger.info( user.getStaff_code() + " has modifiedAwardDistributionAmountOrPrincipleForm with json message " + jsonObject.toString() );
 
         AwardDistributionAmountOrPrincipleService service = new AwardDistributionAmountOrPrincipleService() ;
-
         service.save(jsonObject);
+
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(projectId, "AwardDistributionAmountOrPrincipleForm", jsonObject.getDouble("fill_rate"));
 
     }
 }

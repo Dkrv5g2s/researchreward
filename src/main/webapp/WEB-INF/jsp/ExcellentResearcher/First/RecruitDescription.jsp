@@ -33,17 +33,21 @@
 
         function InputToJson(){
             var data = {};
-
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
             for (var j=0; j<document.getElementsByTagName("textarea").length; j++) {
-
-                data[ document.getElementsByTagName("textarea")[j].name] = document.getElementsByTagName("textarea")[j].value;
-
-
+                let inputElem = document.getElementsByTagName("textarea")[j];
+                data[inputElem.name] = inputElem.value;
+                if (inputElem.className.length === 0) {
+                    if (inputElem.value.length > 0) {
+                        filledInputNum++;
+                    }
+                    totalInputNum++;
+                }
             }
 
-
-
+            data["fill_rate"] = filledInputNum / totalInputNum;
             return data;
         }
         $(document).ready(function (){

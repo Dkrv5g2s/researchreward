@@ -148,8 +148,6 @@
         </table>
         <p>※ 以上檢附之相關文件不全或不符規定者，不予受理。</p>
         <div class="footer">
-            <button type="button" name="go_to_catalog" onclick="location.href='JuniorResearchInvestigatorCatalog'">回目錄</button>
-            <button type="button" name="confirm" onclick="reviewed()">此頁審查完成</button>
         </div>
     </form>
 </div>
@@ -159,7 +157,7 @@
         setUserData();
         setReviewData();
         $("input").attr("disabled", "disabled");
-        $(".${role}").removeAttr("disabled");
+        window.print();
     })
 
     function setUserData(){
@@ -188,34 +186,6 @@
         $("#research_and_development_office_sign_month").val("<%=jsonObject.optString("research_and_development_office_sign_month", "")%>");
         $("#research_and_development_office_sign_date").val("<%=jsonObject.optString("research_and_development_office_sign_date", "")%>");
     }
-    function reviewed(){
-        if("${role}" === "department" || "${role}" === "college" || "${role}" === "researchAndDevelopmentOffice"){
-            let data = {};
-            let input_data = document.getElementsByClassName("${role}");
-            for (let i=0; i<input_data.length; i++){
-                data[input_data[i].id] = input_data[i].value;
-            }
-            commit(data);
-        }
-        else{
-            location.href="JuniorResearchInvestigatorReviewInformation";
-        }
-    }
 
-    function commit(input_data){
-        $.ajax({
-            type: 'POST',
-            url: 'JuniorResearchInvestigator',
-            dataType: 'json',
-            data: JSON.stringify(input_data),
-            success: function(data){
-                alert(data.status);
-                location.href="JuniorResearchInvestigatorReviewInformation";
-            },
-            error:function(data) {
-                alert("存檔失敗");
-            }
-        });
-    };
 </script>
 </html>

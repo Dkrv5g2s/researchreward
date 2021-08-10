@@ -487,6 +487,15 @@
         <url-pattern>/JuniorResearchInvestigatorTableB</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>JuniorResearchInvestigatorPrintServlet</servlet-name>
+        <servlet-class>Servlet.JuniorResearchInvestigator.JuniorResearchInvestigatorPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JuniorResearchInvestigatorPrintServlet</servlet-name>
+        <url-pattern>/JuniorResearchInvestigatorPrint</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>SecondPersonalInformationServlet</servlet-name>
