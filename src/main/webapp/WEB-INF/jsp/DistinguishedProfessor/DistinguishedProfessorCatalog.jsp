@@ -110,17 +110,17 @@
         }
         let fillPage = document.getElementsByTagName("a");
         let fillRatesKeys = Object.keys(fillRates);
-        if (fillRatesKeys.length < fillPage.length) {
+        if (fillRatesKeys.length < fillPage.length-1) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name]) {
+                if (!fillRates[page.name] && page.name!=="DistinguishedProfessorAppDocInstructions") {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length) {
+        } else if (fillRatesKeys.length === fillPage.length-1) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 let fillRatesKey = fillRatesKeys[i];

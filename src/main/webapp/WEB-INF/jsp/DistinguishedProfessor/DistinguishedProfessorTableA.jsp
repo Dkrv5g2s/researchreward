@@ -5,33 +5,21 @@
 %>
 <html>
 <head>
-    <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表(表A)</title>
+    <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</title>
+	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <style>
         body {
-            margin: 0px 0px 0px 0px;
-            padding: 0;
-            font-size: 20px;
-            font: normal 16px Verdana;
-            width: 100%;
+            margin: 0;
         }
         table td.metadata{
             width: 150px;
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
-        table td.cb{
-            width: 1%;
-        }
         table td.checkboxcontent{
             width: 500px;
             background-color: rgb(255, 255, 240);
             text-align: left;
-        }
-        div.content{
-            margin: 0 auto;
-            padding: 50px;
-            width: 80%;
-            background-color: white;
         }
        /* Chrome, Safari, Edge, Opera */
 		input::-webkit-outer-spin-button,
@@ -62,10 +50,7 @@
 		}
 		.footer{
 			text-align: center;
-			margin: 1rem;
-			display: none;
 		}
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Function.js"></script>
