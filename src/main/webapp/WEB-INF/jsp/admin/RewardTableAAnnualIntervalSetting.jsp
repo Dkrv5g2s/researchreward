@@ -27,13 +27,13 @@
         <table>
             <tbody>
             <tr>
-                <td colspan="1" class="metadata">獎項名稱</td>
                 <td colspan="1" class="metadata">設定年度類型</td>
+                <td colspan="1" class="metadata">獎項名稱</td>
                 <td colspan="5">期刊論文統計表年度</td>
             </tr>
             <tr>
-                <td colspan="1" class="metadata">奬助研究績優教師聘任研究人員</td>
                 <td rowspan="5" colspan="1" class="metadata">近五年年度設定</td>
+                <td colspan="1" class="metadata">奬助研究績優教師聘任研究人員</td>
                 <td colspan="5">
                     <input type="number" min="1900" max="2099" step="1" value="" />
                     <input type="number" min="1900" max="2099" step="1" value="" />
@@ -86,8 +86,8 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="1" class="metadata">年輕學者研究獎</td>
                 <td rowspan="2" colspan="1" class="metadata">近三年年度設定</td>
+                <td colspan="1" class="metadata">年輕學者研究獎</td>
                 <td colspan="5">
                     <input type="number" min="1900" max="2099" step="1" value="" />
                     <input type="number" min="1900" max="2099" step="1" value="" />
