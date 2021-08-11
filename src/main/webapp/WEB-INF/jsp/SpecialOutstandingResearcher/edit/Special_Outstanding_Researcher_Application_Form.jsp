@@ -5,11 +5,19 @@
 %>
 
 <html lang="zh">
-<div class="container" style="margin: 0px auto;">
+<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<style>
+    .pre{
+        margin-left: 2rem;
+        font-size: small;
+    }
+    .pre > input{
+        margin-left: 0;
+        vertical-align: top;
+    }
+</style>
+<div class="content" >
     <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
-</div>
-
-<div class="container" style="margin: 0px auto;">
     <form id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
@@ -131,11 +139,11 @@
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_one" value="當年度獲聘為本校特聘教授者">1.當年度獲聘為本校特聘教授者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_two" value="前一年度獲本校傑出研究獎者">2.前一年度獲本校傑出研究獎者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_three" value="前一年度獲本校傑出產學合作獎者">3.前一年度獲本校傑出產學合作獎者<br>
-                    <label value="基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者:<br>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_one" value="近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。">(1)近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_two" value="以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。">(2)以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_three" value="近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。">(3)近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。</pre>
-                    <pre>   <input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_four" value="近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。">(4)近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。</pre>
+                    <label value="基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者">4.基本門檻：近五年內曾主持科技部各型計畫，並滿足下列條件之一者:<br>
+                    <div class="pre"><input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_one" value="近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。">(1)近五年以本校名義發表之重要學術論著績效點數12點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。</div>
+                    <div class="pre"><input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_two" value="以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。">(2)以本校名義主持科技部各類型計畫，五年內之總金額，以五年內之計畫總金額為通過標準，其標準由各學院依相關程序訂定之。</div>
+                    <div class="pre"><input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_three" value="近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。">(3)近五年以本校名義所獲得之產學合作計畫累計總金額超過1000萬元(績效點數200點)且管理費納入校務基金超過150萬元者。</div>
+                    <div class="pre"><input type="checkbox" name="sub_standard" id="level_eight_to_night_number_four_dash_four" value="近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。">(4)近五年以本校名義所獲之實收技術移轉金累計總金額超過250萬元(績效點數125點)且管理費納入校務基金超過50萬元者。</div>
                     </label>
                     <p>※ 以本級第4項(3)、(4)申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。</p>
             </tr>
