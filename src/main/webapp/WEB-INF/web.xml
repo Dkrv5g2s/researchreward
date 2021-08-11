@@ -638,4 +638,12 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RewardTableAAnnualIntervalSettingServlet</servlet-name>
+        <servlet-class>Servlet.admin.RewardTableAAnnualIntervalSettingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewardTableAAnnualIntervalSettingServlet</servlet-name>
+        <url-pattern>/RewardTableAAnnualIntervalSetting</url-pattern>
+    </servlet-mapping>
 </web-app>
