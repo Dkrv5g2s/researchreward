@@ -129,7 +129,7 @@
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name]) {
+                if (!fillRates[page.name] && page.innerHTML!="審查資料(填寫說明)") {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }

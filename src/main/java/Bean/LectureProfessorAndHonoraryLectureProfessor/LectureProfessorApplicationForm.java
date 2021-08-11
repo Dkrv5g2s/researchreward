@@ -1,6 +1,9 @@
 package Bean.LectureProfessorAndHonoraryLectureProfessor;
 
+import java.sql.Date;
+
 public class LectureProfessorApplicationForm {
+    private int project_id;
     private String usernum;
     private String name;
     private String job;
@@ -32,7 +35,23 @@ public class LectureProfessorApplicationForm {
     private Boolean lectureCategoryLif;
     private String  additionalInfo;
 
-    public LectureProfessorApplicationForm(String usernum, String name, String job, String serviceSchoolAndDepartment, String certificatenum, String workStartDate, String seniority, String email, String researchroomext, String cellphone,Boolean applicationrequirements1, Boolean applicationrequirements2, Boolean applicationrequirements3, Boolean applicationrequirements4, Boolean applicationrequirements5, Boolean applicationrequirements6, Boolean applicationrequirements7, Boolean applicationrequirements8, Boolean applicationrequirements9, Boolean applicationrequirements10, Boolean applicationrequirements11, Boolean applicationrequirements12, Boolean applicationrequirements13, Boolean applicationrequirements14, Boolean applicationrequirements15, Boolean applicationrequirementsCheck, Boolean lectureCategoryExp,Boolean lectureCategoryInv,Boolean lectureCategoryLif, String  additionalInfo) {
+    private String department_academic_year;
+    private String department_semester;
+    private String department_conference_times;
+    private Date department_sign_date;
+
+    private String college_academic_year;
+    private String college_semester;
+    private String college_conference_times;
+    private Date college_sign_date;
+
+    private String research_and_development_office_sign_year;
+    private String research_and_development_office_sign_month;
+    private String research_and_development_office_sign_date;
+
+
+    public LectureProfessorApplicationForm(int project_id, String usernum, String name, String job, String serviceSchoolAndDepartment, String certificatenum, String workStartDate, String seniority, String email, String researchroomext, String cellphone, Boolean applicationrequirements1, Boolean applicationrequirements2, Boolean applicationrequirements3, Boolean applicationrequirements4, Boolean applicationrequirements5, Boolean applicationrequirements6, Boolean applicationrequirements7, Boolean applicationrequirements8, Boolean applicationrequirements9, Boolean applicationrequirements10, Boolean applicationrequirements11, Boolean applicationrequirements12, Boolean applicationrequirements13, Boolean applicationrequirements14, Boolean applicationrequirements15, Boolean applicationrequirementsCheck, Boolean lectureCategoryExp, Boolean lectureCategoryInv, Boolean lectureCategoryLif, String additionalInfo) {
+        this.project_id = project_id;
         this.usernum = usernum;
         this.name = name;
         this.job = job;
@@ -43,20 +62,20 @@ public class LectureProfessorApplicationForm {
         this.email = email;
         this.researchroomext = researchroomext;
         this.cellphone = cellphone;
-        this.applicationrequirements1  = applicationrequirements1 ;
-        this.applicationrequirements2  = applicationrequirements2 ;
-        this.applicationrequirements3  = applicationrequirements3 ;
-        this.applicationrequirements4  = applicationrequirements4 ;
-        this.applicationrequirements5  = applicationrequirements5 ;
-        this.applicationrequirements6  = applicationrequirements6 ;
-        this.applicationrequirements7  = applicationrequirements7 ;
-        this.applicationrequirements8  = applicationrequirements8 ;
+        this.applicationrequirements1 = applicationrequirements1;
+        this.applicationrequirements2 = applicationrequirements2;
+        this.applicationrequirements3 = applicationrequirements3;
+        this.applicationrequirements4 = applicationrequirements4;
+        this.applicationrequirements5 = applicationrequirements5;
+        this.applicationrequirements6 = applicationrequirements6;
+        this.applicationrequirements7 = applicationrequirements7;
+        this.applicationrequirements8 = applicationrequirements8;
         this.applicationrequirements9 = applicationrequirements9;
-        this.applicationrequirements10  = applicationrequirements10 ;
-        this.applicationrequirements11  = applicationrequirements11 ;
-        this.applicationrequirements12  = applicationrequirements12 ;
-        this.applicationrequirements13  = applicationrequirements13 ;
-        this.applicationrequirements14  = applicationrequirements14 ;
+        this.applicationrequirements10 = applicationrequirements10;
+        this.applicationrequirements11 = applicationrequirements11;
+        this.applicationrequirements12 = applicationrequirements12;
+        this.applicationrequirements13 = applicationrequirements13;
+        this.applicationrequirements14 = applicationrequirements14;
         this.applicationrequirements15 = applicationrequirements15;
         this.applicationrequirementsCheck = applicationrequirementsCheck;
         this.lectureCategoryExp = lectureCategoryExp;
@@ -64,6 +83,16 @@ public class LectureProfessorApplicationForm {
         this.lectureCategoryLif = lectureCategoryLif;
         this.additionalInfo = additionalInfo;
 
+    }
+
+    public LectureProfessorApplicationForm() {}
+
+    public int getProject_id() {
+        return project_id;
+    }
+
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
     }
 
     public String getUsernum() {
@@ -304,6 +333,83 @@ public class LectureProfessorApplicationForm {
 
     public void setApplicationrequirementsCheck(Boolean applicationrequirementsCheck) {
         this.applicationrequirementsCheck = applicationrequirementsCheck;
+    }
+
+    public String getDepartmentAcademicYear() {
+        return department_academic_year;
+    }
+    public void setDepartmentAcademicYear(String department_academic_year) {
+        this.department_academic_year = department_academic_year;
+    }
+
+    public String getDepartmentSemester() {
+        return department_semester;
+    }
+    public void setDepartmentSemester(String department_semester) {
+        this.department_semester = department_semester;
+    }
+
+    public String getDepartmentConferenceTimes() {
+        return department_conference_times;
+    }
+    public void setDepartmentConferenceTimes(String department_conference_times) {
+        this.department_conference_times = department_conference_times;
+    }
+
+    public Date getDepartmentSignDate() {
+        return department_sign_date;
+    }
+    public void setDepartmentSignDate(Date department_sign_date) {
+        this.department_sign_date = department_sign_date;
+    }
+
+    public String getCollegeAcademicYear() {
+        return college_academic_year;
+    }
+    public void setCollegeAcademicYear(String college_academic_year) {
+        this.college_academic_year = college_academic_year;
+    }
+
+    public String getCollegeSemester() {
+        return college_semester;
+    }
+    public void setCollegeSemester(String college_semester) {
+        this.college_semester = college_semester;
+    }
+
+    public String getCollegeConferenceTimes() {
+        return college_conference_times;
+    }
+    public void setCollegeConferenceTimes(String college_conference_times) {
+        this.college_conference_times = college_conference_times;
+    }
+
+    public Date getCollegeSignDate() {
+        return college_sign_date;
+    }
+    public void setCollegeSignDate(Date college_sign_date) {
+        this.college_sign_date = college_sign_date;
+    }
+
+    public String getResearchAndDevelopmentOfficeSignYear() {
+        return research_and_development_office_sign_year;
+    }
+    public void setResearchAndDevelopmentOfficeSignYear(String research_and_development_office_sign_year) {
+        this.research_and_development_office_sign_year = research_and_development_office_sign_year;
+    }
+
+    public String getResearchAndDevelopmentOfficeSignMonth() {
+        return research_and_development_office_sign_month;
+    }
+    public void setResearchAndDevelopmentOfficeSignMonth(String research_and_development_office_sign_month) {
+        this.research_and_development_office_sign_month = research_and_development_office_sign_month;
+    }
+
+    public String getResearchAndDevelopmentOfficeSignDate() {
+        return research_and_development_office_sign_date;
+    }
+    public void setResearchAndDevelopmentOfficeSignDate(String research_and_development_office_sign_date) {
+        this.research_and_development_office_sign_date = research_and_development_office_sign_date;
     }
 
     @Override

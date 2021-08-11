@@ -17,10 +17,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -45,22 +45,22 @@
             vertical-align: middle;
         }
         table td.metadata{
-            width: 150px;
+            /*width: 150px;*/
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
         table td.cb{
-            width: 1%;
+            /*width: 1%;*/
         }
         table td.checkboxcontent{
-            width: 500px;
+            /*width: 500px;*/
             background-color: rgb(255, 255, 240);
             text-align: left;
         }
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            /*width: 1200px;*/
             background-color: white;
         }
 
@@ -76,6 +76,10 @@
                 contentType: 'application/json',
                 success: function(data){
                     alert('存檔成功');
+                    window.location.href="LectureProfessorExcellenceFormC";
+                },
+                error:function() {
+                    alert("存檔失敗");
                 }
             });
 
@@ -83,7 +87,9 @@
 
         function InputToJson(){
             var data = {};
+            let dataNumber = 0;
             data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+            data["fill_rate"] = $('textarea[name="recommendationReason"]').val().length > 0 ? 1 : 0;
             return data;
         }
     </script>
@@ -120,9 +126,10 @@
 
             </tbody>
         </table>
+
         <p style="text-align: center;">
-            <input type="button" name="save" value="存檔" onclick="commit()">
-            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
+            <button type="button" name="return_last_page" onclick="location.href='LectureProfessorCatalog'">回上頁</button>
+            <button type="button" name="save" onclick="commit()" >暫存</button>
         </p>
     </form>
 </div>

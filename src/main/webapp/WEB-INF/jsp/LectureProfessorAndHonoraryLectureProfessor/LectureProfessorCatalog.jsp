@@ -40,28 +40,28 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="LectureProfessorApplicationForm">講座教授申請表</a></td>
+            <td class="left"><a href="LectureProfessorApplicationForm" name="LectureProfessorApplicationForm">講座教授申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorHonoraryApplicationForm">榮譽講座教授申請表</a></td>
+            <td class="left"><a href="LectureProfessorHonoraryApplicationForm" name="LectureProfessorHonoraryApplicationForm">榮譽講座教授申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorAppDocInstructions" >審查資料(填寫說明)</a></td>
+            <td class="left"><a href="LectureProfessorAppDocInstructions" name="LectureProfessorAppDocInstructions">審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormA" >近五年內傑出績效說明表(表A)</a></td>
+            <td class="left"><a href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內傑出績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionForm" >國立臺北科技大學傑出論文績效說明表(表B)</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionForm" name="LectureProfessorTableB">國立臺北科技大學傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" >國立臺北科技大學傑出論文績效說明表(表B)-上傳檔案</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">國立臺北科技大學傑出論文績效說明表-上傳檔案</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormC" >傑出研究表現說明及申請機構推薦理由</a></td>
+            <td class="left"><a href="LectureProfessorExcellenceFormC" name="LectureProfessorExcellenceFormC">傑出研究表現說明及申請機構推薦理由</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormD" >講座期間之績效表現(申請第二任以上者填寫)</a></td>
+            <td class="left"><a href="LectureProfessorExcellenceFormD" name="LectureProfessorExcellenceFormD">講座期間之績效表現(申請第二任以上者填寫)</a></td>
         </tr>
   <!--      <tr>
             <td class="left"><a href="LectureProfessorRefPoint" >附表一：國立臺北科技大學論文點數計算公式</a></td>
@@ -94,25 +94,84 @@
         }
     })
     function sendApply(){
-        if (confirm("確定要送出申請?")) {
+        if (!confirm("確定要送出申請?")) {
+            return;
+        }
+        new Promise((resolve, reject) => {
             $.ajax({
                 type: 'POST',
-                url: '/SendApply',
+                url: '/ProjectFillRate',
                 dataType: 'text',
                 data: "",
                 contentType: 'application/text',
-                success: function (data) {
-                    alert('申請成功');
-                    window.location.href = "/TraceProgress";
+                success: async function (data) {
+                    let rateData = JSON.parse(data);
+                    resolve(await checkFilled(rateData));
                 },
-                error: function(jqXHR, textStatus, message) {
-                    //error handling
-                    alert(jqXHR.responseText);
+                error: function (data) {
+                    console.log(data);
+                    reject(false);
                 }
             });
-        }
-    };
+        }).then(result=>{
+            if(result){
+                $.ajax({
+                    type: 'POST',
+                    url: '/SendApply',
+                    dataType: 'text',
+                    data: "",
+                    contentType: 'application/text',
+                    success: function (data) {
+                        alert('申請成功');
+                        window.location.href = "/TraceProgress";
+                    },
+                    error: function(jqXHR, textStatus, message) {
+                        alert(jqXHR.responseText);
+                    }
+                });
+            }
+        });
 
+    };
+    async function checkFilled(fillRates) {
+        if(!fillRates){
+            return false;
+        }
+        console.log(fillRates)
+        let fillPage = document.getElementsByTagName("a");
+        let fillRatesKeys = Object.keys(fillRates);
+        // ReviewInformation page don't need to be checked fillRate.
+        console.log(fillPage.length)
+        console.log(fillRatesKeys.length)
+        if (fillRatesKeys.length < fillPage.length-1) {
+            let unSavedPageName = "";
+            for (let i = 0; i < fillPage.length; i++) {
+                let page = fillPage[i];
+                if (!fillRates[page.name] && page.innerHTML!="審查資料(填寫說明)") {
+                    unSavedPageName += page.innerHTML + " ";
+                }
+            }
+            alert(unSavedPageName + "頁面尚未儲存");
+            return false;
+        } else if (fillRatesKeys.length === fillPage.length-1) {
+            let unFinishedPageName = "";
+            for (let i = 0; i < fillRatesKeys.length; i++) {
+                let fillRatesKey = fillRatesKeys[i];
+                const rate = fillRates[fillRatesKey];
+                if (rate < 1.0) {
+                    unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + " ";
+                }
+            }
+            if (unFinishedPageName.length > 0) {
+                alert(unFinishedPageName + "頁面尚未填寫完成");
+                return false;
+            } else {
+                console.log("send");
+                return true;
+            }
+        }
+        return false;
+    }
     function approveApply(){
         if (confirm("確定要確認審理?")) {
             $.ajax({

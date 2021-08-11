@@ -17,10 +17,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -45,15 +45,15 @@
             vertical-align: middle;
         }
         table td.metadata{
-            width: 150px;
+            /*width: 150px;*/
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
         table td.cb{
-            width: 1%;
+            /*width: 1%;*/
         }
         table td.checkboxcontent{
-            width: 500px;
+            /*width: 500px;*/
             background-color: rgb(255, 255, 240);
             text-align: left;
         }
@@ -62,7 +62,15 @@
             padding: 50px;
             background-color: white;
         }
-
+        td > p{
+            margin: 6rem 0 0;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        .footer{
+            text-align-last: center;
+            margin: 1rem;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -74,18 +82,39 @@
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',
                 success: function(data){
-                    alert('success');
+                    alert(data.status);
+                    window.location.href="LectureProfessorHonoraryApplicationForm";
+                },error:function(data,status,er) {
+                    alert("存檔失敗");
                 }
             });
         };
 
         function InputToJson(){
             var data = {};
-            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                data[document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+            let dataNumber = 0;
+            const inputList = document.getElementsByTagName("input");
+            const textareaList = document.getElementsByTagName("textarea");
+
+            for (var j=0; j<inputList.length; j++) {
+                data[inputList[j].name] = inputList[j].value;
+                if(inputList[j].value.length > 0 ){
+                    dataNumber++;
+                }
             }
-            data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
-            data[ document.getElementsByTagName("textarea")[1].name] = document.getElementsByTagName("textarea")[1].value;
+
+            for (let j=0; j<textareaList.length; j++) {
+                data[ textareaList[j].name] = textareaList[j].value;
+                if(textareaList[j].value.length > 0 ){
+                    dataNumber++;
+                }
+            }
+
+            data["commit_date"] = $("#commit_date").val();
+            console.log(dataNumber,inputList.length,textareaList.length)
+
+            data["fill_rate"] = dataNumber/(inputList.length + textareaList.length );
+
             return data;
         }
     </script>
@@ -98,59 +127,79 @@
         <table>
             <tbody>
             <tr>
-                <td class="metadata">員工編號</td>
-                <td><input type="text" name="usernum" disabled="disabled" value=<%=json.get("usernum")%> ></td>
+                <td colspan="4" class="metadata">員工編號</td>
+                <td colspan="4"><input type="text" name="usernum" disabled="disabled" value=<%=json.get("usernum")%> ></td>
             </tr>
             <tr>
-                <td class="metadata">姓名</td>
-                <td><input type="text" name="name" value=<%=json.get("name")%> ></td>
+                <td colspan="4" class="metadata">被推薦人姓名(英文姓名)</td>
+                <td colspan="4"><input type="text" name="name" value=<%=json.get("name")%> ></td>
             </tr>
             <tr>
-                <td class="metadata">服務單位與職稱</td>
-                <td><input type="text" name="jobAndDept" value=<%=json.get("jobAndDept")%> ></td>
+                <td colspan="4" class="metadata">服務單位與職稱</td>
+                <td colspan="4"><input type="text" name="jobAndDept" value=<%=json.get("jobAndDept")%> ></td>
             </tr>
             <tr>
-                <td class="metadata">E-mail</td>
-                <td><input type="text" name="email" value=<%=json.get("email")%> ></td>
+                <td colspan="4" class="metadata">E-mail</td>
+                <td colspan="4"><input type="text" name="email" value=<%=json.get("email")%> ></td>
             </tr>
             <tr>
-                <td class="metadata">聯絡電話</td>
-                <td>
-                    <p>研究室分機：<input type="text" name="researchroomext" value=<%=json.get("researchroomext")%> ></p>
-                    <p>手機：<input type="text" name="cellphone" value=<%=json.get("cellphone")%> ></p>
+                <td colspan="4" class="metadata">聯絡電話</td>
+                <td colspan="4">
+<%--                    <p>研究室分機：<input type="text" name="researchroomext" value=<%=json.get("researchroomext")%> ></p>--%>
+                    <input type="text" name="cellphone" value=<%=json.get("cellphone")%> >
                 </td>
             </tr>
-            </tbody>
-        </table>
-        <table>
-            <tbody>
             <tr>
-                <td style="text-align:center">
+                <td colspan="8" style="text-align:center">
                     個人學經歷
                 </td>
             </tr>
             <tr style="height:200px;">
-                <td >
+                <td colspan="8">
                     <textarea style="width:100%; height:100%;" name ="indivisualEducation" ><%=json.get("indivisualEducation")%></textarea>
                 </td>
             </tr>
             <tr>
-                <td style="text-align:center">
+                <td colspan="8" style="text-align:center">
                     推薦理由
                 </td>
             </tr>
             <tr style="height:200px;">
-                <td >
+                <td colspan="8" >
                     <textarea style="width:100%; height:100%;" name ="recommendationReason" ><%=json.get("recommendationReason")%><%=json.get("recommendationReason")%></textarea>
                 </td>
             </tr>
-
+            <tr>
+                <td colspan="4" style="text-align: center">
+                    <label>院長核章</label>
+                </td>
+                <td colspan="4" style="text-align: center">
+                    <label>研發處</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p></p>
+                </td>
+                <td colspan="4">
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8" >
+                    <p style="text-align: right;">
+                        <label for="commit_date">申請日期：</label>
+                        <input type="date" id="commit_date" style="width: auto;" value="<%=json.optString("commitDate", "")%>">
+                    </p>
+                </td>
+            </tr>
             </tbody>
         </table>
-        <p>
-            <input type="button" name="save" value="存檔" onclick="commit()">
-            <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
-        </p>
+
+        <div class="footer">
+            <button type="button" name="return_last_page" onclick="javascript:location.href='LectureProfessorCatalog'">回上頁</button>
+            <button type="button" name="save" onclick="commit()">暫存</button>
+        </div>
     </form>
 </div>
 

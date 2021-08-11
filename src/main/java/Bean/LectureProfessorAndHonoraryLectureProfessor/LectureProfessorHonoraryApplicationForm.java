@@ -5,17 +5,17 @@ public class LectureProfessorHonoraryApplicationForm {
     private String name;
     private String jobAndDept;
     private String email;
-    private String researchroomext;
+//    private String researchroomext;
     private String cellphone;
     private String indivisualEducation;
     private String recommendationReason;
+    private String commitDate;
 
-    public LectureProfessorHonoraryApplicationForm(String usernum, String name, String jobAndDept, String email, String researchroomext, String cellphone, String indivisualEducation, String recommendationReason){
+    public LectureProfessorHonoraryApplicationForm(String usernum, String name, String jobAndDept, String email, String cellphone, String indivisualEducation, String recommendationReason){
         this.usernum = usernum;
         this.name = name;
         this.jobAndDept = jobAndDept;
         this.email = email;
-        this.researchroomext = researchroomext;
         this.cellphone = cellphone;
         this.indivisualEducation = indivisualEducation;
         this.recommendationReason = recommendationReason;
@@ -53,14 +53,6 @@ public class LectureProfessorHonoraryApplicationForm {
         this.email = email;
     }
 
-    public String getResearchroomext() {
-        return researchroomext;
-    }
-
-    public void setResearchroomext(String researchroomext) {
-        this.researchroomext = researchroomext;
-    }
-
     public String getCellphone() {
         return cellphone;
     }
@@ -85,6 +77,14 @@ public class LectureProfessorHonoraryApplicationForm {
         this.recommendationReason = recommendationReason;
     }
 
+    public String getCommitDate() {
+        return commitDate;
+    }
+
+    public void setCommitDate(String commitDate) {
+        this.commitDate = commitDate;
+    }
+
     @Override
     public String toString() {
         return "LectureProfessorHonoraryApplicationForm{" +
@@ -92,10 +92,10 @@ public class LectureProfessorHonoraryApplicationForm {
                 ", name='" + name + '\'' +
                 ", jobAndDept='" + jobAndDept + '\'' +
                 ", email='" + email + '\'' +
-                ", researchroomext='" + researchroomext + '\'' +
                 ", cellphone='" + cellphone + '\'' +
                 ", indivisualEducation='" + indivisualEducation + '\'' +
                 ", recommendationReason='" + recommendationReason + '\'' +
+                ", commitDate='" + commitDate + '\'' +
                 '}';
     }
 }

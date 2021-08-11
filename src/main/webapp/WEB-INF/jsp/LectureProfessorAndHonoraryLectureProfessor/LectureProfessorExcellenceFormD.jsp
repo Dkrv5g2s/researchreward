@@ -17,10 +17,10 @@
         body {
             margin: 20px 0px 0px 0px;
             padding: 0;
-            background: #FFFFCC;
+            /*background: #FFFFCC;*/
             font-size: 20px;
             color: #3C3D3F;
-            background-color: #E9F2FF;
+            /*background-color: #E9F2FF;*/
             font: normal 16px Verdana;
             width: 100%;
         }
@@ -45,22 +45,22 @@
             vertical-align: text-middle;
         }
         table td.metadata{
-            width: 150px;
+            /*width: 150px;*/
             background-color: rgb(255, 255, 240);
             text-align: right;
         }
         table td.cb{
-            width: 1%;
+            /*width: 1%;*/
         }
         table td.checkboxcontent{
-            width: 500px;
+            /*width: 500px;*/
             background-color: rgb(255, 255, 240);
             text-align: left;
         }
         div.content{
             margin: 0 auto;
             padding: 50px;
-            width: 1200px;
+            /*width: 1200px;*/
             background-color: white;
         }
 
@@ -76,20 +76,33 @@
                 contentType: 'application/json',
                 success: function(data){
                     alert('存檔成功');
+                    window.location.href="LectureProfessorExcellenceFormD";
+                },
+                error:function() {
+                    alert("存檔失敗");
                 }
             });
         };
         function InputToJson(){
             var data = {};
-            for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='checkbox'){
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].checked;
-                }
-                else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+            let dataNumber = 0;
+            const inputList = document.getElementsByTagName("input");
+
+
+            for (let j=0; j<inputList.length; j++) {
+                data[ inputList[j].name] = inputList[j].value;
+                if(inputList[j].value.length > 0){
+                    dataNumber++;
                 }
             }
-            data[ document.getElementsByTagName("textarea")[0].name] = document.getElementsByTagName("textarea")[0].value;
+            const textareaList = document.getElementsByTagName("textarea");
+            for (let j=0; j<textareaList.length; j++) {
+                data[ textareaList[j].name] = textareaList[j].value;
+                if(textareaList[j].value.length > 0 && inputList[j].className.length === 0){
+                    dataNumber++;
+                }
+            }
+            data["fill_rate"] = dataNumber/(inputList.length + textareaList.length );
             return data;
         }
     </script>
@@ -123,7 +136,7 @@
             </tr>
             <tr>
                 <td class="metadata">具體績效</td>
-                <td><textarea name="performance" placeholder="請說明具體績效（以1頁為原則)"><%=json.get("performance")%></textarea></td>
+                <td><textarea width = "100%" name="performance" placeholder="請說明具體績效（以1頁為原則)"><%=json.get("performance")%></textarea></td>
             </tr>
 
             </tbody>
