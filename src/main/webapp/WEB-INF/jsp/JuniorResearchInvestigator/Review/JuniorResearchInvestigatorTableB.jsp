@@ -47,8 +47,8 @@
                 </tr>
                 <tr>
                     <td colspan="7" style="background-color:rgb(255, 255, 240);text-align: center">
-                        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
-                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveData()" disabled = "disabled" >
+                        <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
+                        <input type="button" width="10%" value="此頁審查完成" name="save_the_page" onclick="saveData()">
                     </td>
                 </tr>
             </tbody>
