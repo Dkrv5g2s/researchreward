@@ -9,14 +9,21 @@ public class OtherData {
     private String projectID;
 	private String other_data;
 	private String commit_date;
-	
+
 	public OtherData(String year1, String year2, String year3, String year4, String year5, String projectID,
-			String other_data, String commit_date) {
+					 String other_data, String commit_date) {
 		this.year1 = year1;
 		this.year2 = year2;
 		this.year3 = year3;
 		this.year4 = year4;
 		this.year5 = year5;
+		this.projectID = projectID;
+		this.other_data = other_data;
+		this.commit_date = commit_date;
+	}
+
+	public OtherData(String projectID,
+					 String other_data, String commit_date) {
 		this.projectID = projectID;
 		this.other_data = other_data;
 		this.commit_date = commit_date;

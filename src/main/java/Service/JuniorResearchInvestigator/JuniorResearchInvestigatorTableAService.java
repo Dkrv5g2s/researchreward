@@ -1,11 +1,11 @@
 package Service.JuniorResearchInvestigator;
 
 import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.*;
+import Dao.Admin.AwardYearDAO;
+import Dao.Admin.Impl.AwardYearDAOImpl;
 import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.*;
 import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-
-import java.time.LocalDateTime;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -18,6 +18,7 @@ public class JuniorResearchInvestigatorTableAService {
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
+    private AwardYearDAO awardYearDAO = new AwardYearDAOImpl();
 
     public void save(JSONObject jsonObject, String projectId){
         ArticleAA aaa = new ArticleAA(
@@ -106,11 +107,6 @@ public class JuniorResearchInvestigatorTableAService {
                 jsonObject.getString("coop_project_point_total")
         );
         OtherData od = new OtherData(
-                jsonObject.getString("year1"),
-                jsonObject.getString("year2"),
-                jsonObject.getString("year3"),
-                null,
-                null,
                 projectId,
                 jsonObject.getString("other_data"),
                 jsonObject.getString("commit_date")
@@ -181,9 +177,7 @@ public class JuniorResearchInvestigatorTableAService {
         OtherData od = otherDataDAO.show(projectId);
         TechProject tp = techProjectDAO.show(projectId);
         TechTransfer tt = techTransferDAO.show(projectId);
-
-        LocalDateTime dt = LocalDateTime.now();
-        int year = dt.getYear()-1912;
+        JSONObject awardYear = awardYearDAO.getSpecificAwardYears("JuniorResearchInvestigator");
 
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
@@ -191,7 +185,7 @@ public class JuniorResearchInvestigatorTableAService {
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0", "0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectId,"","");
+            od = new OtherData(projectId,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }
@@ -205,6 +199,7 @@ public class JuniorResearchInvestigatorTableAService {
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);
+            object.putAll(awardYear);
         }catch(IllegalAccessException e){
             e.printStackTrace();
         }

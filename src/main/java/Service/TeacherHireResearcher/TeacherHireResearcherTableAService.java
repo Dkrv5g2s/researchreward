@@ -1,11 +1,11 @@
 package Service.TeacherHireResearcher;
 
 import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.*;
+import Dao.Admin.AwardYearDAO;
+import Dao.Admin.Impl.AwardYearDAOImpl;
 import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.*;
 import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-
-import java.time.LocalDateTime;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
@@ -16,6 +16,7 @@ public class TeacherHireResearcherTableAService {
     private ArticleTTDAO articleTTDAO = new ArticleTTDAOImpl();
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
+    private AwardYearDAO awardYearDAO = new AwardYearDAOImpl();
 
     public void save(JSONObject jsonObject, String projectID){
         ArticleAA aaa = new ArticleAA(
@@ -78,11 +79,6 @@ public class TeacherHireResearcherTableAService {
                 jsonObject.getString("t_point_total"));
 
         OtherData od = new OtherData(
-                jsonObject.getString("year1"),
-                jsonObject.getString("year2"),
-                jsonObject.getString("year3"),
-                jsonObject.getString("year4"),
-                jsonObject.getString("year5"),
                 projectID,
                 "",
                 jsonObject.getString("commit_date"));
@@ -122,16 +118,14 @@ public class TeacherHireResearcherTableAService {
         ArticleTT att = articleTTDAO.show(projectID);
         OtherData od = otherDataDAO.show(projectID);
         TechProject tp = techProjectDAO.show(projectID);
-
-        LocalDateTime dt = LocalDateTime.now();
-        int year = dt.getYear()-1912;
+        JSONObject awardYear = awardYearDAO.getSpecificAwardYears("TeacherHireResearcher");
 
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
             aab = new ArticleAB("0","0","0","0","0","0","0","0","0","0","0","0");
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+            od = new OtherData(projectID,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }
         JSONObject object = new JSONObject();
@@ -143,6 +137,7 @@ public class TeacherHireResearcherTableAService {
             addBeanPropertyToJson(object,att);
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
+            object.putAll(awardYear);
         }catch(IllegalAccessException e){
 
         }

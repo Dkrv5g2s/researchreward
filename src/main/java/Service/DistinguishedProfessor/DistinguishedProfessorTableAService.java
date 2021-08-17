@@ -2,36 +2,11 @@ package Service.DistinguishedProfessor;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
-import java.time.LocalDateTime;
-
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleAA;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleAB;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleSW;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleTT;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.CoopProject;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.EduProject;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.OtherData;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.TechProject;
-import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.TechTransfer;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleAADAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleABDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleSWDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.ArticleTTDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.CoopProjectDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.EduProjectDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.OtherDataDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.TechProjectDAO;
-import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.TechTransferDAO;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.ArticleAADAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.ArticleABDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.ArticleSWDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.ArticleTTDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.CoopProjectDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.EduProjectDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.OtherDataDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.TechProjectDAOImpl;
-import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.TechTransferDAOImpl;
-import Service.Teacher.ProjectFillRateService;
+import Bean.DistinguishedProfessor.DistinguishedProfessorTableA.*;
+import Dao.Admin.AwardYearDAO;
+import Dao.Admin.Impl.AwardYearDAOImpl;
+import Dao.DistinguishedProfessor.DistinguishedProfessorTableA.*;
+import Dao.DistinguishedProfessor.Impl.DistinguishedProfessorTableA.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 
@@ -45,7 +20,7 @@ public class DistinguishedProfessorTableAService {
 	private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
 	private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
 	private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
-	
+	private AwardYearDAO awardYearDAO = new AwardYearDAOImpl();
 
     public void save(JSONObject jsonObject, String projectID){
     	ArticleAA aaa = new ArticleAA(
@@ -148,11 +123,6 @@ public class DistinguishedProfessorTableAService {
 				jsonObject.getString("edu_project_point5"),
 				jsonObject.getString("edu_project_point_total"));
     	OtherData od = new OtherData(
-				jsonObject.getString("year1"),
-				jsonObject.getString("year2"),
-				jsonObject.getString("year3"),
-				jsonObject.getString("year4"),
-				jsonObject.getString("year5"),
 				projectID,
 				jsonObject.getString("other_data"),
 				jsonObject.getString("commit_date"));
@@ -223,9 +193,7 @@ public class DistinguishedProfessorTableAService {
     	OtherData od = otherDataDAO.show(projectID);
     	TechProject tp = techProjectDAO.show(projectID);
     	TechTransfer tt = techTransferDAO.show(projectID);
-    	
-    	LocalDateTime dt = LocalDateTime.now();
-    	int year = dt.getYear()-1912;
+		JSONObject awardYear = awardYearDAO.getSpecificAwardYears("DistinguishedProfessor");
     	
     	if(od == null) {
     		aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
@@ -234,7 +202,7 @@ public class DistinguishedProfessorTableAService {
         	att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
         	cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         	ep = new EduProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-        	od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+        	od = new OtherData(projectID,"","");
         	tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         	tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
     	}
@@ -250,6 +218,7 @@ public class DistinguishedProfessorTableAService {
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);
+			object.putAll(awardYear);
         }catch(IllegalAccessException e){
 
         }

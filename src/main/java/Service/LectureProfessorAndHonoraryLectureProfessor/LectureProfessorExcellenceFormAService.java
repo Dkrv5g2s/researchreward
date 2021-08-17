@@ -2,32 +2,11 @@ package Service.LectureProfessorAndHonoraryLectureProfessor;
 
 import static Utils.ReflectUtils.addBeanPropertyToJson;
 
-import java.time.LocalDateTime;
-
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleAA;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleAB;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleSW;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleTT;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.CoopProject;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.OtherData;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.TechProject;
-import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.TechTransfer;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleAADAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleABDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleSWDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.ArticleTTDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.CoopProjectDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.OtherDataDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.TechProjectDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.TechTransferDAO;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.ArticleAADAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.ArticleABDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.ArticleSWDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.ArticleTTDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.CoopProjectDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.OtherDataDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.TechProjectDAOImpl;
-import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.TechTransferDAOImpl;
+import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.*;
+import Dao.Admin.AwardYearDAO;
+import Dao.Admin.Impl.AwardYearDAOImpl;
+import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormA.*;
+import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceFormA.*;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
 
@@ -40,11 +19,7 @@ public class LectureProfessorExcellenceFormAService {
     private OtherDataDAO otherDataDAO = new OtherDataDAOImpl();
     private TechProjectDAO techProjectDAO = new TechProjectDAOImpl();
     private TechTransferDAO techTransferDAO = new TechTransferDAOImpl();
-
-
-
-
-
+    private AwardYearDAO awardYearDAO = new AwardYearDAOImpl();
 
     public void save(JSONObject jsonObject, String projectID){
         ArticleAA aaa = new ArticleAA(
@@ -128,11 +103,6 @@ public class LectureProfessorExcellenceFormAService {
                 jsonObject.getString("coop_project_point5"),
                 jsonObject.getString("coop_project_point_total"));
         OtherData od = new OtherData(
-                jsonObject.getString("year1"),
-                jsonObject.getString("year2"),
-                jsonObject.getString("year3"),
-                jsonObject.getString("year4"),
-                jsonObject.getString("year5"),
                 projectID,
                 jsonObject.getString("other_data"),
                 jsonObject.getString("commit_date"));
@@ -201,9 +171,7 @@ public class LectureProfessorExcellenceFormAService {
         OtherData od = otherDataDAO.show(projectID);
         TechProject tp = techProjectDAO.show(projectID);
         TechTransfer tt = techTransferDAO.show(projectID);
-
-        LocalDateTime dt = LocalDateTime.now();
-        int year = dt.getYear()-1912;
+        JSONObject awardYear = awardYearDAO.getSpecificAwardYears("LectureProfessor");
 
         if(od == null) {
             aaa = new ArticleAA("0","0","0","0","0","0","0","0","0","0","0","0");
@@ -211,7 +179,7 @@ public class LectureProfessorExcellenceFormAService {
             asw = new ArticleSW("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             att = new ArticleTT("0","0","0","0","0","0","0","0","0","0","0","0");
             cp = new CoopProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-            od = new OtherData(Integer.toString(year-4),Integer.toString(year-3),Integer.toString(year-2),Integer.toString(year-1),Integer.toString(year),projectID,"","");
+            od = new OtherData(projectID,"","");
             tp = new TechProject("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
             tt = new TechTransfer("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
         }
@@ -226,6 +194,7 @@ public class LectureProfessorExcellenceFormAService {
             addBeanPropertyToJson(object,od);
             addBeanPropertyToJson(object,tp);
             addBeanPropertyToJson(object,tt);
+            object.putAll(awardYear);
         }catch(IllegalAccessException e){
 
         }

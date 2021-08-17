@@ -84,9 +84,9 @@
                 <td rowspan="2"><b>小計<br>(A)</b></td>
             </tr>
             <tr class="title">
+                <td><label id="year1"><%=json.get("year1")%></label></td>
+                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
-                <td><label id="year4"><%=json.get("year4")%></label></td>
-                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3">Scopus 或 WOS 資料庫</td>
@@ -212,9 +212,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
+                <td><label id="year1"><%=json.get("year1")%></label></td>
+                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
-                <td><label id="year4"><%=json.get("year4")%></label></td>
-                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="3" >近三年以本校名義主持科技部各類型計畫統計表</td>
@@ -245,9 +245,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
+                <td><label id="year1"><%=json.get("year1")%></label></td>
+                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
-                <td><label id="year4"><%=json.get("year4")%></label></td>
-                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="5" >近三年以本校名義所獲得之產學合作計畫，其實際納入本校校務基金之統計表</td>
@@ -298,9 +298,9 @@
                 <td rowspan="2"><b>小計</b></td>
             </tr>
             <tr class="title">
+                <td><label id="year1"><%=json.get("year1")%></label></td>
+                <td><label id="year2"><%=json.get("year2")%></label></td>
                 <td><label id="year3"><%=json.get("year3")%></label></td>
-                <td><label id="year4"><%=json.get("year4")%></label></td>
-                <td><label id="year5"><%=json.get("year5")%></label></td>
             </tr>
             <tr class="count">
                 <td rowspan="5" >近三年以本校名義所獲之實收技術移轉金統計表</td>
