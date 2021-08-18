@@ -33,11 +33,38 @@
 
         };
 
+        function deleteCommit(project_id,rewardName){
+            $.ajax({
+                type: 'POST',
+                url: '/deleteRewardList',
+                dataType: 'text',
+                data: JSON.stringify({
+                    projectId:project_id,
+                    rewardName:rewardName
+                }),
+                contentType: 'application/json',
+                complete:function(XMLHttpRequest,textStatus){
+                    alert('刪除成功');
+                    window.location.href="RewardList";
+                }
+            });
+
+        };
+
         $(document).on("click", "button[name='modify']",function(){
-            
+
             var projectId = $(this).parents("tr").find("td").eq(0).text();
             var rewardName = $(this).parents("tr").find("td").eq(1).text();
             commit(projectId,rewardName);
+        });
+
+        $(document).on("click", "button[name='delete']",function(){
+            var projectId = $(this).parents("tr").find("td").eq(0).text();
+            var rewardName = $(this).parents("tr").find("td").eq(1).text();
+            if(confirm("您確定要刪除此筆申請獎項嗎?")){
+                deleteCommit(projectId,rewardName);
+            }
+
         });
     </script>
 </head>
