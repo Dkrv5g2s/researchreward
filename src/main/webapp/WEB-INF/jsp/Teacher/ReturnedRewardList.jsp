@@ -45,7 +45,7 @@
                 contentType: 'application/json',
                 complete:function(XMLHttpRequest,textStatus){
                     alert('刪除成功');
-                    window.location.href="RewardList";
+                    window.location.href="ReturnedRewardList";
                 }
             });
 
