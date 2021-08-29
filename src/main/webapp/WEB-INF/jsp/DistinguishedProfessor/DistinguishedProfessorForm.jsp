@@ -7,19 +7,13 @@
 <head>
     <title>國立臺北科技大學特聘教授申請表</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <style>
-        body {
-            margin: 20px 0px 0px 0px;
-            padding: 0;         
-            font-size: 20px;
-            font: normal 16px Verdana;
-            width: 100%;
-        }
         table td.cb{
             border-right: hidden;
             border-top-style: hidden;
             vertical-align: text-top;
-            width: 1%;
+            width: 10%;
         }
         table td.checkboxcontent{
             border-top-style: hidden;
@@ -29,23 +23,8 @@
             text-align: left;
             vertical-align: bottom;
         }
-        div.content{
-            margin: 0 auto;
-            padding: 50px;
-            width: 75%;
-            background-color: white;
-        }
-        .file_title{
-            padding-bottom: 1rem;
-            font-size:20px;
-            border-top: hidden;
-            border-left: hidden;
-            border-right: hidden;
-        }
         .footer{
             display: none;
-            text-align-last: center;
-            margin: 1rem;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -140,6 +119,7 @@
             }
             else{
                 $("."+role).removeAttr("disabled");
+                $("."+role).prop("readonly", false);
                 $("#review_footer").show();
                 $("#apply_footer").remove();
             }
@@ -173,117 +153,109 @@
                 </tr>
                 </thead>
                 <tbody>
-<%--                	<tr>--%>
-<%--                        <td>員工編號</td>--%>
-<%--                        <td><input type="text" name="usernum" disabled="disabled" value=<%=json.get("usernum")%> ></td>--%>
-<%--                    </tr>--%>
                     <tr>
-                        <td>姓名</td>
-                        <td><input type="text" name="name" value=<%=json.get("name")%> ></td>
-                        <td>系所</td>
-                        <td><input type="text" name="department" value=<%=json.get("department")%> ></td>
+                        <td colspan="2">姓名</td>
+                        <td colspan="2"><input type="text" name="name" value=<%=json.get("name")%> ></td>
+                        <td colspan="2">系所</td>
+                        <td colspan="2"><input type="text" name="department" value=<%=json.get("department")%> ></td>
                     </tr>
                     <tr>
-                        <td>本校任職日期</td>
-                        <td><input type="date" name="hireddate" value=<%=json.get("hireddate")%> ></td>
-                        <td>教授證書號碼</td>
-                        <td><input type="text" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
+                        <td colspan="2">本校任職日期</td>
+                        <td colspan="2"><input type="date" name="hireddate" value=<%=json.get("hireddate")%> ></td>
+                        <td colspan="2">教授證書號碼</td>
+                        <td colspan="2"><input type="text" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
                     </tr>
                     <tr>
-                        <td>教授升等日期</td>
-                        <td><input type="date" name="upgradedate" value=<%=json.get("upgradedate")%> ></td>
-                        <td>教授年資</td>
-                        <td><input type="text" name="seniority" value=<%=json.get("seniority")%> ></td>
+                        <td colspan="2">教授升等日期</td>
+                        <td colspan="2"><input type="date" name="upgradedate" value=<%=json.get("upgradedate")%> ></td>
+                        <td colspan="2">教授年資</td>
+                        <td colspan="2"><input type="text" name="seniority" value=<%=json.get("seniority")%> ></td>
                     </tr>
                     <tr>
-                        <td>E-mail</td>
-                        <td><input type="text" name="email" value=<%=json.get("email")%> ></td>
-                        <td>聯絡電話</td>
-                        <td>
-                            研究室分機：<input type="text" name="researchroomext" value=<%=json.get("researchroomext")%> ><br>
+                        <td colspan="2">E-mail</td>
+                        <td colspan="2"><input type="text" name="email" value=<%=json.get("email")%> ></td>
+                        <td colspan="2">聯絡電話</td>
+                        <td colspan="2">
+                            研究室分機：<input type="text" name="researchroomext" style="max-width: 50%;" value=<%=json.get("researchroomext")%> ><br>
                             手機：<input type="text" name="cellphone" value=<%=json.get("cellphone")%> >
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <table>
-                <tbody>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="8">
                             <label style="font-weight: bold;">申請要件（可多選）</label>
                         </td>
                     </tr>
                     <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements1" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請年度之前五年（含）內以本校名義發表之重要學術論著績效點數160點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。（符合本校特聘教授設置辦法第三條第一款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements2" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之科技部一般專題計畫(不包含科技部產學合作計畫)績效點數達250點者，其績效點數之計算每10萬元5點。（符合本校特聘教授設置辦法第三條第二款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements3" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之教育部補助大學在地實踐社會責任計畫績效點數達80點以上者，其績效點數之計算每10萬元2點。（符合本校特聘教授設置辦法第三條第三款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements4" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之產學合作計畫(含科技部產學合作計畫案之廠商配合款金額)績效點數達200點以上且管理費納入校務基金超過150萬元者，其績效點數之計算每10萬元2點。(符合本校特聘教授設置辦法第三條第四款)
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements5" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲之實收技術移轉金(不包含科技部先期技術移轉授權金)績效點數達100點以上且管理費納入校務基金超過40萬元者，其績效點數之計算每10萬元5點。（符合本校特聘教授設置辦法第三條第五款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements6" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             曾獲本校「傑出教學獎」2次者。（符合本校特聘教授設置辦法第三條第六款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements7" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             依本項第(一)、(二)、(三)、(四) 、(五)款所訂之基本條件為基準，其中兩項所計算出來的達成率合計達130%(含)以上、且該兩項之一達成率須達75%(含)以上者。（符合本校特聘教授設置辦法第三條第七款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements8" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             申請人近五年(含)之其他傑出專業表現，對發揚本校校譽有重大貢獻且經簽准者。（符合本校特聘教授設置辦法第三條第八款）
                         </td>
                    </tr>
                    <tr>
                         <td class="cb" align="center"><input type="checkbox" name="applicationrequirements9" ></td>
-                        <td colspan="3" class="checkboxcontent">
+                        <td colspan="7" class="checkboxcontent">
                             特聘教授三任期滿者，申請終身特聘教授榮銜。（符合本校特聘教授設置辦法第四條）
                         </td>
                     </tr>
                     <tr style="text-align: center;">
-                        <td colspan="2">
+                        <td colspan="4">
                             <label>系(所)核章</label>
                         </td>
-                        <td colspan="2">
+                        <td colspan="4">
                             <label>學院院長</label>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="4">
                             <p>
                                 本推薦案業經 <input id="department_academic_year" class="department review" maxlength="3" style="width: 5ch;"/> 學年度第 <input id="department_semester" class="department review" maxlength="1" style="width: 3ch;"/> 學期<br>
                                 第 <input id="department_conference_times" class="department review" maxlength="5" style="width: 5ch;"/> 次 系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
                                 （<input id="department_sign_date" class="department review" type="date" style="width: auto;">）
                             </p>
                         </td>
-                        <td colspan="2">
+                        <td colspan="4">
                             <p>
                                 本推薦案業經 <input id="college_academic_year" class="college review" maxlength="3" style="width: 5ch;"/> 學年度第 <input id="college_semester" class="college review" maxlength="1" style="width: 3ch;"/> 學期<br>
                                 第 <input id="college_conference_times" class="college review" maxlength="5" style="width: 5ch;"/> 次 院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;會議審議通過<br>
@@ -295,7 +267,7 @@
                         <td style="text-align: center;">
                             <label>研發處</label>
                         </td>
-                        <td colspan="3">
+                        <td colspan="7">
                             <p style="text-align: center;">
                                 中 華 民 國
                                 <input id="research_and_development_office_sign_year" class="researchAndDevelopmentOffice review" maxlength="3" style="width: 5ch;">年

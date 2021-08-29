@@ -7,8 +7,10 @@
 <html>
 <head>
     <title>國立臺北科技大學特聘教授申請表審查資料【填寫說明】</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Function.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <style>
         body {
             margin: 20px 0px 0px 0px;
@@ -35,30 +37,8 @@
             border-color: gray;
             -moz-border-radius: 0px 0px 0px 0px;
             height: 20px;
-            vertical-align: text-middle;
+            vertical-align: middle;
         }
-        table td.metadata{
-            width: 75%;
-            background-color: rgb(255, 255, 240);
-            text-align: right;
-        }
-        table td.cb{
-            width: 1%;
-        }
-        table td.checkboxcontent{
-            width: 75%;
-            background-color: rgb(255, 255, 240);
-            text-align: left;
-        }
-        div.content{
-            margin: 0 auto;
-            padding: 50px;
-            width: 75%;
-            background-color: white;
-        }
-        input.back {
-    		width: 55px;
-		}
         .footer{
             display: none;
             text-align-last: center;
@@ -169,7 +149,7 @@
 <body>
     <div name="technologyTransfer" class="content">
         <form id="form">
-            <p>審查資料【填寫說明】</p>
+            <p class="file_title">審查資料【填寫說明】</p>
             <table>
                 <tbody>
                     <tr>

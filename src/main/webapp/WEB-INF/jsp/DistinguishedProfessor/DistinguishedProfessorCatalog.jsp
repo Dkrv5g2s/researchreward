@@ -48,7 +48,7 @@
             <td class="left"><a href="PaperPerformanceDescriptionForm" name="DistinguishedProfessorTableB">傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="DistinguishedProfessorUpload">論文績效說明表-上傳檔案</a></td>
+            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">論文績效說明表-上傳檔案</a></td>
         </tr>
         </tbody>
         
@@ -95,9 +95,10 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "/TraceProgress";
+                        window.open('DistinguishedProfessorPrint', 'TheWindow');
                     },
-                    error: function (jqXHR, textStatus, message) {
-                        alert(jqXHR.textStatus);
+                    error: function (massage) {
+                        alert(massage);
                     }
                 });
             }
@@ -147,10 +148,14 @@
 	            dataType: 'text',
 	            data: "",
 	            contentType: 'application/text',
-	            success: function (data) {
+	            success: function () {
 	                alert('確認審理成功');
-	                window.location.href = "/RewardPendingList";
-	            }
+	                window.location.href = "/ApprovedRewardList";
+                    window.open('DistinguishedProfessorPrint', 'TheWindow');
+                },
+                error: function () {
+                    alert("審理失敗");
+                }
 	        });
 	    }
 	};

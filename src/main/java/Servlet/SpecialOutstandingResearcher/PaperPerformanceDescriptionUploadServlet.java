@@ -2,8 +2,6 @@ package Servlet.SpecialOutstandingResearcher;
 
 import Bean.SpecialOutstandingResearcher.CommonFunction;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
-import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
-import Bean.User.User;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
@@ -23,7 +21,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.TreeMap;
 
 public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
@@ -110,8 +107,8 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
             String fileName =CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_joint_authorization_agreement.pdf";
             System.out.println( fileName );
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-            String path = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path ="C:\\apache-tomcat-8.5.60\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
 
             try {
                 if(!new File(path).isDirectory())
@@ -159,7 +156,8 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
             String fileName = CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_paper_home.pdf";
             //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
 //            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path ="C:\\apache-tomcat-8.5.60\\webapps\\RRS_uploadFile\\paper_performance\\";
 
             try {
                 if(!new File(path).isDirectory())

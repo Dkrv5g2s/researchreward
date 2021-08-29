@@ -7,6 +7,7 @@
 <head>
     <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</title>
 	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+	<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <style>
         body {
             margin: 0;
@@ -424,7 +425,7 @@
 <body>
     <div class="content">
         <form>
-			<p>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</p>
+			<p class="file_title">國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</p>
             <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 		        <tbody>
 		            <tr style="text-align:center;background:  #C0C0C0 ">
