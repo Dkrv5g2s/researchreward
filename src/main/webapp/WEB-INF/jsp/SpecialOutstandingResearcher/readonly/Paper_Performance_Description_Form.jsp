@@ -9,9 +9,10 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container">
-    <p class="four_sections three_years five_years" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表</p>
+    <p class="file_title four_sections three_years five_years">國立臺北科技大學傑出論文績效說明表</p>
     <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="text-align:center;" readonly>期績效說明表(申請第二期以上者填寫)</p>
 </div>
 <div class="container" style="margin: 0px auto;width: 90%;">
@@ -31,7 +32,7 @@
                 <td colspan="1" width="15%">作者排序<br>(W2)</td>
                 <td colspan="1" width="15%">通訊作者數<br>(W3)</td>
                 <td colspan="1" width="15%">額外加權<br>(W4)</td>
-                <td colspan="1" width="15%">換算點數<br>(A)<br>(=W1×W2×W3×W4)</td>
+                <td colspan="1" width="15%">換算點數 (A)<br>(=W1×W2×W3×W4)</td>
             </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;">
@@ -42,7 +43,7 @@
                 <%--                <td colspan="4" class="three_years table_c" style="text-align: left;border-width:3px;border-color: #000000">近三年FWCI值<input name="fwci_value_past_five_year">,若為本校近三年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
                 <%--                <td colspan="4" class="five_years four_sections" style="text-align: left;border-width:3px;border-color: #000000">近五年FWCI值<input name="fwci_value_past_five_year">,若為本校近五年FWCI值之1.5倍則加計點數10點(B)。</td>--%>
                 <td colspan="4" style="text-align: left;border-width:3px;"></td>
-                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數<br>(A)</td>
+                <td colspan="1" style="border-width: 3px;border-color: #000000">總計點數 (A)</td>
                 <td colspan="2" style="border-width: 3px;border-color: #000000"><label id="total_point"></label></td>
             </tr>
             <tr>
@@ -61,7 +62,7 @@
                     <p style="padding-left: 2rem;">3. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
                 </td>
             </tr>
-            <tr>
+            <tr class="no-print">
                 <td colspan="7" style="background-color:rgb(255, 255, 240);text-align: center">
                     <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
                     <button type="button" name="confirm" onclick="location.href='PaperPerformanceDescriptionUpload'">此頁審查完成</button>

@@ -8,9 +8,10 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 <div class="container">
-    <p class="five_years sunshine_scholarship_award" style="font-weight:bold;font-size:20px;text-align: center;">國立臺北科技大學傑出論文績效說明表</p>
+    <p class="file_title five_years sunshine_scholarship_award">國立臺北科技大學傑出論文績效說明表</p>
     <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="text-align:center;">期績效說明表(申請第二期以上者填寫)</p>
 </div>
 <div class="container" style="margin: 0px auto; width: 90%">
@@ -31,13 +32,13 @@
                 <td colspan="1" width="15%">通訊作者數<br>(W3)</td>
                 <td colspan="1" width="15%">額外加權<br>(W4)</td>
                 <td colspan="1" width="15%">換算點數 (A)<br>(=W1×W2×W3×W4)</td>
-                <td colspan="1" width="5%"></td>
+                <td colspan="1" width="5%" class="no-print"></td>
             </tr>
             </thead>
             <tbody id="data_table" style="text-align: center;">
             </tbody>
             <tbody >
-            <tr>
+            <tr class="no-print">
                 <td colspan="8" style="text-align: center;"><input type="button" value="新增" name="add_new_paper" onclick="add_new_item()"></td>
             </tr>
             <tr>
@@ -51,11 +52,11 @@
                     <p style="padding-left: 2rem;">2. <b>每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書。</b></p>
                 </td>
             </tr>
-            <tr>
+            <tr class="no-print">
                 <td colspan="8" style="text-align: left;font-weight: bold;"><input type="checkbox" name="representationClause"><font color="red">申請人充分瞭解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全的法律責任。</font><br>
                 </td>
             </tr>
-            <tr>
+            <tr class="no-print">
                 <td colspan="8" style="background-color:rgb(255, 255, 240);text-align: center">
                     <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'" >
                     <input type="button" width="10%" value="暫存" name="save_the_page" onclick="saveDatas()" disabled = "disabled">
@@ -248,7 +249,7 @@
         html_of_item += "<td colspan='1' style='text-align: center;'><label name='cal_point"+i+"'></label>" ;
         html_of_item += "</td>" ;
 
-        html_of_item += "<td colspan='1' style='text-align: left;'><button type='button' onClick='removeData("+i+")'>刪除</button>" ;
+        html_of_item += "<td colspan='1' style='text-align: left;' class='no-print'><button type='button' onClick='removeData("+i+")'>刪除</button>" ;
         html_of_item += "</td>" ;
 
         html_of_item += "</tr>" ;

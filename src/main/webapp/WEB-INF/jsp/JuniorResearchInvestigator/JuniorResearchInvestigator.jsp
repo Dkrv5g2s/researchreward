@@ -9,6 +9,7 @@
     <title>國立臺北科技大學年輕學者研究獎 推薦申請表</title>
 
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style type="text/css">
@@ -22,13 +23,6 @@
             height: 100%;
             width: 100%;
             border-style: initial;
-        }
-        .file_title{
-            padding-bottom: 1rem;
-            font-size:20px;
-            border-top: hidden;
-            border-left: hidden;
-            border-right: hidden;
         }
         .title{
             background:#C0C0C0;

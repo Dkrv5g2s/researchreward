@@ -1,10 +1,5 @@
 <!DOCTYPE HTML>
-<%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
-<%@ page import="fr.opensagres.xdocreport.document.json.JSONArray" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    JSONArray json = (JSONArray) request.getAttribute("data");
-%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html lang="zh">
 <head>
     <title>年輕學者研究獎 審查資料</title>
@@ -36,37 +31,11 @@
             text-align: center;
             margin-bottom: 2rem;
         }
-        .footer{
-            text-align-last: center;
-            margin: 1rem;
-        }
     </style>
-
-    <%
-        JSONArray jsonArray = (JSONArray)json.get(0);
-        for(Object object: jsonArray){
-            JSONObject jsonObject = (JSONObject)object;
-    %>
-    <script>
-        $(document).ready(function () {
-            let data = "<tr name=\"technologyTransfer\">\n" +
-                    "                    <td><input type=\"text\" name=\"technologyTransferContractName\" value=\"<%=jsonObject.get("technologyTransferContractName")%>\"></td>\n" +
-                    "                    <td><input type=\"text\" name=\"technologyTransferDepartment\" value=\"<%=jsonObject.get("technologyTransferDepartment")%>\"></td>\n" +
-                    "                    <td><input type=\"date\" name=\"contractDate\" value=\"<%=jsonObject.get("contractDate")%>\"></td>\n" +
-                    "                    <td><input type=\"text\" name=\"technologyTransferFund\" value=\"<%=jsonObject.get("technologyTransferFund")%>\"></td>\n" +
-                    "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\" value=\"<%=jsonObject.get("technologyTransferFundBringInDate")%>\"></td>\n" +
-                    "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-                    "                </tr>";
-            $("div[name='technologyTransfer'] tr[name=add]").before(data);
-        })
-    </script>
-    <%
-        }
-    %>
 </head>
 <body>
 <div name="technologyTransfer" class="content">
-    <h2>年輕學者研究獎 審查資料</h2>
+    <p class="file_title">年輕學者研究獎 審查資料</p>
     <p>一、每篇論文僅能單一作者提出申請，若有2位或以上本校教師為共同作者，請檢附其他教師同意書<strong>(共同著作授權同意書)</strong>。<p>
     <p>二、學術論著採計Scopus / WOS論文以本校「教師評鑑及基本資料庫」登錄為準，請檢附<strong>「傑出論文績效說明表」</strong>。並請檢附下列證明文件：</p>
     <div style="padding-left: 2rem;">
@@ -95,74 +64,8 @@
         </table>
         <div class="footer">
             <button type="button" name="return_last_page" onclick="location.href='JuniorResearchInvestigatorCatalog'">回上頁</button>
-<%--            <button type="button" name="confirm" onclick="commit()">暫存</button>--%>
         </div>
     </form>
 </div>
 </body>
-<script>
-    function create() {
-        var data = "<tr name=\"technologyTransfer\">\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferContractName\"></td>\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferDepartment\"></td>\n" +
-            "                    <td><input type=\"date\" name=\"contractDate\"></td>\n" +
-            "                    <td><input type=\"text\" name=\"technologyTransferFund\"></td>\n" +
-            "                    <td><input type=\"date\" name=\"technologyTransferFundBringInDate\"></td>\n" +
-            "                    <td><button type=\"button\" name=\"delete\">刪除</button></td>\n" +
-            "                </tr>";
-        $("div[name='technologyTransfer'] tr[name=add]").before(data);
-    }
-
-    $(document).on("click", "button[name='delete']",function(){
-        var thisTr = $(this).parents("tr");
-        thisTr.remove();
-    });
-
-    function commit(){
-        $.ajax({
-            type: 'POST',
-            url: 'JuniorResearchInvestigatorReviewInformation',
-            dataType: 'text',
-            data: JSON.stringify(tableToJson()),
-            contentType: 'application/json',
-            success: function(data){
-                alert('存檔成功');
-                window.location.href="JuniorResearchInvestigatorReviewInformation";
-            },
-            error:function(data) {
-                alert("存檔失敗");
-            }
-        });
-    }
-
-    function tableToJson(){
-        const table = document.getElementById("technologyTransfer");
-        // first row needs to be headers
-        const elements = table.getElementsByTagName("lable");
-        let headers = [];
-        for (let i=0; i<elements.length; i++) {
-            headers[i] = elements.item(i).getAttribute("name");
-        }
-        // go through cells
-        let data = [];
-        let dataNumber = 0;
-        const tableRows = table.rows;
-        let tableCells = [];
-        for (let i=1; i<tableRows.length-1; i++) {
-            let tableRow = tableRows[i];
-            let rowData = {};
-            tableCells = tableRow.cells;
-            for (let j=0; j<tableCells.length-1; j++) {
-                const inputValue = tableCells[j].getElementsByTagName("input")[0].value;
-                rowData[ headers[j] ] = inputValue;
-                if(inputValue.length > 0){
-                    dataNumber++;
-                }
-            }
-            data.push(rowData);
-        }
-        data.push({"fill_rate": tableCells.length === 0 ? 1 : dataNumber/((tableRows.length-2) * (tableCells.length-1))});
-        return data;
-    }
-</script>
 </html>

@@ -16,20 +16,13 @@
     <title>年輕學者研究獎 近三年內發表之期刊論文統計表</title>
 
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 
     <style type="text/css">
-        div.content{
-            width:80%;
-        }
         tr{
             text-align:center;
-        }
-        .file_title{
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
         }
         .title{
             background:#C0C0C0;
@@ -49,7 +42,7 @@
             vertical-align: top;
             text-align: left;
             width: 200px;
-            height: 80px;"
+            height: 80px;
         }
     </style>
 </head>
@@ -366,11 +359,11 @@
     function calculatePoint(){
         let FWCIValueOfNTUT = "${fwci}";
         let FWCIValueOfUser = document.getElementById("fwci_value").innerHTML;
-        let multipleOfFWCI = roundDecimal(FloatDiv(FWCIValueOfUser,FWCIValueOfNTUT),2).toString();
+        let multipleOfFWCI = FloatDiv(FWCIValueOfUser,FWCIValueOfNTUT);
 
         let h5IndexOfNTUT = "${h5Index}";
         let h5IndexOfUser = document.getElementById("h5_index").innerHTML;
-        let multipleOfH5 = roundDecimal(FloatDiv(h5IndexOfUser, h5IndexOfNTUT),2).toString();
+        let multipleOfH5 = FloatDiv(h5IndexOfUser, h5IndexOfNTUT);
 
         document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleOfFWCI;
         document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleOfH5;
@@ -449,7 +442,8 @@
 
         r1 = Number(str1.replace(".", ""))
         r2 = Number(str2.replace(".", ""))
-        return (r1 / r2) * Math.pow(10, t2 - t1);
+        let result = (r1 / r2) * Math.pow(10, t2 - t1)
+        return roundDecimal(result,2).toString();
     }
 </script>
 </body>

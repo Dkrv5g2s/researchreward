@@ -50,7 +50,7 @@
                 <td class="left"><a href="PaperPerformanceDescriptionForm" name="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="PaperPerformanceDescriptionUpload" name="JuniorResearchInvestigatorUpload">傑出論文績效說明表-上傳檔案</a></td>
+                <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
             </tr>
         </tbody>
     </table>
@@ -107,8 +107,8 @@
                         window.location.href = "/TraceProgress";
                         window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
                     },
-                    error: function (jqXHR, textStatus, message) {
-                        alert(jqXHR.responseText);
+                    error: function (massage) {
+                        alert(massage);
                     }
                 });
             }
@@ -162,6 +162,9 @@
                     alert('確認審理成功');
                     window.location.href = "/ApprovedRewardList";
                     window.open('JuniorResearchInvestigatorPrint', 'TheWindow');
+                },
+                error: function (massage) {
+                    alert("審理失敗");
                 }
             });
         }
