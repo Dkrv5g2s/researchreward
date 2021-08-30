@@ -6,6 +6,7 @@
 
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 <style>
     .pre{
         margin-left: 2rem;
@@ -17,13 +18,10 @@
     }
 </style>
 <div class="content" >
-    <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
+    <p class="file_title">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
     <form id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
-<%--            <tr>--%>
-<%--                <td colspan="1"><a>申請序號:</a><input type="text" value="研發處填寫" name="project_id" style="display:display;" /></td>--%>
-<%--            </tr>--%>
             <tr>
                 <td colspan="1" width="20%"><label id="applicant_title">申請人姓名</label>
                     <font color="red">＊</font>
@@ -135,7 +133,7 @@
             </tr>
             <tr>
                 <td colspan="1" name="level_eight_to_nine">第八至第九級</td>
-                <td rowspan="1" colspan="5">
+                <td rowspan="3" colspan="5">
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_one" value="當年度獲聘為本校特聘教授者">1.當年度獲聘為本校特聘教授者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_two" value="前一年度獲本校傑出研究獎者">2.前一年度獲本校傑出研究獎者<br>
                     <input type="checkbox" name="main_standard" id="level_eight_to_night_number_three" value="前一年度獲本校傑出產學合作獎者">3.前一年度獲本校傑出產學合作獎者<br>
@@ -147,33 +145,32 @@
                     </label>
                     <p>※ 以本級第4項(3)、(4)申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。</p>
             </tr>
-<%--            <tr style="background:#C0C0C0">--%>
-<%--                <td colspan="1">申請第5項(1)(2)院推薦排序</td>--%>
-<%--            </tr>--%>
-<%--            <tr style="vertical-align: bottom;">--%>
-<%--                <td colspan="1"><br><br><br>(由學院填寫)</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td colspan="2">系、所(簽章)</td>--%>
-<%--                <td colspan="2">學院(簽章)</td>--%>
-<%--                <td colspan="2">研發處(核備)</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td colspan="2"><input type="checkbox" name="dep_sign">申請資料經審查確認齊備。<br><br><br></td>--%>
-<%--                <td colspan="2">本案業經<input name="meeting_time" value="" size="10" maxlength="20" type="text" id="d03" readonly><input value="..." type="button" onclick="WdatePicker({el:'d03'})">學院相關會議審議通過。<br><br><br></td>--%>
-<%--                <td colspan="2"><br><br><br></td>--%>
-<%--            </tr>--%>
-
             <tr>
-                <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <button type="button" width="10%" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">回上頁</button>
-                    <button type="button" width="10%" name="save_the_page">存檔</button>
+                <td for="college_recommended_order" style="background: #C0C0C0;">
+                    申請第4項(1)(2)院推薦排序
                 </td>
+            </tr>
+            <tr>
+                <td><input class="college" name="college_recommended_order" size="10" maxlength="5" disabled></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="33%">系、所(簽章)</td>
+                <td colspan="2" width="33%">學院(簽章)</td>
+                <td colspan="2" width="33%">研發處(核備)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="department" type="checkbox" name="department_review" disabled>申請資料經審查確認齊備。<br><br><br></td>
+                <td colspan="2">本案業經<input class="college" type="date" name="college_review_date" id="d03" disabled>學院相關會議審議通過。<br><br><br></td>
+                <td colspan="2"><input class="researchAndDevelopmentOffice" type="date" name="research_office_review_date" value="" size="10" maxlength="20" type="text" id="d04" disabled><br><br><br></td>
             </tr>
             </tbody>
         </table>
         <font>※ 本案請經由各學院相關會議審查後，由學院彙整送至研發處提交本校「彈性薪資審查委員會」審議。</font><br>
         <font>※ 以上檢附之相關文件不全或不符規定者，不予受理。</font><br>
+        <div class="footer">
+            <button type="button" width="10%" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">回上頁</button>
+            <button type="button" width="10%" name="save_the_page">暫存</button>
+        </div>
     </form>
 </div>
 
@@ -204,9 +201,6 @@
             $("input[name='executed_tech_proj_yes']").prop( "checked",false  ) ;
             $("input[name='executed_tech_proj_no']").prop( "checked",true  ) ;
         }
-
-
-
 
         standard_list = last_version_of_form["standard_list"] ;
         for ( var i = 0; i < standard_list.length ; i++ ) {
@@ -294,8 +288,7 @@
                 }
             }
         }
-        console.log(inputNumber/dataNumber, "=", inputNumber, "/", dataNumber);
-        return inputNumber/dataNumber;
+        return inputNumber/(dataNumber-3);//review input-3
     }
 
     $(document).on( "click", "button[name='save_the_page']", function() {

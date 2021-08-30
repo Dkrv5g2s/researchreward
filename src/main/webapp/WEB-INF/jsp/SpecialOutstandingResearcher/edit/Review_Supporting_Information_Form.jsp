@@ -1,27 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
 
-<%@ page import="Bean.Project.RewardProject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
     response.setHeader("Pragma","no-cache");
     response.setHeader("Cache-Control","no-cache");
     response.setDateHeader("Expires", 0);
 %>
-<%
-    Gson gson = new Gson();
-
-%>
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/js/Function.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<style>
-    p {
-        font-size: 15px;
-    }
-</style>
-<div>
-    <p style="font-weight:bold;font-size:20px;">※審查資料【填寫說明】</p>
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<div class="content">
+    <p class="file_title">※審查資料【填寫說明】</p>
     
     <p>一、 所有申請等級(第一至九級)皆需檢附<a style="font-weight: bold; background: #C0C0C0">表A「五年內傑出績效說明表」</a>。</p>
     <p>二、 以傑出研究奬、特聘教授等奬項申請者，請檢附相關聘書資料影本供參。</p>
@@ -50,16 +40,13 @@
                 <tr style="display:none;">
                     <td colspan="6" width="100%"><input type="button" name="add_new_contract" value="  新增  " onclick="add_new_item()"></td>
                 </tr>
-                <tr>
-                    <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%">
-                        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
-                        <%--                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveDatas()"  >--%>
-                    </td>
-                </tr>
             </tbody>
 
         </table>
     </form>
+    <div class="footer">
+        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
+    </div>
 </div>
 <script>
     var latest_data = ${latest_data} ;

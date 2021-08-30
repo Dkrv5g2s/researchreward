@@ -98,6 +98,14 @@
         <servlet-name>SpecialOutstandingResearcherApplicationServlet</servlet-name>
         <url-pattern>/SpecialOutstandingResearcherApplicationForm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SpecialOutstandingResearcherPrintServlet</servlet-name>
+        <servlet-class>Servlet.SpecialOutstandingResearcher.SpecialOutstandingResearcherPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpecialOutstandingResearcherPrintServlet</servlet-name>
+        <url-pattern>/SpecialOutstandingResearcherPrint</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>ApproveApplyServlet</servlet-name>

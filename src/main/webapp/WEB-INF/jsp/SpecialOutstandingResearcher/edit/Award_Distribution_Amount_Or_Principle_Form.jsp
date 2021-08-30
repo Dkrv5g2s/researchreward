@@ -3,9 +3,10 @@
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 
-<div class="content" style="width: 100%">
-    <p style="font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
+<div class="content" style="width: 90%;">
+    <p class="file_title">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
@@ -15,11 +16,11 @@
                     <th colspan="1" width="15%">職稱</th>
                     <th colspan="1" width="15%">到校年月</th>
                     <th colspan="1" width="15%">獎勵金分配金額或原則(限200字)</th>
-                    <th colspan="1" width="10%"></th>
+                    <th colspan="1" width="10%"class="no-print"></th>
                 </thead>
             <tbody id="data_table" style="text-align: center;">
             </tbody>
-            <tbody style="text-align: center;">
+            <tbody style="text-align: center;" class="no-print">
                 <tr>
                     <td colspan="7" width="100%">
                         <input type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
@@ -28,7 +29,7 @@
                 <tr>
                     <td colspan="7" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">
-                        <input type="button" width="10%" value="存檔" name="save_the_page" onclick="saveData()">
+                        <input type="button" width="10%" value="暫存" name="save_the_page" onclick="saveData()">
                     </td>
                 </tr>
             </tbody>
@@ -85,9 +86,9 @@
         html_of_item += "<td colspan='1' width='15%'><input name='name"+i+"' size='10' maxlength='40'></td>";
         html_of_item += "<td colspan='1' width='15%'><input name='college_and_department"+i+"' size='10' maxlength='40' ></td>" ;
         html_of_item += "<td colspan='1' width='15%'><input name='job"+i+"' size='10' maxlength='40'></td>" ;
-        html_of_item += "<td colspan='1' width='15%'><input name='year"+i+"' size='6' maxlength='40' >年<br><input name='month"+i+"' size='6' maxlength='40' >月</td>" ;
+        html_of_item += "<td colspan='1' width='15%'><input name='year"+i+"' size='6' maxlength='40' style='width: 2rem;' >年<br><input name='month"+i+"' size='6' maxlength='40' style='width: 1rem;' >月</td>" ;
         html_of_item += "<td colspan='1' width='15%'><textarea style='resize:none;width:100%;height:75px;' name='principle"+i+"' maxlength='300' onkeyup='wordsTotal()' ></textarea></td>" ;
-        html_of_item += "<td colspan='1' width='10%'><input type='button' name='delete_contract"+i+"' value='刪除' onclick='removeData("+i+" )'></td>" ;
+        html_of_item += "<td colspan='1' width='10%' class='no-print'><input type='button' name='delete_contract"+i+"' value='刪除' onclick='removeData("+i+" )'></td>" ;
         html_of_item += "</tr>" ;
 
         return html_of_item ;

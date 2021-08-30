@@ -333,7 +333,6 @@
     function calculateTotal() {
         datasFromTable()
         let sumOfTotalcolumn = 0.0;
-        console.log("latest_data[paper_performance_list]",latest_data["paper_performance_list"]);
         for(let i=0;i<latest_data["paper_performance_list"].length;i++){
             let cal_total = parseFloat( $("input:checked[name='rank_of_scholarly_journals"+i+"']" ).attr( 'data-weight' )) ;
             cal_total *= parseFloat( $("input:checked[name='author_order"+i+"']" ).attr( 'data-weight' )) ;

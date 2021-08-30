@@ -6,19 +6,7 @@
 <html>
 <head>
 	<title>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</title>
-	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 	<style>
-		table td.metadata{
-			text-align: right;
-		}
-		table td.cb{
-			width: 1%;
-		}
-		table td.checkboxcontent{
-			width: 500px;
-			background-color: rgb(255, 255, 240);
-			text-align: left;
-		}
 		/* Chrome, Safari, Edge, Opera */
 		input::-webkit-outer-spin-button,
 		input::-webkit-inner-spin-button {
@@ -29,12 +17,6 @@
 		/* Firefox */
 		input[type=number] {
 			-moz-appearance: textfield;
-		}
-		input{
-			width: 100%;
-		}
-		input.back {
-			width: 55px;
 		}
 		input.date {
 			width: 135px;
@@ -55,6 +37,8 @@
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/Function.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
 	<script>
 
 		function commit(){
@@ -69,8 +53,7 @@
 					location.reload();
 				}
 			});
-
-		};
+		}
 
 		function InputToJson(){
 			var data = {};
@@ -270,8 +253,7 @@
 
 			document.getElementById("FWCIValueOfUserDivideNTUT").innerHTML =  multipleofFWCI;
 			document.getElementById("h5IndexOfUserDivideNTUT").innerHTML =  multipleofh5;
-			console.log("FWCIuser:",FWCIValueofuser,"ntut:",FWCIValueofntut,"multiple:",multipleofFWCI,"FWCIPrize:",getPrizeByFWCIMultiple(multipleofFWCI))
-			console.log("h5user:",h5Indexofuser,"ntut:",h5Indexofntut,"multiple:",multipleofh5,"FWCIPrize:",getPrizeByh5Multiple(multipleofh5))
+
 			let betterAmount = parseFloat(getPrizeByFWCIMultiple(multipleofFWCI)) >= parseFloat(getPrizeByh5Multiple(multipleofh5)) ? getPrizeByFWCIMultiple(multipleofFWCI) :getPrizeByh5Multiple(multipleofh5);
 			document.getElementById("FWCIPrize").innerHTML = betterAmount;
 
@@ -351,8 +333,6 @@
 
 
 		$(document).ready(function(){
-
-
 			$("input").blur(function(){
 				if($(this).val()== ""){
 					$(this).val("0");
@@ -398,13 +378,23 @@
 	<script>
 		$(document).ready(function (){
 			setReadOnly(<%=request.getAttribute("readonly")%>);
+			const role = "${role}";
+			if(role === "teacher"){
+				$(".review").attr('disabled','disabled');
+				$("#apply_footer").show();
+				$("#review_footer").remove();
+			}
+			else{
+				$("#review_footer").show();
+				$("#apply_footer").remove();
+			}
 		});
 	</script>
 </head>
 <body>
 <div class="content">
 	<form>
-		<p>國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</p>
+		<p class="file_title">國立臺北科技大學獎勵特殊優秀研究人才傑出績效說明表</p>
 		<table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
 			<tbody>
 			<tr class="title">
@@ -750,9 +740,13 @@
 			</tr>
 			</tbody>
 		</table>
-		<p style="text-align: center;">
-			<input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'"  >
-			<button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
+		<p id="apply_footer" class="footer">
+			<button type="button" name="return_last_page" onclick="location.href='SpecialOutstandingResearcherCatalog'">回上頁</button>
+			<button type="button" onclick="commit()" disabled>暫存</button>
+		</p>
+		<p id="review_footer" class="footer">
+			<input type="button" name="go_to_catalog" class="review" value="回目錄" onclick="location.href='SpecialOutstandingResearcherCatalog'" />
+			<input type="button" class="review" value="此頁審查完成" onclick="location.href='ReviewSupportingInformationForm'" />
 		</p>
 	</form>
 </div>

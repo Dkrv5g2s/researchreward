@@ -30,6 +30,8 @@ public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         getForm(req);
+        String userRole = session.getAttribute("userRole").toString();
+        req.setAttribute("role", userRole);
         req.setAttribute("readonly",session.getAttribute("readonly"));
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));

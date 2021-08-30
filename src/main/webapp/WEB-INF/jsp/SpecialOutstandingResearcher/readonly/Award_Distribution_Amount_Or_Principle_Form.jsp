@@ -1,21 +1,13 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ page import="Bean.Project.RewardProject" %>--%>
-<%--<%  /*避免瀏覽器因cache而無法看到最新資料*/--%>
-<%--    response.setHeader("Pragma","no-cache");--%>
-<%--    response.setHeader("Cache-Control","no-cache");--%>
-<%--    response.setDateHeader("Expires", 0);--%>
-<%--%>--%>
-<%--<%--%>
-<%--    Gson gson = new Gson();--%>
-<%--%>--%>
+
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 
-<div class="content" style="width: 100%">
-    <p style="font-weight:bold;font-size:20px;">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
+<div class="content" style="width: 90%;">
+    <p class="file_title">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>
     <form method="post" id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
@@ -29,7 +21,7 @@
                 </thead>
             <tbody id="data_table" style="text-align: center;">
             </tbody>
-            <tbody style="text-align: center;">
+            <tbody style="text-align: center;" class="no-print">
                 <tr>
                     <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回目錄" name="go_to_catalog" onclick="location.href='SpecialOutstandingResearcherCatalog'">
@@ -64,7 +56,7 @@
         html_of_item += "<td colspan='1' width='16%'><input name='name"+i+"' size='10' maxlength='40' readonly></td>";
         html_of_item += "<td colspan='1' width='16%'><input name='college_and_department"+i+"' size='10' maxlength='40' readonly></td>" ;
         html_of_item += "<td colspan='1' width='16%'><input name='job"+i+"' size='10' maxlength='40' readonly></td>" ;
-        html_of_item += "<td colspan='1' width='16%'><input name='year"+i+"' size='6' maxlength='40' readonly>年<br><input name='month"+i+"' size='6' maxlength='40' readonly>月</td>" ;
+        html_of_item += "<td colspan='1' width='16%'><input name='year"+i+"' size='6' maxlength='40' style='width: 2rem;' readonly>年<br><input name='month"+i+"' size='6' maxlength='40' style='width: 1rem;' readonly>月</td>" ;
         html_of_item += "<td colspan='1' width='20%'><textarea style='resize:none;width:100%;height:75px;' name='principle"+i+"' maxlength='300' onkeyup='wordsTotal()' readonly></textarea></td>" ;
         html_of_item += "</tr>" ;
 
@@ -109,6 +101,7 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "/ApprovedRewardList";
+                    window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
                 }
             });
         }

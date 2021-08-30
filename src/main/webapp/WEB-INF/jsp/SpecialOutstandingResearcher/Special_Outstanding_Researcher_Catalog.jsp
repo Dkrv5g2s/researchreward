@@ -36,7 +36,7 @@
 
             </tr>
             <tr >
-                <td><a href="PaperPerformanceDescriptionUpload" name="SpecialOutstandingResearcherUpload">論文績效說明表-上傳檔案</a></td>
+                <td><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">論文績效說明表-上傳檔案</a></td>
             </tr>
 
             <tr >
@@ -45,11 +45,11 @@
         </tbody>
     </table>
 
-    <div style="margin: 1rem;" class="edit">
+    <div class="edit footer">
         <button type="button" name="return_last_page" onclick="location.href='RewardList'">回上頁</button>
         <button type="button" name="send_application" onclick="sendApply()">提出申請</button>
     </div>
-    <div style="margin: 1rem;" class="review">
+    <div class="review footer">
         <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
         <button type="button" name="return_last_page" onclick="rejectApply()">退件</button>
         <button type="button" name="confirm" onclick="approveApply()">審查完成</button>
@@ -97,9 +97,10 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "/TraceProgress";
+                        window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
                     },
-                    error: function (jqXHR, textStatus, message) {
-                        alert(jqXHR.responseText);
+                    error: function (message) {
+                        alert(message);
                     }
                 });
             }
@@ -152,6 +153,7 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "/ApprovedRewardList";
+                    window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
                 }
             });
         }

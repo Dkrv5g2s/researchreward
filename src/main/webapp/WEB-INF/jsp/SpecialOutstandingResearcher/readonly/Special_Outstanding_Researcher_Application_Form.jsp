@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" import="com.google.gson.*" %>
 
-<%@ page import="Bean.Project.RewardProject" %>
 <%@ page import="fr.opensagres.xdocreport.document.json.JSONObject" %>
 <%  /*避免瀏覽器因cache而無法看到最新資料*/
     response.setHeader("Pragma","no-cache");
@@ -14,6 +13,7 @@
 
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
 <style>
     .pre{
         margin-left: 2rem;
@@ -25,13 +25,10 @@
     }
 </style>
 <div class="content" >
-    <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
+    <p class="file_title">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
     <form id="c001_form">
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
-<%--            <tr>--%>
-<%--                <td colspan="1"><a>申請序號:</a><input type="text" value="研發處填寫" name="project_id" style="display:display;" /></td>--%>
-<%--            </tr>--%>
             <tr>
                 <td colspan="1" width="20%"><label id="applicant_title">申請人姓名</label>
                     <font color="red">＊</font>
@@ -160,7 +157,7 @@
                     <p>※ 以本級第4項(3)、(4)申請者，「傑出績效說明表」請先至產學處確認核章後，再送交各系所審查。</p>
             </tr>
             <tr>
-                <td for="college_recommended_order" style="background: #C0C0C0; font-size: small; padding: initial;">
+                <td for="college_recommended_order" style="background: #C0C0C0;">
                     申請第4項(1)(2)院推薦排序
                 </td>
             </tr>
@@ -272,7 +269,7 @@
             data: { review_data: InputFormToJson(), "func":"review" } ,
             success: function(data){
                 alert("success");
-                location.href = "PaperPerformanceDescriptionForm";
+                location.href = "OutstandingPerformanceDescriptionForm";
             },
             error:function(data) {
                 alert("存檔失敗");
