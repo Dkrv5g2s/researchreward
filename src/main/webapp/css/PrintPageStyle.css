@@ -23,6 +23,9 @@
     iframe{
         min-height: 29.7cm;
     }
+    .page-break-before{
+        page-break-before: always;
+    }
 }
 .print-page{
     width: 21cm;

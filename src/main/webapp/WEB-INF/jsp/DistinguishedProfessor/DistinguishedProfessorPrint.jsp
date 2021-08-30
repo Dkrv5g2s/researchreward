@@ -8,16 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>JuniorResearchInvestigatorPrint</title>
+    <title>DistinguishedProfessorPrint</title>
     <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/PrintFunction.js"></script>
 
 </head>
 <body style="text-align: center;">
-<iframe class="print-page" id="page1" frameborder="0" scrolling="no"></iframe>
-<iframe class="print-page" id="page2" frameborder="0" scrolling="no"></iframe>
-<iframe class="print-page" id="page3" frameborder="0" scrolling="no"></iframe>
+<iframe class="print-page" id="page1" frameborder="0" scrolling="no" style="height: -webkit-fill-available;"></iframe><div class="page-break-before"></div>
+<iframe class="print-page" id="page2" frameborder="0" scrolling="no"></iframe><div class="page-break-before"></div>
+<iframe class="print-page" id="page3" frameborder="0" scrolling="no"></iframe><div class="page-break-before"></div>
 <iframe class="print-page" id="page4" frameborder="0" scrolling="no"></iframe>
 
 <script type="text/javascript">
