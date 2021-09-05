@@ -340,6 +340,11 @@
                         <input type="checkbox" name="declaration" class="auto" checked disabled="disabled"/>
                         <b><font color="red">申請人聲明&nbsp;充分瞭解申請要點，且以上所填各項資料與勾選事項皆確實無誤，若有不實本人願負擔所有法律及行政責任。</font></b>
                     </p>
+                    <p style="text-align: right;">
+                        <label style="margin-right: 15ch;">申請人簽章：</label>
+                        <label for="commit_date">日期：</label>
+                        <input type="date" id="commit_date" style="width: auto;" value="<%=json.optString("commit_date", "")%>" disabled>
+                    </p>
                 </td>
             </tr>
             </tbody>

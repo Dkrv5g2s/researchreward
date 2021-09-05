@@ -105,8 +105,6 @@
 </div>
 
 <script>
-    //var latest_data = ${latest_data} ;
-    latest_data
     var latest_data = <%=latest_data%> ;
     let tableCJson = ${tableCJson};
     let IsTableC = tableCJson.isTableC;
@@ -193,10 +191,6 @@
             latest_data["paper_performance_list"].push(item);
             i++;
         }
-
-        latest_data["fwci_value_past_five_year"] = $('input[name="fwci_value_past_five_year"]').val() ;
-        latest_data["fwci_value_past_five_year"] = $('label[id="total_point"]').text() ;
-
     }
 
     function showDatas(){

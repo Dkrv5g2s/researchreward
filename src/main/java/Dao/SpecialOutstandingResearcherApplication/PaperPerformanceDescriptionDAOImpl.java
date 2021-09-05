@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescriptionDAO {
 
@@ -21,8 +20,8 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
     private static final String SELECT_SPECIFIED_Paper_Performance_with_project_id = "SELECT * FROM paper_performance WHERE project_id = ? " ;
     private static final String SELECT_SPECIFIED_Paper_Performance_Description = "SELECT * FROM paper_performance_description WHERE project_id = ? " ;
 
-    private static final String INSERT_INTO_SPECIFIED_Paper_Performance_Description = "INSERT INTO paper_performance_description(project_id,fwci_value_past_five_year,total_point) VALUES (?,?,?) " +
-            "ON DUPLICATE KEY UPDATE fwci_value_past_five_year = ?,total_point = ? ;";
+    private static final String INSERT_INTO_SPECIFIED_Paper_Performance_Description = "INSERT INTO paper_performance_description(project_id,commit_date) VALUES (?,?) " +
+            "ON DUPLICATE KEY UPDATE commit_date = ?;";
 
     private static final String DELETE_SPECIFIED_Paper_Performance = "DELETE FROM paper_performance WHERE paper_id = ?" ;
 
@@ -62,8 +61,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             ResultSet resultSet = preparedStatement.executeQuery() ;
             if ( resultSet.next() ) {
 
-                paperPerformanceDescriptionForm.setFwci_value_past_five_year( resultSet.getString("fwci_value_past_five_year") );
-                paperPerformanceDescriptionForm.setTotal_point( resultSet.getString( "total_point" ) );
+                paperPerformanceDescriptionForm.setCommitDate( resultSet.getString("commit_date") );
             }
 
             connection.close();
@@ -126,11 +124,8 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_SPECIFIED_Paper_Performance_Description))
         {
             preparedStatement.setInt(1,paperPerformanceDescriptionForm.getProject_id());
-            preparedStatement.setString(2, paperPerformanceDescriptionForm.getFwci_value_past_five_year());
-            preparedStatement.setString(3,paperPerformanceDescriptionForm.getTotal_point());
-
-            preparedStatement.setString(4, paperPerformanceDescriptionForm.getFwci_value_past_five_year());
-            preparedStatement.setString(5,paperPerformanceDescriptionForm.getTotal_point());
+            preparedStatement.setString(2, paperPerformanceDescriptionForm.getCommitDate());
+            preparedStatement.setString(3, paperPerformanceDescriptionForm.getCommitDate());
 
             preparedStatement.executeUpdate() ;
             connection.close();
@@ -164,7 +159,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setString(4, paperPerformance.getBook_name());
             preparedStatement.setString(5, paperPerformance.getScholarly_journals_name());
             preparedStatement.setString(6,paperPerformance.getTotal_roll());
-            preparedStatement.setString(7,paperPerformance.getTotal_page()    );
+            preparedStatement.setString(7,paperPerformance.getTotal_page());
             preparedStatement.setString(8,paperPerformance.getPublish_time());
             preparedStatement.setString(9,paperPerformance.getRank_of_scholarly_journals());
             preparedStatement.setString(10,paperPerformance.getAuthor_order());
@@ -177,7 +172,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setString(16, paperPerformance.getBook_name());
             preparedStatement.setString(17, paperPerformance.getScholarly_journals_name());
             preparedStatement.setString(18,paperPerformance.getTotal_roll());
-            preparedStatement.setString(19,paperPerformance.getTotal_page()    );
+            preparedStatement.setString(19,paperPerformance.getTotal_page());
             preparedStatement.setString(20,paperPerformance.getPublish_time());
             preparedStatement.setString(21,paperPerformance.getRank_of_scholarly_journals());
             preparedStatement.setString(22,paperPerformance.getAuthor_order());
@@ -205,7 +200,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             preparedStatement.setString(3, paperPerformance.getBook_name());
             preparedStatement.setString(4, paperPerformance.getScholarly_journals_name());
             preparedStatement.setString(5,paperPerformance.getTotal_roll());
-            preparedStatement.setString(6,paperPerformance.getTotal_page()    );
+            preparedStatement.setString(6,paperPerformance.getTotal_page());
             preparedStatement.setString(7,paperPerformance.getPublish_time());
             preparedStatement.setString(8,paperPerformance.getRank_of_scholarly_journals());
             preparedStatement.setString(9,paperPerformance.getAuthor_order());
