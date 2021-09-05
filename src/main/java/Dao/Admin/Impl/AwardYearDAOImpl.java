@@ -34,6 +34,7 @@ public class AwardYearDAOImpl implements AwardYearDAO {
                 }
                 awardsYears.put( resultSet.getString("award_name"), jsonObject );
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,6 +55,7 @@ public class AwardYearDAOImpl implements AwardYearDAO {
                     awardYears.put("year"+i, resultSet.getInt("year"+i));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
