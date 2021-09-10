@@ -7,23 +7,21 @@
     input, textarea{
         border-style: none;
         background-color: inherit;
-        page-break-inside: avoid;
-    }
-    p, label{
-        page-break-inside: avoid;
-    }
-    html{
-        position: relative;
-        page-break-after: always;
     }
     .no-print{
         display: none;
     }
 
     iframe{
-        min-height: 29.7cm;
+        display: block;
+        page-break-after: always;
+    }
+    p, textarea{
+        display: block;
+        page-break-inside: avoid;
     }
     .page-break-before{
+        display: block;
         page-break-before: always;
     }
 }
