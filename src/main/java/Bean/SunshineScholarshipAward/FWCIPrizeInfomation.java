@@ -8,15 +8,13 @@ public class FWCIPrizeInfomation {
     private String UnderOnePointEightPrize;
     private String UnderTwoPointTwoPrize;
     private String OverTwoPointTwoPrize;
-    private String FWCIValueOfNTUT;
 
-    public FWCIPrizeInfomation(String underOnePointThreePrize, String underOnePointFivePrize, String underOnePointEightPrize, String underTwoPointTwoPrize, String overTwoPointTwoPrize, String FWCIValueOfNTUT) {
+    public FWCIPrizeInfomation(String underOnePointThreePrize, String underOnePointFivePrize, String underOnePointEightPrize, String underTwoPointTwoPrize, String overTwoPointTwoPrize) {
         UnderOnePointThreePrize = underOnePointThreePrize;
         UnderOnePointFivePrize = underOnePointFivePrize;
         UnderOnePointEightPrize = underOnePointEightPrize;
         UnderTwoPointTwoPrize = underTwoPointTwoPrize;
         OverTwoPointTwoPrize = overTwoPointTwoPrize;
-        this.FWCIValueOfNTUT = FWCIValueOfNTUT;
     }
     public FWCIPrizeInfomation() {
 
@@ -63,15 +61,6 @@ public class FWCIPrizeInfomation {
         OverTwoPointTwoPrize = overTwoPointTwoPrize;
     }
 
-    public String getFWCIValueOfNTUT() {
-        return FWCIValueOfNTUT;
-    }
-
-    public void setFWCIValueOfNTUT(String FWCIValueOfNTUT) {
-        this.FWCIValueOfNTUT = FWCIValueOfNTUT;
-    }
-
-
     @Override
     public String toString() {
         return "FWCIPrizeInfomation{" +
@@ -80,7 +69,6 @@ public class FWCIPrizeInfomation {
                 ", UnderOnePointEightPrize='" + UnderOnePointEightPrize + '\'' +
                 ", UnderTwoPointTwoPrize='" + UnderTwoPointTwoPrize + '\'' +
                 ", OverTwoPointTwoPrize=" + OverTwoPointTwoPrize +  '\'' +
-                ", FWCIValueOfNTUT='" + FWCIValueOfNTUT + '\'' +
                 '}';
     }
 

@@ -16,9 +16,9 @@ public class FWCIPrizeDAOImpl implements FWCIPrizeDAO{
     private static final String GET_OBJECT = "SELECT * FROM sunshine_scholarship_award_fwci_prize WHERE id=?";
 
     private static final String INSERT_OBJECT = "INSERT INTO sunshine_scholarship_award_fwci_prize " +
-            "(under_one_point_three_prize,under_one_point_five_prize,under_one_point_eight_prize,under_two_point_two_prize,over_two_point_two_prize,ntut_fwci_value) " +
-            "values(?,?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
-            "under_one_point_three_prize=?,under_one_point_five_prize=?,under_one_point_eight_prize=?,under_two_point_two_prize=?,over_two_point_two_prize=?,ntut_fwci_value=?;";
+            "(under_one_point_three_prize,under_one_point_five_prize,under_one_point_eight_prize,under_two_point_two_prize,over_two_point_two_prize) " +
+            "values(?,?,?,?,?) ON DUPLICATE KEY UPDATE " +
+            "under_one_point_three_prize=?,under_one_point_five_prize=?,under_one_point_eight_prize=?,under_two_point_two_prize=?,over_two_point_two_prize=?;";
 
 
     @Override
@@ -32,13 +32,11 @@ public class FWCIPrizeDAOImpl implements FWCIPrizeDAO{
             preparedStatement.setString(3,object.getUnderOnePointEightPrize());
             preparedStatement.setString(4,object.getUnderTwoPointTwoPrize());
             preparedStatement.setString(5,object.getOverTwoPointTwoPrize());
-            preparedStatement.setString(6,object.getFWCIValueOfNTUT());
-            preparedStatement.setString(7,object.getUnderOnePointThreePrize());
-            preparedStatement.setString(8,object.getUnderOnePointFivePrize());
-            preparedStatement.setString(9,object.getUnderOnePointEightPrize());
-            preparedStatement.setString(10,object.getUnderTwoPointTwoPrize());
-            preparedStatement.setString(11,object.getOverTwoPointTwoPrize());
-            preparedStatement.setString(12,object.getFWCIValueOfNTUT());
+            preparedStatement.setString(6,object.getUnderOnePointThreePrize());
+            preparedStatement.setString(7,object.getUnderOnePointFivePrize());
+            preparedStatement.setString(8,object.getUnderOnePointEightPrize());
+            preparedStatement.setString(9,object.getUnderTwoPointTwoPrize());
+            preparedStatement.setString(10,object.getOverTwoPointTwoPrize());
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -63,7 +61,6 @@ public class FWCIPrizeDAOImpl implements FWCIPrizeDAO{
                     result.setUnderOnePointEightPrize(rs.getString("under_one_point_eight_prize"));
                     result.setUnderTwoPointTwoPrize(rs.getString("under_two_point_two_prize"));
                     result.setOverTwoPointTwoPrize(rs.getString("over_two_point_two_prize"));
-                    result.setFWCIValueOfNTUT(rs.getString("ntut_fwci_value"));
                 }
             }catch (SQLException ex){
                 ex.printStackTrace();
