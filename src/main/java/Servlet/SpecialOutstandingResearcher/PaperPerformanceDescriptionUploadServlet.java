@@ -104,15 +104,15 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
         if(fileMap.get("joint_authorization_agreement")!=null&&fileMap.get("joint_authorization_agreement").getSize()>0){ //有選擇檔案上傳
             //將檔案存至相對的位置並更新資料庫的選項
 
+
             String fileName =CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_joint_authorization_agreement.pdf";
             System.out.println( fileName );
-            //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.60\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path = "D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
+            this.logger.info( "upload paper_path=" + path);
 
             try {
                 if(!new File(path).isDirectory())
-                    new File(path).mkdir();
+                    new File(path).mkdirs();
 
                 FileOutputStream fos = new FileOutputStream(path+fileName);
                 fos.write(((FileItem)fileMap.get("joint_authorization_agreement")).get());
@@ -154,14 +154,11 @@ public class PaperPerformanceDescriptionUploadServlet extends HttpServlet {
             //將檔案存至相對的位置並更新資料庫的選項
 
             String fileName = CommonFunction.setString(parameterMap.get("upload_paper_id"))+"_paper_home.pdf";
-            //String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
-//            String path ="C:\\apache-tomcat-8.5.55\\webapps\\RRS_uploadFile\\paper_performance\\";
-//            String path ="D:\\JavaProject\\apache-tomcat-8.5.53\\webapps\\RRS_uploadFile\\paper_performance\\";
-            String path ="C:\\apache-tomcat-8.5.60\\webapps\\RRS_uploadFile\\paper_performance\\";
+            String path = this.getServletContext().getRealPath("/")+"WEB-INF\\uploadFile\\paper_performance\\";
 
             try {
                 if(!new File(path).isDirectory())
-                    new File(path).mkdir();
+                    new File(path).mkdirs();
 
                 FileOutputStream fos = new FileOutputStream(path+fileName);
                 fos.write(((FileItem)fileMap.get("paper_home")).get());
