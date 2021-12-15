@@ -25,8 +25,6 @@
                 <tr>
                     <td colspan="6" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回目錄" name="go_to_catalog" onclick="location.href='SpecialOutstandingResearcherCatalog'">
-                        <button type="button" name="return_last_page" onclick="rejectApply()">退件</button>
-                        <button type="button" name="confirm" onclick="approveApply()">審查完成</button>
                     </td>
                 </tr>
             </tbody>
@@ -88,28 +86,6 @@
             $("textarea[name='principle"+i+"']").val(award_distribution_amount_or_principle[i].principle);
 
         }
-    }
-
-    function approveApply(){
-        if (confirm("確定要確認審理?")) {
-            $.ajax({
-                type: 'POST',
-                url: '/ApproveApply',
-                dataType: 'text',
-                data: "",
-                contentType: 'application/text',
-                success: function (data) {
-                    alert('確認審理成功');
-                    window.location.href = "/ApprovedRewardList";
-                    window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
-                }
-            });
-        }
-    }
-
-    function rejectApply(){
-        if (confirm("確定要退件?"))
-            window.location.href="/ReasonForReturn";
     }
 </script>
 </html>

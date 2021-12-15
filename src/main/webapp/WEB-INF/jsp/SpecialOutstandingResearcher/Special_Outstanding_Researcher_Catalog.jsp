@@ -50,7 +50,6 @@
         <button type="button" name="send_application" onclick="sendApply()">提出申請</button>
     </div>
     <div class="review footer">
-        <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
         <button type="button" name="return_last_page" onclick="rejectApply()">退件</button>
         <button type="button" name="confirm" onclick="approveApply()">審查完成</button>
     </div>

@@ -42,8 +42,6 @@
             <tr>
                 <td colspan="4" style="background-color:rgb(255, 255, 240);text-align: center" class="review">
                     <input type="button" width="10%" value="回目錄" name="return_last_page" onclick="location.href='${catalogURL}'" >
-                    <button type="button" name="return_last_page" onclick="location.href='ReasonForReturn'">退件</button>
-                    <button type="button" name="confirm" onclick="commit()">審查完成</button>
                 </td>
             </tr>
             <tr>
@@ -114,27 +112,6 @@
     var latest_data = <%=latest_data%> ;
     let tableCJson = ${tableCJson};
     let IsTableC = tableCJson.isTableC;
-
-    function commit(){
-        let send = confirm('送出後無法取消，確定要送出嗎?');
-        if (!send) {
-            return;
-        }
-        $.ajax({
-            type: 'POST',
-            url: 'SendApply',
-            dataType: 'text',
-            data: "",
-            contentType: 'application/text',
-            success: function(){
-                alert("送出完成");
-                window.location.href="RewardPendingList";
-            },
-            error:function() {
-                alert("送出失敗");
-            }
-        });
-    }
 
     function downloadFile1( index ) {
         var path = "File?func=joint_authorization_agreement&id=" + $("input[name='paper_id"+index+"']").val() ;
@@ -256,9 +233,5 @@
         }
 
     }
-
-
-
-
 </script>
 </html>
