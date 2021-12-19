@@ -8,6 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script>
+        if (window != top)
+            top.location.href = location.href; // 跳轉頁面用
+    </script>
     <title>登入畫面</title>
 </head>
 <body>

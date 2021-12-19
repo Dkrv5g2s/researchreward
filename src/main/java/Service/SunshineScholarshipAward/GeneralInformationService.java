@@ -2,9 +2,12 @@ package Service.SunshineScholarshipAward;
 
 
 
+import Bean.Admin.AwardTimeLimit;
 import Bean.SunshineScholarshipAward.PersonalInformation;
 import Bean.SunshineScholarshipAward.FWCIPrizeInfomation;
 import Bean.SunshineScholarshipAward.FWCIUserInputInfomation;
+import Dao.Admin.AwardTimeLimitDAO;
+import Dao.Admin.Impl.AwardTimeLimitDAOImpl;
 import Dao.SunshineScholarshipAward.Impl.PersonalInfoDAOImpl;
 import Dao.SunshineScholarshipAward.PersonalInfoDAO;
 import Dao.SunshineScholarshipAward.Impl.FWCIPrizeDAOImpl;
@@ -23,6 +26,7 @@ public class GeneralInformationService {
     private FWCIUserInputDAO fwciUserInputDAO = new FWCIUserInputDAOImpl();
     private FWCIPrizeDAO fwciPrizeDAO = new FWCIPrizeDAOImpl();
     private ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+    private AwardTimeLimitDAO awardTimeLimitDAO = new AwardTimeLimitDAOImpl();
 
     public void save(JSONObject jsonObject, int projectId){
 
@@ -61,13 +65,14 @@ public class GeneralInformationService {
         PersonalInformation personalInformation = personalInformationDAO.get(projectId);
         FWCIUserInputInfomation fwciUserInputInfomation = fwciUserInputDAO.get(projectId);
         FWCIPrizeInfomation fwciPrizeInfomation = fwciPrizeDAO.get();
-
+        AwardTimeLimit awardTimeLimit = awardTimeLimitDAO.get();
         JSONObject object = new JSONObject();
 
         try {
             addBeanPropertyToJson(object,personalInformation);
             addBeanPropertyToJson(object,fwciUserInputInfomation);
             addBeanPropertyToJson(object,fwciPrizeInfomation);
+            addBeanPropertyToJson(object,awardTimeLimit);
         }catch(IllegalAccessException e){
             e.printStackTrace();
         }

@@ -28,8 +28,8 @@ public class SunshineScholarshipAwardGeneralInformationServlet extends ServletEn
         HttpSession session = req.getSession();
         //userRole has been stored in session when login
         boolean readonly = (Boolean)session.getAttribute("readonly");
-//        System.out.println("SelectInformationServlet:"+req.toString());
         req.setCharacterEncoding("UTF-8");
+        // 共用fwci of ntut
         req.setAttribute("fwci", awardTimeLimitService.get().getDouble("fwciOfFiveYear"));
         req.setAttribute("h5Index", awardTimeLimitService.get().getDouble("h5Index"));
         req.setAttribute("json",generalInformationService.get(Integer.valueOf((String)session.getAttribute("projectId"))));
