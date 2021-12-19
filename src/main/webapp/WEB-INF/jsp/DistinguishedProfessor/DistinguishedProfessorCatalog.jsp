@@ -59,7 +59,6 @@
         <input type="button" name="commit" value="提出申請" onclick="sendApply()">
     </div>
     <div style="text-align: center;" class="review">
-        <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardPendingList'">
         <input type="button" name="reject" value="退件" onclick="rejectApply()">
         <input type="button" name="approve" value="審查完成" onclick="approveApply()">
     </div>
@@ -139,7 +138,7 @@
         }
         return false;
     }
-	
+
 	function approveApply(){
 	    if (confirm("確定要確認審理?")) {
 	        $.ajax({
@@ -158,13 +157,13 @@
                 }
 	        });
 	    }
-	};
-	
+	}
+
 	function rejectApply(){
 	    if (confirm("確定要退件?"))
 	        window.location.href="/ReasonForReturn";
 	}
-	
+
 	$(document).ready(function () {
 	    $(".review").hide();
 	    $(".edit").hide();
@@ -174,7 +173,7 @@
 	    else{
 	        $(".edit").show();
 	    }
-	})
+	});
 
 </script>
 </html>

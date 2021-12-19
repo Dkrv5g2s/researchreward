@@ -520,7 +520,7 @@
 		                <td colspan="1" width="10%" id="a_article_point_total" class="total_point"><%=json.get("a_article_point_total")%></td>
 		            </tr>
 		            <tr style="text-align: center;" class="count3">
-		                <td colspan="4"  width="54%">
+		                <td colspan="6">
 		                    <p align="left">申請人於SciVal資料庫中近五年FWCI值及h-5指數，若為本校近五年FWCI值及h-5指數之倍數，擇最優一項加計點數，對應表如下：</p>
 		                    <table align="center" style="text-align: center; border:1px #cccccc solid;border-collapse: collapse; min-width: 60px" cellpadding="10" border='1'>
 		                        <tr>
@@ -556,8 +556,8 @@
 		                    <p align="left">上述兩者擇最優一項，加計點數：&nbsp;<span id="FWCIPrize"></span>點(B)。</p>
 		
 		                </td>
-		                <td colspan="2" width="24%">總計點數<br>(A)+(B)</td>
-		                <td colspan="2" width="22%" id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
+		                <td>總計點數<br>(A)+(B)</td>
+		                <td id="a_plus_b_total_point" ><%=json.get("a_plus_b_total_point")%></td>
 		            </tr>
 		            <tr>
 		                <td colspan="8"><p>說明：</p>

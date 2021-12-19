@@ -224,12 +224,6 @@
 
     }
 
-
-    function checkDatas() {
-        return true ;
-    }
-
-
     function operator1(index) {
         $("input[name='upload_paper_id']").val($("input[name='paper_id" + index + "']").val());
         $("input[name='upload_book_name']").val($("input[name='book_name" + index + "']").val());

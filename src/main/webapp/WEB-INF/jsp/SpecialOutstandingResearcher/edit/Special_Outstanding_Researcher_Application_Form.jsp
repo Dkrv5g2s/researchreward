@@ -26,12 +26,12 @@
                 <td colspan="1" width="20%"><label id="applicant_title">申請人姓名</label>
                     <font color="red">＊</font>
                 </td>
-                <td colspan="2" width="40%">
+                <td colspan="2" width="30%">
                     <input name="applicant_name" value="" size="10" maxlength="40">
                 </td>
-                <td colspan="1" width="10%">職稱<font color="red">*</font>
+                <td colspan="1" width="25%">職稱<font color="red">*</font>
                 </td>
-                <td colspan="2" width="30%">
+                <td colspan="2" width="25%">
                     <input name="job" value="" size="10" maxlength="40">
                 </td>
             </tr>
@@ -165,8 +165,10 @@
             </tr>
             </tbody>
         </table>
-        <font>※ 本案請經由各學院相關會議審查後，由學院彙整送至研發處提交本校「彈性薪資審查委員會」審議。</font><br>
-        <font>※ 以上檢附之相關文件不全或不符規定者，不予受理。</font><br>
+        <div style="font-size: smaller;">
+            <label>※ 本案請經由各學院相關會議審查後，由學院彙整送至研發處提交本校「彈性薪資審查委員會」審議。</label><br>
+            <label>※ 以上檢附之相關文件不全或不符規定者，不予受理。</label>
+        </div>
         <div class="footer">
             <button type="button" width="10%" name="return_last_page" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'">回上頁</button>
             <button type="button" width="10%" name="save_the_page">暫存</button>

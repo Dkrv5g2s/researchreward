@@ -33,12 +33,12 @@
                 <td colspan="1" width="20%"><label id="applicant_title">申請人姓名</label>
                     <font color="red">＊</font>
                 </td>
-                <td colspan="2" width="40%">
+                <td colspan="2" width="30%">
                     <input name="applicant_name" value="" size="10" maxlength="40" readonly >
                 </td>
-                <td colspan="1" width="10%">職稱<font color="red">*</font>
+                <td colspan="1" width="25%">職稱<font color="red">*</font>
                 </td>
-                <td colspan="2" width="30%">
+                <td colspan="2" width="25%">
                     <input name="job" value="" size="10" maxlength="40" readonly >
                 </td>
             </tr>
@@ -174,17 +174,17 @@
                 <td colspan="2">本案業經<input class="college" type="date" name="college_review_date" value="" size="10" maxlength="20" type="text" id="d03" disabled>學院相關會議審議通過。<br><br><br></td>
                 <td colspan="2"><input class="researchAndDevelopmentOffice" type="date" name="research_office_review_date" value="" size="10" maxlength="20" type="text" id="d04" disabled><br><br><br></td>
             </tr>
-
-            <tr>
-                <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
-                    <input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'" >
-                    <input type="button" width="10%" value="審查存檔" name="close" onclick="commit()" >
-                </td>
-            </tr>
             </tbody>
         </table>
-        <font>※ 本案請經由各學院相關會議審查後，由學院彙整送至研發處提交本校「彈性薪資審查委員會」審議。</font><br>
-        <font>※ 以上檢附之相關文件不全或不符規定者，不予受理。</font><br>
+        <div style="font-size: smaller;">
+            <label>※ 本案請經由各學院相關會議審查後，由學院彙整送至研發處提交本校「彈性薪資審查委員會」審議。</label><br>
+            <label>※ 以上檢附之相關文件不全或不符規定者，不予受理。</label>
+        </div>
+
+        <div class="footer">
+            <input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SpecialOutstandingResearcherCatalog'" >
+            <input type="button" width="10%" value="審查存檔" name="close" onclick="commit()" >
+        </div>
     </form>
 </div>
 

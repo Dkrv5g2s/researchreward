@@ -4,15 +4,14 @@
 }
 
 @media print {
+    body{
+        margin: 0;
+    }
     input, textarea{
         border-style: none;
         background-color: inherit;
     }
-    .no-print{
-        display: none;
-    }
-
-    iframe{
+    iframe.print-page{
         display: block;
         page-break-after: always;
     }
@@ -20,11 +19,25 @@
         display: block;
         page-break-inside: avoid;
     }
+    div.content {
+        margin: 0;
+    }
+    .no-print{
+        display: none;
+    }
     .page-break-before{
         display: block;
         page-break-before: always;
     }
 }
-.print-page{
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+iframe.print-page{
     width: 21cm;
 }
