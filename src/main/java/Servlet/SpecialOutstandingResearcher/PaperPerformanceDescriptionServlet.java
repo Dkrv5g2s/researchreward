@@ -6,7 +6,8 @@ import Service.Teacher.RewardListService;
 import Service.TeacherHireResearcher.TeacherHireResearcherTableCService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
-    private Logger logger = Logger.getLogger(this.getClass());//Log4j
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

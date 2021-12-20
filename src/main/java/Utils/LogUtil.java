@@ -1,6 +1,7 @@
 package Utils;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +11,7 @@ public class LogUtil {
     public LogUtil(String currentClassName){
         System.out.println(currentClassName);
         this.CLASS_NAME = currentClassName;
-        this.logger = Logger.getLogger(currentClassName);//Log4j
+        this.logger = LogManager.getLogger(currentClassName);//Log4j
 
     }
 

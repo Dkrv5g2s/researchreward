@@ -2,14 +2,12 @@ package Servlet.SpecialOutstandingResearcher;
 
 
 import Service.Admin.AwardTimeLimitService;
-
-import Service.DistinguishedProfessor.DistinguishedProfessorTableAService;
 import Service.SpecialOutstandingResearcher.OutstandingPerformanceDescriptionService;
-
 import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 
 public class OutstandingPerformanceDescriptionServlet extends ServletEntryPoint {
 
-
+    private Logger logger = LogManager.getLogger(this.getClass());
     private OutstandingPerformanceDescriptionService outstandingPerformanceDescriptionService = new OutstandingPerformanceDescriptionService();
 
     private AwardTimeLimitService awardTimeLimitService = new AwardTimeLimitService();

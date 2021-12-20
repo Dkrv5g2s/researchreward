@@ -1,7 +1,8 @@
 package Servlet.LectureProfessorAndHonoraryLectureProfessor;
 
 import Servlet.login.ServletEntryPoint;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LectureProfessorCatalogServlet extends ServletEntryPoint {
-    //private Logger logger = Logger.getLogger(this.getClass());//Log4j
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

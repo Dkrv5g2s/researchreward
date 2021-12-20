@@ -1,16 +1,13 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.User.User;
-
 import Service.Admin.SpecialOutstandingResearcherSettingService;
 import Service.SpecialOutstandingResearcher.SpecialOutstandingResearcherApplicationService;
 import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import org.apache.log4j.Logger;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class SpecialOutstandingResearcherApplicationServlet extends ServletEntryPoint {
-    private Logger logger = Logger.getLogger(this.getClass());//Log4j
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

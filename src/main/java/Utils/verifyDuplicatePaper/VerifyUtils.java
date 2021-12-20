@@ -1,19 +1,15 @@
 package Utils.verifyDuplicatePaper;
 
-import Bean.SpecialOutstandingResearcher.CommonFunction;
-import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
-import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.stream.Collectors;
 
 public class VerifyUtils {
     private LevenshteinDistanceAlgo LDAlgo = new LevenshteinDistanceAlgo();
     private final double defaultSimilarityRate = 0.95; // 相似度程度
-    private Logger logger = Logger.getLogger(this.getClass());
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     public boolean isPaperReapplied(String inputPaperToken ,List<String> totalPaperTitleList){
         // use Book_name + Scholarly_journals_name as similarity token
