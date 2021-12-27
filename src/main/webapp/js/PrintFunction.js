@@ -30,10 +30,15 @@ function removeButtons(iframe){
     removeElements(inputButtonList);
 
     for(let i=0; i<inputList.length; i++){
-        inputList[i].disabled=true;
+        if (inputList[i].type === "radio" || inputList[i].type === "checkbox") {
+            inputList[i].disabled=true;
+        } else {
+            inputList[i].disabled=false;
+            inputList[i].readOnly=true;
+        }
     }
     for(let i=0; i<textareaList.length; i++){
-        textareaList[i].disabled=true;
+        textareaList[i].readOnly=true;
     }
 }
 function removeElements(list){
