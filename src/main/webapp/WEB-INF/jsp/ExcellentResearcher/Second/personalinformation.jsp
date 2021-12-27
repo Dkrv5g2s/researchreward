@@ -14,6 +14,12 @@
     <title>個人基本資料</title>
     <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <style>
+        td > p.sign{
+            margin: 3rem 0 0;
+            vertical-align: bottom;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Function.js"></script>
     <script>
@@ -35,10 +41,13 @@
             var data = {};
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
-                if (document.getElementsByTagName("input")[j].type=='checkbox' && document.getElementsByTagName("input")[j].checked == false){
-                    data[ document.getElementsByTagName("input")[j].name] = "false";
+                let inputElem = document.getElementsByTagName("input")[j];
+                if (inputElem.type==='radio'){
+                    data[inputElem.name] = $('input[name=' + inputElem.name + ']:checked').val()
+                }else if (inputElem.type==='checkbox' && inputElem.checked === false){
+                    data[inputElem.name] = "false";
                 }else {
-                    data[ document.getElementsByTagName("input")[j].name] = document.getElementsByTagName("input")[j].value;
+                    data[inputElem.name] = inputElem.value;
                 }
 
             }
@@ -49,13 +58,45 @@
             return data;
         }
 
+        function setReviewData(){
+            //department
+            $("#departmentDirectorSignDate").val("<%=json.optString("departmentDirectorSignDate", "")%>");
+
+            //college
+            $("#collegeReviewedDate").val("<%=json.optString("collegeReviewedDate", "")%>");
+            let reviewedResult = "<%=json.optString("reviewedResult", "")%>";
+            if (reviewedResult !== "")
+                $("input[name=reviewedResult][value=" + reviewedResult + "]").attr('checked',true);
+            $("#collegeRecommendationRank").val("<%=json.optString("collegeRecommendationRank", "")%>");
+            $("#collegeDirectorSignDate").val("<%=json.optString("collegeDirectorSignDate", "")%>");
+            changeCollegeRecommendationRankVisible(reviewedResult);
+        }
+
+        function changeCollegeRecommendationRankVisible(option) {
+            if (option === 'passed') {
+                document.getElementById("collegeRecommendationRank").disabled=false;
+            } else {
+                document.getElementById("collegeRecommendationRank").disabled=true;
+                document.getElementById("collegeRecommendationRank").value="";
+            }
+
+        }
 
         $( document ).ready(function() {
             // 在這撰寫javascript程式碼
             $('#level').val("<%=json.get("level")%>");
             $('#qualification1').prop("checked","<%=json.get("qualification1")%>"=="true"?true:false);
             $('#qualification2').prop("checked","<%=json.get("qualification2")%>"=="true"?true:false);
+
+            let role = "${role}";
+            if (role === "industryLiaisonOffice" || role === "researchAndDevelopmentOffice") {
+                $("#save").remove();
+            }
             setReadOnly(<%=request.getAttribute("readonly")%>);
+            $(".${role}").removeAttr("readonly");
+            $(".${role}").removeAttr("disabled");
+
+            setReviewData();
         });
 
     </script>
@@ -149,7 +190,40 @@
                             <input type="text" name="workContent" id="workContent" value=<%= json.get("workContent") %>>
                         </td>
                     </tr>
-                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
+                    <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">申請單位審查意見</td></tr>
+                    <tr>
+                        <td colspan="2">
+                            本案申請人業經本院
+                            <input id="collegeReviewedDate" name="collegeReviewedDate" class="college" type="date" style="width: auto;" disabled>
+                            教評會審核申請科技部補助大專校院獎勵特殊優秀研究人才之彈性薪資(檢附院教評會議紀錄)，所提各項申請與證明文件屬實。<p>
+                            <label><input type="radio" name="reviewedResult" value="passed" class="college" onFocus="changeCollegeRecommendationRankVisible('passed')" disabled>審查通過 (學院推薦排序 NO.<input id="collegeRecommendationRank" name="collegeRecommendationRank" class="college" maxlength="4" style="width: 5ch;" disabled>) 。</label><br>
+                            <label><input type="radio" name="reviewedResult" value="failed" class="college" onFocus="changeCollegeRecommendationRankVisible('failed')" disabled>不予推薦。</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="metadata">系所主管核章</td>
+                        <td>
+                            <p class="sign">
+                                <a style="float:left;">本案業經系所確認繳送資料齊備</a>
+                                <a style="float:right;">日期:<input id="departmentDirectorSignDate" type="date" name="departmentDirectorSignDate" class="department" disabled></a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="metadata">院長核章</td>
+                        <td>
+                            <p class="sign">
+                                <a style="float:left;">本案業經院教評會審議通過(請檢附會議記錄)</a>
+                                <a style="float:right;">日期:<input id="collegeDirectorSignDate" type="date" name="collegeDirectorSignDate" class="college" disabled></a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">
+                            <span><input type="button" id="save" value="暫存" onclick="commit()"></span>
+                            <span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </form>
