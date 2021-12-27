@@ -57,7 +57,7 @@
             div.content{
                 margin: 0 auto;
                 padding: 50px;
-                width: 75%;
+                width: 90%;
                 background-color: white;
             }
             textarea {
@@ -161,7 +161,7 @@
         <div class="content">
             <p style="text-align:center;font-weight:bold;font-size:20px;">國立臺北科技大學奬助研究績優教師聘任研究人員申請表</p>
             <form>
-                <table border="1" cellpadding="7" cellspacing="1" width="70%" align="center" style="border-spacing:0px;">
+                <table border="1" cellpadding="7" cellspacing="1" align="center" style="border-spacing:0px;">
                     <tbody>
                         <tr>
                             <td colspan="1" class="metadata">

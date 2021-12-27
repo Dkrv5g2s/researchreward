@@ -37,6 +37,7 @@
         <servlet-name>CatalogOfWorksServlet</servlet-name>
         <url-pattern>/CatalogOfWorks</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>PersonalInformationServlet</servlet-name>
         <servlet-class>Servlet.ExcellentResearcher.First.PersonalInformationServlet</servlet-class>
@@ -460,6 +461,15 @@
         <url-pattern>/TeacherHireResearcherTableA</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TeacherHireResearcherPrintServlet</servlet-name>
+        <servlet-class>Servlet.TeacherHireResearcher.TeacherHireResearcherPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherHireResearcherPrintServlet</servlet-name>
+        <url-pattern>/TeacherHireResearcherPrint</url-pattern>
+    </servlet-mapping>
+
     <!--JuniorResearchInvestigator-->
     <servlet>
         <servlet-name>JuniorResearchInvestigatorCatalogServlet</servlet-name>
@@ -538,6 +548,25 @@
         <servlet-name>SecondResearchProductionServlet</servlet-name>
         <url-pattern>/SecondResearchProduction</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExcellentResearcherPrintServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.First.ExcellentResearcherPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcellentResearcherPrintServlet</servlet-name>
+        <url-pattern>/ExcellentResearcherPrint</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SecondExcellentResearcherPrintServlet</servlet-name>
+        <servlet-class>Servlet.ExcellentResearcher.Second.ExcellentResearcherPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SecondExcellentResearcherPrintServlet</servlet-name>
+        <url-pattern>/SecondExcellentResearcherPrint</url-pattern>
+    </servlet-mapping>
+
     <servlet>
             <servlet-name>LectureProfessorApplicationFormServlet</servlet-name>
         <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationFormServlet</servlet-class>

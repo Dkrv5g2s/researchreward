@@ -34,6 +34,7 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "/TraceProgress";
+                        window.open('SecondExcellentResearcherPrint', 'TheWindow');
                     },
                     error: function(jqXHR, textStatus, message) {
                         //error handling
@@ -54,6 +55,7 @@
                     success: function (data) {
                         alert('確認審理成功');
                         window.location.href = "/ApprovedRewardList";
+                        window.open('SecondExcellentResearcherPrint', 'TheWindow');
                     }
                 });
             }

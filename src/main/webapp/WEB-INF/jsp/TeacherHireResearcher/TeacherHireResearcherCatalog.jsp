@@ -36,6 +36,7 @@
                             success: function (data) {
                                 alert('申請成功');
                                 window.location.href = "/TraceProgress";
+                                window.open('TeacherHireResearcherPrint', 'TheWindow');
                             },
                             error: function (jqXHR, textStatus, message) {
                                 alert(jqXHR.responseText);
@@ -91,7 +92,8 @@
                         contentType: 'application/text',
                         success: function (data) {
                             alert('確認審理成功');
-                            window.location.href = "/RewardPendingList";
+                            window.location.href = "/ApprovedRewardList";
+                            window.open('TeacherHireResearcherPrint', 'TheWindow');
                         }
                     });
                 }
