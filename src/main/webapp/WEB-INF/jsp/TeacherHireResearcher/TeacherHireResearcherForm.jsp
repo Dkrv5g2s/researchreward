@@ -317,7 +317,7 @@
                     </tbody>
                 </table>
                 <p align="center">
-                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/TeacherHireResearcherCatalog'">
+                    <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='TeacherHireResearcherCatalog'">
                     <input type="button" id="save" name="save" value="暫存" onclick="commit()"/>
                 </p>
             </form>

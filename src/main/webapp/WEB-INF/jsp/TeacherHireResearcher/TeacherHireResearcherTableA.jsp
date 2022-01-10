@@ -447,7 +447,7 @@
 		        </tbody>
 		    </table>
             <p style="text-align: center;">
-				<input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='/TeacherHireResearcherCatalog'"  >
+				<input type="button" name="return_last_page" class="button" value="回上頁" onclick="javascript:location.href='TeacherHireResearcherCatalog'"  >
 				<button type="button" name="save" onclick="commit()">暫存</button>
        		</p>
         </form>

@@ -55,7 +55,7 @@
     </table>
     <br>
 	<div style="text-align: center;" class="edit">
-        <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='/RewardList'">
+        <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='RewardList'">
         <input type="button" name="commit" value="提出申請" onclick="sendApply()">
     </div>
     <div style="text-align: center;" class="review">
