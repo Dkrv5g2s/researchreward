@@ -47,6 +47,6 @@ public class TeacherHireResearcherFormServlet extends ServletEntryPoint {
                 break;
         }
 
-        resp.sendRedirect("/TeacherHireResearcherCatalog");
+        resp.sendRedirect("TeacherHireResearcherCatalog");
     }
 }

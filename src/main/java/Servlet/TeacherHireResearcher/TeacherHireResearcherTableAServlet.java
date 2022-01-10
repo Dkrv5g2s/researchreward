@@ -38,6 +38,6 @@ public class TeacherHireResearcherTableAServlet extends ServletEntryPoint {
         ProjectFillRateService projectFillRateService = new ProjectFillRateService();
         projectFillRateService.save(Integer.parseInt(projectId), "TeacherHireResearcherTableA", json.getDouble("fill_rate"));
 
-        resp.sendRedirect("/TeacherHireResearcherCatalog");
+        resp.sendRedirect("TeacherHireResearcherCatalog");
     }
 }

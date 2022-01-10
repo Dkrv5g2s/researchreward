@@ -32,6 +32,6 @@ public class SelectRewardServlet extends ServletEntryPoint {
 
         rewardListService.createReward(staffCode,reward);
 
-        resp.sendRedirect("/RewardList");
+        resp.sendRedirect("RewardList");
     }
 }
