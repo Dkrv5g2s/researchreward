@@ -20,7 +20,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/RecruitDescription',
+                url: 'RecruitDescription',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

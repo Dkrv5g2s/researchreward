@@ -71,7 +71,7 @@
             function commit(){
                 $.ajax({
                     type: 'POST',
-                    url: '/TeacherHireResearcherForm',
+                    url: 'TeacherHireResearcherForm',
                     dataType: 'text',
                     data: JSON.stringify(InputToJson()),
                     contentType: 'application/json',

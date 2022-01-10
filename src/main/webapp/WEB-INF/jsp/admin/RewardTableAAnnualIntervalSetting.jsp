@@ -107,7 +107,7 @@
     function commit(){
         $.ajax({
             type: 'POST',
-            url: '/RewardTableAAnnualIntervalSetting',
+            url: 'RewardTableAAnnualIntervalSetting',
             dataType: 'text',
             data: JSON.stringify(InputToJson()),
             contentType: 'application/json',

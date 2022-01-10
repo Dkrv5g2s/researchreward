@@ -18,7 +18,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/SpecialOutstandingResearcherSetting',
+                url: 'SpecialOutstandingResearcherSetting',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

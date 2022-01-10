@@ -17,7 +17,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/BFormFormula',
+                url: 'BFormFormula',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

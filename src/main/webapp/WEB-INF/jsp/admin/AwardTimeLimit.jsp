@@ -17,7 +17,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/AwardTimeLimit',
+                url: 'AwardTimeLimit',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

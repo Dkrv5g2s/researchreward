@@ -39,7 +39,7 @@
         function returnCatalog(){
             $.ajax({
                 type: 'POST',
-                url: '/RewardList',
+                url: 'RewardList',
                 dataType: 'json',
                 data: JSON.stringify({
                     projectId: "<%=request.getSession().getAttribute("projectId")%>",
@@ -62,7 +62,7 @@
             const reason_for_return = $("#reason_for_return").val();
             $.ajax({
                 type: 'POST',
-                url: '/ReasonForReturn',
+                url: 'ReasonForReturn',
                 dataType: 'text',
                 data: JSON.stringify({
                     projectId: projectId,

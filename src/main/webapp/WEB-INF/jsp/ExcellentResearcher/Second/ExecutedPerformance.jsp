@@ -20,7 +20,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/SecondExecutedPerformance',
+                url: 'SecondExecutedPerformance',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

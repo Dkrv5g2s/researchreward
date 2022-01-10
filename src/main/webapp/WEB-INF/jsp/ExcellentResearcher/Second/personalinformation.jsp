@@ -26,7 +26,7 @@
         function commit(){
             $.ajax({
                 type: 'POST',
-                url: '/SecondPersonalInformation',
+                url: 'SecondPersonalInformation',
                 dataType: 'text',
                 data: JSON.stringify(InputToJson()),
                 contentType: 'application/json',

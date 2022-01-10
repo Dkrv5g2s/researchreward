@@ -102,7 +102,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/SecondResearchProduction',
+                url: 'SecondResearchProduction',
                 dataType: 'text',
                 data: JSON.stringify(data),
                 contentType: 'application/json',

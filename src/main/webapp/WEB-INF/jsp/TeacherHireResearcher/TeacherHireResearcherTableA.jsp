@@ -87,7 +87,7 @@
 			}else{
 				$.ajax({
 					type: 'POST',
-					url: '/TeacherHireResearcherTableA',
+					url: 'TeacherHireResearcherTableA',
 					dataType: 'text',
 					data: JSON.stringify(InputToJson()),
 					contentType: 'application/json',

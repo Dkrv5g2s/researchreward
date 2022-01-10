@@ -101,7 +101,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/ResearchProduction',
+                url: 'ResearchProduction',
                 dataType: 'text',
                 data: JSON.stringify(data),
                 contentType: 'application/json',

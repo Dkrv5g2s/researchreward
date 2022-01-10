@@ -17,7 +17,7 @@
         function commit(project_id,rewardName){
             $.ajax({
                 type: 'POST',
-                url: '/RewardList',
+                url: 'RewardList',
                 dataType: 'json',
                 data: JSON.stringify({
                     projectId:project_id,

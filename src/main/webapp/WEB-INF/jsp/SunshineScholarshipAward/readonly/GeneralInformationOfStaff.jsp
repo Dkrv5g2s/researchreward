@@ -283,7 +283,7 @@
     function commit(){
         $.ajax({
             type: 'POST',
-            url: '/SunshineScholarshipAwardGeneralInformation',
+            url: 'SunshineScholarshipAwardGeneralInformation',
             dataType: 'text',
             data: JSON.stringify(InputToJson()),
             contentType: 'application/json',

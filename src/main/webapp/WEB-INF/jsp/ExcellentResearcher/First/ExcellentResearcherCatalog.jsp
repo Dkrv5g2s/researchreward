@@ -31,7 +31,7 @@
             new Promise((resolve, reject) => {
                 $.ajax({
                     type: 'POST',
-                    url: '/ProjectFillRate',
+                    url: 'ProjectFillRate',
                     dataType: 'text',
                     data: "",
                     contentType: 'application/text',
@@ -48,7 +48,7 @@
                 if(result){
                     $.ajax({
                         type: 'POST',
-                        url: '/SendApply',
+                        url: 'SendApply',
                         dataType: 'text',
                         data: "",
                         contentType: 'application/text',
@@ -105,7 +105,7 @@
             if (confirm("確定要確認審理?")) {
                 $.ajax({
                     type: 'POST',
-                    url: '/ApproveApply',
+                    url: 'ApproveApply',
                     dataType: 'text',
                     data: "",
                     contentType: 'application/text',
