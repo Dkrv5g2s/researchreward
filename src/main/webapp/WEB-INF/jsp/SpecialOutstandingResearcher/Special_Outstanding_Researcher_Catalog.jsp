@@ -95,7 +95,7 @@
                     contentType: 'application/text',
                     success: function (data) {
                         alert('申請成功');
-                        window.location.href = "/TraceProgress";
+                        window.location.href = "TraceProgress";
                         window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
                     },
                     error: function (message) {
@@ -151,7 +151,7 @@
                 contentType: 'application/text',
                 success: function (data) {
                     alert('確認審理成功');
-                    window.location.href = "/ApprovedRewardList";
+                    window.location.href = "ApprovedRewardList";
                     window.open('SpecialOutstandingResearcherPrint', 'TheWindow');
                 }
             });
