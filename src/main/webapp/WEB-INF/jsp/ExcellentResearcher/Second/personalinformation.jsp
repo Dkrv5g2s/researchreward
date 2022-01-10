@@ -12,8 +12,8 @@
 <html>
 <head>
     <title>個人基本資料</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/body.css">
     <style>
         td > p.sign{
             margin: 3rem 0 0;

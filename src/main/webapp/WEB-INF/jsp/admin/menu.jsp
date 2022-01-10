@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>研發獎勵系統</title>
-    <link rel="stylesheet" type="text/css" href="/css/MenuStyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/Style.css">
+    <link rel="stylesheet" type="text/css" href="css/MenuStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function (){

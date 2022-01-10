@@ -13,8 +13,8 @@
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://malsup.github.io/jquery.form.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 <div class="container">
     <p class="table_b file_title">國立臺北科技大學傑出論文績效說明表</p>
     <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="font-weight:bold; font-size:20px; text-align:center; border:none; outline:none;" tabindex="-1" readonly>期績效說明表(申請第二期以上者填寫)</p>

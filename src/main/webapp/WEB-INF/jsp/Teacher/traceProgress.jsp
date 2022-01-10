@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>申請進度追蹤</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 </head>
 <body>
 <div class="content">

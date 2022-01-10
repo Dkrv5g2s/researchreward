@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>年輕學者研究獎</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style type="text/css">
         body{
@@ -172,7 +172,7 @@
 
     function rejectApply(){
         if (confirm("確定要退件?"))
-            window.location.href="/ReasonForReturn";
+            window.location.href="ReasonForReturn";
     }
 </script>
 </html>

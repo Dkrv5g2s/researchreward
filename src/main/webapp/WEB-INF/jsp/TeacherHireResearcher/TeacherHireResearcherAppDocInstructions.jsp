@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>國立臺北科技大學奬助研究績優教師聘任研究人員申請表審查資料【填寫說明】</title>
-        <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     </head>
     <body>
         <div class="content">

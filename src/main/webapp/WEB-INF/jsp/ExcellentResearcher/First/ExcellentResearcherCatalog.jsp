@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>目錄</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -120,7 +120,7 @@
 
         function rejectApply(){
             if (confirm("確定要退件?"))
-                window.location.href="/ReasonForReturn";
+                window.location.href="ReasonForReturn";
         };
     </script>
 </head>
@@ -133,16 +133,16 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="/PersonalInformation" name="PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a href="PersonalInformation" name="PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/RecruitDescription" name="RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
+                    <td><a href="RecruitDescription" name="RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/CatalogOfWorks" name="CatalogOfWorks">著作目錄</a></td>
+                    <td><a href="CatalogOfWorks" name="CatalogOfWorks">著作目錄</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/ResearchProduction" name="ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
+                    <td><a href="ResearchProduction" name="ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
                 </tr>
             </tbody>
         </table>

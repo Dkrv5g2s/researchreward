@@ -6,8 +6,8 @@
 <html>
 <head>
     <title>國立臺北科技大學特聘教授近五年內發表之期刊論文統計表</title>
-	<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-	<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
     <style>
         body {
             margin: 0;

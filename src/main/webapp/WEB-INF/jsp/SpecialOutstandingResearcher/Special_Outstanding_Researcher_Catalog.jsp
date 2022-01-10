@@ -9,7 +9,7 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <div class="content" >
@@ -160,7 +160,7 @@
 
     function rejectApply(){
         if (confirm("確定要退件?"))
-            window.location.href="/ReasonForReturn";
+            window.location.href="ReasonForReturn";
     }
 </script>
 

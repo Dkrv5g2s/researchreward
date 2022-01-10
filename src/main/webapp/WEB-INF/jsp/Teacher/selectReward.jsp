@@ -10,13 +10,13 @@
 <html>
 <head>
     <title>選獎項</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 
 
 </head>
 <body>
     <div class="content" style="width: 60%">
-        <form action="/SelectReward" method="post">
+        <form action="SelectReward" method="post">
             <p style="text-align:left;font-weight:bold;font-size:20px;">申請獎項： </p>
             <table>
                 <tr>

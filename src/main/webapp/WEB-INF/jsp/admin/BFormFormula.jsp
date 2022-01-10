@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>B表公式修改</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){

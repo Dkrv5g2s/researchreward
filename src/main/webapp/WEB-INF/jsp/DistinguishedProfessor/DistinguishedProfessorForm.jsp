@@ -6,8 +6,8 @@
 <html>
 <head>
     <title>國立臺北科技大學特聘教授申請表</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
     <style>
         table td.cb{
             border-right: hidden;

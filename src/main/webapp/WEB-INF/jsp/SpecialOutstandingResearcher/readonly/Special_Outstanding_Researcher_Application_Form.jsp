@@ -12,8 +12,8 @@
 %>
 
 <html lang="zh">
-<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 <style>
     .pre{
         margin-left: 2rem;

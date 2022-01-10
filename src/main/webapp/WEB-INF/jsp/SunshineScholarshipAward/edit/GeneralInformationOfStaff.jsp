@@ -15,8 +15,8 @@
 <html>
 <head>
     <title>陽光獎助金論文 教職研人員基本資料表</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%--    <script src="math.js" type="text/javascript"></script>--%>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>

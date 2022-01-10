@@ -8,7 +8,7 @@
 <head>
     <title>國立臺北科技大學傑出研究獎 推薦申請表</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style type="text/css">

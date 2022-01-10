@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>已審核獎項</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 </head>
 <body>
     <div class="content">

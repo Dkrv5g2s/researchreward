@@ -7,8 +7,8 @@
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
-<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="content">
     <p class="file_title">※審查資料【填寫說明】</p>

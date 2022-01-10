@@ -8,8 +8,8 @@
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
-<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container">
     <p class="file_title four_sections three_years five_years" style="padding-top: 1rem;">國立臺北科技大學傑出論文績效說明表</p>

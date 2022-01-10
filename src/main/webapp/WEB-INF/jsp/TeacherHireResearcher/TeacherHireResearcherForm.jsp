@@ -77,7 +77,7 @@
                     contentType: 'application/json',
                     success: function(data){
                         alert('存檔成功');
-                        window.location.href="/TeacherHireResearcherCatalog";
+                        window.location.href="TeacherHireResearcherCatalog";
                     }
                 });
 

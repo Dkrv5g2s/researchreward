@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>奬助研究績優教師聘任研究人員目錄</title>
-        <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             async function sendApply() {
@@ -101,7 +101,7 @@
 
             function rejectApply(){
                 if (confirm("確定要退件?"))
-                    window.location.href="/ReasonForReturn";
+                    window.location.href="ReasonForReturn";
             };
 
             $(document).ready(function () {
@@ -126,25 +126,25 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a class="filledCheck" href="/TeacherHireResearcherForm" name="TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>
+                    <td><a class="filledCheck" href="TeacherHireResearcherForm" name="TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/TeacherHireResearcherAppDocInstructions" name="TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>
+                    <td><a href="TeacherHireResearcherAppDocInstructions" name="TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>
                 </tr>
                 <tr>
-                    <td><a class="filledCheck" href="/TeacherHireResearcherTableA" name="TeacherHireResearcherTableA">近五年內發表之期刊論文統計表</a></td>
+                    <td><a class="filledCheck" href="TeacherHireResearcherTableA" name="TeacherHireResearcherTableA">近五年內發表之期刊論文統計表</a></td>
                 </tr>
                 <tr>
-                    <td><a class="filledCheck" href="/PaperPerformanceDescriptionForm" name="TeacherHireResearcherTableB">傑出論文績效說明表</a></td>
+                    <td><a class="filledCheck" href="PaperPerformanceDescriptionForm" name="TeacherHireResearcherTableB">傑出論文績效說明表</a></td>
                 </tr>
                 <tr>
-                    <td><a class="filledCheck" href="/PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
+                    <td><a class="filledCheck" href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionForm?table_c=1" name="TeacherHireResearcherTableC">傑出論文績效說明表(申請第二期以上者填寫)</a></td>
+                    <td><a href="PaperPerformanceDescriptionForm?table_c=1" name="TeacherHireResearcherTableC">傑出論文績效說明表(申請第二期以上者填寫)</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/PaperPerformanceDescriptionUpload?table_c=1" name="TeacherHireResearcherTableCUpload">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
+                    <td><a href="PaperPerformanceDescriptionUpload?table_c=1" name="TeacherHireResearcherTableCUpload">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
                 </tr>
                 </tbody>
             </table>

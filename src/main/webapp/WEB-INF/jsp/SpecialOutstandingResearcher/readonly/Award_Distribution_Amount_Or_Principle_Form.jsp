@@ -3,8 +3,8 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
-<link rel="stylesheet" type="text/css" href="/css/PrintPageStyle.css">
+<link rel="stylesheet" type="text/css" href="css/FormStyle.css">
+<link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 
 <div class="content" style="width: 90%;">
     <p class="file_title">國立臺北科技大學獎勵特殊優秀研究人才獎勵金分配金額或原則表</p>

@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>研發獎勵系統</title>
-    <link rel="stylesheet" type="text/css" href="/css/MenuStyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/Style.css">
+    <link rel="stylesheet" type="text/css" href="css/MenuStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
     <style>
         body {
             background-color:#E9F2FF;
@@ -38,10 +38,10 @@
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">
-                    <li class='top'><a class='top_link' href="/SelectReward" target="iframe"><span class='down'>選擇申請獎項</span></a></li>
-                    <li class='top'><a class='top_link' href="/RewardList" target="iframe"><span class='down'>修改申請獎項</span></a></li>
-                    <li class='top'><a class='top_link'  href="/TraceProgress" target="iframe"><span class='down'>申請進度追蹤</span></a></li>
-                    <li class='top'><a class='top_link'  href="/ReturnedRewardList" target="iframe"><span class='down'>查看退件獎項</span></a></li>
+                    <li class='top'><a class='top_link' href="SelectReward" target="iframe"><span class='down'>選擇申請獎項</span></a></li>
+                    <li class='top'><a class='top_link' href="RewardList" target="iframe"><span class='down'>修改申請獎項</span></a></li>
+                    <li class='top'><a class='top_link'  href="TraceProgress" target="iframe"><span class='down'>申請進度追蹤</span></a></li>
+                    <li class='top'><a class='top_link'  href="ReturnedRewardList" target="iframe"><span class='down'>查看退件獎項</span></a></li>
 <%--                    <li class='top'><a class='top_link'   target="iframe"><span class='down'><span class='down'>登出</span></a></li>--%>
                 </ul>
             </div>

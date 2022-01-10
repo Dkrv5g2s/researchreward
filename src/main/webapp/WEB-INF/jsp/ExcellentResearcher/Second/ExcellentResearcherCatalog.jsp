@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>目錄</title>
-    <link rel="stylesheet" type="text/css" href="/css/FormStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Function.js"></script>
     <script>
@@ -63,7 +63,7 @@
 
         function rejectApply(){
             if (confirm("確定要退件?"))
-                window.location.href="/ReasonForReturn";
+                window.location.href="ReasonForReturn";
         };
     </script>
 </head>
@@ -76,13 +76,13 @@
                     <td class="metadata">表格名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="/SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a href="SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/SecondExecutedPerformance">前一年度具體執行績效</a></td>
+                    <td><a href="SecondExecutedPerformance">前一年度具體執行績效</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
+                    <td><a href="SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
                 </tr>
             </tbody>
         </table>
