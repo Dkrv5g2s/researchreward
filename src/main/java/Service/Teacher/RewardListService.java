@@ -91,25 +91,25 @@ public class RewardListService {
         // 這邊的命名之後要調整 重複性有點太高了
         switch (rewardName){
         	case "特聘教授":
-        		return "/DistinguishedProfessorCatalog";
+        		return "DistinguishedProfessorCatalog";
             case "獎勵新聘特殊優秀研究人才":
-                return "/ExcellentResearcherCatalog";
+                return "ExcellentResearcherCatalog";
             case "獎勵特殊優秀研究人才":
-                return "/SpecialOutstandingResearcherCatalog";
+                return "SpecialOutstandingResearcherCatalog";
             case "陽光獎助金論文獎勵":
-                return "/SunshineScholarshipCatalog";
+                return "SunshineScholarshipCatalog";
             case "奬助研究及產學績優教師聘任研究人員辦法":
-                return "/TeacherHireResearcherCatalog";
+                return "TeacherHireResearcherCatalog";
             case "年輕學者研究獎":
-                return "/JuniorResearchInvestigatorCatalog";
+                return "JuniorResearchInvestigatorCatalog";
             case "傑出研究獎":
-                return "/OutstandingResearchAwardCatalog";
+                return "OutstandingResearchAwardCatalog";
             case "(續撥)獎勵新聘特殊優秀研究人才":
-                return "/SecondExcellentResearcherCatalog";
+                return "SecondExcellentResearcherCatalog";
             case "講座教授":
-                return "/LectureProfessorCatalog";
+                return "LectureProfessorCatalog";
             default:
-                return "/Menu";
+                return "Menu";
         }
     }
 
