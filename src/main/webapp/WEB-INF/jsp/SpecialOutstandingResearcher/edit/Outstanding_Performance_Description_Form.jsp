@@ -744,7 +744,7 @@
 		</p>
 		<p id="review_footer" class="footer">
 			<input type="button" name="go_to_catalog" class="review" value="回目錄" onclick="location.href='SpecialOutstandingResearcherCatalog'" />
-			<input type="button" class="review" value="此頁審查完成" onclick="location.href='ReviewSupportingInformationForm'" />
+			<input type="button" name="save_the_page" class="review" value="此頁審查完成" onclick="location.href='ReviewSupportingInformationForm'" />
 		</p>
 	</form>
 </div>

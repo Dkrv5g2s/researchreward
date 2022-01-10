@@ -139,7 +139,7 @@
         else
             $(".table_b").show();
 
-        if("${catalogURL}" === "/SpecialOutstandingResearcherCatalog")
+        if("${catalogURL}" === "SpecialOutstandingResearcherCatalog")
             $(".review_for_special_outstanding_researcher").show();
         else
             $(".review").show();
