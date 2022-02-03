@@ -26,15 +26,15 @@ public class DistinguishedProfessorFormDAOImpl implements DistinguishedProfessor
     private static final String UPDATE_DEPARTMENT_DATA =
             "UPDATE distinguishedprofessorform "+
                     "SET department_academic_year = ?,department_semester = ?,department_conference_times = ?, department_sign_date = ? " +
-                    "WHERE projectId = ?";
+                    "WHERE projectID = ?";
     private static final String UPDATE_COLLEGE_DATA =
             "UPDATE distinguishedprofessorform "+
                     "SET college_academic_year = ?,college_semester = ?,college_conference_times = ?, college_sign_date = ? " +
-                    "WHERE projectId = ?";
+                    "WHERE projectID = ?";
     private static final String UPDATE_RADO_DATA =
             "UPDATE distinguishedprofessorform "+
                     "SET research_and_development_office_sign_year = ?,research_and_development_office_sign_month = ?,research_and_development_office_sign_date = ?" +
-                    "WHERE projectId = ?";
+                    "WHERE projectID = ?";
     @Override
     public void save(DistinguishedProfessorForm object,String projectID) {
         Connection connection = dbConnection.getConnection();

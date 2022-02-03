@@ -15,11 +15,11 @@ public class OutstandingResearchAwardReviewInformationDAOImpl implements Outstan
 	private DBConnection dbConnection = new DBConnectionImpl();  //TODO
     private static final String SELECT = "SELECT * FROM outstanding_research_award_review_info WHERE projectId = ?";
     private static final String INSERT = 
-    		"INSERT INTO outstanding_research_award_review_info (projectId, userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+
+    		"INSERT INTO outstanding_research_award_review_info (projectID, userNumber,technologyTransferContractName,technologyTransferDepartment,contractDate,technologyTransferFund,technologyTransferFundBringInDate)"+
     		" values(?,?,?,?,?,?,?)";
     private static final String DELETE = 
     		"DELETE FROM outstanding_research_award_review_info "+
-    		" WHERE projectId = ?";
+    		" WHERE projectID = ?";
 
     @Override
     public void save(List<OutstandingResearchAwardReviewInformation> object, int projectId) {
@@ -41,7 +41,7 @@ public class OutstandingResearchAwardReviewInformationDAOImpl implements Outstan
         	resultSet = preparedStatement.executeQuery();
         	while(resultSet.next()) {
                 OutstandingResearchAwardReviewInformation juniorResearchInvestigatorReviewInformation = new OutstandingResearchAwardReviewInformation(
-                    resultSet.getInt("projectId"),
+                    resultSet.getInt("projectID"),
                     resultSet.getInt("userNumber"),
                     resultSet.getString("technologyTransferContractName"),
                     resultSet.getString("technologyTransferDepartment"),

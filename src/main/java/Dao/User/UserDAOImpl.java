@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = dbConnection.getConnection();
         User user = null;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE account = ? AND password = ?"))
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE account = ? AND password = ?"))
         {
             preparedStatement.setString(1,account);
             preparedStatement.setString(2,password);
