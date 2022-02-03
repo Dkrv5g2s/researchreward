@@ -374,7 +374,7 @@
         </table>
         <p style="text-align: center;">
             <button type="button" name="return_last_page" onclick="location.href='OutstandingResearchAwardCatalog'">回上頁</button>
-            <button type="button" name="save" onclick="commit()" disabled = "disabled">存檔</button>
+            <button type="button" name="save" onclick="commit()" disabled = "disabled">暫存</button>
         </p>
     </form>
 </div>

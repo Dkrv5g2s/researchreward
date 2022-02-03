@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ted Lin
-  Date: 2021/2/2
-  Time: 上午 10:52
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -106,6 +100,7 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "TraceProgress";
+                        window.open('OutstandingResearchAwardPrint', 'TheWindow');
                     },
                     error: function(jqXHR, textStatus, message) {
                         alert(jqXHR.responseText);
@@ -156,7 +151,7 @@
     }
 
     function approveApply(){
-        if (confirm("確定要確認審理?")) {
+        if (confirm("是否確認送出審理?")) {
             $.ajax({
                 type: 'POST',
                 url: 'ApproveApply',
@@ -166,6 +161,7 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "ApprovedRewardList";
+                    window.open('OutstandingResearchAwardPrint', 'TheWindow');
                 }
             });
         }
