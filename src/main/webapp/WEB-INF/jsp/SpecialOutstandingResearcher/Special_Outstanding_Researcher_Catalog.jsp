@@ -142,7 +142,7 @@
     }
 
     function approveApply(){
-        if (confirm("確定要確認審理?")) {
+        if (confirm("是否確認送出審理?")) {
             $.ajax({
                 type: 'POST',
                 url: 'ApproveApply',
@@ -159,7 +159,7 @@
     }
 
     function rejectApply(){
-        if (confirm("確定要退件?"))
+        if (confirm("是否確認送出退件?"))
             window.location.href="ReasonForReturn";
     }
 </script>
