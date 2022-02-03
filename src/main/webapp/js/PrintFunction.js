@@ -26,6 +26,8 @@ function removeButtons(iframe){
     let inputButtonList = iframe.contentWindow.document.querySelectorAll("input[type=button]");
     let inputList = iframe.contentWindow.document.getElementsByTagName("input");
     let textareaList = iframe.contentWindow.document.getElementsByTagName("textarea");
+    let selectorList = iframe.contentWindow.document.getElementsByTagName("select");
+
     removeElements(buttonList);
     removeElements(inputButtonList);
 
@@ -39,6 +41,9 @@ function removeButtons(iframe){
     }
     for(let i=0; i<textareaList.length; i++){
         textareaList[i].readOnly=true;
+    }
+    for(let i=0; i<selectorList.length; i++){
+        selectorList[i].disabled =true;
     }
 }
 function removeElements(list){

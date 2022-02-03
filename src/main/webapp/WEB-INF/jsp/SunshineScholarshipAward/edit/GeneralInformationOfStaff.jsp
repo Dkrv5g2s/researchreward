@@ -162,7 +162,7 @@
             <tr>
                 <td colspan="6" style="background-color:rgb(255, 255, 240);text-align: center">
                     <button type="button" width="10%" onclick="javascript:location.href='SunshineScholarshipCatalog'">回上頁</button>
-                    <button type="button" width="10%" onclick="commit()">存檔</button>
+                    <button type="button" width="10%" onclick="commit()">暫存</button>
                 </td>
             </tr>
             </tbody>

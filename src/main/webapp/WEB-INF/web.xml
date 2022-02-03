@@ -242,10 +242,16 @@
         <servlet-name>PaperPerformanceDescriptionServlet</servlet-name>
         <url-pattern>/SunshineScholarshipAwardTableA</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>SunshineScholarshipAwardPrintServlet</servlet-name>
+        <servlet-class>Servlet.SunshineScholarshipAward.SunshineScholarshipAwardPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SunshineScholarshipAwardPrintServlet</servlet-name>
+        <url-pattern>/SunshineScholarshipAwardPrint</url-pattern>
+    </servlet-mapping>
 <!--    SunshineScholarshipAward-->
-
-<!--    OutstandingResearcherAward-->
+    <!--    OutstandingResearcherAward-->
     <servlet>
         <servlet-name>OutstandingResearchAwardCatalogServlet</servlet-name>
         <servlet-class>Servlet.OutstandingResearchAward.OutstandingResearchAwardCatalogServlet</servlet-class>
