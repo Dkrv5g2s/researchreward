@@ -105,6 +105,8 @@ public class PersonalInformationService {
         experimentDAO.save(experiment);
         mostPlanDAO.save(mostPlan);
         personalInformationDAO.save(personalInformation);
+
+        projectFillRateService.save(projectId, "SecondPersonalInformation", jsonObject.getDouble("fill_rate"));
     }
 
     public void updateDepartmentReviewData(JSONObject jsonObject, int projectId){

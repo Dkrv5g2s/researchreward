@@ -67,7 +67,7 @@
                     for (let i = 0; i < fillRatesKeys.length; i++) {
                         let fillRatesKey = fillRatesKeys[i];
                         const rate = fillRates[fillRatesKey];
-                        if (fillPage.namedItem(fillRatesKey) && rate < 1.0) {
+                        if (fillPage.namedItem(fillRatesKey) && Math.fround(rate) < Math.fround(1.0)) {
                             unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + "\n";
                         }
                     }

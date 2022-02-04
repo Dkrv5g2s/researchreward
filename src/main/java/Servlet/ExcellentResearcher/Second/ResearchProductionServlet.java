@@ -1,6 +1,7 @@
 package Servlet.ExcellentResearcher.Second;
 
 import Service.ExcellentResearcher.ResearchProductionService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 
@@ -30,8 +31,10 @@ public class ResearchProductionServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONArray json = new JSONArray(readJSONString(req));
-        researchProductionService.saveSecondProduction(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        int projectId = Integer.parseInt((String)session.getAttribute("projectId"));
+        researchProductionService.saveSecondProduction(json, projectId);
 
-
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(projectId, "SecondResearchProduction", json.getDouble(4));
     }
 }

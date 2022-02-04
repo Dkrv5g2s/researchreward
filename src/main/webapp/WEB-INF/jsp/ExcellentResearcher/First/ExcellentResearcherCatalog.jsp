@@ -71,7 +71,7 @@
             }
             let fillPage = document.getElementsByTagName("a");
             let fillRatesKeys = Object.keys(fillRates);
-            if (fillRatesKeys.length < fillPage.length) {
+            if (fillRatesKeys.length - 1  < fillPage.length) {
                 let unSavedPageName = "";
                 for (let i = 0; i < fillPage.length; i++) {
                     let page = fillPage[i];
@@ -86,7 +86,7 @@
                 for (let i = 0; i < fillRatesKeys.length; i++) {
                     let fillRatesKey = fillRatesKeys[i];
                     const rate = fillRates[fillRatesKey];
-                    if (fillPage.namedItem(fillRatesKey) && rate < 1.0) {
+                    if (fillPage.namedItem(fillRatesKey) && Math.fround(rate) < Math.fround(1.0)) {
                         unFinishedPageName += fillPage.namedItem(fillRatesKey).innerHTML + "\n";
                     }
                 }
