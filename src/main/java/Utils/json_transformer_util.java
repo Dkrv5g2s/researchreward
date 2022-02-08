@@ -1,5 +1,6 @@
 package Utils;
 
+import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorUploadForm;
 import Bean.SpecialOutstandingResearcher.*;
 import com.google.gson.*;
 import fr.opensagres.xdocreport.document.json.JSONArray;
@@ -131,6 +132,17 @@ public class json_transformer_util {
 
     }
 
+    public String lecture_professor_upload_form_to_json(LectureProfessorUploadForm lectureProfessorUploadForm) {
+
+        return new Gson().toJson(lectureProfessorUploadForm);
+
+    }
+
+    public LectureProfessorUploadForm json_to_lecture_professor_upload_form(JSONObject json) {
+
+        return new Gson().fromJson(json.toString(), LectureProfessorUploadForm.class);
+
+    }
     public SpecialOutstandingResearcherReview json_to_special_researcher_review(JSONObject json_review) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {

@@ -1,7 +1,10 @@
 package Servlet.File;
 
+import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorUpload;
 import Bean.SpecialOutstandingResearcher.CommonFunction;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
+import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceUploadDAOImpl;
+import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceUploadDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import Utils.ItextPdfElementTool;
@@ -43,7 +46,7 @@ public class FileServlet extends HttpServlet {
         HttpSession session = request.getSession();         // 取得 session 物件
         //UserData ud = (UserData)session.getAttribute("ud"); // 取得 session 中的物件
 
-
+        System.out.println("func:"+func);
         String filePath = ""; //檔案位置
         String fileName = ""; //檔案名稱
 
@@ -74,6 +77,21 @@ public class FileServlet extends HttpServlet {
 
                 if (!CommonFunction.setString(paperPerformance.getPaper_home_file_path()).equals("")) {
                     filePath = this.getServletContext().getRealPath("/") + "WEB-INF\\uploadFile\\" + paperPerformance.getPaper_home_file_path();
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if (func.toLowerCase().equals("download_certified_documents".toLowerCase())){
+            try {
+                String doc_uuid = request.getParameter("id").toString();
+                System.out.println("doc_uuid:"+doc_uuid);
+                LectureProfessorExcellenceUploadDAO dao = new LectureProfessorExcellenceUploadDAOImpl();
+                LectureProfessorUpload lectureProfessorUpload = dao.query_specified_certified_document(doc_uuid);
+
+                if (!CommonFunction.setString(lectureProfessorUpload.getCertifiedDocFilePath()).equals("")) {
+                    filePath = this.getServletContext().getRealPath("/") + "WEB-INF\\uploadFile\\" + lectureProfessorUpload.getCertifiedDocFilePath();
 
                 }
 

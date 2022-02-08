@@ -3,7 +3,6 @@ package Servlet.LectureProfessorAndHonoraryLectureProfessor;
 import Service.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceFormBService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONArray;
-import fr.opensagres.xdocreport.document.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ public class LectureProfessorExcellenceFormBServlet extends ServletEntryPoint {
         getForm(req);
         req.getRequestDispatcher("WEB-INF/jsp/LectureProfessorAndHonoraryLectureProfessor/LectureProfessorExcellenceFormB.jsp").forward(req, resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

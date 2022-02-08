@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-    <title>國立臺北科技大學特聘教授-近五年傑出績效說明表</title>
+    <title>國立臺北科技大學講座教授-近五年傑出績效說明表</title>
     <style>
         body {
             margin: 0px 0px 0px 0px;
@@ -784,7 +784,7 @@
         </table>
         <p style="text-align: center;">
             <input type="button" class="back" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
-            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">存檔</button>
+            <button type="button" name="save_the_page" onclick="commit()" disabled = "disabled">暫存</button>
         </p>
         <p>※ 註：1.論文以當年度紙本刊登為準。
             2.以本校「教師評鑑及基本資料庫」之資料為準。

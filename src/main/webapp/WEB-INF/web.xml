@@ -580,7 +580,7 @@
         <servlet-name>SecondExcellentResearcherPrintServlet</servlet-name>
         <url-pattern>/SecondExcellentResearcherPrint</url-pattern>
     </servlet-mapping>
-
+    <!--LectureProfessorAndHonoraryLectureProfessor-->
     <servlet>
             <servlet-name>LectureProfessorApplicationFormServlet</servlet-name>
         <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationFormServlet</servlet-class>
@@ -677,6 +677,26 @@
     <servlet-name>LectureProfessorExcellenceFormDServlet</servlet-name>
     <url-pattern>/LectureProfessorExcellenceFormD</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LectureProfessorPrintServlet</servlet-name>
+        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LectureProfessorPrintServlet</servlet-name>
+        <url-pattern>/LectureProfessorPrint</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LectureProfessorUploadServlet</servlet-name>
+        <servlet-class>Servlet.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LectureProfessorUploadServlet</servlet-name>
+        <url-pattern>/LectureProfessorFormCUploadFile</url-pattern>
+    </servlet-mapping>
+    <!--LectureProfessorAndHonoraryLectureProfessor-->
+
 
     <servlet>
         <servlet-name>SpecialOutstandingResearcherSettingServlet</servlet-name>

@@ -52,6 +52,9 @@
             <td class="left"><a href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內傑出績效說明表</a></td>
         </tr>
         <tr>
+            <td class="left"><a href="LectureProfessorFormCUploadFile" name="LectureProfessorFormCUploadFile">近五年內傑出績效說明表-上傳檔案</a></td>
+        </tr>
+        <tr>
             <td class="left"><a href="PaperPerformanceDescriptionForm" name="LectureProfessorTableB">國立臺北科技大學傑出論文績效說明表</a></td>
         </tr>
         <tr>
@@ -124,6 +127,7 @@
                     success: function (data) {
                         alert('申請成功');
                         window.location.href = "TraceProgress";
+                        window.open('LectureProfessorPrint', 'TheWindow');
                     },
                     error: function(jqXHR, textStatus, message) {
                         alert(jqXHR.responseText);
@@ -173,7 +177,7 @@
         return false;
     }
     function approveApply(){
-        if (confirm("確定要確認審理?")) {
+        if (confirm("是否確認送出審理?")) {
             $.ajax({
                 type: 'POST',
                 url: 'ApproveApply',
@@ -183,6 +187,10 @@
                 success: function (data) {
                     alert('確認審理成功');
                     window.location.href = "ApprovedRewardList";
+                    window.open('LectureProfessorPrint', 'TheWindow');
+                },
+                error: function (massage) {
+                    alert("審理失敗，請洽系統管理員");
                 }
             });
         }
