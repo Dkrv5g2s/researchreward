@@ -97,8 +97,18 @@
             var table3 = tableToJson($('form').find("table")[2]);
             var table4 = tableToJson($('form').find("table")[3]);
 
-            var data = [table1,table2,table3,table4];
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
+            for (let j=0; j<document.getElementsByTagName("input").length; j++) {
+                let inputElem = document.getElementsByTagName("input")[j];
+                if (inputElem.value.length > 0)
+                    filledInputNum++;
+                totalInputNum++;
+            }
+            let fillRate = filledInputNum / totalInputNum;
+
+            var data = [table1, table2, table3, table4, fillRate];
 
             $.ajax({
                 type: 'POST',

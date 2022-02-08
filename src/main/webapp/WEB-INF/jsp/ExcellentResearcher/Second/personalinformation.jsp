@@ -39,6 +39,8 @@
 
         function InputToJson(){
             var data = {};
+            let filledInputNum = 0;
+            let totalInputNum = 0;
 
             for (var j=0; j<document.getElementsByTagName("input").length; j++) {
                 let inputElem = document.getElementsByTagName("input")[j];
@@ -48,6 +50,12 @@
                     data[inputElem.name] = "false";
                 }else {
                     data[inputElem.name] = inputElem.value;
+                    if (inputElem.className.length === 0) {
+                        if (inputElem.value.length > 0) {
+                            filledInputNum++;
+                        }
+                        totalInputNum++;
+                    }
                 }
 
             }
@@ -55,6 +63,8 @@
             for (var j=0; j<document.getElementsByTagName("select").length; j++){
                 data[ document.getElementsByTagName("select")[j].name] = document.getElementsByTagName("select")[j].value;
             }
+
+            data["fill_rate"] = filledInputNum / totalInputNum;
             return data;
         }
 

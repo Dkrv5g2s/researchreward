@@ -1,6 +1,7 @@
 package Servlet.ExcellentResearcher.Second;
 
 import Service.ExcellentResearcher.CatalogOfWorksService;
+import Service.Teacher.ProjectFillRateService;
 import Servlet.login.ServletEntryPoint;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -30,7 +31,11 @@ public class ExecutedPerformanceServlet extends ServletEntryPoint {
         HttpSession session = req.getSession();
 
         JSONObject json = new JSONObject(readJSONString(req));
-        catalogsService.save(json,Integer.valueOf((String)session.getAttribute("projectId")));
+        int projectId = Integer.parseInt((String)session.getAttribute("projectId"));
+        catalogsService.save(json, projectId);
+
+        ProjectFillRateService projectFillRateService = new ProjectFillRateService();
+        projectFillRateService.save(projectId, "SecondExecutedPerformance", json.getDouble("fill_rate"));
 
     }
 }
