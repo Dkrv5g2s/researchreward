@@ -1,5 +1,6 @@
 package Utils;
 
+import Bean.Common.OtherFileUploadForm;
 import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorUploadForm;
 import Bean.SpecialOutstandingResearcher.*;
 import com.google.gson.*;
@@ -143,6 +144,15 @@ public class json_transformer_util {
         return new Gson().fromJson(json.toString(), LectureProfessorUploadForm.class);
 
     }
+
+    public String other_file_upload_form_to_json(OtherFileUploadForm otherFileUploadForm) {
+        return new Gson().toJson(otherFileUploadForm);
+    }
+
+    public OtherFileUploadForm json_to_other_file_upload_form(JSONObject json) {
+        return new Gson().fromJson(json.toString(), OtherFileUploadForm.class);
+    }
+
     public SpecialOutstandingResearcherReview json_to_special_researcher_review(JSONObject json_review) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {

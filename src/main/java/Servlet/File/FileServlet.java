@@ -1,8 +1,11 @@
 package Servlet.File;
 
+import Bean.Common.OtherFile;
 import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorUpload;
 import Bean.SpecialOutstandingResearcher.CommonFunction;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
+import Dao.Common.Impl.OtherFileUploadDAOImpl;
+import Dao.Common.OtherFileUploadDAO;
 import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorExcellenceUploadDAOImpl;
 import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorExcellenceUploadDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
@@ -98,7 +101,21 @@ public class FileServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }else if (func.equalsIgnoreCase("download_other_files")){
+        try {
+            String doc_uuid = request.getParameter("id");
+            System.out.println("doc_uuid:"+doc_uuid);
+            OtherFileUploadDAO dao = new OtherFileUploadDAOImpl();
+            OtherFile otherFile = dao.querySpecifiedDocument(doc_uuid);
+
+            if (!CommonFunction.setString(otherFile.getDocFilePath()).equals("")) {
+                filePath = this.getServletContext().getRealPath("/") + "WEB-INF\\uploadFile\\" + otherFile.getDocFilePath();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
 
         /*開始進行資料寫給使用者*/

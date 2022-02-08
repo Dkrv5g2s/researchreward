@@ -146,6 +146,9 @@
                 <tr>
                     <td><a href="PaperPerformanceDescriptionUpload?table_c=1" name="TeacherHireResearcherTableCUpload">傑出論文績效說明表(申請第二期以上者填寫)-上傳檔案</a></td>
                 </tr>
+                <tr>
+                    <td><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
+                </tr>
                 </tbody>
             </table>
             <p>

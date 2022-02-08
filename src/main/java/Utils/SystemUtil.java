@@ -95,4 +95,9 @@ public class SystemUtil {
             }
         }
     }
+
+    public static boolean isValidUUID(String uuid) {
+        String regex = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
+        return uuid != null && uuid.matches(regex);
+    }
 }

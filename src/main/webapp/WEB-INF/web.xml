@@ -724,4 +724,13 @@
         <servlet-name>RewardTableAAnnualIntervalSettingServlet</servlet-name>
         <url-pattern>/RewardTableAAnnualIntervalSetting</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OtherFileUploadServlet</servlet-name>
+        <servlet-class>Servlet.Common.OtherFileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OtherFileUploadServlet</servlet-name>
+        <url-pattern>/OtherFileUpload</url-pattern>
+    </servlet-mapping>
 </web-app>
