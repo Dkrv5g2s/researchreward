@@ -9,7 +9,7 @@
 <div class="content" style="width: 90%;">
     <p class="file_title">其他附件上傳</p>
     <form method="post">
-        <table border="1" cellpadding="2" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
+        <table border="1" cellpadding="3" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
                 <th colspan="1" width="15%">附件描述</th>
                 <th colspan="1" width="15%">附件上傳</th>
@@ -18,12 +18,12 @@
             </tbody>
             <tbody style="text-align: center;" class="no-print">
                 <tr>
-                    <td colspan="2" width="100%">
+                    <td colspan="3" width="100%">
                         <input type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="background-color:rgb(255, 255, 240);" width="100%">
+                    <td colspan="3" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:history.back()">
                         <input type="button" id="save" name="save" value="暫存" onclick="commit()"/>
                     </td>
@@ -61,6 +61,7 @@
 
 
     function load(){
+        latest_data["DeletedOtherFileList"] = [];
         showData();
     }
 
@@ -69,6 +70,7 @@
     function removeData(index){
         dataFromTable();
         if(confirm("您確定要刪除此筆資料嗎?")){
+            latest_data["DeletedOtherFileList"].push(latest_data["OtherFileList"][index]);
             latest_data["OtherFileList"].splice(index,1);
         }
         showData();
@@ -89,14 +91,14 @@
         var otherFileList = latest_data["OtherFileList"];
         var html_of_item = "";
         html_of_item += "<tr>" ;
-        html_of_item += "<td colspan='1' width='15%'>";
-        html_of_item += "<input id ='doc_description" + i + "' name='doc_description" + i + "' >" ;
+        html_of_item += "<td colspan='1' width='45%'>";
+        html_of_item += "<input id ='doc_description" + i + "' name='doc_description" + i + "' size='40' maxlength='100' >" ;
         html_of_item += "<input name='paper_id_" + i + "' style='display: none' readonly>" ;
         html_of_item += "<input name='doc_file_path_" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;
         if (otherFileList[i].documentId && otherFileList[i].documentId !== "" && otherFileList[i].docFilePath && otherFileList[i].docFilePath !== "") {
             let doc_uuid =  String(otherFileList[i].documentId) !== '' ? otherFileList[i].documentId : i;
-            html_of_item += "<td colspan='1' style='text-align: center;'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
@@ -111,13 +113,14 @@
         }
         else {
             let doc_uuid = String(otherFileList[i].documentId);
-            html_of_item += "<td colspan='1' style='text-align: center;'><input value='上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'><input value='上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
             html_of_item += i ;
             html_of_item += ")'></td>";
         }
+        html_of_item += "<td colspan='1' width='20%' class='no-print'><input type='button' name='delete_contract"+i+"' value='刪除' onclick='removeData("+i+" )'></td>" ;
         html_of_item += "</tr>" ;
 
         return html_of_item ;
@@ -183,9 +186,11 @@
 
             success: function(data1) {
                 //返回資料處理
-                alert( "成功");
-                location.reload() ;
-
+                new Promise((resolve, reject) => {
+                    resolve(commit());
+                }).then(result=>{
+                    location.reload() ;
+                });
             },
             error: function (data2) {
                 alert("錯誤") ;
@@ -197,6 +202,7 @@
     });
 
     function commit(){
+        let result = $.Deferred();
         $.ajax({
             type: 'POST',
             url: 'OtherFileUpload',
@@ -205,9 +211,10 @@
             contentType: 'application/json',
             success: function(data){
                 alert('存檔成功');
+                result.resolve(true);
             }
         });
-
+        return result;
     }
 </script>
 </html>

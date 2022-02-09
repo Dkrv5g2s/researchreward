@@ -28,6 +28,7 @@ public class OtherFileUploadDAOImpl implements OtherFileUploadDAO {
     private static final String INSERT_WITHOUT_FILE_PATH =
             "INSERT INTO common_other_file (project_id, description, document_id)"+
                     " values(?,?,?)";
+    private static final String DELETE = "DELETE FROM common_other_file WHERE document_id = ?";
     private static final String SELECT = "SELECT * FROM common_other_file WHERE document_id=? and project_id = ?";
     private static final String SELECT_SPECIFIED_DOC = "SELECT * FROM common_other_file WHERE document_id=? ";
 
@@ -78,6 +79,19 @@ public class OtherFileUploadDAOImpl implements OtherFileUploadDAO {
         }
         else {
             insertWithoutFilePath(object);
+        }
+    }
+
+    @Override
+    public void delete(OtherFile object) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE))
+        {
+            preparedStatement.setString(1, object.getDocumentId().toString());
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

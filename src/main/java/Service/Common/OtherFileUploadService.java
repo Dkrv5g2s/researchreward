@@ -20,7 +20,22 @@ public class OtherFileUploadService {
     }
 
     public void save(int projectId, JSONObject jsonObject){
-        List<OtherFile> OtherFileList = new ArrayList<>();
+        List<OtherFile> otherFileList = getOtherFileListFromJSONObject(projectId, jsonObject);
+        List<OtherFile> deletedOtherFileList = getDeletedOtherFileListFromJSONObject(projectId, jsonObject);
+
+        OtherFileUploadDAO otherFileUploadDAO = new OtherFileUploadDAOImpl();
+
+        for(OtherFile otherFile : otherFileList){
+            otherFileUploadDAO.saveWithoutFilePath(otherFile);
+        }
+
+        for(OtherFile deletedOtherFile : deletedOtherFileList){
+            otherFileUploadDAO.delete(deletedOtherFile);
+        }
+    }
+
+    private List<OtherFile> getOtherFileListFromJSONObject(int projectId, JSONObject jsonObject) {
+        List<OtherFile> otherFileList = new ArrayList<>();
 
         for (Object object : jsonObject.getJSONArray("OtherFileList")) {
             JSONObject otherFileJson = (JSONObject) object;
@@ -33,16 +48,28 @@ public class OtherFileUploadService {
             otherFile.setProjectId(projectId);
             otherFile.setDescription(otherFileJson.getString("description"));
 
-            OtherFileList.add(otherFile);
+            otherFileList.add(otherFile);
         }
 
-//        OtherFileUploadForm otherFileUploadForm = new json_transformer_util().json_to_other_file_upload_form(jsonObject) ;
+        return otherFileList;
+    }
 
-        OtherFileUploadDAO otherFileUploadDAO = new OtherFileUploadDAOImpl();
+    private List<OtherFile> getDeletedOtherFileListFromJSONObject(int projectId, JSONObject jsonObject) {
+        List<OtherFile> deletedOtherFileList = new ArrayList<>();
 
-        for(OtherFile otherFile : OtherFileList){
-            otherFile.setProjectId(projectId);
-            otherFileUploadDAO.saveWithoutFilePath(otherFile);
+        for (Object object : jsonObject.getJSONArray("DeletedOtherFileList")) {
+            JSONObject deletedOtherFileJson = (JSONObject) object;
+            String documentId = deletedOtherFileJson.getString("documentId");
+
+            if (SystemUtil.isValidUUID(documentId)) {
+                OtherFile deletedOtherFile = new OtherFile();
+                deletedOtherFile.setDocumentId(UUID.fromString(documentId));
+                deletedOtherFile.setProjectId(projectId);
+                deletedOtherFile.setDescription(deletedOtherFileJson.getString("description"));
+                deletedOtherFileList.add(deletedOtherFile);
+            }
         }
+
+        return deletedOtherFileList;
     }
 }
