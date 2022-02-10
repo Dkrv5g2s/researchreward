@@ -130,7 +130,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td class="metadata">表格名稱</td>
+                    <td class="metadata">申請表名稱</td>
                 </tr>
                 <tr>
                     <td><a href="SecondPersonalInformation" name="SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
@@ -140,6 +140,9 @@
                 </tr>
                 <tr>
                     <td><a href="SecondResearchProduction" name="SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
+                </tr>
+                <tr>
+                    <td><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
                 </tr>
             </tbody>
         </table>

@@ -316,7 +316,16 @@
         <div>
             <table>
                 <tbody>
-                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)"><span><button type="button" onclick="commit()">存檔</button></span><span><input class="back" type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span></td></tr>
+                <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">
+
+                    <span>
+                        <input class="back" type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'">
+
+                    </span>
+                    <span>
+                        <button type="button" onclick="commit()">暫存</button>
+                    </span>
+                </td></tr>
                 </tbody>
             </table>
         </div>

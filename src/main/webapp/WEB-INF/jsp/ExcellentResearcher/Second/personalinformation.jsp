@@ -230,8 +230,8 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">
-                            <span><input type="button" id="save" value="暫存" onclick="commit()"></span>
                             <span><input type="button" width="10%" value="上一頁" name="close" onclick="javascript:location.href='SecondExcellentResearcherCatalog'"></span>
+                            <span><input type="button" id="save" value="暫存" onclick="commit()"></span>
                         </td>
                     </tr>
                 </tbody>
