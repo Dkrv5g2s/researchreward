@@ -18,8 +18,8 @@
             </tbody>
             <tbody style="text-align: center;" class="no-print">
                 <tr>
-                    <td colspan="2" width="100%">
-                        <input type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
+                    <td class="teacher" colspan="2" width="100%">
+                        <input  type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
                     </td>
                 </tr>
                 <tr>
@@ -55,12 +55,19 @@
         </form>
     </div>
 </div>
-
+<script src="js/Function.js"></script>
 <script>
     var latest_data = ${latest_data} ;
+    var read_only = ${readonly};
 
 
     function load(){
+        if (read_only) {
+            $(".teacher").remove();
+            $("#main_table").prop("cellpadding", "2");
+            $("#main_table_button").prop("colspan", "2");
+        }
+
         showData() ;
     }
 
@@ -107,12 +114,13 @@
         if ( lectureProfessorUploadList[i].document_id != "" && lectureProfessorUploadList[i].document_id != null ) {
 
             let doc_uuid =  String(lectureProfessorUploadList[i].document_id) !== '' ? lectureProfessorUploadList[i].document_id:i;
-            html_of_item += "<td colspan='1' style='text-align: center;'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;'>" +
+                "<button value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
             html_of_item += i ;
-            html_of_item += ")' >";
+            html_of_item += ")' ></button>";
             html_of_item += "<input value='檢視' type='button' width='10%' name='enable_upload' onclick='downloadCertifiedDoc(" ;
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
@@ -122,7 +130,12 @@
         }
         else {
             let doc_uuid = String(lectureProfessorUploadList[i].document_id) !== undefined ? String(lectureProfessorUploadList[i].document_id):String(i);
-            html_of_item += "<td colspan='1' style='text-align: center;'><input value='上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;'>" ;
+            if (read_only) {
+                html_of_item += "<a style='color: #EB1D1D'>未上傳檔案</a>" ;
+            }
+
+            html_of_item += "<input value='上傳' type='button' width='10%' name='enable_upload' onclick='operator1(" ;
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
@@ -173,7 +186,7 @@
         if(html=="")
             html = "<tr></tr>";
         $("#data_table").html(html);
-
+        setReadOnly(read_only);
         for(var i=0;i<data_of_certified_documents.length;i++){
             $("select[name='doc_type"+i+"']").val(data_of_certified_documents[i].doc_type);
             $("input[name='paper_id_"+i+"']").val(data_of_certified_documents[i].document_id);
