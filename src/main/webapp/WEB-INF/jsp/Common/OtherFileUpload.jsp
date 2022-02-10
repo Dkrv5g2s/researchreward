@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" style="background-color:rgb(255, 255, 240);" width="100%">
-                        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:history.back()">
+                        <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'">
                         <button type="button" id="save" name="save" onclick="commit()"/>暫存</button>
                     </td>
                 </tr>
