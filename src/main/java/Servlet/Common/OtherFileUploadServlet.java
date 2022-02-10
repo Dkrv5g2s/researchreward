@@ -5,6 +5,7 @@ import Bean.SpecialOutstandingResearcher.CommonFunction;
 import Dao.Common.Impl.OtherFileUploadDAOImpl;
 import Dao.Common.OtherFileUploadDAO;
 import Service.Common.OtherFileUploadService;
+import Service.Teacher.RewardListService;
 import Servlet.login.ServletEntryPoint;
 import Utils.SystemUtil;
 import fr.opensagres.xdocreport.document.json.JSONObject;
@@ -31,14 +32,16 @@ public class OtherFileUploadServlet extends ServletEntryPoint {
 
         HttpSession session = req.getSession() ;
         int project_id = Integer.parseInt(session.getAttribute("projectId").toString());
-        boolean readonly = (Boolean)session.getAttribute("readonly");
 
         OtherFileUploadService uploadService = new OtherFileUploadService();
         String json_form = "";
         json_form = uploadService.query(project_id);
 
         req.setAttribute("latest_data",json_form);
-        session.setAttribute( "readonly", readonly);
+
+        RewardListService rewardListService = new RewardListService();
+        String reward_type = rewardListService.getRewardType(project_id);
+        req.setAttribute("catalogURL", rewardListService.getCatalogURL(reward_type));
 
         req.getRequestDispatcher("WEB-INF/jsp/Common/OtherFileUpload.jsp").forward(req, resp);
     }
