@@ -9,7 +9,7 @@
 <div class="content" style="width: 90%;">
     <p class="file_title">其他附件上傳</p>
     <form method="post">
-        <table border="1" cellpadding="3" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
+        <table id="main_table" border="1" cellpadding="3" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <thead>
                 <th colspan="1" width="15%">附件描述</th>
                 <th colspan="1" width="15%">附件上傳</th>
@@ -23,7 +23,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="background-color:rgb(255, 255, 240);" width="100%">
+                    <td id="main_table_button" colspan="3" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="location.href='${catalogURL}'">
                         <button type="button" id="save" name="save" onclick="commit()"/>暫存</button>
                     </td>
@@ -65,6 +65,8 @@
         latest_data["DeletedOtherFileList"] = [];
         if (read_only) {
             $(".teacher").remove();
+            $("#main_table").prop("cellpadding", "2");
+            $("#main_table_button").prop("colspan", "2");
         }
         showData();
     }
