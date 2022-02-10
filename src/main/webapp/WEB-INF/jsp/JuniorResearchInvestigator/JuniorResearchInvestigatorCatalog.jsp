@@ -33,7 +33,7 @@
     <table>
         <thead>
             <tr>
-                <th>申請表名稱</th>
+                <td class="metadata">申請表名稱</td>
             </tr>
         </thead>
         <tbody>
@@ -51,6 +51,9 @@
             </tr>
             <tr>
                 <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
+            </tr>
+            <tr>
+                <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
             </tr>
         </tbody>
     </table>

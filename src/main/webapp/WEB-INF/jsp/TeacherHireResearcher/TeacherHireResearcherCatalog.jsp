@@ -123,7 +123,7 @@
             <table>
                 <tbody>
                 <tr>
-                    <td class="metadata">表格名稱</td>
+                    <td class="metadata">申請表名稱</td>
                 </tr>
                 <tr>
                     <td><a class="filledCheck" href="TeacherHireResearcherForm" name="TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>

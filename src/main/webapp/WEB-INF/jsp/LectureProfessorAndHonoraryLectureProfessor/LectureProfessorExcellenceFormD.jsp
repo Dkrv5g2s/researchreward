@@ -142,8 +142,8 @@
             </tbody>
         </table>
         <p style="text-align: center;">
-            <input type="button" name="save" value="存檔" onclick="commit()">
             <input type="button" name="return_last_page" value="回上頁"  onclick="javascript:location.href='LectureProfessorCatalog'"  >
+            <input type="button" name="save" value="暫存" onclick="commit()">
         </p>
     </form>
 </div>

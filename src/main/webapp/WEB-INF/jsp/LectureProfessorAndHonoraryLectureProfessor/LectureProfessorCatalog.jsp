@@ -35,7 +35,7 @@
     <table>
         <thead>
         <tr>
-            <th>申請表名稱</th>
+            <td class="metadata">申請表名稱</td>
         </tr>
         </thead>
         <tbody>
@@ -65,6 +65,9 @@
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorExcellenceFormD" name="LectureProfessorExcellenceFormD">講座期間之績效表現(申請第二任以上者填寫)</a></td>
+        </tr>
+        <tr>
+            <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
         </tr>
   <!--      <tr>
             <td class="left"><a href="LectureProfessorRefPoint" >附表一：國立臺北科技大學論文點數計算公式</a></td>

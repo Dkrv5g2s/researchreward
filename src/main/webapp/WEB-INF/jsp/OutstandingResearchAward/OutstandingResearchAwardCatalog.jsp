@@ -23,11 +23,11 @@
 </head>
 <body>
 <div class="content">
-    <h2>傑出研究獎</h2>
+    <h2 style="text-align:center;">傑出研究獎</h2>
     <table>
         <thead>
         <tr>
-            <th>申請表名稱</th>
+            <td class="metadata">申請表名稱</td>
         </tr>
         </thead>
         <tbody>
@@ -45,6 +45,9 @@
         </tr>
         <tr>
             <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
+        </tr>
+        <tr>
+            <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
         </tr>
         </tbody>
     </table>

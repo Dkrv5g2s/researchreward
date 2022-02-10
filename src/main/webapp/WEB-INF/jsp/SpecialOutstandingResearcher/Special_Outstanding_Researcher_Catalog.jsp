@@ -13,10 +13,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <div class="content" >
+    <h2 style="text-align:center;">獎勵特殊優秀人才</h2>
     <table >
 
         <tr  >
-            <td class="metadata" >表格名稱</td>
+            <td class="metadata" >申請表名稱</td>
         </tr>
 
         <tbody>
