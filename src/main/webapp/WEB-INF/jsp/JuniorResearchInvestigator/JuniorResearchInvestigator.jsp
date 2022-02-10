@@ -155,10 +155,7 @@
 </div>
 </body>
 <script type="text/javascript">
-    function wordsTotal() {
-        const total = document.getElementById('recommended_reason').value.length;
-        document.getElementById('nowWords').innerHTML = total;
-    }
+
 
     function commit(){
         $.ajax({
@@ -231,5 +228,9 @@
         setReviewData();
         wordsTotal();
     })
+    function wordsTotal() {
+        const total = document.getElementById('recommended_reason').value.length;
+        document.getElementById('nowWords').innerHTML = total;
+    }
 </script>
 </html>

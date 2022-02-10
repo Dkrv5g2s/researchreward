@@ -32,19 +32,19 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="OutstandingResearchAward" name="OutstandingResearchAward">推薦申請表</a></td>
+            <td class="left"><a class = "filledCheck" href="OutstandingResearchAward" name="OutstandingResearchAward">推薦申請表</a></td>
         </tr>
         <tr>
             <td class="left"><a href="OutstandingResearchAwardReviewInformation" name="OutstandingResearchAwardReviewInformation">審查資料表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableA" name="OutstandingResearchAwardTableA">近三年內發表之期刊論文統計表</a></td>
+            <td class="left"><a class = "filledCheck" href="OutstandingResearchAwardTableA" name="OutstandingResearchAwardTableA">近三年內發表之期刊論文統計表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="OutstandingResearchAwardTableB" name="OutstandingResearchAwardTableB">傑出論文績效說明表</a></td>
+            <td class="left"><a class = "filledCheck" href="OutstandingResearchAwardTableB" name="OutstandingResearchAwardTableB">傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-檔案上傳</a></td>
         </tr>
         <tr>
             <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
@@ -118,22 +118,22 @@
             return false;
         }
         console.log(fillRates)
-        let fillPage = document.getElementsByTagName("a");
+        let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
         // ReviewInformation page don't need to be checked fillRate.
         console.log(fillPage.length)
         console.log(fillRatesKeys.length)
-        if (fillRatesKeys.length < fillPage.length-1) {
+        if (fillRatesKeys.length < fillPage.length) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name] && page.innerHTML!="審查資料(填寫說明)") {
+                if (!fillRates[page.name] ) {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length-1) {
+        } else if (fillRatesKeys.length === fillPage.length) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 let fillRatesKey = fillRatesKeys[i];

@@ -69,13 +69,13 @@
             if(!fillRates){
                 return false;
             }
-            let fillPage = document.getElementsByTagName("a");
+            let fillPage = document.getElementsByClassName("filledCheck");
             let fillRatesKeys = Object.keys(fillRates);
-            if (fillRatesKeys.length - 1  < fillPage.length) {
+            if (fillRatesKeys.length< fillPage.length) {
                 let unSavedPageName = "";
                 for (let i = 0; i < fillPage.length; i++) {
                     let page = fillPage[i];
-                    if (!fillRates[page.name]) {
+                    if (!fillRates[page.name]&& page.name!=="OtherFileUpload") {
                         unSavedPageName += page.innerHTML + "\n";
                     }
                 }
@@ -133,16 +133,16 @@
                     <td class="metadata">申請表名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="PersonalInformation" name="PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a class = "filledCheck" href="PersonalInformation" name="PersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="RecruitDescription" name="RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
+                    <td><a class = "filledCheck" href="RecruitDescription" name="RecruitDescription">延攬內容說明&延攬特殊優秀人才之傑出研究表現說明</a></td>
                 </tr>
                 <tr>
-                    <td><a href="CatalogOfWorks" name="CatalogOfWorks">著作目錄</a></td>
+                    <td><a class = "filledCheck" href="CatalogOfWorks" name="CatalogOfWorks">著作目錄</a></td>
                 </tr>
                 <tr>
-                    <td><a href="ResearchProduction" name="ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
+                    <td><a class = "filledCheck" href="ResearchProduction" name="ResearchProduction">研發成果智慧財產權及其應用績效</a></td>
                 </tr>
                 <tr>
                     <td><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>

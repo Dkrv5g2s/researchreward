@@ -69,9 +69,9 @@
             if(!fillRates){
                 return false;
             }
-            let fillPage = document.getElementsByTagName("a");
+            let fillPage = document.getElementsByClassName("filledCheck");
             let fillRatesKeys = Object.keys(fillRates);
-            if (fillRatesKeys.length - 1 < fillPage.length) {
+            if (fillRatesKeys.length  < fillPage.length) {
                 let unSavedPageName = "";
                 for (let i = 0; i < fillPage.length; i++) {
                     let page = fillPage[i];
@@ -133,13 +133,13 @@
                     <td class="metadata">申請表名稱</td>
                 </tr>
                 <tr>
-                    <td><a href="SecondPersonalInformation" name="SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
+                    <td><a class = "filledCheck" href="SecondPersonalInformation" name="SecondPersonalInformation">基本資料&申請獎勵等級及符合資格</a></td>
                 </tr>
                 <tr>
-                    <td><a href="SecondExecutedPerformance" name="SecondExecutedPerformance">前一年度具體執行績效</a></td>
+                    <td><a class = "filledCheck" href="SecondExecutedPerformance" name="SecondExecutedPerformance">前一年度具體執行績效</a></td>
                 </tr>
                 <tr>
-                    <td><a href="SecondResearchProduction" name="SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
+                    <td><a class = "filledCheck" href="SecondResearchProduction" name="SecondResearchProduction">獲獎勵期間學術研究成果及貢獻</a></td>
                 </tr>
                 <tr>
                     <td><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>

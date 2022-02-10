@@ -38,13 +38,13 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="SunshineScholarshipAwardGeneralInformation" name="SunshineScholarshipAwardGeneralInformation">陽光獎助學金論文(教職研人員)獎勵申請表</a></td>
+            <td class="left"><a class="filledCheck" href="SunshineScholarshipAwardGeneralInformation" name="SunshineScholarshipAwardGeneralInformation">陽光獎助學金論文(教職研人員)獎勵申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="SunshineScholarshipAwardTableA" name = "SunshineScholarshipAwardTableA">論文績效說明表</a></td>
+            <td class="left"><a class="filledCheck" href="SunshineScholarshipAwardTableA" name = "SunshineScholarshipAwardTableA">論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" name = "PaperPerformanceDescriptionUpload">論文績效說明表-檔案上傳</a></td>
+            <td class="left"><a class="filledCheck" href="PaperPerformanceDescriptionUpload" name = "PaperPerformanceDescriptionUpload">論文績效說明表-檔案上傳</a></td>
         </tr>
         <tr>
             <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
@@ -119,7 +119,7 @@
             return false;
         }
         console.log(fillRates)
-        let fillPage = document.getElementsByTagName("a");
+        let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
 
         console.log(fillPage.length)

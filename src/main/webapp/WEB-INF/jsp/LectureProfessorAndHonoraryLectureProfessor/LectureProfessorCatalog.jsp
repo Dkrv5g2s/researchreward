@@ -40,28 +40,28 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="LectureProfessorApplicationForm" name="LectureProfessorApplicationForm">講座教授申請表</a></td>
+            <td class="left"><a class = "filledCheck" href="LectureProfessorApplicationForm" name="LectureProfessorApplicationForm">講座教授申請表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorHonoraryApplicationForm" name="LectureProfessorHonoraryApplicationForm">榮譽講座教授申請表</a></td>
+            <td class="left"><a class = "filledCheck" href="LectureProfessorHonoraryApplicationForm" name="LectureProfessorHonoraryApplicationForm">榮譽講座教授申請表</a></td>
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorAppDocInstructions" name="LectureProfessorAppDocInstructions">審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內傑出績效說明表</a></td>
+            <td class="left"><a class = "filledCheck" href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內傑出績效說明表</a></td>
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorFormCUploadFile" name="LectureProfessorFormCUploadFile">近五年內傑出績效說明表-上傳檔案</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionForm" name="LectureProfessorTableB">國立臺北科技大學傑出論文績效說明表</a></td>
+            <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionForm" name="LectureProfessorTableB">國立臺北科技大學傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">國立臺北科技大學傑出論文績效說明表-上傳檔案</a></td>
+            <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">國立臺北科技大學傑出論文績效說明表-上傳檔案</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorExcellenceFormC" name="LectureProfessorExcellenceFormC">傑出研究表現說明及申請機構推薦理由</a></td>
+            <td class="left"><a class = "filledCheck" href="LectureProfessorExcellenceFormC" name="LectureProfessorExcellenceFormC">傑出研究表現說明及申請機構推薦理由</a></td>
         </tr>
         <tr>
             <td class="left"><a href="LectureProfessorExcellenceFormD" name="LectureProfessorExcellenceFormD">講座期間之績效表現(申請第二任以上者填寫)</a></td>
@@ -145,22 +145,22 @@
             return false;
         }
         console.log(fillRates)
-        let fillPage = document.getElementsByTagName("a");
+        let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
         // ReviewInformation page don't need to be checked fillRate.
         console.log(fillPage.length)
         console.log(fillRatesKeys.length)
-        if (fillRatesKeys.length < fillPage.length-1) {
+        if (fillRatesKeys.length < fillPage.length) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name] && page.innerHTML!="審查資料(填寫說明)") {
+                if (!fillRates[page.name] ) {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length-1) {
+        } else if (fillRatesKeys.length === fillPage.length) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 let fillRatesKey = fillRatesKeys[i];

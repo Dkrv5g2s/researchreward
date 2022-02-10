@@ -442,7 +442,7 @@
 <body>
 <div class="content">
     <form>
-        <p>國立臺北科技大學特聘教授-近五年內傑出績效說明表</p>
+        <p>國立臺北科技大學講座教授-近五年內傑出績效說明表</p>
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
             <tr style="text-align:center;background:  #C0C0C0 ">

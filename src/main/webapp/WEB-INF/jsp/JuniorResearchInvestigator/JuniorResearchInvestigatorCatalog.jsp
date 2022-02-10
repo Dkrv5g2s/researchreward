@@ -38,19 +38,19 @@
         </thead>
         <tbody>
             <tr>
-                <td class="left"><a href="JuniorResearchInvestigator" name="JuniorResearchInvestigator">推薦申請表</a></td>
+                <td class="left"><a class = "filledCheck" href="JuniorResearchInvestigator" name="JuniorResearchInvestigator">推薦申請表</a></td>
             </tr>
             <tr>
                 <td class="left"><a href="JuniorResearchInvestigatorReviewInformation" name="JuniorResearchInvestigatorReviewInformation">審查資料</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="JuniorResearchInvestigatorTableA" name="JuniorResearchInvestigatorTableA">近三年內發表之期刊論文統計表</a></td>
+                <td class="left"><a class = "filledCheck" href="JuniorResearchInvestigatorTableA" name="JuniorResearchInvestigatorTableA">近三年內發表之期刊論文統計表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="PaperPerformanceDescriptionForm" name="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
+                <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionForm" name="JuniorResearchInvestigatorTableB">傑出論文績效說明表</a></td>
             </tr>
             <tr>
-                <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
+                <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">傑出論文績效說明表-上傳檔案</a></td>
             </tr>
             <tr>
                 <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
@@ -122,19 +122,22 @@
         if(!fillRates){
             return false;
         }
-        let fillPage = document.getElementsByTagName("a");
+        let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
-        if (fillRatesKeys.length < fillPage.length-1) {
+        console.log("fillRatesKeys.length:",fillRatesKeys.length,"fillPage.length:",fillPage.length)
+        console.log("fillRatesKeys:",fillRatesKeys,"fillPage:",fillPage)
+        if (fillRatesKeys.length < fillPage.length) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name] && page.name!=="JuniorResearchInvestigatorReviewInformation") {
-                    unSavedPageName += page.innerHTML + " ";
+
+                if (!fillRates[page.name] ) {
+                    unSavedPageName += page.innerText + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length-1) {
+        } else if (fillRatesKeys.length === fillPage.length) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 const fillRatesKey = fillRatesKeys[i];

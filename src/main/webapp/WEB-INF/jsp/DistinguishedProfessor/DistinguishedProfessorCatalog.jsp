@@ -36,19 +36,19 @@
         </thead>
         <tbody>
         <tr>
-            <td class="left"><a href="DistinguishedProfessorForm" name="DistinguishedProfessorForm">特聘教授申請表</a></td>
+            <td class="left"><a class = "filledCheck" href="DistinguishedProfessorForm" name="DistinguishedProfessorForm">特聘教授申請表</a></td>
         </tr>
         <tr>
             <td class="left"><a href="DistinguishedProfessorAppDocInstructions" name="DistinguishedProfessorAppDocInstructions">審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="DistinguishedProfessorTableA" name="DistinguishedProfessorTableA">近五年內發表之期刊論文統計表</a></td>
+            <td class="left"><a class = "filledCheck" href="DistinguishedProfessorTableA" name="DistinguishedProfessorTableA">近五年內發表之期刊論文統計表</a></td>
         </tr>
        <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionForm" name="DistinguishedProfessorTableB">傑出論文績效說明表</a></td>
+            <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionForm" name="DistinguishedProfessorTableB">傑出論文績效說明表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">論文績效說明表-上傳檔案</a></td>
+            <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionUpload" name="PaperPerformanceDescriptionUpload">論文績效說明表-上傳檔案</a></td>
         </tr>
         <tr>
             <td class="left"><a href="OtherFileUpload" name="OtherFileUpload">其他附件上傳</a></td>
@@ -111,19 +111,19 @@
         if(!fillRates){
             return false;
         }
-        let fillPage = document.getElementsByTagName("a");
+        let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
-        if (fillRatesKeys.length < fillPage.length-1) {
+        if (fillRatesKeys.length < fillPage.length) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
-                if (!fillRates[page.name] && page.name!=="DistinguishedProfessorAppDocInstructions") {
+                if (!fillRates[page.name] ) {
                     unSavedPageName += page.innerHTML + " ";
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length-1) {
+        } else if (fillRatesKeys.length === fillPage.length) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 let fillRatesKey = fillRatesKeys[i];
