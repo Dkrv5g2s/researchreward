@@ -18,14 +18,14 @@
             </tbody>
             <tbody style="text-align: center;" class="no-print">
                 <tr>
-                    <td colspan="3" width="100%">
-                        <input type="button" name="add_new_contract" value="新增" onclick="add_new_item()">
+                    <td class="teacher" colspan="3" width="100%">
+                        <button type="button" name="add_new_contract" onclick="add_new_item()">新增</button>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3" style="background-color:rgb(255, 255, 240);" width="100%">
                         <input type="button" width="10%" value="回上頁" name="return_last_page" onclick="javascript:history.back()">
-                        <input type="button" id="save" name="save" value="暫存" onclick="commit()"/>
+                        <button type="button" id="save" name="save" onclick="commit()"/>暫存</button>
                     </td>
                 </tr>
             </tbody>
@@ -56,12 +56,16 @@
     </div>
 </div>
 
+<script src="js/Function.js"></script>
 <script>
     var latest_data = ${latest_data} ;
-
+    var read_only = ${readonly};
 
     function load(){
         latest_data["DeletedOtherFileList"] = [];
+        if (read_only) {
+            $(".teacher").remove();
+        }
         showData();
     }
 
@@ -98,12 +102,12 @@
         html_of_item += "</td>" ;
         if (otherFileList[i].documentId && otherFileList[i].documentId !== "" && otherFileList[i].docFilePath && otherFileList[i].docFilePath !== "") {
             let doc_uuid =  String(otherFileList[i].documentId) !== '' ? otherFileList[i].documentId : i;
-            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'><input value='重新上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'><button type='button' width='10%' name='enable_upload' onclick='operator1(";
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
             html_of_item += i ;
-            html_of_item += ")' >";
+            html_of_item += ")' >重新上傳</button> ";
             html_of_item += "<input value='檢視' type='button' width='10%' name='enable_upload' onclick='downloadCertifiedDoc(" ;
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
@@ -113,20 +117,27 @@
         }
         else {
             let doc_uuid = String(otherFileList[i].documentId);
-            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'><input value='上傳' type='button' width='10%' name='enable_upload' onclick='operator1(";
+            html_of_item += "<td colspan='1' style='text-align: center;' width='35%'>";
+            if (read_only) {
+                html_of_item += "<a style='color: #EB1D1D'>未上傳檔案</a>" ;
+            }
+            html_of_item += "<button type='button' width='10%' name='enable_upload' onclick='operator1(";
             html_of_item += `\"`;
             html_of_item += doc_uuid ;
             html_of_item += `\",` ;
             html_of_item += i ;
-            html_of_item += ")'></td>";
+            html_of_item += ")'>上傳</button>";
+            html_of_item += "</td>";
         }
-        html_of_item += "<td colspan='1' width='20%' class='no-print'><input type='button' name='delete_contract"+i+"' value='刪除' onclick='removeData("+i+" )'></td>" ;
+        if (!read_only) {
+            html_of_item += "<td colspan='1' width='20%' class='no-print'><button type='button' name='delete_contract"+i+"' onclick='removeData("+i+" )'>刪除</button></td>" ;
+        }
         html_of_item += "</tr>" ;
 
         return html_of_item ;
     }
 
-    function operator1(doc_uuid,index) {
+    function operator1(doc_uuid, index) {
         $("input[name='upload_paper_id']").val($("input[name='paper_id_" + index + "']").val());
         $("input[name='upload_doc_description']").val($("input[name='doc_description" + index + "']").val());
         $("#uploadJointDiv").show();
@@ -163,6 +174,8 @@
             html = "<tr></tr>";
         $("#data_table").html(html);
 
+        setReadOnly(read_only);
+
         for(var i=0; i<data_of_other_files.length; i++){
             $("input[name='doc_description"+i+"']").val(data_of_other_files[i].description);
             $("input[name='paper_id_"+i+"']").val(data_of_other_files[i].documentId);
@@ -186,11 +199,13 @@
 
             success: function(data1) {
                 //返回資料處理
-                new Promise((resolve, reject) => {
-                    resolve(commit());
-                }).then(result=>{
-                    location.reload() ;
-                });
+                alert("上傳成功");
+                location.reload();
+                // new Promise((resolve, reject) => {
+                //     resolve(commit());
+                // }).then(result=>{
+                //     location.reload() ;
+                // });
             },
             error: function (data2) {
                 alert("錯誤") ;
