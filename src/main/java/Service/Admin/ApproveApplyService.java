@@ -4,9 +4,9 @@ import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
 
 public class ApproveApplyService {
-    private ProjectDAO projectDAO = new ProjectDAOImpl();
+    private ProjectDAO projectdao = new ProjectDAOImpl();
 
-    public void updateReviewerAndReviewTime(int project_id, String userRole, String userName) {
-        projectDAO.updateReviewInfo(project_id, userRole, userName);
+    public void updateReviewerAndReviewTime(int project_id, String userrole, String username) {
+        projectdao.updateReviewInfo(project_id, userrole, username);
     }
 }

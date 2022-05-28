@@ -1,16 +1,10 @@
 package DAO.SpecialOutstandingResearcherApplication;
 
-import Bean.Project.RewardProject;
-import Bean.SpecialOutstandingResearcher.PaperPerformance;
-import Dao.Project.ProjectDAO;
-import Dao.Project.ProjectDAOImpl;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
 import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
-import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
-import org.junit.jupiter.api.DisplayName;
 
 import java.util.List;
 import java.util.ListIterator;
@@ -28,7 +22,7 @@ public class PaperPerformanceDescriptionDAOImplTest {
     }
     @Test
     public void testQueryUserNameByPaperTitle(){
-        paperTitle = "從ERDs到跨維度查詢之推薦－以維度資料地圖為指引";
+        paperTitle = "捷運流量與時段的影響統計";
         userName = "林老師";
         Assert.assertEquals(userName,  dao.queryUserNameByPaperTitle(paperTitle));
     }
