@@ -1,6 +1,6 @@
-package Bean.RchJournal;
+package Bean.JournalPaper;
 
-public class RchJournal {
+public class JournalPaper {
     private String staff_cname;
     private String thesis_name;
     private String journal_name;
@@ -9,7 +9,7 @@ public class RchJournal {
     private String public_year;
     private String W2_corresponding;
 
-    public RchJournal(String staff_cname, String thesis_name, String journal_name, String volume, String pages, String public_year, String W2_corresponding) {
+    public JournalPaper(String staff_cname, String thesis_name, String journal_name, String volume, String pages, String public_year, String W2_corresponding) {
         this.staff_cname = staff_cname;
         this.thesis_name = thesis_name;
         this.journal_name = journal_name;

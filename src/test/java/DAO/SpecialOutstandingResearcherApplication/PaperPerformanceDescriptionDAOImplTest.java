@@ -22,7 +22,7 @@ public class PaperPerformanceDescriptionDAOImplTest {
     }
     @Test
     public void testQueryUserNameByPaperTitle(){
-        paperTitle = "捷運流量與時段的影響統計";
+        paperTitle = "fsdfds";
         userName = "林老師";
         Assert.assertEquals(userName,  dao.queryUserNameByPaperTitle(paperTitle));
     }

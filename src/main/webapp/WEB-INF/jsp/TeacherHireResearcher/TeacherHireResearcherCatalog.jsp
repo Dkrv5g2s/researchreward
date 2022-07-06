@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>奬助研究績優教師聘任研究人員目錄</title>
+        <title>獎助研究績優教師聘任研究人員目錄</title>
         <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
@@ -118,7 +118,7 @@
     </head>
     <body>
     <div class="content">
-        <h2 style="text-align:center;">奬助研究績優教師聘任研究人員</h2>
+        <h2 style="text-align:center;">獎助研究績優教師聘任研究人員</h2>
         <form>
             <table>
                 <tbody>
@@ -126,7 +126,7 @@
                     <td class="metadata">申請表名稱</td>
                 </tr>
                 <tr>
-                    <td><a class="filledCheck" href="TeacherHireResearcherForm" name="TeacherHireResearcherForm">奬助研究績優教師聘任研究人員申請表</a></td>
+                    <td><a class="filledCheck" href="TeacherHireResearcherForm" name="TeacherHireResearcherForm">獎助研究績優教師聘任研究人員申請表</a></td>
                 </tr>
                 <tr>
                     <td><a href="TeacherHireResearcherAppDocInstructions" name="TeacherHireResearcherAppDocInstructions">審查資料(填寫說明)</a></td>

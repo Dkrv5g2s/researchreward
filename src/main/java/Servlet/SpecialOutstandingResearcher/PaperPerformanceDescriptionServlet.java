@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     private Logger logger = LogManager.getLogger(this.getClass());
@@ -43,6 +44,35 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         PaperPerformanceDescriptionService service = new PaperPerformanceDescriptionService() ;
         BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
         TeacherHireResearcherTableCService teacherHireResearcherTableCService = new TeacherHireResearcherTableCService();
+        String reward_type = service.queryRewardType(project_id);
+
+        //  ================================== Dfone ===================================
+        System.out.println("======================");
+//        System.out.println("@doGet");
+//        System.out.println("project id : " + project_id);
+//        System.out.println("reward type : " + reward_type);
+
+//        String staff_code = (String)session.getAttribute("userNumber");
+//        if (staff_code==null) {
+//            System.out.println("NULL staff code");
+//        } else {
+//            System.out.println("staff code : " + staff_code);
+//            JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
+//            List<JournalPaper> journals = journalDAO.query_journal_papers(staff_code);
+//            System.out.println("Owned Journals Amount : " + journals.size());
+//        }
+
+        System.out.println("{ Attributes In Session }");
+        Enumeration<String> sessionAttributeNames = session.getAttributeNames();
+        while (sessionAttributeNames.hasMoreElements()) {
+            String sessionAttributeName = sessionAttributeNames.nextElement();
+            System.out.println(sessionAttributeName);
+        }
+//        String projectid = (String)session.getAttribute("projectId");
+//        System.out.println("project id : " + projectid);
+
+        System.out.println("======================");
+        //  ================================== Dfone ===================================
 
         String wight = bFormFormulaService.get().toString() ;
 
@@ -58,9 +88,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         }else
             json_form = service.query(project_id);
 
-        String reward_type = service.queryRewardType(project_id);
         setDisplaySection(reward_type, req, isTableC);
-
         req.setAttribute( "weight", wight );
         req.setAttribute("latest_data", json_form );
 

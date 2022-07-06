@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class TeacherEvaluationDBConnectionImpl implements DBConnection{
 
-    private static final String URL = "jdbc:informix-sqli://dbs-pp.cc.ntut.edu.tw:8800/db";
+    private static final String URL = "jdbc:informix-sqli://dbs-pp.cc.ntut.edu.tw:8800/db:ifx_use_strenc=true";
     private static final String user = "schreop";
     private static final String password = "re@schbas!";
 

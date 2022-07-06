@@ -412,7 +412,7 @@
         let rewardTranslated;
 
         switch (rewardType) {
-            case "奬助研究及產學績優教師聘任研究人員辦法":
+            case "獎助研究及產學績優教師聘任研究人員辦法": // after 2022/07/06 , first word display normally.
                 rewardTranslated="TeacherHireResearcherTableB";
                 break;
             case "講座教授":
