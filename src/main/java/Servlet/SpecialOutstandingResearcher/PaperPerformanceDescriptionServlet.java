@@ -1,5 +1,8 @@
 package Servlet.SpecialOutstandingResearcher;
 
+import Bean.JournalPaper.JournalPaper;
+import Dao.JournalPaper.JournalPaperDAO;
+import Dao.JournalPaper.JournalPaperDAOImpl;
 import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.Teacher.RewardListService;
@@ -15,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
+import java.util.List;
 
 public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     private Logger logger = LogManager.getLogger(this.getClass());
@@ -46,33 +49,14 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         TeacherHireResearcherTableCService teacherHireResearcherTableCService = new TeacherHireResearcherTableCService();
         String reward_type = service.queryRewardType(project_id);
 
-        //  ================================== Dfone ===================================
-        System.out.println("======================");
-//        System.out.println("@doGet");
-//        System.out.println("project id : " + project_id);
-//        System.out.println("reward type : " + reward_type);
-
-//        String staff_code = (String)session.getAttribute("userNumber");
-//        if (staff_code==null) {
-//            System.out.println("NULL staff code");
-//        } else {
-//            System.out.println("staff code : " + staff_code);
-//            JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
-//            List<JournalPaper> journals = journalDAO.query_journal_papers(staff_code);
-//            System.out.println("Owned Journals Amount : " + journals.size());
-//        }
-
-        System.out.println("{ Attributes In Session }");
-        Enumeration<String> sessionAttributeNames = session.getAttributeNames();
-        while (sessionAttributeNames.hasMoreElements()) {
-            String sessionAttributeName = sessionAttributeNames.nextElement();
-            System.out.println(sessionAttributeName);
+        // Dfone =====================================================================
+        String staff_code = (String)session.getAttribute("userNumber");
+        if ((staff_code!=null)&!readonly) {
+            JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
+            List<JournalPaper> journals = journalDAO.query_journal_papers_of_reward_limited_years(staff_code, reward_type);
+            service.autoFillInJournalPapers(project_id, reward_type, journals);
         }
-//        String projectid = (String)session.getAttribute("projectId");
-//        System.out.println("project id : " + projectid);
-
-        System.out.println("======================");
-        //  ================================== Dfone ===================================
+        // ===========================================================================
 
         String wight = bFormFormulaService.get().toString() ;
 
@@ -143,7 +127,6 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
 
     private void setDisplaySection(String reward_type, HttpServletRequest req, boolean isTableC) {
         String displayExplanation = "five_years";
-        System.out.println(reward_type);
         if(reward_type.compareTo("陽光獎助金論文獎勵")==0) {
             displayExplanation = "sunshine_scholarship_award";
         }

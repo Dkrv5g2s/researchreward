@@ -7,16 +7,18 @@ public class JournalPaper {
     private String volume;
     private String pages;
     private String public_year;
-    private String W2_corresponding;
+    private int w2_author_order;
+    private String w3_corresponding;
 
-    public JournalPaper(String staff_cname, String thesis_name, String journal_name, String volume, String pages, String public_year, String W2_corresponding) {
+    public JournalPaper(String staff_cname, String thesis_name, String journal_name, String volume, String pages, String public_year, int W2_author_order, String W3_corresponding) {
         this.staff_cname = staff_cname;
         this.thesis_name = thesis_name;
         this.journal_name = journal_name;
         this.volume = volume;
         this.pages = pages;
         this.public_year = public_year;
-        this.W2_corresponding = W2_corresponding;
+        this.w2_author_order = W2_author_order;
+        this.w3_corresponding = W3_corresponding;
     }
 
     public String getStaff_cname() {
@@ -43,7 +45,11 @@ public class JournalPaper {
         return public_year;
     }
 
-    public String getW2_corresponding() {
-        return W2_corresponding;
+    public int getW2_author_order() {
+        return w2_author_order;
+    }
+
+    public String getW3_corresponding() {
+        return w3_corresponding;
     }
 }

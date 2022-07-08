@@ -1,13 +1,15 @@
 package Dao.SpecialOutstandingResearcherApplication;
 
+import Bean.JournalPaper.JournalPaper;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
 import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PaperPerformanceDescriptionDAO {
-    PaperPerformanceDescriptionForm query_specified_paper_performance_descripstion_form(int project_id ) ;
+    public void insert_journal_papers(int project_id, List<JournalPaper> journals); // Dfone, added for auto fill in.
+
+    PaperPerformanceDescriptionForm query_specified_paper_performance_description_form(int project_id ) ;
 
     public void update( PaperPerformanceDescriptionForm paperPerformanceDescriptionForm ) ;
 

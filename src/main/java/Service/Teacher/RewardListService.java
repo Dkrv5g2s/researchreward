@@ -98,7 +98,9 @@ public class RewardListService {
                 return "SpecialOutstandingResearcherCatalog";
             case "陽光獎助金論文獎勵":
                 return "SunshineScholarshipCatalog";
-            case "獎助研究及產學績優教師聘任研究人員辦法": // after 2022/07/06 , first word display normally.
+            case "奬助研究及產學績優教師聘任研究人員辦法": // old, first word displayed as ?.
+                return "TeacherHireResearcherCatalog";
+            case "獎助研究及產學績優教師聘任研究人員辦法": // Dfone, fix after 2022/07/06 , first word display correctly.
                 return "TeacherHireResearcherCatalog";
             case "年輕學者研究獎":
                 return "JuniorResearchInvestigatorCatalog";

@@ -43,7 +43,7 @@ public class ProjectFillRateService {
 
     private Double getUploadRate(int projectId) {
         PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
-        PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = dao.query_specified_paper_performance_descripstion_form(projectId);
+        PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = dao.query_specified_paper_performance_description_form(projectId);
         List<PaperPerformance> paperPerformanceList = paperPerformanceDescriptionForm.getPaper_performance_list();
         List<Integer> paperIdList = new ArrayList<Integer>();
         for(PaperPerformance paperPerformance: paperPerformanceList){

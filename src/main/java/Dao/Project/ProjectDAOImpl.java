@@ -37,6 +37,8 @@ public class ProjectDAOImpl implements ProjectDAO {
             "college_review_time= NULL," +
             "industry_liaison_office_review_time = NULL," +
             "research_and_development_office_review_time= NULL WHERE project_id = ?";
+    private static final String UPDATE_REWARD_TYPE = "UPDATE reward_project SET reward_type=? WHERE project_id =?";
+
     @Override
     public void insertNewProject( String staff_code, int status_id, String reward_type ) {
         Connection connection = dbConnection.getConnection();
@@ -249,6 +251,11 @@ public class ProjectDAOImpl implements ProjectDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()){
                 if (resultSet.next()){
                     result = resultSet.getString("reward_type");
+                    // Dfone ==============================================
+                    if (result.equals("奬助研究及產學績優教師聘任研究人員辦法")) {
+                        result = "獎助研究及產學績優教師聘任研究人員辦法";
+                        updateRewardType(project_id, result);
+                    } // ==================================================
                 }
             }
             connection.close();
@@ -343,4 +350,18 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
         return null;
     }
+
+    // Dfone =====================================================================
+    private void updateRewardType(int project_id, String reward_type) {
+        Connection connection = dbConnection.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REWARD_TYPE))
+        {
+            preparedStatement.setString(1, reward_type);
+            preparedStatement.setInt(2, project_id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    } // =========================================================================
 }

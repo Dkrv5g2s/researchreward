@@ -1,14 +1,15 @@
 package Dao.SpecialOutstandingResearcherApplication;
 
+import Bean.JournalPaper.JournalPaper;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
 import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
-
 import DBConnection.DBConnection;
 import DBConnection.DBConnectionImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,19 +20,17 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String SELECT_SPECIFIED_Paper_Performance_with_project_id = "SELECT * FROM paper_performance WHERE project_id = ? " ;
     private static final String SELECT_SPECIFIED_Paper_Performance_Description = "SELECT * FROM paper_performance_description WHERE project_id = ? " ;
-
     private static final String INSERT_INTO_SPECIFIED_Paper_Performance_Description = "INSERT INTO paper_performance_description(project_id,commit_date) VALUES (?,?) " +
             "ON DUPLICATE KEY UPDATE commit_date = ?;";
 
     private static final String DELETE_SPECIFIED_Paper_Performance = "DELETE FROM paper_performance WHERE paper_id = ?" ;
-
 
     private static final String INSERT_INTO_SINGLE_DUPLICATED_Paper_Performance = "INSERT INTO paper_performance(paper_id, project_id, author, book_name, scholarly_journals_name, total_roll ,total_page , publish_time, rank_of_scholarly_journals , author_order , communication_author_count , additional_weight , cal_point) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) " +
             "ON DUPLICATE KEY UPDATE project_id =? , author =?, book_name=?, scholarly_journals_name=?, total_roll=? ,total_page=? , publish_time=?, rank_of_scholarly_journals=? , author_order=? , communication_author_count=? , additional_weight=? , cal_point=? ;";
 
     private static final String INSERT_INTO_SINGLE_NON_DUPLICATED_Paper_Performance = "INSERT INTO paper_performance(project_id, author, book_name, scholarly_journals_name, total_roll ,total_page , publish_time, rank_of_scholarly_journals , author_order , communication_author_count , additional_weight , cal_point) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) " ;
 
-    private static final String SELECT_SPECIFIED_PAPER_PERFORMENCE_ALL_PAPER_ID = "SELECT paper_id FROM paper_performance where project_id = ?" ;
+    private static final String SELECT_SPECIFIED_PAPER_PERFORMANCE_ALL_PAPER_ID = "SELECT paper_id FROM paper_performance where project_id = ?" ;
 
     private static final String SELECT_SPECIFIED_Paper_Performance_with_paper_id = "SELECT * FROM paper_performance WHERE paper_id = ? " ;
 
@@ -50,6 +49,59 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
             "SELECT staff_code FROM reward_project where project_id in (" +
             "SELECT project_id FROM paper_performance where book_name = ?))";
 
+    private static final String INSERT_JOURNAL_PAPER_TO_PAPER_PERFORMANCE = "INSERT INTO paper_performance(project_id, author, book_name, scholarly_journals_name, total_roll ,total_page , publish_time, author_order, communication_author_count) VALUES (?,?,?,?,?,?,?,?,?)";
+
+    @Override  // Dfone, added for auto fill in.
+    public void insert_journal_papers(int project_id, List<JournalPaper> journals) {
+        Connection connection = dbConnection.getConnection();
+        for (JournalPaper journalPaper : journals) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_JOURNAL_PAPER_TO_PAPER_PERFORMANCE))
+            {
+                preparedStatement.setInt(1,project_id);
+                preparedStatement.setString(2, journalPaper.getStaff_cname());
+                preparedStatement.setString(3, journalPaper.getThesis_name());
+                preparedStatement.setString(4, journalPaper.getJournal_name());
+                preparedStatement.setString(5, journalPaper.getVolume());
+                preparedStatement.setString(6, journalPaper.getPages());
+                preparedStatement.setString(7, journalPaper.getPublic_year());
+                int author_order = journalPaper.getW2_author_order();
+                getAuthorDescription(author_order);
+                preparedStatement.setString(8, getAuthorDescription(author_order));
+                String communication_author_count = journalPaper.getW3_corresponding();
+                if (communication_author_count.equals("1")) {
+                    communication_author_count = "1位通訊作者";
+                } else {
+                    communication_author_count = "2位(含)以上";
+                }
+                preparedStatement.setString(9, communication_author_count);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Dfone, added for auto fill in.
+    private String getAuthorDescription(int author_order) {
+        if (author_order==1) {
+            return "第一作者或通訊作者";
+        }
+        else if (author_order==2) {
+            return "第二作者";
+        }
+        else if (author_order==3) {
+            return "第三作者";
+        }
+        else if (author_order==4) {
+            return "第四作者";
+        }
+        else if (author_order>=5) {
+            return "第五作者以上";
+        }
+        else{
+            return null;
+        }
+    }
 
     private PaperPerformanceDescriptionForm query_specified_paper_performance_description( int project_id ) {
         Connection connection = dbConnection.getConnection();
@@ -110,7 +162,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
     }
 
     @Override
-    public PaperPerformanceDescriptionForm query_specified_paper_performance_descripstion_form(int project_id) {
+    public PaperPerformanceDescriptionForm query_specified_paper_performance_description_form(int project_id) {
 
         PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = query_specified_paper_performance_description(project_id) ;
         paperPerformanceDescriptionForm.setPaper_performance_list( query_specified_paper_performance_without_file_path(project_id) );
@@ -243,7 +295,7 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
         Connection connection = dbConnection.getConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_PERFORMENCE_ALL_PAPER_ID))
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SPECIFIED_PAPER_PERFORMANCE_ALL_PAPER_ID))
         {
             preparedStatement.setInt(1,project_id);
             ResultSet resultSet = preparedStatement.executeQuery() ;

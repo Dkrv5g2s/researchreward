@@ -59,7 +59,7 @@ public class AwardTimeLimitService {
         AwardTimeLimit result = awardTimeLimitDAO.get();
         long systemTime = System.currentTimeMillis();
         if(result.getS1().getTime() < systemTime && systemTime < result.getL1().getTime()){
-            rewards.add(new Award("獎助研究及產學績優教師聘任研究人員辦法",result.getS1(),result.getL1())); // after 2022/07/06 , first word display normally.
+            rewards.add(new Award("獎助研究及產學績優教師聘任研究人員辦法",result.getS1(),result.getL1())); // Dfone, fix after 2022/07/06, first word display correctly.
         }
         if(result.getS2().getTime() < systemTime && systemTime < result.getL2().getTime()){
             rewards.add(new Award("講座教授",result.getS2(),result.getL2()));
