@@ -57,6 +57,30 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
     }
 
+    @Override // Dfone, added for auto fill in.
+    public int insertNewProjectAndReturnProjectID(String staff_code, int status_id, String reward_type) {
+        Connection connection = dbConnection.getConnection();
+        int inserted_id = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PROJECT, PreparedStatement.RETURN_GENERATED_KEYS))
+        {
+            preparedStatement.setString(1,staff_code);
+            preparedStatement.setInt(2,status_id);
+            preparedStatement.setString(3,reward_type);
+            preparedStatement.setInt(4,status_id);
+            preparedStatement.setString(5,"applied");
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                inserted_id = resultSet.getInt(1);
+                System.out.println("staff "+staff_code+" inserted project, id = "+inserted_id+", reward name = "+reward_type);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inserted_id;
+    }
+
     @Override
     public void deleteProject(int project_id,String staff_code) {
         Connection connection = dbConnection.getConnection();

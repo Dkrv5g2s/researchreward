@@ -1,8 +1,5 @@
 package Servlet.SpecialOutstandingResearcher;
 
-import Bean.JournalPaper.JournalPaper;
-import Dao.JournalPaper.JournalPaperDAO;
-import Dao.JournalPaper.JournalPaperDAOImpl;
 import Service.Admin.BFormFormulaService;
 import Service.SpecialOutstandingResearcher.PaperPerformanceDescriptionService;
 import Service.Teacher.RewardListService;
@@ -18,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     private Logger logger = LogManager.getLogger(this.getClass());
@@ -48,16 +44,6 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
         BFormFormulaService bFormFormulaService = new BFormFormulaService() ;
         TeacherHireResearcherTableCService teacherHireResearcherTableCService = new TeacherHireResearcherTableCService();
         String reward_type = service.queryRewardType(project_id);
-
-        // Dfone =====================================================================
-        String staff_code = (String)session.getAttribute("userNumber");
-        if ((staff_code!=null)&!readonly) {
-            JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
-            List<JournalPaper> journals = journalDAO.query_journal_papers_of_reward_limited_years(staff_code, reward_type);
-            service.autoFillInJournalPapers(project_id, reward_type, journals);
-        }
-        // ===========================================================================
-
         String wight = bFormFormulaService.get().toString() ;
 
         String json_form = "";

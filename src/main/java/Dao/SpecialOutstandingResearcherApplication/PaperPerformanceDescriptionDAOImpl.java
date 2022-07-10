@@ -51,9 +51,10 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
 
     private static final String INSERT_JOURNAL_PAPER_TO_PAPER_PERFORMANCE = "INSERT INTO paper_performance(project_id, author, book_name, scholarly_journals_name, total_roll ,total_page , publish_time, author_order, communication_author_count) VALUES (?,?,?,?,?,?,?,?,?)";
 
-    @Override  // Dfone, added for auto fill in.
+    @Override // Dfone, added for auto fill in.
     public void insert_journal_papers(int project_id, List<JournalPaper> journals) {
         Connection connection = dbConnection.getConnection();
+        int FillInPapers = 0;
         for (JournalPaper journalPaper : journals) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_JOURNAL_PAPER_TO_PAPER_PERFORMANCE))
             {
@@ -75,10 +76,12 @@ public class PaperPerformanceDescriptionDAOImpl implements PaperPerformanceDescr
                 }
                 preparedStatement.setString(9, communication_author_count);
                 preparedStatement.executeUpdate();
+                FillInPapers++;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("filled in "+FillInPapers+" papers to project No."+project_id);
     }
 
     // Dfone, added for auto fill in.

@@ -1,6 +1,5 @@
 package Service.SpecialOutstandingResearcher;
 
-import Bean.JournalPaper.JournalPaper;
 import Bean.SpecialOutstandingResearcher.PaperPerformance;
 import Bean.SpecialOutstandingResearcher.PaperPerformanceDescriptionForm;
 import Dao.Project.ProjectDAO;
@@ -88,16 +87,6 @@ public class PaperPerformanceDescriptionService {
     public String getAppliedApplicantUserName(String  duplicatePaperTitle){
         PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl() ;
         return dao.queryUserNameByPaperTitle(duplicatePaperTitle);
-    }
-
-    // Dfone, added for auto fill in.
-    public void autoFillInJournalPapers(int project_id, String reward_type, List<JournalPaper> journals) {
-        PaperPerformanceDescriptionDAO dao = new PaperPerformanceDescriptionDAOImpl();
-        PaperPerformanceDescriptionForm paperPerformanceDescriptionForm = dao.query_specified_paper_performance_description_form(project_id);
-        if (paperPerformanceDescriptionForm.getPaper_performance_list().size()==0) {
-            System.out.println(project_id+"-"+reward_type+": "+journals.size()+" papers");
-            dao.insert_journal_papers(project_id, journals);
-        }
     }
 }
 

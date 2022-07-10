@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ProjectDAO {
     public void insertNewProject( String staff_code, int status_id, String reward_type ) ;
+    public int insertNewProjectAndReturnProjectID( String staff_code, int status_id, String reward_type ); // Dfone, added for auto fill in.
     public void deleteProject( int project_id ,String staff_code) ;
     public void updateProjectStatus(int project_id, int status_id) ;
     public void updateProjectHistoryHighestStatus(int project_id, int status_id);

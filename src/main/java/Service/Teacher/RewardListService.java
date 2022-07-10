@@ -1,8 +1,13 @@
 package Service.Teacher;
 
+import Bean.JournalPaper.JournalPaper;
 import Bean.Project.RewardProject;
+import Dao.JournalPaper.JournalPaperDAO;
+import Dao.JournalPaper.JournalPaperDAOImpl;
 import Dao.Project.ProjectDAO;
 import Dao.Project.ProjectDAOImpl;
+import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAO;
+import Dao.SpecialOutstandingResearcherApplication.PaperPerformanceDescriptionDAOImpl;
 import fr.opensagres.xdocreport.document.json.JSONArray;
 import fr.opensagres.xdocreport.document.json.JSONObject;
 
@@ -33,7 +38,19 @@ public class RewardListService {
     }
 
     public void createReward(String staffCode, String rewardName){
-        projectDAO.insertNewProject(staffCode, 1, rewardName);
+//        projectDAO.insertNewProject(staffCode, 1, rewardName);
+
+        // Dfone , added for auto fill in.==============================================================================
+        int project_id = projectDAO.insertNewProjectAndReturnProjectID(staffCode, 1, rewardName);
+        if (project_id<=0) {
+            System.out.println("回傳 project id 錯誤");
+        } else {
+            JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
+            List<JournalPaper> journals = journalDAO.query_journal_papers_of_reward_limited_period(staffCode, rewardName);
+            PaperPerformanceDescriptionDAO paperPerformanceDescriptionDAO = new PaperPerformanceDescriptionDAOImpl();
+            paperPerformanceDescriptionDAO.insert_journal_papers(project_id, journals);
+        }
+        // =============================================================================================================
     }
 
     public JSONArray traceProgress(String staffCode){
