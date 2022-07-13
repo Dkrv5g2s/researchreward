@@ -59,11 +59,11 @@ public class JournalPaperSynchronize {
     }
 
     public String synchronize_all_journal_papers_from_TEDB() throws SQLException {
-        set_code_name_map();
         String update_msg = "";
         int total_updated_journal_number = 0;
         int total_staff_with_no_journal = 0;
         Connection TEcon = TEdbConnection.getConnection();
+        set_code_name_map();
         try (PreparedStatement TEpreparedStatement = TEcon.prepareStatement(SELECT_rch_journals))
         {
             ResultSet resultSet = TEpreparedStatement.executeQuery();
@@ -90,14 +90,14 @@ public class JournalPaperSynchronize {
                         total_staff_with_no_journal++;
                     }
                 }
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            connection.close();
+            TEcon.close();
         } catch (SQLException TEe) {
             TEe.printStackTrace();
         }
-        TEcon.close();
         total_updated_journal_number -= total_staff_with_no_journal;
         update_msg += "Update with "+ total_updated_journal_number +" journal papers, total staff with no journal is " +total_staff_with_no_journal;
         return update_msg;
