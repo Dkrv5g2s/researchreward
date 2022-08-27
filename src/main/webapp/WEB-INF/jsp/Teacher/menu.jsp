@@ -54,7 +54,7 @@
                 <div id="content">
                     <div class="main_func">
                         <!-- frameborder=0 means hide border;scrolling=no means the embedded web will not shot scroll bar -->
-                        <iframe src="" name="iframe" id="iframe" frameborder="0" scrolling="no" style="width: 100%;" onload="this.height=100"></iframe>
+                        <iframe src="" name="iframe" id="iframe" frameborder="0" scrolling="no" style="width: 100%;" onload="this.height=100%"></iframe>
                     </div>
                 </div>
                 <!-- end #content -->
