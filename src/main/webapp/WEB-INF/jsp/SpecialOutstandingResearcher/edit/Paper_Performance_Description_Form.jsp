@@ -213,7 +213,7 @@
         html_of_item += "著作名稱: <input type='text' name='book_name" + i + "' size='10' maxlength='150'><br>" ;
         html_of_item += "期刊名稱: <input type='text' name='scholarly_journals_name" + i +"' size='10' maxlength='150'><br>" ;
         html_of_item += "卷數: <input type='text' name='total_roll" + i + "' size='5' maxlength='5'><br>" ;
-        html_of_item += "頁數: <input type='text' name='total_page" + i + "' size='5' maxlength='5'><br>" ;
+        html_of_item += "頁數: <input type='text' name='total_page" + i + "' size='5' maxlength='15'><br>" ;
         html_of_item += "發表年份: <input type='text' name='publish_time" + i + "' size='15' maxlength='4'>" ;
         html_of_item += "<input name='paper_id" + i + "' style='display: none' readonly>" ;
         html_of_item += "</td>" ;

@@ -15,12 +15,12 @@ import java.sql.SQLException;
 public class LectureProfessorHonoraryApplicationFormDAOImpl implements LectureProfessorHonoraryApplicationFormDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM lectureProfessorHonoraryApplicationForm WHERE projectID = ?";
+    private static final String SELECT = "SELECT * FROM lectureprofessorhonoraryapplicationform WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO lectureProfessorHonoraryApplicationForm (projectID,usernum, name, jobAndDept, email,cellphone, indivisualEducation, recommendationReason,commit_date)"+
+            "INSERT INTO lectureprofessorhonoraryapplicationform (projectID,usernum, name, jobAndDept, email,cellphone, indivisualEducation, recommendationReason,commit_date)"+
                     " values(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE lectureProfessorHonoraryApplicationForm "
+            "UPDATE lectureprofessorhonoraryapplicationform "
                     + "SET usernum = ?,name = ?,jobAndDept = ?,email = ?,researchroomext = ?,cellphone = ?,indivisualEducation = ?, recommendationReason = ?,commit_date=?"+
                     " WHERE projectID = ?";
     @Override

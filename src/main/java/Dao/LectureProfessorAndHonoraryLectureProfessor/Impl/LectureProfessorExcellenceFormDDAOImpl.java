@@ -13,12 +13,12 @@ import java.sql.SQLException;
 public class LectureProfessorExcellenceFormDDAOImpl implements LectureProfessorExcellenceFormDDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM lectureprofessorExcellenceFormD WHERE projectID = ?";
+    private static final String SELECT = "SELECT * FROM lectureprofessorexcellenceformd WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO lectureprofessorExcellenceFormD (projectID, usernum, depart, name, speechTime, payment, performance)"+
+            "INSERT INTO lectureprofessorexcellenceformd (projectID, usernum, depart, name, speechTime, payment, performance)"+
                     " values(?,?,?,?,?,?,?)";
     private static final String UPDATE =
-            "UPDATE lectureprofessorExcellenceFormD "
+            "UPDATE lectureprofessorexcellenceformd "
                     + "SET usernum = ?, depart = ?, name = ?, speechTime = ?, payment = ?, performance = ?" +
                     " WHERE projectID = ?";
     @Override

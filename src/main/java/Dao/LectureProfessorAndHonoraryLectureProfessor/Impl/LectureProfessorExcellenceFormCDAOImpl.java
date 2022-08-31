@@ -12,12 +12,12 @@ import java.sql.SQLException;
 public class LectureProfessorExcellenceFormCDAOImpl implements LectureProfessorExcellenceFormCDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT = "SELECT * FROM lectureprofessorExcellenceFormC WHERE projectID = ?";
+    private static final String SELECT = "SELECT * FROM lectureprofessorexcellenceformc WHERE projectID = ?";
     private static final String INSERT =
-            "INSERT INTO lectureprofessorExcellenceFormC (projectID,usernum,recommendationReason)"+
+            "INSERT INTO lectureprofessorexcellenceformc (projectID,usernum,recommendationReason)"+
                     " values(?,?,?)";
     private static final String UPDATE =
-            "UPDATE lectureprofessorExcellenceFormC "
+            "UPDATE lectureprofessorexcellenceformc "
                     + "SET usernum = ?, recommendationReason = ?" +
                     " WHERE projectID = ?";
     @Override
