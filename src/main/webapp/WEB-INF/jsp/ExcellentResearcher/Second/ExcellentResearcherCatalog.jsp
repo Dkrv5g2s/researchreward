@@ -126,7 +126,7 @@
 </head>
 <body>
     <div class="content">
-        <h2>(續撥)獎勵新聘特殊優秀研究人才</h2>
+        <h2>(續撥)獎勵新聘特殊優秀研究人才(N類-續)</h2>
         <table>
             <tbody>
                 <tr>

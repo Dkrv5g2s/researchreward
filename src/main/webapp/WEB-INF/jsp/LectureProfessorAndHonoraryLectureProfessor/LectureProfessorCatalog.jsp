@@ -49,10 +49,10 @@
             <td class="left"><a href="LectureProfessorAppDocInstructions" name="LectureProfessorAppDocInstructions">審查資料(填寫說明)</a></td>
         </tr>
         <tr>
-            <td class="left"><a class = "filledCheck" href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內傑出績效說明表</a></td>
+            <td class="left"><a class = "filledCheck" href="LectureProfessorExcellenceFormA" name="LectureProfessorExcellenceFormA">近五年內發表之期刊論文統計表</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="LectureProfessorFormCUploadFile" name="LectureProfessorFormCUploadFile">近五年內傑出績效說明表-上傳檔案</a></td>
+            <td class="left"><a href="LectureProfessorFormCUploadFile" name="LectureProfessorFormCUploadFile">近五年內發表之期刊論文統計表-上傳檔案</a></td>
         </tr>
         <tr>
             <td class="left"><a class = "filledCheck" href="PaperPerformanceDescriptionForm" name="LectureProfessorTableB">國立臺北科技大學傑出論文績效說明表</a></td>

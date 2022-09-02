@@ -82,26 +82,26 @@ public class JournalPaperDAOImpl implements JournalPaperDAO {
         SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
         int current_year = Integer.parseInt(getYearFormat.format(date));
         switch (reward_type){
-            case "特聘教授":
-                return current_year-5;
+
             case "獎勵新聘特殊優秀研究人才":
-                return current_year+1;
-            case "獎勵特殊優秀研究人才":
-                return current_year-5;
-            case "陽光獎助金論文獎勵":
-                return current_year-5;
-            case "奬助研究及產學績優教師聘任研究人員辦法": // old, first word displayed as ?.
-                return current_year-5;
-            case "獎助研究及產學績優教師聘任研究人員辦法": // fixed, first word display correctly.
-                return current_year-5;
-            case "年輕學者研究獎":
-                return current_year-3;
-            case "傑出研究獎":
-                return current_year-3;
+            case "獎勵新聘特殊優秀研究人才(N類-新)": // 2022/09/01 研發處將_獎勵新聘特殊優秀研究人才_改名為此
             case "(續撥)獎勵新聘特殊優秀研究人才":
-                return current_year+1;
+            case "(續撥)獎勵新聘特殊優秀研究人才(N類-續)": // 2022/09/01 研發處將_(續撥)獎勵新聘特殊優秀研究人才_改名為此
+                return current_year+1; // 無論文績效說明表
+
+            case "年輕學者研究獎":
+            case "傑出研究獎":
+                return current_year-3; // 近3年論文績效說明表
+
+            case "特聘教授":
+            case "獎勵特殊優秀研究人才":
+            case "獎勵特殊優秀研究人才(A類)": // 2022/09/01 研發處將_獎勵特殊優秀研究人才_改名為此
+            case "陽光獎助金論文獎勵":
+            case "奬助研究及產學績優教師聘任研究人員辦法": // old, first word displayed as ?.
+            case "獎助研究及產學績優教師聘任研究人員辦法": // fixed, first word display correctly.
             case "講座教授":
-                return current_year-5;
+                return current_year-5; // 近5年論文績效說明表
+
             default:
                 return current_year+1;
         }

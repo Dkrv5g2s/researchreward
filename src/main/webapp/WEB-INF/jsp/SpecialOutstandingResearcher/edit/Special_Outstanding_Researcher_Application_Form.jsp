@@ -154,6 +154,13 @@
                 <td><input class="college" name="college_recommended_order" size="10" maxlength="5" disabled></td>
             </tr>
             <tr>
+                <td colspan="1" name="additional_item" style="color:red;">額外項目</td>
+                <td colspan="5">
+                    <input type="checkbox" name="main_standard" id="additional_item_number_one" value="前一年度主持科技部雙邊協議國際合作研究計畫者(請檢附證明)。">1.前一年度主持<b>科技部雙邊協議國際合作研究計畫</b>者(請檢附證明)。<br>
+                    ※ 本項不得單獨勾選，須配合上述各等級申請。
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" width="33%">系、所(簽章)</td>
                 <td colspan="2" width="33%">學院(簽章)</td>
                 <td colspan="2" width="33%">研發處(核備)</td>

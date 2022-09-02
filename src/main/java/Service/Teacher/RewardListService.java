@@ -109,26 +109,37 @@ public class RewardListService {
         switch (rewardName){
         	case "特聘教授":
         		return "DistinguishedProfessorCatalog";
+
             case "獎勵新聘特殊優秀研究人才":
+            case "獎勵新聘特殊優秀研究人才(N類-續)": // 2022/09/01 研發處將_獎勵新聘特殊優秀研究人才_改名為此
                 return "ExcellentResearcherCatalog";
+
             case "獎勵特殊優秀研究人才":
+            case "獎勵特殊優秀研究人才(A類)": // 2022/09/01 研發處將_獎勵特殊優秀研究人才_改名為此
                 return "SpecialOutstandingResearcherCatalog";
+
             case "陽光獎助金論文獎勵":
                 return "SunshineScholarshipCatalog";
+
             case "奬助研究及產學績優教師聘任研究人員辦法": // old, first word displayed as ?.
-                return "TeacherHireResearcherCatalog";
             case "獎助研究及產學績優教師聘任研究人員辦法": // Dfone, fix after 2022/07/06 , first word display correctly.
                 return "TeacherHireResearcherCatalog";
+
             case "年輕學者研究獎":
                 return "JuniorResearchInvestigatorCatalog";
+
             case "傑出研究獎":
                 return "OutstandingResearchAwardCatalog";
+
             case "(續撥)獎勵新聘特殊優秀研究人才":
+            case "(續撥)獎勵新聘特殊優秀研究人才(N類-續)": // 2022/09/01 研發處將_(續撥)獎勵新聘特殊優秀研究人才_改名為此
                 return "SecondExcellentResearcherCatalog";
+
             case "講座教授":
                 return "LectureProfessorCatalog";
+
             default:
-                return "Menu";
+                return "TeacherMenu";
         }
     }
 

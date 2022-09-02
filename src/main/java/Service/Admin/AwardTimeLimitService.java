@@ -74,11 +74,11 @@ public class AwardTimeLimitService {
             rewards.add(new Award("年輕學者研究獎",result.getS5(),result.getL5()));
         }
         if(result.getS6().getTime() < systemTime && systemTime < result.getL6().getTime()){
-            rewards.add(new Award("獎勵特殊優秀研究人才",result.getS6(),result.getL6()));
+            rewards.add(new Award("獎勵特殊優秀研究人才(A類)",result.getS6(),result.getL6()));
         }
         if(result.getS7().getTime() < systemTime && systemTime < result.getL7().getTime()){
-            rewards.add(new Award("獎勵新聘特殊優秀研究人才",result.getS7(),result.getL7()));
-            rewards.add(new Award("(續撥)獎勵新聘特殊優秀研究人才",result.getS7(),result.getL7()));
+            rewards.add(new Award("獎勵新聘特殊優秀研究人才(N類-新)",result.getS7(),result.getL7()));
+            rewards.add(new Award("(續撥)獎勵新聘特殊優秀研究人才(N類-續)",result.getS7(),result.getL7()));
         }
         if(result.getS8().getTime() < systemTime && systemTime < result.getL8().getTime()){
             rewards.add(new Award("陽光獎助金論文獎勵",result.getS8(),result.getL8()));

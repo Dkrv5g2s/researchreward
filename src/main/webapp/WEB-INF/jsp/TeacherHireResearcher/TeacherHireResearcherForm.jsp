@@ -277,6 +277,15 @@
                                 <div style="float:right;">目前輸入字數:<span id="wordsCount">0</span>/500</div>
                             </td>
                         </tr>
+<%--                        備註:請依研究人員實際年資填寫，若無則依本校規定辦理。--%>
+                        <tr>
+                            <td colspan="1" class="metadata">
+                                備註
+                            </td>
+                            <td colspan="6">
+                                請依研究人員實際年資填寫，若無則依本校規定辦理。
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="3" class="sign_metadata">
                                 <label>推 薦 單 位 主 管</label>

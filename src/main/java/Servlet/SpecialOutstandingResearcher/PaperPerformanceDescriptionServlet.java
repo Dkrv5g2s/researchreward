@@ -79,7 +79,7 @@ public class PaperPerformanceDescriptionServlet extends ServletEntryPoint {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/; charset = UTF-8");
+        resp.setContentType("text/html; charset = UTF-8");
         JSONObject jsonObject = new JSONObject(req.getParameter("data")) ;
         JSONObject tableCJsonObject = new JSONObject(req.getParameter("tableCData")) ;
 
