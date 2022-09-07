@@ -63,24 +63,31 @@
             textarea {
                 font: normal 13px Verdana;
             }
+            .requiredField {
+                color: red;
+            }
 
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/Function.js"></script>
         <script>
             function commit(){
-                $.ajax({
-                    type: 'POST',
-                    url: 'TeacherHireResearcherForm',
-                    dataType: 'text',
-                    data: JSON.stringify(InputToJson()),
-                    contentType: 'application/json',
-                    success: function(data){
-                        alert('存檔成功');
-                        window.location.href="TeacherHireResearcherCatalog";
-                    }
-                });
-
+                if ($("#applicantName").val() && $("#applicantDepartment").val() && $("#applicantEmail").val() && $("#applicantResearchRoomExt").val() && $("#applicantPhone").val() && ($("#expectedPerformanceNearFiveYears").val() || $("#expectedPerformancePerYears").val() || $("#expectedPerformanceOthers").val()) && $("#applyForSubsidies").val()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'TeacherHireResearcherForm',
+                        dataType: 'text',
+                        data: JSON.stringify(InputToJson()),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            alert('存檔成功');
+                            window.location.href = "TeacherHireResearcherCatalog";
+                        }
+                    });
+                }
+                else {
+                    alert("尚未填寫完成!");
+                }
             }
 
             function InputToJson(){
@@ -165,10 +172,10 @@
                     <tbody>
                         <tr>
                             <td colspan="1" class="metadata">
-                                申請人姓名<br>(英文姓名)
+                                <span class="requiredField">✱</span>申請人姓名<br>(英文姓名)
                             </td>
                             <td colspan="2">
-                                <input name="applicantName" value="<%= json.get("applicantName")%>" size="10" maxlength="40">
+                                <input id="applicantName" name="applicantName" value="<%= json.get("applicantName")%>" size="10" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
                                 職稱
@@ -179,16 +186,16 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                服務系所
+                                <span class="requiredField">✱</span>服務系所
                             </td>
                             <td colspan="2">
-                                <input name="applicantDepartment" value="<%= json.get("applicantDepartment")%>" size="20" maxlength="40">
+                                <input id="applicantDepartment" name="applicantDepartment" value="<%= json.get("applicantDepartment")%>" size="20" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                E-mail
+                                <span class="requiredField">✱</span>E-mail
                             </td>
                             <td colspan="3">
-                                <input name="applicantEmail" value="<%= json.get("applicantEmail")%>" size="30" maxlength="50">
+                                <input id="applicantEmail" name="applicantEmail" value="<%= json.get("applicantEmail")%>" size="30" maxlength="50">
                             </td>
                         </tr>
                         <tr>
@@ -199,16 +206,16 @@
                                 <input name="applicantSeniority" value="<%= json.get("applicantSeniority")%>" size="20" maxlength="40">
                             </td>
                             <td colspan="1" class="metadata">
-                                聯絡電話
+                                <span class="requiredField">✱</span>聯絡電話
                             </td>
                             <td colspan="3">
-                                研究室分機:<input name="applicantResearchRoomExt" value="<%= json.get("applicantResearchRoomExt")%>" size="5" maxlength="40"><br>
-                                手機:<input name="applicantPhone" value="<%= json.get("applicantPhone")%>" size="11" maxlength="40">
+                                研究室分機:<input id="applicantResearchRoomExt" name="applicantResearchRoomExt" value="<%= json.get("applicantResearchRoomExt")%>" size="5" maxlength="40"><br>
+                                手機:<input id="applicantPhone" name="applicantPhone" value="<%= json.get("applicantPhone")%>" size="11" maxlength="40">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                聘任研究人員類別
+                                <span class="requiredField">✱</span>聘任研究人員類別
                             </td>
                             <td colspan="2">
                                 <label><input type="radio" name="researcherType" value="teacher" <%= researcherTypeChecked[0]%>>研究型教師</label><br>
@@ -257,20 +264,20 @@
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                預期績效
+                                <span class="requiredField">✱</span>預期績效
                             </td>
                             <td colspan="6">
                                 近五年平均論文點數:
-                                <input name="expectedPerformanceNearFiveYears" value="<%= json.get("expectedPerformanceNearFiveYears")%>" size="40" maxlength="50"><br>
+                                <input id="expectedPerformanceNearFiveYears" name="expectedPerformanceNearFiveYears" value="<%= json.get("expectedPerformanceNearFiveYears")%>" size="40" maxlength="50"><br>
                                 預期每年論文點數:
-                                <input name="expectedPerformancePerYears" value="<%= json.get("expectedPerformancePerYears")%>" size="40" maxlength="50"><br>
+                                <input id="expectedPerformancePerYears" name="expectedPerformancePerYears" value="<%= json.get("expectedPerformancePerYears")%>" size="40" maxlength="50"><br>
                                 其它(分列執行第一期、第二期…之論文總點數/平均點數，如C表):
-                                <input name="expectedPerformanceOthers" value="<%= json.get("expectedPerformanceOthers")%>" size="60" maxlength="50">
+                                <input id="expectedPerformanceOthers" name="expectedPerformanceOthers" value="<%= json.get("expectedPerformanceOthers")%>" size="60" maxlength="50">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="1" class="metadata">
-                                申請補助項目<br>(人事費)
+                                <span class="requiredField">✱</span>申請補助項目<br>(人事費)
                             </td>
                             <td colspan="6">
                                 <textarea id="applyForSubsidies" name="applyForSubsidies" rows="8" cols="60" maxlength="500" required><%= json.get("applyForSubsidies")%></textarea>
