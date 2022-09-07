@@ -26,6 +26,9 @@
         .footer{
             display: none;
         }
+        .requiredField {
+            color: red;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/Function.js"></script>
@@ -59,25 +62,32 @@
         }
 
         function commit(data){
-        	$.ajax({
-                type: 'POST',
-                url: 'DistinguishedProfessorForm',
-                dataType: 'text',
-                data: JSON.stringify(data),
-                success: function(data){
-                    alert('存檔成功');
-                    if(${readonly}){
-                        location.href="DistinguishedProfessorAppDocInstructions";
+            if ($("#name").val() && $("#department").val() && $("#hireddate").val() && $("#certificatenum").val() && $("#upgradedate").val() && $("#seniority").val() && $("#email").val() && $("#researchroomext").val() && $("#cellphone").val() &&
+                ($("#applicationrequirements1").prop("checked") || $("#applicationrequirements2").prop("checked") || $("#applicationrequirements3").prop("checked")
+                || $("#applicationrequirements4").prop("checked") || $("#applicationrequirements5").prop("checked") || $("#applicationrequirements6").prop("checked")
+                || $("#applicationrequirements7").prop("checked") || $("#applicationrequirements8").prop("checked") || $("#applicationrequirements9").prop("checked"))) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'DistinguishedProfessorForm',
+                    dataType: 'text',
+                    data: JSON.stringify(data),
+                    success: function(data){
+                        alert('存檔成功');
+                        if(${readonly}){
+                            location.href="DistinguishedProfessorAppDocInstructions";
+                        }
+                        else {
+                            location.reload();
+                        }
+                    },
+                    error:function() {
+                        alert("存檔失敗");
                     }
-                    else {
-                        location.reload();
-                    }
-                },
-                error:function() {
-                    alert("存檔失敗");
-                }
-            });
-
+                });
+            }
+            else {
+                alert("尚未填寫完成!");
+            }
         };
 
         function InputToJson(){
@@ -154,87 +164,87 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2">姓名</td>
-                        <td colspan="2"><input type="text" name="name" value=<%=json.get("name")%> ></td>
-                        <td colspan="2">系所</td>
-                        <td colspan="2"><input type="text" name="department" value=<%=json.get("department")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>姓名</td>
+                        <td colspan="2"><input type="text" id="name" name="name" value=<%=json.get("name")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>系所</td>
+                        <td colspan="2"><input type="text" id="department" name="department" value=<%=json.get("department")%> ></td>
                     </tr>
                     <tr>
-                        <td colspan="2">本校任職日期</td>
-                        <td colspan="2"><input type="date" name="hireddate" value=<%=json.get("hireddate")%> ></td>
-                        <td colspan="2">教授證書號碼</td>
-                        <td colspan="2"><input type="text" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>本校任職日期</td>
+                        <td colspan="2"><input type="date" id="hireddate" name="hireddate" value=<%=json.get("hireddate")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>教授證書號碼</td>
+                        <td colspan="2"><input type="text" id="certificatenum" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
                     </tr>
                     <tr>
-                        <td colspan="2">教授升等日期</td>
-                        <td colspan="2"><input type="date" name="upgradedate" value=<%=json.get("upgradedate")%> ></td>
-                        <td colspan="2">教授年資</td>
-                        <td colspan="2"><input type="text" name="seniority" value=<%=json.get("seniority")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>教授升等日期</td>
+                        <td colspan="2"><input type="date" id="upgradedate" name="upgradedate" value=<%=json.get("upgradedate")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>教授年資</td>
+                        <td colspan="2"><input type="text" id="seniority" name="seniority" value=<%=json.get("seniority")%> ></td>
                     </tr>
                     <tr>
-                        <td colspan="2">E-mail</td>
-                        <td colspan="2"><input type="text" name="email" value=<%=json.get("email")%> ></td>
-                        <td colspan="2">聯絡電話</td>
+                        <td colspan="2"><span class="requiredField">✱</span>E-mail</td>
+                        <td colspan="2"><input type="text" id="email" name="email" value=<%=json.get("email")%> ></td>
+                        <td colspan="2"><span class="requiredField">✱</span>聯絡電話</td>
                         <td colspan="2">
-                            研究室分機：<input type="text" name="researchroomext" style="max-width: 50%;" value=<%=json.get("researchroomext")%> ><br>
-                            手機：<input type="text" name="cellphone" value=<%=json.get("cellphone")%> >
+                            研究室分機：<input type="text" id="researchroomext" name="researchroomext" style="max-width: 50%;" value=<%=json.get("researchroomext")%> ><br>
+                            手機：<input type="text" id="cellphone" name="cellphone" value=<%=json.get("cellphone")%> >
                         </td>
                     </tr>
                     <tr>
                         <td colspan="8">
-                            <label style="font-weight: bold;">申請要件（可多選）</label>
+                            <label style="font-weight: bold;"><span class="requiredField">✱</span>申請要件（可多選）</label>
                         </td>
                     </tr>
                     <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements1" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements1" name="applicationrequirements1" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請年度之前五年（含）內以本校名義發表之重要學術論著績效點數160點。設計學院及人社學院教師得採計TSSCI/THCI期刊論文；人文、設計、藝術或社會科學領域教師得以學術專書著作或專章申請。（符合本校特聘教授設置辦法第三條第一款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements2" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements2" name="applicationrequirements2" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之科技部一般專題計畫(不包含科技部產學合作計畫)績效點數達250點者，其績效點數之計算每10萬元5點。（符合本校特聘教授設置辦法第三條第二款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements3" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements3" name="applicationrequirements3" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之教育部補助大學在地實踐社會責任計畫績效點數達80點以上者，其績效點數之計算每10萬元2點。（符合本校特聘教授設置辦法第三條第三款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements4" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements4" name="applicationrequirements4" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲得之產學合作計畫(含科技部產學合作計畫案之廠商配合款金額)績效點數達200點以上且管理費納入校務基金超過150萬元者，其績效點數之計算每10萬元2點。(符合本校特聘教授設置辦法第三條第四款)
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements5" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements5" name="applicationrequirements5" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請年度之前五年(含)內以本校名義所獲之實收技術移轉金(不包含科技部先期技術移轉授權金)績效點數達100點以上且管理費納入校務基金超過40萬元者，其績效點數之計算每10萬元5點。（符合本校特聘教授設置辦法第三條第五款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements6" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements6" name="applicationrequirements6" ></td>
                         <td colspan="7" class="checkboxcontent">
                             曾獲本校「傑出教學獎」2次者。（符合本校特聘教授設置辦法第三條第六款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements7" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements7" name="applicationrequirements7" ></td>
                         <td colspan="7" class="checkboxcontent">
                             依本項第(一)、(二)、(三)、(四) 、(五)款所訂之基本條件為基準，其中兩項所計算出來的達成率合計達130%(含)以上、且該兩項之一達成率須達75%(含)以上者。（符合本校特聘教授設置辦法第三條第七款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements8" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements8" name="applicationrequirements8" ></td>
                         <td colspan="7" class="checkboxcontent">
                             申請人近五年(含)之其他傑出專業表現，對發揚本校校譽有重大貢獻且經簽准者。（符合本校特聘教授設置辦法第三條第八款）
                         </td>
                    </tr>
                    <tr>
-                        <td class="cb" align="center"><input type="checkbox" name="applicationrequirements9" ></td>
+                        <td class="cb" align="center"><input type="checkbox" id="applicationrequirements9" name="applicationrequirements9" ></td>
                         <td colspan="7" class="checkboxcontent">
                             特聘教授三任期滿者，申請終身特聘教授榮銜。（符合本校特聘教授設置辦法第四條）
                         </td>
