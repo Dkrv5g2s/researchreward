@@ -46,6 +46,9 @@
             text-align-last: center;
             margin: 1rem;
         }
+        .requiredField {
+            color: red;
+        }
     </style>
 
 </head>
@@ -61,13 +64,13 @@
             <tbody>
             <tr>
                 <td colspan="2">
-                    <label for="user_name">申請人姓名<br>(英文姓名)</label>
+                    <label for="user_name"><span class="requiredField">✱</span>申請人姓名<br>(英文姓名)</label>
                 </td>
                 <td colspan="2">
                     <input id="user_name" maxlength="45">
                 </td>
                 <td colspan="2">
-                    <label for="applicant_title">職稱</label>
+                    <label for="applicant_title"><span class="requiredField">✱</span>職稱</label>
                 </td>
                 <td colspan="2">
                     <input id="applicant_title" maxlength="45">
@@ -75,14 +78,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <label for="department">服務系所</label>
+                    <label for="department"><span class="requiredField">✱</span>服務系所</label>
                 </td>
                 <td colspan="2">
                     <input id="department" maxlength="45">
                 </td>
                 <td rowspan="2">聯絡電話</td>
                 <td>
-                    <label for="extension_number">研究室分機</label>
+                    <label for="extension_number"><span class="requiredField">✱</span>研究室分機</label>
                 </td>
                 <td colspan="2">
                     <input type="text" id="extension_number" maxlength="10">
@@ -90,13 +93,13 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <label for="employment_date">本校任職日期</label>
+                    <label for="employment_date"><span class="requiredField">✱</span>本校任職日期</label>
                 </td>
                 <td colspan="2">
                     <input id="employment_date" type="date">
                 </td>
                 <td>
-                    <label for="cellphone_number">手機</label>
+                    <label for="cellphone_number"><span class="requiredField">✱</span>手機</label>
                 </td>
                 <td colspan="2">
                     <input type="text" id="cellphone_number" maxlength="10">
@@ -104,7 +107,7 @@
             </tr>
             <tr>
                 <td colspan="8" class="title">
-                    <label for="recommended_reason">推&nbsp;薦&nbsp;理&nbsp;由</label>
+                    <label for="recommended_reason"><span class="requiredField">✱</span>推&nbsp;薦&nbsp;理&nbsp;由</label>
                     <div style="float:right;">目前輸入字數:<span id="nowWords">0</span>/500</div>
                 </td>
             </tr>
@@ -167,20 +170,25 @@
     }
 
     function commit(){
-        $.ajax({
-            type: 'POST',
-            url: 'OutstandingResearchAward',
-            dataType: 'json',
-            data: JSON.stringify(InputToJson()),
-            // contentType: 'application/json',
-            success: function(data){
-                alert(data.status);
-                window.location.href="OutstandingResearchAward";
-            },
-            error:function(data,status,er) {
-                alert("存檔失敗");
-            }
-        });
+        if ($("#user_name").val() && $("#applicant_title").val() && $("#department").val() && $("#extension_number").val() && $("#employment_date").val() && $("#cellphone_number").val() && $("#recommended_reason").val()) {
+            $.ajax({
+                type: 'POST',
+                url: 'OutstandingResearchAward',
+                dataType: 'json',
+                data: JSON.stringify(InputToJson()),
+                // contentType: 'application/json',
+                success: function(data){
+                    alert(data.status);
+                    window.location.href="OutstandingResearchAward";
+                },
+                error:function(data,status,er) {
+                    alert("存檔失敗");
+                }
+            });
+        }
+        else {
+            alert("尚未填寫完成!");
+        }
     };
 
     function InputToJson(){
