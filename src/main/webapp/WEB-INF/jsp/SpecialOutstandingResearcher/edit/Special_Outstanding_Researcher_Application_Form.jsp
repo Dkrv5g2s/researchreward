@@ -16,6 +16,9 @@
         margin-left: 0;
         vertical-align: top;
     }
+    .requiredField {
+        color: red;
+    }
 </style>
 <div class="content" >
     <p class="file_title">國立臺北科技大學<label name='year'><%= jsonObject.getInt("year")%></label>年度獎勵特殊優秀研究人才申請表</p>
@@ -23,50 +26,47 @@
         <table border="1" cellpadding="6" cellspacing="1" width="100%" align="center" style="border-spacing:0px;" class="inputForm">
             <tbody>
             <tr>
-                <td colspan="1" width="20%"><label id="applicant_title">申請人姓名</label>
-                    <font color="red">＊</font>
+                <td colspan="1" width="20%"><label id="applicant_title"><span class="requiredField">✱</span>申請人姓名</label>
                 </td>
                 <td colspan="2" width="30%">
-                    <input name="applicant_name" value="" size="10" maxlength="40">
+                    <input id="applicant_name" name="applicant_name" value="" size="10" maxlength="40">
                 </td>
-                <td colspan="1" width="25%">職稱<font color="red">*</font>
+                <td colspan="1" width="25%"><span class="requiredField">✱</span>職稱
                 </td>
                 <td colspan="2" width="25%">
-                    <input name="job" value="" size="10" maxlength="40">
+                    <input id="job" name="job" value="" size="10" maxlength="40">
                 </td>
             </tr>
             <tr>
-                <td colspan="1"><label id="dep_title">所屬單位</label>
-                    <font color="red">＊</font>
+                <td colspan="1"><label id="dep_title"><span class="requiredField">✱</span>所屬單位</label>
                 </td>
                 <td colspan="2">
-                    <input name="college" value="" size="10" maxlength="40">&nbsp;學院&nbsp;
-                    <input name="department" value="" size="10" maxlength="40">&nbsp;系(所)
+                    <input id="college" name="college" value="" size="10" maxlength="40">&nbsp;學院&nbsp;
+                    <input id="department" name="department" value="" size="10" maxlength="40">&nbsp;系(所)
                 </td>
-                <td colspan="1">任職本校年資(計算至<label name='seniority_end'><%= jsonObject.getDate("seniority")%></label>止)<font color="red">*</font>
+                <td colspan="1"><span class="requiredField">✱</span>任職本校年資(計算至<label name='seniority_end'><%= jsonObject.getDate("seniority")%></label>止)
                 </td>
                 <td colspan="2">
-                    <input name="seniority" value="" size="10" maxlength="40">
+                    <input id="seniority" name="seniority" value="" size="10" maxlength="40">
                 </td>
             </tr>
             <tr>
-                <td colspan="1"><label>補助起日前一年(<label name='mostStart'><%= jsonObject.getDate("mostStart")%></label>~<label name='mostEnd'><%= jsonObject.getDate("mostEnd")%></label>)是否曾執行科技部計畫</label>
-                    <font color="red">＊</font>
+                <td colspan="1"><label><span class="requiredField">✱</span>補助起日前一年(<label name='mostStart'><%= jsonObject.getDate("mostStart")%></label>~<label name='mostEnd'><%= jsonObject.getDate("mostEnd")%></label>)是否曾執行科技部計畫</label>
                 </td>
                 <td colspan="5" style="line-height: 2;">
-                    <input name="executed_tech_proj_yes" type="checkbox" >是。
-                    計畫名稱：<input name="tech_proj_name" size="30" maxlength="45">
+                    <input id="executed_tech_proj_yes" name="executed_tech_proj_yes" type="checkbox" >是。
+                    計畫名稱：<input id="tech_proj_name" name="tech_proj_name" size="30" maxlength="45">
                     <br>
-                    計畫編號:<input name="tech_proj_id" size="10" maxlength="40">
-                    &nbsp;執行期間:<input type="date" name="tech_proj_start_time" size="10" maxlength="20" id="d01" >
-                    至<input type="date" name="tech_proj_end_time" size="10" maxlength="20" id="d02" >
+                    計畫編號:<input id="tech_proj_id" name="tech_proj_id" size="10" maxlength="40">
+                    &nbsp;執行期間:<input type="date" id="tech_proj_start_time" name="tech_proj_start_time" size="10" maxlength="20" id="d01" >
+                    至<input type="date" id="tech_proj_end_time" name="tech_proj_end_time" size="10" maxlength="20" id="d02" >
                     <br>
-                    <input name="executed_tech_proj_no" type="checkbox">否
+                    <input id="executed_tech_proj_no" name="executed_tech_proj_no" type="checkbox">否
                 </td>
             </tr>
             <tr>
                 <td colspan="6" style="text-align:center;background:  #C0C0C0 ">
-                    <a>申請項目(請勾選並檢附傑出績效說明表)</a>
+                    <a><span class="requiredField">✱</span>申請項目(請勾選並檢附傑出績效說明表)</a>
                 </td>
             </tr>
             <tr>
@@ -225,24 +225,45 @@
     }
 
     function commit(){
+        if ($("#applicant_name").val() && $("#job").val() && $("#college").val() && $("#department").val() && $("#seniority").val() && checkExecutedTechProj() && checkAllCheckbox()) {
+            $.ajax({
+                type: 'POST',
+                url: 'SpecialOutstandingResearcherApplicationForm',
+                dataType: 'text',
+                data: {"data": InputFormToJson(), "func": "save"},
+                success: function (data) {
+                    alert('success');
+                    location.reload();
+                },
+                error: function (data) {
+                    alert("error")
+                }
+            });
+        }
+        else {
+            alert("尚未填寫完成!");
+        }
+    }
 
-        $.ajax({
-            type: 'POST',
-            url: 'SpecialOutstandingResearcherApplicationForm',
-            dataType: 'text',
-            data: { "data": InputFormToJson(), "func":"save" },
-            success: function(data){
-                alert('success');
-                location.reload();
-            },
-            error:function(data){
-                alert("error")
-            }
-        });
+    function checkExecutedTechProj() {
+        return (($("#executed_tech_proj_yes").prop("checked") && $("#tech_proj_name").val() && $("#tech_proj_id").val() && $("#tech_proj_start_time").val() && $("#tech_proj_end_time").val())
+                || $("#executed_tech_proj_no").prop("checked"));
+    }
 
-    };
-
-
+    function checkAllCheckbox() {
+        return ($("#level_one_number_one").prop("checked")
+            || $("#level_two_number_one").prop("checked") || $("#level_two_number_two").prop("checked")
+            || $("#level_three_number_one").prop("checked") || $("#level_three_number_two").prop("checked")
+            || $("#level_four_number_one").prop("checked") || $("#level_four_number_two").prop("checked") || $("#level_four_number_three").prop("checked")
+            || $("#level_five_number_one").prop("checked") || $("#level_five_number_two").prop("checked") || $("#level_five_number_three").prop("checked")
+            || $("#level_five_number_four").prop("checked") || $("#level_five_number_five").prop("checked")
+            || $("#level_six_number_one").prop("checked") || $("#level_six_number_two").prop("checked") || $("#level_six_number_three").prop("checked")
+            || $("#level_seven_number_one").prop("checked") || $("#level_seven_number_two").prop("checked") || $("#level_seven_number_three").prop("checked")
+            || $("#level_seven_number_four").prop("checked") || $("#level_seven_number_five").prop("checked")
+            || $("#level_eight_to_night_number_one").prop("checked") || $("#level_eight_to_night_number_two").prop("checked") || $("#level_eight_to_night_number_three").prop("checked")
+            || $("#level_eight_to_night_number_four_dash_one").prop("checked") || $("#level_eight_to_night_number_four_dash_two").prop("checked") || $("#level_eight_to_night_number_four_dash_three").prop("checked")
+            || $("#level_eight_to_night_number_four_dash_four").prop("checked"));
+    }
 
     function InputFormToJson(){
 
