@@ -111,7 +111,7 @@ public class RewardListService {
         		return "DistinguishedProfessorCatalog";
 
             case "獎勵新聘特殊優秀研究人才":
-            case "獎勵新聘特殊優秀研究人才(N類-續)": // 2022/09/01 研發處將_獎勵新聘特殊優秀研究人才_改名為此
+            case "獎勵新聘特殊優秀研究人才(N類-新)": // 2022/09/01 研發處將_獎勵新聘特殊優秀研究人才_改名為此
                 return "ExcellentResearcherCatalog";
 
             case "獎勵特殊優秀研究人才":
