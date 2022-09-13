@@ -144,23 +144,47 @@
         if(!fillRates){
             return false;
         }
-        console.log(fillRates)
+        console.log("fillrate"+fillRates)
         let fillPage = document.getElementsByClassName("filledCheck");
         let fillRatesKeys = Object.keys(fillRates);
         // ReviewInformation page don't need to be checked fillRate.
-        console.log(fillPage.length)
-        console.log(fillRatesKeys.length)
-        if (fillRatesKeys.length < fillPage.length) {
+        console.log(fillRates[0])
+        console.log(fillRates[1])
+        console.log(fillRates[2])
+        console.log(fillRatesKeys[0])
+        console.log(fillRatesKeys[1])
+        console.log(fillRatesKeys[2])
+        console.log(fillPage[2])
+        console.log("len"+fillPage.length)
+        console.log("key"+fillRatesKeys.length)
+        let IsFillLectureProfessorORProfessorHonorary =0;
+        let count=0;
+        for(let i =0;i<fillRatesKeys.length;i++){
+            if(fillRatesKeys[i]=="LectureProfessorApplicationForm"||fillRatesKeys[i]=="LectureProfessorHonoraryApplicationForm"){
+                IsFillLectureProfessorORProfessorHonorary=1;
+                count++;
+                break;
+            }
+        }
+        if (fillRatesKeys.length+count < fillPage.length) {
             let unSavedPageName = "";
             for (let i = 0; i < fillPage.length; i++) {
                 let page = fillPage[i];
                 if (!fillRates[page.name] ) {
-                    unSavedPageName += page.innerHTML + " ";
+                    if(IsFillLectureProfessorORProfessorHonorary===1 && (page.name!="LectureProfessorApplicationForm"
+                        &&page.name!="LectureProfessorHonoraryApplicationForm")){
+                        console.log(page.name)
+                        unSavedPageName += page.innerHTML + " ";
+                    }
+                    if(IsFillLectureProfessorORProfessorHonorary===0){
+                        unSavedPageName += page.innerHTML + " ";
+                    }
+
                 }
             }
             alert(unSavedPageName + "頁面尚未儲存");
             return false;
-        } else if (fillRatesKeys.length === fillPage.length) {
+        } else if (fillRatesKeys.length+count === fillPage.length) {
             let unFinishedPageName = "";
             for (let i = 0; i < fillRatesKeys.length; i++) {
                 let fillRatesKey = fillRatesKeys[i];
