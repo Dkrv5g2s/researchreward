@@ -19,23 +19,33 @@
             margin: 3rem 0 0;
             vertical-align: bottom;
         }
+        .requiredField {
+            color: red;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/Function.js"></script>
     <script>
         function commit(){
-            $.ajax({
-                type: 'POST',
-                url: 'SecondPersonalInformation',
-                dataType: 'text',
-                data: JSON.stringify(InputToJson()),
-                contentType: 'application/json',
-                success: function(data){
-                    alert('存檔成功');
-                }
-            });
-
-        };
+            if ($("#college").val() && $("#department").val() && $("#hiredYear").val() && $("#hiredMonth").val() && $("#year").val()
+                && $("#month").val() && $("#cName").val() && $("#eName").val() && $("#title").val() && $("#pastTitle").val()
+                && $("#pastPrice").val() && $("#planName").val() && $("#planNumber").val() && $("#startTime").val() && $("#lastTime").val()
+                && $("#level").val() && $("#price").val() && ($("#qualification1").prop("checked") || $("#qualification2").prop("checked")) && $("#workContent").val()) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'SecondPersonalInformation',
+                    dataType: 'text',
+                    data: JSON.stringify(InputToJson()),
+                    contentType: 'application/json',
+                    success: function(data){
+                        alert('存檔成功');
+                    }
+                });
+            }
+            else {
+                alert("尚未填寫完成!");
+            }
+        }
 
         function InputToJson(){
             var data = {};
@@ -117,37 +127,37 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="metadata">單位</td>
+                        <td class="metadata"><span class="requiredField">✱</span>單位</td>
                         <td>
-                            <input type="text" name="college" value="<%= json.get("college") %>" required>學院
-                            <input type="text" name="department" value="<%= json.get("department") %>" required>系(所)
+                            <input type="text" id="college" name="college" value="<%= json.get("college") %>" required>學院
+                            <input type="text" id="department" name="department" value="<%= json.get("department") %>" required>系(所)
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">起聘年月</td>
+                        <td class="metadata"><span class="requiredField">✱</span>起聘年月</td>
                         <td>
-                            <input type="number" name="hiredYear" value="<%= json.get("hiredYear") %>" required>年
-                            <input type="number" name="hiredMonth" value="<%= json.get("hiredMonth") %>" required>月
+                            <input type="number" id="hiredYear" name="hiredYear" value="<%= json.get("hiredYear") %>" required>年
+                            <input type="number" id="hiredMonth" name="hiredMonth" value="<%= json.get("hiredMonth") %>" required>月
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">任職本校年資</td>
+                        <td class="metadata"><span class="requiredField">✱</span>任職本校年資</td>
                         <td>
-                            <input type="number" name="year" value="<%= json.get("year") %>" required>年
-                            <input type="number" name="month" value="<%= json.get("month") %>" required>個月
+                            <input type="number" id="year" name="year" value="<%= json.get("year") %>" required>年
+                            <input type="number" id="month" name="month" value="<%= json.get("month") %>" required>個月
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">中文姓名</td>
-                        <td><input type="text" name="cName" value="<%= json.get("cName") %>" required></td>
+                        <td class="metadata"><span class="requiredField">✱</span>中文姓名</td>
+                        <td><input type="text" id="cName" name="cName" value="<%= json.get("cName") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">英文姓名</td>
-                        <td><input type="text" name="eName" value="<%= json.get("eName") %>" required></td>
+                        <td class="metadata"><span class="requiredField">✱</span>英文姓名</td>
+                        <td><input type="text" id="eName" name="eName" value="<%= json.get("eName") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">職稱</td>
-                        <td><input type="text" name="title" value="<%= json.get("title") %>" required></td>
+                        <td class="metadata"><span class="requiredField">✱</span>職稱</td>
+                        <td><input type="text" id="title" name="title" value="<%= json.get("title") %>" required></td>
                     </tr>
                     <tr>
                         <td class="metadata">國籍</td>
@@ -158,44 +168,44 @@
                         <td><input type="text" name="gender" value="<%= json.get("gender") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">受本校延攬前之工作單位/職稱</td>
+                        <td class="metadata"><span class="requiredField">✱</span>受本校延攬前之工作單位/職稱</td>
                         <td>
-                            <input type="text" name="pastTitle" value="<%= json.get("pastTitle") %>" required>
+                            <input type="text" id="pastTitle" name="pastTitle" value="<%= json.get("pastTitle") %>" required>
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">前一年度獲核定獎勵金額
+                        <td class="metadata"><span class="requiredField">✱</span>前一年度獲核定獎勵金額
                         </td>
                         <td>
-                            每月新台幣<input type="text" name="pastPrice" value="<%= json.get("pastPrice") %>" required>萬元
+                            每月新台幣<input type="text" id="pastPrice" name="pastPrice" value="<%= json.get("pastPrice") %>" required>萬元
                         </td>
                     </tr>
                     <tr><td colspan="2" style="text-align: center; background-color: rgb(255, 255, 240)">申請獎勵等級及符合資格</td></tr>
                     <tr>
-                        <td class="metadata">一年內曾執行科技部計畫</td>
-                        <td>計畫名稱:<input type="text" name="planName" value="<%= json.get("planName") %>" required>
-                        計畫編號:<input type="text" name="planNumber" value="<%= json.get("planNumber") %>" required>
-                        執行期間:<input type="date" name="startTime" value="<%= json.get("startTime") %>" required>至<input type="date" name="lastTime" value="<%= json.get("lastTime") %>" required></td>
+                        <td class="metadata"><span class="requiredField">✱</span>一年內曾執行科技部計畫</td>
+                        <td>計畫名稱:<input type="text" id="planName"  name="planName" value="<%= json.get("planName") %>" required>
+                        計畫編號:<input type="text" id="planNumber" name="planNumber" value="<%= json.get("planNumber") %>" required>
+                        執行期間:<input type="date" id="startTime" name="startTime" value="<%= json.get("startTime") %>" required>至<input type="date" id="lastTime" name="lastTime" value="<%= json.get("lastTime") %>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">本次申請續撥期間及每月獎勵金</td>
+                        <td class="metadata"><span class="requiredField">✱</span>本次申請續撥期間及每月獎勵金</td>
                         <td>
                             <select name="level" id="level">
                                 <option value="second">第二年</option>
                                 <option value="third">第三年</option>
                             </select>
-                            每月新台幣<input type="number" name="price" value="<%= json.get("price") %>" required>萬元
+                            每月新台幣<input type="number" id="price" name="price" value="<%= json.get("price") %>" required>萬元
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">定期考評</td>
+                        <td class="metadata"><span class="requiredField">✱</span>定期考評</td>
                         <td>
                             <input type="checkbox" name="qualification1" id="qualification1" value="true">獲獎勵期間學術研究成果及貢獻
                             <input type="checkbox" name="qualification2" id="qualification2" value="true">前一年度具體執行績效
                         </td>
                     </tr>
                     <tr>
-                        <td class="metadata">獲奬勵期間工作內容</td>
+                        <td class="metadata"><span class="requiredField">✱</span>獲奬勵期間工作內容</td>
                         <td>
                             <input type="text" name="workContent" id="workContent" value=<%= json.get("workContent") %>>
                         </td>

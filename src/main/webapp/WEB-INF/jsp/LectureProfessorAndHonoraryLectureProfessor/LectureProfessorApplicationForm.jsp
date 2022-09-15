@@ -86,23 +86,36 @@
             text-align-last: center;
             margin: 1rem;
         }
+        .requiredField {
+            color: red;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
-            $.ajax({
-                type: 'POST',
-                url: 'LectureProfessorApplicationForm',
-                dataType: 'json',
-                data: JSON.stringify(InputToJson()),
-                // contentType: 'application/json',
-                success: function(data){
-                    alert(data.status);
-                    window.location.href="LectureProfessorApplicationForm";
-                },error:function(data,status,er) {
-                    alert("存檔失敗");
-                }
-            });
+            if ($("#name").val() && $("#job").val() && $("#serviceSchoolAndDepartment").val() && $("#certificatenum").val() && $("#workStartDate").val() && $("#email").val() && $("#researchroomext").val() && $("#cellphone").val() &&
+                    ($("#applicationrequirements1").prop("checked") || $("#applicationrequirements2").prop("checked") || $("#applicationrequirements3").prop("checked") || $("#applicationrequirements4").prop("checked") ||
+                    $("#applicationrequirements5").prop("checked") || $("#applicationrequirements6").prop("checked") || $("#applicationrequirements7").prop("checked") || $("#applicationrequirements8").prop("checked") ||
+                    $("#applicationrequirements9").prop("checked") || $("#applicationrequirements10").prop("checked") || $("#applicationrequirements11").prop("checked") || $("#applicationrequirements12").prop("checked") ||
+                    $("#applicationrequirements13").prop("checked") || $("#applicationrequirements14").prop("checked") || $("#applicationrequirements15").prop("checked")) &&
+                    ($("#lectureCategoryExp").prop("checked") || $("#lectureCategoryInv").prop("checked") || $("#lectureCategoryLif").prop("checked")) && $("#applicationrequirementsCheck").prop("checked")) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'LectureProfessorApplicationForm',
+                    dataType: 'json',
+                    data: JSON.stringify(InputToJson()),
+                    // contentType: 'application/json',
+                    success: function(data){
+                        alert(data.status);
+                        window.location.href="LectureProfessorApplicationForm";
+                    },error:function(data,status,er) {
+                        alert("存檔失敗");
+                    }
+                });
+            }
+            else {
+                alert("尚未填寫完成!");
+            }
         };
 
         function InputToJson(){
@@ -188,42 +201,42 @@
                 <td colspan="4" ><input type="text" name="usernum" disabled="disabled" value=<%=json.get("usernum")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">申請人姓名(英文姓名)</td>
-                <td colspan="4" ><input type="text" name="name" value=<%=json.get("name")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>申請人姓名(英文姓名)</td>
+                <td colspan="4" ><input type="text" id="name" name="name" value=<%=json.get("name")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">職稱</td>
-                <td colspan="4"><input type="text" name="job" value=<%=json.get("job")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>職稱</td>
+                <td colspan="4"><input type="text" id="job" name="job" value=<%=json.get("job")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">服務學校與系所</td>
-                <td colspan="4"><input type="text" name="serviceSchoolAndDepartment" value=<%=json.get("serviceSchoolAndDepartment")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>服務學校與系所</td>
+                <td colspan="4"><input type="text" id="serviceSchoolAndDepartment" name="serviceSchoolAndDepartment" value=<%=json.get("serviceSchoolAndDepartment")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">教授證書號碼</td>
-                <td colspan="4"><input type="text" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>教授證書號碼</td>
+                <td colspan="4"><input type="text" id="certificatenum" name="certificatenum" value=<%=json.get("certificatenum")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">本校任職日期</td>
-                <td colspan="4"><input type="date" name="workStartDate" value=<%=json.get("workStartDate")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>本校任職日期</td>
+                <td colspan="4"><input type="date" id="workStartDate" name="workStartDate" value=<%=json.get("workStartDate")%> ></td>
             </tr>
             <tr>
                 <td colspan="4" class="metadata">教授年資</td>
                 <td colspan="4"><input type="text" name="seniority" value=<%=json.get("seniority")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">E-mail</td>
-                <td colspan="4"><input type="text" name="email" value=<%=json.get("email")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>E-mail</td>
+                <td colspan="4"><input type="text" id="email" name="email" value=<%=json.get("email")%> ></td>
             </tr>
             <tr>
-                <td  colspan="4" class="metadata">聯絡電話</td>
+                <td  colspan="4" class="metadata"><span class="requiredField">✱</span>聯絡電話</td>
                 <td  colspan="4">
-                    <p>研究室分機：<input type="text" name="researchroomext" value=<%=json.get("researchroomext")%> ></p>
-                    <p>手機：<input type="text" name="cellphone" value=<%=json.get("cellphone")%> ></p>
+                    <p>研究室分機：<input type="text" id="researchroomext" name="researchroomext" value=<%=json.get("researchroomext")%> ></p>
+                    <p>手機：<input type="text" id="cellphone" name="cellphone" value=<%=json.get("cellphone")%> ></p>
                 </td>
             </tr>
             <tr>
-                <td  colspan="4" class="metadata">申請講座項目</td>
+                <td  colspan="4" class="metadata"><span class="requiredField">✱</span>申請講座項目</td>
                 <td colspan="4">
                     <input type ="radio" id="lectureCategoryExp" name="lectureCategory">專任講座
                     <input type ="radio" id="lectureCategoryInv" name="lectureCategory">客座講座
@@ -233,94 +246,94 @@
 
 
             <tr>
-                <td  colspan="8" class="ivory_bg" >申請條件（請勾選並檢附相關證明文件）</td>
+                <td  colspan="8" class="ivory_bg" ><span class="requiredField">✱</span>申請條件（請勾選並檢附相關證明文件）</td>
             </tr>
             <tr>
-                <td  colspan="4" class="cb" align="center"><input type="checkbox" name="applicationrequirements1" ></td>
+                <td  colspan="4" class="cb" align="center"><input type="checkbox" id="applicationrequirements1" name="applicationrequirements1" ></td>
                 <td  colspan="4" class="checkboxcontent">
                     諾貝爾得獎人
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements2" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements2" name="applicationrequirements2" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     中央研究院院士
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements3" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements3" name="applicationrequirements3" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲總統科學獎
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements4" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements4" name="applicationrequirements4" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲行政院傑出科技貢獻獎
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements5" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements5" name="applicationrequirements5" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲教育部國家講座
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements6" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements6" name="applicationrequirements6" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲教育部學術獎
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements7" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements7" name="applicationrequirements7" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲科技部傑出特約研究員獎
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements8" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements8" name="applicationrequirements8" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲科技部傑出研究獎二次以上
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements9" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements9" name="applicationrequirements9" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     國際知名之國家院士
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements10" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements10" name="applicationrequirements10" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾(現)任國際著名大學之講座
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements11" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements11" name="applicationrequirements11" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     重要國際學會會士(Fellow)
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements12" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements12" name="applicationrequirements12" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     曾獲本校終身特聘教授滿3年者
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements13" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements13" name="applicationrequirements13" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     在產學合作或實務專業技術上有傑出貢獻
                 </td>
             </tr>
             <tr>
-                <td colspan="4"  class="cb" align="center"><input type="checkbox" name="applicationrequirements14" ></td>
+                <td colspan="4"  class="cb" align="center"><input type="checkbox" id="applicationrequirements14" name="applicationrequirements14" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     其他在學術上有傑出貢獻
                 </td>
             </tr>
             <tr>
-                <td  colspan="4" class="cb" align="center"><input type="checkbox" name="applicationrequirements15" ></td>
+                <td  colspan="4" class="cb" align="center"><input type="checkbox" id="applicationrequirements15" name="applicationrequirements15" ></td>
                 <td colspan="4"  class="checkboxcontent">
                     前一任獎座之申請條件(第二任以上申請者)<textarea class="singleRow" name ="additionalInfo" required maxlength="500"  style="height:20px"><%=json.get("additionalInfo")%></textarea>
                 </td>
@@ -328,8 +341,8 @@
             <tr>
 <%--                <td colspan="4"  class="cb" align="center"></td>--%>
                 <td colspan="8"  class="checkboxcontent">
-                    <input type="checkbox" name="applicationrequirementsCheck" required>
-                    申請人聲明充分了解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全法律責任。
+                    <input type="checkbox" id="applicationrequirementsCheck" name="applicationrequirementsCheck" required>
+                    <span class="requiredField">✱</span>申請人聲明充分了解申請辦法，且上述資料與勾選事項皆屬實，若有誤願自行負完全法律責任。
                 </td>
             </tr>
             <tr>

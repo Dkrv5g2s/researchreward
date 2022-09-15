@@ -71,23 +71,31 @@
             text-align-last: center;
             margin: 1rem;
         }
+        .requiredField {
+            color: red;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function commit(){
-            $.ajax({
-                type: 'POST',
-                url: 'LectureProfessorHonoraryApplicationForm',
-                dataType: 'json',
-                data: JSON.stringify(InputToJson()),
-                contentType: 'application/json',
-                success: function(data){
-                    alert(data.status);
-                    window.location.href="LectureProfessorHonoraryApplicationForm";
-                },error:function(data,status,er) {
-                    alert("存檔失敗");
-                }
-            });
+            if ($("#name").val() && $("#jobAndDept").val() && $("#email").val() && $("#cellphone").val() && $("#indivisualEducation").val() && $("#recommendationReason").val()) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'LectureProfessorHonoraryApplicationForm',
+                    dataType: 'json',
+                    data: JSON.stringify(InputToJson()),
+                    contentType: 'application/json',
+                    success: function(data){
+                        alert(data.status);
+                        window.location.href="LectureProfessorHonoraryApplicationForm";
+                    },error:function(data,status,er) {
+                        alert("存檔失敗");
+                    }
+                });
+            }
+            else {
+                alert("尚未填寫完成!");
+            }
         };
 
         function InputToJson(){
@@ -127,46 +135,46 @@
         <table>
             <tbody>
             <tr>
-                <td colspan="4" class="metadata">員工編號</td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>員工編號</td>
                 <td colspan="4"><input type="text" name="usernum" disabled="disabled" value=<%=json.get("usernum")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">被推薦人姓名(英文姓名)</td>
-                <td colspan="4"><input type="text" name="name" value=<%=json.get("name")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>被推薦人姓名(英文姓名)</td>
+                <td colspan="4"><input type="text" id="name" name="name" value=<%=json.get("name")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">服務單位與職稱</td>
-                <td colspan="4"><input type="text" name="jobAndDept" value=<%=json.get("jobAndDept")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>服務單位與職稱</td>
+                <td colspan="4"><input type="text" id="jobAndDept" name="jobAndDept" value=<%=json.get("jobAndDept")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">E-mail</td>
-                <td colspan="4"><input type="text" name="email" value=<%=json.get("email")%> ></td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>E-mail</td>
+                <td colspan="4"><input type="text" id="email" name="email" value=<%=json.get("email")%> ></td>
             </tr>
             <tr>
-                <td colspan="4" class="metadata">聯絡電話</td>
+                <td colspan="4" class="metadata"><span class="requiredField">✱</span>聯絡電話</td>
                 <td colspan="4">
 <%--                    <p>研究室分機：<input type="text" name="researchroomext" value=<%=json.get("researchroomext")%> ></p>--%>
-                    <input type="text" name="cellphone" value=<%=json.get("cellphone")%> >
+                    <input type="text" id="cellphone" name="cellphone" value=<%=json.get("cellphone")%> >
                 </td>
             </tr>
             <tr>
                 <td colspan="8" style="text-align:center">
-                    個人學經歷
+                    <span class="requiredField">✱</span>個人學經歷
                 </td>
             </tr>
             <tr style="height:200px;">
                 <td colspan="8">
-                    <textarea style="width:100%; height:100%;" name ="indivisualEducation" ><%=json.get("indivisualEducation")%></textarea>
+                    <textarea style="width:100%; height:100%;" id ="indivisualEducation" name ="indivisualEducation" ><%=json.get("indivisualEducation")%></textarea>
                 </td>
             </tr>
             <tr>
                 <td colspan="8" style="text-align:center">
-                    推薦理由
+                    <span class="requiredField">✱</span>推薦理由
                 </td>
             </tr>
             <tr style="height:200px;">
                 <td colspan="8" >
-                    <textarea style="width:100%; height:100%;" name ="recommendationReason" ><%=json.get("recommendationReason")%><%=json.get("recommendationReason")%></textarea>
+                    <textarea style="width:100%; height:100%;" id ="recommendationReason" name ="recommendationReason" ><%=json.get("recommendationReason")%><%=json.get("recommendationReason")%></textarea>
                 </td>
             </tr>
             <tr>

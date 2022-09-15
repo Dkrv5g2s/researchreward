@@ -28,7 +28,7 @@
             <tbody>
             <!-- 大列1 -->
             <tr style="text-align: center;">
-                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><strong>申請人姓名</strong></td>
+                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><span class="requiredField">✱</span><strong>申請人姓名</strong></td>
                 <td colspan="2" width="10%" style="text-align: left;">中文:&nbsp;<input  id="chineseName" maxlength="40" ></td>
             </tr>
             <tr style="text-align: left;">
@@ -39,7 +39,7 @@
             </tr>
             <!-- 大列2 -->
             <tr style="text-align: center;">
-                <td rowspan="1" colspan="4" width="20%" style="font-size:22px"><strong>單位(系所):</strong></td>
+                <td rowspan="1" colspan="4" width="20%" style="font-size:22px"><span class="requiredField">✱</span><strong>單位(系所):</strong></td>
                 <td rowspan="1" colspan="2" width="38%" style="font-size:22px;text-align: left;"><input  id="department" maxlength="40" ></td>
             </tr>
 
@@ -47,7 +47,7 @@
             <!-- 大列3 -->
             <tr style="text-align: center;" id="FacultyTr">
                 <td rowspan="1" colspan="4" width="20%" style="font-size:22px">
-                    <strong>教職員<br>職&nbsp;&nbsp;&nbsp;稱</strong></td>
+                    <span class="requiredField">✱</span><strong>教職員<br>職&nbsp;&nbsp;&nbsp;稱</strong></td>
                 <td rowspan="1" colspan="2" width="20%" style="font-size:13px;text-align: left;" id="FacultyTable">
                     <select  size="1" id = "titles" onchange="changeFunc();" >
                         <option value="" selected>請選擇教職員類型</option>
@@ -64,7 +64,7 @@
 
             <!-- 大列4 -->
             <tr style="text-align: center;">
-                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><strong>聯絡方式:</strong></td>
+                <td rowspan="3" colspan="4" width="20%" style="font-size:22px"><span class="requiredField">✱</span><strong>聯絡方式:</strong></td>
                 <td rowspan="1" colspan="2" width="20%" style="text-align: left;">研究室分機:&nbsp;<input  id="extensionNumber" maxlength="15"></td>
             </tr>
 
@@ -82,10 +82,10 @@
             <!-- 大列6 -->
             <tr style="text-align: center;">
                 <td rowspan="2" colspan="4" width="20%" style="background:  #C0C0C0 ">Scopus/WOS 資料庫</td>
-                <td colspan="2"  width="20%" style="text-align: left;"><strong>篇數: <input id="SWArticleCountOne" maxlength="5"></strong></td>
+                <td colspan="2"  width="20%" style="text-align: left;"><span class="requiredField">✱</span><strong>篇數: <input id="SWArticleCountOne" maxlength="5"></strong></td>
             </tr>
             <tr style="text-align: center;">
-                <td colspan="2" width="20%" style="text-align: left;"><strong>點數小計:  <input id="SWPointOne" maxlength="5"></strong></td>
+                <td colspan="2" width="20%" style="text-align: left;"><span class="requiredField">✱</span><strong>點數小計:  <input id="SWPointOne" maxlength="5"></strong></td>
             </tr>
             <!-- 大列7 -->
             <tr style="text-align: center;">
@@ -178,6 +178,9 @@
         text-align: left;
         font-size:13px;
     }
+    .requiredField {
+        color: red;
+    }
 </style>
 <script>
     $( document ).ready(function() {
@@ -227,20 +230,27 @@
     }
 
     function commit(){
-        $.ajax({
-            type: 'POST',
-            url: 'SunshineScholarshipAwardGeneralInformation',
-            dataType: 'text',
-            data: JSON.stringify(InputToJson()),
-            contentType: 'application/json',
-            success: function(data){
-                // alert(data.status);
-                alert("存檔成功");
-                window.location.href="SunshineScholarshipAwardGeneralInformation";
-            }
-        });
-
-    };
+        if ($("#chineseName").val() && $("#englishName").val() && $("#nationalIDNumber").val() && $("#department").val() && $("#titles").val()
+            && (!($("#titles").val() == "ResignedMember") || $("#resignedTime").val())
+            && $("#levels").val() && $("#extensionNumber").val() && $("#cellphoneNumber").val() && $("#emailAddress").val() && $("#SWArticleCountOne").val()
+            && $("#SWPointOne").val() && $("#TeacherFormCheck").prop("checked")) {
+            $.ajax({
+                type: 'POST',
+                url: 'SunshineScholarshipAwardGeneralInformation',
+                dataType: 'text',
+                data: JSON.stringify(InputToJson()),
+                contentType: 'application/json',
+                success: function(data){
+                    // alert(data.status);
+                    alert("存檔成功");
+                    window.location.href="SunshineScholarshipAwardGeneralInformation";
+                }
+            });
+        }
+        else {
+            alert("尚未填寫完成!");
+        }
+    }
 
     function InputToJson(){
         let data = {};
