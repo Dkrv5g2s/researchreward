@@ -23,7 +23,7 @@
             color: red;
         }
     </style>
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/Function.js"></script>
     <script>
         function commit(){

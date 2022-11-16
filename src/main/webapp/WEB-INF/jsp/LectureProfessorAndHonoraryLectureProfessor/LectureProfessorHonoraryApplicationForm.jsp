@@ -75,7 +75,7 @@
             color: red;
         }
     </style>
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         function commit(){
             if ($("#name").val() && $("#jobAndDept").val() && $("#email").val() && $("#cellphone").val() && $("#indivisualEducation").val() && $("#recommendationReason").val()) {

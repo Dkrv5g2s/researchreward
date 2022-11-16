@@ -15,7 +15,7 @@
     <title>Title</title>
     <title>各獎項期刊論文統計表年度設定</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <style>
         table {
             table-layout: fixed;

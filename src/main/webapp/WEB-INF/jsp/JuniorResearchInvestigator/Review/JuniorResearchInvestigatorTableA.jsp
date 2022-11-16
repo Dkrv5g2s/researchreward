@@ -17,8 +17,8 @@
 
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/moment.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.min.js"></script>
 
     <style type="text/css">
         tr{

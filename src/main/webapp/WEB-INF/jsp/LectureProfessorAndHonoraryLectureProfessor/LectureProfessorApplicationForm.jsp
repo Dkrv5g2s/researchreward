@@ -90,7 +90,7 @@
             color: red;
         }
     </style>
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         function commit(){
             if ($("#name").val() && $("#job").val() && $("#serviceSchoolAndDepartment").val() && $("#certificatenum").val() && $("#workStartDate").val() && $("#email").val() && $("#researchroomext").val() && $("#cellphone").val() &&

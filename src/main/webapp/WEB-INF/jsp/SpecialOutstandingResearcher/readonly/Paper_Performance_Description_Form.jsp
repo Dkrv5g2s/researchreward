@@ -10,7 +10,7 @@
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
-<script src="lib/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <div class="container">
     <p class="file_title four_sections three_years five_years" style="padding-top: 1rem;">國立臺北科技大學傑出論文績效說明表</p>
     <p class="table_c" style="font-weight:bold;font-size:20px;text-align: center;">研究績優教師執行第<input id="numOfPerformancePeriod" name="numOfPerformancePeriod" size="1" maxlength="4" style="text-align:center;" readonly>期績效說明表(申請第二期以上者填寫)</p>

@@ -12,7 +12,7 @@
 <head>
     <title>查看退件獎項</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         function commit(project_id,rewardName){
             $.ajax({

@@ -9,7 +9,7 @@
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
-<script src="lib/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <div class="content">
     <p class="file_title">※審查資料【填寫說明】</p>
 

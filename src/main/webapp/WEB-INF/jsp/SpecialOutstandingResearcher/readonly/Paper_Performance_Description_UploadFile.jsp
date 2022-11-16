@@ -10,8 +10,8 @@
 %>
 <!DOCTYPE HTML>
 <html lang="zh">
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.form.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.form.js"></script>
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 <div class="container">

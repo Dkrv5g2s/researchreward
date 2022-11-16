@@ -12,7 +12,7 @@
     <title>研發獎勵系統</title>
     <link rel="stylesheet" type="text/css" href="css/MenuStyle.css">
     <link rel="stylesheet" type="text/css" href="css/Style.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         $(document).ready(function (){
             if (<%=request.getAttribute("flag")%>) {

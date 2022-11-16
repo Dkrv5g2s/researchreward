@@ -188,7 +188,7 @@
     </form>
 </div>
 
-<script src="lib/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script>
 
     function load() {

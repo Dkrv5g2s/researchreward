@@ -4,7 +4,7 @@
 <head>
     <title>傑出研究獎</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <style type="text/css">
         body{
             text-align-last: center;

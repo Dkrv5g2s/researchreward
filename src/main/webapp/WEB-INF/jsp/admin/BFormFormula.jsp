@@ -12,7 +12,7 @@
     <title>B表公式修改</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({

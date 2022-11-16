@@ -24,7 +24,7 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-<script src="lib/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <div class="container" style="margin: 0px auto; width: 1200px">
     <title>附表一：國立臺北科技大學論文點數計算公式</title>
 

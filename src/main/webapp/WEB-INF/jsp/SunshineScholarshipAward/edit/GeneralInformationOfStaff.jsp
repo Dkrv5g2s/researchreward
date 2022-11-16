@@ -17,9 +17,9 @@
     <title>陽光獎助金論文 教職研人員基本資料表</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 <%--    <script src="math.js" type="text/javascript"></script>--%>
-    <script src="lib/math.min.js"></script>
+    <script src="js/math.min.js"></script>
 </head>
 <body>
 <p style="text-align:center;font-weight:bold;font-size:20px;clear:none;">陽光獎助金論文 教職研人員基本資料表</p>

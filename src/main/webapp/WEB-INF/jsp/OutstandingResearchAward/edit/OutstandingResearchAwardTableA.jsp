@@ -15,8 +15,8 @@
     <title>傑出研究獎 近三年內發表之期刊論文統計表</title>
 
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/moment.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.min.js"></script>
 
     <style type="text/css">
         tr{

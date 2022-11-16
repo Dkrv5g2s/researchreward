@@ -8,7 +8,7 @@
 <head>
     <title>國立臺北科技大學特聘教授申請表審查資料【填寫說明】</title>
     <script src="js/Function.js"></script>
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
     <style>

@@ -15,7 +15,7 @@
     <title>研發成果智慧財產權及其應用績效</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/Function.js"></script>
     <style>
         td.metadata{

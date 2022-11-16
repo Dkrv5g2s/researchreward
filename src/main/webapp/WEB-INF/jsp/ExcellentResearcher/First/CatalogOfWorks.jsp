@@ -12,7 +12,7 @@
     <title>申請表額外文件</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/Function.js"></script>
     <script>
         function commit(){

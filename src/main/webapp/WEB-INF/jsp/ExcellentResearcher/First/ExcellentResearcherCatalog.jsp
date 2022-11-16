@@ -11,7 +11,7 @@
 <head>
     <title>目錄</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $(".review").hide();

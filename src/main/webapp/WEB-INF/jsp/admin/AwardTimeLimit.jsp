@@ -12,7 +12,7 @@
     <title>各獎項開放申請時間</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="lib/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({

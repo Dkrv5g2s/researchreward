@@ -8,9 +8,12 @@ group 'com.example'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
-    maven {
-        url "https://repository.aspose.com/repo/" }
+//    mavenCentral()
+//    maven {
+//        url "https://repository.aspose.com/repo/" }
+    flatDir {
+        dirs 'src/main/resources'
+    }
 }
 
 ext {
@@ -21,6 +24,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile fileTree(dir: 'src/main/resources', include: '*.jar')
+
     implementation 'junit:junit:4.12'
     implementation 'junit:junit:4.12'
     implementation 'org.jetbrains:annotations:20.1.0'
@@ -43,8 +48,6 @@ dependencies {
             name: 'aspose-words',
             version: '20.5',
             classifier: 'jdk17')
-
-    compile fileTree(include: ["*.jar"], dir: "src/main/resources")
 
     // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
