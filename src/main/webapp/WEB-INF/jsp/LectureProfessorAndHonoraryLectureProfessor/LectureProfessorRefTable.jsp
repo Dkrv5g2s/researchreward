@@ -17,7 +17,7 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
 <div class="container" style="margin: 0px auto; width: 1200px">
 
     <title>附件一：優質期刊清單</title>

@@ -12,7 +12,7 @@
 <head>
     <title>講座教授/榮譽講座教授</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
     <style type="text/css">
         body{
             text-align-last: center;

@@ -13,7 +13,7 @@
     <title>特殊優秀研究人才申請表年度設定</title>
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
     <link rel="stylesheet" type="text/css" href="css/body.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
     <script>
         function commit(){
             $.ajax({

@@ -3,7 +3,7 @@
     <head>
         <title>獎助研究績優教師聘任研究人員目錄</title>
         <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="lib/jquery.min.js"></script>
         <script>
             async function sendApply() {
                 if (!confirm("確定要送出申請?")) {

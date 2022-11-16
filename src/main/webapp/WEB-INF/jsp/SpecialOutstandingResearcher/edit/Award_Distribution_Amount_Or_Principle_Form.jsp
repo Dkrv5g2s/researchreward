@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE HTML>
 <html lang="zh">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
 <link rel="stylesheet" type="text/css" href="css/PrintPageStyle.css">
 

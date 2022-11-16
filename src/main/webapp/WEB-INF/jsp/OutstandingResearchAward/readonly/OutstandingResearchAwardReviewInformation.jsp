@@ -10,7 +10,7 @@
     <title>傑出研究獎 審查資料</title>
 
     <link rel="stylesheet" type="text/css" href="css/FormStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
     <style type="text/css">
         table{
             table-layout: fixed;
