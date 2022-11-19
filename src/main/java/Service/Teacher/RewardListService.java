@@ -136,6 +136,7 @@ public class RewardListService {
                 return "SecondExcellentResearcherCatalog";
 
             case "講座教授":
+            case "講座教授/榮譽講座教授": // 因 講座教授 內可以在 講座教授/榮譽講座教授 內二擇一申請, 故標示清楚
                 return "LectureProfessorCatalog";
 
             default:

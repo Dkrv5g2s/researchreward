@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-    <title>國立臺北科技大學特聘教授申請表</title>
+    <title>國立臺北科技大學講座教授申請表</title>
     <style>
         body {
             margin: 20px 0px 0px 0px;

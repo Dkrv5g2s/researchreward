@@ -406,7 +406,7 @@
                 dataNumber++;
         }
         let fill_rate = dataNumber / totalColumnNum;
-        latest_data["rateData"] = {"column_name": translateRewardType(rewardType), "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
+        latest_data["rateData"] = {"rewardType": translateRewardType(rewardType), "fill_rate": fill_rate};  //additional_weight預設為1，不列入計算
         return JSON.stringify(latest_data) ;
     }
     function translateRewardType(rewardType){
@@ -417,6 +417,7 @@
                 rewardTranslated="TeacherHireResearcherTableB";
                 break;
             case "講座教授":
+            case "講座教授/榮譽講座教授": // 因 講座教授 內可以在 講座教授/榮譽講座教授 內二擇一申請, 故標示清楚
                 rewardTranslated="LectureProfessorTableB";
                 break;
             case "特聘教授":

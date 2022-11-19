@@ -59,7 +59,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="metadata">奬助研究績優教師聘任研究人員</td>
+                        <td class="metadata">獎助研究及產學績優教師聘任研究人員辦法</td>
                         <td><input type="date" name="s1" value="<%= jsonObject.getDate("s1")%>" required>至<input type="date" name="l1" value="<%= jsonObject.getDate("l1")%>" required></td>
                     </tr>
                     <tr>
@@ -79,11 +79,11 @@
                         <td><input type="date" name="s5" value="<%= jsonObject.getDate("s5")%>" required>至<input type="date" name="l5" value="<%= jsonObject.getDate("l5")%>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">獎勵特殊優秀研究人才</td>
+                        <td class="metadata">獎勵特殊優秀研究人才(A類)</td>
                         <td><input type="date" name="s6" value="<%= jsonObject.getDate("s6")%>" required>至<input type="date" name="l6" value="<%= jsonObject.getDate("l6")%>" required></td>
                     </tr>
                     <tr>
-                        <td class="metadata">獎勵新聘特殊優秀研究人才</td>
+                        <td class="metadata">獎勵新聘特殊優秀研究人才(N類-新)</td>
                         <td><input type="date" name="s7" value="<%= jsonObject.getDate("s7")%>" required>至<input type="date" name="l7" value="<%= jsonObject.getDate("l7")%>" required></td>
                     </tr>
                     <tr>

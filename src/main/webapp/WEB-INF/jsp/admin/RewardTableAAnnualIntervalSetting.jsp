@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td rowspan="4" colspan="1" class="metadata">近五年年度設定</td>
-                <td colspan="1" class="metadata"><label name="TeacherHireResearcher">奬助研究及產學績優教師聘任研究人員辦法</label></td>
+                <td colspan="1" class="metadata"><label name="TeacherHireResearcher">獎助研究及產學績優教師聘任研究人員辦法</label></td>
                 <td colspan="5">
                     <input type="number" name="year1" min="100" max="199" step="1" value=<%=teacherHireResearcher.getIntValue("year1")%> />
                     <input type="number" name="year2" min="100" max="199" step="1" value=<%=teacherHireResearcher.getIntValue("year2")%> />
@@ -44,7 +44,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="1" class="metadata"><label name="LectureProfessor">講座教授</label></td>
+                <td colspan="1" class="metadata"><label name="LectureProfessor">講座教授/榮譽講座教授</label></td>
                 <td colspan="5">
                     <input type="number" name="year1" min="100" max="199" step="1" value=<%=lectureProfessor.getIntValue("year1")%> />
                     <input type="number" name="year2" min="100" max="199" step="1" value=<%=lectureProfessor.getIntValue("year2")%> />
@@ -66,7 +66,7 @@
             </tr>
 
             <tr>
-                <td colspan="1" class="metadata"><label name="SpecialOutstandingResearcher">獎勵特殊優秀研究人才</label></td>
+                <td colspan="1" class="metadata"><label name="SpecialOutstandingResearcher">獎勵特殊優秀研究人才(A類)</label></td>
                 <td colspan="5">
                     <input type="number" name="year1" min="100" max="199" step="1" value=<%=specialOutstandingResearcher.getIntValue("year1")%> />
                     <input type="number" name="year2" min="100" max="199" step="1" value=<%=specialOutstandingResearcher.getIntValue("year2")%> />

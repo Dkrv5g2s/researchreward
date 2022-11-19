@@ -16,8 +16,8 @@ import java.util.List;
 public class JournalPaperDAOImpl implements JournalPaperDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String SELECT_journal_papers = "SELECT * FROM researchreward.journal_paper WHERE staff_code = ?;";
-    private static final String SELECT_limited_years_journal_papers = "SELECT * FROM researchreward.journal_paper WHERE staff_code = ? AND public_year >=?;";
+    private static final String SELECT_journal_papers = "SELECT * FROM journal_paper WHERE staff_code = ?;";
+    private static final String SELECT_limited_years_journal_papers = "SELECT * FROM journal_paper WHERE staff_code = ? AND public_year >=?;";
 
 
     @Override
@@ -97,9 +97,10 @@ public class JournalPaperDAOImpl implements JournalPaperDAO {
             case "獎勵特殊優秀研究人才":
             case "獎勵特殊優秀研究人才(A類)": // 2022/09/01 研發處將_獎勵特殊優秀研究人才_改名為此
             case "陽光獎助金論文獎勵":
-            case "奬助研究及產學績優教師聘任研究人員辦法": // old, first word displayed as ?.
-            case "獎助研究及產學績優教師聘任研究人員辦法": // fixed, first word display correctly.
+            case "奬助研究及產學績優教師聘任研究人員辦法": // 第一個字會顯示 '?'
+            case "獎助研究及產學績優教師聘任研究人員辦法": // 改名過後的 獎助績優, 第一個字不會再顯示 '?'
             case "講座教授":
+            case "講座教授/榮譽講座教授": // 因 講座教授 內可以在 講座教授/榮譽講座教授 內二擇一申請, 故標示清楚
                 return current_year-5; // 近5年論文績效說明表
 
             default:

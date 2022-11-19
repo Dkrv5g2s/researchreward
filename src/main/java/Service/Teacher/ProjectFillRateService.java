@@ -38,7 +38,7 @@ public class ProjectFillRateService {
         if (projectId < 0) // 因為目前績優c表是用負數 暫時先這樣寫qq
             this.save(Math.abs(projectId), "TeacherHireResearcherTableC", fillRateJSONObject.getDouble("fill_rate"));
         else
-            this.save(projectId, fillRateJSONObject.getString("column_name"), fillRateJSONObject.getDouble("fill_rate"));
+            this.save(projectId, fillRateJSONObject.getString("rewardType"), fillRateJSONObject.getDouble("fill_rate"));
     }
 
     private Double getUploadRate(int projectId) {
