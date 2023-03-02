@@ -1,0 +1,4 @@
+package Dao.SolicitSpecialOutstandingResearcherApplication;
+
+public interface SolicitSpecialOutstandingResearcherApplicationDAO {
+}

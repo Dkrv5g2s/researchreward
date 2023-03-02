@@ -313,6 +313,25 @@
         <url-pattern>/SpecialOutstandingResearcherCatalog</url-pattern>
     </servlet-mapping>
 
+<!--    待修正處2022-09-01 (延攬)獎勵特殊優秀研究人才(Y類) -->
+    <servlet>
+        <servlet-name>SolicitSpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <servlet-class>Servlet.SolicitSpecialOutstandingResearcher.SolicitSpecialOutstandingResearcherCatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SolicitSpecialOutstandingResearcherCatalogServlet</servlet-name>
+        <url-pattern>/SolicitSpecialOutstandingResearcherCatalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SolicitSpecialOutstandingResearcherApplicationServlet</servlet-name>
+        <servlet-class>Servlet.SolicitSpecialOutstandingResearcher.SolicitSpecialOutstandingResearcherApplicationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SolicitSpecialOutstandingResearcherApplicationServlet</servlet-name>
+        <url-pattern>/SolicitSpecialOutstandingResearcherApplication</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>MenuServlet</servlet-name>
         <servlet-class>Servlet.Teacher.MenuServlet</servlet-class>
