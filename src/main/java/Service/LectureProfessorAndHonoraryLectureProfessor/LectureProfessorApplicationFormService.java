@@ -1,7 +1,6 @@
 package Service.LectureProfessorAndHonoraryLectureProfessor;
 
 import Bean.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationForm;
-import Bean.OutstandingResearchAward.OutstandingResearchAward;
 import Dao.LectureProfessorAndHonoraryLectureProfessor.Impl.LectureProfessorApplicationFormDAOImpl;
 import Dao.LectureProfessorAndHonoraryLectureProfessor.LectureProfessorApplicationFormDAO;
 import Service.Teacher.ProjectFillRateService;

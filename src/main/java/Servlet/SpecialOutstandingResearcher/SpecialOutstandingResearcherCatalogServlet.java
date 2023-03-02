@@ -1,6 +1,5 @@
 package Servlet.SpecialOutstandingResearcher;
 
-
 import Servlet.login.ServletEntryPoint;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +27,6 @@ public class SpecialOutstandingResearcherCatalogServlet extends ServletEntryPoin
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/Special_Outstanding_Researcher_Catalog.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/SpecialOutstandingResearcher/SpecialOutstandingResearcherCatalog.jsp").forward(req, resp);
     }
-
 }

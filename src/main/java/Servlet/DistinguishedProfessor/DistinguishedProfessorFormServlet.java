@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DistinguishedProfessorFormServlet extends ServletEntryPoint {
 

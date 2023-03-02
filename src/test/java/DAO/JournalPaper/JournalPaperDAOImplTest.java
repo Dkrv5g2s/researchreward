@@ -44,7 +44,7 @@ class JournalPaperDAOImplTest {
 
     @Test
     void testGetThreeYearsJournalPapers() {
-        List<JournalPaper> journalPaperList = dao.query_journal_papers_of_reward_limited_period("11247", "年輕學者研究獎");
+        List<JournalPaper> journalPaperList = dao.queryJournalPapersWithLimitedRewardPeriod("11247", "年輕學者研究獎");
         Assert.assertEquals("郭忠義", journalPaperList.get(0).getStaff_cname());
         Date date = new Date();
         SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
@@ -56,7 +56,7 @@ class JournalPaperDAOImplTest {
 
     @Test
     void testGetFiveYearsJournalPapers() {
-        List<JournalPaper> journalPaperList = dao.query_journal_papers_of_reward_limited_period("11247", "特聘教授");
+        List<JournalPaper> journalPaperList = dao.queryJournalPapersWithLimitedRewardPeriod("11247", "特聘教授");
         Assert.assertEquals("郭忠義", journalPaperList.get(0).getStaff_cname());
         Date date = new Date();
         SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
@@ -68,6 +68,6 @@ class JournalPaperDAOImplTest {
 
     @Test
     void testGetNoJournalPaper() {
-        Assert.assertEquals(0, dao.query_journal_papers_of_reward_limited_period("11247", "XXXX").size());
+        Assert.assertEquals(0, dao.queryJournalPapersWithLimitedRewardPeriod("11247", "XXXX").size());
     }
 }

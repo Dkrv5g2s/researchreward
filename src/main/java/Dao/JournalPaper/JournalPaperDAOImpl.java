@@ -48,7 +48,7 @@ public class JournalPaperDAOImpl implements JournalPaperDAO {
     }
 
     @Override
-    public List<JournalPaper> query_journal_papers_of_reward_limited_period(String staff_code, String reward_type) {
+    public List<JournalPaper> queryJournalPapersWithLimitedRewardPeriod(String staff_code, String reward_type) {
         Connection connection = dbConnection.getConnection();
         List<JournalPaper> journalPapers = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_limited_years_journal_papers))

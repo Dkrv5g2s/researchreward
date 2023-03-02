@@ -57,7 +57,7 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
     }
 
-    @Override // Dfone, added for auto fill in.
+    @Override // Used for auto-fill-in journals.
     public int insertNewProjectAndReturnProjectID(String staff_code, int status_id, String reward_type) {
         Connection connection = dbConnection.getConnection();
         int inserted_id = 0;

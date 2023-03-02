@@ -38,15 +38,14 @@ public class RewardListService {
     }
 
     public void createReward(String staffCode, String rewardName){
-//        projectDAO.insertNewProject(staffCode, 1, rewardName);
 
-        // Dfone , added for auto fill in.==============================================================================
+        // Fill in journals when creating project ======================================================================
         int project_id = projectDAO.insertNewProjectAndReturnProjectID(staffCode, 1, rewardName);
         if (project_id<=0) {
             System.out.println("回傳 project id 錯誤");
         } else {
             JournalPaperDAO journalDAO = new JournalPaperDAOImpl();
-            List<JournalPaper> journals = journalDAO.query_journal_papers_of_reward_limited_period(staffCode, rewardName);
+            List<JournalPaper> journals = journalDAO.queryJournalPapersWithLimitedRewardPeriod(staffCode, rewardName);
             PaperPerformanceDescriptionDAO paperPerformanceDescriptionDAO = new PaperPerformanceDescriptionDAOImpl();
             paperPerformanceDescriptionDAO.insert_journal_papers(project_id, journals);
         }
@@ -117,6 +116,9 @@ public class RewardListService {
             case "獎勵特殊優秀研究人才":
             case "獎勵特殊優秀研究人才(A類)": // 2022/09/01 研發處將_獎勵特殊優秀研究人才_改名為此
                 return "SpecialOutstandingResearcherCatalog";
+
+            case "(延攬)獎勵特殊優秀研究人才(Y類)":
+                return "SolicitSpecialOutstandingResearcherCatalog"; // 2022/09/01 新增 (延攬)獎勵特殊優秀研究人才(Y類)
 
             case "陽光獎助金論文獎勵":
                 return "SunshineScholarshipCatalog";

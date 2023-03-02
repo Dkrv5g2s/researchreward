@@ -2,18 +2,10 @@ package Utils;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import DBConnection.DBConnection;
-import DBConnection.TeacherEvaluationDBConnectionImpl;
-import Service.ExcellentResearcher.PDFGenerator;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorkerFontProvider;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 

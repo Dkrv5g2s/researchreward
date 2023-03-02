@@ -1,6 +1,5 @@
 package Service.OutstandingResearchAward;
 
-import Bean.JuniorResearchInvestigator.JuniorResearchInvestigator;
 import Bean.OutstandingResearchAward.OutstandingResearchAward;
 import Dao.OutstandingResearchAward.OutstandingResearchAwardDAO;
 import Dao.OutstandingResearchAward.OutstandingResearchAwardDAOImpl;

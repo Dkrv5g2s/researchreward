@@ -19,7 +19,6 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         String method = req.getMethod();
 
         if (method.equals("GET")) {
@@ -27,7 +26,6 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         }else if ( method.equals("POST")) {
             doPost(req, resp);
         }else {
-
             req.getRequestDispatcher("WEB-INF/jsp/login/login.jsp").forward(req, resp);
         }
     }
@@ -45,7 +43,7 @@ public class SpecialOutstandingResearcherApplicationServlet extends ServletEntry
         String json_form = service.query( project_id ) ;
         String json_review = service.query_review( project_id ) ;
 
-        JSONObject date_info = specialOutstandingResearcherSettingService.get() ;
+        JSONObject date_info = specialOutstandingResearcherSettingService.get();
 
         req.setAttribute("latest_data", json_form );
         req.setAttribute("latest_review_data", json_review );
