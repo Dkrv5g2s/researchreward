@@ -8,6 +8,8 @@ public class SpecialOutstandingResearcherSetting {
     private Date mostEnd = new Date(System.currentTimeMillis());
     private Date seniority = new Date(System.currentTimeMillis());
     private int year;
+    private int year_y;
+    private int echelon_y;
 
     public int getYear() {
         return year;
@@ -40,4 +42,12 @@ public class SpecialOutstandingResearcherSetting {
     public void setSeniority(Date seniority) {
         this.seniority = seniority;
     }
+
+    public int getYearY() { return year_y; }
+
+    public void setYearY(int year_y) { this.year_y = year_y; }
+
+    public int getEchelonY() { return echelon_y; }
+
+    public void setEchelonY(int echelon_y) { this.echelon_y = echelon_y; }
 }
