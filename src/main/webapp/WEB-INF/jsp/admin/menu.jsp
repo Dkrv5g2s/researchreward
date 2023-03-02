@@ -60,7 +60,7 @@
                 <span class="preload1"></span>
                 <span class="preload2"></span>
                 <ul id="nav">
-                    <li class='top' name="a"><a href='SpecialOutstandingResearcherSetting' class='top_link' target="iframe"><span class='down'>特殊優秀研究人才(A類)申請表年度設定</span></a></li>
+                    <li class='top' name="a"><a href='SpecialOutstandingResearcherSetting' class='top_link' target="iframe"><span class='down'>特殊優秀研究人才(A類、Y類)申請表年度設定</span></a></li>
                     <li class='top' name="b"><a href='RewardTableAAnnualIntervalSetting' class='top_link' target="iframe"><span class='down'>各獎項期刊論文統計表申請表年度設定</span></a></li>
                     <li class='top' name="b"><a href='AwardTimeLimit' class='top_link' target="iframe"><span class='down'>獎項開放申請時間</span></a></li>
                     <li class='top' name="c"><a href='BFormFormula' class='top_link' target="iframe"><span class='down'>B表公式係數修改</span></a></li>

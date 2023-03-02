@@ -25,6 +25,7 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("s6").getTime()),
                 new Date(jsonObject.getDate("s7").getTime()),
                 new Date(jsonObject.getDate("s8").getTime()),
+                new Date(jsonObject.getDate("s9").getTime()),
                 new Date(jsonObject.getDate("l1").getTime()),
                 new Date(jsonObject.getDate("l2").getTime()),
                 new Date(jsonObject.getDate("l3").getTime()),
@@ -33,6 +34,7 @@ public class AwardTimeLimitService {
                 new Date(jsonObject.getDate("l6").getTime()),
                 new Date(jsonObject.getDate("l7").getTime()),
                 new Date(jsonObject.getDate("l8").getTime()),
+                new Date(jsonObject.getDate("l9").getTime()),
                 jsonObject.getDouble("fwciOfFiveYear"));
         awardTimeLimit.setFwciOfThreeYear(jsonObject.getDouble("fwciOfThreeYear"));
         awardTimeLimit.setH5Index(jsonObject.getDouble("h5Index"));
@@ -59,7 +61,7 @@ public class AwardTimeLimitService {
         AwardTimeLimit result = awardTimeLimitDAO.get();
         long systemTime = System.currentTimeMillis();
         if(result.getS1().getTime() < systemTime && systemTime < result.getL1().getTime()){
-            rewards.add(new Award("獎助研究及產學績優教師聘任研究人員辦法",result.getS1(),result.getL1())); // Dfone, fix after 2022/07/06, first word display correctly.
+            rewards.add(new Award("獎助研究及產學績優教師聘任研究人員辦法",result.getS1(),result.getL1()));
         }
         if(result.getS2().getTime() < systemTime && systemTime < result.getL2().getTime()){
             rewards.add(new Award("講座教授/榮譽講座教授",result.getS2(),result.getL2()));
@@ -82,6 +84,9 @@ public class AwardTimeLimitService {
         }
         if(result.getS8().getTime() < systemTime && systemTime < result.getL8().getTime()){
             rewards.add(new Award("陽光獎助金論文獎勵",result.getS8(),result.getL8()));
+        }
+        if(result.getS9().getTime() < systemTime && systemTime < result.getL9().getTime()){
+            rewards.add(new Award("(延攬)獎勵特殊優秀研究人才(Y類)",result.getS9(),result.getL9())); // 待修正處0901
         }
 
         return rewards;

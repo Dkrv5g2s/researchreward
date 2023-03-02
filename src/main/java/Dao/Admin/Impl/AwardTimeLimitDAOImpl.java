@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,l1,l2,l3,l4,l5,l6,l7,l8,fwciOfFiveYear,fwciOfThreeYear,h5Index) " +
-            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+    private static final String INSERT_OBJECT = "INSERT INTO awardtimelimit (s1,s2,s3,s4,s5,s6,s7,s8,s9,l1,l2,l3,l4,l5,l6,l7,l8,l9,fwciOfFiveYear,fwciOfThreeYear,h5Index) " +
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
     private static final String GET_OBJECT = "SELECT * FROM awardtimelimit";
     private static final String DELETE_OBJECT = "DELETE FROM awardtimelimit";
 
@@ -40,6 +40,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
                     result.setL6(resultSet.getDate("l6"));
                     result.setL7(resultSet.getDate("l7"));
                     result.setL8(resultSet.getDate("l8"));
+                    result.setL9(resultSet.getDate("l9"));
                     result.setS1(resultSet.getDate("s1"));
                     result.setS2(resultSet.getDate("s2"));
                     result.setS3(resultSet.getDate("s3"));
@@ -48,6 +49,7 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
                     result.setS6(resultSet.getDate("s6"));
                     result.setS7(resultSet.getDate("s7"));
                     result.setS8(resultSet.getDate("s8"));
+                    result.setS9(resultSet.getDate("s9"));
                     result.setFwciOfFiveYear(resultSet.getDouble("fwciOfFiveYear"));
                     result.setFwciOfThreeYear(resultSet.getDouble("fwciOfThreeYear"));
                     result.setH5Index(resultSet.getDouble("h5Index"));
@@ -89,17 +91,19 @@ public class AwardTimeLimitDAOImpl implements AwardTimeLimitDAO {
             preparedStatement.setDate(6,object.getS6());
             preparedStatement.setDate(7,object.getS7());
             preparedStatement.setDate(8,object.getS8());
-            preparedStatement.setDate(9,object.getL1());
-            preparedStatement.setDate(10,object.getL2());
-            preparedStatement.setDate(11,object.getL3());
-            preparedStatement.setDate(12,object.getL4());
-            preparedStatement.setDate(13,object.getL5());
-            preparedStatement.setDate(14,object.getL6());
-            preparedStatement.setDate(15,object.getL7());
-            preparedStatement.setDate(16,object.getL8());
-            preparedStatement.setDouble(17,object.getFwciOfFiveYear());
-            preparedStatement.setDouble(18,object.getFwciOfThreeYear());
-            preparedStatement.setDouble(19,object.getH5Index());
+            preparedStatement.setDate(9,object.getS9());
+            preparedStatement.setDate(10,object.getL1());
+            preparedStatement.setDate(11,object.getL2());
+            preparedStatement.setDate(12,object.getL3());
+            preparedStatement.setDate(13,object.getL4());
+            preparedStatement.setDate(14,object.getL5());
+            preparedStatement.setDate(15,object.getL6());
+            preparedStatement.setDate(16,object.getL7());
+            preparedStatement.setDate(17,object.getL8());
+            preparedStatement.setDate(18,object.getL9());
+            preparedStatement.setDouble(19,object.getFwciOfFiveYear());
+            preparedStatement.setDouble(20,object.getFwciOfThreeYear());
+            preparedStatement.setDouble(21,object.getH5Index());
 
             preparedStatement.executeUpdate();
             connection.close();

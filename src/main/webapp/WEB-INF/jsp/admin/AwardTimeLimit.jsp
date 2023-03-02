@@ -91,6 +91,10 @@
                         <td><input type="date" name="s8" value="<%= jsonObject.getDate("s8")%>" required>至<input type="date" name="l8" value="<%= jsonObject.getDate("l8")%>" required></td>
                     </tr>
                     <tr>
+                        <td class="metadata">(延攬)獎勵特殊優秀研究人才(Y類)</td>
+                        <td><input type="date" name="s9" value="<%= jsonObject.getDate("s9")%>" required>至<input type="date" name="l9" value="<%= jsonObject.getDate("l9")%>" required></td>
+                    </tr>
+                    <tr>
                         <td class="metadata">本校近5年FWCI值</td>
                         <td><input type="number" name="fwciOfFiveYear" value="<%= jsonObject.getDouble("fwciOfFiveYear")%>" required></td>
                     </tr>

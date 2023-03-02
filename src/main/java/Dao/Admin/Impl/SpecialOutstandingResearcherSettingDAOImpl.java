@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class SpecialOutstandingResearcherSettingDAOImpl implements SpecialOutstandingResearcherSettingDAO {
 
     private DBConnection dbConnection = new DBConnectionImpl();
-    private static final String INSERT_OBJECT = "INSERT INTO special_researcher_date_setting (seniority,mostStart,mostEnd,year) VALUES (?,?,?,?)";
+    private static final String INSERT_OBJECT = "INSERT INTO special_researcher_date_setting (seniority,mostStart,mostEnd,year,year_y,echelon_y) VALUES (?,?,?,?,?,?)";
     private static final String GET_OBJECT = "SELECT * FROM special_researcher_date_setting";
     private static final String DELETE_OBJECT = "DELETE FROM special_researcher_date_setting";
 
@@ -37,6 +37,8 @@ public class SpecialOutstandingResearcherSettingDAOImpl implements SpecialOutsta
                     result.setMostStart(resultSet.getDate("mostStart"));
                     result.setMostEnd(resultSet.getDate("mostEnd"));
                     result.setYear(resultSet.getInt("year"));
+                    result.setYearY(resultSet.getInt("year_y"));
+                    result.setEchelonY(resultSet.getInt("echelon_y"));
                 }else{
                     return result;
                 }
@@ -70,7 +72,8 @@ public class SpecialOutstandingResearcherSettingDAOImpl implements SpecialOutsta
             preparedStatement.setDate(2,object.getMostStart());
             preparedStatement.setDate(3,object.getMostEnd());
             preparedStatement.setInt(4,object.getYear());
-
+            preparedStatement.setInt(5,object.getYearY());
+            preparedStatement.setInt(6,object.getEchelonY());
 
             preparedStatement.executeUpdate();
             connection.close();

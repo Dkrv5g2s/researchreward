@@ -11,6 +11,7 @@ public class AwardTimeLimit {
     private Date s6 = new Date(System.currentTimeMillis());
     private Date s7 = new Date(System.currentTimeMillis());
     private Date s8 = new Date(System.currentTimeMillis());
+    private Date s9 = new Date(System.currentTimeMillis());
     private Date l1 = new Date(System.currentTimeMillis());
     private Date l2 = new Date(System.currentTimeMillis());
     private Date l3 = new Date(System.currentTimeMillis());
@@ -19,12 +20,13 @@ public class AwardTimeLimit {
     private Date l6 = new Date(System.currentTimeMillis());
     private Date l7 = new Date(System.currentTimeMillis());
     private Date l8 = new Date(System.currentTimeMillis());
+    private Date l9 = new Date(System.currentTimeMillis());
     private double fwciOfFiveYear;
     private double fwciOfThreeYear;
     private double h5Index;
 
 
-    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, double fwciOfFiveYear) {
+    public AwardTimeLimit(Date s1, Date s2, Date s3, Date s4, Date s5, Date s6, Date s7, Date s8, Date s9, Date l1, Date l2, Date l3, Date l4, Date l5, Date l6, Date l7, Date l8, Date l9, double fwciOfFiveYear) {
         this.s1 = s1;
         this.s2 = s2;
         this.s3 = s3;
@@ -33,6 +35,7 @@ public class AwardTimeLimit {
         this.s6 = s6;
         this.s7 = s7;
         this.s8 = s8;
+        this.s9 = s9;
         this.l1 = l1;
         this.l2 = l2;
         this.l3 = l3;
@@ -41,6 +44,7 @@ public class AwardTimeLimit {
         this.l6 = l6;
         this.l7 = l7;
         this.l8 = l8;
+        this.l9 = l9;
         this.fwciOfFiveYear = fwciOfFiveYear;
     }
 
@@ -137,6 +141,14 @@ public class AwardTimeLimit {
         this.s8 = s8;
     }
 
+    public Date getS9() {
+        return s9;
+    }
+
+    public void setS9(Date s9) {
+        this.s9 = s9;
+    }
+
     public Date getL1() {
         return l1;
     }
@@ -199,6 +211,14 @@ public class AwardTimeLimit {
 
     public void setL8(Date l8) {
         this.l8 = l8;
+    }
+
+    public Date getL9() {
+        return l9;
+    }
+
+    public void setL9(Date l9) {
+        this.l9 = l9;
     }
 
 

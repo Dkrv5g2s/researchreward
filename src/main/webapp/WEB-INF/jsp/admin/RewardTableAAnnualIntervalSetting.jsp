@@ -9,6 +9,7 @@
     JSONObject specialOutstandingResearcher = awardsYears.getJSONObject("SpecialOutstandingResearcher")==null ? new JSONObject() : awardsYears.getJSONObject("SpecialOutstandingResearcher");
     JSONObject juniorResearchInvestigator = awardsYears.getJSONObject("JuniorResearchInvestigator")==null ? new JSONObject() : awardsYears.getJSONObject("JuniorResearchInvestigator");
     JSONObject outstandingResearchAward = awardsYears.getJSONObject("OutstandingResearchAward")==null ? new JSONObject() : awardsYears.getJSONObject("OutstandingResearchAward");
+    JSONObject specialOutstandingResearcher_Y = awardsYears.getJSONObject("SpecialOutstandingResearcher(Y)")==null ? new JSONObject() : awardsYears.getJSONObject("SpecialOutstandingResearcher(Y)");
 %>
 <html>
 <head>
@@ -32,8 +33,9 @@
                 <td colspan="1" class="metadata">獎項名稱</td>
                 <td colspan="5">期刊論文統計表年度</td>
             </tr>
+
             <tr>
-                <td rowspan="4" colspan="1" class="metadata">近五年年度設定</td>
+                <td rowspan="5" colspan="1" class="metadata">近五年年度設定</td>
                 <td colspan="1" class="metadata"><label name="TeacherHireResearcher">獎助研究及產學績優教師聘任研究人員辦法</label></td>
                 <td colspan="5">
                     <input type="number" name="year1" min="100" max="199" step="1" value=<%=teacherHireResearcher.getIntValue("year1")%> />
@@ -43,6 +45,7 @@
                     <input type="number" name="year5" min="100" max="199" step="1" value=<%=teacherHireResearcher.getIntValue("year5")%> />
                 </td>
             </tr>
+
             <tr>
                 <td colspan="1" class="metadata"><label name="LectureProfessor">講座教授/榮譽講座教授</label></td>
                 <td colspan="5">
@@ -75,6 +78,18 @@
                     <input type="number" name="year5" min="100" max="199" step="1" value=<%=specialOutstandingResearcher.getIntValue("year5")%> />
                 </td>
             </tr>
+
+            <tr>
+                <td colspan="1" class="metadata"><label name="SpecialOutstandingResearcher">(延攬)獎勵特殊優秀研究人才(Y類)</label></td>
+                <td colspan="5">
+                    <input type="number" name="year1" min="100" max="199" step="1" value=<%=specialOutstandingResearcher_Y.getIntValue("year1")%> />
+                    <input type="number" name="year2" min="100" max="199" step="1" value=<%=specialOutstandingResearcher_Y.getIntValue("year2")%> />
+                    <input type="number" name="year3" min="100" max="199" step="1" value=<%=specialOutstandingResearcher_Y.getIntValue("year3")%> />
+                    <input type="number" name="year4" min="100" max="199" step="1" value=<%=specialOutstandingResearcher_Y.getIntValue("year4")%> />
+                    <input type="number" name="year5" min="100" max="199" step="1" value=<%=specialOutstandingResearcher_Y.getIntValue("year5")%> />
+                </td>
+            </tr>
+
             <tr>
                 <td rowspan="2" colspan="1" class="metadata">近三年年度設定</td>
                 <td colspan="1" class="metadata"><label name="JuniorResearchInvestigator">年輕學者研究獎</label></td>

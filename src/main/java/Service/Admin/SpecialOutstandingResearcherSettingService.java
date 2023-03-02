@@ -22,6 +22,8 @@ public class SpecialOutstandingResearcherSettingService {
         object.setMostStart(new Date(jsonObject.getDate("mostStart").getTime()));
         object.setMostEnd(new Date(jsonObject.getDate("mostEnd").getTime()));
         object.setYear(jsonObject.getInt("year"));
+        object.setYearY(jsonObject.getInt("year_y"));
+        object.setEchelonY(jsonObject.getInt("echelon_y"));
 
         dao.save(object);
     }
