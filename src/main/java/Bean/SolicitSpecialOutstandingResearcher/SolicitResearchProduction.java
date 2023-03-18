@@ -24,7 +24,7 @@ public class SolicitResearchProduction {
         this.project_id = project_id;
     }
 
-    public boolean isApplicant_declaration() {
+    public boolean getApplicant_declaration() {
         return applicant_declaration;
     }
 
